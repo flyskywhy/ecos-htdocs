@@ -63,7 +63,7 @@ discuss access with your local systems administrator.
 <P>
 Type the following command to login to the CVS server:
 <PRE>
-      cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos login
+      cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos login
 </PRE>
 <P>
 You will be prompted for a password which is <i>anoncvs</i>. You only need to
@@ -75,7 +75,7 @@ It is recommended that you use different directory trees for the
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:
 <PRE>
-     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P ecos
+     cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P ecos
 </PRE>
 <P>
 This command should initiate a connection to the CVS server and check
@@ -112,14 +112,14 @@ Networking support is an optional feature in eCos and is not
 checked out from the repository by default. Such support can be added to
 an already checked out tree by executing the following command:
 <PRE>
-     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P net
+     cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P net
 </PRE>
 <P>
 A port of the University of California at Davis (UCD) SNMP stack is also
 available as a separate optional package, and may be checked out by
 additionally executing the following command:
 <PRE>
-     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P snmp
+     cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P snmp
 </PRE>
 <P>
 Note that the networking and SNMP package records will be present in the package
@@ -144,7 +144,7 @@ form <CODE>ecos-sw-&lt;date in ISO format&gt;</CODE> (eg <CODE>ecos-sw-1999-05-1
 <P>
 To check out a particular version from scratch, use a command such as:
 <PRE>
-     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos co -r ecos-v1_3_1-release ecos
+     cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r ecos-v1_3_1-release ecos
 </PRE>
 <P>
 As with all such <i>sticky</I> checkouts, a cvs
