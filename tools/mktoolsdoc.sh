@@ -114,10 +114,12 @@ supporting eCos for $TARGETNAME. A <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/
 GCC development sources</a> should be used to obtain the most up-to-date compiler
 with new features and bug fixes.<p>
 
+${USENEWSNAPSHOT-
 eCos has been tested with the 2000-03-13 snapshot, but it is likely that later
 snapshots will fix bugs that have not yet been discovered. If you have compiler
 problems you may wish to consider updating to a more recent snapshot, or
 reverting to an older one.
+}
 
 When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/">
 GCC snapshot download area</a> note that only the core compiler and C++
@@ -317,6 +319,7 @@ are handled correctly:<p>
 </tt></nobr>
 }
 ${GCCSNAP+
+${USENEWSNAPSHOT-
 If you are using a GCC snapshot dated 2000-03-20 or earlier, download
 the <a href="patches/ecos-gcc-snap-cpp.pat">ecos-gcc-snap-cpp.pat</a>
 patch to a file and apply it:<p>
@@ -330,7 +333,7 @@ ${WINDOWS-
 }
 </tt></nobr>
 <p>
-
+}
 $EXTRASNAPPATCH
 
 You must then reset the source file timestamps to ensure that makefile dependencies
@@ -975,6 +978,7 @@ EXTRAPATCH=
 TOOLPREFIX=arm-elf
 TARGETNAME="ARM THUMB"
 GCCSNAP=
+USENEWSNAPSHOT=
 
 ###################
 # Windows thumb
@@ -993,17 +997,6 @@ INSIGHTBLDDSK=110MB
 INSIGHTINSTDSK=140MB
 TOTBLDDSK=185MB
 TOTINSTDSK=75MB
-EXTRAPATCH='
-GCC has known problems with ARM and thumb targets in snapshots dated between
-2000-02-14 and 2000-03-13 inclusive. If you are using one of these snapshots,
-download the 
-<a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
-patch to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-thumb-stackalign.pat | patch -p0
-</tt></nobr><p>
-'
 
 outputfunc win-thumb-elf.html
 
@@ -1023,22 +1016,12 @@ INSIGHTBLDDSK=115MB
 INSIGHTINSTDSK=60MB
 TOTBLDDSK=180MB
 TOTINSTDSK=95MB
-EXTRAPATCH='
-GCC has known problems with ARM and thumb targets in snapshots dated between
-2000-02-14 and 2000-03-13 inclusive. If you are using one of these snapshots,
-download the 
-<a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
-patch to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-thumb-stackalign.pat
-</tt></nobr><p>
-'
 
 outputfunc linux-thumb-elf.html
 
 EXTRAPATCH=
 unset GCCSNAP
+unset USENEWSNAPSHOT
 
 ##################
 # vr4300
