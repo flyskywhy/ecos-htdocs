@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5e, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -164,7 +164,7 @@ CLASS="CALSTABLE"
 ><TBODY
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-v </TD
@@ -177,7 +177,7 @@ about each packet sent.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-n &lt;count&#62;</TD
@@ -190,7 +190,7 @@ to be sent. Default is 10 if -n is not specified.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-t &lt;timeout&#62;</TD
@@ -203,7 +203,7 @@ to complete, specified in milliseconds. Default is 1000ms (1 second).</TD
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-r &lt;rate&#62;</TD
@@ -217,7 +217,7 @@ time between successive sends. Default is 1000ms (1 second). Specifying "-r
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-l &lt;length&#62;</TD
@@ -231,7 +231,7 @@ is 64 and the value is restricted to the range 64 .. 1400.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-i &lt;local IP&#62;</TD
@@ -246,7 +246,7 @@ properly.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="168"
+WIDTH="192"
 ALIGN="LEFT"
 VALIGN="TOP"
 >-h &lt;host IP&#62;</TD
@@ -272,8 +272,22 @@ NAME="AEN389"
 >General</A
 ></H2
 ><P
->Manage
-machine caches. </P
+></P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>baudrate [-b value]</DT
+><DD
+><P
+>This command sets the baud rate for the system serial console.
+If the platform supports non-volatile configuration data, then the new value
+will be saved and used when the system is reset.</P
+></DD
+></DL
+></DIV
 ><P
 ></P
 ><DIV
@@ -282,6 +296,8 @@ CLASS="VARIABLELIST"
 ><DT
 >cache [ON | OFF]</DT
 ><DD
+><P
+>This command is used to manipulate the caches on the processor.</P
 ><P
 >With no options, this command specifies the state of the system caches.</P
 ><P
@@ -391,7 +407,8 @@ RedBoot&#62; d -b 0xfe00b000 -l 0x80
 ></DD
 ></DL
 ></DIV
-><P
+>
+<P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
@@ -405,6 +422,69 @@ The value printed can be compared with the output from the Linux program 'chksum
 ></DD
 ></DL
 ></DIV
+>
+<P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>alias name [value]</DT
+><DD
+><P
+>The <TT
+CLASS="FUNCTION"
+>alias</TT
+> command is used to maintain simple command
+line aliases.  These aliases are shorthand for longer expressions.
+When the pattern %{name} appears in a command line, including a script,
+the corresponding value will be substituted.</P
+><P
+>Aliases are kept in RedBoot's non-volatile configuration area, i.e. Flash
+memory.</P
+><P
+>This is an example of setting an alias.  Notice the use of a quoted string
+when the value contains spaces.
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot&#62; alias SBUF "-b 0x100000"
+Update RedBoot non-volatile configuration - are you sure (y/n)? y
+... Unlock from 0x50f80000-0x50fc0000: .
+... Erase from 0x50f80000-0x50fc0000: .
+... Program from 0x0000b9e8-0x0000c9e8 at 0x50f80000: .
+... Lock from 0x50f80000-0x50fc0000: .</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>This example shows querying of an alias, as well as how it might be used.
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot&#62; alias SBUF
+'SBUF' = '-b 0x100000'
+RedBoot&#62; d %{SBUF} 
+0x00100000: FE03 00EA 0000 0000  0000 0000 0000 0000   |................|
+0x00100010: 0000 0000 0000 0000  0000 0000 0000 0000   |................|</PRE
+></TD
+></TR
+></TABLE
+></P
+></DD
+></DL
+></DIV
 ></P
 ></DIV
 ><DIV
@@ -412,7 +492,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN431"
+NAME="AEN448"
 >Download Process</A
 ></H2
 ><P
@@ -615,11 +695,9 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->============================================================= 
-RedBoot&#62; lo redboot.ROM -b 0x8c400000        
+>RedBoot&#62; lo redboot.ROM -b 0x8c400000        
 Address offset = 0x0c400000      
-Entry point: 0x80000000, address range: 0x80000000-0x8000fe80     
-============================================================= </PRE
+Entry point: 0x80000000, address range: 0x80000000-0x8000fe80     </PRE
 ></TD
 ></TR
 ></TABLE

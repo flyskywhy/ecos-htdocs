@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5e, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -133,6 +133,12 @@ CLASS="COMPUTEROUTPUT"
 ><P
 >If the optional flag <TT
 CLASS="COMPUTEROUTPUT"
+>-i</TT
+> is specified,
+then the configuration database will be reset to its default state.</P
+><P
+>If the optional flag <TT
+CLASS="COMPUTEROUTPUT"
 >-l</TT
 > is specified,
 the configuration data is simply listed. Otherwise, each configuration parameter
@@ -216,8 +222,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->  ======================================================================
-  RedBoot&#62; <TT
+>  RedBoot&#62; <TT
 CLASS="USERINPUT"
 ><B
 >fconfig -l -n</B
@@ -246,8 +251,7 @@ CLASS="USERINPUT"
   ... Erase from 0x507c0000-0x507e0000: .
   ... Program from 0x0000a8d0-0x0000acd0 at 0x507c0000: .
   ... Lock from 0x507c0000-0x507e0000: .
-  RedBoot&#62; 
-  ======================================================================</PRE
+  RedBoot&#62; </PRE
 ></TD
 ></TR
 ></TABLE
@@ -267,8 +271,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; <TT
+>RedBoot&#62; <TT
 CLASS="USERINPUT"
 ><B
 >fconfig -l</B
@@ -279,8 +282,7 @@ Use BOOTP for network configuration: false
 Local IP address: 192.168.1.29      
 Default server IP address: 192.168.1.101      
 GDB connection port: 9000      
-Network debug at boot time: false     
-=================================================================</PRE
+Network debug at boot time: false     </PRE
 ></TD
 ></TR
 ></TABLE
@@ -297,8 +299,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; <TT
+>RedBoot&#62; <TT
 CLASS="USERINPUT"
 ><B
 >fconfig</B
@@ -349,8 +350,7 @@ RedBoot          0xA0000000   0xA0000000  0x020000  0x80000000
 RedBoot[backup]  0xA0020000   0x8C010000  0x020000  0x8C010000
 RedBoot config   0xA0FC0000   0xA0FC0000  0x020000  0x00000000
 FIS directory    0xA0FE0000   0xA0FE0000  0x020000  0x00000000
-RedBoot&#62;                        
-=================================================================</PRE
+RedBoot&#62;                        </PRE
 ></TD
 ></TR
 ></TABLE

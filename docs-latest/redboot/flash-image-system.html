@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5e, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -126,10 +126,8 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis init -f      
-About to initialize [format] flash image system - are you sure (y/n)? n 
-=================================================================</PRE
+>RedBoot&#62; fis init -f      
+About to initialize [format] flash image system - are you sure (y/n)? n </PRE
 ></TD
 ></TR
 ></TABLE
@@ -184,8 +182,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis list 
+>RedBoot&#62; fis list 
 Name           flash addr  Mem addr   Length   Entry point 
 RedBoot        0xA0000000  0xA0000000 0x020000 0x80000000 
 RedBoot[backup]0xA0020000  0x8C010000 0x010000 0x8C010000 
@@ -196,8 +193,7 @@ Name           flash addr  Checksum   Length   Entry point
 RedBoot        0xA0000000  0x34C94A57 0x020000 0x80000000 
 RedBoot[backup]0xA0020000  0x00000000 0x010000 0x8C010000 
 RedBoot config 0xA0FC0000  0x00000000 0x020000 0x00000000 
-RedBoot config 0xA0FE0000  0x00000000 0x020000 0x00000000 
-=================================================================  </PRE
+RedBoot config 0xA0FE0000  0x00000000 0x020000 0x00000000 </PRE
 ></TD
 ></TR
 ></TABLE
@@ -240,11 +236,9 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis free
+>RedBoot&#62; fis free
         0xA0040000 .. 0xA07C0000
-        0xA0840000 .. 0xA0FC0000      
-=================================================================  </PRE
+        0xA0840000 .. 0xA0FC0000      </PRE
 ></TD
 ></TR
 ></TABLE
@@ -423,15 +417,13 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis create RedBoot -f 0xa0000000 -b 0x8c400000 -l 0x20000      
+>RedBoot&#62; fis create RedBoot -f 0xa0000000 -b 0x8c400000 -l 0x20000      
 An image named &#8216;RedBoot&#8217; exists - are you sure (y/n)? n      
 RedBoot&#62; fis create junk -b 0x8c400000 -l 0x20000 
 ... Erase from 0xa0040000-0xa0060000: . 
 ... Program from 0x8c400000-0x8c420000 at 0xa0040000: . 
 ... Erase from 0xa0fe0000-0xa1000000: . 
-... Program from 0x8c7d0000-0x8c7f0000 at 0xa0fe0000: . 
-================================================================= </PRE
+... Program from 0x8c7d0000-0x8c7f0000 at 0xa0fe0000: . </PRE
 ></TD
 ></TR
 ></TABLE
@@ -537,10 +529,8 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis load RedBoot[backup]      
-RedBoot&#62; go      
-================================================================ </PRE
+>RedBoot&#62; fis load RedBoot[backup]      
+RedBoot&#62; go      </PRE
 ></TD
 ></TR
 ></TABLE
@@ -569,8 +559,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis list      
+>RedBoot&#62; fis list      
 Name              flash addr   Mem addr    Length    Entry point      
 RedBoot          0xA0000000   0xA0000000  0x020000  0x80000000      
 RedBoot[backup]  0xA0020000   0x8C010000  0x020000  0x8C010000      
@@ -581,8 +570,7 @@ RedBoot&#62; fis delete junk
 Delete image &#8216;junk&#8217; - are you sure (y/n)? y      
 ... Erase from 0xa0040000-0xa0060000: .  
 ... Erase from 0xa0fe0000-0xa1000000: .  
-... Program from 0x8c7d0000-0x8c7f0000 at 0xa0fe0000: . 
-=================================================================</PRE
+... Program from 0x8c7d0000-0x8c7f0000 at 0xa0fe0000: . </PRE
 ></TD
 ></TR
 ></TABLE
@@ -625,10 +613,8 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot fis lock -f 0xa0040000 -l 0x20000  
-... Lock from 0xa0040000-0xa0060000: .  
-=================================================================</PRE
+>RedBoot fis lock -f 0xa0040000 -l 0x20000  
+... Lock from 0xa0040000-0xa0060000: .  </PRE
 ></TD
 ></TR
 ></TABLE
@@ -658,10 +644,8 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot fis unlock -f 0xa0040000 -l 0x20000  
-... Unlock from 0xa0040000-0xa0060000: .  
-=================================================================</PRE
+>RedBoot fis unlock -f 0xa0040000 -l 0x20000  
+... Unlock from 0xa0040000-0xa0060000: .  </PRE
 ></TD
 ></TR
 ></TABLE
@@ -691,10 +675,8 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->================================================================= 
-RedBoot&#62; fis erase -f 0xa0040000 -l 0x20000      
-... Erase from 0xa0040000-0xa0060000: .  
-=================================================================</PRE
+>RedBoot&#62; fis erase -f 0xa0040000 -l 0x20000      
+... Erase from 0xa0040000-0xa0060000: .  </PRE
 ></TD
 ></TR
 ></TABLE
