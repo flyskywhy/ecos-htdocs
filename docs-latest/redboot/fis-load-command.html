@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,16 +101,12 @@ NAME="AEN1825"
 ><B
 CLASS="COMMAND"
 >fis load</B
->  [-b <TT
+>  [-b <VAR
 CLASS="REPLACEABLE"
-><I
-> load address</I
-></TT
->] [-c ] [-d ] [<TT
+> load address</VAR
+>] [-c ] [-d ] [<VAR
 CLASS="REPLACEABLE"
-><I
->name</I
-></TT
+>name</VAR
 >]</P
 ></DIV
 ><DIV
@@ -122,81 +118,58 @@ NAME="AEN1834"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1836"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-b</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address the image should be loaded to. Executable
 	      images normally load at the location to which the file
 	      was linked. This option allows the image to be loaded to
 	      a specific memory location, possibly overriding any
 	      assumed location.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >If not specified, the address associated with the
 	      image in the FIS directory will be used.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-c</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Compute and print the checksum of the image data
 	      after it has been loaded into memory.</TD
 ><TD
@@ -204,19 +177,10 @@ VALIGN="TOP"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-d</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Decompress gzipped image while copying it from
 	      flash to RAM.</TD
 ><TD
@@ -224,24 +188,13 @@ VALIGN="TOP"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->name</I
-></TT
+>name</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >String</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The name of the file, as shown in the FIS
 	      directory.</TD
 ><TD
@@ -286,17 +239,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis load RedBoot[RAM]</B
-></TT
+>fis load RedBoot[RAM]</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->go</B
-></TT
+>go</KBD
 ></PRE
 ></TD
 ></TR

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,21 +101,15 @@ NAME="AEN1379"
 ><B
 CLASS="COMMAND"
 >mfill</B
->  {-b <TT
+>  {-b <VAR
 CLASS="REPLACEABLE"
-><I
->location</I
-></TT
->} {-l <TT
+>location</VAR
+>} {-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
->} {-p <TT
+>length</VAR
+>} {-p <VAR
 CLASS="REPLACEABLE"
-><I
->value</I
-></TT
+>value</VAR
 >} [-1 | -2 | -4]</P
 ></DIV
 ><DIV
@@ -127,64 +121,48 @@ NAME="AEN1392"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1394"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->location</I
-></TT
+>location</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Memory address</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Location in memory for start of data.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -195,29 +173,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of data</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -228,97 +192,47 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-p <TT
+>-p <VAR
 CLASS="REPLACEABLE"
-><I
->pattern</I
-></TT
+>pattern</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Data value to fill with</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >0</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-1</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Access one byte (8 bits) at a time.  
 Only the least significant 8 bits of the pattern will be used.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-2</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Access two bytes (16 bits) at a time.  
 Only the least significant 16 bits of the pattern will be used.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Access one word (32 bits) at a time.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ></TBODY
@@ -355,25 +269,19 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->x -b 0x100000 -l 0x20</B
-></TT
+>x -b 0x100000 -l 0x20</KBD
 >
 00100000: 00 3E 00 06 00 06 00 06  00 00 00 00 00 00 00 00  |.&#62;..............|
 00100010: 00 00 00 78 00 70 00 60  00 60 00 60 00 60 00 60  |...x.p.`.`.`.`.`|
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->mfill -b 0x100000 -l 0x20</B
-></TT
+>mfill -b 0x100000 -l 0x20</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->x -b 0x100000 -l 0x20</B
-></TT
+>x -b 0x100000 -l 0x20</KBD
 >
 00100000: 00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
 00100010: 00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|</PRE
@@ -392,17 +300,13 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->mfill -b 0x100000 -l 0x20 -p 0xDEADFACE</B
-></TT
+>mfill -b 0x100000 -l 0x20 -p 0xDEADFACE</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->x -b 0x100000 -l 0x20</B
-></TT
+>x -b 0x100000 -l 0x20</KBD
 >
 00100000: CE FA AD DE CE FA AD DE  CE FA AD DE CE FA AD DE  |................|
 00100010: CE FA AD DE CE FA AD DE  CE FA AD DE CE FA AD DE  |................|</PRE

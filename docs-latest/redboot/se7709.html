@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SE7709"
-></A
->SuperH/SH3(SH7709) Hitachi Solution Engine 7709</H1
+>SuperH/SH3(SH7709) Hitachi Solution Engine 7709</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5212"
-></A
->Overview</H2
+NAME="AEN5393"
+>Overview</A
+></H2
 ><P
 >This
 description covers the MS7709SE01 variant. See <A
@@ -113,71 +113,49 @@ Ethernet is also supported using the 10-base T connector. </P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN5225"
-></A
 ><P
 ></P
+><A
+NAME="AEN5406"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -192,9 +170,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5244"
-></A
->Initial Installation Method</H2
+NAME="AEN5425"
+>Initial Installation Method</A
+></H2
 ><P
 >The Solution Engine ships with the Hitachi boot monitor in EPROM
 which allows for initial programming of RedBoot:</P
@@ -221,11 +199,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->Ready &gt;<TT
+>Ready &gt;<KBD
 CLASS="USERINPUT"
-><B
->fl</B
-></TT
+>fl</KBD
 ></PRE
 ></TD
 ></TR
@@ -257,11 +233,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->cat redboot_SE7709RP_ROM.eprom.srec &gt; /dev/ttyS0</B
-></TT
+>cat redboot_SE7709RP_ROM.eprom.srec &gt; /dev/ttyS0</KBD
 ></PRE
 ></TD
 ></TR
@@ -296,9 +270,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5264"
-></A
->Special RedBoot Commands</H2
+NAME="AEN5445"
+>Special RedBoot Commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -320,11 +294,9 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -332,11 +304,9 @@ CLASS="REPLACEABLE"
 page of the kernel image and defaults to 0x8c101000</P
 ></DD
 ><DT
->-i <TT
+>-i <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -344,33 +314,27 @@ CLASS="REPLACEABLE"
 image</P
 ></DD
 ><DT
->-j <TT
+>-j <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;size&#62;</I
-></TT
+>&lt;size&#62;</VAR
 ></DT
 ><DD
 ><P
 >Size of initrd image</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"args"</I
-></TT
+>"args"</VAR
 ></DT
 ><DD
 ><P
 >Kernel arguments string</P
 ></DD
 ><DT
->-m <TT
+>-m <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;flags&#62;</I
-></TT
+>&lt;flags&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -378,33 +342,27 @@ CLASS="REPLACEABLE"
 root partition will be mounted read-only.</P
 ></DD
 ><DT
->-f <TT
+>-f <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;flags&#62;</I
-></TT
+>&lt;flags&#62;</VAR
 ></DT
 ><DD
 ><P
 >RAM disk flags. Should normally be 0x4000</P
 ></DD
 ><DT
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;device number&#62;</I
-></TT
+>&lt;device number&#62;</VAR
 ></DT
 ><DD
 ><P
 >Root device specification. /dev/ram is 0x0101</P
 ></DD
 ><DT
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;type&#62;</I
-></TT
+>&lt;type&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -429,9 +387,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5313"
-></A
->Memory Maps</H2
+NAME="AEN5494"
+>Memory Maps</A
+></H2
 ><P
 >RedBoot sets up the following memory map on the SE77x9 board.<TABLE
 BORDER="5"
@@ -461,9 +419,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5317"
-></A
->Ethernet Driver</H2
+NAME="AEN5498"
+>Ethernet Driver</A
+></H2
 ><P
 >The ethernet driver uses a hardwired ESA which can, at present,
 only be changed in CDL.</P
@@ -473,9 +431,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5320"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN5501"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

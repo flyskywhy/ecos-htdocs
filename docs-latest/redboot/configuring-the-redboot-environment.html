@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="CONFIGURING-THE-REDBOOT-ENVIRONMENT"
-></A
->Configuring the RedBoot Environment</H1
+>Configuring the RedBoot Environment</A
+></H1
 ><P
 >Once installed, RedBoot will operate fairly generically. However,
 there are some features that can be configured for a particular installation.
@@ -97,8 +97,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="TARGET-NETWORK-CONFIGURATION"
-></A
->Target Network Configuration</H2
+>Target Network Configuration</A
+></H2
 ><P
 >Each node in a networked
 system needs to have a unique address. Since the network support in RedBoot
@@ -144,11 +144,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig -l</B
-></TT
+>fconfig -l</KBD
 >
 Run script at boot: false
 Use BOOTP for network configuration: false
@@ -167,25 +165,25 @@ network node to communicate with for TFTP service. This address can be overridde
 directly in the TFTP
 commands.</P
 ><P
->The <TT
+>The <SAMP
 CLASS="COMPUTEROUTPUT"
->DNS server IP address</TT
+>DNS server IP address</SAMP
 > option
 controls where RedBoot should make DNS lookups. A setting of 0.0.0.0 will disable DNS
 lookups. The DNS server IP address can also be set at runtime.</P
 ><P
->If the selection for <TT
+>If the selection for <SAMP
 CLASS="COMPUTEROUTPUT"
->Use BOOTP for network configuration</TT
-> had been <TT
+>Use BOOTP for network configuration</SAMP
+> had been <SAMP
 CLASS="COMPUTEROUTPUT"
->true</TT
+>true</SAMP
 >, these IP
 addresses would be determined at boot time, via the BOOTP protocol. The final
 number which needs to be configured, regardless of IP address selection mode,
-is the <TT
+is the <SAMP
 CLASS="COMPUTEROUTPUT"
->GDB connection port</TT
+>GDB connection port</SAMP
 >. RedBoot allows for incoming commands
 on either the available serial ports or via the network. This port number
 is the TCP port that RedBoot will use to accept incoming connections.  </P
@@ -216,8 +214,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN344"
-></A
->Host Network Configuration</H2
+>Host Network Configuration</A
+></H2
 ><P
 >RedBoot
 may require three different classes of service from a network host:   </P
@@ -243,9 +241,9 @@ or enabled by default. See your system documentation for more details.</P
 ><P
 >In particular, on Red Hat Linux, neither of these services will be configured
 out of the box. The following will provide a limited explanation of how to
-set them up. These configuration setups must be done as <TT
+set them up. These configuration setups must be done as <SAMP
 CLASS="COMPUTEROUTPUT"
->root</TT
+>root</SAMP
 > on the host or server machine.</P
 ><DIV
 CLASS="SECT3"
@@ -253,8 +251,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="AEN365"
-></A
->Enable TFTP on Red Hat Linux 6.2</H3
+>Enable TFTP on Red Hat Linux 6.2</A
+></H3
 ><DIV
 CLASS="PROCEDURE"
 ><OL
@@ -313,8 +311,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="AEN384"
-></A
->Enable TFTP on Red Hat Linux 7 (or newer)</H3
+>Enable TFTP on Red Hat Linux 7 (or newer)</A
+></H3
 ><DIV
 CLASS="PROCEDURE"
 ><OL
@@ -416,16 +414,16 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="AEN412"
-></A
->Enable BOOTP/DHCP server on Red Hat Linux</H3
+>Enable BOOTP/DHCP server on Red Hat Linux</A
+></H3
 ><P
 >First, ensure that you have
-the proper package, <TT
+the proper package, <SAMP
 CLASS="COMPUTEROUTPUT"
->dhcp</TT
-> (not <TT
+>dhcp</SAMP
+> (not <SAMP
 CLASS="COMPUTEROUTPUT"
->dhcpd</TT
+>dhcpd</SAMP
 >) installed. The DHCP server provides Dynamic Host Configuration,
 that is, IP address and other data to hosts on a network. It does this in
 different ways. Next, there can be a fixed relationship between a certain
@@ -487,11 +485,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-># <TT
+># <KBD
 CLASS="USERINPUT"
-><B
->service dhcpd start</B
-></TT
+>service dhcpd start</KBD
 ></PRE
 ></TD
 ></TR
@@ -504,22 +500,22 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="AEN429"
-></A
->Enable DNS server on Red Hat Linux</H3
+>Enable DNS server on Red Hat Linux</A
+></H3
 ><P
 >First, ensure that you have the proper
-RPM package, <TT
+RPM package, <SAMP
 CLASS="COMPUTEROUTPUT"
->caching-nameserver</TT
+>caching-nameserver</SAMP
 >
 installed. Then change the configuration
 (in <TT
 CLASS="FILENAME"
 >/etc/named.conf</TT
 >) so that the
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->forwarders</TT
+>forwarders</SAMP
 > point to the primary
 nameservers for your machine, normally using the nameservers listed in
 <TT
@@ -606,11 +602,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-># <TT
+># <KBD
 CLASS="USERINPUT"
-><B
->service named start</B
-></TT
+>service named start</KBD
 ></PRE
 ></TD
 ></TR
@@ -625,11 +619,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-># <TT
+># <KBD
 CLASS="USERINPUT"
-><B
->chkconfig named on</B
-></TT
+>chkconfig named on</KBD
 ></PRE
 ></TD
 ></TR
@@ -640,9 +632,9 @@ Finally, you may wish to change
 CLASS="FILENAME"
 >/etc/resolv.conf</TT
 > to use
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->127.0.0.1</TT
+>127.0.0.1</SAMP
 > as the nameserver for your
 local machine.</P
 ></DIV
@@ -652,8 +644,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="AEN450"
-></A
->RedBoot network gateway</H3
+>RedBoot network gateway</A
+></H3
 ><P
 >RedBoot cannot communicate with
 machines on different subnets because it does not support routing. It always
@@ -664,17 +656,13 @@ different subnet (even if it's on the same &#8216;wire&#8217;), you need to
 go through an ARP proxy, providing that there is a Linux box connected to
 the network which is able to route to the TFTP server. For example: <TT
 CLASS="FILENAME"
->/proc/sys/net/ipv4/conf/<TT
+>/proc/sys/net/ipv4/conf/<VAR
 CLASS="REPLACEABLE"
-><I
->&lt;interface&#62;</I
-></TT
+>&lt;interface&#62;</VAR
 >/proxy_arp </TT
->where <TT
+>where <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;interface&#62;</I
-></TT
+>&lt;interface&#62;</VAR
 >should be replaced with whichever network interface
 is directly connected to the board.</P
 ></DIV
@@ -685,8 +673,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN460"
-></A
->Verification</H2
+>Verification</A
+></H2
 ><P
 >Once your network setup
 has been configured, perform simple verification tests as follows: <P

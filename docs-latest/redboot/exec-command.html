@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,43 +101,29 @@ NAME="AEN2298"
 ><B
 CLASS="COMMAND"
 >exec</B
->  [-w <TT
+>  [-w <VAR
 CLASS="REPLACEABLE"
-><I
-> timeout</I
-></TT
->] [-r <TT
+> timeout</VAR
+>] [-r <VAR
 CLASS="REPLACEABLE"
-><I
-> ramdisk_address</I
-></TT
->] [-s <TT
+> ramdisk_address</VAR
+>] [-s <VAR
 CLASS="REPLACEABLE"
-><I
-> ramdisk_length</I
-></TT
->] [-b <TT
+> ramdisk_length</VAR
+>] [-b <VAR
 CLASS="REPLACEABLE"
-><I
-> load_address</I
-></TT
+> load_address</VAR
 >
-   	    {-l <TT
+   	    {-l <VAR
 CLASS="REPLACEABLE"
-><I
-> load_length</I
-></TT
+> load_length</VAR
 >}
-        ] [-c <TT
+        ] [-c <VAR
 CLASS="REPLACEABLE"
-><I
-> kernel_command_line</I
-></TT
->] [<TT
+> kernel_command_line</VAR
+>] [<VAR
 CLASS="REPLACEABLE"
-><I
-> entry_point</I
-></TT
+> entry_point</VAR
 >]</P
 ></DIV
 ><DIV
@@ -149,91 +135,61 @@ NAME="AEN2315"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN2317"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-w <TT
+>-w <VAR
 CLASS="REPLACEABLE"
-><I
->timeout</I
-></TT
+>timeout</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Time to wait before starting execution.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >0</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->ramdisk_address</I
-></TT
+>ramdisk_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address in memory of "initrd"-style ramdisk - passed to Linux kernel.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -244,29 +200,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-s <TT
+>-s <VAR
 CLASS="REPLACEABLE"
-><I
->ramdisk_length</I
-></TT
+>ramdisk_length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of ramdisk image - passed to Linux kernel.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -277,29 +219,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->load_address</I
-></TT
+>load_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address in memory of the Linux kernel image.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Value set by <B
 CLASS="COMMAND"
 >load</B
@@ -310,29 +238,15 @@ CLASS="COMMAND"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->load_length</I
-></TT
+>load_length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of Linux kernel image.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -343,29 +257,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->kernel_command_line</I
-></TT
+>kernel_command_line</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >String</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Command line to pass to the Linux kernel.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -376,29 +276,25 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+>-x</TD
+><TD
+>&nbsp;</TD
+><TD
+>Boot kernel with endianess opposite of RedBoot endianess.</TD
+><TD
+>Boot kernel with same endianess as RedBoot</TD
+></TR
+><TR
+><TD
+><VAR
 CLASS="REPLACEABLE"
-><I
->entry_address</I
-></TT
+>entry_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Starting address for Linux kernel execution</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Implied by architecture</TD
 ></TR
 ></TBODY
@@ -410,7 +306,7 @@ VALIGN="TOP"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2378"
+NAME="AEN2383"
 ></A
 ><H2
 >Description</H2
@@ -445,11 +341,14 @@ to the kernel.  If the command line data contains any punctuation (spaces,
 etc), then it must be quoted using the double-quote character '"'. If the
 quote character is required, it should be written as '\"'.
       </P
+><P
+>The "-x" option is optionally available on some bi-endian platforms. It is used to boot
+a kernel built with an endianess opposite of RedBoot.</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2386"
+NAME="AEN2392"
 ></A
 ><H2
 >Examples</H2
@@ -465,11 +364,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->exec -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock3 console=ttySA0"</B
-></TT
+>exec -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock3 console=ttySA0"</KBD
 ></PRE
 ></TD
 ></TR
@@ -494,11 +391,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; exec <TT
+RedBoot&#62; exec <KBD
 CLASS="USERINPUT"
-><B
->-c "console=ttyS0,38400 ip=dhcp nfsroot=/export/elfs-sh" -w 5</B
-></TT
+>-c "console=ttyS0,38400 ip=dhcp nfsroot=/export/elfs-sh" -w 5</KBD
 >
 Now booting linux kernel:
 Base address 0x8c001000 Entry 0x8c210000

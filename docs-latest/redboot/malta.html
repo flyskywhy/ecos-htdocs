@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="MALTA"
-></A
->MIPS/MIPS32(CoreLV 4Kc)+MIPS64(CoreLV 5Kc) Malta Board</H1
+>MIPS/MIPS32(CoreLV 4Kc)+MIPS64(CoreLV 5Kc) Malta Board</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4774"
-></A
->Overview</H2
+NAME="AEN4955"
+>Overview</A
+></H2
 ><P
 >RedBoot supports both front
 facing serial ports and the built in ethernet port for communication and downloads.
@@ -103,71 +103,49 @@ flash management for the system flash region.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN4784"
-></A
 ><P
 ></P
+><A
+NAME="AEN4965"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -182,9 +160,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4803"
-></A
->Initial Installation</H2
+NAME="AEN4984"
+>Initial Installation</A
+></H2
 ><P
 >RedBoot is installed using the code download facility built into the
 Malta board. See the Malta User manual for details, and also the Malta download
@@ -199,9 +177,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4807"
-></A
->Quick download instructions</H3
+NAME="AEN4988"
+>Quick download instructions</A
+></H3
 ><P
 >Here are quick start instructions for downloading the prebuilt RedBoot
 image. </P
@@ -222,9 +200,9 @@ CLASS="FILENAME"
 ><LI
 ><P
 >Make sure switch S5-1 is ON. Reset the board and verify that
-the LED display reads <TT
+the LED display reads <SAMP
 CLASS="COMPUTEROUTPUT"
->Flash DL</TT
+>Flash DL</SAMP
 >. </P
 ></LI
 ><LI
@@ -247,20 +225,18 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->cat deleteall.fl &#62;/dev/lp0</B
-></TT
+>cat deleteall.fl &#62;/dev/lp0</KBD
 ></PRE
 ></TD
 ></TR
 ></TABLE
 >
 When this is complete, the LED display should read
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->Deleted</TT
+>Deleted</SAMP
 >.</P
 ></LI
 ><LI
@@ -274,11 +250,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->cat redboot_ROM.fl &#62;/dev/lp0</B
-></TT
+>cat redboot_ROM.fl &#62;/dev/lp0</KBD
 ></PRE
 ></TD
 ></TR
@@ -286,17 +260,17 @@ CLASS="USERINPUT"
 >
 When this is complete, the LED display should show the last address
 programmed. This will be something like:
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->1fc17000</TT
+>1fc17000</SAMP
 >. </P
 ></LI
 ><LI
 ><P
 >Change switch S5-1 to OFF and reset the board. The LED display
-should read <TT
+should read <SAMP
 CLASS="COMPUTEROUTPUT"
->RedBoot</TT
+>RedBoot</SAMP
 >. </P
 ></LI
 ><LI
@@ -328,8 +302,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="MALTA-DOWNLOAD-FORMAT"
-></A
->Malta download format</H3
+>Malta download format</A
+></H3
 ><P
 >In order to download RedBoot to the Malta board, it must be converted
 to the Malta download format.</P
@@ -361,17 +335,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->cp redboot_ROM.srec redboot_ROM.rec</B
-></TT
+>cp redboot_ROM.srec redboot_ROM.rec</KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->srecconv.pl -ES L -A 29 redboot_ROM</B
-></TT
+>srecconv.pl -ES L -A 29 redboot_ROM</KBD
 ></PRE
 ></TD
 ></TR
@@ -388,9 +358,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4853"
-></A
->Additional commands</H2
+NAME="AEN5034"
+>Additional commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -413,44 +383,36 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
 >Location to store command line and environment passed to kernel</P
 ></DD
 ><DT
->-w <TT
+>-w <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;time&#62;</I
-></TT
+>&lt;time&#62;</VAR
 ></DT
 ><DD
 ><P
 >Wait time in seconds before starting kernel</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"params"</I
-></TT
+>"params"</VAR
 ></DT
 ><DD
 ><P
 >Parameters passed to kernel</P
 ></DD
 ><DT
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -477,11 +439,9 @@ CLASS="PROGRAMLISTING"
 ></P
 ><P
 >RedBoot will place the appropriate data at the offset specified by the
-<TT
+<VAR
 CLASS="PARAMETER"
-><I
->-b</I
-></TT
+>-b</VAR
 > parameter, or by default at address 0x80080000, and will set the
 arguments accordingly when calling into the kernel.</P
 ><P
@@ -493,9 +453,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4885"
-></A
->Interrupts</H2
+NAME="AEN5066"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0x80000200.
 Entries in this table are pointers to functions with this protoype:      <TABLE
@@ -511,14 +471,12 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >On the malta
-board, the vector argument is one of 22 interrupts defined in <TT
+board, the vector argument is one of 22 interrupts defined in <SAMP
 CLASS="COMPUTEROUTPUT"
->hal/mips/malta/<TT
+>hal/mips/malta/<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
->/include/plf_intr.h</TT
+>VERSION</VAR
+>/include/plf_intr.h</SAMP
 >: <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -553,9 +511,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >The data
-passed to the ISR is pulled from a data table (<TT
+passed to the ISR is pulled from a data table (<SAMP
 CLASS="COMPUTEROUTPUT"
->hal_interrupt_data</TT
+>hal_interrupt_data</SAMP
 >) which immediately follows the interrupt vector table. With
 22 interrupts, the data table starts at address 0x80000258.</P
 ><P
@@ -569,9 +527,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4894"
-></A
->Memory Maps</H2
+NAME="AEN5075"
+>Memory Maps</A
+></H2
 ><P
 >Memory Maps RedBoot sets up the following memory map on the Malta board.<DIV
 CLASS="NOTE"
@@ -613,9 +571,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4901"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN5082"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

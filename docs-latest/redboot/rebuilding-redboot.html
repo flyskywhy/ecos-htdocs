@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -86,9 +86,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN2398"
-></A
->Introduction</H1
+NAME="AEN2404"
+>Introduction</A
+></H1
 ><P
 >&#13;RedBoot is built as an application on top of eCos. The makefile rules
 for building RedBoot are part of the eCos CDL package, so it's
@@ -171,11 +171,11 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2422"
-></A
+NAME="AEN2428"
 >Rebuilding RedBoot using <SPAN
 CLASS="APPLICATION"
 >ecosconfig</SPAN
+></A
 ></H2
 ><P
 >To rebuild RedBoot using the
@@ -193,17 +193,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->mkdir /tmp/redboot_RAM</B
-></TT
+>mkdir /tmp/redboot_RAM</KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->cd /tmp/redboot_RAM</B
-></TT
+>cd /tmp/redboot_RAM</KBD
 ></PRE
 ></TD
 ></TR
@@ -233,11 +229,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->ecosconfig new se7751 redboot</B
-></TT
+>ecosconfig new se7751 redboot</KBD
 >
 U CYGPKG_HAL_SH_7750, new inferred value 0
 U CYGPKG_HAL_SH_7751, new inferred value 1
@@ -264,36 +258,28 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
 >ecosconfig import <TT
 CLASS="FILENAME"
->${ECOS_REPOSITORY}/hal/sh/se7751/<TT
+>${ECOS_REPOSITORY}/hal/sh/se7751/<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 >/misc/redboot_RAM.ecm</TT
-></B
-></TT
+></KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->ecosconfig tree</B
-></TT
+>ecosconfig tree</KBD
 ></PRE
 ></TD
 ></TR
 ></TABLE
 >
 Replace architecture ("sh"), platform ("se7751") and version
-("<TT
+("<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 >") with those appropriate for the
 chosen platform and the version number of its HAL package. Also
 replace the configuration name ("redboot_RAM.ecm") with that of the
@@ -308,11 +294,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->make</B
-></TT
+>make</KBD
 ></PRE
 ></TD
 ></TR
@@ -340,11 +324,9 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >export REDBOOT_CFG=redboot_ROM
-export VERSION=<TT
+export VERSION=<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 >
 mkdir /tmp/${REDBOOT_CFG}
 cd /tmp/${REDBOOT_CFG}
@@ -357,17 +339,13 @@ make</PRE
 ></TABLE
 >
 To build for another configuration, simply change the
-<TT
+<VAR
 CLASS="REPLACEABLE"
-><I
->REDBOOT_CFG</I
-></TT
+>REDBOOT_CFG</VAR
 > definition accordingly. Also
-make sure the <TT
+make sure the <VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 > variable matches the
 version of the platform package.</P
 ></DIV
@@ -376,11 +354,11 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2453"
-></A
+NAME="AEN2459"
 >Rebuilding RedBoot from the <SPAN
 CLASS="APPLICATION"
 >Configuration Tool</SPAN
+></A
 ></H2
 ><P
 >To rebuild RedBoot from the <SPAN
@@ -407,11 +385,9 @@ SE7751 board and the RAM configuration RedBoot should be built, import
 the file
 <TT
 CLASS="FILENAME"
->hal/sh/se7751/<TT
+>hal/sh/se7751/<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 >/misc/redboot_RAM.ecm</TT
 >.</P
 ><P
@@ -445,24 +421,18 @@ the shell variables to find the configuration file - the path to it is
 CLASS="FILENAME"
 >${ECOS_REPOSITORY}/hal/${ARCH_DIR}/${PLATFORM_DIR}/${VERSION}/misc/${REDBOOT_CFG}.ecm</TT
 >,
-where <TT
+where <VAR
 CLASS="REPLACEABLE"
-><I
->ECOS_REPOSITORY</I
-></TT
+>ECOS_REPOSITORY</VAR
 > points to the
-eCos/RedBoot sources, <TT
+eCos/RedBoot sources, <VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 > is the
 version of the package (usually "current") and
-<TT
+<VAR
 CLASS="REPLACEABLE"
-><I
->REDBOOT_CFG</I
-></TT
+>REDBOOT_CFG</VAR
 > is the desired configuration,
 e.g. redboot_RAM.</P
 ></DIV

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -22,8 +22,8 @@ REL="UP"
 TITLE="Installation and Testing"
 HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="FRV/FRV400 Fujitsu FR-V 400 (MB-93091)"
-HREF="frv400.html"><LINK
+TITLE="Fujitsu FR-V Portable Demonstration Kit (MB93093-PD00)"
+HREF="mb93093.html"><LINK
 REL="NEXT"
 TITLE="MIPS/MIPS32(CoreLV 4Kc)+MIPS64(CoreLV 5Kc) Atlas Board"
 HREF="atlas.html"></HEAD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="frv400.html"
+HREF="mb93093.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="X86PC"
-></A
->IA32/x86 x86-Based PC</H1
+>IA32/x86 x86-Based PC</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4561"
-></A
->Overview</H2
+NAME="AEN4742"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 two serial ports and an Intel i82559 based ethernet card (for example an Intel
@@ -103,52 +103,38 @@ port settings are 38400,8,N,1.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN4571"
-></A
 ><P
 ></P
+><A
+NAME="AEN4752"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Floppy</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[Floppy]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from a boot floppy disk installed
 	      in the A: drive of the PC.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ></TBODY
@@ -163,9 +149,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4585"
-></A
->Initial Installation</H2
+NAME="AEN4766"
+>Initial Installation</A
+></H2
 ><P
 >RedBoot takes the form of a self-booting image that must be written
 onto a formatted floppy disk. The process will erase any file system or data
@@ -180,11 +166,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->dd conv=sync if=install/bin/redboot.bin of=/dev/fd0H1440</B
-></TT
+>dd conv=sync if=install/bin/redboot.bin of=/dev/fd0H1440</KBD
 ></PRE
 ></TD
 ></TR
@@ -223,11 +207,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->mount -f -b //./a: /dev/fd0</B
-></TT
+>mount -f -b //./a: /dev/fd0</KBD
 ></PRE
 ></TD
 ></TR
@@ -242,11 +224,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->dd conv=sync if=install/bin/redboot.bin of=/dev/fd0</B
-></TT
+>dd conv=sync if=install/bin/redboot.bin of=/dev/fd0</KBD
 ></PRE
 ></TD
 ></TR
@@ -282,9 +262,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4607"
-></A
->Flash management</H2
+NAME="AEN4788"
+>Flash management</A
+></H2
 ><P
 >PC RedBoot does not support any FLASH commands.</P
 ></DIV
@@ -293,9 +273,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4610"
-></A
->Special RedBoot Commands</H2
+NAME="AEN4791"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -304,9 +284,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4613"
-></A
->Memory Maps</H2
+NAME="AEN4794"
+>Memory Maps</A
+></H2
 ><P
 >All selectors are initialized to map the entire 32-bit address space
 in the familiar protected mode flat model. Page translation is not used.
@@ -319,9 +299,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4616"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN4797"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -365,7 +345,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="frv400.html"
+HREF="mb93093.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -393,7 +373,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->FRV/FRV400 Fujitsu FR-V 400 (MB-93091)</TD
+>Fujitsu FR-V Portable Demonstration Kit (MB93093-PD00)</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -121,8 +121,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="AEN476"
-></A
->Introduction</H1
+>Introduction</A
+></H1
 ><P
 >RedBoot provides three basic classes of commands:    <P
 ></P
@@ -163,150 +163,104 @@ suitable default values provided if they are not present.
 
       <DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN494"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><THEAD
 ><TR
 ><TH
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Format</TH
 ><TH
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Example</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-S</TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >A boolean switch; the behavior of the command will differ, depending
-on the presence of the switch.  In this example, the <TT
+on the presence of the switch.  In this example, the <KBD
 CLASS="USERINPUT"
-><B
->-f</B
-></TT
+>-f</KBD
 > switch
 indicates that a complete initialization of the FIS data should be performed.
 There may be many such switches available for any given command and any or all of
 them may be present, in any order.</TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
->                <TT
+>                <SAMP
 CLASS="COMPUTEROUTPUT"
-> RedBoot&#62; <TT
+> RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init -f</B
-></TT
-></TT
+>fis init -f</KBD
+></SAMP
 >
               </TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-s<TT
+>-s<VAR
 CLASS="REPLACEABLE"
-><I
-> val</I
-></TT
+> val</VAR
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >A qualified value; the letter "s" introduces the value, qualifying it's meaning.  In the
-example, <TT
+example, <KBD
 CLASS="USERINPUT"
-><B
->-b 0x100000</B
-></TT
+>-b 0x100000</KBD
 > specifies where the memory dump should begin.
 There may be many such switches available for any given command and any or all of
 them may be present, in any order.</TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
->                <TT
+>                <SAMP
 CLASS="COMPUTEROUTPUT"
-> RedBoot&#62; <TT
+> RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->dump -b 0x100000 -l 0x20</B
-></TT
-></TT
+>dump -b 0x100000 -l 0x20</KBD
+></SAMP
 >
               </TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
-> operand</I
-></TT
+> operand</VAR
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >A simple value; some commands require a single parameter for which an additional
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->-X</B
-></TT
-> switch would be redundant.  In the example, <TT
+>-X</KBD
+> switch would be redundant.  In the example, <KBD
 CLASS="USERINPUT"
-><B
->JFFS2</B
-></TT
+>JFFS2</KBD
 >
 is the name of a flash image.  The image name is always required, thus is no need to qualify it with 
 a switch.
 Note that any un-qualified operand must always appear at the end of the command.</TD
 ><TD
-WIDTH="33%"
-ALIGN="LEFT"
-VALIGN="TOP"
->                <TT
+>                <SAMP
 CLASS="COMPUTEROUTPUT"
-> RedBoot&#62; <TT
+> RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis delete JFFS2</B
-></TT
-></TT
+>fis delete JFFS2</KBD
+></SAMP
 >
               </TD
 ></TR
@@ -330,11 +284,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->help</B
-></TT
+>help</KBD
 >
 Manage aliases kept in FLASH memory
       alias name [value]

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NANO"
-></A
->ARM/StrongARM(SA11X0) Bright Star Engineering commEngine and nanoEngine</H1
+>ARM/StrongARM(SA11X0) Bright Star Engineering commEngine and nanoEngine</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3576"
-></A
->Overview</H2
+NAME="AEN3642"
+>Overview</A
+></H2
 ><P
 >RedBoot supports a serial port and the built in ethernet port
 for communication and downloads. The default serial port settings are 38400,8,N,1.
@@ -103,71 +103,49 @@ region.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3592"
-></A
 ><P
 ></P
+><A
+NAME="AEN3658"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >POST</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the first free flash block
 	      at 0x40000.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -182,9 +160,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3611"
-></A
->Initial Installation</H2
+NAME="AEN3677"
+>Initial Installation</A
+></H2
 ><P
 >Unlike other targets, the nanoEngine comes equipped with boot firmware
 which you cannot modify.  See chapter 5, "nanoEngine Firmware" of the <I
@@ -208,9 +186,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3618"
-></A
->Download Instructions</H2
+NAME="AEN3684"
+>Download Instructions</A
+></H2
 ><P
 >You can perform the initial load of the POST-configuration RedBoot image into
 flash using the BSE firmware's <B
@@ -237,28 +215,22 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->&#62;<TT
+>&#62;<KBD
 CLASS="USERINPUT"
-><B
->load redboot-post.bin 40000</B
-></TT
+>load redboot-post.bin 40000</KBD
 >
 loading ... erasing blk at 00040000
 erasing blk at 00050000
 94168 bytes loaded cksum 00008579
 done
 &#62;
-&#62; <TT
+&#62; <KBD
 CLASS="USERINPUT"
-><B
->set bootcmd "go 40000"</B
-></TT
+>set bootcmd "go 40000"</KBD
 >
-&#62; <TT
+&#62; <KBD
 CLASS="USERINPUT"
-><B
->get</B
-></TT
+>get</KBD
 >
 myip = 10.16.19.198
 netmask = 255.255.255.0
@@ -318,9 +290,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3634"
-></A
->Cohabiting with POST in Flash</H2
+NAME="AEN3700"
+>Cohabiting with POST in Flash</A
+></H2
 ><P
 >The configuration file named <TT
 CLASS="FILENAME"
@@ -333,11 +305,9 @@ gets control. The assumption is that RedBoot will be entered at its base address
 in physical memory, that is 0x00040000.</P
 ><P
 >Alternatively, for testing, you can call it in an already running system
-by using <TT
+by using <KBD
 CLASS="USERINPUT"
-><B
->go 0x50040040</B
-></TT
+>go 0x50040040</KBD
 > at another RedBoot prompt, or
 a branch to that address. The address is where the reset vector
 points. It is reported by RedBoot's <B
@@ -388,11 +358,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis list</B
-></TT
+>fis list</KBD
 >
 Name              FLASH addr  Mem addr    Length      Entry point
 (reserved)        0x50000000  0x50000000  0x00040000  0x00000000
@@ -413,9 +381,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3651"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3717"
+>Special RedBoot Commands</A
+></H2
 ><P
 >The nanoEngine/commEngine has one or two Intel i82559 Ethernet controllers
 installed, but these have no associated serial EEPROM in which to record their
@@ -436,11 +404,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig -l</B
-></TT
+>fconfig -l</KBD
 >
 Run script at boot: false
 Use BOOTP for network configuration: false
@@ -469,9 +435,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3659"
-></A
->Memory Maps</H2
+NAME="AEN3725"
+>Memory Maps</A
+></H2
 ><P
 >The first level page table is located at physical address 0xc0004000.
  No second level tables are used.   <DIV
@@ -524,12 +490,12 @@ the PCI bus. It is neither cached nor buffered, to ensure that CPU and PCI
 accesses see correct data in the correct order. By default it is configured
 to be megabyte number 30, at addresses 0x01e00000-0x01efffff. This can be
 modified, and indeed must be, if less than 32Mb of SDRAM is installed, via
-the memory layout tool, or by moving the section <TT
+the memory layout tool, or by moving the section <SAMP
 CLASS="COMPUTEROUTPUT"
->__pci_window</TT
-> referred to by symbols <TT
+>__pci_window</SAMP
+> referred to by symbols <SAMP
 CLASS="COMPUTEROUTPUT"
->CYGMEM_SECTION_pci_window*</TT
+>CYGMEM_SECTION_pci_window*</SAMP
 > in the linker script.   </P
 ><P
 >Though the nanoEngine ships with 32Mb of SDRAM all attached to DRAM
@@ -554,9 +520,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3673"
-></A
->Nano Platform Port</H2
+NAME="AEN3739"
+>Nano Platform Port</A
+></H2
 ><P
 >The nano is in the set of SA11X0-based platforms. It uses the arm architectural
 HAL, the sa11x0 variant HAL, plus the nano platform hal. These are components
@@ -576,29 +542,29 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3678"
-></A
->Ethernet Driver</H2
+NAME="AEN3744"
+>Ethernet Driver</A
+></H2
 ><P
 >The ethernet driver is in two parts:   </P
 ><P
 >A generic ether driver for Intel i8255x series devices, specifically
-the i82559, is <TT
+the i82559, is <SAMP
 CLASS="COMPUTEROUTPUT"
->devs/eth/intel/i82559</TT
+>devs/eth/intel/i82559</SAMP
 >.  Its
-package name is <TT
+package name is <SAMP
 CLASS="COMPUTEROUTPUT"
->CYGPKG_DEVS_ETH_INTEL_I82559</TT
+>CYGPKG_DEVS_ETH_INTEL_I82559</SAMP
 >.
   </P
 ><P
->The platform-specific ether driver is <TT
+>The platform-specific ether driver is <SAMP
 CLASS="COMPUTEROUTPUT"
->devs/eth/arm/nano</TT
->.  Its package is <TT
+>devs/eth/arm/nano</SAMP
+>.  Its package is <SAMP
 CLASS="COMPUTEROUTPUT"
->CYGPKG_DEVS_ETH_ARM_NANO</TT
+>CYGPKG_DEVS_ETH_ARM_NANO</SAMP
 >.  This tells the generic driver the address in IO memory
 of the chip, for example, and other configuration details. This driver picks
 up the ESA from RedBoot's configuration data - unless configured to use a
@@ -609,9 +575,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3687"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3753"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

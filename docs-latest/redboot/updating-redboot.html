@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -86,9 +86,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN2477"
-></A
->Introduction</H1
+NAME="AEN2483"
+>Introduction</A
+></H1
 ><P
 >RedBoot
 normally resides in an EPROM or, more common these days, a flash 
@@ -126,8 +126,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="DIFFERENT-VERSION-FROM-RAM"
-></A
->Load and start a RedBoot RAM instance</H2
+>Load and start a RedBoot RAM instance</A
+></H2
 ><P
 >There are a number of choices here. The basic case is where a RAM
 mode image has been stored in the FIS (flash Image System). To load and
@@ -139,17 +139,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis load RedBoot[RAM]</B
-></TT
+>fis load RedBoot[RAM]</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->go</B
-></TT
+>go</KBD
 ></PRE
 ></TD
 ></TR
@@ -165,18 +161,14 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load redboot_RAM.img</B
-></TT
+>load redboot_RAM.img</KBD
 >
 Entry point: 0x060213c0, address range: 0x06020000-0x060369c8                   
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->go</B
-></TT
+>go</KBD
 ></PRE
 ></TD
 ></TR
@@ -239,41 +231,31 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis unlock RedBoot[RAM]</B
-></TT
+>fis unlock RedBoot[RAM]</KBD
 >
   ... Unlock from 0x00000000-0x00020000: ..
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis create RedBoot[RAM]</B
-></TT
+>fis create RedBoot[RAM]</KBD
 >
-An image named 'RedBoot[RAM]' exists - continue (y/n)? <TT
+An image named 'RedBoot[RAM]' exists - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 * CAUTION * about to program 'RedBoot[RAM]'
-            at 0x00020000..0x000369c7 from 0x06020000 - continue (y/n)?<TT
+            at 0x00020000..0x000369c7 from 0x06020000 - continue (y/n)?<KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 ... Erase from 0x00020000-0x00040000: ..                                        
 ... Program from 0x06020000-0x060369c8 at 0x00020000: ..                        
 ... Erase from 0x00070000-0x00080000: .                                         
 ... Program from 0x0606f000-0x0607f000 at 0x00070000: .                         
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis lock RedBoot[RAM]</B
-></TT
+>fis lock RedBoot[RAM]</KBD
 >
   ... Lock from 0x00000000-0x00020000: ..</PRE
 ></TD
@@ -290,8 +272,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="UPDATE-PRIMARY-IMAGE"
-></A
->Update the primary RedBoot flash image</H2
+>Update the primary RedBoot flash image</A
+></H2
 ><P
 >An
 instance of RedBoot should now be running on the target from RAM. This
@@ -308,17 +290,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init -f</B
-></TT
+>fis init -f</KBD
 >
-About to initialize [format] FLASH image system - continue (y/n)? <TT
+About to initialize [format] FLASH image system - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 *** Initialize FLASH Image System
 ... Erase from 0x00020000-0x00070000: .....
@@ -372,11 +350,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b %{FREEMEMLO} redboot_ROM.bin</B
-></TT
+>load -r -b %{FREEMEMLO} redboot_ROM.bin</KBD
 >
 Raw file loaded 0x06046800-0x06062fe8, assumed entry at 0x06046800</PRE
 ></TD
@@ -437,11 +413,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->cksum</B
-></TT
+>cksum</KBD
 >
 Computing cksum for area 0x06046800-0x06062fe8                                  
 POSIX cksum = 2535322412 116712 (0x971df32c 0x0001c7e8)                         </PRE
@@ -474,41 +448,31 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis unlock RedBoot</B
-></TT
+>fis unlock RedBoot</KBD
 >
   ... Unlock from 0x00000000-0x00020000: ..
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis create RedBoot</B
-></TT
+>fis create RedBoot</KBD
 >
-An image named 'RedBoot' exists - continue (y/n)? <TT
+An image named 'RedBoot' exists - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 * CAUTION * about to program 'RedBoot'
-            at 0x00000000..0x0001c7e7 from 0x06046800 - continue (y/n)? <TT
+            at 0x00000000..0x0001c7e7 from 0x06046800 - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 ... Erase from 0x00000000-0x00020000: ..
 ... Program from 0x06046800-0x06062fe8 at 0x00000000: ..
 ... Erase from 0x00070000-0x00080000: .
 ... Program from 0x0606f000-0x0607f000 at 0x00070000: .
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis lock RedBoot</B
-></TT
+>fis lock RedBoot</KBD
 >
   ... Lock from 0x00000000-0x00020000: ..</PRE
 ></TD
@@ -520,9 +484,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2549"
-></A
->Reboot; run the new RedBoot image</H2
+NAME="AEN2555"
+>Reboot; run the new RedBoot image</A
+></H2
 ><P
 >Once the image has been successfully written into the flash, simply
 reset the target and the new version of RedBoot should be running. </P

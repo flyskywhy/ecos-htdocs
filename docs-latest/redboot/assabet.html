@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="ASSABET"
-></A
->ARM/StrongARM(SA1110) Intel SA1110 (Assabet)</H1
+>ARM/StrongARM(SA1110) Intel SA1110 (Assabet)</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3522"
-></A
->Overview</H2
+NAME="AEN3588"
+>Overview</A
+></H2
 ><P
 >RedBoot
 supports the board serial port and the compact flash ethernet port. The default
@@ -103,71 +103,49 @@ on the Assabet. </P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3532"
-></A
 ><P
 ></P
+><A
+NAME="AEN3598"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -182,9 +160,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3551"
-></A
->Initial Installation Method</H2
+NAME="AEN3617"
+>Initial Installation Method</A
+></H2
 ><P
 >A Windows or Linux utility is used to program flash over parallel port
 driven JTAG interface. See board documentation for details on in situ flash
@@ -198,9 +176,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3555"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3621"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -209,9 +187,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3558"
-></A
->Memory Maps</H2
+NAME="AEN3624"
+>Memory Maps</A
+></H2
 ><P
 >The first level page table is located at physical address 0xc0004000.
 No second level tables are used.<DIV
@@ -275,9 +253,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3565"
-></A
->Platform Resource Usage</H2
+NAME="AEN3631"
+>Platform Resource Usage</A
+></H2
 ><P
 >The SA11x0 OS timer is used as a polled timer to provide timeout support
 for network and XModem file transfers.</P
@@ -287,9 +265,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3568"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3634"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

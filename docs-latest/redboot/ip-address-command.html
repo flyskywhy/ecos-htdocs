@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,27 +101,19 @@ NAME="AEN990"
 ><B
 CLASS="COMMAND"
 >ip_address</B
->  [-l <TT
+>  [-l <VAR
 CLASS="REPLACEABLE"
-><I
-> local_IP_address</I
-></TT
+> local_IP_address</VAR
 >
-	 [/<TT
+	 [/<VAR
 CLASS="REPLACEABLE"
-><I
->netmask_length</I
-></TT
->] ] [-h <TT
+>netmask_length</VAR
+>] ] [-h <VAR
 CLASS="REPLACEABLE"
-><I
-> server_IP_address</I
-></TT
->] [-d <TT
+> server_IP_address</VAR
+>] [-d <VAR
 CLASS="REPLACEABLE"
-><I
->DNS_server_IP_address</I
-></TT
+>DNS_server_IP_address</VAR
 >]</P
 ></DIV
 ><DIV
@@ -133,73 +125,55 @@ NAME="AEN1001"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1003"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->local_IP_address</I
-></TT
-><TT
+>local_IP_address</VAR
+><VAR
 CLASS="OPTION"
->[<TT
+>[<VAR
 CLASS="REPLACEABLE"
-><I
->/netmask_length</I
-></TT
->]</TT
+>/netmask_length</VAR
+>]</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Numeric IP or DNS name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The IP address RedBoot should use, optionally
 with the network mask length.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -210,24 +184,13 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-h <TT
+>-h <VAR
 CLASS="REPLACEABLE"
-><I
->server_IP_address</I
-></TT
+>server_IP_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Numeric IP or DNS name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The IP address of the default server. Use of this
 address is implied by other commands, such as
 <B
@@ -235,9 +198,6 @@ CLASS="COMMAND"
 >load</B
 >.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -248,29 +208,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-d <TT
+>-d <VAR
 CLASS="REPLACEABLE"
-><I
->DNS_server_IP_address</I
-></TT
+>DNS_server_IP_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Numeric IP or DNS name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The IP address of the DNS server.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -302,16 +248,16 @@ values, e.g. 192.168.1.67, or as symbolic names such as www.redhat.com
 if DNS support is enabled.
       </P
 ><P
->The <TT
+>The <VAR
 CLASS="OPTION"
->-l</TT
+>-l</VAR
 > option is used to set the IP address used by
 the target device. The network mask length can also be specified
       </P
 ><P
->The <TT
+>The <VAR
 CLASS="OPTION"
->-h</TT
+>-h</VAR
 > option is used to set the default server
 address, such as is used by the <B
 CLASS="COMMAND"
@@ -319,9 +265,9 @@ CLASS="COMMAND"
 > command.
       </P
 ><P
->The <TT
+>The <VAR
 CLASS="OPTION"
->-d</TT
+>-d</VAR
 > option is used to set the default DNS server
 address which is used for resolving symbolic network addresses. Note
 that an address of 0.0.0.0 will disable DNS lookups.
@@ -345,11 +291,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ip_address</B
-></TT
+>ip_address</KBD
 > 
 IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 0.0.0.0 </PRE
 ></TD
@@ -367,11 +311,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ip_address -d 192.168.1.101</B
-></TT
+>ip_address -d 192.168.1.101</KBD
 > 
 IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 192.168.1.101 </PRE
 ></TD
@@ -389,11 +331,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ip_address -h 192.168.1.104</B
-></TT
+>ip_address -h 192.168.1.104</KBD
 > 
 IP: 192.168.1.31, Default server: 192.168.1.104, DNS server IP: 192.168.1.101</PRE
 ></TD
@@ -411,11 +351,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ip_address -l 192.168.1.32/24</B
-></TT
+>ip_address -l 192.168.1.32/24</KBD
 > 
 IP: 192.168.1.32, Default server: 192.168.1.104, DNS server IP: 192.168.1.101</PRE
 ></TD

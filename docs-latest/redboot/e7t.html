@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="E7T"
-></A
->ARM/ARM7 ARM Evaluator7T</H1
+>ARM/ARM7 ARM Evaluator7T</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2780"
-></A
->Overview</H2
+NAME="AEN2786"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 both serial ports for communication and downloads. The default serial port
@@ -102,52 +102,38 @@ settings are 38400,8,N,1.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN2790"
-></A
 ><P
 ></P
+><A
+NAME="AEN2796"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from flash address 0x20000, with
 	      ARM Boot Monitor in flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROMA.ecm</TD
 ></TR
 ></TBODY
@@ -162,9 +148,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2804"
-></A
->Initial Installation</H2
+NAME="AEN2810"
+>Initial Installation</A
+></H2
 ><P
 >RedBoot is installed using the on-board boot environment. See the user
 manual for full details.</P
@@ -174,9 +160,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2807"
-></A
->Quick download instructions</H2
+NAME="AEN2813"
+>Quick download instructions</A
+></H2
 ><P
 >Here are quick start instructions for downloading the prebuilt Redboot
 image:</P
@@ -212,11 +198,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->      Boot: <TT
+>      Boot: <KBD
 CLASS="USERINPUT"
-><B
->flasherase 01820000 10000</B
-></TT
+>flasherase 01820000 10000</KBD
 ></PRE
 ></TD
 ></TR
@@ -234,11 +218,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->      Boot: <TT
+>      Boot: <KBD
 CLASS="USERINPUT"
-><B
->download 10000</B
-></TT
+>download 10000</KBD
 >
       Ready to download. Use 'transmit' option on terminal emulator to download file.</PRE
 ></TD
@@ -256,11 +238,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->      $ <TT
+>      $ <KBD
 CLASS="USERINPUT"
-><B
->cat redboot.UU &#62; /dev/ttyS0</B
-></TT
+>cat redboot.UU &#62; /dev/ttyS0</KBD
 ></PRE
 ></TD
 ></TR
@@ -291,11 +271,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->      Boot: <TT
+>      Boot: <KBD
 CLASS="USERINPUT"
-><B
->flashwrite 01820000 10000 10000</B
-></TT
+>flashwrite 01820000 10000 10000</KBD
 ></PRE
 ></TD
 ></TR
@@ -312,11 +290,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->      Boot: <TT
+>      Boot: <KBD
 CLASS="USERINPUT"
-><B
->rommodules</B
-></TT
+>rommodules</KBD
 >
       Header   Base     Limit
       018057c8 01800000 018059e7 BootStrapLoader v1.0 Apr 27 2000 10:33:58
@@ -337,9 +313,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2837"
-></A
->Special RedBoot Commands</H2
+NAME="AEN2843"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -348,9 +324,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2840"
-></A
->Memory Maps</H2
+NAME="AEN2846"
+>Memory Maps</A
+></H2
 ><P
 >RedBoot sets up the following memory map on the E7T board. <DIV
 CLASS="NOTE"
@@ -386,9 +362,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2847"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN2853"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

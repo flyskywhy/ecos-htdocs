@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -115,6 +115,11 @@ HREF="at91.html"
 ></DT
 ><DT
 ><A
+HREF="at91jtst.html"
+>ARM/ARM7 Atmel JTST Evaluation Board (AT572D740-DK1)</A
+></DT
+><DT
+><A
 HREF="edb7xxx.html"
 >ARM/ARM7 Cirrus Logic EP7xxx (EDB7211, EDB7212, EDB7312)</A
 ></DT
@@ -205,6 +210,16 @@ HREF="frv400.html"
 ></DT
 ><DT
 ><A
+HREF="mb93091.html"
+>Fujitsu FR-V Design Kit (MB93091-CBxx)</A
+></DT
+><DT
+><A
+HREF="mb93093.html"
+>Fujitsu FR-V Portable Demonstration Kit (MB93093-PD00)</A
+></DT
+><DT
+><A
 HREF="x86pc.html"
 >IA32/x86 x86-Based PC</A
 ></DT
@@ -271,16 +286,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="ASB2305"
-></A
->AM3x/MN103E010 Matsushita MN103E010 (AM33/2.0) ASB2305 Board</H1
+>AM3x/MN103E010 Matsushita MN103E010 (AM33/2.0) ASB2305 Board</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2564"
-></A
->Overview</H2
+NAME="AEN2570"
+>Overview</A
+></H2
 ><P
 >&#13;
 RedBoot supports the debug serial port and the built in ethernet port for communication and
@@ -292,90 +307,60 @@ flash regions.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN2574"
-></A
 ><P
 ></P
+><A
+NAME="AEN2580"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >PROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the boot PROM and able to
 	      access the system flash.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >FLASH</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the system flash and able to
 	      access the boot PROM.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_FLASH.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM and able to access the
 	      boot PROM.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -390,9 +375,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2598"
-></A
->Initial Installation</H2
+NAME="AEN2604"
+>Initial Installation</A
+></H2
 ><P
 >Unless a pre-programmed system flash module is available to be plugged into a new board,
 RedBoot must be installed with the aid of a JTAG interface unit. To achieve this, the RAM mode
@@ -412,9 +397,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN2603"
-></A
->Preparing to program the board</H3
+NAME="AEN2609"
+>Preparing to program the board</A
+></H3
 ><P
 >If the board is to be programmed, whether via JTAG or RedBoot, some hardware settings need to
 be changed:</P
@@ -452,9 +437,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN2615"
-></A
->Preparing to use the JTAG debugger</H3
+NAME="AEN2621"
+>Preparing to use the JTAG debugger</A
+></H3
 ><P
 >The JTAG debugger will also need setting up:</P
 ><P
@@ -514,9 +499,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN2639"
-></A
->Loading the RAM-based RedBoot via JTAG</H3
+NAME="AEN2645"
+>Loading the RAM-based RedBoot via JTAG</A
+></H3
 ><P
 >To perform the first half of the operation, the following steps should be followed:</P
 ><P
@@ -539,167 +524,115 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->ed 0xc0002000, 0x12000580</B
-></TT
+>ed 0xc0002000, 0x12000580</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00100, 0x8000fe01</B
-></TT
+>ed 0xd8c00100, 0x8000fe01</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00200, 0x21111000</B
-></TT
+>ed 0xd8c00200, 0x21111000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00204, 0x00100200</B
-></TT
+>ed 0xd8c00204, 0x00100200</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00208, 0x00000004</B
-></TT
+>ed 0xd8c00208, 0x00000004</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00110, 0x8400fe01</B
-></TT
+>ed 0xd8c00110, 0x8400fe01</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00210, 0x21111000</B
-></TT
+>ed 0xd8c00210, 0x21111000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00214, 0x00100200</B
-></TT
+>ed 0xd8c00214, 0x00100200</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00218, 0x00000004</B
-></TT
+>ed 0xd8c00218, 0x00000004</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00120, 0x8600ff81</B
-></TT
+>ed 0xd8c00120, 0x8600ff81</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00220, 0x21111000</B
-></TT
+>ed 0xd8c00220, 0x21111000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00224, 0x00100200</B
-></TT
+>ed 0xd8c00224, 0x00100200</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00228, 0x00000004</B
-></TT
+>ed 0xd8c00228, 0x00000004</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00130, 0x8680ff81</B
-></TT
+>ed 0xd8c00130, 0x8680ff81</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00230, 0x21111000</B
-></TT
+>ed 0xd8c00230, 0x21111000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00234, 0x00100200</B
-></TT
+>ed 0xd8c00234, 0x00100200</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00238, 0x00000004</B
-></TT
+>ed 0xd8c00238, 0x00000004</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00140, 0x9800f801</B
-></TT
+>ed 0xd8c00140, 0x9800f801</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00240, 0x00140000</B
-></TT
+>ed 0xd8c00240, 0x00140000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00244, 0x11011100</B
-></TT
+>ed 0xd8c00244, 0x11011100</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xd8c00248, 0x01000001</B
-></TT
+>ed 0xd8c00248, 0x01000001</KBD
 >
 
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xda000000, 0x55561645</B
-></TT
+>ed 0xda000000, 0x55561645</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xda000004, 0x000003c0</B
-></TT
+>ed 0xda000004, 0x000003c0</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xda000008, 0x9000fe01</B
-></TT
+>ed 0xda000008, 0x9000fe01</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xda00000c, 0x9200fe01</B
-></TT
+>ed 0xda00000c, 0x9200fe01</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ed 0xda000000, 0xa89b0654</B
-></TT
+>ed 0xda000000, 0xa89b0654</KBD
 ></PRE
 ></TD
 ></TR
@@ -717,41 +650,29 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->ex 0x80000000,0x81ffffff,/mexram</B
-></TT
+>ex 0x80000000,0x81ffffff,/mexram</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ex 0x84000000,0x85ffffff,/mexram</B
-></TT
+>ex 0x84000000,0x85ffffff,/mexram</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ex 0x86000000,0x867fffff,/mexram</B
-></TT
+>ex 0x86000000,0x867fffff,/mexram</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ex 0x86800000,0x87ffffff,/mexram</B
-></TT
+>ex 0x86800000,0x87ffffff,/mexram</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ex 0x8c000000,0x8cffffff,/mexram</B
-></TT
+>ex 0x8c000000,0x8cffffff,/mexram</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->ex 0x90000000,0x93ffffff,/mexram</B
-></TT
+>ex 0x90000000,0x93ffffff,/mexram</KBD
 ></PRE
 ></TD
 ></TR
@@ -768,23 +689,17 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->_pc=90000000</B
-></TT
+>_pc=90000000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->u_pc</B
-></TT
+>u_pc</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->rd redboot.ram,90000000</B
-></TT
+>rd redboot.ram,90000000</KBD
 ></PRE
 ></TD
 ></TR
@@ -801,11 +716,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->rd redboot.prom,91020000</B
-></TT
+>rd redboot.prom,91020000</KBD
 ></PRE
 ></TD
 ></TR
@@ -822,11 +735,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->g</B
-></TT
+>g</KBD
 ></PRE
 ></TD
 ></TR
@@ -844,9 +755,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN2698"
-></A
->Loading the boot PROM-based RedBoot via the RAM mode RedBoot</H3
+NAME="AEN2704"
+>Loading the boot PROM-based RedBoot via the RAM mode RedBoot</A
+></H3
 ><P
 >Once the RAM mode RedBoot is up and running, it can be communicated with by way of the serial
 port. Commands can now be entered directly to RedBoot for flashing the boot PROM.</P
@@ -865,11 +776,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi init</B
-></TT
+>fi init</KBD
 ></PRE
 ></TD
 ></TR
@@ -886,11 +795,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi write -f 0x80000000 -b 0x91020000 -l 0x00020000</B
-></TT
+>fi write -f 0x80000000 -b 0x91020000 -l 0x00020000</KBD
 ></PRE
 ></TD
 ></TR
@@ -907,17 +814,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->dump -b 0x91020000</B
-></TT
+>dump -b 0x91020000</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->dump -b 0x80000000</B
-></TT
+>dump -b 0x80000000</KBD
 ></PRE
 ></TD
 ></TR
@@ -947,11 +850,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi init</B
-></TT
+>fi init</KBD
 ></PRE
 ></TD
 ></TR
@@ -966,17 +867,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b %{FREEMEMLO} redboot_FLASH.bin</B
-></TT
+>load -r -b %{FREEMEMLO} redboot_FLASH.bin</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi write -f 0x84000000 -b %{FREEMEMLO} -l 0x00020000</B
-></TT
+>fi write -f 0x84000000 -b %{FREEMEMLO} -l 0x00020000</KBD
 ></PRE
 ></TD
 ></TR
@@ -1005,17 +902,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b %{FREEMEMLO} /tftpboot/redboot_ROM.bin</B
-></TT
+>load -r -b %{FREEMEMLO} /tftpboot/redboot_ROM.bin</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi write -f 0x80000000 -b %{FREEMEMLO} -l 0x00020000</B
-></TT
+>fi write -f 0x80000000 -b %{FREEMEMLO} -l 0x00020000</KBD
 ></PRE
 ></TD
 ></TR
@@ -1043,9 +936,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2739"
-></A
->Additional Commands</H2
+NAME="AEN2745"
+>Additional Commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -1067,33 +960,27 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-w <TT
+>-w <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;time&#62;</I
-></TT
+>&lt;time&#62;</VAR
 ></DT
 ><DD
 ><P
 >Wait time in seconds before starting kernel</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"params"</I
-></TT
+>"params"</VAR
 ></DT
 ><DD
 ><P
 >Parameters passed to kernel</P
 ></DD
 ><DT
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -1111,9 +998,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2762"
-></A
->Memory Maps</H2
+NAME="AEN2768"
+>Memory Maps</A
+></H2
 ><P
 >RedBoot sets up the following memory map on the ASB2305 board.</P
 ><DIV
@@ -1183,9 +1070,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2772"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN2778"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

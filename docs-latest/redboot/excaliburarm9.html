@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="EXCALIBURARM9"
-></A
->ARM/ARM9 Altera Excalibur</H1
+>ARM/ARM9 Altera Excalibur</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3260"
-></A
->Overview</H2
+NAME="AEN3326"
+>Overview</A
+></H2
 ><P
 >RedBoot supports the serial port labelled
 P2 on the board. The default serial port settings are 57600,8,N,1. RedBoot
@@ -102,90 +102,60 @@ also supports flash management on the Excalibur.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3270"
-></A
 ><P
 ></P
+><A
+NAME="AEN3336"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROMRAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROMRAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM, but contained in the
               board's flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROMRAM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
               flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >REDBOOT</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROMRAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from top of RAM, but contained in
               the board's flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_REDBOOT.ecm</TD
 ></TR
 ></TBODY
@@ -210,9 +180,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3297"
-></A
->Initial Installation Method</H2
+NAME="AEN3363"
+>Initial Installation Method</A
+></H2
 ><P
 >A Windows utility
 (<SPAN
@@ -238,9 +208,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3303"
-></A
->Flash management</H2
+NAME="AEN3369"
+>Flash management</A
+></H2
 ><P
 >The ROMRAM and REDBOOT configurations supported on this platform
 differ only in the memory layout (ROMRAM configuration runs RedBoot from
@@ -253,9 +223,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3306"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3372"
+>Special RedBoot Commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -277,55 +247,45 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
 >Location Linux kernel was loaded to</P
 ></DD
 ><DT
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;len&#62;</I
-></TT
+>&lt;len&#62;</VAR
 ></DT
 ><DD
 ><P
 >Length of kernel</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"params"</I
-></TT
+>"params"</VAR
 ></DT
 ><DD
 ><P
 >Parameters passed to kernel</P
 ></DD
 ><DT
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
 >'initrd' ramdisk location</P
 ></DD
 ><DT
->-s <TT
+>-s <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;len&#62;</I
-></TT
+>&lt;len&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -346,18 +306,14 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&gt; <TT
+>RedBoot&gt; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b 0x100000 zImage</B
-></TT
+>load -r -b 0x100000 zImage</KBD
 >
 Raw file loaded 0x00100000-0x001a3d6c
-RedBoot&gt; <TT
+RedBoot&gt; <KBD
 CLASS="USERINPUT"
-><B
->exec -c "console=ttyUA0,57600"</B
-></TT
+>exec -c "console=ttyUA0,57600"</KBD
 >
 Using base address 0x00100000 and length 0x000a3d6c
 Uncompressing Linux.....</PRE
@@ -376,11 +332,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&gt; <TT
+>RedBoot&gt; <KBD
 CLASS="USERINPUT"
-><B
->exec -b 0x40400000 -l 0xc0000 -c "console=ttyUA0,57600"</B
-></TT
+>exec -b 0x40400000 -l 0xc0000 -c "console=ttyUA0,57600"</KBD
 >
 Uncompressing Linux.....</PRE
 ></TD
@@ -393,9 +347,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3344"
-></A
->Memory Maps</H2
+NAME="AEN3410"
+>Memory Maps</A
+></H2
 ><P
 >The MMU page tables are located at 0x4000. <DIV
 CLASS="NOTE"
@@ -441,9 +395,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3351"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3417"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

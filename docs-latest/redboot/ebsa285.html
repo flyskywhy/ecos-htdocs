@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="EBSA285"
-></A
->ARM/StrongARM(SA110) Intel EBSA 285</H1
+>ARM/StrongARM(SA110) Intel EBSA 285</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3359"
-></A
->Overview</H2
+NAME="AEN3425"
+>Overview</A
+></H2
 ><P
 >RedBoot
 uses the single EBSA-285 serial port. The default serial port settings are
@@ -104,71 +104,49 @@ onboard flash is also supported.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3369"
-></A
 ><P
 ></P
+><A
+NAME="AEN3435"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -183,9 +161,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3388"
-></A
->Initial Installation Method</H2
+NAME="AEN3454"
+>Initial Installation Method</A
+></H2
 ><P
 >A linux application is used to program the flash over the PCI bus. Sources
 and build instructions for this utility are located in the RedBoot sources
@@ -199,9 +177,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3392"
-></A
->Communication Channels</H2
+NAME="AEN3458"
+>Communication Channels</A
+></H2
 ><P
 >Serial, Intel PRO 10/100+ 82559 PCI ethernet card.</P
 ></DIV
@@ -210,9 +188,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3395"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3461"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -221,9 +199,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3398"
-></A
->Memory Maps</H2
+NAME="AEN3464"
+>Memory Maps</A
+></H2
 ><P
 >Physical and virtual mapping are mapped one to one on the EBSA-285 using
 a first level page table located at address 0x4000. No second level tables
@@ -266,9 +244,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3405"
-></A
->Platform Resource Usage</H2
+NAME="AEN3471"
+>Platform Resource Usage</A
+></H2
 ><P
 >Timer3 is used as a polled timer to provide timeout support for networking
 and XModem file transfers.</P
@@ -278,9 +256,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3408"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3474"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

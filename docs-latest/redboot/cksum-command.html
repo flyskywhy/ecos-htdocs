@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,16 +101,12 @@ NAME="AEN784"
 ><B
 CLASS="COMMAND"
 >cksum</B
->  {-b <TT
+>  {-b <VAR
 CLASS="REPLACEABLE"
-><I
->location</I
-></TT
->} {-l <TT
+>location</VAR
+>} {-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 >}</P
 ></DIV
 ><DIV
@@ -122,64 +118,48 @@ NAME="AEN791"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN793"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->location</I
-></TT
+>location</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Memory address</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Location in memory for stat of data.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -190,29 +170,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of data</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -257,11 +223,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->cksum -b 0x100000 -l 0x100</B
-></TT
+>cksum -b 0x100000 -l 0x100</KBD
 >
 POSIX cksum = 3286483632 256 (0xc3e3c2b0 0x00000100)</PRE
 ></TD
@@ -282,18 +246,14 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b %{FREEMEMLO} redboot.bin</B
-></TT
+>load -r -b %{FREEMEMLO} redboot.bin</KBD
 >
 Raw file loaded 0x06012800-0x0602f0a8
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->cksum</B
-></TT
+>cksum</KBD
 >
 Computing cksum for area 0x06012800-0x0602f0a8
 POSIX cksum = 2092197813 116904 (0x7cb467b5 0x0001c8a8)</PRE

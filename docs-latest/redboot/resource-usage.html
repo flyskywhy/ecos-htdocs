@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="RESOURCE-USAGE"
-></A
->RedBoot Resource Usage</H1
+>RedBoot Resource Usage</A
+></H1
 ><P
 >  </P
 ><P
@@ -107,8 +107,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN253"
-></A
->Flash Resources</H2
+>Flash Resources</A
+></H2
 ><P
 >On many platforms, a ROM mode RedBoot image resides in the first
 flash sectors, working as the board's primary boot monitor. On these
@@ -138,11 +138,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis list</B
-></TT
+>fis list</KBD
 >
 Name              FLASH addr  Mem addr    Length      Entry point
 RedBoot           0x00000000  0x00000000  0x00020000  0x00000000
@@ -167,8 +165,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN263"
-></A
->RAM Resources</H2
+>RAM Resources</A
+></H2
 ><P
 >RedBoot reserves RAM space for its run-time data, and such
 things as CPU exception/interrupt tables. It normally does so at the
@@ -190,11 +188,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->version</B
-></TT
+>version</KBD
 >
 
 RedBoot(tm) bootstrap and debug environment [ROM]
@@ -230,11 +226,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load -r -b %{FREEMEMLO} file</B
-></TT
+>load -r -b %{FREEMEMLO} file</KBD
 >
 Raw file loaded 0x06012800-0x06013e53, assumed entry at 0x06012800</PRE
 ></TD
@@ -249,11 +243,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->x -b %{FREEMEMHI}</B
-></TT
+>x -b %{FREEMEMHI}</KBD
 >
 06061000: 86 F5 EB D8 3D 11 51 F2  96 F4 B2 DC 76 76 8F 77  |....=.Q.....vv.w|
 06061010: E6 55 DD DB F3 75 5D 15  E0 F3 FC D9 C8 73 1D DA  |.U...u]......s..|</PRE

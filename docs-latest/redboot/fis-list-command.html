@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,11 +101,9 @@ NAME="AEN1652"
 ><B
 CLASS="COMMAND"
 >fis list</B
->  [<TT
+>  [<VAR
 CLASS="REPLACEABLE"
-><I
->-f</I
-></TT
+>-f</VAR
 >]</P
 ></DIV
 ><DIV
@@ -117,99 +115,73 @@ NAME="AEN1657"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1659"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-c</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Show image checksum instead of memory address
-	      (column <TT
+	      (column <SAMP
 CLASS="COMPUTEROUTPUT"
->Mem addr</TT
+>Mem addr</SAMP
 > is
 	      replaced by
-	      <TT
+	      <SAMP
 CLASS="COMPUTEROUTPUT"
->Checksum</TT
+>Checksum</SAMP
 >).</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-d</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Show image data length instead of amount of flash
 	      occupied by image (column
-	      <TT
+	      <SAMP
 CLASS="COMPUTEROUTPUT"
->Length</TT
+>Length</SAMP
 > is replaced by
-	      <TT
+	      <SAMP
 CLASS="COMPUTEROUTPUT"
->Datalen</TT
+>Datalen</SAMP
 >).</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ></TR
 ></TBODY
@@ -263,11 +235,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis list</B
-></TT
+>fis list</KBD
 >
 Name              FLASH addr  Mem addr    Length      Entry point               
 RedBoot           0x00000000  0x00000000  0x00020000  0x00000000                
@@ -289,11 +259,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis list -c</B
-></TT
+>fis list -c</KBD
 >
 Name              FLASH addr  Checksum    Length      Entry point               
 RedBoot           0x00000000  0x00000000  0x00020000  0x00000000                
@@ -315,11 +283,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis list</B
-></TT
+>fis list -d</KBD
 >
 Name              FLASH addr  Mem addr    Datalen     Entry point               
 RedBoot           0x00000000  0x00000000  0x00000000  0x00000000                

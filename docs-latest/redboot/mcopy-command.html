@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,21 +101,15 @@ NAME="AEN1299"
 ><B
 CLASS="COMMAND"
 >mcopy</B
->  {-s <TT
+>  {-s <VAR
 CLASS="REPLACEABLE"
-><I
->source</I
-></TT
->} {-d <TT
+>source</VAR
+>} {-d <VAR
 CLASS="REPLACEABLE"
-><I
->destination</I
-></TT
->} {-l <TT
+>destination</VAR
+>} {-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 >} [-1 | -2 | -4]</P
 ></DIV
 ><DIV
@@ -127,64 +121,48 @@ NAME="AEN1312"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1314"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-s <TT
+>-s <VAR
 CLASS="REPLACEABLE"
-><I
->location1</I
-></TT
+>location1</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Memory address</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Location of data to copy.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -195,29 +173,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-d <TT
+>-d <VAR
 CLASS="REPLACEABLE"
-><I
->location2</I
-></TT
+>location2</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Memory address</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Destination for copied data.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -228,29 +192,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of data</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -261,68 +211,32 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-1</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Copy one byte (8 bits) at a time.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-2</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Copy two bytes (16 bits) at a time.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Copy one word (32 bits) at a time.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-4</TD
 ></TR
 ></TBODY
@@ -359,37 +273,27 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->mfill -b 0x100000 -l 0x20 -2 -p 0xDEAD</B
-></TT
+>mfill -b 0x100000 -l 0x20 -2 -p 0xDEAD</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->mfill -b 0x200000 -l 0x20 -2 -p 0x0</B
-></TT
+>mfill -b 0x200000 -l 0x20 -2 -p 0x0</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->dump  -b 0x200000 -l 0x20 -2</B
-></TT
+>dump  -b 0x200000 -l 0x20 -2</KBD
 >
 00200000: 0000 0000 0000 0000  0000 0000 0000 0000
 00200010: 0000 0000 0000 0000  0000 0000 0000 0000
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->mcopy -s 0x100000 -d 0x200000 -2 -l 0x20</B
-></TT
+>mcopy -s 0x100000 -d 0x200000 -2 -l 0x20</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->dump  -b 0x200000 -l 0x20 -2</B
-></TT
+>dump  -b 0x200000 -l 0x20 -2</KBD
 >
 00200000: DEAD DEAD DEAD DEAD  DEAD DEAD DEAD DEAD
 00200010: DEAD DEAD DEAD DEAD  DEAD DEAD DEAD DEAD</PRE

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -22,8 +22,8 @@ REL="UP"
 TITLE="Installation and Testing"
 HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="ARM/ARM7 Atmel AT91 Evaluation Boards (EBXX)"
-HREF="at91.html"><LINK
+TITLE="ARM/ARM7 Atmel JTST Evaluation Board (AT572D740-DK1)"
+HREF="at91jtst.html"><LINK
 REL="NEXT"
 TITLE="ARM/ARM9 Agilent AAED2000"
 HREF="aaed2000.html"></HEAD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="at91.html"
+HREF="at91jtst.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="EDB7XXX"
-></A
->ARM/ARM7 Cirrus Logic EP7xxx (EDB7211, EDB7212, EDB7312)</H1
+>ARM/ARM7 Cirrus Logic EP7xxx (EDB7211, EDB7212, EDB7312)</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3095"
-></A
->Overview</H2
+NAME="AEN3161"
+>Overview</A
+></H2
 ><P
 >RedBoot supports both serial ports on the board and
 the ethernet port. The default serial port settings are 38400,8,N,1. RedBoot
@@ -103,90 +103,60 @@ only.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3105"
-></A
 ><P
 ></P
+><A
+NAME="AEN3171"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROMRAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROMRAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM, but contained in the
 	      board's flash boot sector (EDB7312 only).</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROMRAM.ecm</TD
 ></TR
 ></TBODY
@@ -201,9 +171,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3129"
-></A
->Initial Installation Method</H2
+NAME="AEN3195"
+>Initial Installation Method</A
+></H2
 ><P
 >A Windows or Linux utility is used to program flash using serial port
 #1 via on-chip programming firmware. See board documentation for details on
@@ -214,9 +184,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3132"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3198"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -225,9 +195,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3135"
-></A
->Memory Maps</H2
+NAME="AEN3201"
+>Memory Maps</A
+></H2
 ><P
 >The MMU page tables and LCD display buffer, if enabled, are located
 at the end of DRAM. <DIV
@@ -289,9 +259,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3142"
-></A
->Platform Resource Usage</H2
+NAME="AEN3208"
+>Platform Resource Usage</A
+></H2
 ><P
 >The EP7xxx timer #2 is used as a polled timer to provide timeout support
 for network and XModem file transfers.</P
@@ -301,9 +271,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3145"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3211"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -351,7 +321,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="at91.html"
+HREF="at91jtst.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -379,7 +349,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->ARM/ARM7 Atmel AT91 Evaluation Boards (EBXX)</TD
+>ARM/ARM7 Atmel JTST Evaluation Board (AT572D740-DK1)</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

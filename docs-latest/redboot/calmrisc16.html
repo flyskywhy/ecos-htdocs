@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="CALMRISC16"
-></A
->CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board</H1
+>CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4412"
-></A
->Overview</H2
+NAME="AEN4478"
+>Overview</A
+></H2
 ><P
 > The
 Samsung CalmRISC16 evaluation platform consists of two boards connected by a
@@ -110,51 +110,37 @@ allows a host to download a program and to start or stop the core board.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN4422"
-></A
 ><P
 ></P
+><A
+NAME="AEN4488"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running via the MDSChip board.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ></TBODY
@@ -169,9 +155,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4436"
-></A
->Initial Installation Method</H2
+NAME="AEN4502"
+>Initial Installation Method</A
+></H2
 ><P
 >The CalmRISC16 core is controlled through the MDSChip board. There is
 no non-volatile storage available for RedBoot, so RedBoot must be downloaded
@@ -194,11 +180,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->calmbreaker -p /dev/term/b --reset --srec-code -f redboot.elf</B
-></TT
+>calmbreaker -p /dev/term/b --reset --srec-code -f redboot.elf</KBD
 ></PRE
 ></TD
 ></TR
@@ -215,11 +199,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->calmbreaker -p /dev/term/b --run</B
-></TT
+>calmbreaker -p /dev/term/b --run</KBD
 ></PRE
 ></TD
 ></TR
@@ -234,9 +216,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4445"
-></A
->Special RedBoot Commands</H2
+NAME="AEN4511"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -245,9 +227,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4448"
-></A
->Special Note on Serial Channel</H2
+NAME="AEN4514"
+>Special Note on Serial Channel</A
+></H2
 ><P
 >The MDSChip board uses a relatively slow microcontroller to provide
 the pseudo-register interface to the core board. This pseudo-register
@@ -264,11 +246,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->(gdb) <TT
+>(gdb) <KBD
 CLASS="USERINPUT"
-><B
->set download-write-size 25</B
-></TT
+>set download-write-size 25</KBD
 ></PRE
 ></TD
 ></TR
@@ -280,9 +260,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4453"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN4519"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,11 +101,9 @@ NAME="AEN1608"
 ><B
 CLASS="COMMAND"
 >fis init</B
->  [<TT
+>  [<VAR
 CLASS="REPLACEABLE"
-><I
->-f</I
-></TT
+>-f</VAR
 >]</P
 ></DIV
 ><DIV
@@ -117,61 +115,47 @@ NAME="AEN1613"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1615"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-f</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >All blocks of flash memory (except for the boot
 	      blocks) will be erased as part of the initialization
 	      procedure.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ></TR
 ></TBODY
@@ -227,17 +211,13 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init</B
-></TT
+>fis init</KBD
 >
-About to initialize [format] flash image system - continue (y/n)? <TT
+About to initialize [format] flash image system - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 *** Initialize FLASH Image System
     Warning: device contents not erased, some blocks may not be usable
@@ -259,17 +239,13 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init -f</B
-></TT
+>fis init -f</KBD
 >
-About to initialize [format] flash image system - continue (y/n)? <TT
+About to initialize [format] flash image system - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 *** Initialize FLASH Image System                                               
 ... Erase from 0x00020000-0x00070000: .....                                     

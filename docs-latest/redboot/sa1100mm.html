@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SA1100MM"
-></A
->ARM/StrongARM(SA1100) Intel SA1100 Multimedia Board</H1
+>ARM/StrongARM(SA1100) Intel SA1100 Multimedia Board</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3469"
-></A
->Overview</H2
+NAME="AEN3535"
+>Overview</A
+></H2
 ><P
 >RedBoot supports both board serial ports. The default serial port
 settings are 38400,8,N,1. flash management is also supported.</P
@@ -101,71 +101,49 @@ settings are 38400,8,N,1. flash management is also supported.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3479"
-></A
 ><P
 ></P
+><A
+NAME="AEN3545"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -180,9 +158,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3498"
-></A
->Initial Installation Method</H2
+NAME="AEN3564"
+>Initial Installation Method</A
+></H2
 ><P
 >A device programmer is used to program socketed flash parts.</P
 ></DIV
@@ -191,9 +169,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3501"
-></A
->Special RedBoot Commands</H2
+NAME="AEN3567"
+>Special RedBoot Commands</A
+></H2
 ><P
 >None.</P
 ></DIV
@@ -202,9 +180,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3504"
-></A
->Memory Maps</H2
+NAME="AEN3570"
+>Memory Maps</A
+></H2
 ><P
 >The first level page table is located at physical address 0xc0004000.
 No second level tables are used.<DIV
@@ -269,9 +247,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3511"
-></A
->Platform Resource Usage</H2
+NAME="AEN3577"
+>Platform Resource Usage</A
+></H2
 ><P
 > The SA11x0 OS timer is used as a polled timer to provide timeout support
 for XModem file transfers.</P
@@ -281,9 +259,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3514"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3580"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

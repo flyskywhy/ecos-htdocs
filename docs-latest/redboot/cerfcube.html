@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="CERFCUBE"
-></A
->ARM/StrongARM(SA11X0) Intrinsyc CerfCube</H1
+>ARM/StrongARM(SA11X0) Intrinsyc CerfCube</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3856"
-></A
->Overview</H2
+NAME="AEN3922"
+>Overview</A
+></H2
 ><P
 >RedBoot supports the serial port and the builtin
 ethernet connection for communication and downloads. </P
@@ -104,71 +104,49 @@ and supports flash management for the system flash region. </P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3861"
-></A
 ><P
 ></P
+><A
+NAME="AEN3927"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -183,9 +161,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3880"
-></A
->Initial Installation</H2
+NAME="AEN3946"
+>Initial Installation</A
+></H2
 ><P
 >The original boot loader supplied with the CerfCube can be used to install
 RedBoot.  Connect to the device using a serial port at 38400/8N1.
@@ -199,32 +177,24 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->download tftp:<TT
+>download tftp:<VAR
 CLASS="REPLACEABLE"
-><I
->x.x.x.x</I
-></TT
-> redboot_ROM.bin 0xc0000000</B
-></TT
+>x.x.x.x</VAR
+> redboot_ROM.bin 0xc0000000</KBD
 >
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->flashloader 0x00000000 0xc0000000 0x20000</B
-></TT
+>flashloader 0x00000000 0xc0000000 0x20000</KBD
 ></PRE
 ></TD
 ></TR
 ></TABLE
 >
-where <TT
+where <VAR
 CLASS="REPLACEABLE"
-><I
->x.x.x.x</I
-></TT
+>x.x.x.x</VAR
 > is the IP address of the TFTP
 server.
 <DIV
@@ -245,9 +215,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3891"
-></A
->Additional commands</H2
+NAME="AEN3957"
+>Additional commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -269,55 +239,45 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
 >Location Linux kernel was loaded to</P
 ></DD
 ><DT
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;len&#62;</I
-></TT
+>&lt;len&#62;</VAR
 ></DT
 ><DD
 ><P
 >Length of kernel</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"params"</I
-></TT
+>"params"</VAR
 ></DT
 ><DD
 ><P
 >Parameters passed to kernel</P
 ></DD
 ><DT
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
 >'initrd' ramdisk location</P
 ></DD
 ><DT
->-s <TT
+>-s <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;len&#62;</I
-></TT
+>&lt;len&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -331,9 +291,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3923"
-></A
->Memory Maps</H2
+NAME="AEN3989"
+>Memory Maps</A
+></H2
 ><P
 >RedBoot sets up the following memory map on the CerfCube:   The first level
 page table is located at physical address 0xC0004000.  No second level tables
@@ -391,9 +351,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3930"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN3996"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,36 +101,24 @@ NAME="AEN1460"
 ><B
 CLASS="COMMAND"
 >ping</B
->  [-v ] [-i <TT
+>  [-v ] [-i <VAR
 CLASS="REPLACEABLE"
-><I
-> local_IP_address</I
-></TT
->] [-l <TT
+> local_IP_address</VAR
+>] [-l <VAR
 CLASS="REPLACEABLE"
-><I
-> length</I
-></TT
->] [-n <TT
+> length</VAR
+>] [-n <VAR
 CLASS="REPLACEABLE"
-><I
-> count</I
-></TT
->] [-t <TT
+> count</VAR
+>] [-t <VAR
 CLASS="REPLACEABLE"
-><I
-> timeout</I
-></TT
->] [-r <TT
+> timeout</VAR
+>] [-r <VAR
 CLASS="REPLACEABLE"
-><I
-> rate</I
-></TT
->] {-h <TT
+> rate</VAR
+>] {-h <VAR
 CLASS="REPLACEABLE"
-><I
-> server_IP_address</I
-></TT
+> server_IP_address</VAR
 >}</P
 ></DIV
 ><DIV
@@ -142,59 +130,45 @@ NAME="AEN1476"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1478"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-v</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Boolean</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Be verbose, displaying information about each packet sent.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -205,56 +179,28 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-n <TT
+>-n <VAR
 CLASS="REPLACEABLE"
-><I
->local_IP_address</I
-></TT
+>local_IP_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Controls the number of packets to be sent.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >10</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-i <TT
+>-i <VAR
 CLASS="REPLACEABLE"
-><I
->local_IP_address</I
-></TT
+>local_IP_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Numeric IP or DNS name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The IP address RedBoot should use.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Value set by <B
 CLASS="COMMAND"
 >ip_address</B
@@ -262,29 +208,15 @@ CLASS="COMMAND"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-h <TT
+>-h <VAR
 CLASS="REPLACEABLE"
-><I
->server_IP_address</I
-></TT
+>server_IP_address</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Numeric IP or DNS name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The IP address of the host to contact.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -295,84 +227,42 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The length of the ICMP data payload.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >64</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >How fast to deliver packets, i.e. time between successive sends.
 A value of 0 sends packets as quickly as possible.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >1000ms (1 second)</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
->-t <TT
+>-t <VAR
 CLASS="REPLACEABLE"
-><I
->length</I
-></TT
+>length</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >How long to wait for the round-trip to complete, specified in milliseconds.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >1000ms (1 second)</TD
 ></TR
 ></TBODY
@@ -415,11 +305,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ping -h 192.168.1.101</B
-></TT
+>ping -h 192.168.1.101</KBD
 >
 Network PING - from 192.168.1.31 to 192.168.1.101
 PING - received 10 of 10 expected</PRE
@@ -437,11 +325,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ping -h 192.168.1.101 -v -n 4</B
-></TT
+>ping -h 192.168.1.101 -v -n 4</KBD
 >
 Network PING - from 192.168.1.31 to 192.168.1.101
  seq: 1, time: 1 (ticks)
@@ -463,11 +349,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 >Test connectivity to a non-existent host (192.168.1.109).
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->ping -h 192.168.1.109 -v -n 4</B
-></TT
+>ping -h 192.168.1.109 -v -n 4</KBD
 >
 PING: Cannot reach server '192.168.1.109' (192.168.1.109)</PRE
 ></TD

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,16 +101,12 @@ NAME="AEN556"
 ><B
 CLASS="COMMAND"
 >alias</B
->  {<TT
+>  {<VAR
 CLASS="REPLACEABLE"
-><I
-> name</I
-></TT
->} [<TT
+> name</VAR
+>} [<VAR
 CLASS="REPLACEABLE"
-><I
-> value</I
-></TT
+> value</VAR
 >]</P
 ></DIV
 ><DIV
@@ -122,64 +118,48 @@ NAME="AEN563"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN565"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->name</I
-></TT
+>name</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The name for this alias.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -190,29 +170,15 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->value</I
-></TT
+>value</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >String</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Replacement value for the alias.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 ><SPAN
 CLASS="emphasis"
 ><I
@@ -278,11 +244,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->alias joe "This is Joe"</B
-></TT
+>alias joe "This is Joe"</KBD
 >
 Update RedBoot non-volatile configuration - continue (y/n)? n</PRE
 ></TD
@@ -300,11 +264,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->alias joe</B
-></TT
+>alias joe</KBD
 >
 'joe' = 'This is Joe'</PRE
 ></TD
@@ -325,11 +287,9 @@ WIDTH="70%"
 ><PRE
 CLASS="SCREEN"
 > 
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->= %{joe}</B
-></TT
+>= %{joe}</KBD
 >
 This is Joe</PRE
 ></TD
@@ -346,18 +306,14 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->alias frank "Who are you? %{joe}"</B
-></TT
+>alias frank "Who are you? %{joe}"</KBD
 >
 Update RedBoot non-volatile configuration - continue (y/n)? n
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->= %{frank}</B
-></TT
+>= %{frank}</KBD
 >
 Who are you? This is Joe</PRE
 ></TD
@@ -375,18 +331,14 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->alias joe "This is now Josephine"</B
-></TT
+>alias joe "This is now Josephine"</KBD
 >
 Update RedBoot non-volatile configuration - continue (y/n)? n
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->= %{frank}</B
-></TT
+>= %{frank}</KBD
 >
 Who are you? This is now Josephine</PRE
 ></TD

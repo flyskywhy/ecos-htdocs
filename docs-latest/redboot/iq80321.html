@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IQ80321"
-></A
->ARM/XScale Intel IQ80321</H1
+>ARM/XScale Intel IQ80321</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4043"
-></A
->Overview</H2
+NAME="AEN4109"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 the serial port and the built-in ethernet port for communication and downloads.
@@ -103,71 +103,49 @@ management for the onboard 8MB flash.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN4053"
-></A
 ><P
 ></P
+><A
+NAME="AEN4119"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -182,9 +160,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4072"
-></A
->Initial Installation Method</H2
+NAME="AEN4138"
+>Initial Installation Method</A
+></H2
 ><P
 >The board manufacturer provides a DOS application which is capable of
 programming the flash over the PCI bus, and this is required for initial installations
@@ -219,17 +197,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init</B
-></TT
+>fis init</KBD
 >
-About to initialize [format] FLASH image system - continue (y/n)? <TT
+About to initialize [format] FLASH image system - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 *** Initialize FLASH Image System
     Warning: device contents not erased, some blocks may not be usable
@@ -247,9 +221,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4081"
-></A
->Switch Settings</H2
+NAME="AEN4147"
+>Switch Settings</A
+></H2
 ><P
 >The 80321 board is highly configurable through a number of switches and jumpers.
 RedBoot makes some assumptions about board configuration and attention must be paid
@@ -278,123 +252,80 @@ in a backplane.</P
 configuration:
 <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN4091"
-></A
 ><P
 ></P
+><A
+NAME="AEN4157"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
 CLASS="CALSTABLE"
-><TBODY
+><COL><COL><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S1D1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >All OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S7E1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >7 is ON, all others OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S8E1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3,5,6 are ON, all others OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S8E2</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3 are ON, all others OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S9E1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >3 is ON, all others OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >S4D1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >1,3 are ON, all others OFF</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >J9E1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3 jumpered</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >J9F1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3 jumpered</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >J3F1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Nothing jumpered</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >J3G1</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3 jumpered</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >J1G2</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >2,3 jumpered</TD
 ></TR
 ></TBODY
@@ -412,9 +343,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4127"
-></A
->LED Codes</H2
+NAME="AEN4193"
+>LED Codes</A
+></H2
 ><P
 >RedBoot uses the two digit LED display to indicate status during   board
 initialization. Possible codes are:</P
@@ -505,9 +436,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4131"
-></A
->Special RedBoot Commands</H2
+NAME="AEN4197"
+>Special RedBoot Commands</A
+></H2
 ><P
 >A special RedBoot command, <B
 CLASS="COMMAND"
@@ -526,11 +457,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->diag</B
-></TT
+>diag</KBD
 >
 Entering Hardware Diagnostics - Disabling Data Cache!
 
@@ -561,9 +490,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4138"
-></A
->Memory Tests</H3
+NAME="AEN4204"
+>Memory Tests</A
+></H3
 ><P
 >This test is used to test installed DDR SDRAM memory. Five different
 tests are run over the given address ranges. If errors are encountered, the
@@ -578,25 +507,19 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->Enter the menu item number (0 to quit): <TT
+>Enter the menu item number (0 to quit): <KBD
 CLASS="USERINPUT"
-><B
->1</B
-></TT
+>1</KBD
 >
 
-Base address of memory to test (in hex): <TT
+Base address of memory to test (in hex): <KBD
 CLASS="USERINPUT"
-><B
->100000</B
-></TT
+>100000</KBD
 >
 
-Size of memory to test (in hex): <TT
+Size of memory to test (in hex): <KBD
 CLASS="USERINPUT"
-><B
->200000</B
-></TT
+>200000</KBD
 >
 
 Testing memory from 0x00100000 to 0x002fffff.
@@ -621,9 +544,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4145"
-></A
->Repeating Memory Tests</H3
+NAME="AEN4211"
+>Repeating Memory Tests</A
+></H3
 ><P
 >The repeating memory tests are exactly the same as the above memory tests,
 except that the tests are automatically rerun after completion. The only way out
@@ -634,9 +557,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4148"
-></A
->Repeat-On-Fail Memory Tests</H3
+NAME="AEN4214"
+>Repeat-On-Fail Memory Tests</A
+></H3
 ><P
 >This is similar to the repeating memory tests except that when an error
 is found, the failing test continuously retries on the failing address.</P
@@ -646,9 +569,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4151"
-></A
->Rotary Switch S1 Test</H3
+NAME="AEN4217"
+>Rotary Switch S1 Test</A
+></H3
 ><P
 >This tests the operation of the sixteen position rotary switch. When run,
 this test will display the current position of the rotary switch on the LED
@@ -659,9 +582,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4154"
-></A
->7 Segment LED Tests</H3
+NAME="AEN4220"
+>7 Segment LED Tests</A
+></H3
 ><P
 >This tests the operation of the seven segment displays. When run, each
 LED cycles through 0 through F and a decimal point.</P
@@ -671,9 +594,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4157"
-></A
->i82544 Ethernet Configuration</H3
+NAME="AEN4223"
+>i82544 Ethernet Configuration</A
+></H3
 ><P
 >This test initializes the ethernet controller&#8217;s serial EEPROM if
 the current contents are invalid. In any case, this test will also allow the
@@ -686,20 +609,16 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->Enter the menu item number (0 to quit): <TT
+>Enter the menu item number (0 to quit): <KBD
 CLASS="USERINPUT"
-><B
->6</B
-></TT
+>6</KBD
 >
 
 
 Current MAC address: 00:80:4d:46:00:02
-Enter desired MAC address: <TT
+Enter desired MAC address: <KBD
 CLASS="USERINPUT"
-><B
->00:80:4d:46:00:01</B
-></TT
+>00:80:4d:46:00:01</KBD
 >
 Writing to the Serial EEPROM... Done
 
@@ -713,9 +632,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4163"
-></A
->Battery Status Test</H3
+NAME="AEN4229"
+>Battery Status Test</A
+></H3
 ><P
 >This tests the current status of the battery. First, the test checks to
 see if the battery is installed and reports that finding. If the battery is
@@ -744,9 +663,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4173"
-></A
->Battery Backup SDRAM Memory Test</H3
+NAME="AEN4239"
+>Battery Backup SDRAM Memory Test</A
+></H3
 ><P
 >This tests the battery backup of SDRAM memory. This test is a three
 step process:</P
@@ -775,9 +694,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4183"
-></A
->Timer Test</H3
+NAME="AEN4249"
+>Timer Test</A
+></H3
 ><P
 >This tests the internal timer by printing a number of dots at one
 second intervals.</P
@@ -787,9 +706,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4186"
-></A
->PCI Bus Test</H3
+NAME="AEN4252"
+>PCI Bus Test</A
+></H3
 ><P
 >This tests the secondary PCI-X bus and socket. This test requires that
 an IQ80310 board be plugged into the secondary slot of the IOP80321 board.
@@ -802,9 +721,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4189"
-></A
->CPU Cache Loop</H3
+NAME="AEN4255"
+>CPU Cache Loop</A
+></H3
 ><P
 >This test puts the CPU into a tight loop run entirely from the ICache.
 This should prevent all external bus accesses.</P
@@ -815,9 +734,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4192"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN4258"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -849,9 +768,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4198"
-></A
->Interrupts</H2
+NAME="AEN4264"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0x8004.
 Entries in this table are pointers to functions with this protoype::      <TABLE
@@ -867,9 +786,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >On an IQ80321
-board, the vector argument is one of 32 interrupts defined in <TT
+board, the vector argument is one of 32 interrupts defined in <SAMP
 CLASS="COMPUTEROUTPUT"
->hal/arm/xscale/verde/current/include/hal_var_ints.h:</TT
+>hal/arm/xscale/verde/current/include/hal_var_ints.h:</SAMP
 >:   <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -914,9 +833,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >
-The data passed to the ISR is pulled from a data table <TT
+The data passed to the ISR is pulled from a data table <SAMP
 CLASS="COMPUTEROUTPUT"
->(hal_interrupt_data)</TT
+>(hal_interrupt_data)</SAMP
 > which immediately follows the interrupt vector table. With
 32 interrupts, the data table starts at address 0x8084.   </P
 ><P
@@ -930,20 +849,20 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4206"
-></A
->Memory Maps</H2
+NAME="AEN4272"
+>Memory Maps</A
+></H2
 ><P
 >The RAM based page table is located at RAM start + 0x4000. RedBoot may be configured
 for one of two memory maps. The difference between them is the location of RAM and the
 PCI outbound windows. The alternative memory map may be used when
-building RedBoot or eCos by using the <TT
+building RedBoot or eCos by using the <VAR
 CLASS="LITERAL"
->RAM_ALTMAP</TT
+>RAM_ALTMAP</VAR
 >
-and <TT
+and <VAR
 CLASS="LITERAL"
->ROM_ALTMAP</TT
+>ROM_ALTMAP</VAR
 > startup types in the configuration.
 <DIV
 CLASS="NOTE"
@@ -1031,9 +950,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4216"
-></A
->Platform Resource Usage</H2
+NAME="AEN4282"
+>Platform Resource Usage</A
+></H2
 ><P
 >The Verde programmable timer0 is used for timeout support
 for networking and XModem file transfers.</P

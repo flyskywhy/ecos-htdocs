@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PERSISTENT-STATE-FLASH"
-></A
->Persistent State Flash-based Configuration and Control</H1
+>Persistent State Flash-based Configuration and Control</A
+></H1
 ><P
 ></P
 ><P
@@ -133,29 +133,29 @@ CLASS="COMMAND"
 >fconfig -l</B
 > command, the information may be displayed and/or changed.</P
 ><P
->If the optional flag <TT
+>If the optional flag <SAMP
 CLASS="COMPUTEROUTPUT"
->-i</TT
+>-i</SAMP
 > is specified,
 then the configuration database will be reset to its default
 state. This is also needed the first time RedBoot is installed on the
 target, or when updating to a newer RedBoot with different
 configuration keys.</P
 ><P
->If the optional flag <TT
+>If the optional flag <SAMP
 CLASS="COMPUTEROUTPUT"
->-l</TT
+>-l</SAMP
 > is specified,
 the configuration data is simply listed. Otherwise, each configuration parameter
 will be displayed and you are given a chance to change it. The entire value
 must be typed - typing just carriage return will leave a value unchanged.
-Boolean values may be entered using the first letter (<TT
+Boolean values may be entered using the first letter (<SAMP
 CLASS="COMPUTEROUTPUT"
->t</TT
+>t</SAMP
 >
-for true, <TT
+for true, <SAMP
 CLASS="COMPUTEROUTPUT"
->f</TT
+>f</SAMP
 > for false). At any time the editing
 process may be stopped simply by entering a period (.) on the line. Entering
 the caret (^) moves the editing back to the previous item. See &#8220;RedBoot
@@ -169,19 +169,19 @@ HREF="redboot-editing-commands.html"
 >If any changes are made in the configuration, then the updated data
 will be written back to flash after getting acknowledgment from the user.</P
 ><P
->If the optional flag <TT
+>If the optional flag <SAMP
 CLASS="COMPUTEROUTPUT"
->-n</TT
+>-n</SAMP
 > is specified
-(with or without <TT
+(with or without <SAMP
 CLASS="COMPUTEROUTPUT"
->-l</TT
+>-l</SAMP
 >) then &#8220;nicknames&#8221;
 of the entries are used.  These are shorter and less descriptive than
 &#8220;full&#8221; names.  The full name may also be displayed by adding the
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->-f</TT
+>-f</SAMP
 > flag.</P
 ><P
 >The reason for telling you nicknames is that a quick way to set a single
@@ -194,21 +194,15 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->  RedBoot&#62; <TT
+>  RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig <TT
+>fconfig <VAR
 CLASS="REPLACEABLE"
-><I
->nickname</I
-></TT
-> <TT
+>nickname</VAR
+> <VAR
 CLASS="REPLACEABLE"
-><I
->value</I
-></TT
-></B
-></TT
+>value</VAR
+></KBD
 ></PRE
 ></TD
 ></TR
@@ -227,11 +221,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->  RedBoot&#62; <TT
+>  RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig -l -n</B
-></TT
+>fconfig -l -n</KBD
 >
   boot_script: false
   bootp: false
@@ -240,18 +232,14 @@ CLASS="USERINPUT"
   dns_ip: 10.16.19.1
   gdb_port: 9000
   net_debug: false
-  RedBoot&#62; <TT
+  RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig bootp_my_ip 10.16.19.177</B
-></TT
+>fconfig bootp_my_ip 10.16.19.177</KBD
 >
   bootp_my_ip: 10.16.19.176 Setting to 10.16.19.177
-  Update RedBoot non-volatile configuration - continue (y/n)? <TT
+  Update RedBoot non-volatile configuration - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
   ... Unlock from 0x507c0000-0x507e0000: .
   ... Erase from 0x507c0000-0x507e0000: .
@@ -264,11 +252,9 @@ CLASS="USERINPUT"
 ></P
 ><P
 >Additionally, nicknames can be used like aliases via the format %{nickname}.
-This allows the values stored by <TT
+This allows the values stored by <KBD
 CLASS="USERINPUT"
-><B
->fconfig</B
-></TT
+>fconfig</KBD
 > to be used
 directly by scripts and commands.</P
 ><P
@@ -277,11 +263,9 @@ capabilities, you might find that you are unable to use line-editing to
 delete the &#8216;old&#8217; value when using the default behaviour of
 <B
 CLASS="COMMAND"
->fconfig <TT
+>fconfig <VAR
 CLASS="REPLACEABLE"
-><I
->nickname</I
-></TT
+>nickname</VAR
 ></B
 > or just
 plain <B
@@ -296,11 +280,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fco bootp</B
-></TT
+>fco bootp</KBD
 >
 bootp: false&#0095;</PRE
 ></TD
@@ -317,17 +299,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fco bootp</B
-></TT
+>fco bootp</KBD
 >
-bootp: <TT
+bootp: <KBD
 CLASS="USERINPUT"
-><B
->true</B
-></TT
+>true</KBD
 >
 Update RedBoot non-volatile configuration - continue (y/n)? y
 ... Unlock from ...
@@ -338,9 +316,9 @@ RedBoot&#62; &#0095;</PRE
 ></P
 ><P
 >To edit when you cannot backspace, use the optional flag
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->-d</TT
+>-d</SAMP
 > (for &#8220;dumb terminal&#8221;)
 to provide a simpler interface thus:
 <TABLE
@@ -351,11 +329,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fco -d bootp</B
-></TT
+>fco -d bootp</KBD
 >
 bootp: false ? &#0095;</PRE
 ></TD
@@ -371,17 +347,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fco -d bootp</B
-></TT
+>fco -d bootp</KBD
 >
-bootp: false ? <TT
+bootp: false ? <KBD
 CLASS="USERINPUT"
-><B
->true</B
-></TT
+>true</KBD
 >
 Update RedBoot non-volatile configuration - continue (y/n)? y
 ... Unlock from ...
@@ -405,11 +377,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig -l</B
-></TT
+>fconfig -l</KBD
 >
 Run script at boot: false
 Use BOOTP for network configuration: false
@@ -434,38 +404,28 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig</B
-></TT
+>fconfig</KBD
 >
-Run script at boot: false <TT
+Run script at boot: false <KBD
 CLASS="USERINPUT"
-><B
->t</B
-></TT
+>t</KBD
 >
       Boot script:
 Enter script, terminate with empty line
-&#62;&#62; <TT
+&#62;&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi li</B
-></TT
+>fi li</KBD
 >
-    Boot script timeout: 0 <TT
+    Boot script timeout: 0 <KBD
 CLASS="USERINPUT"
-><B
->10</B
-></TT
+>10</KBD
 >
 Use BOOTP for network configuration: false .
-Update RedBoot non-volatile configuration - continue (y/n)? <TT
+Update RedBoot non-volatile configuration - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 ... Erase from 0xa0fc0000-0xa0fe0000: .
 ... Program from 0x8c021f60-0x8c022360 at 0xa0fc0000: .
@@ -479,11 +439,9 @@ flash: 0xa0000000 - 0xa1000000, 128 blocks of 0x00020000 bytes ea.
 Socket Communications, Inc: Low Power Ethernet CF Revision C \
 5V/3.3V 08/27/98 IP: 192.168.1.29, Default server: 192.168.1.101 \
 == Executing boot script in 10 seconds - enter ^C to abort
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fi li</B
-></TT
+>fi li</KBD
 >
 Name              flash addr   Mem addr    Length    Entry point
 RedBoot          0xA0000000   0xA0000000  0x020000  0x80000000
@@ -533,9 +491,9 @@ configured to run from RAM. Other configurations are also possible. All
 RedBoot configurations will execute the boot script, but in certain cases
 it may be desirable to limit the execution of certain script commands to
 one RedBoot configuration or the other. This can be accomplished by
-prepending <TT
+prepending <SAMP
 CLASS="COMPUTEROUTPUT"
->{&lt;startup type&#62;}</TT
+>{&lt;startup type&#62;}</SAMP
 > to the
 commands which should be executed only by the RedBoot configured for the
 specified startup type. The following boot script illustrates this concept
@@ -550,67 +508,49 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fco</B
-></TT
+>fco</KBD
 >
-Run script at boot: false <TT
+Run script at boot: false <KBD
 CLASS="USERINPUT"
-><B
->t</B
-></TT
+>t</KBD
 >
 Boot script:
 Enter script, terminate with empty line
-&#62;&#62; <TT
+&#62;&#62; <KBD
 CLASS="USERINPUT"
-><B
->{ROM}fis load RedBoot[RAM]</B
-></TT
+>{ROM}fis load RedBoot[RAM]</KBD
 >
-&#62;&#62; <TT
+&#62;&#62; <KBD
 CLASS="USERINPUT"
-><B
->{ROM}go</B
-></TT
+>{ROM}go</KBD
 >
-&#62;&#62; <TT
+&#62;&#62; <KBD
 CLASS="USERINPUT"
-><B
->{RAM}fis li</B
-></TT
+>{RAM}fis li</KBD
 >
 &#62;&#62;
-Boot script timeout (1000ms resolution): <TT
+Boot script timeout (1000ms resolution): <KBD
 CLASS="USERINPUT"
-><B
->2</B
-></TT
+>2</KBD
 >
-Use BOOTP for network configuration: <TT
+Use BOOTP for network configuration: <KBD
 CLASS="USERINPUT"
-><B
->false</B
-></TT
+>false</KBD
 >
  ...
-Update RedBoot non-volatile configuration - continue (y/n)? <TT
+Update RedBoot non-volatile configuration - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 ... Unlock from 0x007c0000-0x007e0000: .
 ... Erase from 0x007c0000-0x007e0000: .
 ... Program from 0xa0015030-0xa0016030 at 0x007df000: .
 ... Lock from 0x007c0000-0x007e0000: .
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->reset</B
-></TT
+>reset</KBD
 >
 ... Resetting.
 +Ethernet eth0: MAC address 00:80:4d:46:01:05
@@ -625,17 +565,13 @@ Copyright (C) 2000, 2001, Red Hat, Inc.
 RAM: 0xa0000000-0xa2000000, 0xa001b088-0xa1fdf000 available
 FLASH: 0x00000000 - 0x00800000, 64 blocks of 0x00020000 bytes each.
 == Executing boot script in 2.000 seconds - enter ^C to abort
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis load RedBoot[RAM]</B
-></TT
+>fis load RedBoot[RAM]</KBD
 >
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->go</B
-></TT
+>go</KBD
 >
 +Ethernet eth0: MAC address 00:80:4d:46:01:05
 IP: 192.168.1.153, Default server: 192.168.1.10
@@ -649,11 +585,9 @@ Copyright (C) 2000, 2001, Red Hat, Inc.
 RAM: 0xa0000000-0xa2000000, 0xa0057fe8-0xa1fdf000 available
 FLASH: 0x00000000 - 0x00800000, 64 blocks of 0x00020000 bytes each.
 == Executing boot script in 2.000 seconds - enter ^C to abort
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis li</B
-></TT
+>fis li</KBD
 >
 Name              FLASH addr  Mem addr    Length      Entry point
 RedBoot           0x00000000  0x00000000  0x00040000  0x00002000

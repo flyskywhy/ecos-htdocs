@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IQ80310"
-></A
->ARM/XScale Cyclone IQ80310</H1
+>ARM/XScale Cyclone IQ80310</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3938"
-></A
->Overview</H2
+NAME="AEN4004"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 both serial ports and the built-in ethernet port for communication and downloads.
@@ -103,109 +103,71 @@ management for the onboard 8MB flash.</P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN3948"
-></A
 ><P
 ></P
+><A
+NAME="AEN4014"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROMA</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from flash address 0x40000, with
 	      ARM bootloader in flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROMA.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAMA</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with ARM bootloader in
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAMA.ecm</TD
 ></TR
 ></TBODY
@@ -220,9 +182,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3977"
-></A
->Initial Installation Method</H2
+NAME="AEN4043"
+>Initial Installation Method</A
+></H2
 ><P
 >The board manufacturer provides a DOS application which is
 capable of programming the flash over the PCI bus, and this is
@@ -267,17 +229,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis init</B
-></TT
+>fis init</KBD
 >
-About to initialize [format] flash image system - continue (y/n)? <TT
+About to initialize [format] flash image system - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 *** Initialize flash Image System
 Warning: device contents not erased, some blocks may not be usable
@@ -286,53 +244,37 @@ Warning: device contents not erased, some blocks may not be usable
 ... Program from 0xa1fd0000-0xa1fd0400 at 0x007e0000: .
 ... Lock from 0x007e0000-0x00800000: .
 Followed by the fconfig command:
-   RedBoot&#62; <TT
+   RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fconfig</B
-></TT
+>fconfig</KBD
 >
-   Run script at boot: <TT
+   Run script at boot: <KBD
 CLASS="USERINPUT"
-><B
->false</B
-></TT
+>false</KBD
 >
-   Use BOOTP for network configuration: <TT
+   Use BOOTP for network configuration: <KBD
 CLASS="USERINPUT"
-><B
->false</B
-></TT
+>false</KBD
 >
-   Local IP address: <TT
+   Local IP address: <KBD
 CLASS="USERINPUT"
-><B
->192.168.1.153</B
-></TT
+>192.168.1.153</KBD
 >
-   Default server IP address: <TT
+   Default server IP address: <KBD
 CLASS="USERINPUT"
-><B
->192.168.1.10</B
-></TT
+>192.168.1.10</KBD
 >
-   GDB connection port: <TT
+   GDB connection port: <KBD
 CLASS="USERINPUT"
-><B
->1000</B
-></TT
+>1000</KBD
 >
-   Network debug at boot time: <TT
+   Network debug at boot time: <KBD
 CLASS="USERINPUT"
-><B
->false</B
-></TT
+>false</KBD
 >
-   Update RedBoot non-volatile configuration - continue (y/n)? <TT
+   Update RedBoot non-volatile configuration - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
    ... Unlock from 0x007c0000-0x007e0000: .
    ... Erase from 0x007c0000-0x007e0000: .
@@ -360,9 +302,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3998"
-></A
->Error codes</H2
+NAME="AEN4064"
+>Error codes</A
+></H2
 ><P
 >RedBoot uses the two digit LED display to indicate errors during   board
 initialization. Possible error codes are:      <P
@@ -378,9 +320,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4002"
-></A
->Using RedBoot with ARM Bootloader</H2
+NAME="AEN4068"
+>Using RedBoot with ARM Bootloader</A
+></H2
 ><P
 >RedBoot can coexist with ARM tools in flash on the IQ80310 board. In
 this configuration, the ARM bootloader will occupy the flash boot sector while
@@ -394,9 +336,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4005"
-></A
->Special RedBoot Commands</H2
+NAME="AEN4071"
+>Special RedBoot Commands</A
+></H2
 ><P
 >A special RedBoot command, <B
 CLASS="COMMAND"
@@ -412,11 +354,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->diag</B
-></TT
+>diag</KBD
 >
 Entering Hardware Diagnostics - Disabling Data Cache!
 1 - Memory Tests
@@ -448,9 +388,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4011"
-></A
->IQ80310 Hardware Tests</H2
+NAME="AEN4077"
+>IQ80310 Hardware Tests</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -495,9 +435,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4016"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN4082"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -529,9 +469,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4022"
-></A
->Interrupts</H2
+NAME="AEN4088"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0xA000A004.
 Entries in this table are pointers to functions with this protoype::      <TABLE
@@ -547,9 +487,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >On an IQ80310
-board, the vector argument is one of 49 interrupts defined in <TT
+board, the vector argument is one of 49 interrupts defined in <SAMP
 CLASS="COMPUTEROUTPUT"
->hal/arm/iq80310/current/include/hal_platform_ints.h:</TT
+>hal/arm/iq80310/current/include/hal_platform_ints.h:</SAMP
 >:   <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -636,9 +576,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >The data passed
-to the ISR is pulled from a data table <TT
+to the ISR is pulled from a data table <SAMP
 CLASS="COMPUTEROUTPUT"
->(hal_interrupt_data)</TT
+>(hal_interrupt_data)</SAMP
 > which immediately follows the interrupt vector table. With
 49 interrupts, the data table starts at address 0xA000A0C8.   </P
 ><P
@@ -652,9 +592,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4030"
-></A
->Memory Maps</H2
+NAME="AEN4096"
+>Memory Maps</A
+></H2
 ><P
 >The first level page table is located at 0xa0004000. Two second level
 tables are also used. One second level table is located at 0xa0008000 and
@@ -724,9 +664,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4038"
-></A
->Platform Resource Usage</H2
+NAME="AEN4104"
+>Platform Resource Usage</A
+></H2
 ><P
 >The external timer is used as a polled timer to provide timeout support
 for networking and XModem file transfers.</P

@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="HS7729PCI"
-></A
->SuperH/SH3(SH7729) Hitachi HS7729PCI</H1
+>SuperH/SH3(SH7729) Hitachi HS7729PCI</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5328"
-></A
->Overview</H2
+NAME="AEN5509"
+>Overview</A
+></H2
 ><P
 >RedBoot uses
 the COM1 and COM2 serial ports (and the debug port on the
@@ -105,71 +105,49 @@ card. Management of onboard flash is also supported. </P
 
       <DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN5338"
-></A
 ><P
 ></P
+><A
+NAME="AEN5519"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Configuration</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Mode</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[ROM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from the board's flash boot
 	      sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_ROM.ecm</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RAM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >[RAM]</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >RedBoot running from RAM with RedBoot in the
 	      flash boot sector.</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >redboot_RAM.ecm</TD
 ></TR
 ></TBODY
@@ -184,9 +162,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5357"
-></A
->Initial Installation Method</H2
+NAME="AEN5538"
+>Initial Installation Method</A
+></H2
 ><P
 >A ROM mode RedBoot image must be programmed
 into the two EPROMs. Two files with a split version of the ROM mode
@@ -202,11 +180,9 @@ CLASS="APPLICATION"
 > program in
 <TT
 CLASS="FILENAME"
->hal/sh/hs7729pci/<TT
+>hal/sh/hs7729pci/<VAR
 CLASS="REPLACEABLE"
-><I
->VERSION</I
-></TT
+>VERSION</VAR
 >/misc</TT
 >
 to be built and executed with the <TT
@@ -245,11 +221,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
-><TT
+><KBD
 CLASS="USERINPUT"
-><B
->-f 0x80400000</B
-></TT
+>-f 0x80400000</KBD
 ></PRE
 ></TD
 ></TR
@@ -274,9 +248,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5378"
-></A
->Special RedBoot Commands</H2
+NAME="AEN5559"
+>Special RedBoot Commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -298,11 +272,9 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <TT
+>-b <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -310,11 +282,9 @@ CLASS="REPLACEABLE"
 page of the kernel image and defaults to 0x8c101000</P
 ></DD
 ><DT
->-i <TT
+>-i <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;addr&#62;</I
-></TT
+>&lt;addr&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -322,33 +292,27 @@ CLASS="REPLACEABLE"
 image</P
 ></DD
 ><DT
->-j <TT
+>-j <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;size&#62;</I
-></TT
+>&lt;size&#62;</VAR
 ></DT
 ><DD
 ><P
 >Size of initrd image</P
 ></DD
 ><DT
->-c <TT
+>-c <VAR
 CLASS="REPLACEABLE"
-><I
->"args"</I
-></TT
+>"args"</VAR
 ></DT
 ><DD
 ><P
 >Kernel arguments string</P
 ></DD
 ><DT
->-m <TT
+>-m <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;flags&#62;</I
-></TT
+>&lt;flags&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -356,33 +320,27 @@ CLASS="REPLACEABLE"
 root partition will be mounted read-only.</P
 ></DD
 ><DT
->-f <TT
+>-f <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;flags&#62;</I
-></TT
+>&lt;flags&#62;</VAR
 ></DT
 ><DD
 ><P
 >RAM disk flags. Should normally be 0x4000</P
 ></DD
 ><DT
->-r <TT
+>-r <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;device number&#62;</I
-></TT
+>&lt;device number&#62;</VAR
 ></DT
 ><DD
 ><P
 >Root device specification. /dev/ram is 0x0101</P
 ></DD
 ><DT
->-l <TT
+>-l <VAR
 CLASS="REPLACEABLE"
-><I
->&lt;type&#62;</I
-></TT
+>&lt;type&#62;</VAR
 ></DT
 ><DD
 ><P
@@ -403,9 +361,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5427"
-></A
->Memory Maps</H2
+NAME="AEN5608"
+>Memory Maps</A
+></H2
 ><P
 >RedBoot sets up the following memory map on the HS7729PCI board.<TABLE
 BORDER="5"
@@ -440,9 +398,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5431"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN5612"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in

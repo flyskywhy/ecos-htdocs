@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -101,41 +101,27 @@ NAME="AEN1724"
 ><B
 CLASS="COMMAND"
 >fis create</B
->  {-b <TT
+>  {-b <VAR
 CLASS="REPLACEABLE"
-><I
-> data address</I
-></TT
->} {-l <TT
+> data address</VAR
+>} {-l <VAR
 CLASS="REPLACEABLE"
-><I
-> length</I
-></TT
->} [-f <TT
+> length</VAR
+>} [-f <VAR
 CLASS="REPLACEABLE"
-><I
-> flash address</I
-></TT
->] [-e <TT
+> flash address</VAR
+>] [-e <VAR
 CLASS="REPLACEABLE"
-><I
-> entry</I
-></TT
->] [-r <TT
+> entry</VAR
+>] [-r <VAR
 CLASS="REPLACEABLE"
-><I
-> relocation address</I
-></TT
->] [-s <TT
+> relocation address</VAR
+>] [-s <VAR
 CLASS="REPLACEABLE"
-><I
-> data length</I
-></TT
->] [-n ] [<TT
+> data length</VAR
+>] [-n ] [<VAR
 CLASS="REPLACEABLE"
-><I
->name</I
-></TT
+>name</VAR
 >]</P
 ></DIV
 ><DIV
@@ -147,153 +133,94 @@ NAME="AEN1742"
 >Arguments</H2
 ><DIV
 CLASS="INFORMALTABLE"
+><P
+></P
 ><A
 NAME="AEN1744"
 ></A
-><P
-></P
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
 ><TR
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Type</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ><TH
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-b</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address of data to be written to the flash.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address of last loaded file. If not set in a load
 	      operation, it must be specified.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-l</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of flash area to occopy. If specified, and
 	      the named image already exists, the length must match
 	      the value in the FIS directory.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Length of area reserved in FIS directory if the
 	      image already exists, or the length of the last loaded
 	      file. If neither are set, it must be specified.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-f</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address of flash area to occopy.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The address of an area reserved in the FIS
 	      directory for extant images. Otherwise the first free block
 	      which is large enough will be used.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-e</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Entry address for an executable image, used by
 	      the <B
 CLASS="COMMAND"
 >fis load</B
 > command.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The entry address of last loaded file.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-r</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Address where the image should be relocated to by
 	      the <B
 CLASS="COMMAND"
@@ -305,84 +232,43 @@ CLASS="COMMAND"
 >fis load</B
 > command.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >The load address of the last loaded file.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-s</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Number</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Actual length of data written to image. This is
 	      used to control the range over which the checksum is
 	      made.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >It defaults to the length of the last loaded
 	      file.</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >-n</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >When set, no image data will be written to the
 	      flash. Only the FIS directory will be updated.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ></TR
 ><TR
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
-><TT
+><VAR
 CLASS="REPLACEABLE"
-><I
->name</I
-></TT
+>name</VAR
 ></TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >String</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Name of flash image.</TD
 ><TD
-WIDTH="25%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;</TD
 ></TR
 ></TBODY
@@ -429,17 +315,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis create RedBoot -f 0xa0000000 -b 0x8c400000 -l 0x20000</B
-></TT
+>fis create RedBoot -f 0xa0000000 -b 0x8c400000 -l 0x20000</KBD
 >
-An image named &#8216;RedBoot&#8217; exists - continue (y/n)? <TT
+An image named &#8216;RedBoot&#8217; exists - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->n</B
-></TT
+>n</KBD
 ></PRE
 ></TD
 ></TR
@@ -455,11 +337,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis create junk -b 0x8c400000 -l 0x20000</B
-></TT
+>fis create junk -b 0x8c400000 -l 0x20000</KBD
 >
 ... Erase from 0xa0040000-0xa0060000: .
 ... Program from 0x8c400000-0x8c420000 at 0xa0040000: .
@@ -479,32 +359,24 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <TT
+>RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->load redboot_RAM.img</B
-></TT
+>load redboot_RAM.img</KBD
 >
 Entry point: 0x060213c0, address range: 0x06020000-0x06036cc0                   
-RedBoot&#62; <TT
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
-><B
->fis create RedBoot[RAM]</B
-></TT
+>fis create RedBoot[RAM]</KBD
 >
 No memory address set.
-An image named 'RedBoot[RAM]' exists - continue (y/n)? <TT
+An image named 'RedBoot[RAM]' exists - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 * CAUTION * about to program 'RedBoot[RAM]'
-            at 0x00020000..0x00036cbf from 0x06020000 - continue (y/n)? <TT
+            at 0x00020000..0x00036cbf from 0x06020000 - continue (y/n)? <KBD
 CLASS="USERINPUT"
-><B
->y</B
-></TT
+>y</KBD
 >
 ... Erase from 0x00020000-0x00040000: ..
 ... Program from 0x06020000-0x06036cc0 at 0x00020000: ..
