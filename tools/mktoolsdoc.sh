@@ -267,14 +267,8 @@ Patches may be downloaded using most browsers by either shift-clicking
 or right-clicking on the link to the patch. You must not view the link
 and cut-and-paste because white space must be preserved exactly.<p>
 ${WINDOWS+
-<b>Warning:</b> Users of Cygwin v1.1.1 will not be able to apply
-these patches successfully as described due to a bug present in that
-version of the Cygwin DLL. You may determine the version of the installed Cygwin
-DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
-If the version installed is v1.1.1, please read <a href="../faq.html#newcygwindll">
-this FAQ entry</a> to resolve the problem.
 <p>
-<b>All</b> users of Cygwin should verify that their <tt>/tmp</tt> directory (or
+Cygwin users should verify that their <tt>/tmp</tt> directory (or
 the directory specified by the <tt>TMPDIR</tt>, <tt>TMP</tt> or <tt>TEMP</tt>
 environment variables) is mounted in binary mode. If this is not the case
 the patches will apply, but the build will later fail. You may verify this
@@ -490,7 +484,7 @@ The eCos Configuration Tool also allows you to set the build tools path.
 <h2>Troubleshooting</h2>
 
 If you encounter difficulties in building or using the development tools, first check
-the <a href="../faq.html#problems_toolchain">eCos FAQ</a> and the
+the <a href="/fom/ecos?file=53">eCos FAQ</a> and the
 <a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
 if the topic has come up before. Initial queries
 may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,

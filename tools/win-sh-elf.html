@@ -35,10 +35,10 @@ This page details the steps required to download and build these development too
 <p>Unfortunately, the most recent official release of the GNU Binary Utilities (binutils),
 currently 2.10.1, is not capable of supporting eCos for Hitachi SH. Instead the devlopment
 tools must be built using a snapshot release of binutils.
-This is available from the <a href="http://sources.redhat.com/binutils/"
-target="_top"> main binutils
+This is available from the <a href=http://sources.redhat.com/binutils/
+target=_top> main binutils
 development site</a>. It is also available at any of the
-<a href="http://sources.redhat.com/mirrors.html" target="_top">
+<a href=http://sources.redhat.com/mirrors.html target=_top>
 mirror sites for sources.redhat.com</a>. Download sizes are in the
 region of 7.5MB for .bz2 format archives, or 10MB for .gz format archives.<p>
 
@@ -58,7 +58,7 @@ web site</a> contains plenty of information about installing and using GCC.
 
 Unfortunately the most recent official release (GCC 2.95.2) is not capable of
 supporting eCos for Hitachi SH. A
-<a href="ftp://gcc.gnu.org/pub/gcc/snapshots/index.html" target="_top">snapshot
+<a href=ftp://gcc.gnu.org/pub/gcc/snapshots/index.html target=_top>snapshot
 of the GCC development sources</a> should be used to obtain the most
 up-to-date compiler with new features and bug fixes.<p>
 
@@ -69,7 +69,7 @@ problems you may wish to consider updating to a more recent snapshot, or
 reverting to an older one.
 
 
-When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/" target="_top">
+When downloading a snapshot from the <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/ target=_top>
 GCC snapshot download area</a> note that only the core compiler and C++
 distributions are required (prefix <tt>gcc-core-</tt> and <tt>gcc-g++-</tt>).<p>
 
@@ -193,19 +193,13 @@ Patches may be downloaded using most browsers by either shift-clicking
 or right-clicking on the link to the patch. You must not view the link
 and cut-and-paste because white space must be preserved exactly.<p>
 
-<b>Warning:</b> Users of Cygwin v1.1.1 will not be able to apply
-these patches successfully as described due to a bug present in that
-version of the Cygwin DLL. You may determine the version of the installed Cygwin
-DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
-If the version installed is v1.1.1, please read <a href="../faq.html#newcygwindll">
-this FAQ entry</a> to resolve the problem.
 <p>
-<b>All</b> users of Cygwin should verify that their <tt>/tmp</tt> directory (or
+Cygwin users should verify that their <tt>/tmp</tt> directory (or
 the directory specified by the <tt>TMPDIR</tt>, <tt>TMP</tt> or <tt>TEMP</tt>
 environment variables) is mounted in binary mode. If this is not the case
 the patches will apply, but the build will later fail. You may verify this
 using the Cygwin <tt>mount</tt> command. If /tmp is not explicitly listed,
-the entry for / will be used. If it says "<tt>textmode</tt>" for this entry,
+the entry for / will be used. If it says <tt>textmode</tt> for this entry,
 use the following command from a Cygwin bash prompt:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mount -f -b c:/cygwin/tmp /tmp
@@ -218,7 +212,7 @@ was installed to another directory.
 
 
 If Insight 5.0 is being used, rather than the standard GDB source
-distribution, then you must download the <a href="patches/insight-tcl.pat">
+distribution, then you must download the <a href=patches/insight-tcl.pat>
 insight-tcl.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
@@ -230,7 +224,7 @@ insight-tcl.pat</a> patch to a file and apply it:<p>
 
 
 If you are using a GCC snapshot dated 2000-03-20 or earlier, download
-the <a href="patches/ecos-gcc-snap-cpp.pat">ecos-gcc-snap-cpp.pat</a>
+the <a href=patches/ecos-gcc-snap-cpp.pat>ecos-gcc-snap-cpp.pat</a>
 patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
@@ -390,7 +384,7 @@ The eCos Configuration Tool also allows you to set the build tools path.
 <h2>Troubleshooting</h2>
 
 If you encounter difficulties in building or using the development tools, first check
-the <a href="../faq.html#problems_toolchain">eCos FAQ</a> and the
+the <a href="/fom/ecos?file=53">eCos FAQ</a> and the
 <a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
 if the topic has come up before. Initial queries
 may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
