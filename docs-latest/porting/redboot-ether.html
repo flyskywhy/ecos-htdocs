@@ -22,9 +22,9 @@ eCos.</p>
 _send & _recieve semantics - the sg list used to separate ethernet
 frame header from IP frame.
 
-Getting started: use server_test and ping target to see output. The
-other way can be tricky if there's no output, or if the output gets
-ignored by the host. (enable CYGPKG_NET_BUILD_TESTS)
+Getting started: use NET package server_test and ping target to see
+output. The other way can be tricky if there's no output, or if the
+output gets ignored by the host. (enable CYGPKG_NET_BUILD_TESTS)
 
 Disable CYGHWR_NET_DRIVER_ETH0_BOOTP and CYGPKG_NET_DHCP, set
 CYGHWR_NET_DRIVER_ETH0_ADDRS and suitable values in
@@ -39,6 +39,25 @@ will (silently!) ignore small packets.
 _poll function
 
 generic & platform implementation
+
+SNMP
+~~~~
+
+ecosconfig add CYGPKG_SNMPLIB CYGPKG_SNMPAGENT
+
+
+Build and run snmp/agent/current/tests/snmpping
+
+Whilst it's running, use snmpwalk to do SNMP to it.  There's a trivial hack
+inside snmpping.c to have ut run forever.
+
+   setenv TARGET3  10.16.19.76
+   setenv MIBS all
+   while ( { snmpstatus $TARGET3 public } )
+     snmpwalk -OS $TARGET3  public
+     date
+   end
+
 
 </pre>
 

@@ -1,11 +1,11 @@
 <HTML>
 <HEAD>
-<TITLE>eCos/ROM Monitor Calling Interface</TITLE>
+<TITLE>Virtual Vectors (eCos/ROM Monitor Calling Interface)</TITLE>
 </HEAD>
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>eCos/ROM Monitor Calling Interface</H2>
+<H2>Virtual Vectors (eCos/ROM Monitor Calling Interface)</H2>
 <HR SIZE=3>
 
 <p>Some eCos platforms have supported full debugging capabilities via
@@ -408,12 +408,6 @@ described in further detail below.</p>
         <dd>Version of table. Serves as a way to check for how many
         features are available in the table. This is the index of the
         last service in the table.</dd>
-<dt><tt>ICTRL_TABLE</tt>
-        <dd>[Unused, possibly delete]</dd>
-<dt><tt>EXC_TABLE</tt>
-        <dd>[Unused, possibly delete]</dd>
-<dt><tt>DBG_VECTOR</tt>
-        <dd>ROM monitor entry point. Not supported at the moment.</dd>
 <dt><tt>KILL_VECTOR</tt>
         <dd>[Presently unused by the stub code, but initialized] This
         vector defines a function to execute when the system receives
@@ -433,22 +427,10 @@ described in further detail below.</p>
         <dd>Flushes (invalidates) the instruction cache
         for the specified region. Some implementations may flush the
         entire instruction cache.</dd>
-<dt><tt>CPU_DATA</tt>
-        <dd>[Presently unused] Architecture HAL may use this as a
-        pointer to architecture specific data.</dd>
-<dt><tt>BOARD_DATA</tt>
-        <dd>[Presently unused] Platform HAL may use this as a
-        pointer to platform specific data.</dd>
-<dt><tt>SYSINFO</tt>
-        <dd>[Presently unused] Could be used to return information
-        about available memory, caches sizes, etc.</dd>
 <dt><tt>SET_DEBUG_COMM</tt>
         <dd>Change debugging communication channel.</dd>
 <dt><tt>SET_CONSOLE_COMM</tt>
         <dd>Change console communication channel.</dd>
-<dt><tt>SET_SERIAL_BAUD</tt>
-        <dd>[Unused, possibly delete. Feature available in comm table
-        anyway]</dd>
 <dt><tt>DBG_SYSCALL</tt>
         <dd>Vector used to communication between debugger functions in
         ROM and in RAM. RAM eCos configurations may install a function
@@ -467,6 +449,8 @@ described in further detail below.</p>
         <dd>Will delay the specified number of microseconds. The
         precision is platform dependent to some extend - a small value
         (<100us) is likely to cause bigger delays than requested.</dd>
+<dt><tt>FLASH_CFG_OP</tt>
+        <dd>For accessing configuration settings kept in flash memory.</dd>
 <dt><tt>INSTALL_BPT_FN</tt>
         <dd>Installs a breakpoint at the specified address. This is
         used by the asynchronous breakpoint support (see <a
@@ -595,6 +579,10 @@ ensures proper string mangling of the diagnostics output when required
         receive interrupts.</dd>
     <dt><tt>SET_TIMEOUT</tt>
         <dd>Set GETC timeout in milliseconds.</dd>
+    <dt><tt>FLUSH_OUTPUT</tt>
+        <dd>Forces driver to flush data in its buffers. Note
+            that this may not affect hardware buffers
+        (e.g. FIFOs).</dd>
    </dl>
 
 <dt><tt>DBG_ISR</tt>
