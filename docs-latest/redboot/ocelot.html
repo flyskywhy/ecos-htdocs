@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1319"
+NAME="AEN1316"
 >Overview</A
 ></H2
 ><P
@@ -114,7 +114,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1333"
+NAME="AEN1330"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -125,7 +125,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1336"
+NAME="AEN1333"
 >Flash Management</A
 ></H2
 ><DIV
@@ -133,7 +133,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1338"
+NAME="AEN1335"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -143,8 +143,9 @@ HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
->, but the actual numbers used with
-the flags in the sample commands should be:
+>, loading the primary image into
+RAM at 0x80100000. The actual numbers used with
+the flags in the sample commands are then:
 <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -166,7 +167,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1343"
+NAME="AEN1340"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -186,9 +187,10 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0xbdc20000
--b 0x80100000
--r 0x80100000</PRE
+>-f 0xbfc20000
+-b 0x80020000
+-r 0x80020000
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -200,7 +202,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1348"
+NAME="AEN1345"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -211,7 +213,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1351"
+NAME="AEN1348"
 >Memory Maps</A
 ></H2
 ><P
@@ -256,7 +258,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1359"
+NAME="AEN1356"
 >Resource Usage</A
 ></H2
 ><P
@@ -274,7 +276,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1363"
+NAME="AEN1360"
 >Rebuilding RedBoot</A
 ></H2
 ><P

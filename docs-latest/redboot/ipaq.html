@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1553"
+NAME="AEN1598"
 >Overview</A
 ></H2
 ><P
@@ -105,7 +105,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1557"
+NAME="AEN1602"
 >Initial Installation</A
 ></H2
 ><P
@@ -116,7 +116,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1560"
+NAME="AEN1605"
 >Installing RedBoot on the iPAQ using Windows/CE</A
 ></H3
 ><P
@@ -161,7 +161,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1573"
+NAME="AEN1618"
 >Installing RedBoot on the iPAQ - using the Compaq boot loader</A
 ></H3
 ><P
@@ -180,7 +180,7 @@ WIDTH="90%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->boot&#62; load flash 0x40000</PRE
+>boot&#62; load flash 0x100000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -200,11 +200,11 @@ CLASS="PROGRAMLISTING"
 >Bytes Sent: 168320   BPS:2771
 Transfer complete                      
                  Flash...erasing ...             
-Erasing sector 00040000             
+Erasing sector 00100000             
 writing flash..             
-addr: 00040000 data: EA00000E             
-addr: 00050000 data: E5953054             
-addr: 00060000 data: 2B2B2B2E             
+addr: 00100000 data: EA00000E             
+addr: 00110000 data: E5953054             
+addr: 00120000 data: 2B2B2B2E             
 verifying ... done.             
 boot&#62;</PRE
 ></TD
@@ -214,7 +214,8 @@ boot&#62;</PRE
 ></LI
 ><LI
 ><P
->Execute RedBoot                <TABLE
+>Execute RedBoot                
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="90%"
@@ -222,7 +223,7 @@ WIDTH="90%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->boot&#62; jump 0x4000</PRE
+>boot&#62; jump 0x100000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -304,7 +305,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1595"
+NAME="AEN1640"
 >ipaq-install-rb-permanently. Installing RedBoot permanently</A
 ></H3
 ><P
@@ -411,7 +412,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1614"
+NAME="AEN1659"
 >Restoring Windows/CE</A
 ></H3
 ><P
@@ -434,7 +435,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1619"
+NAME="AEN1664"
 >Flash Management</A
 ></H2
 ><DIV
@@ -442,7 +443,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1621"
+NAME="AEN1666"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -503,7 +504,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1628"
+NAME="AEN1673"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -563,7 +564,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1635"
+NAME="AEN1680"
 >Additional commands</A
 ></H2
 ><P
@@ -679,7 +680,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1674"
+NAME="AEN1719"
 >Memory Maps</A
 ></H2
 ><P
@@ -733,7 +734,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1681"
+NAME="AEN1726"
 >Resource Usage</A
 ></H2
 ><P
@@ -751,7 +752,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1684"
+NAME="AEN1729"
 >Rebuilding RedBoot</A
 ></H2
 ><P

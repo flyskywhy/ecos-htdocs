@@ -12,7 +12,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Intel SA1110 (Assabet) </TITLE
+>Analogue &#38; Micro PowerPC 860T</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
@@ -23,11 +23,11 @@ REL="UP"
 TITLE="Installation and Testing"
 HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="Intel SA1100 Multimedia Board "
-HREF="sa1100mm.html"><LINK
+TITLE="Motorola PowerPC MBX"
+HREF="mbx.html"><LINK
 REL="NEXT"
-TITLE="MIPS Atlas Board with CoreLV 4Kc and CoreLV 5Kc "
-HREF="atlas.html"></HEAD
+TITLE="ARM Evaluator7T (e7t) board with ARM7TDMI"
+HREF="e7t.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="sa1100mm.html"
+HREF="mbx.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="atlas.html"
+HREF="e7t.html"
 >Next</A
 ></TD
 ></TR
@@ -80,31 +80,33 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="ASSABET"
->Intel SA1110 (Assabet)</A
+NAME="VIPER"
+>Analogue &#38; Micro PowerPC 860T</A
 ></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1159"
+NAME="AEN1439"
 >Overview</A
 ></H2
 ><P
->RedBoot
-supports the board serial port and the compact flash ethernet port. The default
-serial port settings are 38400,8,N,1. RedBoot also supports flash management
-on the Assabet. Two basic RedBoot configurationsare supported: <P
+>RedBoot uses
+the SMC1 serial port. The default serial port settings are 38400,8,N,1.
+Ethernet is also supported using the RJ-45 connector. </P
+><P
+>Management of onboard flash is also supported. Two basic RedBoot configurations
+are supported: <P
 ></P
 ><UL
 ><LI
 ><P
->RedBoot running from the board's flash boot sector.</P
+>RedBoot running from RAM with RedBoot in the flash boot sector.</P
 ></LI
 ><LI
 ><P
->RedBoot running from RAM with RedBoot in the flash boot sector.</P
+>RedBoot running from the board's flash boot sector.  </P
 ></LI
 ></UL
 ></P
@@ -114,23 +116,18 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1173"
+NAME="AEN1454"
 >Initial Installation Method</A
 ></H2
 ><P
->A Windows or Linux utility is used to program flash over parallel port
-driven JTAG interface. See board documentation for details on in situ flash
-programming. </P
-><P
->The flash parts are also socketed and may be programmed in a suitable
-device programmer.</P
+>RedBoot must be installed at the A &#38; M factory.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1177"
+NAME="AEN1457"
 >Flash management</A
 ></H2
 ><DIV
@@ -138,7 +135,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1179"
+NAME="AEN1459"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -149,7 +146,8 @@ HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
 >, but the actual numbers used with
-the flags in the sample commands should be:        <TABLE
+the flags in the sample commands should be:        
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -157,9 +155,9 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0x50000000      
--b 0x60000      
--l 0x10000</PRE
+>-f 0xfe000000      
+-b 0x50000      
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -170,7 +168,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1184"
+NAME="AEN1464"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -181,7 +179,8 @@ HREF="updating-redboot.html#DIFFERENT-VERSION-FROM-RAM"
 >Load and start a different version of RedBoot, running from RAM</I
 > in Chapter 4</A
 >, but the actual numbers used
-with the flags in the sample commands should be:        <TABLE
+with the flags in the sample commands should be:
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -189,7 +188,10 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0x50010000      -b 0x20000      -r 0x20000      -l 0x10000</PRE
+>-f 0xfe020000
+-b 0x20000
+-r 0x20000
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -201,7 +203,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1189"
+NAME="AEN1469"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -212,23 +214,11 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1192"
+NAME="AEN1472"
 >Memory Maps</A
 ></H2
 ><P
->The first level page table is located at physical address 0xc0004000.
-No second level tables are used.<DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
-><P
-><B
->NOTE: </B
->The virtual memory maps in this section use a C and B column to indicate
-whether or not the region is cached (C) or buffered (B).</P
-></BLOCKQUOTE
-></DIV
-><TABLE
+>Memory Maps RedBoot sets up the following memory map on the MBX board.<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -236,39 +226,11 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->Physical Address Range     Description 
------------------------    ---------------------------------- 
-0x00000000 - 0x07ffffff    flash 
-0x08000000 - 0x0fffffff    SA-1111 Board flash 
-0x10000000 - 0x17ffffff    Board Registers 
-0x18000000 - 0x1fffffff    Ethernet 
-0x20000000 - 0x2fffffff    SA-1111 Board PCMCIA 
-0x30000000 - 0x3fffffff    Compact Flash 
-0x40000000 - 0x47ffffff    SA-1111 Board 
-0x48000000 - 0x4bffffff    GFX 
-0x80000000 - 0xbfffffff    SA-1110 Internal Registers 
-0xc0000000 - 0xc7ffffff    DRAM Bank 0 
-0xc8000000 - 0xcfffffff    DRAM Bank 1 
-0xd0000000 - 0xd7ffffff    DRAM Bank 2 
-0xd8000000 - 0xdfffffff    DRAM Bank 3 
-0xe0000000 - 0xe7ffffff    Cache Clean  
-
-
-Virtual Address Range    C B  Description 
------------------------  - -  ---------------------------------- 
-0x00000000 - 0x01ffffff  Y Y  DRAM Bank 0 
-0x08000000 - 0x0fffffff  Y Y  SA-1111 Board flash 
-0x10000000 - 0x17ffffff  N N  Board Registers 
-0x18000000 - 0x1fffffff  N N  Ethernet 
-0x20000000 - 0x2fffffff  N N  SA-1111 Board PCMCIA 
-0x30000000 - 0x3fffffff  N N  Compact Flash 
-0x40000000 - 0x47ffffff  N N  SA-1111 Board 
-0x48000000 - 0x4bffffff  N N  GFX 
-0x50000000 - 0x57ffffff  Y Y  flash 
-0x80000000 - 0xbfffffff  N N  SA-1110 Internal Registers 
-0xc0000000 - 0xc1ffffff  N Y  DRAM Bank 0 
-0xe0000000 - 0xe7ffffff  Y Y  Cache Clean 
-The flash based RedBoot image occupies virtual addresses 0x50000000 - 0x5001ffff.</PRE
+>Physical Address Range Description  
+----------------------- -----------  
+0x00000000 - 0x007fffff DRAM  
+0xfe000000 - 0xfe0fffff flash (AMD29LV8008B)  
+0xff000000 - 0xff0fffff MPC registers</PRE
 ></TD
 ></TR
 ></TABLE
@@ -279,24 +241,23 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1199"
+NAME="AEN1476"
 >Resource Usage</A
 ></H2
 ><P
->The RAM based RedBoot image occupies RAM addresses 0x20000 - 0x5ffff.
-RAM addresses from 0x60000 to the end of RAM are available for general use
-such as a temporary scratchpad for downloaded images before they are written
-to flash. </P
-><P
->The SA11x0 OS timer is used as a polled timer to provide timeout support
-for network and XModem file transfers.</P
+>The flash based RedBoot image occupies flash addresses 0xfe000000 -
+ 0xfe01ffff. RedBoot also reserves RAM (0x00000000 - 0x0001ffff) for RedBoot
+runtime uses. RAM based RedBoot configurations are designed to run from RAM
+at physical addresses 0x00020000 - 0x0004ffff. RAM physical addresses from
+0x00050000 to the end of RAM are available for general use, such as a temporary
+scratchpad for downloaded images, before they are written to flash.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1203"
+NAME="AEN1479"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -305,10 +266,10 @@ HREF="rebuilding-redboot.html"
 >Chapter 3</A
 > should be followed.
 The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
-&#8220;assabet&#8221;, &#8220;arm&#8221; and &#8220;sa11x0/assabet&#8221; respectively.
+&#8220;viper&#8221;, &#8220;powerpc&#8221; and &#8220;viper&#8221; respectively.
 Note that the configuration export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
->hal/arm/sa11x0/assabet/<TT
+>hal/powerpc/viper/<TT
 CLASS="REPLACEABLE"
 ><I
 >VERSION</I
@@ -333,7 +294,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="sa1100mm.html"
+HREF="mbx.html"
 >Prev</A
 ></TD
 ><TD
@@ -349,7 +310,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="atlas.html"
+HREF="e7t.html"
 >Next</A
 ></TD
 ></TR
@@ -358,7 +319,7 @@ HREF="atlas.html"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Intel SA1100 Multimedia Board</TD
+>Motorola PowerPC MBX</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -371,7 +332,7 @@ HREF="installation-and-testing.html"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->MIPS Atlas Board with CoreLV 4Kc and CoreLV 5Kc</TD
+>ARM Evaluator7T (e7t) board with ARM7TDMI</TD
 ></TR
 ></TABLE
 ></DIV

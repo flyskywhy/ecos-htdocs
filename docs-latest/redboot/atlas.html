@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5b, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -257,7 +257,7 @@ CLASS="CITETITLE"
 > CD contains an <TT
 CLASS="COMPUTEROUTPUT"
 >srec2flash</TT
-> utility. The source code for this utilty is part
+> utility. The source code for this utility is part
 of the <TT
 CLASS="COMPUTEROUTPUT"
 >yamon/yamon-src-01.01.tar.gz</TT
@@ -307,13 +307,13 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->% cp redboot.srec redboot.rec   
-% srecconv.pl -ES L -A 29 redboot </PRE
+>% cp redboot_ROM.srec redboot_ROM.rec   
+% srecconv.pl -ES L -A 29 redboot_ROM </PRE
 ></TD
 ></TR
 ></TABLE
 >  The resulting file is
-named redboot.fl.</P
+named redboot_ROM.fl.</P
 ></DIV
 ></DIV
 ><DIV
@@ -510,18 +510,8 @@ NAME="AEN1301"
 >Memory Maps</A
 ></H2
 ><P
->Memory Maps RedBoot sets up the following memory map on the Atlas board.<DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
-><P
-><B
->NOTE: </B
->The virtual memory maps in this section use a C and B column to indicate
-whether or not the region is cached (C) or buffered (B).</P
-></BLOCKQUOTE
-></DIV
-><TABLE
+>Memory Maps RedBoot sets up the following memory map on the Atlas board.
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -548,7 +538,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1308"
+NAME="AEN1305"
 >Resource Usage</A
 ></H2
 ><P
@@ -564,7 +554,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1311"
+NAME="AEN1308"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -573,7 +563,8 @@ HREF="rebuilding-redboot.html"
 >Chapter 3</A
 > should be followed.
 The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
-&#8220;atlas_mips32_4kc&#8221;, &#8220;mips&#8221; and &#8220;atlas&#8221; respectively.
+&#8220;atlas_mips32_4kc&#8221; or &#8220;atlas_mips64_5kc&#8221;, &#8220;mips&#8221;
+and &#8220;atlas&#8221; respectively.
 Note that the configuration export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
 >hal/mips/atlas/<TT
