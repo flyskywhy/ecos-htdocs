@@ -195,6 +195,26 @@ not yet available (estimated availability - January 2000).</p>
 <hr noshade size=3>
 <h2>Thanks to our contributors</h2>
 
+<h4>MPC5xx ports</h4>
+
+<p>Bob Koninckx at the <a href="http://www.mech.kuleuven.ac.be/pma">Department
+of Mechanical Engineering at the Katholieke Universiteit Leuven</a> has
+contributed ports to two PowerPC MPC555 based boards, the CME0555 eval
+board from <a href=" http://www.axman.com/">Axiom Manufacturing</a> and
+the <a href="http://www.wuerz-elektronik.com/MPC555.htm">ec555</a> from
+<a href="http://www.wuerz-elektronik.com/">Wuerz Elektronik</a>. Both
+ports include FLASH, serial and wallclock drivers.</p>
+
+<p>The ports will appear in eCos v2, but until then a complete tarball may
+be downloaded 
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/ppc/mpc555/kul.tar.gz">
+from here</a>. Note that this is a standalone set of sources, and may not be
+easy to merge with an existing repository. There are also some
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/ppc/mpc555/mpc555extras.epk">
+extra packages</a> containing A/D and D/A convertor device drivers for both
+boards as well as a Time Processor Unit device driver for the ec555.</p>
+
+
 <h4>H8/300 port</h4>
 <p>Yoshinori Sato has contributed a port to the Hitachi H8/300. This port
 will be made available in the upcoming eCos v2 release, but until then
