@@ -1,37 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
 <html>
 <head>
-<title>eCos Sourceware:  An embedded OS for the masses</title>
+<title>eCos Sourceware: An embedded OS for the masses</title>
 </head>
 <!--#include virtual="/include/header-subpages.html"-->
 
-<h2 align=center>eCos</h2>
+<h1 align=center>eCos, the Embedded Cygnus Operating System</h1>
 
-<p>We're developing a complete free software toolkit for developing in
-the Java Language.
+<p> Cygnus is developing a complete open source real time operating
+system called eCos, the <i>Embedded Cygnus Operating System</i>.  eCos
+allows fine-grained configuration of the kernel and other components,
+thus making it possible to write applications with a very small
+footprint.
 
-<blockquote>
-   <p><b>New</b>:  The first part of the development environment which we
-   are making available is <b>gcj</b>, we are releasing it on September
-   6, 1998.  We have a tarball available now and it is being integrated
-   into the <a href="http://egcs.cygnus.com/">EGCS compiler suite</a>
-   as an additional front end (it will show up in all future EGCS snapshots).
-   Check out the <a href="gcj.html"><b>gcj web page</b></a> 
-   for more information.
-</blockquote>
+<p> The first full net release of eCos will occur in late November, at
+which time a grand announcement will be made.  Until then we are
+making the complete HTML documentation available for the two principal
+supported platforms: the Matsushita MN10300 and the Toshiba TX39.  We
+are also making mailing lists available and disclosing our license.
+
+<h2>The documentation</h2>
+
+<ul>
+  <li><a href="docs/mn10300/index.html">MN10300 documentation</a>
+  <li><a href="docs/tx39/index.html">TX39 documentation</a>
+</ul>
 
 <h2>Mailing lists</h2>
 
-<p>We have two mailing lists set up for our Java related
-work, <code>java-announce</code> and <code>java-discuss</code>.
-<code>java-announce</code> is a low-volume, moderated list which will
+<p>We have two mailing lists set up for our eCos related work,
+<code>ecos-announce</code> and <code>ecos-discuss</code>.
+<code>ecos-announce</code> is a low-volume, moderated list which will
 have announcements related to this project.  <code>java-discuss</code>
 is an open list where people are invited to discuss the software we're
-releasing, ask questions, post patches, etc.  Both are majordomo-run lists,
-or you can subscribe with the entry boxes below:
+releasing, ask questions, post patches, etc.  Both are majordomo-run
+lists, or you can subscribe with the entry boxes below:
 
-<p>To subscribe to the <code>java-announce</code> mailing list, enter your
+<p>To subscribe to the <code>ecos-announce</code> mailing list, enter your
 e-mail address:
-<form method="get" action="/cgi-bin/subscribe-java-announce">
+<form method="get" action="/cgi-bin/subscribe-ecos-announce">
   <input type="text" name="name" size="16"> <input type="Submit" name="submit" value="Sign me up!">
 </form>
 
@@ -41,97 +48,44 @@ e-mail address:
   <input type="text" name="name" size="16"> <input type="Submit" name="submit" value="Sign me up!">
 </form>
 
-<h2>Who we are</h2>
+<h2>eCos General Public License</h2>
 
-<p>A motley collection of ne'er-do-wells, a gang of notorious
-troublemakers, a group of dedicated hackers.  We're:
+<p> At this time you can also view the Cygnus eCos Public License,
+which is based on the Netscape Public License, which is turn inspired
+by the GNU General Public License.  Click <a
+href="license.html">here</a> for the full text of the license.
 
-<ul>
+<h2>Rogues gallery</h2>
 
- <li> <a href="http://www.cygnus.com/~bothner/">Per Bothner</a> (bothner@cygnus.com)
- <li> <a href="http://www.cygnus.com/~green/">Anthony Green</a> (green@cygnus.com)
- <li> Stu Grossman (grossman@cygnus.com)
- <li> Andrew Haley (aph@cygnus.com)
- <li> Warren Levy (warrenl@cygnus.com)
- <li> <a href="http://www.cygnus.com/~apbianco/">Alexandre Petit-Bianco</a> (apbianco@cygnus.com)
- <li> <a href="http://www.cygnus.com/~tromey/">Tom Tromey</a> (tromey@cygnus.com)
-
-</ul>
-
-<h2>Papers describing our work</h2>
-
-<p>The engineers on this project have written a number of papers for
-conferences and magazines.
+<p>The eCos engineering team is mostly located in Cygnus's UK office,
+with one remotie in Santa Fe, New Mexico.  Here is the list:
 
 <ul>
-  <li><b>August 1998</b>: "<cite>No Silver Bullet - Garbage Collection for 
-      Java in Embedded Systems</cite>".
-      <br>[<a href="papers/nosb.html">HTML</a>] 
-          [<a href="papers/nosb.ps.gz">PS for presentation slides</a>]
-      <br>Author:  <a href="http://www.cygnus.com/~apbianco/">Alex Petit-Bianco</a>.
-      <p>
-
-  <li><b>November 1997</b>:  "<cite>Writing native Java methods in natural C++</cite>" discusses
-      interaction between Java and C++.  
-      <br>[<a href="papers/native++.html">HTML</a>] 
-          [<a href="papers/native++.sgml">SGML/Docbook source</a>]
-      <br>Author: <a href="http://www.cygnus.com/~bothner/">Per Bothner</a>.
-      <p>
-
-  <li><b>October 1997</b>: "<cite>Compiling Java for Embedded Systems</cite>"
-      was presented by Per Bothner at the Embedded Systems Conference 
-      West in San Jose.  It provides a technical overview 
-      of our strategy and plans.  
-
-      <br>[<a href="http://www.cygnus.com/news/whitepapers/compiling.html">HTML</a>] 
-          [<a href="papers/compjava.pdf">PDF</a>] 
-          [<a href="papers/compjava.ps.gz">gzip'd Postscript</a>] 
-          [<a href="papers/esc97.sgml">SGML/Docbook source</a>] 
-          [<a href="papers/esc97w-slides.ps.gz">PS 
-          for presentation slides</a>].
-
-      <br>Author: <a href="http://www.cygnus.com/~bothner/">Per Bothner</a>.
-      <p>
-
-  <li><b>February 1997</b>: "<cite>A Gcc-based Java Implementation</cite>" is an older paper
-      presented by Per Bothner
-      at IEEE Compcon.  
-      <br>[<a href="papers/gcc-java.html">extended
-          abstract (HTML)</a>] 
-          [<a href="papers/gcc-java.ps.gz">complete
-          paper (Postscript)</a>]
-          [(<a href="papers/compcon97.ps.gz">slides 
-          for presentation</a>)]
-
-      <br>Author: <a href="http://www.cygnus.com/~bothner/">Per Bothner</a>.
-      <p>
-
+  <li> Paul Beskeen
+  <li> John Dallaway
+  <li> Simon FitzMaurice
+  <li> Mark Galassi
+  <li> Nick Garnett
+  <li> Tim Goodwin
+  <li> Jonathan Larmour
+  <li> David Moore
+  <li> Chris Provenzano
+  <li> Jesper Skov
+  <li> Chris Tarpy
+  <li> Gary Thomas
+  <li> Hugo Tyson
+  <li> Bart Veer
 </ul>
-
-<h2>Other free Java-related projects</h2>
-
-<ul>
-  <li>The <a href="http://www.rr.iij4u.or.jp/~kkojima/glass.html">Glass</a>
-      project is a different front end to gcc.
-
-  <li>The <a href="http://www.classpath.org">Classpath</a> project is
-      writing a free replacement for the standard Java libraries.
-
-  <li><a href="http://www.hungry.com/products/japhar/">Japhar</a> is a
-      free Java VM.
-
-  <li><a href="http://www.transvirtual.com">Kaffe</a> is another free 
-      Java VM.
-</ul>
-
 
 <hr>
 
+<!--
 <blockquote>
   <a name="javatm">Java</a> and all Java-based marks are trademarks or
   registered trademarks of Sun Microsystems, Inc. in the United States
   and other countries. The Free Software Foundation and Cygnus Solutions
   are independent of Sun Microsystems, Inc.
 </blockquote>
+-->
 
 <!--#include virtual="/include/footer-subpages.html"-->
