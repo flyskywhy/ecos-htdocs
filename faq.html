@@ -13,7 +13,7 @@
 <OL>
   <H4>What is eCos?</H4>
   <LI><A HREF="#what_ecos">What is eCos?</A></LI>
-  <LI><A HREF="#what_why">Why has Cygnus produced another embedded real-time operating system?</A></LI>
+  <LI><A HREF="#what_why">Why has Red Hat produced another embedded real-time operating system?</A></LI>
   <LI><A HREF="#what_source">Do you provide the source code?</A></LI>
   <LI><A HREF="#what_configurability">What do you mean by configurability?</A></LI>
   <LI><A HREF="#what_size">What are the performance figures?</A></LI>
@@ -26,13 +26,13 @@
   <LI><A HREF="#license_core">What exactly is the core system?</A></LI>
   <LI><A HREF="#license_packages">What about other packages?</A></LI>
   <LI><A HREF="#license_new_packages">What if I create a new package?</A></LI>      
-  <LI><A HREF="#license_why_new">Why has Cygnus created a new license?</A></LI>      
+  <LI><A HREF="#license_why_new">Why has Red Hat created a new license?</A></LI>      
   <LI><A HREF="#license_coverage">Does the license cover situation ...?</A></LI>
   <h4>Porting</h4>
   <LI><A HREF="#porting_does_it">Does eCos run on processor X?</A></LI>
-  <LI><A HREF="#porting_will_cygnus">Will Cygnus be porting eCos to processor X?</A></LI>
+  <LI><A HREF="#porting_will_redhat">Will Red Hat be porting eCos to processor X?</A></LI>
   <LI><A HREF="#porting_how_would_I">How would I go about porting eCos to a new processor?</A></LI>
-  <LI><A HREF="#porting_adopt">Will Cygnus adopt my port?</A></LI>
+  <LI><A HREF="#porting_adopt">Will Red Hat adopt my port?</A></LI>
   <LI><A HREF="#porting_board">How about porting eCos to a new board?</A></LI>
   <LI><A HREF="#porting_compiler">What are the compiler dependencies?</A></LI>
   <h4>Contributing</h4>
@@ -53,14 +53,14 @@
   <LI><A HREF="#problems_unix">Toolchain build problems on other Unix systems</A></LI>      
   <h4>Miscellaneous</h4>
   <LI><A HREF="#misc_printed">Where can I get hold of printed documentation?</A></LI>
-  <LI><A HREF="#misc_jobs">Cygnus sounds like a wonderful company - are there any jobs going?</A></LI>
+  <LI><A HREF="#misc_jobs">Red Hat sounds like a wonderful company - are there any jobs going?</A></LI>
 </OL>
 
 <H3>What is eCos?</H3>
 
 <H4><A NAME="what_ecos">What is eCos?</A></H4>
 
-eCos (embedded Cygnus operating system) is an open-source,
+eCos (embedded Configurable operating system) is an open-source,
 royalty-free, highly configurable, application-specific operating
 system ideal for embedded systems development. eCos is targeted at
 high-volume applications in consumer electronics, telecommunications,
@@ -71,13 +71,13 @@ software developers to focus on delivering better products, instead of
 developing or maintaining a real-time operating system in addition
 to the products themselves.
 
-<H4><A NAME="what_why">Why has Cygnus produced another embedded
+<H4><A NAME="what_why">Why has Red Hat produced another embedded
 real-time operating system?</A></H4>
 
 Even with so many commercially available run-time solutions, more than
 50 percent of all embedded projects today are built using in-house
 proprietary, or &quot;roll your own&quot;, real-time technologies (Venture
-Development Corporation). Cygnus partnered with microprocessor vendors
+Development Corporation). Red Hat partnered with microprocessor vendors
 and embedded product manufacturing companies to develop eCos around
 the requirement of an open, technically advanced run-time solution.
 eCos was designed to address the following fundamental issues that
@@ -108,11 +108,11 @@ multi-threaded debugging, graphical configuration, test suites, etc.
 <H4><A NAME="what_source">Do you provide the source code?</A></H4>
 
 <P>
-Absolutely. eCos is an open source project, and Cygnus works with the
-development community on the net. Cygnus has many years of experience
-in this field through our work on the gcc and g++ compilers, the gdb
+Absolutely. eCos is an open source project, and Red Hat works with the
+development community on the net. Red Hat has many years of experience
+in this field through our work on Linux, the gcc and g++ compilers, the gdb
 debugger, and many other tools. The same development model has proved
-an overwhelming success in many other projects, most famously Linux.
+an overwhelming success in many other projects.
 
 <P>
 <H4><A NAME="what_configurability">What do you mean by configurability?</A></H4>
@@ -211,7 +211,7 @@ Certainly. There are two main mailing lists which anybody can <A
 HREF="intouch.html">subscribe</A> to. The ecos-announce
 mailing list is a low-volume moderated list for major announcements.
 The ecos-discuss mailing list is an unmoderated list for
-general discussion, both technical and non-technical. All of Cygnus's
+general discussion, both technical and non-technical. All of Red Hat's
 eCos development team will read this list and join in the discussions
 as appropriate. If you prefer you can subscribe to digest versions of
 these mailing lists instead. Archives for both <A
@@ -223,7 +223,7 @@ If you have a question which you do not want to discuss in a public
 forum then there is a separate <A
 HREF="mailto:ecos-maintainers@cygnus.com">ecos-maintainers</A> mail
 address. All requests sent to this request will be considered
-confidential, and nobody outside Cygnus is able to subscribe to this
+confidential, and nobody outside Red Hat is able to subscribe to this
 list. 
 
 <P>
@@ -272,8 +272,8 @@ product indicating that it makes use of eCos.
 <P>
 No. Your application source code is your own, to do with as you
 please. As far as the eCos public license is concerned you are under
-no obligation to reveal a single line of your source code to Cygnus or
-to anybody else. In fact you do not even have to tell Cygnus about the
+no obligation to reveal a single line of your source code to Red Hat or
+to anybody else. In fact you do not even have to tell Red Hat about the
 existence of your project, although we would love to know about all
 the different products that use eCos.
 
@@ -328,7 +328,7 @@ Some companies or organizations may release packages that are not open
 source or freely available. Instead the application developer may have
 to pay a one-off license fee or quite possibly per-unit royalties if
 the application uses such a package. Not only is this perfectly legal,
-Cygnus would very much like other companies to make money by providing
+Red Hat would very much like other companies to make money by providing
 such packages.
 
 <P>
@@ -353,13 +353,13 @@ freely available to the entire eCos community then we recommend the
 eCos public license, but the choice is yours.
 
 <P>
-<h4><A NAME="license_why_new">Why has Cygnus created a new license?</A></h4>
+<h4><A NAME="license_why_new">Why has Red Hat created a new license?</A></h4>
 
 <P>
 Balancing the needs and desires of all the companies, organizations,
 and individuals involved with eCos is difficult. The most important
 requirement is that the freedom of all eCos users is protected: it
-must be impossible for anybody, even Cygnus, to impose restrictions on
+must be impossible for anybody, even Red Hat, to impose restrictions on
 how the system can be used now or in the future. Some existing
 licenses such as the X11 license do not provide this.
 
@@ -408,11 +408,11 @@ details of the supported architectures. If a particular processor is
 not listed there then support for that processor is not yet available.
 
 <P>
-<h4><A NAME="porting_will_cygnus">Will Cygnus be porting eCos to
+<h4><A NAME="porting_will_redhat">Will Red Hat be porting eCos to
 processor X?</A></h4>
 
 <P>
-Whenever possible once Cygnus starts working on a particular port we
+Whenever possible once Red Hat starts working on a particular port we
 will announce this fact immediately, to avoid any risk of contributors
 duplicating work that is already ongoing. If a port has not yet
 started but is under consideration then typically we will also make
@@ -420,13 +420,13 @@ this clear. Occasionally we have to be cautious in what we can reveal,
 and an understanding of the underlying business model is useful here.
 
 <P>
-eCos is freely available, so Cygnus cannot earn any direct revenues in
+eCos is freely available, so Red Hat cannot earn any direct revenues in
 the form of unit royalties or development seat licenses. However we
-still need to earn money by one means or another - Cygnus is a
+still need to earn money by one means or another - Red Hat is a
 company, not a charitable organization.
 
 <P>
-When Cygnus makes a reference release of eCos which includes ports to
+When Red Hat makes a reference release of eCos which includes ports to
 particular processors, those ports are certified. This means that we
 are willing to provide guarantees about the quality of the system on
 that processor. If somebody takes out a technical support contract for
@@ -449,14 +449,14 @@ business, for example the GnuPro toolkit. However these revenue
 sources take time to ramp up.
 
 <P>
-For Cygnus to embark on a new port we must be confident that we can
+For Red Hat to embark on a new port we must be confident that we can
 recoup the investment involved. In addition, given that there are many
 processors we could be porting to, not to mention further development
 to the main system, and also given that engineering resources are
 limited, we need to prioritize the ports in some fashion.
 
 <P>
-It so happens that Cygnus already has very close relationships with
+It so happens that Red Hat already has very close relationships with
 many leading silicon vendors through the GnuPro business. Typically
 when a silicon vendor produces a new processor they will want various
 tools such as a C compiler, a C++ compiler, and a debugger. These
@@ -466,17 +466,17 @@ tools are of course ideal for this: technically they are
 industry-leading; the quality is very high, again a prerequisite
 before we can offer technical support; the tools are already familiar
 to many developers; and they are free, source and all. This is a
-winning combination, and a proportion of Cygnus's revenue comes from
+winning combination, and a proportion of Red Hat's revenue comes from
 porting the tools to new processors.
 
 <P>
 The same reasoning applies to eCos: having an open source and free
 operating system available for a given processor makes that processor
 more attractive to potential application developers, so the silicon
-vendor is likely to sell more chips. Hence Cygnus is in discussion
+vendor is likely to sell more chips. Hence Red Hat is in discussion
 with many silicon vendors about doing a certified port of eCos to
 particular processors. Having the silicon vendors sponsor ports in
-this way provides Cygnus with early revenue, which can then be pumped
+this way provides Red Hat with early revenue, which can then be pumped
 back into further development of the system. The silicon vendors gain
 an initial competitive advantage by having eCos available on their
 processor early on.
@@ -490,11 +490,11 @@ also commercial considerations, for example it is possible that we
 might be talking to a number of different parties about porting to a
 processor architecture, to a specific processor, or to a particular
 board. Providing detailed information to the net community may harm
-such negotiations, resulting in loss of revenue for Cygnus and hence
+such negotiations, resulting in loss of revenue for Red Hat and hence
 fewer resources which can be used for further system development.
 
 <P>
-If we are specifically asked whether or not Cygnus is planning a port
+If we are specifically asked whether or not Red Hat is planning a port
 to a particular architecture and such a port is under consideration,
 then we will say so. However we will not reveal any detailed
 information which is commercially sensitive or which would violate an
@@ -506,10 +506,10 @@ desire for an open development process.
 <P>
 In most cases, once work starts on a particular port we will announce
 this fact immediately. This avoids people doing their own port to a
-particular processor at the same time as Cygnus. If there is already a
+particular processor at the same time as Red Hat. If there is already a
 port to that processor in progress then typically we would work with
 the existing developers to avoid duplication of effort. Such
-collaboration would save Cygnus a certain amount of work, but there
+collaboration would save Red Hat a certain amount of work, but there
 would still be plenty left for us to do: most importantly the QA and
 continuous testing that comes with a certified port of eCos, but also
 board ports to whichever board(s) are selected by the silicon vendor.
@@ -521,13 +521,13 @@ a new processor?</A></h4>
 <P>
 A sensible first step for this, as for any other non-trivial project
 involving eCos, would be to find out whether or not anybody else
-(either inside or outside Cygnus) is already working on something
+(either inside or outside Red Hat) is already working on something
 similar. One way of doing this is to post a message to the <A
 HREF="mailto:ecos-discuss@sourceware.cygnus.com">ecos-discuss@sourceware.cygnus.com</A>
 mailing list. If you prefer a more confidential communication channel
 for any reason you can instead send email to <A
 HREF="mailto:ecos-maintainers@cygnus.com">ecos-maintainers@cygnus.com</A>
-- any such messages will not be seen by anybody outside Cygnus. We aim
+- any such messages will not be seen by anybody outside Red Hat. We aim
 to keep track of every ongoing eCos project that we know about, to
 avoid duplication of effort.
 
@@ -586,17 +586,17 @@ There are existing platform HAL packages for the supported boards, and
 for various simulators.
 
 <P>
-<h4><A NAME="porting_adopt">Will Cygnus adopt my port?</A></h4>
+<h4><A NAME="porting_adopt">Will Red Hat adopt my port?</A></h4>
 
 <P>
 If somebody produces a port to a new processor but does not wish to
-maintain it indefinitely then Cygnus may be willing to adopt this
+maintain it indefinitely then Red Hat may be willing to adopt this
 port. This involves certifying the port: extensive QA, quite possibly
 code clean-ups so that it satisfies the coding standards, possibly new
 documentation, and lots of testing. In addition we will maintain the
 port, upgrading it as the HAL specification evolves. The effort
 involved is considerable, and over time it will be significantly
-larger than the initial port. Usually Cygnus will only be able to
+larger than the initial port. Usually Red Hat will only be able to
 afford to do so if there are likely to be sufficient long-term
 revenues, for example if there are enough existing users of the
 processor who might be interested in technical support. Also, we would
@@ -604,9 +604,9 @@ need a ready source of suitable hardware that can be used for the
 testing, and we would need a copyright assignment for such ports.
 
 <P>
-However a port does not have to be supported by Cygnus or by anybody
+However a port does not have to be supported by Red Hat or by anybody
 else for it to be useful to somebody. If a port (or any other eCos
-package) does not have an active maintainer then Cygnus can still make
+package) does not have an active maintainer then Red Hat can still make
 it available as unsupported software, providing space on our ftp
 server and suitable links in the web pages. This allows people to
 download and use such ports. If there are enough users for an
@@ -616,7 +616,7 @@ contributed software.
 
 <P>
 If a port is not included in the reference releases but still has a
-maintainer outside Cygnus, we can provide certain resources to assist
+maintainer outside Red Hat, we can provide certain resources to assist
 with this. For example we can provide mailing lists, web and ftp
 services, and anonymous CVS access.
 
@@ -697,12 +697,12 @@ new packages. Such users are under no obligation to contribute.
 <P>
 The <A
 HREF="http://www.tuxedo.org/~esr/writings/cathedral-bazaar/cathedral-bazaar.html">bazaar</A>
-of course. For the eCos system Cygnus is committed to an open
+of course. For the eCos system Red Hat is committed to an open
 development model. In addition to the full releases we provide
 anonymous CVS access to the current development sources. Discussions
 about the system will generally be held in the open <A
 HREF="intouch.html">ecos-discuss</A> mailing list. However it
-is necessary to apply a caveat to this. Many of Cygnus's commercial
+is necessary to apply a caveat to this. Many of Red Hat's commercial
 dealings involve confidential information and are covered by
 non-disclosure agreements. A potential port to another architecture
 would generally be covered by such an agreement, and hence we would
@@ -811,7 +811,7 @@ change to the system and releases it without the knowledge or consent
 of management. Some time later management finds out about the
 contribution, and decides that it should not have happened. The junior
 programmer gets severely reprimanded. The company's lawyers now
-approach Cygnus and various users of eCos, claiming that the
+approach Red Hat and various users of eCos, claiming that the
 contribution violated the company's copyright or quite possibly a
 patent, and demanding royalties. Until the issue gets resolved there
 would be a significant amount of fear, uncertainty, and doubt amongst
@@ -842,7 +842,7 @@ discussed for a while, and then a summary will be prepared.
 <h4><A NAME="contrib_anoncvs">What is anonymous CVS?</A></h4>
 
 <P>
-CVS is the source code control system used internally within Cygnus to
+CVS is the source code control system used internally within Red Hat to
 manage the eCos sources (and the sources for our other projects). The
 <A HREF="anoncvs.html">anonymous CVS service</A> on sourceware allows
 net developers to get hold of an up-to-date set of eCos sources,
@@ -858,17 +858,17 @@ access?</A></h4>
 
 <P>
 Initially the sources available via the anonymous CVS servers will be
-a snapshot of the master sources held on a Cygnus internal machine.
+a snapshot of the master sources held on a Red Hat internal machine.
 When a contribution is received and accepted it will first be
 integrated into the internal sources, and will then become visible to
 the wider community at the time of the next snapshot - typically
 within a week or so. Currently the majority of eCos development
-still happens within Cygnus, and maintenance is easier if changes are
+still happens within Red Hat, and maintenance is easier if changes are
 made to only one master copy.
 <P>
 At some future stage, once there is a sufficiently large number of
 external developers, some of these developers may well be given write
-access to the CVS server. Cygnus would now make contributions to this
+access to the CVS server. Red Hat would now make contributions to this
 from its internal copy of the sources, and there would be merges from
 the sourceware CVS server into the internal copy. The latter would
 still be used for making commercial reasons of the system, and for any
@@ -902,11 +902,11 @@ confidentiality issues.
 <P>
 The preferred approach is to use the <A
 HREF="problemreport.html">problem reporting</A> web page, which
-ensures that the report is in our database. Note that Cygnus does not
+ensures that the report is in our database. Note that Red Hat does not
 provide free technical support for eCos, if such support is required
 then it is possible via the <A
 HREF="http://www.cygnus.com/ecos/ecos_support.html">Gold Partner
-program</A>. However reporting problems does allow Cygnus to improve
+program</A>. However reporting problems does allow Red Hat to improve
 the system for all users, and in some cases we may be able to supply a
 simple patch for individual problem reports.
 <P>
@@ -1049,11 +1049,11 @@ HREF="getstart.html">downloaded</A>. Printed documentation is
 currently only available as part of a technical support contract.
 
 <P>
-<h4><A NAME="misc_jobs">Cygnus sounds like a wonderful company - are there
+<h4><A NAME="misc_jobs">Red Hat sounds like a wonderful company - are there
 any jobs going?</A></h4>
 
 <P>
-Details of our <A HREF="http://www.cygnus.com/jobs/">
+Details of our <A HREF="http://www.redhat.com/about/careers.html">
 current job openings</A> are available on our corporate web
 site. 
 
