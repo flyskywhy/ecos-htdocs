@@ -53,6 +53,18 @@ are available to download
 <p><a href="http://www.3glab.com/">3G LAB</a> are engaged in quite a number of
 projects that will enhance eCos. Some of them, like ROM filesystem and
 iPAQ port have already been incorporated into the development repository.
+Other projects of interest include:
+<ul>
+<li>ELF shared library loading and run-time linking (including lazy procedure linking at call time). 
+<li>Memory protection for loaded libraries. 
+<li>Advanced memory allocation and virtual space management. 
+<li>XIP (Execute in place) for ROMFS and RAMFS loaded applications. 
+<li>User-id & group-id based permissions checking for file access. 
+<li>ARM USER mode execution of shared library code, with SWI interfaces to the kernel. 
+<li>Parameter checking for calls from user mode into the kernel. 
+<li>Advanced stack checking for user applications that allow faulty applications to be terminated whilst leaving the rest of the system executing. 
+<li>Partial POSIX process emulation, with pthread grouping and signal marshalling. 
+</ul>
 Further projects are available from the
 <a href="http://www.3glab.org/">eCos resources page at www.3glab.org</a>.</p>
 
