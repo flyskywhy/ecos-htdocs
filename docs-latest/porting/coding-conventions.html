@@ -5,22 +5,71 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>HAL Coding Conventions [TBD]</H2>
+<H2>HAL Coding Conventions</H2>
 <HR SIZE=3>
 
-<h5>Coding Conventions</h5>
-<p>To be considered for inclusion in the main eCos source tree, these
-source code formatting rules and programming methods should be
-fulfilled: <em>TBD (highlights from design document?)</em>
+<p>To get changes and larger submissions included into the eCos source
+repository, we ask that you adhere to a set of coding conventions.
+The conventions are defined as an attempt to make a consistent
+tree. Consistency makes it easier for people to read, understand and
+maintain the code, which is important when many people work on the
+same project.</p>
 
-<p>Architecture header includes variant header includes platform
-header. Platform allowed to override variant definitions allowed to
-override architecture definitions.
+<p>The below is only a brief, and probably incomplete, summary of the
+rules. Please look through files in the area where you are making
+changes to get a feel for any additional conventions. Also feel free
+to ask on the list if you have specific questions.</p>
 
-<p>MMU if used, provides 1-1 mapping, rw, no protection - possibly use to
-mark IO regions non-cachable.
+<h3>Implementation issues</h3>
 
-<p>Source formatting rules in emacs lingo:
+There are a few implementation issues that should be kept in mind:
+
+<dl>
+<dt>HALs</dt>
+	<dd>HALs must be written in C and assembly only. C++ must not
+	be used. This is in part to keep the HALs simple since this is
+	usually the first part of eCos a newcomer will see, and in
+	part to maintain the existing de facto standard.</dd>
+
+<dt>C++</dt>
+	<dd>When programming in C++, use of virtual functions are
+	disallowed and use of exceptions are discouraged.</dd>
+
+<dt>IO access</dt>
+	<dd>Use HAL IO access macros for code that might be reused on
+	different platforms than the one you are writing it for.</dd>
+
+<dt>MMU</dt>
+
+	<dd>If it is necessary to use the MMU (e.g., to prevent
+	caching of IO areas), use a simple 1-1 mapping of memory if
+	possible. On most platforms where using the MMU is necessary,
+	it will be possible to achieve the 1-1 mapping using the MMU's
+	provision for mapping large continous areas (hardwired TLBs or
+	BATs). This reduces the footprint (no MMU table) and avoids
+	execution overhead (no MMU-related exceptions).</dd>
+
+<dt>Testing</dt>
+	<dd>The ability to test your code is very important. In
+	general, do not add new code to the eCos runtime unless you
+	also add a new test to excercise that code. The test also
+	serves as an example of how to use the new code.</dd>
+
+</dl>
+
+<h3>Source code details</h3>
+
+<dl>
+<dt>Line length</dt> 
+	<dd>Keep line length below 78 columns whenever possible.</dd>
+
+<dt>Comments</dt>
+	<dd>Whenever possible, use // comments instead of /**/.</dd>
+
+<dt>Indention</dt>
+	<dd>Use spaces instead of TABs. Indention level is 4. Braces
+	start on the same line as the expression. See below for emacs
+	mode details.</dd>
 
 <pre>
 ;;=================================================================
@@ -66,5 +115,49 @@ mark IO regions non-cachable.
 		("/local/ecc/.*\\.cdl$" . tcl-mode)
                 ) auto-mode-alist))
 </pre>
+</dl>
+
+
+<h3>Nested Headers</h3>
+
+<p>In order to allow platforms to define all necessary details, while
+still maintaining the ability to share code between common platforms,
+all HAL headers are included in a nested fashion.</p>
+
+<p>The architecture header (usually <tt>hal_XXX.h</tt>) includes the
+variant equivalent of the header (<tt>var_XXX.h</tt>) which in turn
+includes the platform equivalent of the header
+(<tt>plf_XXX.h</tt>).</p>
+
+<p>All definitions that may need to be overridden by a platform are
+then only conditionally defined, depending on whether a lower layer
+has already made the definition:</p>
+
+<pre>
+hal_intr.h:     #include &lt;var_intr.h&gt;
+
+                #ifdef <b>MACRO</b>_DEFINED
+                # define <b>MACRO</b> ...
+                # define <b>MACRO</b>_DEFINED
+                #endif
+
+
+
+var_intr.h:     #include &lt;plf_intr.h&gt;
+
+                #ifdef <b>MACRO</b>_DEFINED
+                # define <b>MACRO</b> ...
+                # define <b>MACRO</b>_DEFINED
+                #endif
+
+
+plf_intr.h:
+
+                # define <b>MACRO</b> ...
+                # define <b>MACRO</b>_DEFINED
+</pre>
+
+<p>This means a platform can opt to rely on the variant or
+architecture implementation of a feature, or implement it itself.</p>
 
 <!--#include virtual="../../include/footer.html"-->

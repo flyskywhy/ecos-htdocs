@@ -5,15 +5,343 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>HAL Platform CDL [TBD]</H2>
+<H2>HAL Platform CDL</H2>
 <HR SIZE=3>
 
-<ul>
-<li>Compiler/linker options
-<li>Startup types
-<li>Clock data
-<li>debug/console channels
-</ul>
+<p>The platform CDL both contains details necessary for the building
+of eCos, and platform-specific configuration options. For this reason
+the options differ between platforms, and the below is just a brief
+description of the most common options.</p>
 
+<p> See the <a href="../cdl/cdl-guide.html">Component Writer's
+Guide</a> for more details on CDL. Also have a quick look around in
+existing platform CDL files to get an idea of what is possible and how
+various configuration issues can be represented with CDL.</p>
+
+
+<h3>The HAL package</h3>
+
+<p>The eCos configuration system is made aware of a package by adding
+a package description in <tt>ecos.db</tt>. As an example we use the
+TX39/JMR3904 platform:</p>
+
+<pre>
+package CYGPKG_HAL_MIPS_TX39_JMR3904 {
+	alias		{ "Toshiba JMR-TX3904 board" hal_tx39_jmr3904 tx39_jmr3904_hal }
+	directory	hal/mips/jmr3904
+	script		hal_mips_tx39_jmr3904.cdl
+	hardware
+	description "
+           The JMR3904 HAL package should be used when targetting the
+           actual hardware. The same package can also be used when
+           running on the full simulator, since this provides an
+           accurate simulation of the hardware including I/O devices.
+           To use the simulator in this mode the command
+           `target sim --board=jmr3904' should be used from inside gdb."
+}
+</pre>
+
+<p>This contains the title and description presented in the
+Configuration Tool when the package is selected. It also specifies
+where in the tree the package files can be found (<tt>directory</tt>)
+and the name of the CDL file which contains the package details
+(<tt>script</tt>).</p>
+
+<h3>Header</h3>
+
+<p>All the platform options are contained in a CDL package named
+<tt>CYGPKG_HAL_&lt;architecture&gt;_&lt;variant&gt;_&lt;platform&gt;</tt>.
+They all share more or less the same header details:</p>
+
+<pre>
+cdl_package CYGPKG_HAL_MIPS_TX39_JMR3904 {
+    display       "JMR3904 evaluation board"
+    parent        CYGPKG_HAL_MIPS
+    requires      CYGPKG_HAL_MIPS_TX39
+    define_header hal_mips_tx39_jmr3904.h
+    include_dir   cyg/hal
+    description   "
+           The JMR3904 HAL package should be used when targetting the
+           actual hardware. The same package can also be used when
+           running on the full simulator, since this provides an
+           accurate simulation of the hardware including I/O devices.
+           To use the simulator in this mode the command
+           `target sim --board=jmr3904' should be used from inside gdb."
+
+    compile       platform.S plf_misc.c plf_stub.c
+
+    define_proc {
+        puts $::cdl_system_header "#define CYGBLD_HAL_TARGET_H   <pkgconf/hal_mips_tx39.h>"
+        puts $::cdl_system_header "#define CYGBLD_HAL_PLATFORM_H <pkgconf/hal_mips_tx39_jmr3904.h>"
+    }
+
+    ...
+}
+</pre>
+
+<p>This specifies that the platform package should be parented under
+the MIPS packages, requires the TX39 variant HAL and all configuration
+settings should be saved in
+<tt>cyg/hal/hal_mips_tx39_jmt3904.h</tt>.</p>
+
+<p>The <tt>compile</tt> line specifies which files should be built
+when this package is enabled, and the <tt>define_proc</tt> defines
+some macros that are used to access the architecture (the
+<tt>_TARGET_</tt> name is a misnomer) and platform configuration
+options.</p>
+
+
+
+<h3>Startup type</h3>
+
+<p>eCos uses an option to select between a set of valid startup
+configurations. These are normally RAM, ROM and possibly ROMRAM. This
+setting is used to select which linker map to use (i.e., where to link
+eCos and the application in the memory space), and how the startup
+code should behave.</p>
+
+<pre>
+cdl_component CYG_HAL_STARTUP {
+    display       "Startup type"
+    flavor        data
+    legal_values  {"RAM" "ROM"}
+    default_value {"RAM"}
+	no_define
+	define -file system.h CYG_HAL_STARTUP
+    description   "
+       When targetting the JMR3904 board it is possible to build
+       the system for either RAM bootstrap, ROM bootstrap, or STUB
+       bootstrap. RAM bootstrap generally requires that the board
+       is equipped with ROMs containing a suitable ROM monitor or
+       equivalent software that allows GDB to download the eCos
+       application on to the board. The ROM bootstrap typically
+       requires that the eCos application be blown into EPROMs or
+       equivalent technology."
+}
+</pre>
+
+<p>The <tt>no_define</tt>+<tt>define</tt> pair is used to make the
+setting of this option appear in the file <tt>system.h</tt> instead of
+the default specified in the header.</p>
+
+
+<h3>Build options</h3>
+
+<p>A set of options under the components
+<tt>CYGBLD_GLOBAL_OPTIONS</tt> and <tt>CYGHWR_MEMORY_LAYOUT</tt>
+specify how eCos should be built: what tools and compiler options
+should be used, and which linker fragments should be used.</p>
+
+<pre>
+
+cdl_component CYGBLD_GLOBAL_OPTIONS {
+    display "Global build options"
+    flavor  none
+    parent  CYGPKG_NONE
+    description   "
+	    Global build options including control over
+	    compiler flags, linker flags and choice of toolchain."
+
+
+    cdl_option CYGBLD_GLOBAL_COMMAND_PREFIX {
+        display "Global command prefix"
+        flavor  data
+        no_define
+        default_value { "mips-tx39-elf" }
+        description "
+            This option specifies the command prefix used when
+            invoking the build tools."
+    }
+
+    cdl_option CYGBLD_GLOBAL_CFLAGS {
+        display "Global compiler flags"
+        flavor  data
+        no_define
+        default_value { "-Wall -Wpointer-arith -Wstrict-prototypes -Winline -Wundef -Woverloaded-virtual -g -O2 -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fvtable-gc -finit-priority" }
+        description   "
+            This option controls the global compiler flags which
+            are used to compile all packages by
+            default. Individual packages may define
+            options which override these global flags."
+    }
+
+    cdl_option CYGBLD_GLOBAL_LDFLAGS {
+        display "Global linker flags"
+        flavor  data
+        no_define
+        default_value { "-g -nostdlib -Wl,--gc-sections -Wl,-static" }
+        description   "
+            This option controls the global linker flags. Individual
+            packages may define options which override these global flags."
+    }
+}
+
+cdl_component CYGHWR_MEMORY_LAYOUT {
+    display "Memory layout"
+    flavor data
+    no_define
+    calculated { CYG_HAL_STARTUP == "RAM" ? "mips_tx39_jmr3904_ram" : \
+                                            "mips_tx39_jmr3904_rom" }
+
+    cdl_option CYGHWR_MEMORY_LAYOUT_LDI {
+        display "Memory layout linker script fragment"
+        flavor data
+        no_define
+        define -file system.h CYGHWR_MEMORY_LAYOUT_LDI
+        calculated { CYG_HAL_STARTUP == "RAM" ? "<pkgconf/mlt_mips_tx39_jmr3904_ram.ldi>" : \
+                                                "<pkgconf/mlt_mips_tx39_jmr3904_rom.ldi>" }
+    }
+
+    cdl_option CYGHWR_MEMORY_LAYOUT_H {
+        display "Memory layout header file"
+        flavor data
+        no_define
+        define -file system.h CYGHWR_MEMORY_LAYOUT_H
+        calculated { CYG_HAL_STARTUP == "RAM" ? "<pkgconf/mlt_mips_tx39_jmr3904_ram.h>" : \
+                                                "<pkgconf/mlt_mips_tx39_jmr3904_rom.h>" }
+    }
+}
+
+</pre>
+
+<h3>Common Target Options</h3>
+
+<p>All platforms also specify real-time clock details:</p>
+
+<pre>
+# Real-time clock/counter specifics
+cdl_component CYGNUM_HAL_RTC_CONSTANTS {
+    display       "Real-time clock constants."
+    flavor        none
+
+    cdl_option CYGNUM_HAL_RTC_NUMERATOR {
+        display       "Real-time clock numerator"
+        flavor        data
+        calculated    1000000000
+    }
+    cdl_option CYGNUM_HAL_RTC_DENOMINATOR {
+        display       "Real-time clock denominator"
+        flavor        data
+        calculated    100
+    }
+    # Isn't a nice way to handle freq requirement!
+    cdl_option CYGNUM_HAL_RTC_PERIOD {
+        display       "Real-time clock period"
+        flavor        data
+        legal_values  { 15360 20736 }
+        calculated     { CYGHWR_HAL_MIPS_CPU_FREQ == 50 ? 15360 : \
+                         CYGHWR_HAL_MIPS_CPU_FREQ == 66 ? 20736 : 0 }
+    }
+}
+</pre>
+
+<p>Platforms changed to make use of the relatively new virtual vector
+ROM-RAM <a href="hal-calling-if.html">calling interface</a> will also
+specify details necessary to define configuration channels (these
+options are from the SH/EDK7707 HAL) :</p>
+
+<pre>
+cdl_option CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS {
+    display      "Number of communication channels on the board"
+    flavor       data
+    calculated   1
+}
+
+cdl_option CYGNUM_HAL_VIRTUAL_VECTOR_DEBUG_CHANNEL {
+    display          "Debug serial port"
+    flavor data
+    legal_values     0 to CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS-1
+    default_value    0
+    description      "
+       The EDK/7708 board has only one serial port. This option
+       chooses which port will be used to connect to a host
+       running GDB."
+}
+
+cdl_option CYGNUM_HAL_VIRTUAL_VECTOR_CONSOLE_CHANNEL {
+    display          "Diagnostic serial port"
+    flavor data
+    legal_values     0 to CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS-1
+    default_value    0
+    description      "
+       The EDK/7708 board has only one serial port.  This option
+       chooses which port will be used for diagnostic output."
+}
+</pre>
+
+<p>The platform usually also specify an option controlling the ability
+ to co-exist with a ROM monitor:</p>
+
+<pre>
+cdl_option CYGSEM_HAL_USE_ROM_MONITOR {
+    display       "Work with a ROM monitor"
+    flavor        booldata
+    legal_values  { "Generic" "CygMon" "GDB_stubs" }
+    default_value { CYG_HAL_STARTUP == "RAM" ? "CygMon" : 0 }
+    parent        CYGPKG_HAL_ROM_MONITOR
+    requires      { CYG_HAL_STARTUP == "RAM" }
+    description   "
+        Support can be enabled for three different varieties of ROM monitor.
+        This support changes various eCos semantics such as the encoding
+        of diagnostic output, or the overriding of hardware interrupt
+        vectors.
+        Firstly there is \"Generic\" support which prevents the HAL
+        from overriding the hardware vectors that it does not use, to
+        instead allow an installed ROM monitor to handle them. This is
+        the most basic support which is likely to be common to most
+        implementations of ROM monitor.
+        \"CygMon\" provides support for the Cygnus ROM Monitor.
+        And finally, \"GDB_stubs\" provides support when GDB stubs are
+        included in the ROM monitor or boot ROM."
+}
+</pre>
+
+<p>Or the ability to be configured as a ROM monitor:</p>
+
+<pre>
+cdl_option CYGSEM_HAL_ROM_MONITOR {
+    display       "Behave as a ROM monitor"
+    flavor        bool
+    default_value 0
+    parent        CYGPKG_HAL_ROM_MONITOR
+    requires      { CYG_HAL_STARTUP == "ROM" }
+    description   "
+        Enable this option if this program is to be used as a ROM monitor,
+        i.e. applications will be loaded into RAM on the board, and this
+        ROM monitor may process exceptions or interrupts generated from the
+        application. This enables features such as utilizing a separate
+        interrupt stack when exceptions are generated."
+}
+</pre>
+
+<p>The latter option is accompanied by a special build rule that
+extends the generic ROM monitor build rule in the common HAL:</p>
+
+<pre>
+cdl_option CYGBLD_BUILD_GDB_STUBS {
+    display "Build GDB stub ROM image"
+    default_value 0
+    requires { CYG_HAL_STARTUP == "ROM" }
+    requires CYGSEM_HAL_ROM_MONITOR
+    requires CYGBLD_BUILD_COMMON_GDB_STUBS
+    requires CYGDBG_HAL_DEBUG_GDB_INCLUDE_STUBS
+    requires ! CYGDBG_HAL_DEBUG_GDB_BREAK_SUPPORT
+    requires ! CYGDBG_HAL_DEBUG_GDB_THREAD_SUPPORT
+    requires ! CYGDBG_HAL_COMMON_INTERRUPTS_SAVE_MINIMUM_CONTEXT
+    requires ! CYGDBG_HAL_COMMON_CONTEXT_SAVE_MINIMUM
+    no_define
+    description "
+        This option enables the building of the GDB stubs for the
+        board. The common HAL controls takes care of most of the
+        build process, but the final conversion from ELF image to
+        binary data is handled by the platform CDL, allowing
+        relocation of the data if necessary."
+
+    make -priority 320 {
+        <PREFIX>/bin/gdb_module.bin : <PREFIX>/bin/gdb_module.img
+        $(OBJCOPY) -O binary $< $@
+    }
+}
+</pre>
 
 <!--#include virtual="../../include/footer.html"-->

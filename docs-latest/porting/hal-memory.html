@@ -5,24 +5,43 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>Platform Memory Layout [TBD]</H2>
+<H2>Platform Memory Layout</H2>
 <HR SIZE=3>
 
-<ul>
-<li> Startup types
-<li> mlt_* files
-<li> reserved regions
-<li> Linker scripts
-</ul>
+<p>The platform memory layout is defined using the Memory
+Configuration Window [FIXME:ref] in the Configuration Tool.</p>
 
-(Jonathan Larmour)
-<pre>
-The objective is to get the output the same (or as similar
-as possible anyway) to XXX-elf-ld --verbose.
+<h3>Layout Files</h3>
 
-This is what all HAL linker scripts should do as a basis for
-their ports.
-</pre>
+<p>The memory configuration details are saved in three files:</p>
 
+<dl>
+<dt><tt>.mlt</tt>
+	<dd>This is the Configuration Tool save-file. It is only used
+	by the Configuration Tool.</dd>
+<dt><tt>.ldi</tt>
+	<dd>This is the linker script fragment. It defines the memory
+	and location of sections by way of macros defined in the
+	architecture or variant linker script.</dd>
+<dt><tt>.h</tt>
+	<dd>This file describes some of the memory region details as C
+	macros, allowing eCos or the application adapt the memory
+	layout of a specific configuration.</dd>
+</dl>
+
+<p>These three files are generated for each startup-type, since the
+memory details usually differ.</p>
+
+<h4>Reserved Regions</h4>
+
+<p>Some areas of the memory space are reserved for specific
+purposes, making room for execption vectors and various tables. RAM
+startup configurations also need to reserve some space at the bottom
+of the memory map for the ROM monitor.</p>
+
+<p>These reserved areas are named with the prefix "reserved_" which is
+handled specially by the Configuration Tool: instead of referring to a
+linker macro, the start of the area is labelled and a gap left in the
+memory map.</p>
 
 <!--#include virtual="../../include/footer.html"-->
