@@ -1,0 +1,521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version cosmetic-update/Tue Feb  6 11:21:31  2001-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Target Setup</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1740665">
+ </A>
+<A NAME="marker=1740664">
+ </A>
+<A NAME="34045">
+ </A>
+<A NAME="marker=2490506">
+ </A>
+Target Setup<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269271">
+ </A>
+<A NAME="marker=2490502">
+ </A>
+Connecting To A Target Via Serial</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269272">
+ </A>
+While eCos supports a variety of targets, communication with all the targets happens in one of four ways. These are descibed in general below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290096">
+ </A>
+The descriptions are followed by descriptions of each target, providing specific details of how to set up the target (if hardware) and the necessary communication information (such as baud rate for hardware targets, or special connection options for simulator targets).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290095">
+ </A>
+Most targets will have eCos GDB stubs or CygMon installed. These normally wait for GDB to connect at 38400 baud, using 8 data bit, no parity bit and 1 stop-bit (no hardware flow control). Check the section for your target to ensure it uses this speed. If not, adjust the following instructions accordingly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269273">
+ </A>
+The following instructions depend on your having selected the appropriate serial port on the host. That is, the serial port which connects to the target's (primary) serial port. On Linux this could be <TT CLASS="Code">
+/dev/ttyS0</TT>
+, while the same port on Windows would be named COM1, or <TT CLASS="Code">
+/dev/ttya</TT>
+ on Solaris. Substitute the proper serial port name in the below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269274">
+ </A>
+Connect to the target by issuing the following commands in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269275"> </A>
+(gdb) set remotebaud 38400    
+(gdb) set mips saved-gpreg-size 32  (for VR4300)
+(gdb) target remote /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269276">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">Target Settings</SPAN>
+ window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269277"> </A>
+Target: Remote/Serial     
+Baud Rate: 38400     
+Port: /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2397398">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269279">
+ </A>
+<A NAME="marker=2490504">
+ </A>
+Connecting To A Target Via Ethernet</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269280">
+ </A>
+Some targets allow GDB to connect via Ethernet - if so, it will be mentioned in the section describing the target. Substitute the target's assigned IP address or hostname for &lt;hostname&gt; in the following. The &lt;port&gt; is the TCP port which the eCos GDB stub or CygWin is listening on. It is also listed in the section describing the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269281">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269282"> </A>
+(gdb) target remote &lt;hostname&gt;:&lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269283">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">Target Settings</SPAN>
+ window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269284"> </A>
+Target: Remote/TCP     
+Hostname: &lt;hostname&gt;     
+Port: &lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2693732">
+ </A>
+You will also need to open the GDB console window with <SPAN CLASS="Bold">
+View<IMG SRC="../pix/arrow.gif">Console</SPAN>
+ and enter &quot;set mips saved-gpreg-size 32&quot; at the prompt</P>
+<P CLASS="Body">
+<A NAME="pgfId=2460009">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2336728">
+ </A>
+<A NAME="marker=2490505">
+ </A>
+Connecting To A Simulator Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2336729">
+ </A>
+GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2336730">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+(gdb) target sim [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336732">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">Target Settings</SPAN>
+ window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+Target: Simulator     
+Options: [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336734">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269293">
+ </A>
+Connecting To A Synthetic Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269294">
+ </A>
+Synthetic targets are special in that the built tests and applications actually run as native applications on the host. This means that there is no target to connect to. The test or application can be run directly from the GDB console using:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269295"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269296">
+ </A>
+or from Insight by pressing the <SPAN CLASS="Bold">
+Run</SPAN>
+ icon. There is therefore no need to connect to the target or download the application, so you should ignore GDB &quot;target&quot; and &quot;load&quot; commands in any instructions found in other places in the documentation.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2693782">
+ </A>
+<A NAME="marker=2693781">
+ </A>
+TX39 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2693783">
+ </A>
+The eCos Developer's Kit package comes with a pair of ROMs that provide GDB<EM CLASS="ProductName">
+ </EM>
+support for the Toshiba JMR-TX3904 RISC processor reference board by way of CygMon. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2693784">
+ </A>
+Images of these ROMs are also provided at <TT CLASS="Code">
+BASE_DIR/loaders/tx39-jmr3904/cygmon50.bin</TT>
+ and <TT CLASS="Code">
+BASE_DIR/loaders/tx39-jmr3904/cygmon66.bin</TT>
+ for 50 MHz and 66 MHz boards respectively. The ROMs are installed to sockets IC6 and IC7 on the memory daughterboard according to their labels. Attention should be paid to the correct orientation of these ROMs during installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693785">
+ </A>
+The GDB stub allows communication with GDB using the serial port (channel C) at connector PJ1. The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit, and 1 stop bit (8-N-1). No handshaking is employed. Connection to the host computer should be made using an RS232C null modem cable.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693786">
+ </A>
+CygMon and eCos currently provide support for a 16Mbyte 60ns 72pin DRAM SIMM fitted to the PJ21 connector. Different size DRAMs may require changes in the value stored in the DCCR0 register. This value may be found near line 211 in <TT CLASS="Code">
+hal/mips/arch/</TT>
+<EM CLASS="Filename81">
+v1_4_x</EM>
+<TT CLASS="Code">
+/src/vectors.S in </TT>
+eCos, and near line 99 in <TT CLASS="Code">
+libstub/mips/tx39jmr/tx39jmr-power.S </TT>
+in Cygmon. eCos does not currently use the DRAM for any purpose itself, so it is entirely available for application use.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2693790">
+ </A>
+TX39 Architectural Simulator Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2693791">
+ </A>
+The TX39 simulator is an architectural simulator which implements all  the features of the Toshiba TX39 needed to run eCos. The current implementation provides accurate simulation of the instruction set,  interrupt controller, and timers, as well as having generic support for diagnostic output, serial I/O, and exceptions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693792">
+ </A>
+In this release, you can run the same eCos binaries in the simulator that can run on target hardware, if it is built for ROM start-up.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693793">
+ </A>
+To simplify connection to the simulator, you are advised to create a GDB macro by putting the following code in your personal GDB start-up file (gdb.ini on Windows and .gdbinit on UNIX).</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2693794"> </A>
+define tsim   
+ target sim --board=jmr3904pal --memory-region 0xffff8000,0x900 \ 
+            --memory-region 0xffffe000,0x4 \              
+            --memory-region 0xb2100000,0x4   
+ rbreak cyg_test_exit
+ rbreak cyg_assert_fail
+end</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2693795">
+ </A>
+You can then connect to the simulator by invoking the command <TT CLASS="Code">
+tsim</TT>
+ on the command line:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2693796"> </A>
+<TT CLASS="Code">(gdb) tsim</TT>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2693797">
+ </A>
+You can achieve the same effect by typing out the macro's content on the command line if necessary.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2693843">
+ </A>
+<A NAME="marker=2693842">
+ </A>
+TX49 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2693844">
+ </A>
+The eCos installation CD contains a copy of the eCos GDB stubs in  SREC format which must be programmed into the board's FLASH memory.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2693845">
+ </A>
+Preparing the GDB stubs    </H3>
+<P CLASS="Body">
+<A NAME="pgfId=2693846">
+ </A>
+These stub preparation steps are not strictly necessary as the eCos distribution ships with precompiled stubs in the directory <TT CLASS="Code">
+loaders/tx49-ref4955</TT>
+ relative to the installation root.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2693847">
+ </A>
+Building the GDB stub image with the eCos Configuration Tool</H4>
+<OL>
+<P><LI>
+<A NAME="pgfId=2693848">
+ </A>
+Start with a new document - selecting the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">New</SPAN>
+ menu item if necessary to do this.</LI>
+<P><LI>
+<A NAME="pgfId=2693849">
+ </A>
+Choose the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ menu item, and then select the TX49 REF4955 hardware.</LI>
+<P><LI>
+<A NAME="pgfId=2693850">
+ </A>
+While still displaying the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ dialog box, select the stubs package template to build a GDB stub. Click <SPAN CLASS="BOLD">
+OK.</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2693851">
+ </A>
+Build eCos stubs using <SPAN CLASS="BOLD">
+Build<IMG SRC="../pix/arrow.gif">Library.</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2693852">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub images have the prefix gdb_module.</LI>
+</OL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2693853">
+ </A>
+ Building the GDB stub image with ecosconfig</H4>
+<OL>
+<P><LI>
+<A NAME="pgfId=2693854">
+ </A>
+Make an empty directory to contain the build tree, and cd into it.</LI>
+<P><LI>
+<A NAME="pgfId=2693855">
+ </A>
+To build a GDB stub ROM image, enter the command: <BR>
+<BR>
+<TT CLASS="Code">
+$ ecosconfig new ref4955 stubs </TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2693856">
+ </A>
+Enter the commands:<BR>
+<TT CLASS="Code">
+<BR>
+$ ecosconfig tree<BR>
+$ make</TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2693857">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub images have the prefix gdb_module.  </LI>
+</OL>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2693858">
+ </A>
+ Installing GDB stubs into FLASH</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2693859">
+ </A>
+Boot into the board's firmware in little-endian mode:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693860">
+ </A>
+Set the switches like this:   </P>
+<P CLASS="Body">
+<A NAME="pgfId=2693861">
+ </A>
+SW1: 10000000 (first lever up, the rest down)   <BR>
+SW2: 10000010</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693862">
+ </A>
+Connect serial cable on the lower connector, configure terminal emulator for 38400, 8-N-1.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693863">
+ </A>
+When booting the board, you should get this prompt:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693864">
+ </A>
+<TT CLASS="Code">
+HCP5 rev 0.9B .    <BR>
+HCP5?</TT>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693865">
+ </A>
+Select o (option), a (FLASH) and b (boot write). You should see this:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2693866"> </A>
+<TT CLASS="Code">Boot ROM Write   
+</TT>
+ROM address-ffffffffbd000000, Boot Bus-[32bit]  
+ID2 0 4 ffffffffa002ad40  
+zzz SS-40000 IV-1 CS-20000 CC-2   
+Flash ROM-[28F640J5], [16bit chip] * 2 * 1  
+Block size-00040000  count-64  
+ROM adr ffffffffbd000000-ffffffffbe000000  mask-00fc0000 </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2693867"> </A>
+Send Srecord file sa=00000000 size=ffffffffffffffff ra=fffffffffe000000</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2693868">
+ </A>
+Now send the stub SREC data down to the board using the terminal  emulator's 'send ASCII' (or similar) functionality. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2693869">
+ </A>
+Red Hat has experienced some sensitivity to how fast the data is written to the board. Under Windows you should configure Minicom to use a line delay of 100 millisecs. Under Linux, use the slow_cat.tcl  script:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693873">
+ </A>
+<TT CLASS="Code">
+% cd BASE_DIR/packages/hal/mips/ref4955/v1_4_x/misc   <BR>
+% slow_cat.tcl &lt; [path]/gdb_module.srec &gt; /dev/ttyS0</TT>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693874">
+ </A>
+Power off the board, and change it to boot the GDB stubs in big-endian mode by setting the switches like this:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693875">
+ </A>
+SW1: 00000000 (all levers down)   <BR>
+SW2: 10001010</P>
+<P CLASS="Body">
+<A NAME="pgfId=2693876">
+ </A>
+The GDB stubs allow communication with GDB using the serial port at connector PJ7A (lower connector). The communication parameters are  fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit  (8-N-1). No flow control is employed. Connection to the host computer should be made using a straight through serial cable.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2694323">
+ </A>
+      <BR>
+     <TT CLASS="Code">
+/misc   <BR>
+% slow_cat.tcl &lt; [path]/gdb_module.srec &gt; /dev/ttyS0</TT>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2694324">
+ </A>
+Power off the board, and change it to boot the GDB stubs in big-endian mode by setting the switches like this:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2694325">
+ </A>
+SW1: 00000000 (all levers down)   <BR>
+SW2: 10001010</P>
+<P CLASS="Body">
+<A NAME="pgfId=2694326">
+ </A>
+The GDB stubs allow communication with GDB using the serial port at connector PJ7A (lower connector). The communication parameters are  fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit  (8-N-1). No flow control is employed. Connection to the host computer should be made using a straight through serial cable.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2694472">
+ </A>
+<A NAME="marker=2694473">
+ </A>
+VR4300 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2694474">
+ </A>
+The eCos Developer's Kit package comes with an EPROM which provides GDB<EM CLASS="ProductName">
+ </EM>
+support for the NEC VRC4373 evaluation board. An image of this EPROM is also provided at <TT CLASS="Code">
+loaders/vr4300-vrc4373/gdbload.bin</TT>
+ under the root of your eCos<EM CLASS="ProductName">
+ </EM>
+installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2694475">
+ </A>
+The EPROM is installed to socket U12 on the board. Attention should be paid to the correct orientation of the EPROM during installation. Only replace the board's existing ROM using a proper PLCC extraction tool, as the socket would otherwise risk getting damaged. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2694476">
+ </A>
+The GDB stub in the EPROM allows communication with GDB using the serial port at connector J1. The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a straight-through serial cable. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2655355">
+ </A>
+ <A NAME="marker=1997404">
+ </A>
+i386/Linux Synthetic Target Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1997406">
+ </A>
+When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2392364">
+ </A>
+NOTE:</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2392365">
+ </A>
+Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1997407">
+ </A>
+These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1997408">
+ </A>
+Tools</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2395006">
+ </A>
+For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
+gcc -v</TT>
+ or <TT CLASS="Code">
+egcs -v</TT>
+, and the linker version using <TT CLASS="Code">
+ld -v</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395013">
+ </A>
+If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools <TT CLASS="Code">
+i686-pc-linux-gnu-gcc</TT>
+, <TT CLASS="Code">
+i686-pc-linux-gnu-ar</TT>
+,  <TT CLASS="Code">
+i686-pc-linux-gnu-ld</TT>
+, and <TT CLASS="Code">
+i686-pc-linux-gnu-objcopy</TT>
+ are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editing the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395068">
+ </A>
+If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2395069"> </A>
+<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">http://sourceware.cygnus.com/ecos/getstart.html</A>
+</PRE>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
