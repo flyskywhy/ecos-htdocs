@@ -82,8 +82,9 @@ diagnostics output if explicitly configured to do so
 As for asynchronous GDB interrupts, the service will always be
 used. This is likely to cause a crash under older ROM monitors, but
 this crash may be caught by the debugger. The old workaround still
-applies: if you need asynchronous breakpoints under older ROM
-monitors, include the features when configuring eCos.
+applies: if you need asynchronous breakpoints or thread debugging
+under older ROM monitors, you may have to include the debugging
+support when configuring eCos.
 
 Implementation details
 ----------------------
@@ -120,12 +121,18 @@ order to support the calling interface, but the basic debugging
 features must be in place. See general architecture porting notes.
 
 
-Console IO channel
-~~~~~~~~~~~~~~~~~~
+IO channels
+~~~~~~~~~~~
 
-The calling interface also provides console channel IO services. The
-hal_if provides wrappers which interface these services to the eCos
-infrastructure diagnostics routines. This is done in a way which
+The calling interface provides procedure tables for all IO channels on
+the platform. These are used for console (diagnostic) and debugger IO,
+allowing the ROM monitor to provided all the needed IO routines. At
+the same time, this makes it easy to switch console/debugger channels
+at run-tim (the old implementation had hardwired drivers for console
+and debugger IO, preventing these to change at run-time).
+
+The hal_if provides wrappers which interface these services to the
+eCos infrastructure diagnostics routines. This is done in a way which
 ensures proper string mangling of the diagnostics output when required
 (e.g. O-packetization when using a GDB compatible ROM monitor).
 
@@ -138,11 +145,17 @@ stubs).
 
 Implementation details
 ----------------------
+There is an array of procedure tables (raw chanels) for each IO device
+of the platform which get initialized by the ROM monitor, or
+optionally by a RAM startup configuration (allowing the RAM
+configuration to take full control of the target).  In addition to
+this, there's a special table which is used to hold mangler
+procedures.
 
-There are two sub-tables referred by the virtual vector table: console
-IO procedure table (empty, manglers (see below), or raw IO
-procedures), and debugging IO procedure table (always contains raw IO
-procedures).
+The vector table defines which of these channels are selected for
+console and debugging IO respectively: console entry can be empty,
+points to mangler channel, or point to a raw channel. The debugger
+entry should always point to a raw channel.
 
 During normal console output (i.e., diagnostic output) the console
 table will be used to handle IO if defined. If not defined, the debug
@@ -150,12 +163,13 @@ table will be used.
 
 This means that debuggers (such as GDB) which require text streams to
 be mangled (O-packetized in the case of GDB), can install mangling IO
-routines in the console table which passes the mangled data on to the
-debugging table's raw IO routines.
+routines in the special mangler table which passes the mangled data on
+to the selected debuggin channel.
 
 If the eCos configuration specifies a different console channel from
-that used by the debugger, the raw IO routines are installed in the
-console table and override any manglers provided by the ROM monitor.
+that used by the debugger, the console entry will point to the
+selected raw channel, thus overriding any mangler provided by the ROM
+monitor.
 
 See hal_if_diag_* routines in hal_if.c for more details of the stream
 path of diagnostic output. See cyg_hal_gdb_diag_* routines in
@@ -164,7 +178,6 @@ hal_stub.c for the mangler used for GDB communication.
 
 New platform ports
 ------------------
-
 Define CDL options CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS,
 CYGNUM_HAL_VIRTUAL_VECTOR_DEBUG_CHANNEL, and
 CYGNUM_HAL_VIRTUAL_VECTOR_CONSOLE_CHANNEL.
@@ -176,25 +189,26 @@ code uses the hal_if diag functions:
  #define HAL_DIAG_WRITE_CHAR(_c_) hal_if_diag_write_char(_c_)
  #define HAL_DIAG_READ_CHAR(_c_) hal_if_diag_read_char(&_c_)
 
-The hal_if also defines a console procedure table to be installed if
-necessary. That relies on the platfor HAL providing the low-level IO
-functions:
-
-#ifndef CYGPRI_CONSOLE_PROCS_HANDLED
-# define HAL_PLF_DIAG_RAW_INIT()           <platform init routine>
-# define HAL_PLF_DIAG_RAW_WRITE_CHAR(_c_)  <platform write routine>(_c_)
-# define HAL_PLF_DIAG_RAW_READ_CHAR(_c_)   (_c_) = <platform read routine>
-#endif
-
 When vector table console code is _not_ used, the platform HAL must
 map the HAL_DIAG_INIT, HAL_DIAG_WRITE_CHAR and HAL_DIAG_READ_CHAR
 macros directly to the low-level IO functions.
+
+
+The platform HAL must also provide a function cyg_hal_plf_comms_init
+which initializes the drivers and (when necessary) initializes the
+channel procedure tables.
+
+
+
 
 See [MBX] platform HAL for an example implementation.
 
 
 Asynchronous GDB breakpoints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+[FIXME: This needs to be updated to handle dynamically changing the
+debug channel]
 
 GDB allows to asynchronously break execution of a running
 application. This is done by sending a 0x03 character to the

@@ -92,12 +92,10 @@ eCos GDB stub. You are advised to read all the sources though.
     plf_io.h. This may be necessary if the platform uses a different
     endianess from what is default for the CPU.
 
-<li>Implement a simple serial driver (polled mode only) for the GDB
-    stub: plf_stub.h and plf_stub.c. If there is more than one serial
-    port on the board using the same controller (and thus driver) it
-    may make sense to put the driver in an .inl file which can be
-    included from plf_stub.c and later by hal_diag.c (allow #define
-    statements to control which port to use).
+<li>Implement a simple serial driver (polled mode only). Make sure the
+    initialization function properly hooks the procedures up in the
+    virtual vector IO channel tables. The stub will call the serial
+    driver via these tables.
 
 <li>Adjust/implement necessary platform initialization. This can be
     found in platform.inc and platform.S files (ARM:
@@ -114,13 +112,14 @@ eCos GDB stub. You are advised to read all the sources though.
 % ecosconfig remove CYGPKG_IO
 % ecosconfig remove CYGPKG_IO_SERIAL
 % ecosconfig remove CYGPKG_ERROR
+[possibly remove other driver packages which are not needed by the stub]
 </pre>
 
 <p>Now edit ecos.ecc, disabling CYGDBG_HAL_DEBUG_GDB_CTRLC_SUPPORT,
 CYGDBG_HAL_DEBUG_GDB_BREAK_SUPPORT, and
 CYGDBG_HAL_DEBUG_GDB_THREAD_SUPPORT.
 
-<p>For RAM startup, also change the CYG_HAL_STARTUP option to ROM.
+<p>For RAM startup, also change the CYG_HAL_STARTUP option to RAM.
 
 <pre>
 % ecosconfig tree
@@ -154,11 +153,16 @@ and the board.
 
 <p>Now you should have a simple "load and go" eCos GDB stub running on
 the board. This means you have a the correct board initialization and
-a working serial driver. It's time to flesh out the remaining HAL and
-stub features.
+a working serial driver. It's time to flesh out the remaining stub and
+HAL features.
 
 <ol>
-
+<li>stub reset
+<li>hal diag (simple copy'n'paste)
+<li>cache (2nd level, or different from var/arch)
+<li>real-time clock interrupts
+<li>interrupt decoding (external interrupt controller)
+<li>testing implementation
 </ol>
 
 
