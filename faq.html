@@ -28,6 +28,12 @@
   <LI><A HREF="#license_new_packages">What if I create a new package?</A></LI>      
   <LI><A HREF="#license_why_new">Why has Cygnus created a new license?</A></LI>      
   <LI><A HREF="#license_coverage">Does the license cover situation ...?</A></LI>
+  <h4>Porting</h4>
+  <LI><A HREF="#porting_does_it">Does eCos run on processor X?</A></LI>
+  <LI><A HREF="#porting_will_cygnus">Will Cygnus be porting eCos to processor X?</A></LI>
+  <LI><A HREF="#porting_how_would_I">How would I go about porting eCos to a new processor?</A></LI>
+  <LI><A HREF="#porting_adopt">Will Cygnus adopt my port?</A></LI>
+  <LI><A HREF="#porting_board">How about porting eCos to a new board?</A></LI>
   <h4>Contributing</h4>
   <LI><A HREF="#contrib_have_to">Do I have to contribute?</A></LI>
   <LI><A HREF="#contrib_bazaar">Which development model - cathedral or bazaar?</A></LI>
@@ -376,8 +382,265 @@ are compatible with our overall goals.
 
 <P>
 <A HREF="#top">Top</A>
-<P>
 
+<P>
+<h3><A NAME="porting">Porting</A></h3>
+
+<P>
+<h4><A NAME="porting_does_it">Does eCos run on processor X?</A></h4>
+
+<P>
+Details of the supported architectures are published on the eCos home
+page. If a particular processor is not listed there then support for
+that processor is not yet available.
+
+<P>
+<h4><A NAME="porting_will_cygnus">Will Cygnus be porting eCos to
+processor X?</A></h4>
+
+<P>
+Whenever possible once Cygnus starts working on a particular port we
+will announce this fact immediately, to avoid any risk of contributors
+duplicating work that is already ongoing. If a port has not yet
+started but is under consideration then typically we will also make
+this clear. Occasionally we have to be cautious in what we can reveal,
+and an understanding of the underlying business model is useful here.
+
+<P>
+eCos is freely available, so Cygnus cannot earn any direct revenues in
+the form of unit royalties or development seat licenses. However we
+still need to earn money by one means or another - Cygnus is a
+company, not a charitable organization.
+
+<P>
+When Cygnus makes a reference release of eCos which includes ports to
+particular processors, those ports are certified. This means that we
+are willing to provide guarantees about the quality of the system on
+that processor. If somebody takes out a technical support contract for
+that processor and runs into problems, we will sort out those
+problems. Obviously we need to be pretty confident about the overall
+quality of the system and about each specific processor port before we
+can make guarantees like this. This requires very extensive QA work
+and continuous testing on all supported targets as the system evolves,
+and such things require a significant allocation of resources. In fact
+the initial port to a particular processor is a relatively small
+proportion of the overall effort involved.
+
+<P>
+As the use of eCos spreads through the embedded industry we can expect
+to earn revenue through technical support contracts, through
+consultancy work in the form of custom modifications or enhancements
+to the system, and through a number of other means. This is
+essentially the same model as used in some other parts of our
+business, for example the GnuPro toolkit. However these revenue
+sources take time to ramp up.
+
+<P>
+For Cygnus to embark on a new port we must be confident that we can
+recoup the investment involved. In addition, given that there are many
+processors we could be porting to, not to mention further development
+to the main system, and also given that engineering resources are
+limited, we need to prioritize the ports in some fashion.
+
+<P>
+It so happens that Cygnus already has very close relationships with
+many leading silicon vendors through the GnuPro business. Typically
+when a silicon vendor produces a new processor they will want various
+tools such as a C compiler, a C++ compiler, and a debugger. These
+tools will then be used by application developers, so more products
+get developed using the processor and more chips get sold. The GNU
+tools are of course ideal for this: technically they are
+industry-leading; the quality is very high, again a prerequisite
+before we can offer technical support; the tools are already familiar
+to many developers; and they are free, source and all. This is a
+winning combination, and a proportion of Cygnus's revenue comes from
+porting the tools to new processors.
+
+<P>
+The same reasoning applies to eCos: having an open source and free
+operating system available for a given processor makes that processor
+more attractive to potential application developers, so the silicon
+vendor is likely to sell more chips. Hence Cygnus is in discussion
+with many silicon vendors about doing a certified port of eCos to
+particular processors. Having the silicon vendors sponsor ports in
+this way provides Cygnus with early revenue, which can then be pumped
+back into further development of the system. The silicon vendors gain
+an initial competitive advantage by having eCos available on their
+processor early on.
+
+<P>
+Unfortunately negotiating deals like this is a non-trivial operation.
+Typically all such discussions involve non-disclosure agreements
+(NDA's), so legally we are not allowed to discuss the status of any of
+these negotiations or even which processors are involved. There are
+also commercial considerations, for example it is possible that we
+might be talking to a number of different parties about porting to a
+processor architecture, to a specific processor, or to a particular
+board. Providing detailed information to the net community may harm
+such negotiations, resulting in loss of revenue for Cygnus and hence
+fewer resources which can be used for further system development.
+
+<P>
+If we are specifically asked whether or not Cygnus is planning a port
+to a particular architecture and such a port is under consideration,
+then we will say so. However we will not reveal any detailed
+information which is commercially sensitive or which would violate an
+NDA, for example we might not be able to say which particular variant
+of a processor architecture we would be working on. This is a
+necessary compromise between our commercial requirements and our
+desire for an open development process.
+
+<P>
+In most cases, once work starts on a particular port we will announce
+this fact immediately. This avoids people doing their own port to a
+particular processor at the same time as Cygnus. If there is already a
+port to that processor in progress then typically we would work with
+the existing developers to avoid duplication of effort. Such
+collaboration would save Cygnus a certain amount of work, but there
+would still be plenty left for us to do: most importantly the QA and
+continuous testing that comes with a certified port of eCos, but also
+board ports to whichever board(s) are selected by the silicon vendor.
+
+<P>
+<h4><A NAME="porting_how_would_I">How would I go about porting eCos to
+a new processor?</A></h4>
+
+<P>
+A sensible first step for this, as for any other non-trivial project
+involving eCos, would be to find out whether or not anybody else
+(either inside or outside Cygnus) is already working on something
+similar. One way of doing this is to post a message to the
+<A HREF="mailto:ecos-discuss@cygnus.com">ecos-discuss@cygnus.com</A>
+mailing list. If you prefer a more confidential communication channel
+for any reason you can instead send email to
+<A HREF="mailto:ecos-maintainers@cygnus.com">ecos-maintainers@cygnus.com</A>
+- any such messages will not be seen by
+anybody outside Cygnus. We aim to keep track of every ongoing eCos
+project that we know about, to avoid duplication of effort.
+
+<P>
+The next step is to make sure that you have a toolchain that is
+suitable for your target hardware. This means the compilers gcc and
+g++, the assembler gas, the linker, and the various binutils such as
+ar. It will also be necessary to have some way of actually running an
+executable on the target hardware, an operation which is inherently
+hardware dependent. On many targets this will already be possible via
+the debugger gdb, but on other targets it may be necessary to get gdb
+to work with the board first or to use some other technique. The eCos
+download page includes the sources for such a toolchain: it has only
+been tested for the processors that are officially supported, and only
+on Red Hat 5.1 Linux and on Windows NT hosts; it is likely that these
+tools can also be built for many other processors and hosts, possibly
+with a little bit of tweaking, but we do not offer any guarantees.
+
+<P>
+It should be noted that eCos uses a number of relatively new
+extensions to the GNU tools, and you may well run into problems if you
+try to use some other release of the tools. The most important
+extension is constructor priority ordering, which allows us to control
+the order in which static C++ objects get constructed. For example it
+is possible to specify that a scheduler object gets created before any
+thread objects. This extension is likely to work with any processor
+that uses the ELF object format, but there will be problems with other
+object formats: please contact the eCos maintainers if you need more
+information about this. Another new extension is selective linking,
+which will result in smaller executables but which is not absolutely
+required for a working eCos port. This extension requires
+modifications to the toolchain for each architecture, and is not yet
+available except for the supported architectures. Work is in progress
+to make sure that these extensions work correctly for all
+architectures that use ELF object format, and to make the extensions
+available as part of the main net releases for the various tools.
+
+<P>
+Assuming a working toolchain, porting to a new processor mainly
+involves implementing a new architectural HAL package. There are
+existing packages for the MN10300, TX39, and PowerPC processors which
+can be used as a starting point. An initial specification of the eCos
+HAL is available
+<A HREF="http://sourceware.cygnus.com/ecos/docs-1.1/ref/ecos-ref/the-ecos-hardware-abstraction-layer-hal.html">
+online</A>.
+As you might expect, the work involved in porting eCos is very similar
+to the work involved in porting any embedded operating system:
+hardware initialization, interrupt handling, processor exceptions,
+context switching, etc.
+
+<P>
+It is worth pointing out that the current HAL specification is not
+definitive and is in fact under active review. Three ports is not
+enough to guarantee that the specification provides a true abstraction
+of all processors. The documentation includes information about some
+things that we know are missing. Any port attempted at this stage of
+the system's development will need a certain amount of maintenance as
+the HAL specification evolves.
+
+<P>
+In addition to the architectural HAL package it will be necessary to
+do a platform HAL package, in other words to provide the support for
+an actual development board. This involves issues such as board
+initialization, diagnostics, possibly gdb support, and linker scripts.
+There are existing platform HAL packages for the stdeval1, jmr3904,
+and Cogent boards, and for various simulators.
+
+<P>
+<h4><A NAME="porting_adopt">Will Cygnus adopt my port?</A></h4>
+
+<P>
+If somebody produces a port to a new processor but does not wish to
+maintain it indefinitely then Cygnus may be willing to adopt this
+port. This involves certifying the port: extensive QA, quite possibly
+code clean-ups so that it satisfies the coding standards, possibly new
+documentation, and lots of testing. In addition we will maintain the
+port, upgrading it as the HAL specification evolves. The effort
+involved is considerable, and over time it will be significantly
+larger than the initial port. Usually Cygnus will only be able to
+afford to do so if there are likely to be sufficient long-term
+revenues, for example if there are enough existing users of the
+processor who might be interested in technical support. Also, we would
+need a ready source of suitable hardware that can be used for the
+testing, and we would need a copyright assignment for such ports.
+
+<P>
+However a port does not have to be supported by Cygnus or by anybody
+else for it to be useful to somebody. If a port (or any other eCos
+package) does not have an active maintainer then Cygnus can still make
+it available as unsupported software, providing space on our ftp
+server and suitable links in the web pages. This allows people to
+download and use such ports. If there are enough users for an
+unsupported port then perhaps somebody else will take over the
+maintainership. The same is of course true for any piece of
+contributed software.
+
+<P>
+If a port is not included in the reference releases but still has a
+maintainer outside Cygnus, we can provide certain resources to assist
+with this. For example we can provide mailing lists, web and ftp
+services, and anonymous CVS access.
+
+<P>
+<h4><A NAME="porting_board">How about porting eCos to a new
+board?</A></h4>
+
+<P>
+As with a processor port, usually the first step is to publicize your
+intention and make sure that nobody else is already doing this. The
+second step is to make sure that you have the necessary tools, in
+particular some way of running an executable on the target board. It
+is possible that gdb already provides support for that board.
+Alternatively it may be necessary to add the necessary support to gdb,
+or to use some other means of running programms.
+
+<P>
+Assuming a working toolchain, the work involved on the eCos side is to
+implement a new platform HAL package. This involves issues such as
+board initialization, diagnostics, possibly gdb support, and linker
+scripts. There are existing platform HAL packages for the stdeval1,
+jmr3904, and Cogent boards, and these can be used as starting points.
+
+<P>
+<A HREF="#top">Top</A>
+
+<P>
 <h3>Contributing</h3>
 <P>
 
