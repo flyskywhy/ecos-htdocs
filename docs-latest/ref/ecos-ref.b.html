@@ -818,10 +818,21 @@ hal_cache.h</CODE>
 <A NAME="pgfId=1039074">
  </A>
 Note that destructive cache macros should be used with caution. Preceding a cache invalidation with a cache synchronization is not safe in itself since an interrupt may happen after the synchronization but before the invalidation. This might cause the state of dirty data lines created during the interrupt to be lost. </P>
-<P CLASS="Body">
-<A NAME="pgfId=1039091">
- </A>
-Depending on the architecture's capabilities, it may be possible to temporarily disable the cache while doing the synchronization and invalidation which solves the problem (no new data would be cached during an interrupt). Otherwise it is necessary to disable interrupts while manipulating the cache which may take a long time. </P>
+  <P CLASS="Body"> <A NAME="pgfId=1039091"> </A> Depending on the architecture's 
+    capabilities, it may be possible to temporarily disable the cache while doing 
+    the synchronization and invalidation which solves the problem (no new data 
+    would be cached during an interrupt). Otherwise it is necessary to disable 
+    interrupts while manipulating the cache which may take a long time. </P>
+  <P CLASS="Body">Some platform HALs now support a pair of cache state query macros: 
+    <font face="Courier New, Courier, mono">HAL_ICACHE_IS_ENABLED( x )</font> 
+    and <font face="Courier New, Courier, mono">HAL_DCACHE_IS_ENABLED( x )</font>, 
+    which set the argument to true if the instruction or data cache is enabled, 
+    respectively. Like most cache control macros, these are optional, because 
+    the capabilities of different targets and boards can vary considerably. Code 
+    which uses them, if it is to be considered portable, should test for their 
+    existence first by means of <font face="Courier New, Courier, mono">#ifdef</font>. 
+    Be sure to include<font face="Courier New, Courier, mono">&lt;cyg/hal/hal_cache.h&gt;</font> 
+    in order to do this test and (maybe) use the macros. </P>
 <H4 CLASS="Heading3">
 <A NAME="pgfId=1039108">
  </A>

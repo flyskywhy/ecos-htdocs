@@ -132,10 +132,9 @@ ecosconfig</TT>
  <A NAME="marker=1137536">
  </A>
  	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1137538">
- </A>
-Provides basic usage guidelines for the available commands and qualifiers.</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1137538"> </A> Provides basic usage 
+    guidelines for the available commands and qualifiers. All other qualifiers 
+    and commands are ignored if --help is used.</P>
 <P CLASS="BodyHang1">
 <A NAME="pgfId=1137540">
  </A>
@@ -186,11 +185,30 @@ ECOS_REPOSITORY</EM>
 <A NAME="marker=1152266">
  </A>
  	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1152268">
- </A>
-Disables the implicit resolution of conflicts while manipulating the configuration data. developers may prefer to reslove conflicts by editing the eCos configuration save file manually.</P>
-<H3 CLASS="Heading2">
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1152268"> </A> Disables the implicit 
+    resolution of conflicts while manipulating the configuration data. Developers 
+    may prefer to resolve conflicts by editing the eCos configuration save file 
+    manually. The check command implicitely uses --no-resolve.</P>
+  <p class="BodyHang1"><tt class="Code">--ignore-errors<br>
+    -i </tt> <a name="marker=1152266"> </a> </p>
+  <p class="BodyListFollow"> <a name="pgfId=1152268"> </a> By default, <tt>ecosconfig</tt> 
+    will exit with an error code if the current configuration contains any conflicts, 
+    and it is not possible to generate or update a build tree for such configurations. 
+    This qualifier causes <tt>ecosconfig</tt> to ignore such problems, and hence 
+    it is possible to generate a build tree even if there are still conflicts. 
+    Of course, there are no guarantees that the resulting system will actually 
+    do anything.</p>
+  <p class="BodyHang1"><tt class="Code">--verbose<br>
+    -v </tt> <a name="marker=1152266"> </a> </p>
+  <p class="BodyListFollow"> <a name="pgfId=1152268"> </a> Display more information.</p>
+  <p class="BodyHang1"><tt class="Code">--quiet<br>
+    -q </tt> <a name="marker=1152266"> </a> </p>
+  <p class="BodyListFollow"> <a name="pgfId=1152268"> </a> Display less information.</p>
+  <p class="BodyListFollow">The --config, --prefix and --srcdir qualifiers can 
+    also be written with two arguments, for example:</p>
+  <p class="BodyListFollow"><tt>ecosconfig --srcdir &lt;dir&gt; ...</tt></p>
+  <p class="BodyListFollow">This simplifies filename completion with some shells.</p>
+  <H3 CLASS="Heading2">
 <A NAME="pgfId=1137548">
  </A>
 <A NAME="marker=1150676">
@@ -222,10 +240,10 @@ new &lt;target&gt; [&lt;template&gt; 	[&lt;version&gt;]]</TT>
 <A NAME="marker=1137553">
  </A>
 </P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1137555">
- </A>
-Creates a new eCos configuration for the specified target hardware and saves it. A software template may also be specified. By default, the template named &#153default' is used. If the template version is not specified, the latest version is used.</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1137555"> </A> Creates a new eCos configuration 
+    for the specified target hardware and saves it. A software template may also 
+    be specified. By default, the template named 'default' is used. If the template 
+    version is not specified, the latest version is used.</P>
 <P CLASS="BodyHang1">
 <A NAME="pgfId=1137557">
  </A>
@@ -270,10 +288,12 @@ add &lt;packages&gt;</TT>
  <A NAME="marker=1137565">
  </A>
  	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1137567">
- </A>
-Adds the specified packages to the eCos configuration. This command will be used typically when the template on which a configuration is based does not contain all the packages which are required.</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1137567"> </A> Adds the specified 
+    packages to the eCos configuration. This command will be used typically when 
+    the template on which a configuration is based does not contain all the packages 
+    which are required. For example, add-on packages provided by third parties 
+    will not be known to the standard templetes, so they will have to be added 
+    explicitely. </P>
 <P CLASS="Body">
 <A NAME="pgfId=1137569">
  </A>
@@ -298,33 +318,29 @@ check</TT>
 <A NAME="pgfId=1137573">
  </A>
 Presents the following information concerning the current configuration:</P>
-<OL>
-<P><P><LI>
-<A NAME="pgfId=1137574">
- </A>
-the selected target hardware</LI>
-<P><P><LI>
-<A NAME="pgfId=1137575">
- </A>
-the selected template</LI>
-<P><P><LI>
-<A NAME="pgfId=1137576">
- </A>
-additional packages</LI>
-<P><P><LI>
-<A NAME="pgfId=1137577">
- </A>
-removed packages</LI>
-<P><P><LI>
-<A NAME="pgfId=1137578">
- </A>
-the selected version of packages where this is not the most recent version</LI>
-<P><P><LI>
-<A NAME="pgfId=1137579">
- </A>
-conflicts in the current configuration</LI>
-</OL>
-<P CLASS="BodyHang1">
+  <OL>
+    <P> 
+    <P> 
+    <LI> <A NAME="pgfId=1137574"> </A> the selected target hardware</LI>
+    <P> 
+    <P> 
+    <LI> <A NAME="pgfId=1137575"> </A> the selected template</LI>
+    <P> 
+    <P> 
+    <LI> <A NAME="pgfId=1137576"> </A> additional packages</LI>
+    <P> 
+    <P> 
+    <LI> <A NAME="pgfId=1137577"> </A> removed packages</LI>
+    <P> 
+    <P> 
+    <LI> <A NAME="pgfId=1137578"> </A> the selected version of packages where 
+      this is not the most recent version</LI>
+    <P> 
+    <P> 
+  </OL>
+  <p> The check command will never perform automatic conflict resolution, so there 
+    is no need to use --no-resolve. 
+  <P CLASS="BodyHang1">
 <A NAME="pgfId=1137581">
  </A>
 <TT CLASS="Code">
@@ -364,10 +380,114 @@ tree</TT>
  <A NAME="marker=1137583">
  </A>
  	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1137585">
- </A>
-Generates a build tree based on the current eCos configuration. This command will be used typically just before building eCos.</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1137585"> </A> Generates a build tree 
+    based on the current eCos configuration. This command will be used typically 
+    just before building eCos. Normally a build tree can only be generated if 
+    if the configuration has no unresolved conflicts, but --ignore-errors can 
+    be used to override this.</P>
+  <h3 class="Heading2"> <a name="pgfId=Conflicts"> </a> <a name="marker=Conflicts"> 
+    </a> Conflicts and constraints</h3>
+  <p CLASS="Body">Configuration options are not completely independent. 
+    For example the C library's strtod() and atof() functions rely on the math 
+    library package to provide certain functionality. If the math library package 
+    is removed then the C library can no longer provide these functions. Each 
+    package describes constraints like these in CDL "requires" properties. If 
+    a constraint is not satisfied, then the configuration contains a conflict. 
+    For any given conflict there can be several rtesolution options. For example, 
+    it would be possible to add the math library package back to the configuration, 
+    or to disable the strtod() and atof() functions. </p>
+  <P CLASS="Body">The eCos configuration tools will report any conflicts 
+    in the current configuration. If there are any such conflicts then the configuration 
+    is usually unsafe and it makes no sense to build and run eCos in such circumstances. 
+    In fact, any attempt at building eCos is likely to fail. In exceptional cases 
+    it is possible to override this by using e.g. the --ignore-errors qualifier 
+    with ecosconfig. </P>
+  <P CLASS="Body">Many constraints are fairly simple in nature, and 
+    the configuration tools contain an inference engine which can resolve the 
+    associated conflicts automatically. For example, if the math library package 
+    is removed then the inference engine can resolve the resulting conflict by 
+    disabling the configuration option for strtod() and atof(). All such changes 
+    will be reported. Sometimes the inference engine cannot resolve a conflict, 
+    for example it is not allowed to override a change that has been made explicitly 
+    by the user. Sometimes it will find a solution which does not match the application's 
+    requirements. </P>
+  <P CLASS="Body">A typical session involving conflicts would look something 
+    like this: </P>
+  <pre CLASS="BodyListFollow">$ ecosconfig new<target> </pre>
+  <P CLASS="Body">This creates a new configuration with the default 
+    template. For most targets this will not result in any conflicts, because 
+    the default settings for the various options meet the requirements of the 
+    default template. For some targets there may be conflicts and the inference 
+    engine would come into play. </P>
+  <pre>$ ecosconfig remove libm <br>U CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT, new inferred value 0 <br>U CYGFUN_LIBC_strtod, new inferred value 0 <br>U CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, new inferred value 0 </pre>
+  <P CLASS="Body">ecosconfig reports that this change caused three conflicts, 
+    all in the C library. The inference engine was able to resolve all the conflicts 
+    and update the relevant configuration options accordingly. </P>
+  <P CLASS="Body">To suppress the inference engine --no-resolve can 
+    be used: </P>
+  <pre>$ ecosconfig new <target> 
+$ ecosconfig --no-resolve remove libm 
+C CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT, "requires" constraint not satisfied:      CYGPKG_LIBM 
+C CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, "requires" constraint not satisfied:      CYGPKG_LIBM 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM </pre>
+  <P CLASS="Body">Three unresolved conflicts are reported. The check 
+    command can be used to get the current state of the configuration, and the 
+    --verbose qualifier will provide additional information: </P>
+  <pre>$ ecosconfig --srcdir /home/bartv/ecc/ecc --verbose      check 
+Target: pid 
+Template: default 
+Removed:<br> CYGPKG_LIBM 
+3 conflict(s): 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM
+ Possible solution: 
+    CYGFUN_LIBC_strtod -> 0 
+    CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT -> 0 
+C CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, "requires" constraint not satisfied:      CYGPKG_LIBM 
+ Possible solution: 
+    CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT -> 0 
+C CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT, "requires" constraint not satisfied:      CYGPKG_LIBM 
+ Possible solution: 
+    CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT -> 0 </pre>
+  <P CLASS="Body">If the proposed solutions are acceptable, the resolve 
+    command can be used to apply them: </P>
+  <pre>$ ecosconfig resolve 
+U CYGSEM_LIBC_STDIO_SCANF_FLOATING_POINT, new inferred value 0 
+U CYGFUN_LIBC_strtod, new inferred value 0 
+U CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, new inferred value 0 </pre>
+  <P CLASS="Body">The current configuration is again conflict-free and 
+    it is possible to generate a build tree. The --quiet qualifier can be used 
+    to suppress the change messages, if desired.</P>
+  <P CLASS="Body"> When changing individual configuration options by 
+    editing the ecos.ecc file (as described below), the resulting system should 
+    be checked and any problems should be resolved. For example, if CYGFUN_LIBC_strtod 
+    is explicitly enabled in the savefile: </P>
+  <pre>$ edit ecos.ecc
+$ ecosconfig check 
+Target: pid 
+Template: default 
+Removed: 
+    CYGPKG_LIBM 
+1 conflict(s): 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM 
+$ ecosconfig resolve 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM </pre>
+  <P CLASS="Body">In this case the inference engine cannot resolve the 
+    conflict automatically because that would involve changing a user setting. 
+    Any attempt to generate a build tree will fail: </P>
+  <pre>$ ecosconfig --srcdir /home/bartv/ecc/ecc tree 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM </pre>
+  <P CLASS="Body">Unable to generate build tree, this configuration 
+    still contains conflicts. Either resolve the conflicts or use --ignore-errors 
+  </P>
+  <P CLASS="Body">It is still possible to generate a build tree: </P>
+  <pre>$ ecosconfig --srcdir /home/bartv/ecc/ecc --ignore-errors      tree 
+C CYGFUN_LIBC_strtod, "requires" constraint not satisfied: CYGPKG_LIBM 
+$ make </pre>
+  <P CLASS="Body">In this case eCos will fail to build. In other cases 
+    of unresolved conflicts eCos may build, but may not run. In general all conflicts 
+    should be resolved by editing the ecos.ecc file, by letting the inference 
+    engine make appropriate changes, or by other means, before any attempt is 
+    made to build or run eCos. </P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
@@ -384,9 +504,9 @@ ecosconfig</TT>
 , <A NAME="marker=1137587">
  </A>
 building eCos is straightforward:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1137589"> </A>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1137589"> </A>
 <TT CLASS="Code">$ make</TT>
- </PRE>
+</PRE>
 <P CLASS="Body">
 <A NAME="pgfId=1137590">
  </A>

@@ -149,56 +149,9 @@ fgetpos()</CODE>
 <CODE CLASS="CodeOutput">
 fsetpos()</CODE>
 </P>
-<P CLASS="Body">
-<A NAME="pgfId=1241607">
- </A>
-Most of these functions are omitted because they only apply to disk-based file systems. These will be supported in a future version of <SPAN CLASS="BOLD">
-eCos.</SPAN>
- </P>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=1241621">
- </A>
-stdlib.h</H3>
-<P CLASS="Body">
-<A NAME="pgfId=1241633">
- </A>
-<CODE CLASS="CodeOutput">
-mblen()</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241642">
- </A>
-<CODE CLASS="CodeOutput">
-mbtowc()</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241651">
- </A>
-<CODE CLASS="CodeOutput">
-wctomb()</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241660">
- </A>
-<CODE CLASS="CodeOutput">
-mbstowcs()</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241669">
- </A>
-<CODE CLASS="CodeOutput">
-wcstombs()</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241679">
- </A>
-<CODE CLASS="CodeOutput">
-MB_CUR_MAX</CODE>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1241686">
- </A>
-All of these functions are related to multibyte and wide character support. </P>
+  <P CLASS="Body"> <A NAME="pgfId=1241607"> </A> Most of these functions are omitted 
+    because they only apply to disk-based file systems. These will be supported 
+    in a future version of <SPAN CLASS="BOLD"> eCos.</SPAN> </P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
@@ -321,7 +274,7 @@ time_t</CODE>
  in UTC. It returns non-zero on error.</P>
 </DIV>
 <DIV>
-<A NAME="COMPATIBILITY-MODES">
+<A NAME="COMPATIBILITY-MODES"></a>
 <H3 CLASS="Heading1">
 <A NAME="pgfId=1052602">
  </A>
@@ -828,7 +781,7 @@ main( int argc, char *argv[] )
 } </PRE>
 </DIV>
 <DIV>
-<A NAME="THREAD-SAFETY">
+<A NAME="THREAD-SAFETY"></a>
 <H3 CLASS="Heading1">
 <A NAME="pgfId=1054298">
  </A>
@@ -839,11 +792,15 @@ Thread safety</H3>
 <A NAME="pgfId=1054398">
  </A>
 The ISO C library has configuration options that control thread safety, i.e. working behavior if multiple threads call the same function at the same time.</P>
-<P CLASS="Body">
-<A NAME="pgfId=1090537">
- </A>
-The following functionality has to be configured correctly, or used carefully in a multi-threaded environment:</P>
-<UL>
+  <P CLASS="Body"> <A NAME="pgfId=1090537"> </A> The following functionality has 
+    to be configured correctly, or used carefully in a multi-threaded environment:</P>
+  <p>
+  <ul>
+    <li> <a name="pgfId=1090559"> </a> <code class="CodeOutput"> mblen()</code></li><p>
+    <li> <a name="pgfId=1090559"> </a> <code class="CodeOutput"> mbtowc()</code></li><p>
+    <li> <a name="pgfId=1090559"> </a> <code class="CodeOutput"> wctomb()</code></li>
+  </ul>
+  <UL>
 <P><LI>
 <A NAME="pgfId=1090550">
  </A>
@@ -931,7 +888,7 @@ errno</CODE>
 In some other cases, like the setting of date and time, no re-entrant or thread-safe alternative or configuration is provided as it is simply not a worthwhile addition (date and time should rarely need to be set.)</P>
 </DIV>
 <DIV>
-<A NAME="LIBRARY-STARTUP">
+<A NAME="LIBRARY-STARTUP"></a>
 <H3 CLASS="Heading1">
 <A NAME="pgfId=1090587">
  </A>

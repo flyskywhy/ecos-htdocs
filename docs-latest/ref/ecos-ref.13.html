@@ -6,7 +6,9 @@
 <TITLE> Device Driver Interface to the Kernel</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center">
+        <P CLASS="Gotos"><A HREF="ecos-ref.12a.html">To&nbsp;previous&nbsp;page</A></P>
+      </TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1080346">
  </A>
@@ -323,16 +325,13 @@ DSR</P>
 <A NAME="pgfId=1080904">
  </A>
 Description: 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1080911">
- </A>
-Re-enables delivery of interrupts, allowing ISRs to run. This function decrements the counter maintained by <CODE CLASS="CodeOutput">
-cyg_drv_isr_lock()</CODE>
-, and only re-allows interrupts when it goes to zero. </P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1080933">
- </A>
-Function: 	</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1080911"> </A> Re-enables delivery of 
+    interrupts, allowing ISRs to run. This function decrements the counter maintained 
+    by <CODE CLASS="CodeOutput"> cyg_drv_isr_lock()</CODE> , and only re-allows 
+    interrupts when it goes to zero. </P>
+  <h3 class="Heading2"> <a name="pgfId=1080806a"> </a> <a name="marker=dsr_lock"> 
+    </a> cyg_drv_dsr_lock </h3>
+  <P CLASS="BodyHang1">Function: </P>
 <PRE CLASS="CodeExample"><A NAME="pgfId=1080943"> </A>
 void cyg_drv_dsr_lock()</PRE>
 <P CLASS="BodyHang1">
@@ -1486,5 +1485,7 @@ Deferred Service Routine definition. A pointer to a function with this prototype
 cyg_interrupt_create()</CODE>
  when an interrupt object is created. When the ISR request the scheduling of its DSR, this function will be called at some later point. In addition to the vector and data arguments, which will be the same as those passed to the ISR, this routine is also passed a count of the number of times the ISR has requested that this DSR be scheduled. This counter is zeroed each time the DSR actually runs, so it indicates how many interrupts have occurred since it last ran.</P>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center">
+      <P CLASS="Gotos"><A HREF="ecos-ref.12a.html">To&nbsp;previous&nbsp;page</A></P>
+    </TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

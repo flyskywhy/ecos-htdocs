@@ -315,272 +315,164 @@ The function type used for alarm handlers. </P>
 typedef void cyg_alarm_t(cyg_handle_t alarm,
  cyg_addrword_t data);</PRE>
 </DIV>
-<DIV>
-<A NAME="THREAD-OPERATIONS"></a>
-<H3 CLASS="Heading1">
-<A NAME="pgfId=1087874">
- </A>
-<A NAME="marker=1087871">
- </A>
-<A NAME="38132">
- </A>
-Thread operations</H3>
+<DIV> <A NAME="THREAD-OPERATIONS"></a> 
+  <H3 CLASS="Heading1"> <A NAME="pgfId=1087874"> </A> <A NAME="marker=1087871"> 
+    </A> <A NAME="38132"> </A> Thread operations</H3>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1087897"> </A>
 void <CODE CLASS="CodeOutput">cyg_scheduler_start</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1087901">
- </A>
-Starts the scheduler with the threads that have been created. It never returns. The scheduler has been chosen at configuration time. <SPAN CLASS="Bold">
-eCos</SPAN>
- currently ships with three schedulers: a bitmap scheduler, a multi-level scheduler (selected by default), and an experimental &quot;lottery&quot; scheduler which is under development. It is unsupported and currently unusable.</P>
-<P CLASS="Body">
-<A NAME="pgfId=1451703">
- </A>
-The configuration tool can be used to select between schedulers. The configuration options are <BR>
-<EM CLASS="parameter">
-CYGSEM_SCHED_BITMAP,</EM>
- <EM CLASS="parameter">
-CYGSEM_SCHED_MLQUEUE</EM>
-  and <EM CLASS="parameter">
-CYGSEM_SCHED_LOTTERY.</EM>
-</P>
-<H3 CLASS="Label">
-<A NAME="pgfId=1087934">
- </A>
-NOTE</H3>
-<P CLASS="Note">
-<A NAME="pgfId=1087938">
- </A>
-Interrupts are not enabled until the scheduler has been started with <CODE CLASS="CodeOutput">
-cyg_scheduler_start()</CODE>
-.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1087901"> </A> Starts the scheduler with the 
+    threads that have been created. It never returns. The scheduler has been chosen 
+    at configuration time. <SPAN CLASS="Bold"> eCos</SPAN> currently ships with 
+    three schedulers: a bitmap scheduler, a multi-level scheduler (selected by 
+    default), and an experimental &quot;lottery&quot; scheduler which is under 
+    development. It is unsupported and currently unusable.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1451703"> </A> The configuration tool can be 
+    used to select between schedulers. The configuration options are <BR>
+    <EM CLASS="parameter"> CYGSEM_SCHED_BITMAP,</EM> <EM CLASS="parameter"> CYGSEM_SCHED_MLQUEUE</EM> 
+    and <EM CLASS="parameter"> CYGSEM_SCHED_LOTTERY.</EM> </P>
+  <H3 CLASS="Label"> <A NAME="pgfId=1087934"> </A> NOTE</H3>
+  <P CLASS="Note"> <A NAME="pgfId=1087938"> </A> Interrupts are not enabled until 
+    the scheduler has been started with <CODE CLASS="CodeOutput"> cyg_scheduler_start()</CODE> 
+    .</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1087967"> </A>
 void <CODE CLASS="CodeOutput">cyg_scheduler_lock</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1087971">
- </A>
-Locks the scheduler so that a context switch cannot occur. This can be used to protect data shared between a thread and a DSR, or between multiple threads, by surrounding the critical region with <CODE CLASS="CodeOutput">
-cyg_scheduler_lock()</CODE>
- and <CODE CLASS="CodeOutput">
-cyg_scheduler_unlock()</CODE>
-. </P>
+  <P CLASS="Body"> <A NAME="pgfId=1087971"> </A> Locks the scheduler so that a 
+    context switch cannot occur. This can be used to protect data shared between 
+    a thread and a DSR, or between multiple threads, by surrounding the critical 
+    region with <CODE CLASS="CodeOutput"> cyg_scheduler_lock()</CODE> and <CODE CLASS="CodeOutput"> 
+    cyg_scheduler_unlock()</CODE> . </P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1088003"> </A>
 void <CODE CLASS="CodeOutput">cyg_scheduler_unlock</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1305781">
- </A>
-Unlocks the scheduler so that context switching can occur again.</P>
-  <PRE CLASS="CodeExample"><A NAME="pgfId=1305782"> </A>
-void <CODE CLASS="CodeOutput">cyg_thread_create</CODE>( 
-    cyg_addrword_t <EM CLASS="Emphasis">sched_info,
-</EM>    cyg_thread_entry_t *<EM CLASS="Emphasis">entry,
-</EM>    cyg_addrword_t <EM CLASS="Emphasis">entry_data,
-</EM>    char *<EM CLASS="Emphasis">name,
-</EM>    void *<EM CLASS="Emphasis">stack_base,
-</EM>    cyg_ucount32 <EM CLASS="Emphasis">stack_size,
-</EM>    cyg_handle_t *<EM CLASS="Emphasis">handle,
-</EM>    cyg_thread *<EM CLASS="Emphasis">thread )</EM>
+  <P CLASS="Body"> <A NAME="pgfId=1305781"> </A> Unlocks the scheduler so that 
+    context switching can occur again.</P>
+  <PRE CLASS="CodeExampleWide">void <CODE CLASS="CodeOutput">cyg_thread_create</CODE>( 
+    cyg_addrword_t <EM CLASS="Emphasis">sched_info,</EM>
+    cyg_thread_entry_t *<EM CLASS="Emphasis">entry,</EM>
+    cyg_addrword_t <EM CLASS="Emphasis">entry_data,</EM>
+    char *<EM CLASS="Emphasis">name,</EM>
+    void *<EM CLASS="Emphasis">stack_base,</EM>
+    cyg_ucount32 <EM CLASS="Emphasis">stack_size,</EM>
+    cyg_handle_t *<EM CLASS="Emphasis">handle,</EM>
+    cyg_thread *<EM CLASS="Emphasis">thread )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1088124">
- </A>
-Creates a thread in a suspended state. The thread will not run until it has been resumed with <CODE CLASS="CodeOutput">
-cyg_thread_resume()</CODE>
- and the scheduler has been started with <CODE CLASS="CodeOutput">
-cyg_scheduler_start()</CODE>
-.</P>
-<P CLASS="Body">
-<A NAME="pgfId=1088142">
- </A>
-Here is a description of the parameters of <CODE CLASS="CodeOutput">
-cyg_thread_create()</CODE>
-:</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088160">
- </A>
-<EM CLASS="parameter">
-sched_info</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088167">
- </A>
-Information to be passed to the scheduler. For almost all schedulers this is a simple priority value, and you can simply pass a non-negative integer when you create the thread. </P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088185">
- </A>
-<EM CLASS="parameter">
-entry</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088192">
- </A>
-A user-supplied function: it is a routine that begins execution of the new thread. This function takes a single argument of type cyg_addrword_t, which is usually a pointer to a block of data, which allows <CODE CLASS="CodeOutput">
-cyg_scheduler_start()</CODE>
- to pass data to this particular thread.</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088210">
- </A>
-Here is a typedef for the <EM CLASS="parameter">
-entry</EM>
- function: </P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1088214"> </A>
+  <P CLASS="Body"> <A NAME="pgfId=1088124"> </A> Creates a thread in a suspended 
+    state. The thread will not run until it has been resumed with <CODE CLASS="CodeOutput"> 
+    cyg_thread_resume()</CODE> and the scheduler has been started with <CODE CLASS="CodeOutput"> 
+    cyg_scheduler_start()</CODE> .</P>
+  <P CLASS="Body"> <A NAME="pgfId=1088142"> </A> Here is a description of the 
+    parameters of <CODE CLASS="CodeOutput"> cyg_thread_create()</CODE> :</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088160"> </A> <EM CLASS="parameter"> sched_info</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088167"> </A> Information to be passed 
+    to the scheduler. For almost all schedulers this is a simple priority value, 
+    and you can simply pass a non-negative integer when you create the thread. 
+    Even when this holds, some schedulers may have restrictions on how priorities 
+    can be used. For example, the bitmap scheduler can only have one thread at 
+    each priority, so if an already-occupied slot is quoted, the next free slot 
+    of lower priority is chosen.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088185"> </A> <EM CLASS="parameter"> entry</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088192"> </A> A user-supplied function: 
+    it is a routine that begins execution of the new thread. This function takes 
+    a single argument of type cyg_addrword_t, which is usually a pointer to a 
+    block of data, which allows <CODE CLASS="CodeOutput"> cyg_scheduler_start()</CODE> 
+    to pass data to this particular thread.</P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088210"> </A> Here is a typedef for 
+    the <EM CLASS="parameter"> entry</EM> function: </P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1088214"> </A>
 typedef void cyg_thread_entry_t(cyg_addrword_t);</PRE>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088232">
- </A>
-<EM CLASS="parameter">
-entry_data</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088243">
- </A>
-A data value passed to the <EM CLASS="parameter">
-entry</EM>
- function. This may be either a machine word datum or the address of a block of data.</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088261">
- </A>
-<EM CLASS="parameter">
-name</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088271">
- </A>
-A C string with the name of this thread.</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088286">
- </A>
-<EM CLASS="parameter">
-stack_base</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088297">
- </A>
-The address of the stack base. If this value is <EM CLASS="parameter">
-NULL</EM>
- then <CODE CLASS="CodeOutput">
-cyg_thread_create()</CODE>
- will choose a stack base.</P>
-<H3 CLASS="Label">
-<A NAME="pgfId=1088309">
- </A>
-NOTE</H3>
-<P CLASS="Note">
-<A NAME="pgfId=1088317">
- </A>
-Passing a stack base of <EM CLASS="parameter">
-NULL</EM>
- is not supported in this release. You must pass a real address for the stack base.</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088336">
- </A>
-<EM CLASS="parameter">
-stack_size</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088343">
- </A>
-The size of the stack for this thread. If this is 0, the default stack size will be used for this thread.</P>
-<H3 CLASS="Label">
-<A NAME="pgfId=1088351">
- </A>
-NOTE</H3>
-<P CLASS="Note">
-<A NAME="pgfId=1088355">
- </A>
-Passing a stack size of 0 is not supported in this release. You must pass a real stack size.</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088374">
- </A>
-<EM CLASS="parameter">
-handle</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088388">
- </A>
-<CODE CLASS="CodeOutput">
-cyg_thread_create()</CODE>
- returns the thread handle in this location.</P>
-<P CLASS="BodyHang1">
-<A NAME="pgfId=1088403">
- </A>
-<EM CLASS="parameter">
-thread</EM>
- 	</P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088410">
- </A>
-The thread housekeeping information is placed in the memory pointed to by this parameter. If this pointer is <EM CLASS="parameter">
-NULL</EM>
- then the memory will be allocated. </P>
-<H3 CLASS="Label">
-<A NAME="pgfId=1088421">
- </A>
-NOTE</H3>
-<P CLASS="Note">
-<A NAME="pgfId=1088425">
- </A>
-Passing a NULL value for the thread data structure address is not supported in this release. You must pass a valid address. </P>
-<P CLASS="BodyListFollow">
-<A NAME="pgfId=1088432">
- </A>
- </P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088232"> </A> <EM CLASS="parameter"> entry_data</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088243"> </A> A data value passed 
+    to the <EM CLASS="parameter"> entry</EM> function. This may be either a machine 
+    word datum or the address of a block of data.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088261"> </A> <EM CLASS="parameter"> name</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088271"> </A> A C string with the 
+    name of this thread.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088286"> </A> <EM CLASS="parameter"> stack_base</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088297"> </A> The address of the 
+    stack base. If this value is <EM CLASS="parameter"> NULL</EM> then <CODE CLASS="CodeOutput"> 
+    cyg_thread_create()</CODE> will choose a stack base.</P>
+  <H3 CLASS="Label"> <A NAME="pgfId=1088309"> </A> NOTE</H3>
+  <P CLASS="Note"> <A NAME="pgfId=1088317"> </A> Passing a stack base of <EM CLASS="parameter"> 
+    NULL</EM> is not supported in this release. You must pass a real address for 
+    the stack base.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088336"> </A> <EM CLASS="parameter"> stack_size</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088343"> </A> The size of the stack 
+    for this thread. If this is 0, the default stack size will be used for this 
+    thread.</P>
+  <H3 CLASS="Label"> <A NAME="pgfId=1088351"> </A> NOTE</H3>
+  <P CLASS="Note"> <A NAME="pgfId=1088355"> </A> Passing a stack size of 0 is 
+    not supported in this release. You must pass a real stack size.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088374"> </A> <EM CLASS="parameter"> handle</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088388"> </A> <CODE CLASS="CodeOutput"> 
+    cyg_thread_create()</CODE> returns the thread handle in this location.</P>
+  <P CLASS="BodyHang1"> <A NAME="pgfId=1088403"> </A> <EM CLASS="parameter"> thread</EM> 
+  </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088410"> </A> The thread housekeeping 
+    information is placed in the memory pointed to by this parameter. If this 
+    pointer is <EM CLASS="parameter"> NULL</EM> then the memory will be allocated. 
+  </P>
+  <H3 CLASS="Label"> <A NAME="pgfId=1088421"> </A> NOTE</H3>
+  <P CLASS="Note"> <A NAME="pgfId=1088425"> </A> Passing a NULL value for the 
+    thread data structure address is not supported in this release. You must pass 
+    a valid address. </P>
+  <P CLASS="BodyListFollow"> <A NAME="pgfId=1088432"> </A> </P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1088455"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_exit</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1088460">
- </A>
-Exits the current thread. At present this simply puts the thread into suspended state.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1088460"> </A> Exits the current thread. At 
+    present this simply puts the thread into suspended state.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1088475"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_suspend</CODE>(
     cyg_handle_t <EM CLASS="Emphasis">thread )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1452259">
- </A>
-Suspends the <EM CLASS="parameter">
-thread.</EM>
- A thread may be suspended multiple times, in which case it will need to be resumed the same number of times before it will run. </P>
+  <P CLASS="Body"> <A NAME="pgfId=1452259"> </A> Suspends the <EM CLASS="parameter"> 
+    thread.</EM> A thread may be suspended multiple times, in which case it will 
+    need to be resumed the same number of times before it will run. </P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1452260"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_resume</CODE>(
 &nbsp;&nbsp;&nbsp;&nbsp;cyg_handle_t <EM CLASS="Emphasis">thread )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1088533">
- </A>
-Resumes <EM CLASS="parameter">
-thread.</EM>
- If a thread has been suspended multiple times it will need to be resumed the same number of times before it will run. Threads are created in a suspended state and must be resumed before they will run.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1088533"> </A> Resumes <EM CLASS="parameter"> 
+    thread.</EM> If a thread has been suspended multiple times it will need to 
+    be resumed the same number of times before it will run. Threads are created 
+    in a suspended state and must be resumed before they will run.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1088557"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_yield</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1088561">
- </A>
-Yields control to the next runnable thread of equal priority. If no such thread exists, then this function has no effect.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1088561"> </A> Yields control to the next runnable 
+    thread of equal priority. If no such thread exists, then this function has 
+    no effect.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1088577"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_kill</CODE>( 
     cyg_handle_t <EM CLASS="Emphasis">thread )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1452295">
- </A>
-Kills <EM CLASS="parameter">
-thread.</EM>
-</P>
-  <PRE CLASS="CodeExampleWide">cyg_bool_t cyg_thread_delete( <br>    cyg_handle_t <i>thread</i> )<font face="Times New Roman, Times, serif"><br>
-<font size="4">Kills <i>thread</i> and deletes it from the scheduler. If necessary,  it will kill <i>thread</i> first using cyg_thread_kill(<i>thread</i>).<br>If <i>thread</i> does not terminate in response to the kill message, this function returns false, indicating failure.<br>
-This function differs from <font face="Courier New, Courier, mono" size="3">cyg_thread_kill()</font> (or calling <font face="Courier New, Courier, mono" size="3">cyg_thread_exit()</font>
-for the current thread) by deregistering the thread from the scheduler. As a result, <br>the thread handle, thread stack and space passed for the thread housekeeping information can then be reused. <br>This is not the case if just <font size="3"><font face="Courier New, Courier, mono">cyg_thread_kill()</font></font> or <font size="3" face="Courier New, Courier, mono">cyg_thread_exit()</font> is invoked for the thread.<br>
-<font face="Arial, Helvetica, sans-serif"><b>NOTE</b></font></font></font></PRE>
-  <p CLASS="CodeExampleWide"><font face="Times New Roman, Times, serif"><font size="4"> 
-    <font face="Courier New, Courier, mono" size="3">cyg_thread_delete()</font> 
-    only deregisters the thread from the scheduler, it<br>
-    does not free up any resources that had been allocated by the thread such<br>
-    as dynamic memory, nor does it unlock any synchronization objects owned by<br>
-    the thread. This is the responsibility of the programmer. Additionally, unlike 
-    <font size="3"> <font face="Courier New, Courier, mono">cyg_thread_kill()</font></font>, 
-    the <font face="Courier New, Courier, mono" size="3">cyg_thread_delete()</font> 
-    function cannot be self-referencing.</font></font></p>
+  <P CLASS="Body"> <A NAME="pgfId=1452295"> </A> Kills <EM CLASS="parameter"> 
+    thread.</EM> </P>
+  <PRE CLASS="CodeExampleWide">cyg_bool_t cyg_thread_delete( <br>    cyg_handle_t <i>thread</i><br></PRE>
+  <br>
+  Kills <EM>thread</EM> and deletes it from the scheduler. If necessary, it will 
+  kill <EM>thread</EM> first using cyg_thread_kill(<EM>thread</EM>).<br>
+  If <EM>thread</EM> does not terminate in response to the kill message, this 
+  function returns false, indicating failure.<br>
+  <br>
+  This function differs from <i>cyg_thread_kill()</i> (or calling <i>cyg_thread_exit()</i> 
+  for the current thread) by deregistering the thread from the scheduler. As a 
+  result, the thread handle, thread stack and space passed for the thread housekeeping 
+  information can then be reused. <br>
+  This is not the case if just <i>cyg_thread_kill()</i>or <i>cyg_thread_exit()</i>is 
+  invoked for the thread.<br>
+  <br>
+  <b>NOTE</b><br>
+  <font size="4"><font size="3"><i>cyg_thread_delete()</i></font> </font>only 
+  deregisters the thread from the scheduler, it does not free up any resources 
+  that had been allocated by the thread such as dynamic memory, nor does it unlock 
+  any synchronization objects owned by the thread. This is the responsibility 
+  of the programmer. Additionally, unlike <i>cyg_thread_kill()</i>, the <i>cyg_thread_delete()</i> 
+  function cannot be self-referencing. 
   <p CLASS="CodeExampleWide"><b>EXAMPLE</b></p>
   <p CLASS="CodeExampleWide"><font face="Courier New, Courier, mono">// Delete 
     another thread. This must be done in a loop, waiting for<br>
@@ -592,55 +484,48 @@ for the current thread) by deregistering the thread from the scheduler. As a res
     } </font><br>
   </p>
   <PRE CLASS="CodeExampleWide">cyg_handle_t <CODE CLASS="CodeOutput">cyg_thread_self</CODE>( void )</PRE>
-  <P CLASS="Body">
-<A NAME="pgfId=1452297">
- </A>
-Returns the handle of the current thread.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1452297"> </A> Returns the handle of the current 
+    thread.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089001"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_release</CODE>( 
     cyg_handle_t <EM CLASS="Emphasis">thread )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089104">
- </A>
-Break the thread out of any wait it is currently in. Exactly how the thread returns from the wait operation, and how, if at all, the break is indicated, depends on the synchronization object it was waiting on.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089104"> </A> Break the thread out of any wait 
+    it is currently in. Exactly how the thread returns from the wait operation, 
+    and how, if at all, the break is indicated, depends on the synchronization 
+    object it was waiting on.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089108"> </A>
 cyg_ucount32 <CODE CLASS="CodeOutput">cyg_thread_new_data_index</CODE>( void )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089095">
- </A>
-Allocates a new per-thread data index from those still available. If no more indexes are available, and assertions are enabled, an assertion will be raised.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089095"> </A> Allocates a new per-thread data 
+    index from those still available. If no more indexes are available, and assertions 
+    are enabled, an assertion will be raised.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089126"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_free_data_index</CODE>( 
      cyg_ucount32 <EM CLASS="Emphasis">index )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089143">
- </A>
-Return the per-thread data index to the pool.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089143"> </A> Return the per-thread data index 
+    to the pool.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089169"> </A>
 CYG_ADDRWORD <CODE CLASS="CodeOutput">cyg_thread_get_data</CODE>( 
      cyg_ucount32 <EM CLASS="Emphasis">index )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089186">
- </A>
-Retrieve the per-thread data at the given index for the current thread.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089186"> </A> Retrieve the per-thread data 
+    at the given index for the current thread.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089217"> </A>
 CYG_ADDRWORD <CODE CLASS="CodeOutput">*cyg_thread_get_data_ptr</CODE>( 
      cyg_ucount32 <EM CLASS="Emphasis">index )</EM>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089235">
- </A>
-Return a pointer to the per-thread data at the given index for the current thread. This should be used with some care since in some future implementation the per-thread data may be managed by a dynamic mechanism that might invalidate this pointer at any time. This pointer should only be considered valid until the next call to the per-thread data functions.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089235"> </A> Return a pointer to the per-thread 
+    data at the given index for the current thread. This should be used with some 
+    care since in some future implementation the per-thread data may be managed 
+    by a dynamic mechanism that might invalidate this pointer at any time. This 
+    pointer should only be considered valid until the next call to the per-thread 
+    data functions.</P>
   <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1089301"> </A>
 void <CODE CLASS="CodeOutput">cyg_thread_set_data</CODE>( 
      cyg_ucount32 index, CYG_ADDRWORD data )</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1089319">
- </A>
-Store the data in the per-thread data for the current thread at the given index.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1089319"> </A> Store the data in the per-thread 
+    data for the current thread at the given index.</P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
@@ -1320,6 +1205,8 @@ Condition Variables</H3>
  </A>
 <A NAME="marker=1084848">
  </A>
+<A NAME="marker=cond_var">
+ </A>
 Condition variables are a synchronization mechanism which (used with a mutex) grants several threads mutually exclusive access to shared data and to broadcast availability of that data to all the other threads.</P>
 <P CLASS="Body">
 <A NAME="pgfId=1026235">
@@ -1679,10 +1566,16 @@ Returns true if there are any threads waiting for memory in the given memory poo
 <A NAME="pgfId=1027904">
  </A>
 Puts information about a variable memory pool into the structure provided.</P>
-<P CLASS="Body">
-<A NAME="pgfId=1214299">
- </A>
-The fixed size memory pool simply returns blocks of memory of exactly the blocksize requested. If the pool is being used to allocate memory for a type that has alignment constraints (such as 4-byte alignment), then it is up to the user to align the memory appropriately for the type in question. Alternatively, choose a blocksize that is an exact multiple of the required alignment.</P>
+  <P CLASS="Body"> <A NAME="pgfId=1214299"> </A> The fixed size memory pool simply 
+    returns blocks of memory of exactly the blocksize requested. If the pool is 
+    being used to allocate memory for a type that has alignment constraints (such 
+    as 4-byte alignment), then it is up to the user to align the memory appropriately 
+    for the type in question. Alternatively, choose a blocksize that is an exact 
+    multiple of the required alignment.</P>
+  <P CLASS="Body">The memory available from the memory pools will not be the same 
+    size as the memory supplied to it. Some of the memory is used for internal 
+    data structures of the allocator. cyg_mempool_fix_get_info() and cyg_mempool_var_get_info() 
+    may be used to determine the available memory. </P>
 </DIV>
 <DIV>
 <A NAME="MESSAGE-BOXES"></a>
