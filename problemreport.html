@@ -5,11 +5,11 @@
 
 <!--#include virtual="include/header.html"-->
 
-<h2>Submit An eCos Problem Report to Cygnus</h2>
+<h2>Submit an eCos Problem Report to Cygnus</h2>
 
 <hr size=3>
 <P>Use this form to submit an eCos problem report. Our support staff will
-respond to your problem via E-mail as quickly as possible.
+respond to your problem via e-mail as quickly as possible.
 
 
 <form method="POST" action="/cgi-bin/mailform.pl">
@@ -21,7 +21,7 @@ respond to your problem via E-mail as quickly as possible.
    <input type=hidden name="Send_PR_form" value="Sent_from_sourceware.cygnus.com">
    <input type=hidden name="&#62;Category" value="ecos">
 
-<P>* Required
+<P>* Required<p>
 
 <TABLE>
 
@@ -59,29 +59,29 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>Synopsis:</TD>	
   <TD ALIGN=LEFT>
-  <TEXTAREA ROWS="2" cols=50 NAME="&#62;Synopsis" WRAP=SOFT></TEXTAREA> <BR><BR></TD>
+  <TEXTAREA ROWS="2" cols=50 NAME="&#62;Synopsis" WRAP=SOFT></TEXTAREA> <BR></TD>
 </TR>
 
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>Severity:</TD>
   <TD ALIGH=LEFT>
      <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Non-critical" checked>
-         <B>Non-critical</B> - Graphical issue or miscellaneous problem<BR><BR>
+         <B>Non-critical</B> - Graphical issue or miscellaneous problem<BR>
      <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Serious">
-         <B>Serious</B> - Feature misbehaves<BR><BR>
+         <B>Serious</B> - Feature misbehaves<BR>
      <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Critical">
          <B>Critical</B> - Crash or data loss<BR><BR></TD>
 </TR>
 
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>Class:</TD>
-  <TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked><B>Target software bug</B><BR><BR>
+  <TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked><B>Target software bug</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug">
-       <B>Host tool bug</B><BR><BR>
+       <B>Host tool bug</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="doc-bug">
-       <B>Documentation bug</B><BR><BR>
+       <B>Documentation bug</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="change-request">
-       <B>Enhancement request</B><BR><BR>
+       <B>Enhancement request</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="support">
       <B>Support</B>
     <BR><BR>
@@ -110,6 +110,7 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
     <OPTION>Windows 95
     <OPTION>Windows 98
     <OPTION>Linux
+    <OPTION>(all hosts)
   </SELECT></TD>
 </TR>
 
