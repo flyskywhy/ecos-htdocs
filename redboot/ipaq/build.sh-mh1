@@ -340,7 +340,7 @@ rm -f $FAMILIAR/root/backupToFlash
 echo "Changing fstab"
 cat > $FAMILIAR/etc/fstab <<EOF
 # <device>    <mountpoint>   <filesystemtype> <options> <dump> <fsckorder>
-/dev/mtdblock3 	/               jffs2           defaults 0 0
+/dev/mtdblock/3 	/               jffs2           defaults 0 0
 ramfs		/mnt/ramfs	ramfs		defaults 0 0
 proc            /proc           proc            defaults 0 0
 devpts		/dev/pts	devpts		mode=0622       0 0
@@ -374,11 +374,11 @@ patch -p0 --no-backup-if-mismatch <<EOF
 +echo "Mounting /proc"
 +mount -n /proc
  
--mknod /dev/mtdblock3 b 31 3
+-mknod /dev/mtdblock/3 b 31 3
 -
 -echo "Untarring overlay... "
 -cd /
--tar xfpz /dev/mtdblock3 > /dev/null 2>&1
+-tar xfpz /dev/mtdblock/3 > /dev/null 2>&1
 +echo "Loading Unix socket support"
 +/sbin/insmod unix
 +
@@ -400,7 +400,7 @@ patch -p0 --no-backup-if-mismatch <<EOF
 -
 -# re-create the /etc/mtab entries
 -echo "Recreating /etc/mtab..."
--mount -f -t cramfs -o ro /dev/mtdblock4 /
+-mount -f -t cramfs -o ro /dev/mtdblock/4 /
 -mount -f -t ramfs ramfs /mnt/ramfs
 -mount -f -t ramfs ramfs /dev
 -mount -f -t proc none /proc
