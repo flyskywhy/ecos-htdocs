@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.4/Fri Apr 28 12:25:32 BST 2000-->
+<HEAD><!--version 1.3.11/Tue Jun 27 11:05:40 BST 2000-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Overview of the Release</TITLE></HEAD>
@@ -270,33 +270,33 @@ I/O library can be configured to use them as a transport layer.</P>
  </A>
 Monitor Image</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2561368">
+<A NAME="pgfId=2599693">
  </A>
 eCos ships with a <SPAN CLASS="Bold">
 </SPAN>
-<A NAME="marker=2561366">
+<A NAME="marker=2599691">
  </A>
-CygMon <A NAME="marker=2561367">
+CygMon <A NAME="marker=2599692">
  </A>
-ROM monitor for the MN10300, TX39, SPARClite, EDB7211, EDB7212 and EP7211 Development Boards. This includes a <A NAME="marker=2561369">
+ROM monitor for the MN10300, TX39, SPARClite, EDB7211, EDB7212 and EP7211 Development Boards. This includes a <A NAME="marker=2599694">
  </A>
-GDB stub, thus allowing GDB to be used to debug eCos applications on these evaluation boards. In addition to shipping the actual ROM, the image of that ROM is provided in case you need to burn identical copies for additional boards (see <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
+GDB stub, thus allowing GDB to be used to debug eCos applications on these evaluation boards. For the Brutus board, two stubs are provided: one with the high flash portion and the other with the low flash portion. In addition to shipping the actual ROM, the image of that ROM is provided in case you need to burn identical copies for additional boards (see <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
  Target Setup</A>
 ). </P>
 <P CLASS="Body">
-<A NAME="pgfId=2553757">
+<A NAME="pgfId=2599704">
  </A>
 For the ARM PID, ARM Cogent, ARM AEB, Cirrus Logic EDB7211 and EDB7209/7212, the ROM images include a GDB stub. This allows GDB to connect to the board and download eCos programs. </P>
 <P CLASS="Body">
-<A NAME="pgfId=2561424">
+<A NAME="pgfId=2605259">
  </A>
-For the ARM AEB-1 EBSA 285, the ROM image includes a GDB stub that can be installed in the FLASH ROM on the board.</P>
+For the ARM AEB-1 EBSA 285, SA1100 (Brutus) and SA1110 (Assabet), the ROM image includes a GDB stub that can be installed in the FLASH ROM on the board.</P>
 <H3 CLASS="Label">
-<A NAME="pgfId=2561467">
+<A NAME="pgfId=2605272">
  </A>
 NOTE</H3>
 <P CLASS="Note">
-<A NAME="pgfId=2561468">
+<A NAME="pgfId=2605273">
  </A>
 When an eCos program is run on ARM or SH3 boards, the GDB<SPAN CLASS="Bold">
  </SPAN>
@@ -304,18 +304,19 @@ stub in ROM does not provide thread debugging or asynchronous GDB interrupt supp
 .</SPAN>
 </P>
 <P CLASS="Body">
-<A NAME="pgfId=2495426">
+<A NAME="pgfId=2603211">
  </A>
 No monitor image is required for the synthetic Linux target.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2561497">
+<A NAME="pgfId=2599814">
  </A>
 For the port of CygMon to the EP7211 and EP7212 Development Boards, the source code to CygMon is included as an integral part of eCos. See <A HREF="ecos-tutorial.d.html#25420" CLASS="XRef">
  Cirrus Logic ARM EP7211 Development Board Hardware Setup</A>
  for information on how to rebuild CygMon for the EP7211.</P>
-  <P CLASS="Body"> <A NAME="pgfId=2555046"> </A> Please note that previous releases 
-    of CygMon are incompatible with eCos. You must use the version of CygMon that 
-    is provided with eCos rather than an older version of CygMon.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2599835">
+ </A>
+Please note that previous releases of CygMon are incompatible with eCos. You must use the version of CygMon that is provided with eCos rather than an older version of CygMon.</P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">

@@ -1,0 +1,560 @@
+<!-- Copyright (C) 2001 Red Hat, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/)                            -->
+<!-- Distribution of substantively modified versions of this         -->
+<!-- document is prohibited without the explicit permission of the   -->
+<!-- copyright holder.                                               -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission obtained from the copyright holder                   -->
+<HTML
+><HEAD
+><TITLE
+>Configuring the RedBoot Environment</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
+REL="HOME"
+TITLE="RedBoot&#8482; User's Guide"
+HREF="redboot.html"><LINK
+REL="UP"
+TITLE="Getting Started with RedBoot"
+HREF="getting_started_with_redboot.html"><LINK
+REL="PREVIOUS"
+TITLE="User Interface"
+HREF="x91.html"><LINK
+REL="NEXT"
+TITLE="RedBoot Commands and Examples"
+HREF="redboot_commands_and_examples.html"></HEAD
+><BODY
+CLASS="SECT1"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x91.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. Getting Started with RedBoot</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="redboot_commands_and_examples.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CONFIGURING_THE_REDBOOT_ENVIRONMENT"
+>Configuring the RedBoot Environment</A
+></H1
+><P
+>Once installed, RedBoot will operate fairly generically. However,
+there are some features that can be configured for a particular installation.
+These depend primarily on whether flash and/or networking support are available. The remainder
+of this discussion assumes that support for both of these options is included
+in RedBoot.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN122"
+>Target Network Configuration</A
+></H2
+><P
+>Each node in a networked
+system needs to have a unique address. Since the network support in RedBoot
+is based on TCP/IP, this address
+is an IP (Internet Protocol) address. There are two ways for a system to &#8220;know&#8221;
+its IP address. First, it can be stored locally on the platform. This is known
+as having a static IP address. Second, the system can use the network itself
+to discover its IP address. This is known as a dynamic IP address. RedBoot
+supports this dynamic IP address mode by use of the BOOTP (a subset of DHCP) protocol. In this case, RedBoot will ask the network (actually
+some generic server on the network) for the IP address to use.</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>Currently, RedBoot only supports BOOTP. In future releases, DHCP may
+also be supported, but such support will be limited to additional data items,
+not lease-based address allocation.</P
+></BLOCKQUOTE
+></DIV
+><P
+>The choice of IP
+address type is made via the <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+> command. Once a selection
+is made, it will be stored in flash memory. RedBoot only queries the flash
+configuration information at reset, so any changes will require restarting
+the platform.</P
+><P
+>Here is an example of the RedBoot <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+>
+command, showing network addressing:    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fconfig -l</B
+></TT
+>
+Run script at boot: false   
+Use BOOTP for network configuration: false 
+Local IP address: 192.168.1.29   
+Default server IP address: 192.168.1.101   
+GDB connection port: 9000   
+Network debug at boot time: false  </PRE
+></TD
+></TR
+></TABLE
+><P
+>In this case, the board has been configured with a static IP address
+listed as the Local IP address. The default server IP address specifies which
+network node to communicate with for TFTP service. This address can be overridden
+directly in the TFTP
+commands.</P
+><P
+>If the selection for <TT
+CLASS="COMPUTEROUTPUT"
+>Use BOOTP for network configuration</TT
+> had been <TT
+CLASS="COMPUTEROUTPUT"
+>true</TT
+>, these IP
+addresses would be determined at boot time, via the BOOTP protocol. The final
+number which needs to be configured, regardless of IP address selection mode,
+is the <TT
+CLASS="COMPUTEROUTPUT"
+>GDB connection port</TT
+>. RedBoot allows for incoming commands
+on either the available serial ports or via the network. This port number
+is the TCP port that RedBoot will use to accept incoming connections.  </P
+><P
+>These connections can be used for GDB sessions, but they can also be
+used for generic RedBoot commands. In particular, it is possible to communicate
+with RedBoot via the telnet
+protocol. For example, on Linux&reg;: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>% telnet redboot_board 9000  
+Connected to redboot_board   
+Escape character is &#8216;^]&#8217;.
+RedBoot&#62;  </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN166"
+>Host Network Configuration</A
+></H2
+><P
+>RedBoot
+may require two different classes of service from a network host:   </P
+><P
+></P
+><UL
+><LI
+><P
+>dynamic IP address allocation, using BOOTP   </P
+></LI
+><LI
+><P
+>TFTP service for file downloading </P
+></LI
+></UL
+><P
+>Depending on the host system, these services may or may not be available
+or enabled by default. See your system documentation for more details.</P
+><P
+>In particular, on Red Hat Linux, neither of these services will be configured
+out of the box. The following will provide a limited explanation of how to
+set them up. These configuration setups must be done as <TT
+CLASS="COMPUTEROUTPUT"
+>root</TT
+> on the host or server machine.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN185"
+>Enable TFTP on Red Hat Linux 6.2</A
+></H3
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Ensure that
+you have the tftp-server RPM package installed. By default, this installs
+the TFTP server in a disabled state. These steps will enable it:</P
+></LI
+><LI
+><P
+>Make sure that the following line is uncommented in the control
+file <TT
+CLASS="FILENAME"
+>/etc/inetd.conf</TT
+> <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>tftp dgram   udp     wait    root    /usr/sbin/tcpd      /usr/sbin/in.tftpd</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+></P
+></LI
+><LI
+><P
+>If it was necessary to change the line in Step 2, then the inetd
+server must be restarted, which can be done via the command:    <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+># service inet reload</PRE
+></TD
+></TR
+></TABLE
+></P
+></LI
+></OL
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN204"
+>Enable TFTP on Red Hat Linux 7</A
+></H3
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Ensure that the
+xinetd RPM is installed.</P
+></LI
+><LI
+><P
+>Ensure that the tftp-server RPM is installed.</P
+></LI
+><LI
+><P
+>Enable TFTP by means of the following: <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>/sbin/chkconfig tftp on </PRE
+></TD
+></TR
+></TABLE
+>Reload the xinetd configuration using the command:<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> /sbin/service xinetd reload </PRE
+></TD
+></TR
+></TABLE
+>Create the directory /tftpboot
+using the command <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>mkdir /tftpboot</PRE
+></TD
+></TR
+></TABLE
+></P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>Under Red Hat 7 you must address files by absolute pathnames, for example: <TT
+CLASS="COMPUTEROUTPUT"
+>/tftpboot/boot.img not /boot.img</TT
+>, as you may have done with
+other implementations.</P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN226"
+>Enable BOOTP server</A
+></H3
+><P
+>DHCP and First, ensure that you have
+the proper package, <TT
+CLASS="COMPUTEROUTPUT"
+>dhcp</TT
+> (not <TT
+CLASS="COMPUTEROUTPUT"
+>dhcpd</TT
+>) installed. The DHCP server provides Dynamic Host Configuration,
+that is, IP address and other data to hosts on a network. It does this in
+different ways. Next, there can be a fixed relationship between a certain
+node and the data, based on that node&#8217;s unique Ethernet Station Address
+(ESA, sometimes called a MAC address). The other possibility is simply to
+assign addresses that are free. The sample DHCP configuration file shown does
+both. Refer to the DHCP documentation for more details.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>--------------- /etc/dhcpd.conf -----------------------------
+default-lease-time 600; 
+max-lease-time 7200; 
+option subnet-mask 255.255.255.0; 
+option broadcast-address 192.168.1.255; 
+option domain-name-servers 63.225.98.241, 206.196.128.1, 205.180.230.20,205.180.230.21;    205.180.230.20,205.180.230.21; 
+option domain-name &#8220;bogus.com&#8221;; 
+allow bootp;
+shared-network BOGUS {   
+subnet 192.168.1.0 netmask 255.255.255.0 {
+         option routers 192.168.1.101;
+         range 192.168.1.1 192.168.1.254;   
+}
+ }
+host mbx {
+         hardware ethernet 08:00:3E:28:79:B8;
+         fixed-address 192.168.1.20;
+         filename &#8220;/tftpboot/192.168.1.21/zImage&#8221;;
+         default-lease-time -1;
+         server-name &#8220;srvr.bugus.com&#8221;;
+         server-identifier 192.168.1.101;
+         option host-name &#8220;mbx&#8221;;
+} </PRE
+></TD
+></TR
+></TABLE
+><P
+>Once the DHCP package has been installed and the configuration file
+set up, type:   <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> # service dhcpd start</PRE
+></TD
+></TR
+></TABLE
+></P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN240"
+>RedBoot network gateway</A
+></H3
+><P
+>RedBoot cannot communicate with
+machines on different subnets because it does not support routing. It always
+assumes that it can get to an address directly, therefore it always tries
+to ARP and then send packets directly to that unit. This means that whatever
+it talks to must be on the same subnet. If you need to talk to a host on a
+different subnet (even if it's on the same &#8216;wire&#8217;), you need to
+go through an ARP proxy, providing that there is a Linux box connected to
+the network which is able to route to the TFTP server. For example: <TT
+CLASS="COMPUTEROUTPUT"
+>/proc/sys/net/ipv4/conf/&lt;interface&#62;/proxy_arp </TT
+>where <TT
+CLASS="COMPUTEROUTPUT"
+>&lt;interface&#62;</TT
+>should be replaced with whichever network interface
+is nearest to the board.</P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN249"
+>Verification</A
+></H2
+><P
+>Once your network setup
+has been configured, perform simple verification tests as follows: <P
+></P
+><UL
+><LI
+><P
+>Reboot your system, to enable the setup, and then try to &#8216;ping&#8217;
+the target board from a host.</P
+></LI
+><LI
+><P
+>Once communication has been established, try using the RedBoot
+load command to download a file from a host.</P
+></LI
+></UL
+></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x91.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="redboot.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="redboot_commands_and_examples.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>User Interface</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="getting_started_with_redboot.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>RedBoot Commands and Examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

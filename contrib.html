@@ -3,143 +3,153 @@
 <TITLE>Contributions</TITLE>
 </HEAD>
 
-<!--#include virtual="include/header.html"-->
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="red" vlink="#880000">
 
-<H2>Contributions</H2>
-<HR SIZE=3>
+<h1>Contributions</h1>
 
-<h3>Introduction</h3>
-Contributions to eCos are always welcome. These may be in the form of
+<HR noshade SIZE=3>
+
+<h2>Introduction</h2>
+
+<p>Contributions to eCos are always welcome. These may be in the form of
 a new package, enhancements to an existing package or bug fixes. A contribution
 may be from a individual or part of a collaborative project. Information
-on how to contribute is contained within the eCos <a href="faq.html">FAQ</a>.
+on how to contribute is contained within the eCos <a href="faq.html">FAQ</a>.</p>
 
-<h3>External projects</h3>
+<h2>External projects</h2>
 
-The following external projects are known to the eCos maintainers. If you are
+<p>The following external projects are known to the eCos maintainers. If you are
 working on an eCos-based project that others could benefit from or contribute
 to, please let the <a href="mailto:ecos-maintainers@redhat.com">eCos maintainers</a>
 know and it will be added to this page. Sources are provided <i>as is</i> and are
-not supported by Red Hat at this time.
+not supported by Red Hat at this time.</p>
 
-<h4>TCP/IP stack</h4>
+<h3>TCP/IP stack</h3>
 
-Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
-FreeBSD-derived TCP/IP stack. The sources are available for download at:<p>
-&nbsp;&nbsp;<a href="ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/">
-ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/</a><p>
+<p>Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
+FreeBSD-derived TCP/IP stack. The sources are available for download at:</p>
 
-Note that this contribution is not related to the <a href="tcpip/">eCos TCP/IP stack</a>.
+<p><a href="ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/">
+ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/</a></p>
 
-<h4>PC platform HAL</h4>
+<p>Note that this contribution is not related to the <a href="tcpip/">eCos
+TCP/IP stack</a>.</p>
 
-Patrick O'Grady has developed an eCos HAL for the PC platform. A GDB stub
-is provided, allowing the developer to download applications to the target
-PC via a serial port. The sources are included in the eCos net
-distribution as of release 1.3.1.
+<h3>PC platform HAL</h3>
 
-<h4>Synthetic Linux platform HAL</h4>
+<p>Patrick O'Grady has developed an eCos HAL for the PC platform. A GDB stub
+is provided, allowing the developer to download applications to the target PC
+via a serial port. The sources are included in the eCos net distribution as
+of release 1.3.1.</p>
 
-Chris Provenzano has developed the eCos i386/Linux synthetic target. This
+<h3>Synthetic Linux platform HAL</h3>
+
+<p>Chris Provenzano has developed the eCos i386/Linux synthetic target. This
 is essentially a port of the eCos HAL to a Linux process and allows the
-developer to run eCos applications under Linux as if they were
-native Linux applications. The sources are included in the eCos net
-distribution as of release 1.2.1.
+developer to run eCos applications under Linux as if they were native Linux
+applications. The sources are included in the eCos net distribution as of
+release 1.2.1.</p>
 
-<h4>Kaffe Java VM</h4>
+<h3>Kaffe Java VM</h3>
 
-Ryouzaburou Suzuki has ported the Kaffe Java VM to eCos 1.3.1 on SH4. It is
-available for download <a href="http://www.sinby.com/">
-here</a>. Note that it is covered by the GNU General Public License.
+<p>Ryouzaburou Suzuki has ported the Kaffe Java VM to eCos 1.3.1 on SH4. It is
+available for download <a href="http://www.sinby.com/"> here</a>. Note that
+it is covered by the GNU General Public License.</p>
 
-<h4>Floating point hardware support</h4>
+<h3>Floating point hardware support</h3>
 
-Sergei Organov is working on support for floating point hardware within eCos.
-He is targeting the PowerPC processors initially. Sources are not yet available.
+<p>Sergei Organov is working on support for floating point hardware within
+eCos. He is targeting the PowerPC processors initially. Sources are not yet
+available.</p>
 
-<h4>NEC V850 architecture HAL</h4>
+<h3>NEC V850 architecture HAL</h3>
 
-Takayuki Wakabayashi has developed an eCos HAL for the NEC V850 architecture.
-The port was developed using the NEC V850 simulator and has not as yet been
-targeted at a specific hardware platform. The port is completely unsupported 
-and has not been tested at Red Hat. The sources will be available shortly.
+<p>Takayuki Wakabayashi has developed an eCos HAL for the NEC V850
+architecture. The port was developed using the NEC V850 simulator and has not
+as yet been targeted at a specific hardware platform. The port is completely
+unsupported  and has not been tested at Red Hat. The sources will be
+available shortly.</p>
 
-<h4>Motorola MPC8xxFADS platform HAL</h4>
+<h3>Motorola MPC8xxFADS platform HAL</h3>
 
-Kevin Hester has developed an eCos HAL for the Motorola MPC8xx Family Application
-Development System platform. The sources are included in the eCos net
-distribution as of release 1.2.1.
+<p>Kevin Hester has developed an eCos HAL for the Motorola MPC8xx Family
+Application Development System platform. The sources are included in the eCos
+net distribution as of release 1.2.1.</p>
 
-<h4>Samsung SNDS platform HAL</h4>
+<h3>Samsung SNDS platform HAL</h3>
 
-Grant Edwards is working on a port to the Samsung KS32C5000 microcontroller
-(ARM7TDMI core) and SNDS development hardware.
-Sources are not yet available (estimated availability - January 2000).
+<p>Grant Edwards is working on a port to the Samsung KS32C5000
+microcontroller (ARM7TDMI core) and SNDS development hardware. Sources are
+not yet available (estimated availability - January 2000).</p>
 
-<h4>MPC555 PowerPC microcontroller support</h4>
+<h3>MPC555 PowerPC microcontroller support</h3>
 
-Bob Koninckx has developed support for the Motorola MPC555 PowerPC
+<p>Bob Koninckx has developed support for the Motorola MPC555 PowerPC
 microcontroller and Axiom Manufacturing CME-0555 development board. The
-sources will be available via <a href="anoncvs.html">anonymous CVS</a> shortly.
+sources will be available via <a href="anoncvs.html">anonymous CVS</a>
+shortly.</p>
 
-<h4>ARM Integrator HAL and drivers</h4>
+<h3>ARM Integrator HAL and drivers</h3>
 
-Philippe Robin at <a href="http://www.arm.com/">ARM</a> has contributed a
-port to the <a href="http://www.arm.com/sitearchitek/devtools.ns4/iwpList113/F025F4F0A97DB15D802569190038F93F?OpenDocument&style=Dev_Tools">ARM Integrator</a>
-platform. This port is available in tarred gzip format
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/ecos_integrator.tar.gz">here</a>.
-<p>
-It is supplied as-is and was made against anonymous CVS as of the beginning
+<p>Philippe Robin at <a href="http://www.arm.com/" target="_top">ARM</a
+ has contributed a
+port to the <a href="http://www.arm.com/sitearchitek/devtools.ns4/iwpList113/F025F4F0A97DB15D802569190038F93F?OpenDocument&style=Dev_Tools" target="_top">
+ARM Integrator</a> platform. This port is available in tarred gzip format
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/ecos_integrator.tar.gz">here</a>.</p>
+
+<p>It is supplied as-is and was made against anonymous CVS as of the beginning
 of October 2000. It will inevitably require some merging to work against
 current anonymous CVS sources. There are some more comments from Philippe
 on the status as contributed in
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/readme.txt">this readme</a>.
-<p>
-When the port is finished, it will be integrated into the anonymous CVS
-repository in due course.
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/readme.txt">this readme</a>.</p>
 
-<h4>CarbonKernel RTOS simulator support</h4>
+<p>When the port is finished, it will be integrated into the anonymous CVS
+repository in due course.</p>
 
-<a href="http://www.realiant.com/">Realiant Systems</a> has made available
-an eCos personality for the <a href="http://www.carbonkernel.org/">
+<h3>CarbonKernel RTOS simulator support</h3>
+
+<p><a href="http://www.realiant.com/" target="_top">Realiant Systems</a> has
+made available an eCos personality for the
+<a href="http://www.carbonkernel.org/" target="_top">
 CarbonKernel RTOS simulator</a>. CarbonKernel is an event-driven simulator
 which mimics RTOS behaviour, allowing development and testing of embedded
 software on a workstation. More details can be found at the
-<a href="http://sourceforge.net/projects/carbonkernel/">CarbonKernel
-development site</a>.
+<a href="http://sourceforge.net/projects/carbonkernel/" target="_top">
+CarbonKernel development site</a>.</p>
 
-<h4>Bluetooth and WAP stack</h4>
+<h3>Bluetooth and WAP stack</h3>
 
-<a href="mailto:andreas_k_se@yahoo.com">Andreas Karlsson </a> at
-<a href="http://www.combitechsystems.com/">Combitech Systems AB</a> has
-made available a port of the <a href="http://www.axis.com/">Axis</a>
-Bluetooth stack. This was ported to develop an embedded WAP server running
-on top of Bluetooth.
-<p>
-The source code is available AS-IS from
-<a href="http://www.combitechsystems.com/">Combitech's web site</a>.
-<p>
-Note that this stack is covered by the GNU General Public License.
+<p><a href="mailto:andreas_k_se@yahoo.com">Andreas Karlsson </a> at
+<a href="http://www.combitechsystems.com/" target="_top">Combitech Systems AB
+</a> has made available a port of the <a href="http://www.axis.com/"
+target="_top">Axis</a> Bluetooth stack. This was ported to develop an
+embedded WAP server running on top of Bluetooth.</p>
 
-<h3>Individual contributors</h3>
+<p>The source code is available AS-IS from
+<a href="http://www.combitechsystems.com/" target="_top">Combitech's web site
+</a>.</p>
 
-The eCos team recognizes the following individuals who have contributed to
+<p>Note that this stack is covered by the GNU General Public License.</p>
+
+<h2>Individual contributors</h2>
+
+<p>The eCos team recognizes the following individuals who have contributed to
 eCos:
 
 <ul>
-<li>Grant Edwards &lt;<a href="mailto:grante@visi.com">grante@visi.com</a>&gt;
-<li>Tristan Gingold &lt;<a href="mailto:gingold@email.enst.fr">gingold@email.enst.fr</a>&gt;
-<li>Kevin Hester &lt;<a href="mailto:khester@opticalnetworks.com">khester@opticalnetworks.com</a>&gt;
-<li>Bob Koninckx &lt;<a href="mailto:bob.koninckx@mail.mech.kuleuven.ac.be">bob.koninckx@mail.mech.kuleuven.ac.be</a>&gt;
-<li>Andrew Lunn &lt;<a href="mailto:lunn@ma.tech.ascom.ch">lunn@ma.tech.ascom.ch</a>&gt;
-<li>Patrick O'Grady &lt;<a href="mailto:patrick@softprocess.com">patrick@softprocess.com</a>&gt;
-<li>Sergei Organov <!-- &lt;<a href="mailto:osv@javad.ru">osv@javad.ru</a>&gt; -->
-<li>Chris Provenzano <!-- &lt;<a href="mailto:proven@proven.org">proven@proven.org</a>&gt; -->
-<li>Takayuki Wakabayashi <!-- &lt;<a href="mailto:takayuki@ertl.ics.tut.ac.jp">takayuki@ertl.ics.tut.ac.jp</a>&gt; -->
+  <li>Grant Edwards &lt;<a href="mailto:grante@visi.com">grante@visi.com</a>&gt;
+  <li>Tristan Gingold &lt;<a href="mailto:gingold@email.enst.fr">gingold@email.enst.fr</a>&gt;
+  <li>Kevin Hester &lt;<a href="mailto:khester@opticalnetworks.com">khester@opticalnetworks.com</a>&gt;
+  <li>Bob Koninckx &lt;<a href="mailto:bob.koninckx@mail.mech.kuleuven.ac.be">bob.koninckx@mail.mech.kuleuven.ac.be</a>&gt;
+  <li>Andrew Lunn &lt;<a href="mailto:lunn@ma.tech.ascom.ch">lunn@ma.tech.ascom.ch</a>&gt;
+  <li>Patrick O'Grady &lt;<a href="mailto:patrick@softprocess.com">patrick@softprocess.com</a>&gt;
+  <li>Sergei Organov <!-- &lt;<a href="mailto:osv@javad.ru">osv@javad.ru</a>&gt; -->
+  <li>Chris Provenzano <!-- &lt;<a href="mailto:proven@proven.org">proven@proven.org</a>&gt; -->
+  <li>Takayuki Wakabayashi <!-- &lt;<a href="mailto:takayuki@ertl.ics.tut.ac.jp">takayuki@ertl.ics.tut.ac.jp</a>&gt; -->
 </ul>
 
 If we have left anyone off the list, please accept our apologies
 and inform the <a href="mailto:ecos-maintainers@redhat.com">eCos maintainers</a> of 
-the omission.
+the omission.</p>
 
-<!--#include virtual="include/footer.html"-->
+</body></html>

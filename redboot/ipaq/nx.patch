@@ -1,0 +1,3593 @@
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/Arch.rules /work/iPAQ/microwin/src/Arch.rules
+--- /work2/iPAQ/microwin/src/Arch.rules	Sun Jan 21 20:58:30 2001
++++ /work/iPAQ/microwin/src/Arch.rules	Tue Mar  6 07:24:24 2001
+@@ -108,3 +108,14 @@
+ CFLAGS += -O4 -Wall -Wno-unused -fasm -g \
+ -B$(RTEMS_BUILD)/$(RTEMS_BSP)/lib/ -specs bsp_specs -qrtems
+ endif
++
++ifeq ($(ARCH), ECOS)
++    COMPILER = gcc
++    CXX_COMPILER = g++
++    TOOLSPREFIX = $(ARMTOOLSPREFIX)
++    ECOS_PREFIX = /tmp/ipaq_ecos/install
++    INCLUDEDIRS += -I$(ECOS_PREFIX)/include
++    DEFINES += -D__ECOS -DUNIX=1
++    CFLAGS += -mcpu=strongarm -Wall -ffunction-sections -fdata-sections -O2 -g
++    LDFLAGS += -nostdlib
++endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/Configs/config.ecos /work/iPAQ/microwin/src/Configs/config.ecos
+--- /work2/iPAQ/microwin/src/Configs/config.ecos	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/Configs/config.ecos	Fri Mar 16 06:00:56 2001
+@@ -0,0 +1,317 @@
++####################################################################
++# Microwindows and Nano-X configuration file
++#
++# This package can be configured to run on Linux (MIPS, ARM, POWERPC or x86)
++# UNIX, ELKS, DJGPP, or RTEMS.
++# On Linux, we've got drivers for Linux 2.x framebuffers, X11, or,
++# svgalib for VGA hardware.
++# In addition, a gpm or direct serial mouse driver can be configured.
++# On ELKS, the bios screen driver and serial mouse driver are always used.
++#
++# Either Microwindows and/or Nano-X can be built.
++# Microwindows and Nano-X have several demos.
++#
++# For MSDOS makes, see mcmwin.mak and mcnanox.mak
++####################################################################
++
++####################################################################
++#
++# build target platform
++#
++# Valid ARCH values are:
++#
++# LINUX-NATIVE
++# LINUX-ARM
++# LINUX-MIPS
++# LINUX-POWERPC
++# LINUX-SH
++# FREEBSD-X86
++# SOLARIS
++# RTEMS
++# DJGPP
++# ELKS
++#
++# note: ELKS can't build client/server nano-X, nor widget lib
++#
++####################################################################
++ARCH                     = ECOS
++ARMTOOLSPREFIX           = arm-elf-
++MIPSTOOLSPREFIX          = mipsel-linux-
++POWERPCTOOLSPREFIX       = powerpc-linux-
++SHTOOLSPREFIX            = sh-linux-gnu
++RTEMSTOOLSPREFIX         = i386-rtemself-
++
++####################################################################
++#
++# Compiling options
++#
++####################################################################
++OPTIMIZE                 = Y
++DEBUG                    = Y
++VERBOSE                  = Y
++
++####################################################################
++#
++# Libraries to build: microwin, nano-X, nanowidget, object frameworks
++#
++####################################################################
++MICROWIN                 = Y
++NANOX                    = Y
++SHAREDLIBS               = N
++NWIDGET                  = N
++OBJFRAMEWORK             = N
++
++#
++# Link components into relocatable objects, instead of executables
++#
++OBJ_COMPONENTS           = Y
++
++####################################################################
++#
++# Demos to build
++#
++####################################################################
++MICROWINDEMO             = Y
++NANOXDEMO                = Y
++
++####################################################################
++#
++# Applications to build
++#
++####################################################################
++NANOWM                   = Y
++
++####################################################################
++#
++# The pixeltype of the native hardware or underlying graphics library.
++# This definition defines the PIXELVAL to be 32, 16 or 8 bits wide.
++# If using Linux framebuffer, set to MWPF_TRUECOLOR0888, and use fbset.
++# It also enables GdArea/GrArea for this particular pixel packing format.
++#
++# define MWPF_PALETTE       /* pixel is packed 8 bits 1, 4 or 8 pal index*/
++# define MWPF_TRUECOLOR0888 /* pixel is packed 32 bits 8/8/8 truecolor*/
++# define MWPF_TRUECOLOR888  /* pixel is packed 24 bits 8/8/8 truecolor*/
++# define MWPF_TRUECOLOR565  /* pixel is packed 16 bits 5/6/5 truecolor*/
++# define MWPF_TRUECOLOR555  /* pixel is packed 16 bits 5/5/5 truecolor*/
++# define MWPF_TRUECOLOR332  /* pixel is packed 8 bits 3/3/2 truecolor*/
++#
++####################################################################
++SCREEN_PIXTYPE           = MWPF_TRUECOLOR565
++
++####################################################################
++#
++# NanoX: Put Y to the following line to link the nano-X application
++# with the server.  This is required for ELKS, if no network is present,
++# or for speed or debugging.  This affects the nano-X server only.
++#
++####################################################################
++LINK_APP_INTO_SERVER     = N
++
++####################################################################
++#
++# File I/O support
++# Supporting either below drags in libc stdio, which may not be wanted
++#
++####################################################################
++HAVE_FILEIO              = Y
++
++####################################################################
++# BMP, GIF reading support
++####################################################################
++HAVE_BMP_SUPPORT         = Y
++HAVE_GIF_SUPPORT         = Y
++HAVE_PNM_SUPPORT         = Y
++HAVE_XPM_SUPPORT         = Y
++
++####################################################################
++# JPEG support through libjpeg, see README.txt in contrib/jpeg
++####################################################################
++HAVE_JPEG_SUPPORT        = N
++INCJPEG                  = .
++LIBJPEG                  = /usr/lib/libjpeg.a
++
++####################################################################
++# PNG support via libpng and libz
++####################################################################
++HAVE_PNG_SUPPORT         = N
++INCPNG                   = .
++LIBPNG                   = /usr/lib/libpng.a
++LIBZ                     = /usr/lib/libz.a
++
++####################################################################
++# T1 adobe type1 font support thru t1lib
++####################################################################
++HAVE_T1LIB_SUPPORT       = N
++INCT1LIB                 = /usr/include
++LIBT1LIB                 = /usr/lib/libt1.a
++
++####################################################################
++# TrueType font support thru FreeType
++####################################################################
++HAVE_FREETYPE_SUPPORT    = N
++INCFTLIB                 = /usr/include
++LIBFTLIB                 = /usr/lib/libttf.so
++FREETYPE_FONT_DIR        = "/usr/local/microwin/fonts"
++
++####################################################################
++# Shared memory support for Nano-X client/server protocol speedup
++####################################################################
++HAVE_SHAREDMEM_SUPPORT   = N
++
++####################################################################
++# Chinese Han Zi Ku font support
++####################################################################
++HAVE_HZK_SUPPORT         = N
++HZK_FONT_DIR             = "fonts/chinese"
++
++####################################################################
++# Chinese BIG5 compiled in font support (big5font.c)
++####################################################################
++HAVE_BIG5_SUPPORT        = N
++
++####################################################################
++# Chinese GB2312 compiled in font support (gb2312font.c)
++####################################################################
++HAVE_GB2312_SUPPORT      = N
++
++####################################################################
++# Generate screen driver interface only with no fonts or clipping
++####################################################################
++NOFONTSORCLIPPING        = N
++
++####################################################################
++#
++# Window move algorithms for Microwindows
++# Change for tradeoff between cpu speed and looks
++# ERASEMOVE repaints only backgrounds while window dragging, quicker.
++# Otherwise an XOR redraw is used for window moves only after button up,
++# quickest (should set for ELKS)
++# UPDATEREGIONS paints in update clipping region only for better look and feel
++#
++####################################################################
++ERASEMOVE                = Y
++UPDATEREGIONS            = Y
++
++####################################################################
++#
++# Use MS fonts (default no)
++#
++####################################################################
++HAVEMSFONTS              = N
++
++####################################################################
++#
++# Link with Gray Palette (valid only for 4bpp modes)
++#
++####################################################################
++GRAYPALETTE              = N
++
++####################################################################
++#
++# If the platform is running UNIX, Linux or RTEMS...
++#
++####################################################################
++ifneq ($(ARCH), ELKS)
++
++# X Window screen, mouse and kbd drivers
++X11                      = N
++
++ifeq ($(X11), Y)
++# predefined model or select screen width, height, depth(palette mode only)
++SCREEN_E15               = N
++SCREEN_WIDTH             = 640
++SCREEN_HEIGHT            = 480
++SCREEN_DEPTH             = 4
++
++# You may want to turn this on for XFree86 4.x or if your backing store
++# isn't functioning properly
++USE_EXPOSURE		 = N
++
++else
++
++# framebuffer screen driver (linear and/or vga 4 planes)
++# set VTSWITCH to include virtual terminal switch code
++# set PORTRAIT_MODE to L or R for left or right orientation
++# set FBREVERSE to reverse bit orders in 1,2,4 bpp
++# set FBVGA=N for all systems without VGA hardware (for MIPS must=N)
++FRAMEBUFFER              = Y
++FBVGA                    = N
++VTSWITCH                 = N
++PORTRAIT_MODE            = R
++FBREVERSE                = N
++
++# svgalib screen driver
++VGALIB                   = N
++
++# direct VGA hardware access screen driver
++HWVGA                    = N
++
++####################################################################
++# Mouse or touch screen driver
++# TPMOUSE for Linux-VR and Embedded Planet
++# TPHELIO for VTech Helio
++# ADSMOUSE for ADS Graphics Client
++# IPAQMOUSE for Compaq iPAQ,Intel Assabet, ARM ucb1200 (/dev/h3600_ts 11,0)
++# HARRIERMOUSE for NEC Harrier
++# PSIONMOUSE for the Psion 5
++####################################################################
++GPMMOUSE                 = N
++SERMOUSE                 = N
++TPMOUSE                  = N
++TPHELIO                  = N
++ADSMOUSE                 = N
++IPAQMOUSE                = Y
++HARRIERMOUSE             = N
++PSIONMOUSE               = N
++NOMOUSE                  = N
++
++# keyboard or null kbd driver
++TTYKBD                   = N
++SCANKBD                  = N
++PIPEKBD                  = N
++NOKBD                    = N
++IPAQKBD                  = Y
++
++endif
++
++####################################################################
++# Screen driver specific configuration
++# SA1100_LCD_LTLEND 4bpp driver with arm SA1100 LCD controller
++# INVERT4BPP 4bpp inverted pixel driver for VTech Helio
++####################################################################
++SA1100_LCD_LTLEND        = N
++INVERT4BPP               = N
++
++####################################################################
++#
++# If the platform is a RTEMS box ....
++#
++####################################################################
++ifeq ($(ARCH), RTEMS)
++
++# Location & BSP information of the RTEMS build
++RTEMS_BUILD              = /tools/build-i386-elf-rtems
++RTEMS_BSP                = pc386
++LINK_APP_INTO_SERVER     = Y
++
++endif
++
++endif
++
++####################################################################
++#
++# If the platform is an ELKS box ...
++#
++####################################################################
++ifeq ($(ARCH), ELKS)
++
++# Higher speed asm driver, c driver of hercules screen driver
++ASMVGADRIVER             = Y
++CVGADRIVER               = N
++HERCDRIVER               = N
++DBGDRIVER                = N
++
++# Mouse support
++SERMOUSE                 = Y
++
++endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/Makefile /work/iPAQ/microwin/src/Makefile
+--- /work2/iPAQ/microwin/src/Makefile	Sat Sep 30 10:58:22 2000
++++ /work/iPAQ/microwin/src/Makefile	Fri Mar 16 06:06:21 2001
+@@ -39,8 +39,13 @@
+ OBJS =	
+ 
+ # demos should be built after the libs !
++dirs = drivers mwin engine fonts nwidget nanox
++
+ all: default
+-	$(MAKE) -C demos
++	-$(MAKE) -C demos
++ifeq ($(ARCH), ECOS)
++	$(MAKE) -C ecos
++endif
+ 
+ ######################### Makefile.rules section #############################
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/Makefile.rules /work/iPAQ/microwin/src/Makefile.rules
+--- /work2/iPAQ/microwin/src/Makefile.rules	Fri Dec  8 18:04:59 2000
++++ /work/iPAQ/microwin/src/Makefile.rules	Fri Mar 16 06:10:31 2001
+@@ -29,6 +29,10 @@
+ #
+ DEFINES += -DMWPIXEL_FORMAT=$(SCREEN_PIXTYPE)
+ 
++ifeq ($(OBJ_COMPONENTS), Y)
++DEFINES += -DOBJ_COMPONENTS=1
++endif
++
+ ifeq ($(VTSWITCH), Y)
+ DEFINES += -DVTSWITCH=1
+ endif
+@@ -265,13 +269,19 @@
+ default: subdirs $(OBJS) $(CXXOBJS) $(ASMOBJS) $(TOP)/lib/$(LIBNAME)
+ endif
+ 
++# 'dirs' can be pre-specified
++ifeq ($(dirs), )
+ dirs =	$(shell for file in `\ls`; \
+ 	do if [ -d $$file -a $$file != "demos" ]; then \
+ 	if [ -f $$file/Makefile ]; then echo $$file; fi; fi; done)
++endif
+ 
++# 'demos' can be pre-specified
++ifeq ($(demos), )
+ demos =	$(shell for file in `\ls`; \
+ 	do if [ -d $$file -a $$file = "demos" ]; then \
+ 	if [ -f $$file/Makefile ]; then echo $$file; fi; fi; done)
++endif
+ 
+ #
+ # Subdirectories target
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/config /work/iPAQ/microwin/src/config
+--- /work2/iPAQ/microwin/src/config	Sun Jan 21 21:11:07 2001
++++ /work/iPAQ/microwin/src/config	Mon Mar 19 07:15:35 2001
+@@ -34,8 +34,8 @@
+ # note: ELKS can't build client/server nano-X, nor widget lib
+ #
+ ####################################################################
+-ARCH                     = LINUX-NATIVE
+-ARMTOOLSPREFIX           = arm-linux-
++ARCH                     = ECOS
++ARMTOOLSPREFIX           = arm-elf-
+ MIPSTOOLSPREFIX          = mipsel-linux-
+ POWERPCTOOLSPREFIX       = powerpc-linux-
+ SHTOOLSPREFIX            = sh-linux-gnu
+@@ -47,8 +47,8 @@
+ #
+ ####################################################################
+ OPTIMIZE                 = Y
+-DEBUG                    = N
+-VERBOSE                  = N
++DEBUG                    = Y
++VERBOSE                  = Y
+ 
+ ####################################################################
+ #
+@@ -61,6 +61,10 @@
+ NWIDGET                  = Y
+ OBJFRAMEWORK             = N
+ 
++#
++# Link components into relocatable objects, instead of executables
++#
++OBJ_COMPONENTS           = Y
+ 
+ ####################################################################
+ #
+@@ -92,7 +96,7 @@
+ # define MWPF_TRUECOLOR332  /* pixel is packed 8 bits 3/3/2 truecolor*/
+ #
+ ####################################################################
+-SCREEN_PIXTYPE           = MWPF_TRUECOLOR0888
++SCREEN_PIXTYPE           = MWPF_TRUECOLOR565
+ 
+ ####################################################################
+ #
+@@ -115,7 +119,7 @@
+ # BMP, GIF reading support
+ ####################################################################
+ HAVE_BMP_SUPPORT         = Y
+-HAVE_GIF_SUPPORT         = Y
++HAVE_GIF_SUPPORT         = N
+ HAVE_PNM_SUPPORT         = Y
+ HAVE_XPM_SUPPORT         = Y
+ 
+@@ -231,9 +235,9 @@
+ # set FBREVERSE to reverse bit orders in 1,2,4 bpp
+ # set FBVGA=N for all systems without VGA hardware (for MIPS must=N)
+ FRAMEBUFFER              = Y
+-FBVGA                    = Y
+-VTSWITCH                 = Y
+-PORTRAIT_MODE            = N
++FBVGA                    = N
++VTSWITCH                 = N
++PORTRAIT_MODE            = R
+ FBREVERSE                = N
+ 
+ # svgalib screen driver
+@@ -251,21 +255,22 @@
+ # HARRIERMOUSE for NEC Harrier
+ # PSIONMOUSE for the Psion 5
+ ####################################################################
+-GPMMOUSE                 = Y
++GPMMOUSE                 = N
+ SERMOUSE                 = N
+ TPMOUSE                  = N
+ TPHELIO                  = N
+ ADSMOUSE                 = N
+-IPAQMOUSE                = N
++IPAQMOUSE                = Y
+ HARRIERMOUSE             = N
+ PSIONMOUSE               = N
+ NOMOUSE                  = N
+ 
+ # keyboard or null kbd driver
+ TTYKBD                   = N
+-SCANKBD                  = Y
++SCANKBD                  = N
+ PIPEKBD                  = N
+ NOKBD                    = N
++IPAQKBD                  = Y
+ 
+ endif
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/Makefile /work/iPAQ/microwin/src/demos/Makefile
+--- /work2/iPAQ/microwin/src/demos/Makefile	Mon Jan 31 18:46:11 2000
++++ /work/iPAQ/microwin/src/demos/Makefile	Fri Mar 16 06:10:28 2001
+@@ -27,6 +27,10 @@
+ # List of objects to compile
+ OBJS =
+ 
++ifeq ($(ARCH), ECOS)
++dirs = nanowm nanox nxkbd nxscribble
++endif
++
+ ######################### Makefile.rules section #############################
+ 
+ include $(TOP)/Makefile.rules
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanowm/Makefile /work/iPAQ/microwin/src/demos/nanowm/Makefile
+--- /work2/iPAQ/microwin/src/demos/nanowm/Makefile	Thu Oct  5 20:39:17 2000
++++ /work/iPAQ/microwin/src/demos/nanowm/Makefile	Tue Mar 13 16:16:23 2001
+@@ -34,7 +34,14 @@
+ # List of objects to compile
+ OBJS = nanowm.o events.o wlist.o clients.o actions.o
+ 
+-all: default $(TOP)/bin/nanowm
++ifeq ($(OBJ_COMPONENTS), Y)
++TARGET = $(TOP)/bin/nanowm.o
++DEFINES += -Dmain=nanowm_main
++else
++TARGET = $(TOP)/bin/nanowm
++endif
++
++all: default $(TARGET)
+ 
+ endif
+ 
+@@ -48,6 +55,11 @@
+ $(TOP)/bin/nanowm: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(CCNANOXCLIENTLIBS)
+ else
++ifeq ($(OBJ_COMPONENTS), Y)
++$(TOP)/bin/nanowm.o: $(OBJS) $(TOP)/config
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -Wl,-r -o $@
++else
+ $(TOP)/bin/nanowm: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(NANOXCLIENTLIBS)
++endif
+ endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanowm/actions.c /work/iPAQ/microwin/src/demos/nanowm/actions.c
+--- /work2/iPAQ/microwin/src/demos/nanowm/actions.c	Sun Nov 26 18:39:53 2000
++++ /work/iPAQ/microwin/src/demos/nanowm/actions.c	Tue Mar 13 16:35:30 2001
+@@ -99,6 +99,7 @@
+ 	/* Set focus on button down*/
+ 	GrSetFocus(window->clientid);
+ 
++#if 0 // Resize seems to cause lots of trouble
+ 	/* check for corner resize */
+ 	r.x = info.width - 5;
+ 	r.y = info.height - 5;
+@@ -135,6 +136,7 @@
+ 
+ 	  return;
+ 	}
++#endif
+ 
+ 	/* if not in caption, return (FIXME, not calc'd exactly)*/
+ 	if (!(info.props & GR_WM_PROPS_CAPTION))
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanowm/events.c /work/iPAQ/microwin/src/demos/nanowm/events.c
+--- /work2/iPAQ/microwin/src/demos/nanowm/events.c	Tue Oct 31 14:24:11 2000
++++ /work/iPAQ/microwin/src/demos/nanowm/events.c	Tue Mar 13 15:50:26 2001
+@@ -153,24 +153,27 @@
+ 
+ void do_key_down(GR_EVENT_KEYSTROKE *event)
+ {
++#if 0
+ 	Dprintf("do_key_down: wid %d, subwid %d, rootx %d, rooty %d, x %d, "
+ 		"y %d, buttons %d, modifiers %d, uch %lu, special %d, "
+ 		"ch %d, content %d\n", event->wid, event->subwid, event->rootx,
+ 		event->rooty, event->x, event->y, event->buttons,
+ 		event->modifiers, event->uch, event->special, event->ch,
+ 		event->content);
+-
++#endif
+ 	/* FIXME: Implement keyboard shortcuts */
+ }
+ 
+ void do_key_up(GR_EVENT_KEYSTROKE *event)
+ {
++#if 0
+ 	Dprintf("do_key_up: wid %d, subwid %d, rootx %d, rooty %d, x %d, "
+ 		"y %d, buttons %d, modifiers %d, uch %lu, special %d, "
+ 		"ch %d, content %d\n", event->wid, event->subwid, event->rootx,
+ 		event->rooty, event->x, event->y, event->buttons,
+ 		event->modifiers, event->uch, event->special, event->ch,
+ 		event->content);
++#endif
+ }
+ 
+ void do_update(GR_EVENT_UPDATE *event)
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanowm/nanowm.c /work/iPAQ/microwin/src/demos/nanowm/nanowm.c
+--- /work2/iPAQ/microwin/src/demos/nanowm/nanowm.c	Tue Oct 31 14:23:38 2000
++++ /work/iPAQ/microwin/src/demos/nanowm/nanowm.c	Sun Mar 11 13:26:51 2001
+@@ -21,6 +21,7 @@
+ 	GR_WM_PROPERTIES props;
+ 	win window;
+ 
++
+ 	if(GrOpen() < 0) {
+ 		fprintf(stderr, "Couldn't connect to Nano-X server!\n");
+ 		exit(1);
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanowm/wlist.c /work/iPAQ/microwin/src/demos/nanowm/wlist.c
+--- /work2/iPAQ/microwin/src/demos/nanowm/wlist.c	Tue Oct  3 12:08:36 2000
++++ /work/iPAQ/microwin/src/demos/nanowm/wlist.c	Tue Mar 13 16:29:46 2001
+@@ -56,6 +56,7 @@
+ 	w->clientid = window->clientid;
+ 	w->data = window->data;
+ 	w->next = windows;
++        w->sizing = GR_FALSE;
+ 	windows = w;
+ 
+ 	return 0;
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanox/Makefile /work/iPAQ/microwin/src/demos/nanox/Makefile
+--- /work2/iPAQ/microwin/src/demos/nanox/Makefile	Sun Jan 21 14:24:53 2001
++++ /work/iPAQ/microwin/src/demos/nanox/Makefile	Wed Mar 14 19:52:08 2001
+@@ -33,6 +33,12 @@
+ LIBNAME =
+ 
+ # List of objects to compile
++ifeq ($(OBJ_COMPONENTS), Y)
++OBJS = landmine.o
++TARGETS = $(TOP)/bin/landmine.o
++OBJS += ntetris.o
++TARGETS += $(TOP)/bin/ntetris.o
++else
+ OBJS =	demo.o \
+ 	move.o \
+ 	landmine.o \
+@@ -57,7 +63,7 @@
+ 	getselection.o \
+ 	setselection.o
+ 
+-all: default $(TOP)/bin/demo $(TOP)/bin/move $(TOP)/bin/landmine \
++TARGETS = $(TOP)/bin/demo $(TOP)/bin/move $(TOP)/bin/landmine \
+ 	$(TOP)/bin/world $(TOP)/bin/nxclock $(TOP)/bin/nxterm \
+ 	$(TOP)/bin/nxview $(TOP)/bin/nxlsclients $(TOP)/bin/nxev \
+ 	$(TOP)/bin/npanel $(TOP)/bin/nterm \
+@@ -66,7 +72,9 @@
+ 	$(TOP)/bin/slider $(TOP)/bin/ntetris $(TOP)/bin/launcher \
+ 	$(TOP)/bin/nsaver $(TOP)/bin/getselection $(TOP)/bin/setselection
+ 	$(CP) world.map nanogui.ppm ntetris.ppm launcher.cnf tux.gif $(TOP)/bin
+-	
++endif
++
++all: default $(TARGETS)	
+ 
+ endif
+ endif
+@@ -151,3 +159,11 @@
+ 
+ $(TOP)/bin/setselection: setselection.o $($NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LD_NANOXCLIENTLIBS)
++
++# Special build rules for linked in applications
++$(TOP)/bin/landmine.o: landmine.o
++	$(CC) $(CFLAGS) $(LDFLAGS) $< -Wl,-r -o $@
++
++$(TOP)/bin/ntetris.o: ntetris.o
++	$(CC) $(CFLAGS) $(LDFLAGS) $< -Wl,-r -o $@
++
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanox/landmine.c /work/iPAQ/microwin/src/demos/nanox/landmine.c
+--- /work2/iPAQ/microwin/src/demos/nanox/landmine.c	Mon Oct  2 23:49:19 2000
++++ /work/iPAQ/microwin/src/demos/nanox/landmine.c	Thu Mar 15 15:19:30 2001
+@@ -25,6 +25,7 @@
+ 
+ #define FULLSIZE	(MAXSIZE + 2)	/* board size including borders */
+ 
++#if 0
+ #define	BOARDGAP	10		/* millimeter gap around board */
+ #define	RIGHTGAP	15		/* mm gap between board, right side */
+ #define	BUTTONGAP	20		/* mm gap between buttons */
+@@ -34,6 +35,17 @@
+ #define	BUTTONHEIGHT	25		/* height of buttons (pixels) */
+ #define	RIGHTSIDE	150		/* pixels to guarantee for right side */
+ #define	BOARDBORDER	2		/* border size around board */
++#else
++#define	BOARDGAP	2		/* millimeter gap around board */
++#define	RIGHTGAP	2		/* mm gap between board, right side */
++#define	BUTTONGAP	5		/* mm gap between buttons */
++#define	STATUSGAP	10		/* mm gap between buttons and status */
++
++#define	BUTTONWIDTH	80		/* width of buttons (pixels) */
++#define	BUTTONHEIGHT	25		/* height of buttons (pixels) */
++#define	RIGHTSIDE	90		/* pixels to guarantee for right side */
++#define	BOARDBORDER	2		/* border size around board */
++#endif
+ 
+ /*
+  * Print the number of steps taken.
+@@ -294,6 +306,10 @@
+ static	GR_BOOL	checkpath();
+ static	GR_BOOL	writegame();
+ 
++#ifdef OBJ_COMPONENTS
++#define main landmine_main
++#endif
++
+ int
+ main(argc,argv)
+ 	int argc;
+@@ -306,8 +322,8 @@
+ 	GR_COORD	rightx;		/* x coordinate for right half stuff */
+ 	GR_BOOL		setsize;	/* TRUE if size of board is set */
+ 	GR_BOOL		setmines;	/* TRUE if number of mines is set */
+-	GR_SIZE		newsize = 0;	/* desired size of board */
+-	GR_COUNT	newmines = 0;	/* desired number of mines */
++	GR_SIZE		newsize = 10;	/* desired size of board */
++	GR_COUNT	newmines = 25;	/* desired number of mines */
+ 
+ 	setmines = GR_FALSE;
+ 	setsize = GR_FALSE;
+@@ -408,7 +424,11 @@
+ 	/*
+ 	 * Create the main window which will contain all the others.
+ 	 */
++#if 0
+ COLS = si.cols - 40;
++#else
++COLS = si.cols;
++#endif
+ ROWS = si.rows - 80;
+ 	mainwid = GrNewWindow(GR_ROOT_WINDOW_ID, 0, 0, COLS, ROWS,
+ 		0, BLACK, WHITE);
+@@ -426,10 +446,14 @@
+ 	}
+ 	xp = width / size;
+ 	yp = height / size;
++        diag_printf("w: %d, h: %d, s: %d, xp: %d, yp: %d\n", width, height, size, xp, yp);
++
+ 	width = xp * size - 1;
+ 	height = yp * size - 1;
+ 	x = BOARDBORDER;
+ 	y = (ROWS - height) / 2;
++        diag_printf("w: %d, h: %d, x: %d, y: %d\n", width, height, x, y);
++
+ 	rightx = x + width + (si.xdpcm * RIGHTGAP / 10);
+ 	boardwid = GrNewWindow(mainwid, x, y, width, height, BOARDBORDER,
+ 		BLUE, WHITE);
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanox/ntetris.c /work/iPAQ/microwin/src/demos/nanox/ntetris.c
+--- /work2/iPAQ/microwin/src/demos/nanox/ntetris.c	Fri Dec  8 17:05:16 2000
++++ /work/iPAQ/microwin/src/demos/nanox/ntetris.c	Thu Mar 15 15:09:01 2001
+@@ -81,12 +81,17 @@
+ #include <errno.h>
+ #include <sys/time.h>
+ 
++#ifdef __ECOS
++#define random  rand
++#define srandom srand
++#endif
++
+ #define MWINCLUDECOLORS
+ #include <nano-X.h>
+ 
+ #include "ntetris.h"
+ 
+-void *my_malloc(size_t size)
++static void *my_malloc(size_t size)
+ {
+ 	void *ret;
+ 
+@@ -99,12 +104,12 @@
+ }
+ 
+ #ifdef HAVE_USLEEP
+-void msleep(long ms)
++static void msleep(long ms)
+ {
+ 	usleep(ms * 1000);
+ }
+ #else
+-void msleep(long ms)
++static void msleep(long ms)
+ {
+ 	struct timespec req, rem;
+ 
+@@ -125,7 +130,7 @@
+ #endif
+ 
+ #ifdef USE_HISCORE_FILE
+-void read_hiscore(nstate *state)
++static void read_hiscore(nstate *state)
+ {
+ 	FILE *f;
+ 	int i, n;
+@@ -147,7 +152,8 @@
+ 
+ 	state->hiscore = state->fhiscore = n;
+ }
+-void write_hiscore(nstate *state)
++
++static void write_hiscore(nstate *state)
+ {
+ 	FILE *f;
+ 
+@@ -166,14 +172,15 @@
+ 	fclose(f);
+ }
+ #else
+-void read_hiscore(nstate *state)
++static void read_hiscore(nstate *state)
+ {
+ 	state->hiscore = 0;
+ }
+-void write_hiscore(nstate *state) {}
++
++static void write_hiscore(nstate *state) {}
+ #endif
+ 
+-int will_collide(nstate *state, int x, int y, int orientation)
++static int will_collide(nstate *state, int x, int y, int orientation)
+ {
+ 	int r, c, xx, yy;
+ 	char ch = 0;
+@@ -202,7 +209,7 @@
+ 	return 0;
+ }
+ 
+-void draw_shape(nstate *state, GR_COORD x, GR_COORD y, int erase)
++static void draw_shape(nstate *state, GR_COORD x, GR_COORD y, int erase)
+ {
+ 	int r, c, yy, xx;
+ 	GR_COLOR col;
+@@ -225,7 +232,7 @@
+ 	}
+ }
+ 
+-void draw_well(nstate *state, int forcedraw)
++static void draw_well(nstate *state, int forcedraw)
+ {
+ 	int x, y;
+ 
+@@ -247,7 +254,7 @@
+ 	GrFlush();
+ }
+ 
+-void draw_score(nstate *state)
++static void draw_score(nstate *state)
+ {
+ 	char buf[32];
+ 
+@@ -262,7 +269,7 @@
+ 					TEXT_Y_POSITION, buf, strlen(buf), 0);
+ }
+ 
+-void draw_next_shape(nstate *state)
++static void draw_next_shape(nstate *state)
+ {
+ 	int r, c, startx, starty, x, y;
+ 	char ch = 0;
+@@ -295,7 +302,7 @@
+ 	}
+ }
+ 
+-void draw_new_game_button(nstate *state)
++static void draw_new_game_button(nstate *state)
+ {
+ 	GrFillRect(state->new_game_button, state->buttongcb, 0, 0,
+ 			NEW_GAME_BUTTON_WIDTH, NEW_GAME_BUTTON_HEIGHT);
+@@ -303,7 +310,7 @@
+ 					TEXT_Y_POSITION, "New Game", 8, 0);
+ }
+ 
+-void draw_anticlockwise_button(nstate *state)
++static void draw_anticlockwise_button(nstate *state)
+ {
+ 	if(!state->running_buttons_mapped) return;
+ 	GrFillRect(state->anticlockwise_button, state->buttongcb, 0, 0,
+@@ -312,7 +319,7 @@
+ 					TEXT_Y_POSITION, "   /", 4, 0);
+ }
+ 
+-void draw_clockwise_button(nstate *state)
++static void draw_clockwise_button(nstate *state)
+ {
+ 	if(!state->running_buttons_mapped) return;
+ 	GrFillRect(state->clockwise_button, state->buttongcb, 0, 0,
+@@ -321,7 +328,7 @@
+ 					TEXT_Y_POSITION, "   \\", 4, 0);
+ }
+ 
+-void draw_left_button(nstate *state)
++static void draw_left_button(nstate *state)
+ {
+ 	if(!state->running_buttons_mapped) return;
+ 	GrFillRect(state->left_button, state->buttongcb, 0, 0,
+@@ -330,7 +337,7 @@
+ 					TEXT_Y_POSITION, "  <", 3, 0);
+ }
+ 
+-void draw_right_button(nstate *state)
++static void draw_right_button(nstate *state)
+ {
+ 	if(!state->running_buttons_mapped) return;
+ 	GrFillRect(state->right_button, state->buttongcb, 0, 0,
+@@ -339,7 +346,7 @@
+ 					TEXT_Y_POSITION, "   >", 4, 0);
+ }
+ 
+-void draw_drop_button(nstate *state)
++static void draw_drop_button(nstate *state)
+ {
+ 	if(!state->running_buttons_mapped) return;
+ 	GrFillRect(state->drop_button, state->buttongcb, 0, 0,
+@@ -348,7 +355,7 @@
+ 					TEXT_Y_POSITION, "    Drop", 8, 0);
+ }
+ 
+-void draw_pause_continue_button(nstate *state)
++static void draw_pause_continue_button(nstate *state)
+ {
+ 	if((state->running_buttons_mapped) && (state->state == STATE_STOPPED)) {
+ 		GrUnmapWindow(state->pause_continue_button);
+@@ -382,7 +389,7 @@
+ 	}
+ }
+ 
+-int block_is_all_in_well(nstate *state)
++static int block_is_all_in_well(nstate *state)
+ {
+ 	if(state->current_shape.y >= WELL_NOTVISIBLE)
+ 		return 1;
+@@ -390,7 +397,7 @@
+ 	return 0;
+ }
+ 
+-void delete_line(nstate *state, int line)
++static void delete_line(nstate *state, int line)
+ {
+ 	int x, y;
+ 
+@@ -403,7 +410,7 @@
+ 	draw_well(state, 0);
+ }
+ 
+-void block_reached_bottom(nstate *state)
++static void block_reached_bottom(nstate *state)
+ {
+ 	int x, y;
+ 
+@@ -430,7 +437,7 @@
+ 	draw_next_shape(state);
+ }
+ 
+-void move_block(nstate *state, int direction)
++static void move_block(nstate *state, int direction)
+ {
+ 	if(direction == 0) {
+  		if(!state->current_shape.x) return;
+@@ -460,7 +467,7 @@
+ 	}
+ }
+ 
+-void rotate_block(nstate *state, int direction)
++static void rotate_block(nstate *state, int direction)
+ {
+ 	int neworientation = 0;
+ 
+@@ -484,7 +491,7 @@
+ 	}
+ }
+ 
+-int drop_block_1(nstate *state)
++static int drop_block_1(nstate *state)
+ {
+ 	if(will_collide(state, state->current_shape.x,
+ 				(state->current_shape.y + 1),
+@@ -502,12 +509,12 @@
+ 	return 0;
+ }
+ 
+-void drop_block(nstate *state)
++static void drop_block(nstate *state)
+ {
+ 	while(!drop_block_1(state)) msleep(DROP_BLOCK_DELAY);
+ }
+ 
+-void handle_exposure_event(nstate *state)
++static void handle_exposure_event(nstate *state)
+ {
+ 	GR_EVENT_EXPOSURE *event = &state->event.exposure;
+ 
+@@ -553,7 +560,7 @@
+ 	}
+ }
+ 
+-void handle_mouse_event(nstate *state)
++static void handle_mouse_event(nstate *state)
+ {
+ 	GR_EVENT_MOUSE *event = &state->event.mouse;
+ 
+@@ -593,16 +600,21 @@
+ 	}
+ }
+ 
+-void handle_keyboard_event(nstate *state)
++static void handle_keyboard_event(nstate *state)
+ {
+ 	GR_EVENT_KEYSTROKE *event = &state->event.keystroke;
+-	char c = toupper(event->ch);
++//	char c = toupper(event->ch);
+ 
+-	switch(c) {
++//        printf("Key = %x\n", event->ch);
++	switch(event->ch) {
++		case 'q':
+ 		case 'Q':
++        case MWKEY_CANCEL:
+ 			state->state = STATE_EXIT;
+ 			return;
++		case 'n':
+ 		case 'N':
++        case MWKEY_APP1:
+ 			state->state = STATE_NEWGAME;
+ 			return;
+ 	}
+@@ -611,29 +623,39 @@
+ 
+ 	state->state = STATE_RUNNING;
+ 
+-	switch(c) {
++	switch(event->ch) {
++		case 'p':
+ 		case 'P':
+ 			state->state = STATE_PAUSED;
+ 			break;
++		case 'j':
+ 		case 'J':
++        case MWKEY_LEFT:
+ 			move_block(state, 0);
+ 			break;
++		case 'k':
+ 		case 'K':
++        case MWKEY_RIGHT:
+ 			move_block(state, 1);
+ 			break;
++		case 'd':
+ 		case 'D':
++        case MWKEY_UP:
+ 			rotate_block(state, 0);
+ 			break;
++		case 'f':
+ 		case 'F':
++        case MWKEY_DOWN:
+ 			rotate_block(state, 1);
+ 			break;
+ 		case ' ':
++        case MWKEY_MENU:
+ 			drop_block(state);
+ 			break;
+ 	}
+ }
+ 
+-void handle_event(nstate *state)
++static void handle_event(nstate *state)
+ {
+ 	switch(state->event.type) {
+ 		case GR_EVENT_TYPE_EXPOSURE:
+@@ -657,7 +679,7 @@
+ 	}
+ }
+ 
+-void clear_well(nstate *state)
++static void clear_well(nstate *state)
+ {
+ 	int x, y;
+ 
+@@ -669,7 +691,7 @@
+ }
+ 
+ /* Dirty hack alert- this is to avoid using any floating point math */
+-int random8(int limit)
++static int random8(int limit)
+ {
+ 	int ret;
+ 
+@@ -678,7 +700,7 @@
+ 	return ret;
+ }
+ 
+-void choose_new_shape(nstate *state)
++static void choose_new_shape(nstate *state)
+ {
+ 	state->current_shape.type = state->next_shape.type;
+ 	state->current_shape.orientation = state->next_shape.orientation;
+@@ -692,7 +714,7 @@
+ 	state->next_shape.colour = block_colours[random8(MAX_BLOCK_COLOUR)];
+ }
+ 
+-void new_game(nstate *state)
++static void new_game(nstate *state)
+ {
+ 	clear_well(state);
+ 	if(state->score > state->hiscore) state->hiscore = state->score;
+@@ -705,7 +727,7 @@
+ 	if(state->state == STATE_NEWGAME) state->state = STATE_RUNNING;
+ }
+ 
+-void init_game(nstate *state)
++static void init_game(nstate *state)
+ {
+ 	if(GrOpen() < 0) {
+ 		fprintf(stderr, "Couldn't connect to Nano-X server\n");
+@@ -848,7 +870,7 @@
+ 	new_game(state);
+ }
+ 
+-void calculate_timeout(nstate *state)
++static void calculate_timeout(nstate *state)
+ {
+ 	struct timeval t;
+ 	long u;
+@@ -859,7 +881,7 @@
+ 	state->timeout.tv_usec = u % 1000000;
+ }
+ 
+-unsigned long timeout_delay(nstate *state)
++static unsigned long timeout_delay(nstate *state)
+ {
+ 	struct timeval t;
+ 	signed long s, m, ret;
+@@ -883,7 +905,7 @@
+ 	else return ret;
+ }
+ 
+-void do_update(nstate *state)
++static void do_update(nstate *state)
+ {
+ 	struct timeval t;
+ 
+@@ -897,7 +919,7 @@
+ 	} 
+ }
+ 
+-void do_pause(nstate *state)
++static void do_pause(nstate *state)
+ {
+ 	draw_pause_continue_button(state);
+ 	while(state->state == STATE_PAUSED) {
+@@ -907,7 +929,7 @@
+ 	draw_pause_continue_button(state);
+ }
+ 
+-void wait_for_start(nstate *state)
++static void wait_for_start(nstate *state)
+ {
+ 	draw_pause_continue_button(state);
+ 	while(state->state == STATE_STOPPED) {
+@@ -919,7 +941,7 @@
+ 	calculate_timeout(state);
+ }
+ 
+-void run_game(nstate *state)
++static void run_game(nstate *state)
+ {
+ 	while(state->state == STATE_RUNNING) {
+ 		GrGetNextEventTimeout(&state->event, timeout_delay(state));
+@@ -929,7 +951,7 @@
+ 	}
+ }
+ 
+-void main_game_loop(nstate *state)
++static void main_game_loop(nstate *state)
+ {
+ 	wait_for_start(state);
+ 	while(state->state != STATE_EXIT) {
+@@ -938,6 +960,10 @@
+ 		if(state->state != STATE_EXIT) new_game(state);
+ 	}
+ }
++
++#ifdef OBJ_COMPONENTS
++#define main ntetris_main
++#endif
+ 
+ int main(int argc, char *argv[])
+ {
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nanox/ntetris.h /work/iPAQ/microwin/src/demos/nanox/ntetris.h
+--- /work2/iPAQ/microwin/src/demos/nanox/ntetris.h	Fri Dec  8 17:05:16 2000
++++ /work/iPAQ/microwin/src/demos/nanox/ntetris.h	Wed Mar 14 19:56:34 2001
+@@ -38,8 +38,8 @@
+  * array of shape descriptions (you can add your own new shapes quite easily).
+  */
+ 
+-#define USE_HISCORE_FILE
+-#define HISCORE_FILE "/usr/games/nanotetris.hiscore"
++//#define USE_HISCORE_FILE
++//#define HISCORE_FILE "/usr/games/nanotetris.hiscore"
+ #undef HAVE_USLEEP
+ #define BLOCK_SIZE 10
+ #define BORDER_WIDTH 10
+@@ -184,44 +184,44 @@
+ };
+ typedef struct ntetris_state nstate;
+ 
+-void *my_malloc(size_t size);
+-void msleep(long ms);
+-void read_hiscore(nstate *state);
+-void write_hiscore(nstate *state);
+-int will_collide(nstate *state, int x, int y, int orientation);
+-void draw_shape(nstate *state, GR_COORD x, GR_COORD y, int erase);
+-void draw_well(nstate *state, int forcedraw);
+-void draw_score(nstate *state);
+-void draw_next_shape(nstate *state);
+-void draw_new_game_button(nstate *state);
+-void draw_anticlockwise_button(nstate *state);
+-void draw_clockwise_button(nstate *state);
+-void draw_left_button(nstate *state);
+-void draw_right_button(nstate *state);
+-void draw_drop_button(nstate *state);
+-void draw_pause_continue_button(nstate *state);
+-int block_is_all_in_well(nstate *state);
+-void delete_line(nstate *state, int line);
+-void block_reached_bottom(nstate *state);
+-void move_block(nstate *state, int direction);
+-void rotate_block(nstate *state, int direction);
+-void drop_block(nstate *state);
+-void handle_exposure_event(nstate *state);
+-void handle_mouse_event(nstate *state);
+-void handle_keyboard_event(nstate *state);
+-void handle_event(nstate *state);
+-void clear_well(nstate *state);
+-int random8(int limit);
+-void choose_new_shape(nstate *state);
+-void new_game(nstate *state);
+-void init_game(nstate *state);
+-void calculate_timeout(nstate *state);
+-unsigned long timeout_delay(nstate *state);
+-void do_update(nstate *state);
+-void do_pause(nstate *state);
+-void wait_for_start(nstate *state);
+-void run_game(nstate *state);
+-void main_game_loop(nstate *state);
++static void *my_malloc(size_t size);
++static void msleep(long ms);
++static void read_hiscore(nstate *state);
++static void write_hiscore(nstate *state);
++static int will_collide(nstate *state, int x, int y, int orientation);
++static void draw_shape(nstate *state, GR_COORD x, GR_COORD y, int erase);
++static void draw_well(nstate *state, int forcedraw);
++static void draw_score(nstate *state);
++static void draw_next_shape(nstate *state);
++static void draw_new_game_button(nstate *state);
++static void draw_anticlockwise_button(nstate *state);
++static void draw_clockwise_button(nstate *state);
++static void draw_left_button(nstate *state);
++static void draw_right_button(nstate *state);
++static void draw_drop_button(nstate *state);
++static void draw_pause_continue_button(nstate *state);
++static int block_is_all_in_well(nstate *state);
++static void delete_line(nstate *state, int line);
++static void block_reached_bottom(nstate *state);
++static void move_block(nstate *state, int direction);
++static void rotate_block(nstate *state, int direction);
++static void drop_block(nstate *state);
++static void handle_exposure_event(nstate *state);
++static void handle_mouse_event(nstate *state);
++static void handle_keyboard_event(nstate *state);
++static void handle_event(nstate *state);
++static void clear_well(nstate *state);
++static int random8(int limit);
++static void choose_new_shape(nstate *state);
++static void new_game(nstate *state);
++static void init_game(nstate *state);
++static void calculate_timeout(nstate *state);
++static unsigned long timeout_delay(nstate *state);
++static void do_update(nstate *state);
++static void do_pause(nstate *state);
++static void wait_for_start(nstate *state);
++static void run_game(nstate *state);
++static void main_game_loop(nstate *state);
+ 
+ #define LEVELS 12
+ static const int delays[] = {600, 550, 500, 450, 400, 350,
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxkbd/Makefile /work/iPAQ/microwin/src/demos/nxkbd/Makefile
+--- /work2/iPAQ/microwin/src/demos/nxkbd/Makefile	Thu Oct  5 20:27:04 2000
++++ /work/iPAQ/microwin/src/demos/nxkbd/Makefile	Sun Mar 11 13:42:30 2001
+@@ -29,7 +29,14 @@
+ # List of objects to compile
+ OBJS = nxkbd.o srvconn.o keynorm.o keyctrl.o keyshft.o keynum.o
+ 
+-all: default $(TOP)/bin/nxkbd
++ifeq ($(OBJ_COMPONENTS), Y)
++TARGET = $(TOP)/bin/nxkbd.o
++DEFINES += -Dmain=nxkbd_main
++else
++TARGET = $(TOP)/bin/nxkbd
++endif
++
++all: default $(TARGET)
+ 
+ endif
+ 
+@@ -43,6 +50,11 @@
+ $(TOP)/bin/nxkbd: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(CCNANOXCLIENTLIBS)
+ else
++ifeq ($(OBJ_COMPONENTS), Y)
++$(TOP)/bin/nxkbd.o: $(OBJS) $(TOP)/config
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -Wl,-r -o $@
++else
+ $(TOP)/bin/nxkbd: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(NANOXCLIENTLIBS)
++endif
+ endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/Makefile /work/iPAQ/microwin/src/demos/nxscribble/Makefile
+--- /work2/iPAQ/microwin/src/demos/nxscribble/Makefile	Thu Oct  5 20:30:18 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/Makefile	Mon Mar 12 09:20:20 2001
+@@ -35,7 +35,18 @@
+ OBJS = nxscribble.o scribwidget.o\
+ 	hre_api.o li_recognizer.o bitvector.o matrix.o sc.o util.o
+ 
+-all: default $(TOP)/bin/nxscribble
++ifeq ($(ARCH), ECOS)
++DEFINES += -DREC_DEFAULT_USER_DIR=\"/bin\"
++endif
++
++ifeq ($(OBJ_COMPONENTS), Y)
++TARGET = $(TOP)/bin/nxscribble.o
++DEFINES += -Dmain=nxscribble_main
++else
++TARGET = $(TOP)/bin/nxscribble
++endif
++
++all: default $(TARGET)
+ 	$(CP) letters.cl digits.cl punc.cl $(TOP)/bin
+ 
+ endif
+@@ -50,6 +61,11 @@
+ $(TOP)/bin/nxscribble: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(CCNANOXCLIENTLIBS) -lm
+ else
++ifeq ($(OBJ_COMPONENTS), Y)
++$(TOP)/bin/nxscribble.o: $(OBJS) $(TOP)/config
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -Wl,-r -o $@
++else
+ $(TOP)/bin/nxscribble: $(OBJS) $(NANOXCLIENTLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $@ $(NANOXCLIENTLIBS) -lm
++endif
+ endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/hre_api.c /work/iPAQ/microwin/src/demos/nxscribble/hre_api.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/hre_api.c	Tue Oct  3 01:26:33 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/hre_api.c	Sun Mar 11 14:07:32 2001
+@@ -231,7 +231,6 @@
+     }
+ 
+     /*Do the function.*/
+-
+     return(rec->recognizer_load_state(rec,dir,name));
+ }
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/li_recognizer.c /work/iPAQ/microwin/src/demos/nxscribble/li_recognizer.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/li_recognizer.c	Sat Oct 21 19:35:56 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/li_recognizer.c	Thu Mar 15 11:05:14 2001
+@@ -21,7 +21,8 @@
+ #include <stdio.h>
+ #include <string.h>
+ #ifndef ELX
+-#include <malloc.h>
++#include <stdlib.h>
++//#include <malloc.h>
+ #endif
+ #include <math.h>
+ #include <locale.h>
+@@ -193,6 +194,7 @@
+ 	/*Read class name and number of examples.*/
+ 	
+ 	if( fscanf(fd,"%d %s",&nex,buf) != 2 ) {
++            diag_printf("%s.%d\n", __FUNCTION__, __LINE__);
+ 	    goto unallocate;
+ 	}
+ 	
+@@ -209,12 +211,14 @@
+ 	    /*Read number of points.*/
+ 	    
+ 	    if( fscanf(fd,"%d",&npts) != 1 ) {
++            diag_printf("%s.%d\n", __FUNCTION__, __LINE__);
+ 		goto unallocate; /*Boy would I like exceptions!*/
+ 	    }
+ 	    
+ 	    /*Allocate array for points.*/
+ 	    
+ 	    if( (pts = make_pen_point_array(npts)) == NULL ) {
++            diag_printf("%s.%d\n", __FUNCTION__, __LINE__);
+ 		goto unallocate;
+ 	    }
+ 	    
+@@ -222,8 +226,15 @@
+ 	    
+ 	    for( j = 0; j < npts; j++ ) {
+ 		int x,y;
++                int jj;
+ 		if( fscanf(fd,"%d %d",&x,&y) != 2 ) {
+ 		    delete_pen_point_array(pts);
++                    diag_printf("%s.%d\n", __FUNCTION__, __LINE__);
++                    diag_printf("class = %d/%d/%s, ex = %d/%d, pt: %d/%d\n", 
++                                k, nclss, names[k], i, nex, j, npts);
++                    for (jj = 0;  jj < j;  jj++) {
++                        diag_printf("pts[%d] = %d/%d\n", jj, pts[jj].x, pts[jj].y);
++                    }
+ 		    goto unallocate;
+ 		}
+ 		pts[j].x = x;
+@@ -234,6 +245,7 @@
+ 	    
+ 	    if( (examples[k] = add_example(examples[k],npts,pts)) == NULL ) {
+ 		delete_pen_point_array(pts);
++            diag_printf("%s.%d\n", __FUNCTION__, __LINE__);
+ 		goto unallocate;
+ 	    }
+ 	    
+@@ -925,7 +937,11 @@
+ ************************************************** */
+ 
+ /*#include <assert.h>*/
++#ifdef __ECOS
++#define MAXINT 0x7FFFFFFF
++#else
+ #include <values.h>
++#endif
+ #include <sys/time.h>
+ 
+ #ifdef	__ultrix
+@@ -2482,6 +2498,14 @@
+     *pmaxx = maxx;
+     *pmaxy = maxy;
+ }
++
++#ifdef __ECOS
++float
++expf(float x)
++{
++    return exp((double)x);
++}
++#endif
+ 
+ 
+ static void lialg_compute_lpf_parameters() {
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/matrix.c /work/iPAQ/microwin/src/demos/nxscribble/matrix.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/matrix.c	Tue Oct  3 01:20:34 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/matrix.c	Sat Mar 10 08:47:29 2001
+@@ -526,7 +526,10 @@
+ 	register int i;
+ 	char check[4];
+ 	int nrows;
++//        char buf[256];
+ 
++//        fgets(buf, 256, f);
++//	if(sscanf(buf, "%1s %d", check, &nrows) != 2) {
+ 	if(fscanf(f, "%1s %d", check, &nrows) != 2) {
+ 		exit_error("InputVector fscanf 1");
+ 	    }
+@@ -534,10 +537,14 @@
+ 		exit_error("InputVector check");
+ 	    }
+ 	v = NewVector(nrows);
+-	for(i = 0; i < nrows; i++)
++	for(i = 0; i < nrows; i++) {
++//            fgets(buf, 256, f);
++//		if(sscanf(buf, "%lf", &v[i]) != 1) {
+ 		if(fscanf(f, "%lf", &v[i]) != 1) {
++//                    diag_printf("buf: %s", buf);
+ 			exit_error("InputVector fscanf 2");
+ 		    }
++        }
+ 	return v;
+ }
+ 
+@@ -563,7 +570,10 @@
+ 	register int i, j;
+ 	char check[4];
+ 	int nrows, ncols;
++//        char buf[256];
+ 
++//        fgets(buf, 256, f);
++//	if(sscanf(buf, "%1s %d %d", check, &nrows, &ncols) != 3) {
+ 	if(fscanf(f, "%1s %d %d", check, &nrows, &ncols) != 3) {
+ 		exit_error("InputMatrix fscanf 1");
+ 	    }
+@@ -572,10 +582,13 @@
+ 	    }
+ 	m = NewMatrix(nrows, ncols);
+ 	for(i = 0; i < nrows; i++)
+-		for(j = 0; j < ncols; j++)
++            for(j = 0; j < ncols; j++) {
++//                fgets(buf, 256, f);
++//			if(sscanf(buf, "%lf", &m[i][j]) != 1) {
+ 			if(fscanf(f, "%lf", &m[i][j]) != 1) {
+ 				exit_error("InputMatrix fscanf 2");
+ 			    }
++            }
+ 
+ 	return m;
+ }
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/nxscribble.c /work/iPAQ/microwin/src/demos/nxscribble/nxscribble.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/nxscribble.c	Mon Oct  2 19:12:34 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/nxscribble.c	Thu Mar 15 15:42:19 2001
+@@ -27,15 +27,14 @@
+ static void char_out(GR_CHAR ch);
+ static void char_del(GR_COORD x, GR_COORD y);
+ 
+-void do_buttondown(GR_EVENT_BUTTON	*bp);
+-void do_buttonup(GR_EVENT_BUTTON	*bp);
+-void do_motion(GR_EVENT_MOUSE		*mp);
+-void do_focusin(GR_EVENT_GENERAL	*gp);
+-void do_keystroke(GR_EVENT_KEYSTROKE	*kp);
+-void do_exposure(GR_EVENT_EXPOSURE	*ep);
++static void do_buttondown(GR_EVENT_BUTTON	*bp);
++static void do_buttonup(GR_EVENT_BUTTON	*bp);
++static void do_motion(GR_EVENT_MOUSE		*mp);
++static void do_focusin(GR_EVENT_GENERAL	*gp);
++static void do_keystroke(GR_EVENT_KEYSTROKE	*kp);
++static void do_exposure(GR_EVENT_EXPOSURE	*ep);
+ 
+-int
+-main(int argc, char **argv)
++int main(int argc, char **argv)
+ {
+ 	int		t = 1;
+ 	GR_EVENT	event;		/* current event */
+@@ -112,7 +111,7 @@
+ /*
+  * Here when a button is pressed.
+  */
+-void
++static void
+ do_buttondown(GR_EVENT_BUTTON	*bp)
+ {
+ 	ActionStart(w, bp->x, bp->y);
+@@ -122,7 +121,7 @@
+ /*
+  * Here when a button is released.
+  */
+-void
++static void
+ do_buttonup(GR_EVENT_BUTTON	*bp)
+ {
+ 	ActionEnd(w, bp->x, bp->y);
+@@ -132,7 +131,7 @@
+ /*
+  * Here when the mouse has a motion event.
+  */
+-void
++static void
+ do_motion(GR_EVENT_MOUSE	*mp)
+ {
+ 	ActionMove(w, mp->x, mp->y);
+@@ -142,7 +141,7 @@
+ /*
+  * Here when our window gets focus
+  */
+-void
++static void
+ do_focusin(GR_EVENT_GENERAL	*gp)
+ {
+ #if 0
+@@ -156,7 +155,7 @@
+ /*
+  * Here when an exposure event occurs.
+  */
+-void
++static void
+ do_exposure(GR_EVENT_EXPOSURE	*ep)
+ {
+ 	if (ep->wid == w->win)
+@@ -167,7 +166,7 @@
+ /*
+  * Here when a keyboard press or injection occurs.
+  */
+-void
++static void
+ do_keystroke(GR_EVENT_KEYSTROKE	*kp)
+ {
+ 	if (bTextwin)
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/sc.c /work/iPAQ/microwin/src/demos/nxscribble/sc.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/sc.c	Tue Oct  3 01:24:54 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/sc.c	Thu Mar 15 10:14:43 2001
+@@ -468,7 +468,8 @@
+ 	}
+ 	Z('a') printf("  %d classes \n", n);
+ 	for(i = 0; i < n; i++) {
+-		fscanf(infile, "%s", buf);
++	fgets(buf, 100, infile);
++//		fscanf(infile, "%s", buf);
+ 		scd = sAddClass(sc, buf);
+ 		Z('a') printf("  %s \n", scd->name);
+ 	}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/scrib.h /work/iPAQ/microwin/src/demos/nxscribble/scrib.h
+--- /work2/iPAQ/microwin/src/demos/nxscribble/scrib.h	Mon Oct  2 19:16:10 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/scrib.h	Mon Mar 12 09:12:54 2001
+@@ -33,7 +33,9 @@
+ 
+ #define NUM_RECS    3
+ #define DEFAULT_REC_DIR         "classifiers"
++#ifndef REC_DEFAULT_USER_DIR
+ #define REC_DEFAULT_USER_DIR    "bin"
++#endif
+ //#define REC_DEFAULT_USER_DIR    "/home/greg/net/microwin/src/apps/scribble"
+ //#define CLASSIFIER_DIR          ".classifiers"
+ #define DEFAULT_LETTERS_FILE    "letters.cl"
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/demos/nxscribble/scribwidget.c /work/iPAQ/microwin/src/demos/nxscribble/scribwidget.c
+--- /work2/iPAQ/microwin/src/demos/nxscribble/scribwidget.c	Fri Dec  8 16:22:19 2000
++++ /work/iPAQ/microwin/src/demos/nxscribble/scribwidget.c	Mon Mar 12 09:02:12 2001
+@@ -331,7 +331,7 @@
+ static char
+ do_recognize(struct graffiti *pg, pen_stroke *ps, int charset)
+ {
+-       char rec_char;
++       int rec_char;
+        int nret;
+        rec_alternative *ret;
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/drivers/Makefile /work/iPAQ/microwin/src/drivers/Makefile
+--- /work2/iPAQ/microwin/src/drivers/Makefile	Sun Jan 21 20:24:37 2001
++++ /work/iPAQ/microwin/src/drivers/Makefile	Sat Mar  3 06:48:51 2001
+@@ -67,10 +67,14 @@
+ CFLAGS += -DPORTRAIT=1
+ endif
+ 
++ifeq ($(ARCH), ECOS)
++OBJS += scr_ecos.o
++else
+ ifeq ($(ARCH), RTEMS)
+ OBJS += scr_rtems.o romfont.o
+ else
+ OBJS += scr_fb.o
++endif
+ endif
+ 
+ ifeq ($(FBREVERSE), Y)
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/drivers/kbd_ipaq.c /work/iPAQ/microwin/src/drivers/kbd_ipaq.c
+--- /work2/iPAQ/microwin/src/drivers/kbd_ipaq.c	Fri Dec  8 16:46:28 2000
++++ /work/iPAQ/microwin/src/drivers/kbd_ipaq.c	Thu Mar 15 11:49:16 2001
+@@ -22,7 +22,11 @@
+ #define IPAQ_SCANCODE_LEFT     136 /* keycode left */
+ #define IPAQ_SCANCODE_DOWN     137 /* keycode down */
+ 
++#ifdef __ECOS
++#define KEYBOARD "/dev/kbd"
++#else
+ #define KEYBOARD "/dev/h3600_key"
++#endif
+ 
+ static int  IPAQ_Open(KBDDEVICE *pkd);
+ static void IPAQ_Close(void);
+@@ -59,11 +63,13 @@
+ static int IPAQ_Open(KBDDEVICE *pkd)
+ {
+   /* Open the keyboard and get it ready for use */
+-  fd = open(KEYBOARD, O_NONBLOCK);
++  fd = open(KEYBOARD, O_RDONLY | O_NONBLOCK);
++
++  if (fd < 0) {
++      printf("%s - Can't open keyboard!\n", __FUNCTION__);
++      return - 1;
++  }
+ 
+-  if (fd < 0)
+-    return - 1;
+-  
+   return(fd);
+ }
+ 
+@@ -144,7 +150,8 @@
+       break;
+ 
+     case IPAQ_SCANCODE_START:
+-      *kbuf = MWKEY_LAST;
++//      *kbuf = MWKEY_LAST;
++      *kbuf = MWKEY_CANCEL;
+       break;
+       
+     case IPAQ_SCANCODE_UP:
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/drivers/mou_ipaq.c /work/iPAQ/microwin/src/drivers/mou_ipaq.c
+--- /work2/iPAQ/microwin/src/drivers/mou_ipaq.c	Sun Jan 21 20:23:56 2001
++++ /work/iPAQ/microwin/src/drivers/mou_ipaq.c	Tue Mar  6 06:08:57 2001
+@@ -16,7 +16,11 @@
+ #include <sys/ioctl.h>
+ #include "device.h"
+ 
++#ifdef __ECOS
++#define TOUCHDEVICE	"/dev/ts"			/* iPAQ*/
++#else
+ #define TOUCHDEVICE	"/dev/h3600_ts"			/* iPAQ*/
++#endif
+ /*define TOUCHDEVICE	"/dev/touchscreen/ucb1x00" */	/* L7200*/
+ 
+ /* file descriptor for touch panel */
+@@ -34,12 +38,11 @@
+ 	 * Return the fd if successful, or negative if unsuccessful.
+ 	 */
+ 
+-	pd_fd = open(TOUCHDEVICE, O_NONBLOCK);
++	pd_fd = open(TOUCHDEVICE, O_RDONLY | O_NONBLOCK);
+ 	if (pd_fd < 0) {
+ 		EPRINTF("Error %d opening touch panel\n", errno);
+ 		return -1;
+ 	}
+-
+ 	GdHideCursor(&scrdev);
+ 	return pd_fd;
+ }
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/drivers/scr_ecos.c /work/iPAQ/microwin/src/drivers/scr_ecos.c
+--- /work2/iPAQ/microwin/src/drivers/scr_ecos.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/drivers/scr_ecos.c	Wed Mar 14 20:15:00 2001
+@@ -0,0 +1,386 @@
++/*
++ * Copyright (c) 1999, 2000 Greg Haerr <greg@censoft.com>
++ *
++ * Microwindows Screen Driver for Linux kernel framebuffers
++ *
++ * Portions used from Ben Pfaff's BOGL <pfaffben@debian.org>
++ *
++ * Modified for eCos by
++ *   Gary Thomas <gthomas@redhat.com>
++ *   Richard Panton <richard.panton@3glab.org>
++ * 
++ * Note: modify select_fb_driver() to add new framebuffer subdrivers
++ */
++#define _GNU_SOURCE 1
++#include <assert.h>
++#include <fcntl.h>
++#include <limits.h>
++#include <cyg/hal/drv_api.h>
++#include <cyg/io/io.h>
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <sys/stat.h>
++#include <sys/time.h>
++#include <sys/types.h>
++#include <unistd.h>
++#include "device.h"
++#include "genfont.h"
++#include "genmem.h"
++#include "fb.h"
++#include <cyg/hal/lcd_support.h>
++
++static PSD  fb_open(PSD psd);
++static void fb_close(PSD psd);
++static void fb_setpalette(PSD psd,int first, int count, MWPALENTRY *palette);
++static void gen_getscreeninfo(PSD psd,PMWSCREENINFO psi);
++
++SCREENDEVICE	scrdev = {
++	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL,
++	fb_open,
++	fb_close,
++	gen_getscreeninfo,
++	fb_setpalette,
++	NULL,			/* DrawPixel subdriver*/
++	NULL,			/* ReadPixel subdriver*/
++	NULL,			/* DrawHorzLine subdriver*/
++	NULL,			/* DrawVertLine subdriver*/
++	NULL,			/* FillRect subdriver*/
++	gen_fonts,
++	NULL,			/* Blit subdriver*/
++	NULL,			/* PreSelect*/
++	NULL,			/* DrawArea subdriver*/
++	NULL,			/* SetIOPermissions*/
++	gen_allocatememgc,
++	fb_mapmemgc,
++	gen_freememgc
++};
++
++/* static variables*/
++static int status;		/* 0=never inited, 1=once inited, 2=inited. */
++#if 0
++static short saved_red[256];	/* original hw palette*/
++static short saved_green[256];
++static short saved_blue[256];
++#endif
++#if PORTRAIT
++int gr_portraitmode = PORTRAIT;	/* =1 portrait left, =2 portrait right*/
++#endif
++
++/* local functions*/
++static void	set_directcolor_palette(PSD psd);
++
++/* init framebuffer*/
++static PSD
++fb_open(PSD psd)
++{
++    PSUBDRIVER subdriver;
++    struct lcd_info li;
++
++    assert(status < 2);
++
++    // Initialize LCD screen
++    lcd_init(16);
++    lcd_getinfo(&li);
++
++    psd->xres = psd->xvirtres = li.width;
++    psd->yres = psd->yvirtres = li.height;
++#if PORTRAIT
++    /* automatic portrait mode if y resolution is greater than x res*/
++    /*** commented out, PORTRAIT_MODE=[R,L] used for compile time option***/
++    /***if(psd->yres > psd->xres)
++        gr_portraitmode = 1;***/
++#endif
++    /* set planes from fb type*/
++    if (1 /*type == FB_TYPE_PACKED_PIXELS*/)
++        psd->planes = 1;   /* FIXME */
++    else psd->planes = 0;	/* force error later*/
++
++    psd->bpp = li.bpp;
++    psd->ncolors = (psd->bpp >= 24)? (1 << 24): (1 << psd->bpp);
++
++    /* set linelen to byte length, possibly converted later*/
++    psd->linelen = li.rlen;
++    psd->size = 0;		/* force subdriver init of size*/
++
++    psd->flags = PSF_SCREEN | PSF_HAVEBLIT;
++    if (psd->bpp == 16)
++        psd->flags |= PSF_HAVEOP_COPY;
++
++#if PORTRAIT
++    /* determine whether to run in portrait mode*/
++    if(1 /*gr_portraitmode*/) {
++        psd->flags |= PSF_PORTRAIT;
++
++        /* swap x, y*/
++        psd->xvirtres = psd->yres;
++        psd->yvirtres = psd->xres;
++    }
++#endif
++
++    /* set pixel format*/
++    switch (li.type) {
++    case FB_TRUE_RGB565:
++        psd->pixtype = MWPF_TRUECOLOR565;
++        break;
++    default:
++        EPRINTF("Unsupported display type: %d\n", li.type);
++        goto fail;
++    }
++#if 0
++    if(1 /*visual == FB_VISUAL_TRUECOLOR || visual == FB_VISUAL_DIRECTCOLOR*/) {
++        switch(psd->bpp) {
++        case 8:
++            psd->pixtype = MWPF_TRUECOLOR332;
++            break;
++        case 16:
++            psd->pixtype = MWPF_TRUECOLOR565;
++            break;
++        case 24:
++            psd->pixtype = MWPF_TRUECOLOR888;
++            break;
++        case 32:
++            psd->pixtype = MWPF_TRUECOLOR0888;
++            break;
++        default:
++            EPRINTF(
++                "Unsupported %d color (%d bpp) truecolor framebuffer\n",
++                psd->ncolors, psd->bpp);
++            goto fail;
++        }
++    } else psd->pixtype = MWPF_PALETTE;
++#endif
++
++    diag_printf("%dx%dx%d linelen %d type %d bpp %d\n", psd->xres,
++      psd->yres, psd->ncolors, psd->linelen, li.type, psd->bpp);
++
++    /* select a framebuffer subdriver based on planes and bpp*/
++    subdriver = select_fb_subdriver(psd);
++    if (!subdriver) {
++        EPRINTF("No driver for screen\n", psd->bpp);
++        goto fail;
++    }
++
++    /*
++     * set and initialize subdriver into screen driver
++     * psd->size is calculated by subdriver init
++     */
++    if(!set_subdriver(psd, subdriver, TRUE)) {
++        EPRINTF("Driver initialize failed\n", psd->bpp);
++        goto fail;
++    }
++
++#if PORTRAIT
++    if(psd->flags & PSF_PORTRAIT) {
++        /* remember original subdriver*/
++        _subdriver = subdriver;
++
++        /* assign portrait subdriver which calls original subdriver*/
++        set_subdriver(psd, &fbportrait, FALSE);
++    }
++#endif
++    /* mmap framebuffer into this address space*/
++    psd->addr = li.fb;
++    if(psd->addr == NULL || psd->addr == (unsigned char *)-1) {
++//        EPRINTF("Error mmaping %s: %m\n", env);
++        goto fail;
++    }
++
++#if 0    /* FIXME */
++    /* save original palette*/
++    ioctl_getpalette(0, 16, saved_red, saved_green, saved_blue);
++
++    /* setup direct color palette if required (ATI cards)*/
++    if(visual == FB_VISUAL_DIRECTCOLOR)
++        set_directcolor_palette(psd);
++#endif
++
++    status = 2;
++    return psd;	/* success*/
++
++ fail:
++    return NULL;
++}
++
++/* close framebuffer*/
++static void
++fb_close(PSD psd)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);
++#if 0
++	int	tty;
++
++	/* if not opened, return*/
++	if(status != 2)
++		return;
++	status = 1;
++
++  	/* reset hw palette*/
++	ioctl_setpalette(0, 256, saved_red, saved_green, saved_blue);
++  
++	/* unmap framebuffer*/
++	// munmap(psd->addr, psd->size);
++  
++	/* close framebuffer*/
++	close(fb);
++#endif
++}
++
++/* setup directcolor palette - required for ATI cards*/
++static void
++set_directcolor_palette(PSD psd)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);  while (1) ;
++#if 0
++	int i;
++	short r[256], g[256], b[256];
++
++	/* 16bpp uses 32 palette entries*/
++	if(psd->bpp == 16) {
++		/* FIXME: this still doesn't work*/
++		for(i=0; i<32; ++i) {
++			//r[i] = g[i] = b[i] = ((i<<11)|(i<<6)|i)<<8;
++			//r[i] = g[i] = b[i] = ((i<<5)|i)<<10;
++			//r[i] = g[i] = b[i] = i<<11;
++			//r[i] = g[i] = b[i] = (i<<11) | (i<<3);
++			r[i] = g[i] = b[i] = (i<<11);
++			//r[i] = i << 8;
++			//g[i] = i << 10;
++			//b[i] = i << 8;
++		}
++		ioctl_setpalette(0, 32, r, g, b);
++	} else {
++		/* 32bpp uses 256 entries*/
++		for(i=0; i<256; ++i)
++			r[i] = i<<8;
++		ioctl_setpalette(0, 256, r, r, r);
++	}
++#endif
++}
++
++static int fade = 100;
++
++/* convert Microwindows palette to framebuffer format and set it*/
++static void
++fb_setpalette(PSD psd,int first, int count, MWPALENTRY *palette)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);  while (1) ;
++#if 0
++	int 	i;
++	unsigned short 	red[count];
++	unsigned short 	green[count];
++	unsigned short 	blue[count];
++
++	/* convert palette to framebuffer format*/
++	for(i=0; i < count; i++) {
++		MWPALENTRY *p = &palette[i];
++
++		/* grayscale computation:
++		 * red[i] = green[i] = blue[i] =
++		 *	(p->r * 77 + p->g * 151 + p->b * 28);
++		 */
++		red[i] = (p->r * fade / 100) << 8;
++		green[i] = (p->g * fade / 100) << 8;
++		blue[i] = (p->b * fade / 100) << 8;
++	}
++	ioctl_setpalette(first, count, red, green, blue);
++#endif
++}
++
++/* get framebuffer palette*/
++void
++ioctl_getpalette(int start, int len, short *red, short *green, short *blue)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);  while (1) ;
++#if 0
++	struct fb_cmap cmap;
++	cyg_uint32 sz = sizeof(cmap);
++
++	cmap.start = start;
++	cmap.len = len;
++	cmap.red = red;
++	cmap.green = green;
++	cmap.blue = blue;
++	cmap.transp = NULL;
++
++	cyg_io_get_config( fb_handle, CYG_IO_GET_CONFIG_FB_PALETTE, &cmap, &sz );
++	// ioctl(fb, FBIOGETCMAP, &cmap);
++#endif
++}
++
++/* set framebuffer palette*/
++void
++ioctl_setpalette(int start, int len, short *red, short *green, short *blue)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);  while (1) ;
++#if 0
++	struct fb_cmap cmap;
++	cyg_uint32 sz = sizeof(cmap);
++
++	cmap.start = start;
++	cmap.len = len;
++	cmap.red = red;
++	cmap.green = green;
++	cmap.blue = blue;
++	cmap.transp = NULL;
++
++	cyg_io_set_config( fb_handle, CYG_IO_SET_CONFIG_FB_PALETTE, &cmap, &sz );
++	// ioctl(fb, FBIOPUTCMAP, &cmap);
++#endif
++}
++
++/* experimental palette animation*/
++void
++setfadelevel(PSD psd, int f)
++{
++    printf("%s - NOT IMPLEMENTED\n", __FUNCTION__);  while (1) ;
++#if 0
++	int 		i;
++	unsigned short 	r[256], g[256], b[256];
++	extern MWPALENTRY gr_palette[256];
++
++	if(psd->pixtype != MWPF_PALETTE)
++		return;
++
++	fade = f;
++	if(fade > 100)
++		fade = 100;
++	for(i=0; i<256; ++i) {
++		r[i] = (gr_palette[i].r * fade / 100) << 8;
++		g[i] = (gr_palette[i].g * fade / 100) << 8;
++		b[i] = (gr_palette[i].b * fade / 100) << 8;
++	}
++	ioctl_setpalette(0, 256, r, g, b);
++#endif
++}
++
++static void
++gen_getscreeninfo(PSD psd,PMWSCREENINFO psi)
++{
++    psi->rows = psd->yvirtres;
++    psi->cols = psd->xvirtres;
++    psi->planes = psd->planes;
++    psi->bpp = psd->bpp;
++    psi->ncolors = psd->ncolors;
++    psi->pixtype = psd->pixtype;
++    psi->fonts = NUMBER_FONTS;
++
++#if 0
++    if(psd->yvirtres > 480) {
++        /* SVGA 800x600*/
++        psi->xdpcm = 33;	/* assumes screen width of 24 cm*/
++        psi->ydpcm = 33;	/* assumes screen height of 18 cm*/
++    } else if(psd->yvirtres > 350) {
++        /* VGA 640x480*/
++        psi->xdpcm = 27;	/* assumes screen width of 24 cm*/
++        psi->ydpcm = 27;	/* assumes screen height of 18 cm*/
++    } else {
++        /* EGA 640x350*/
++        psi->xdpcm = 27;	/* assumes screen width of 24 cm*/
++        psi->ydpcm = 19;	/* assumes screen height of 18 cm*/
++    }
++#else
++    psi->ydpcm = 42; // 320 / (3 * 2.54)
++    psi->xdpcm = 38; //240 / (2.5 * 2.54)
++#endif
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/Makefile /work/iPAQ/microwin/src/ecos/Makefile
+--- /work2/iPAQ/microwin/src/ecos/Makefile	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/Makefile	Fri Mar 16 09:03:29 2001
+@@ -0,0 +1,58 @@
++##############################################################################
++# Microwindows template Makefile
++# Copyright (c) 2000 Martin Jolicoeur, Greg Haerr
++##############################################################################
++
++include $(CONFIG)
++
++######################## Additional Flags section ############################
++
++# Directories list for header files
++INCLUDEDIRS +=
++# Defines for preprocessor
++DEFINES +=
++
++# Compilation flags for C files OTHER than include directories
++CFLAGS +=
++# Preprocessor flags OTHER than defines
++CPPFLAGS +=
++# Linking flags
++LDFLAGS += -Wl,--gc-sections -Wl,-static -Wl,-N -g -O2 -nostdlib -L$(ECOS_PREFIX)/lib -Ttarget.ld
++
++############################# targets section ################################
++
++# If you want to create a library with the objects files, define the name here
++LIBNAME =
++LIBNAMESO =
++
++# List of objects to compile
++OBJS = ecos_app.o ecos_init.o
++NANO_OBJS = 
++OBJS += nanox_thread.o
++NANO_OBJS += $(TOP)/bin/nano-X.o $(TOP)/bin/nwidgets.o
++OBJS += nanowm_thread.o
++NANO_OBJS += $(TOP)/bin/nanowm.o
++OBJS += nxkbd_thread.o
++NANO_OBJS += $(TOP)/bin/nxkbd.o
++DEFINES += -DUSE_NXSCRIBBLE
++OBJS += nxscribble_thread.o
++NANO_OBJS += $(TOP)/bin/nxscribble.o 
++DEFINES += -DUSE_LANDMINE
++OBJS += landmine_thread.o
++NANO_OBJS += $(TOP)/bin/landmine.o 
++DEFINES += -DUSE_NTETRIS
++OBJS += ntetris_thread.o
++NANO_OBJS += $(TOP)/bin/ntetris.o 
++
++
++# demos should be built after the libs !
++all: ecos_app
++
++######################### Makefile.rules section #############################
++
++include $(TOP)/Makefile.rules
++
++######################## Tools targets section ###############################
++
++ecos_app: $(OBJS) $(NANO_OBJS)
++
+Binary files /work2/iPAQ/microwin/src/ecos/core and /work/iPAQ/microwin/src/ecos/core differ
+Binary files /work2/iPAQ/microwin/src/ecos/ecos_app and /work/iPAQ/microwin/src/ecos/ecos_app differ
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/ecos_app.c /work/iPAQ/microwin/src/ecos/ecos_app.c
+--- /work2/iPAQ/microwin/src/ecos/ecos_app.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/ecos_app.c	Mon Mar 19 09:26:38 2001
+@@ -0,0 +1,176 @@
++/* 
++ * Written 1999-03-19 by Jonathan Larmour, Cygnus Solutions
++ * Modifed for touchscreen testing by Richard Panton 13-09-00
++ * This file is in the public domain and may be used for any purpose
++ */
++
++/* CONFIGURATION CHECKS */
++
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/hal/hal_arch.h>           /* CYGNUM_HAL_STACK_SIZE_TYPICAL */
++#include <sys/time.h>
++
++#define STACKSIZE ( 65536 )
++
++extern void ecos_nx_setup(CYG_ADDRWORD data);
++extern void nanowm_thread(CYG_ADDRWORD data);
++extern void nanox_thread(CYG_ADDRWORD data);
++extern void nxkbd_thread(CYG_ADDRWORD data);
++#ifdef USE_NXSCRIBBLE
++extern void nxscribble_thread(CYG_ADDRWORD data);
++#endif
++#ifdef USE_LANDMINE
++extern void landmine_thread(CYG_ADDRWORD data);
++#endif
++#ifdef USE_NTETRIS
++extern void ntetris_thread(CYG_ADDRWORD data);
++#endif
++static void startup_thread(CYG_ADDRWORD data);
++
++typedef void fun(CYG_ADDRWORD);
++struct nx_thread {
++    char         *name;
++    fun          *entry;
++    int          prio;
++    cyg_handle_t t;
++    cyg_thread   t_obj;
++    char         stack[STACKSIZE];
++};
++
++struct nx_thread _threads[] = {
++    { "System startup", startup_thread,    11 },
++    { "Nano-X server",  nanox_thread,      12 },
++    { "Nano-WM",        nanowm_thread,     14 },
++    { "Nano-KBD",       nxkbd_thread,      13 },
++#ifdef USE_NXSCRIBBLE
++    { "Scribble",       nxscribble_thread, 20 },
++#endif
++#ifdef USE_LANDMINE
++    { "Landmine",       landmine_thread,   19 },
++#endif
++#ifdef USE_NTETRIS
++    { "Nano-Tetris",    ntetris_thread,    18 },
++#endif
++};
++#define NUM(x) (sizeof(x)/sizeof(x[0]))
++
++// Functions not provided in eCos by standard...
++char *
++strdup(char *string) {
++    char *newbit = malloc(strlen(string)+1);
++    strcpy(newbit,string);
++    return newbit;
++}
++
++int 
++gettimeofday(struct timeval *tv,
++             struct timezone *tz)
++{
++    tv->tv_usec = 0;
++    tv->tv_sec = time(NULL);
++    return(0);
++}
++
++int
++strcasecmp(const char *s1, const char *s2)
++{
++    char c1, c2;
++    while ((c1 = tolower(*s1++)) == (c2 = tolower(*s2++)))
++        if (c1 == 0)
++            return (0);
++    return ((unsigned char)c1 - (unsigned char)c2);
++}
++
++static void 
++startup_thread(CYG_ADDRESS data)
++{
++    cyg_ucount32 nanox_data_index;
++    int i;
++    struct nx_thread *nx;
++
++    printf("SYSTEM INITIALIZATION in progress\n");
++    printf("NETWORK:\n");
++    init_all_network_interfaces();
++
++#ifdef USE_NXSCRIBBLE
++    printf("Mount ROM file system\n");
++    if (mount("0x50F00000", "/", "romfs") < 0) {
++        printf("... failed\n");
++    }
++#endif
++
++    // Allocate a free thread data slot
++    // Note: all MicroWindows/NanoX threads use this slot for NanoX-private
++    // data.  That's why there is only one call here.
++    nanox_data_index = cyg_thread_new_data_index();
++    diag_printf("data index = %d\n", nanox_data_index);
++
++    printf("Creating system threads\n");
++    nx = &_threads[1];
++    for (i = 1;  i < NUM(_threads);  i++, nx++) {
++        cyg_thread_create(nx->prio,
++                          nx->entry,
++                          (cyg_addrword_t) nanox_data_index,
++                          nx->name,
++                          (void *)nx->stack, STACKSIZE,
++                          &nx->t,
++                          &nx->t_obj);
++    }
++
++    printf("Starting threads\n");
++    nx = &_threads[1];
++    for (i = 1;  i < NUM(_threads);  i++, nx++) {
++        printf("%s\n", nx->name);
++        cyg_thread_resume(nx->t);
++        // Special case - run additional code, specific to this environment
++        // only after the server has had a chance to startup
++        if (i == 2) {
++            ecos_nx_init(nanox_data_index);
++        }
++    }
++
++    printf("SYSTEM THREADS STARTED!\n");
++}
++
++void cyg_user_start(void)
++{
++    struct nx_thread *nx;
++
++    nx = &_threads[0];
++    cyg_thread_create(nx->prio,
++                      nx->entry,
++                      (cyg_addrword_t) 0,
++                      nx->name,
++                      (void *)nx->stack, STACKSIZE,
++                      &nx->t,
++                      &nx->t_obj);
++    cyg_thread_resume(nx->t);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/ecos_init.c /work/iPAQ/microwin/src/ecos/ecos_init.c
+--- /work2/iPAQ/microwin/src/ecos/ecos_init.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/ecos_init.c	Mon Mar 19 07:57:21 2001
+@@ -0,0 +1,182 @@
++//
++// Micro-Windows/Nano-X additional setup fo eCos
++//
++
++#include <pkgconf/kernel.h>
++#include <pkgconf/hal.h>
++#include <cyg/kernel/kapi.h>
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <fcntl.h>
++#include <unistd.h>
++#include <time.h>
++#include <ctype.h>
++#include <errno.h>
++#include <sys/time.h>
++
++#define MWINCLUDECOLORS
++#include <nano-X.h>
++#include <nwidgets.h>
++
++static bool closed = false;
++
++static void 
++do_close(NBUTTON * w, int b)
++{
++   printf("Button %d was clicked in widget %p\n",b,w);
++   closed = true;
++}
++
++// Display a number of ticks as microseconds
++// Note: for improved calculation significance, values are kept in ticks*1000
++static void
++show_ns(long long ns)
++{
++    diag_printf("%5d.%02d", (int)(ns/1000), (int)((ns%1000)/10));
++}
++
++static long rtc_resolution[] = CYGNUM_KERNEL_COUNTERS_RTC_RESOLUTION;
++static long ns_per_system_clock;
++
++static long long
++ns_time(void)
++{
++    unsigned long off;
++    long long ns, clocks;
++
++    ns_per_system_clock = 1000000/rtc_resolution[1];
++    HAL_CLOCK_READ(&off);
++    ns = (ns_per_system_clock * (long long)off) / CYGNUM_KERNEL_COUNTERS_RTC_PERIOD;
++    ns += 5;  // for rounding to .01us
++    clocks = (cyg_current_time() * 10000000) + ns;
++    return clocks;
++}
++
++static void
++test_file_io(void)
++{
++    long long start_time, end_time;
++    FILE *fp;
++    unsigned char buf[256];
++    int len, n, fd;
++
++    start_time = ns_time();
++    if ((fp = fopen("/bin/letters.cl", "r")) != (FILE *)NULL) {
++        len = 0;
++        while (fgets(buf, sizeof(buf), fp)) {
++            len += strlen(buf);
++        }
++        fclose(fp);
++    }
++    end_time = ns_time();
++    diag_printf("'fgets': %d bytes in ", len); show_ns(end_time-start_time);  diag_printf("ns\n");
++
++    start_time = ns_time();
++    if ((fp = fopen("/bin/letters.cl", "r")) != (FILE *)NULL) {
++        len = 0;
++        while (n = fread(buf, 1, sizeof(buf), fp)) {
++            len += n;
++        }
++        fclose(fp);
++    }
++    end_time = ns_time();
++    diag_printf("'fread': %d bytes in ", len); show_ns(end_time-start_time);  diag_printf("ns\n");
++
++    start_time = ns_time();
++    if ((fd = open("/bin/letters.cl", O_RDONLY)) >= 0) {
++        len = 0;
++        while (n = read(fd, buf, sizeof(buf))) {
++            len += n;
++        }
++        close(fd);
++    }
++    end_time = ns_time();
++    diag_printf("'read': %d bytes in ", len); show_ns(end_time-start_time);  diag_printf("ns\n");
++}
++
++void
++ecos_nx_init(CYG_ADDRWORD data)
++{
++    GR_SCREEN_INFO	si;		/* window information */
++    GR_FONT_INFO	fi;		/* font information */
++    GR_WINDOW_ID	mainwid;	/* main window id */
++    GR_WM_PROPERTIES    props;
++    GR_GC_ID		gct = 0;
++    NWIDGET             *w;
++    NBUTTON             *b;
++    NTEXTFIELD          *t;
++
++    cyg_thread_delay(50);
++    INIT_PER_THREAD_DATA();
++
++    test_file_io();
++
++    if(GrOpen() < 0) {
++        fprintf(stderr, "Couldn't connect to Nano-X server\n");
++        exit(1);
++    }
++
++    GrGetScreenInfo(&si);
++    GrGetFontInfo(0, &fi);
++
++#if 0
++    mainwid = GrNewWindow(GR_ROOT_WINDOW_ID, 0, 0, si.cols, si.rows,
++                          0, RED, WHITE);
++
++    props.flags = GR_WM_FLAGS_PROPS;
++    props.props = GR_WM_PROPS_BORDER;
++    GrSetWMProperties(mainwid, &props);
++
++    GrMapWindow(mainwid);
++    GrFlush();
++    cyg_thread_delay(50);
++
++    gct = GrNewGC();
++    GrSetGCForeground(gct, WHITE);
++    GrSetGCFont(gct, GrCreateFont(GR_FONT_GUI_VAR, 0, NULL));
++    GrDrawImageFromFile(mainwid, gct, 0, 0, si.cols, si.rows, "/redhat.logo", 0);
++    GrText(mainwid, gct, 80, 350, "Tap all 4 corners", 17, GR_TFTOP);
++    GrFlush();
++#endif
++
++    n_init_button_class();
++    n_init_textfield_class();
++
++    w = NEW_NOBJECT(widget);
++    n_widget_init(w, 0);    
++    n_widget_resize(w, si.cols - 10, si.rows - 30);
++    n_widget_background(w, "/redhat.logo");
++    n_widget_show(w);
++
++    b = NEW_NOBJECT(button);
++    n_button_init(b, w, "Close");
++    n_button_onclick(b, do_close);
++    n_widget_resize(b, 40, 20);
++    n_widget_move(b,180,260);
++    n_widget_show(b);
++
++    t = NEW_NOBJECT(textfield);
++    n_textfield_init(t,w,"Tap all 4 corners");
++    n_widget_move(t,45,220);
++    n_widget_resize(t,120,20);
++    n_widget_show(t);
++
++    t = NEW_NOBJECT(textfield);
++    n_textfield_init(t,w,"Then press close");
++    n_widget_move(t,45,250);
++    n_widget_resize(t,120,20);
++    n_widget_show(t);
++
++    while (!closed) {
++        n_handle_event();
++    }
++
++    n_widget_hide(w);
++    n_object_cleanup(w);
++
++//    printf("Tap all four corners\n");
++//    cyg_thread_delay(10*100);
++
++    GrClose();
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/landmine_thread.c /work/iPAQ/microwin/src/ecos/landmine_thread.c
+--- /work2/iPAQ/microwin/src/ecos/landmine_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/landmine_thread.c	Wed Mar 14 19:51:41 2001
+@@ -0,0 +1,52 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int landmine_main(int argc, char *argv[]);
++
++int 
++landmine_thread(CYG_ADDRWORD data)
++{
++    int argc = 5;
++    char *argv[] = {"landmine", 
++                    "-m", "15",
++                    "-s", "10"};
++
++    INIT_PER_THREAD_DATA();
++    landmine_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/nanowm_thread.c /work/iPAQ/microwin/src/ecos/nanowm_thread.c
+--- /work2/iPAQ/microwin/src/ecos/nanowm_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/nanowm_thread.c	Tue Mar 13 16:49:18 2001
+@@ -0,0 +1,50 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int nanowm_main(int argc, char *argv[]);
++
++int 
++nanowm_thread(CYG_ADDRWORD data)
++{
++    int argc = 0;
++    char **argv;
++
++    INIT_PER_THREAD_DATA();
++    nanowm_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/nanox_thread.c /work/iPAQ/microwin/src/ecos/nanox_thread.c
+--- /work2/iPAQ/microwin/src/ecos/nanox_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/nanox_thread.c	Tue Mar 13 16:49:17 2001
+@@ -0,0 +1,49 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int nanox_main(int argc, char *argv[]);
++
++int 
++nanox_thread(CYG_ADDRWORD data)
++{
++    int argc = 0;
++    char **argv;
++
++    nanox_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/ntetris_thread.c /work/iPAQ/microwin/src/ecos/ntetris_thread.c
+--- /work2/iPAQ/microwin/src/ecos/ntetris_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/ntetris_thread.c	Wed Mar 14 19:52:06 2001
+@@ -0,0 +1,50 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int ntetris_main(int argc, char *argv[]);
++
++int 
++ntetris_thread(CYG_ADDRWORD data)
++{
++    int argc = 1;
++    char *argv[] = {"ntetris" };
++
++    INIT_PER_THREAD_DATA();
++    ntetris_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/nxkbd_thread.c /work/iPAQ/microwin/src/ecos/nxkbd_thread.c
+--- /work2/iPAQ/microwin/src/ecos/nxkbd_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/nxkbd_thread.c	Thu Mar 15 15:13:41 2001
+@@ -0,0 +1,50 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int nxkbd_main(int argc, char *argv[]);
++
++int 
++nxkbd_thread(CYG_ADDRWORD data)
++{
++    int argc = 0;
++    char **argv;
++
++    INIT_PER_THREAD_DATA();
++    nxkbd_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/ecos/nxscribble_thread.c /work/iPAQ/microwin/src/ecos/nxscribble_thread.c
+--- /work2/iPAQ/microwin/src/ecos/nxscribble_thread.c	Wed Dec 31 17:00:00 1969
++++ /work/iPAQ/microwin/src/ecos/nxscribble_thread.c	Tue Mar 13 16:49:18 2001
+@@ -0,0 +1,50 @@
++#include <pkgconf/system.h>     /* which packages are enabled/disabled */
++#ifdef CYGPKG_KERNEL
++# include <pkgconf/kernel.h>
++#endif
++#ifdef CYGPKG_LIBC
++# include <pkgconf/libc.h>
++#endif
++#ifdef CYGPKG_IO_SERIAL
++# include <pkgconf/io_serial.h>
++#endif
++
++#ifndef CYGFUN_KERNEL_API_C
++# error Kernel API must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_LIBC_STDIO
++# error C library standard I/O must be enabled to build this application
++#endif
++
++#ifndef CYGPKG_IO_SERIAL_HALDIAG
++# error I/O HALDIAG pseudo-device driver must be enabled to build this application
++#endif
++
++/* INCLUDES */
++
++#include <stdio.h>                      /* printf */
++#include <stdlib.h>                      /* printf */
++#include <string.h>                     /* strlen */
++#include <cyg/kernel/kapi.h>            /* All the kernel specific stuff */
++#include <cyg/infra/diag.h>        
++
++#define MWINCLUDECOLORS
++#include "nano-X.h"
++
++
++//
++// Component interfaces
++//
++
++externC int nxscribble_main(int argc, char *argv[]);
++
++int 
++nxscribble_thread(CYG_ADDRWORD data)
++{
++    int argc = 2;
++    char *argv[] = {"nxscribble", "-t"};
++
++    INIT_PER_THREAD_DATA();
++    nxscribble_main(argc, argv);
++}
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/engine/devimage.c /work/iPAQ/microwin/src/engine/devimage.c
+--- /work2/iPAQ/microwin/src/engine/devimage.c	Sun Jan 21 14:44:26 2001
++++ /work/iPAQ/microwin/src/engine/devimage.c	Mon Mar 19 08:10:59 2001
+@@ -815,12 +815,14 @@
+ 
+ 	bmpf.bfType[0] = headbuffer[0];
+ 	bmpf.bfType[1] = headbuffer[1];
+-	bmpf.bfSize = *(DWORD*)&headbuffer[2];
+-	bmpf.bfOffBits = *(DWORD*)&headbuffer[10];
+ 
+ 	/* Is it really a bmp file ? */
+ 	if (*(WORD*)&bmpf.bfType[0] != 0x4D42) /* 'BM' */
+ 		return 0;	/* not bmp image*/
++
++// Note: this doesn't work on ARM platforms (and possibly others!)
++	bmpf.bfSize = *(DWORD*)&headbuffer[2];
++	bmpf.bfOffBits = *(DWORD*)&headbuffer[10];
+ 
+ 	/* Read remaining header size */
+ 	if (fread(&headsize, 1, sizeof(DWORD), fp) != sizeof(DWORD))
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/include/nano-X.h /work/iPAQ/microwin/src/include/nano-X.h
+--- /work2/iPAQ/microwin/src/include/nano-X.h	Sun Jan 21 16:38:09 2001
++++ /work/iPAQ/microwin/src/include/nano-X.h	Mon Mar  5 05:19:52 2001
+@@ -715,4 +715,69 @@
+ #define main	rtems_main
+ #endif
+ 
++/*
++ * Client side event queue
++ */
++typedef struct event_list EVENT_LIST;
++struct event_list {
++	EVENT_LIST *	next;
++	GR_EVENT	event;
++};
++
++/* queued request buffer*/
++typedef struct {
++	unsigned char *bufptr;		/* next unused buffer location*/
++	unsigned char *bufmax;		/* max buffer location*/
++	unsigned char *buffer;		/* request buffer*/
++} REQBUF;
++
++#ifdef __ECOS
++/*
++ * In a single process, multi-threaded environment, we need to keep
++ * all static data of shared code in a structure, with a pointer to
++ * the structure to be stored in thread-local storage
++ */
++typedef struct {                                // Init to:
++    int                 _nxSocket;              //  -1
++    int                 _storedevent;           // 0
++    GR_EVENT            _storedevent_data;      // no init(0)
++    int                 _regfd;                 // -1
++    GR_FNCALLBACKEVENT  _GrErrorFunc;           // GrDefaultErrorHandler
++    REQBUF              _reqbuf;
++    EVENT_LIST          *_evlist;
++} ecos_nanox_client_data;
++
++extern int     ecos_nanox_client_data_index;
++
++#define ACCESS_PER_THREAD_DATA()                                        \
++    ecos_nanox_client_data *data = (ecos_nanox_client_data*)            \
++        cyg_thread_get_data((cyg_ucount32)ecos_nanox_client_data_index)
++
++#define INIT_PER_THREAD_DATA()                                                  \
++    {                                                                           \
++        ecos_nanox_client_data *dptr = malloc(sizeof(ecos_nanox_client_data));  \
++        ecos_nanox_client_data_index = data;                                    \
++        dptr->_nxSocket = -1;                                                   \
++        dptr->_storedevent = 0;                                                 \
++        dptr->_regfd = -1;                                                      \
++        dptr->_GrErrorFunc = GrDefaultErrorHandler;                             \
++        dptr->_reqbuf.bufptr = NULL;                                            \
++        dptr->_reqbuf.bufmax = NULL;                                            \
++        dptr->_reqbuf.buffer = NULL;                                            \
++        dptr->_evlist = NULL;                                                   \
++        cyg_thread_set_data(ecos_nanox_client_data_index,(CYG_ADDRWORD)dptr);   \
++    }
++
++#define nxSocket                (data->_nxSocket)
++#define storedevent             (data->_storedevent)
++#define storedevent_data        (data->_storedevent_data)
++#define regfd                   (data->_regfd)
++#define ErrorFunc               (data->_GrErrorFunc)
++#define reqbuf                  (data->_reqbuf)
++#define evlist                  (data->_evlist)
++
++#else
++#define ACCESS_PER_THREAD_DATA()
++#endif
++
+ #endif /* _NANO_X_H*/
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/include/nclass.h /work/iPAQ/microwin/src/include/nclass.h
+--- /work2/iPAQ/microwin/src/include/nclass.h	Wed Jun 14 11:13:12 2000
++++ /work/iPAQ/microwin/src/include/nclass.h	Sat Mar 17 11:16:03 2001
+@@ -9,6 +9,10 @@
+ #ifndef __NCLASS_H
+ #define __NCLASS_H
+ 
++#ifdef DEBUG
++#include <stdio.h>
++#endif
++
+ #define NWTRUE 1
+ #define NWFALSE 0
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/include/nwidget.h /work/iPAQ/microwin/src/include/nwidget.h
+--- /work2/iPAQ/microwin/src/include/nwidget.h	Wed Jun 14 11:13:12 2000
++++ /work/iPAQ/microwin/src/include/nwidget.h	Sat Mar 17 11:40:44 2001
+@@ -35,6 +35,7 @@
+ 			* make widgets "themeable". Widgets by default inherit the renderer of their parent
+ 			*/
+    NOBJECT * layout;    /* This object is called to do layout (by attach, resize etc.). FIXME: Currently not used. */
++   GR_IMAGE_ID background;
+ END_NOBJECT
+ 
+ /* Define class wide data and method slots */
+@@ -50,6 +51,7 @@
+    NSLOT(void,repaint);     /* Called to let widget (re)paint itself on the screen */
+    NSLOT(void,resize);      /* Set width and height */
+    NSLOT(void,move);        /* Move to a specific position. */
++   NSLOT(void,background);  /* Specify a background image. */
+    NSLOT(int,ishit);        /* Returns NWTRUE if widget is "hit" by the */
+                             /* (x,y) pair given as args, NWFALSE else. */
+    NSLOT(void,mousemove);   /* Mouse moved while this widget was active. */
+@@ -92,6 +94,7 @@
+ #define n_widget_setmode(__this__,c) n_call(widget,setmode,__this__,(__this__,(c)))
+ #define n_widget_setbg(__this__,c) n_call(widget,setbg,__this__,(__this__,(c)))
+ #define n_widget_move(__this__,x,y) n_call(widget,move,__this__,(__this__,(x),(y)))
++#define n_widget_background(__this__,fn) n_call(widget,background,__this__,(__this__,(fn)))
+ #define n_widget_resize(__this__,w,h) n_call(widget,resize,__this__,(__this__,(w),(h)))
+ #define n_widget_getgeometry(__this__,x,y,w,h) n_call(widget,getgeometry,__this__,(__this__,(x),(y),(w),(h)))
+ #define n_widget_buttondown(__this__,__x__,__y__,__button__) n_call(widget,buttondown,__this__,(__this__,__x__,__y__,__button__))
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/mwin/winlib/caret.c /work/iPAQ/microwin/src/mwin/winlib/caret.c
+--- /work2/iPAQ/microwin/src/mwin/winlib/caret.c	Sun Sep 17 20:17:58 2000
++++ /work/iPAQ/microwin/src/mwin/winlib/caret.c	Thu Mar 15 09:45:01 2001
+@@ -8,7 +8,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <sys/time.h>
+-#include <malloc.h>
++// #include <malloc.h>
+ #include "windows.h"
+ #include "device.h"
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nanox/Makefile /work/iPAQ/microwin/src/nanox/Makefile
+--- /work2/iPAQ/microwin/src/nanox/Makefile	Sat Oct 21 17:46:20 2000
++++ /work/iPAQ/microwin/src/nanox/Makefile	Fri Mar 16 09:03:30 2001
+@@ -46,7 +46,13 @@
+ else
+ NANOXFILES += $(NETFILES)
+ OBJS = client.o nxproto.o error.o $(UTILFILES)
+-all: default $(TOP)/bin/nano-X
++ifeq ($(OBJ_COMPONENTS), Y) 
++TARGET = $(TOP)/bin/nano-X.o
++DEFINES += -Dmain=nanox_main
++else
++TARGET = $(TOP)/bin/nano-X
++endif
++all: default $(TARGET)
+ endif
+ 
+ endif
+@@ -62,6 +68,9 @@
+ $(TOP)/bin/nano-X: $(NANOXFILES) $(NANOXSERVERLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(NANOXFILES) $(CCNANOXSERVERLIBS)
+ else
++$(TOP)/bin/nano-X.o: $(OBJS) $(NANOXFILES) $(NANOXSERVERLIBS) $(TOP)/config
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wl,-r -o $@ $(OBJS) $(NANOXFILES) $(NANOXSERVERLIBS)
++
+ $(TOP)/bin/nano-X: $(NANOXFILES) $(NANOXSERVERLIBS) $(TOP)/config
+ 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(NANOXFILES) $(NANOXSERVERLIBS)
+ endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nanox/client.c /work/iPAQ/microwin/src/nanox/client.c
+--- /work2/iPAQ/microwin/src/nanox/client.c	Sat Jan 20 15:51:01 2001
++++ /work/iPAQ/microwin/src/nanox/client.c	Sat Mar 17 07:15:53 2001
+@@ -38,6 +38,12 @@
+ #if ELKS
+ #include <linuxmt/na.h>
+ #include <linuxmt/time.h>
++#elif __ECOS
++#include <netinet/in.h>
++#include <sys/select.h>
++#include <cyg/kernel/kapi.h>
++#define _NO_SVR_MAPPING
++#define getpid()	((int)cyg_thread_self())
+ #else
+ #include <sys/un.h>
+ #if hpux
+@@ -54,6 +60,7 @@
+ 
+ #define SHM_BLOCK_SIZE	4096
+ 
++#ifndef __ECOS
+ /* exported global data */
+ int 	   nxSocket = -1;	/* The network socket descriptor */
+ #if HAVE_SHAREDMEM_SUPPORT
+@@ -69,14 +76,6 @@
+ //static int storedevent = 0;
+ //static GR_EVENT storedevent_data;
+ 
+-/*
+- * Client side event queue
+- */
+-typedef struct event_list EVENT_LIST;
+-struct event_list {
+-	EVENT_LIST *	next;
+-	GR_EVENT	event;
+-};
+ static EVENT_LIST *	evlist;
+ 
+ /*
+@@ -87,6 +86,16 @@
+  */
+ static GR_FNCALLBACKEVENT ErrorFunc = GrDefaultErrorHandler;
+ 
++static int regfd = -1;
++
++#else // __ECOS
++/*
++ * eCos uses a thread data pointer to store all statics in...
++ */
++int ecos_nanox_client_data_index = CYGNUM_KERNEL_THREADS_DATA_MAX;
++
++#endif
++
+ /*
+  * Queue an event in FIFO for later retrieval.
+  */
+@@ -95,6 +104,7 @@
+ {
+ 	EVENT_LIST *	elp;
+ 	EVENT_LIST *	prevelp;
++        ACCESS_PER_THREAD_DATA();
+ 
+ 	elp = malloc(sizeof(EVENT_LIST));
+ 	if (elp) {
+@@ -119,6 +129,7 @@
+ static void
+ GetNextQueuedEvent(GR_EVENT *ep)
+ {
++        ACCESS_PER_THREAD_DATA();
+ 	*ep = evlist->event;
+ 	evlist = evlist->next;
+ }
+@@ -134,6 +145,7 @@
+ {
+ 	int i = 0;
+ 	char *v;
++        ACCESS_PER_THREAD_DATA();
+ 
+ 	v = (char *) b;
+ 
+@@ -262,6 +274,8 @@
+ static void
+ CheckErrorEvent(GR_EVENT *ep)
+ {
++        ACCESS_PER_THREAD_DATA();
++
+ 	if (ep->type == GR_EVENT_TYPE_ERROR) {
+ 		if (ErrorFunc) {
+ 			/* call error handler*/
+@@ -299,24 +313,34 @@
+ 	int		ret = 0;
+ #if ELKS
+ 	struct sockaddr_na name;
++#define ADDR_FAM AF_NANO
++#elif defined(__ECOS)
++	struct sockaddr_in name;
++#define ADDR_FAM AF_INET
+ #else
+ 	struct sockaddr_un name;
++#define ADDR_FAM AF_UNIX
+ #endif
++	ACCESS_PER_THREAD_DATA();
+ 	
+-	if(nxSocket == -1)
+-#if ELKS
+-		if((nxSocket = socket(AF_NANO, SOCK_STREAM, 0)) == -1) {
+-#else
+-		if((nxSocket = socket(AF_UNIX, SOCK_STREAM, 0)) == -1) {
+-#endif
++	if (nxSocket == -1) {
++		if((nxSocket = socket(ADDR_FAM, SOCK_STREAM, 0)) == -1) {
+ 			nxSocket = -1;
+ 			return -1;
+ 		}
++        } else {
++            return nxSocket;
++        }
+ 
+ #if ELKS
+ 	name.sun_family = AF_NANO;
+ 	name.sun_no = GR_NUMB_SOCKET;
+ 	size = sizeof(struct sockaddr_na);
++#elif defined(__ECOS)
++	name.sin_family = AF_INET;
++	name.sin_port = htons(6600);                    // Nano-X server port
++	name.sin_addr.s_addr = inet_addr("127.0.0.1");  // Loopback address
++	size = sizeof(struct sockaddr_in);
+ #else
+ 	name.sun_family = AF_UNIX;
+ 	strcpy(name.sun_path, GR_NAMED_SOCKET);
+@@ -386,6 +410,7 @@
+ void 
+ GrClose(void)
+ {
++	ACCESS_PER_THREAD_DATA();
+ #if GR_CLOSE_FIX
+ 	/* allow 1 second to flush*/
+ 	void * oldSignalHandler = signal(SIGALRM, mySignalhandler);
+@@ -433,6 +458,7 @@
+ GR_FNCALLBACKEVENT
+ GrSetErrorHandler(GR_FNCALLBACKEVENT fncb)
+ {
++	ACCESS_PER_THREAD_DATA();
+ 	GR_FNCALLBACKEVENT orig = ErrorFunc;
+ 
+ 	ErrorFunc = fncb;
+@@ -544,8 +570,6 @@
+ 	GrReadBlock(retbase, sizeof(*retbase));
+ }
+ 
+-static int regfd = -1;
+-
+ /**
+  * GrRegisterInput:
+  * @fd: the file descriptor to monitor
+@@ -558,6 +582,8 @@
+ void 
+ GrRegisterInput(int fd)
+ {
++	ACCESS_PER_THREAD_DATA();
++
+ 	regfd = fd;
+ }
+ 
+@@ -578,6 +604,7 @@
+ GrPrepareSelect(int *maxfd,void *rfdset)
+ {
+ 	fd_set *rfds = rfdset;
++	ACCESS_PER_THREAD_DATA();
+ 
+ 	AllocReq(GetNextEvent);
+ 	GrFlush();
+@@ -606,6 +633,7 @@
+ {
+ 	fd_set *	rfds = rfdset;
+ 	GR_EVENT 	ev;
++	ACCESS_PER_THREAD_DATA();
+ 
+         /* Clean out any event that might have arrived while waiting
+ 	 * for other data, for instance by doing Nano-X requests
+@@ -706,6 +734,7 @@
+ 	int		setsize = 0;
+ 	int		e;
+ 	struct timeval	to;
++	ACCESS_PER_THREAD_DATA();
+ 
+ #if 0
+ 	if (storedevent) {
+@@ -802,6 +831,7 @@
+ GrPeekEvent(GR_EVENT *ep)
+ {
+ 	int ret;
++	ACCESS_PER_THREAD_DATA();
+ 
+ #if 0
+ 	if (storedevent) {
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nanox/nxproto.c /work/iPAQ/microwin/src/nanox/nxproto.c
+--- /work2/iPAQ/microwin/src/nanox/nxproto.c	Sun Oct 29 14:01:00 2000
++++ /work/iPAQ/microwin/src/nanox/nxproto.c	Thu Mar 15 09:45:57 2001
+@@ -5,7 +5,8 @@
+  */ 
+ #include <stdio.h>
+ #include <unistd.h>
+-#include <malloc.h>
++#include <stdlib.h>
++//#include <malloc.h>
+ #include <assert.h>
+ #include <errno.h>
+ #include <string.h>
+@@ -14,17 +15,12 @@
+ 
+ #define SZREQBUF	2048	/* initial request buffer size*/
+ 
+-/* queued request buffer*/
+-typedef struct {
+-	BYTE8 *	bufptr;		/* next unused buffer location*/
+-	BYTE8 *	bufmax;		/* max buffer location*/
+-	BYTE8 *	buffer;		/* request buffer*/
+-} REQBUF;
+-
++#ifndef __ECOS
+ static REQBUF	reqbuf;		/* request buffer*/
+ 
+ extern int 	nxSocket;
+ extern char *	nxSharedMem;
++#endif
+ 
+ /* Allocate a request buffer of passed size and fill in header fields*/
+ void *
+@@ -32,6 +28,7 @@
+ {
+ 	nxReq *	req;
+ 	long	aligned_len;
++        ACCESS_PER_THREAD_DATA();
+ 
+ 	/* variable size requests must be hand-padded*/
+ 	if(extra)
+@@ -58,6 +55,8 @@
+ 
+ static void nxAllocReqbuffer(long newsize)
+ {
++        ACCESS_PER_THREAD_DATA();
++
+ 	if(newsize < (long)SZREQBUF)
+ 		newsize = SZREQBUF;
+ 	reqbuf.buffer = malloc(newsize);
+@@ -72,6 +71,8 @@
+ void
+ nxAssignReqbuffer(char *buffer, long size)
+ {
++        ACCESS_PER_THREAD_DATA();
++
+ 	if ( reqbuf.buffer != 0 )
+ 		free(reqbuf.buffer);
+ 	reqbuf.buffer = buffer;
+@@ -84,6 +85,7 @@
+ nxWriteSocket(char *buf, int todo)
+ {
+ 	int written;
++        ACCESS_PER_THREAD_DATA();
+ 
+ 	do {
+ 		written = write(nxSocket, buf, todo);
+@@ -102,6 +104,8 @@
+ void
+ nxFlushReq(long newsize, int reply_needed)
+ {
++        ACCESS_PER_THREAD_DATA();
++
+ 	/* handle one-time initialization case*/
+ 	if(reqbuf.buffer == NULL) {
+ 		nxAllocReqbuffer(newsize);
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nanox/serv.h /work/iPAQ/microwin/src/nanox/serv.h
+--- /work2/iPAQ/microwin/src/nanox/serv.h	Sun Jan 21 16:38:09 2001
++++ /work/iPAQ/microwin/src/nanox/serv.h	Fri Mar 16 06:19:14 2001
+@@ -10,6 +10,110 @@
+  * Private definitions for the graphics server.
+  * These definitions are not to be used by clients.
+  */
++
++#if defined(__ECOS) && !defined(_NO_SVR_MAPPING)
++//
++// Since eCos is a single task, multi-threaded environment, the
++// server and the client code share the same namespace.  This means
++// that server functions which are represented by dispatchers in
++// the client code need to have unique names, thus this remapping.
++//
++#define GrArcAngle              SVR_GrArcAngle
++#define GrArc                   SVR_GrArc
++#define GrArea                  SVR_GrArea
++#define GrBell                  SVR_GrBell
++#define GrBitmap                SVR_GrBitmap
++#define GrCheckNextEvent        SVR_GrCheckNextEvent
++#define GrClearWindow           SVR_GrClearWindow
++#define GrClose                 SVR_GrClose
++#define GrCloseWindow           SVR_GrCloseWindow
++#define GrCopyArea              SVR_GrCopyArea
++#define GrCopyGC                SVR_GrCopyGC
++#define GrCreateFont            SVR_GrCreateFont
++#define GrDestroyFont           SVR_GrDestroyFont
++#define GrDestroyGC             SVR_GrDestroyGC
++#define GrDestroyRegion         SVR_GrDestroyRegion
++#define GrDestroyWindow         SVR_GrDestroyWindow
++#define GrDrawImageBits         SVR_GrDrawImageBits
++#define GrDrawImageFromFile     SVR_GrDrawImageFromFile
++#define GrDrawImageToFit        SVR_GrDrawImageToFit
++#define GrEllipse               SVR_GrEllipse
++#define GrEmptyRegion           SVR_GrEmptyRegion
++#define GrEqualRegion           SVR_GrEqualRegion
++#define GrFillEllipse           SVR_GrFillEllipse
++#define GrFillPoly              SVR_GrFillPoly
++#define GrFillRect              SVR_GrFillRect
++#define GrFindColor             SVR_GrFindColor
++#define GrFreeImage             SVR_GrFreeImage
++#define GrGetFocus              SVR_GrGetFocus
++#define GrGetFontInfo           SVR_GrGetFontInfo
++#define GrGetGCInfo             SVR_GrGetGCInfo
++#define GrGetGCTextSize         SVR_GrGetGCTextSize
++#define GrGetImageInfo          SVR_GrGetImageInfo
++#define GrGetRegionBox          SVR_GrGetRegionBox
++#define GrGetScreenInfo         SVR_GrGetScreenInfo
++#define GrGetSelectionOwner     SVR_GrGetSelectionOwner
++#define GrGetSysColor           SVR_GrGetSysColor
++#define GrGetSystemPalette      SVR_GrGetSystemPalette
++#define GrGetWindowInfo         SVR_GrGetWindowInfo
++#define GrGetWMProperties       SVR_GrGetWMProperties
++#define GrInjectKeyboardEvent   SVR_GrInjectKeyboardEvent
++#define GrInjectPointerEvent    SVR_GrInjectPointerEvent
++#define GrIntersectRegion       SVR_GrIntersectRegion
++#define GrKillWindow            SVR_GrKillWindow
++#define GrLine                  SVR_GrLine
++#define GrLoadImageFromFile     SVR_GrLoadImageFromFile
++#define GrLowerWindow           SVR_GrLowerWindow
++#define GrMapWindow             SVR_GrMapWindow
++#define GrMoveCursor            SVR_GrMoveCursor
++#define GrMoveWindow            SVR_GrMoveWindow
++#define GrNewGC                 SVR_GrNewGC
++#define GrNewInputWindow        SVR_GrNewInputWindow
++#define GrNewPixmap             SVR_GrNewPixmap
++#define GrNewPolygonRegion      SVR_GrNewPolygonRegion
++#define GrNewRegion             SVR_GrNewRegion
++#define GrNewWindow             SVR_GrNewWindow
++#define GrOffsetRegion          SVR_GrOffsetRegion
++#define GrOpen                  SVR_GrOpen
++#define GrPeekEvent             SVR_GrPeekEvent
++#define GrPointInRegion         SVR_GrPointInRegion
++#define GrPoints                SVR_GrPoints
++#define GrPoint                 SVR_GrPoint
++#define GrPoly                  SVR_GrPoly
++#define GrRaiseWindow           SVR_GrRaiseWindow
++#define GrReadArea              SVR_GrReadArea
++#define GrRectInRegion          SVR_GrRectInRegion
++#define GrRect                  SVR_GrRect
++#define GrReparentWindow        SVR_GrReparentWindow
++#define GrRequestClientData     SVR_GrRequestClientData
++#define GrResizeWindow          SVR_GrResizeWindow
++#define GrSelectEvents          SVR_GrSelectEvents
++#define GrSendClientData        SVR_GrSendClientData
++#define GrSetBackgroundPixmap   SVR_GrSetBackgroundPixmap
++#define GrSetBorderColor        SVR_GrSetBorderColor
++#define GrSetCursor             SVR_GrSetCursor
++#define GrSetFocus              SVR_GrSetFocus
++#define GrSetFontAttr           SVR_GrSetFontAttr
++#define GrSetFontRotation       SVR_GrSetFontRotation
++#define GrSetFontSize           SVR_GrSetFontSize
++#define GrSetGCBackground       SVR_GrSetGCBackground
++#define GrSetGCFont             SVR_GrSetGCFont
++#define GrSetGCForeground       SVR_GrSetGCForeground
++#define GrSetGCMode             SVR_GrSetGCMode
++#define GrSetGCRegion           SVR_GrSetGCRegion
++#define GrSetGCUseBackground    SVR_GrSetGCUseBackground
++#define GrSetScreenSaverTimeout SVR_GrSetScreenSaverTimeout
++#define GrSetSelectionOwner     SVR_GrSetSelectionOwner
++#define GrSetSystemPalette      SVR_GrSetSystemPalette
++#define GrSetWMProperties       SVR_GrSetWMProperties
++#define GrSubtractRegion        SVR_GrSubtractRegion
++#define GrText                  SVR_GrText
++#define GrUnionRectWithRegion   SVR_GrUnionRectWithRegion
++#define GrUnionRegion           SVR_GrUnionRegion
++#define GrUnmapWindow           SVR_GrUnmapWindow
++#define GrXorRegion             SVR_GrXorRegion
++#endif
++
+ #include "nano-X.h"
+ #include "device.h"
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nanox/srvnet.c /work/iPAQ/microwin/src/nanox/srvnet.c
+--- /work2/iPAQ/microwin/src/nanox/srvnet.c	Sat Jan 20 23:37:56 2001
++++ /work/iPAQ/microwin/src/nanox/srvnet.c	Tue Mar  6 07:01:36 2001
+@@ -29,6 +29,9 @@
+ #endif
+ #if ELKS
+ #include <linuxmt/na.h>
++#elif __ECOS
++#include <netinet/in.h>
++
+ #else
+ #include <sys/un.h>
+ #endif
+@@ -1271,6 +1274,11 @@
+ #ifndef SUN_LEN
+ #define SUN_LEN(ptr)	(sizeof(sckt))
+ #endif
++#elif __ECOS
++	struct sockaddr_in sckt;
++#ifndef SUN_LEN
++#define SUN_LEN(ptr)	(sizeof(sckt))
++#endif
+ #else
+ 	struct sockaddr_un sckt;
+ #ifndef SUN_LEN
+@@ -1285,6 +1293,17 @@
+ 
+ 	sckt.sun_family = AF_NANO;
+ 	sckt.sun_no = GR_NUMB_SOCKET;
++#elif __ECOS
++	// Create the socket
++	if((un_sock = socket(AF_INET, SOCK_STREAM, 0)) == -1)
++	    return -1;
++
++	// Bind to any/all local IP addresses
++	memset( &sckt, '\0', sizeof(sckt) );
++	sckt.sin_family = AF_INET;
++	sckt.sin_len = sizeof(sckt);
++	sckt.sin_port = htons(6600);
++	sckt.sin_addr.s_addr = INADDR_ANY;
+ #else
+ 	/* Check if the file already exists: */
+ 	if(!stat(GR_NAMED_SOCKET, &s)) {
+@@ -1328,6 +1347,8 @@
+ 	int i;
+ #if ELKS
+ 	struct sockaddr_na sckt;
++#elif __ECOS
++	struct sockaddr_in sckt;
+ #else
+ 	struct sockaddr_un sckt;
+ #endif
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nwidget/Makefile /work/iPAQ/microwin/src/nwidget/Makefile
+--- /work2/iPAQ/microwin/src/nwidget/Makefile	Wed Jun 14 11:13:12 2000
++++ /work/iPAQ/microwin/src/nwidget/Makefile	Sat Mar 17 13:57:14 2001
+@@ -38,6 +38,12 @@
+ 	nrender.o \
+ 	nlistview.o
+ 
++ifeq ($(OBJ_COMPONENTS), Y) 
++all: default $(TOP)/bin/nwidgets.o
++
++$(TOP)/bin/nwidgets.o: $(OBJS)
++	$(CC) $(CFLAGS) $(LDFLAGS) -Wl,-r -o $@ $(OBJS)
++endif
+ endif
+ 
+ ######################### Makefile.rules section #############################
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/nwidget/nwidget.c /work/iPAQ/microwin/src/nwidget/nwidget.c
+--- /work2/iPAQ/microwin/src/nwidget/nwidget.c	Wed Jun 14 11:55:25 2000
++++ /work/iPAQ/microwin/src/nwidget/nwidget.c	Sat Mar 17 18:10:36 2001
+@@ -119,6 +119,7 @@
+    n_widget_setfocus(this);
+    
+    this->id = -1;
++   this->background = -1;
+ 
+    if (parent)  {
+       this->gc = parent->gc;
+@@ -169,6 +170,8 @@
+    
+    /* Remove widget from the system wide lookup table */
+    n_lookup_remove_widget(this);
++
++   if (this->background != -1) GrFreeImage(this->background);   
+    
+    if (this->id != -1) GrDestroyWindow(this->id);
+    this->id = -1;
+@@ -190,6 +193,23 @@
+    if (this->id != -1) GrMoveWindow(this->id,x,y);
+ }
+ 
++static void widget_background(NWIDGET * this, char *fn)
++{
++    if (this->id != -1) {
++        if (fn != (char *)0) {
++            this->background = GrLoadImageFromFile(fn, 0);
++        } else {
++            if (this->background != -1) {
++                GrFreeImage(this->background);
++            }
++            this->background = -1;
++        }
++        if (this->background != -1) {
++            GrDrawImageToFit(this->id, this->gc, 0, 0, this->w, this->h, this->background);
++        }
++    }
++}
++
+ static void widget_resize (NWIDGET * this, int w, int h)
+ {
+    this->w = w; this->h = h;
+@@ -251,7 +271,11 @@
+    border = n_widget_getrendercol(this,RCOL_WIDGET_DARK);
+    
+    n_widget_setfg(this, bg);
+-   n_widget_fillrect(this,0,0,this->w,this->h);
++   if (this->background != -1) {
++        GrDrawImageToFit(this->id, this->gc, 0, 0, this->w, this->h, this->background);
++   } else {
++       n_widget_fillrect(this,0,0,this->w,this->h);
++   }
+    n_widget_setfg(this, border);
+    n_widget_rect(this,0,0,this->w,this->h);
+ 
+@@ -309,13 +333,17 @@
+ 
+ static NRENDER * widget_getrenderob(NWIDGET * this)
+ {
+-   return (NRENDER *) this->renderob;
++    NRENDER *res;
++    res = (NRENDER *) this->renderob;
++    return res;
+ }
+ 
+ static MWCOLORVAL widget_getrendercol(NWIDGET * this, int col)
+ {
++    MWCOLORVAL res;
+    if (!this->renderob) return -1;
+-   return n_render_getcolor(this->renderob, col);
++   res = n_render_getcolor(this->renderob, col);
++      return res;
+ }
+ 
+ static void widget_text(NWIDGET * this, int x, int y, const char * text, int len)
+@@ -380,6 +408,7 @@
+   NMETHOD(widget,setbg,widget_setbg);
+   NMETHOD(widget,setmode,widget_setmode);
+   NMETHOD(widget,move,widget_move);
++  NMETHOD(widget,background,widget_background);
+   NMETHOD(widget,resize,widget_resize);
+   NMETHOD(widget,getgeometry,widget_getgeometry);
+ 
+diff -uNr --exclude=*~ --exclude=*.[ao] --exclude=.depend --exclude=bin /work2/iPAQ/microwin/src/xconfigure /work/iPAQ/microwin/src/xconfigure
+--- /work2/iPAQ/microwin/src/xconfigure	Thu Jun 15 11:04:34 2000
++++ /work/iPAQ/microwin/src/xconfigure	Fri Mar  2 13:42:50 2001
+@@ -151,6 +151,7 @@
+    frame .platform.a3
+    frame .platform.a4
+    frame .platform.a5
++   frame .platform.a6
+ 
+    radiobutton .platform.a0.b0 -text "Linux (native)" -variable arch -relief flat -value 0 -anchor w
+    button .platform.a0.options -text "Options" -command {nativelinuxoptions;};
+@@ -164,20 +165,30 @@
+    button .platform.a4.options -text "Options" -command {nativelinuxoptions;};
+    radiobutton .platform.a5.b5 -text "ELKS" -variable arch -relief flat -value 5 -anchor w
+    button .platform.a5.options -text "Options" -command {elksoptions;};
++   radiobutton .platform.a6.b6 -text "eCos" -variable arch -relief flat -value 6 -anchor w
++   button .platform.a6.options -text "Options" -command {eCosoptions;};
+    pack .platform.a0.b0 .platform.a0.options -side left
+    pack .platform.a1.b1 .platform.a1.options -side left
+    pack .platform.a2.b2 .platform.a2.options -side left
+    pack .platform.a3.b3 .platform.a3.options -side left
+    pack .platform.a4.b4 .platform.a4.options -side left
+    pack .platform.a5.b5 .platform.a5.options -side left
++   pack .platform.a6.b6 .platform.a6.options -side left
+    pack .platform.a0  -side top -pady 2 -anchor w -fill x
+    pack .platform.a1  -side top -pady 2 -anchor w -fill x
+    pack .platform.a2  -side top -pady 2 -anchor w -fill x
+    pack .platform.a3  -side top -pady 2 -anchor w -fill x
+    pack .platform.a4  -side top -pady 2 -anchor w -fill x
+    pack .platform.a5  -side top -pady 2 -anchor w -fill x
+-   pack .platform.a0.options .platform.a1.options .platform.a2.options \
+-   .platform.a3.options .platform.a4.options .platform.a5.options -side top -anchor e
++   pack .platform.a6  -side top -pady 2 -anchor w -fill x
++   pack .platform.a0.options \
++        .platform.a1.options \
++        .platform.a2.options \
++        .platform.a3.options \
++        .platform.a4.options \
++        .platform.a5.options \
++        .platform.a6.options \
++        -side top -anchor e
+ }
+ 
+ 

@@ -1,0 +1,455 @@
+<!-- Copyright (C) 2001 Red Hat, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/)                            -->
+<!-- Distribution of substantively modified versions of this         -->
+<!-- document is prohibited without the explicit permission of the   -->
+<!-- copyright holder.                                               -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission obtained from the copyright holder                   -->
+<HTML
+><HEAD
+><TITLE
+>Rebuilding RedBoot</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
+REL="HOME"
+TITLE="RedBoot&#8482; User's Guide"
+HREF="redboot.html"><LINK
+REL="PREVIOUS"
+TITLE="Executing Programs from RedBoot"
+HREF="executing_programs.html"><LINK
+REL="NEXT"
+TITLE="Updating RedBoot"
+HREF="updating_redboot.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="executing_programs.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="updating_redboot.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="REBUILDING_REDBOOT"
+>Chapter 3. Rebuilding RedBoot</A
+></H1
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN693"
+>Introduction</A
+></H1
+><P
+>In
+normal circumstances it is only necessary to rebuild RedBoot if it has been
+modified, for example if you have extended the command set or applied patches.
+See the <I
+CLASS="EMPHASIS"
+>Getting Started with eCos</I
+> document, which provides
+information about the portability and extendability of RedBoot in an eCos
+environment. </P
+><P
+>Most platform HALs provide configuration export files. Before proceding
+with the following procedures, check &#8220;Configuration export files&#8221;, <A
+HREF="rebuilding_redboot.html#CONFIGURATION_EXPORT_FILES"
+>the section called <I
+>Configuration export files</I
+></A
+> first, which may simplify the process
+for your platform.</P
+><P
+> RedBoot is configured
+and built using configuration technology based on Configuration Description
+Language (CDL). The detailed instructions for building the command-line tool <TT
+CLASS="COMPUTEROUTPUT"
+>ecosconfig</TT
+> on Linux can be found in host/README. For example:
+   <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>mkdir $TEMP/redboot-build   
+cd $TEMP/redboot-build   
+$ECOSDIR/host/configure --prefix=$TEMP/redboot-build --with-tcl=/usr   
+make</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>The simplest version of RedBoot can be built by typing:  <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>ecosconfig new PLATFORM redboot   
+ecosconfig tree    
+make</PRE
+></TD
+></TR
+></TABLE
+>where PLATFORM is the eCos name for the desired platform,
+for example assabet. You will need to have set the environment variable ECOS_REPOSITORY
+to point at the eCos/RedBoot source tree. This command sequence will build
+the simplest version of RedBoot possible, not including any networking nor
+flash support (since these are very target specific). To include these in
+the example, type:<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>ecosconfig new PLATFORM redboot   
+ecosconfig add flash  
+ecosconfig add pcmcia net_drivers cf_eth_drivers   
+ecosconfig tree   
+make</PRE
+></TD
+></TR
+></TABLE
+>This set of commands will build a version of RedBoot
+suitable for testing. In particular, the result will run from RAM. Since RedBoot
+needs to be installed in ROM/flash, type the following: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>cat &#62;RedBoot_ROM.ecm &lt;&lt;EOF
+cdl_component CYG_HAL_STARTUP {
+       user_value ROM  
+};  
+EOF
+ecosconfig import RedBoot_ROM.ecm  
+ecosconfig tree  
+make</PRE
+></TD
+></TR
+></TABLE
+><P
+>This set of commands will adjust the configuration to be ROM oriented. </P
+><P
+>Each of these command sequences creates multiple versions of RedBoot
+in different file formats. The choice of which file to use will depend upon
+the actual target hardware and the tools available for programming ROM/flash.
+The files produced (typically) are:</P
+><P
+><TT
+CLASS="COMPUTEROUTPUT"
+>install/bin/redboot.elf </TT
+>This is the
+complete version of RedBoot, represented in ELF format. It is most useful
+for testing with tools such as embedded ICE, or other debug tools. </P
+><P
+><TT
+CLASS="COMPUTEROUTPUT"
+>install/bin/redboot.srec</TT
+> This version
+has been converted to Motorola S-record format. </P
+><P
+><TT
+CLASS="COMPUTEROUTPUT"
+>install/bin/redboot.bin</TT
+> This version
+has been flattened; that is, all formatting information removed and just the
+raw image which needs to be placed in ROM/flash remains. </P
+><P
+>The details of putting the RedBoot code into ROM/flash are target specific.
+Once complete, the system should come up with the RedBoot prompt. For example,
+the version built using the commands above looks like: <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot(tm) debug environment - built 07:54:25, Oct 16 2000  
+Platform: Assabet development system (StrongARM 1110)   
+Copyright (C) 2000, Red Hat, Inc. 
+RAM: 0x00000000-0x02000000   
+flash: 0x50000000 - 0x50400000, 32 blocks of 0x00020000 bytes ea.   
+Socket Communications, Inc: Low Power Ethernet CF Revision C 
+5V/3.3V 08/27/98   
+IP: 192.168.1.29, Default server: 192.168.1.101   
+RedBoot&#62; </PRE
+></TD
+></TR
+></TABLE
+></P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CONFIGURATION_EXPORT_FILES"
+>Configuration export files</A
+></H2
+><P
+>To
+help with rebuilding RedBoot from source, some platforms HALs provide configuration
+export files. First locate the configuration export files for your platform
+in the eCos source repository. The RAM and ROM startup configuration exports
+can usually be found in a directory named "misc" in the platform HAL in the
+eCos source repository, named:  <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>1432 Feb  1 13:27 misc/redboot_RAM.ecm 
+1487 Feb  1 14:38 misc/redboot_ROM.ecm</PRE
+></TD
+></TR
+></TABLE
+>All dates and sizes
+are just examples.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="MAKING_REDBOOT_FOR_RAM_STARTUP"
+>Making RedBoot for RAM startup</A
+></H3
+><P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>Throughout these instructions, several environmental variables are referred
+to:</P
+></BLOCKQUOTE
+></DIV
+></P
+><P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="COMPUTEROUTPUT"
+>$REDBOOTDIR</TT
+>&nbsp;-&nbsp;Full&nbsp;path&nbsp;to&nbsp;the&nbsp;toplevel&nbsp;RedBoot&nbsp;source&nbsp;release.<br>
+<TT
+CLASS="COMPUTEROUTPUT"
+>$BUILDDIR</TT
+>&nbsp;-&nbsp;Full&nbsp;path&nbsp;to&nbsp;where&nbsp;RedBoot&nbsp;will&nbsp;be&nbsp;built,&nbsp;e.g&nbsp;.&nbsp;redboot.RAM.<br>
+<TT
+CLASS="COMPUTEROUTPUT"
+>$ECOS_REPOSITORY</TT
+>&nbsp;-&nbsp;Full&nbsp;path&nbsp;to&nbsp;the&nbsp;RedBoot&nbsp;package&nbsp;source.&nbsp;Typically,&nbsp;this&nbsp;should&nbsp;be&nbsp;<TT
+CLASS="COMPUTEROUTPUT"
+>$REDBOOTDIR/packages</TT
+>.<br>
+<TT
+CLASS="COMPUTEROUTPUT"
+>$TARGET_NAME</TT
+>,&nbsp;e.g.&nbsp;atlas_mips32_4kc.<br>
+<TT
+CLASS="COMPUTEROUTPUT"
+>$ARCH_DIR</TT
+>&nbsp;-&nbsp;The&nbsp;directory&nbsp;for&nbsp;the&nbsp;architecture,&nbsp;e.g.&nbsp;mips.<br>
+<TT
+CLASS="COMPUTEROUTPUT"
+>$PLATFORM_DIR</TT
+>&nbsp;-&nbsp;The&nbsp;directory&nbsp;for&nbsp;the&nbsp;platform,&nbsp;e.g.&nbsp;atlas.</P
+></P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>You must make sure these variables are correctly set in your environment
+before proceeding, or the build will fail.</P
+><P
+>The values for <TT
+CLASS="COMPUTEROUTPUT"
+>TARGET_NAME</TT
+>, <TT
+CLASS="COMPUTEROUTPUT"
+>ARCH_DIR</TT
+> and <TT
+CLASS="COMPUTEROUTPUT"
+>PLATFORM_DIR</TT
+>
+for each board are given in the specific installation details for each board
+in Chapter 5.</P
+></BLOCKQUOTE
+></DIV
+><P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>mkdir $BUILDDIR 
+cd $BUILDDIR 
+ecosconfig new $TARGET_NAME redboot 
+ecosconfig import ${ECOS_REPOSITORY}/hal/${ARCH_DIR}/${PLATFORM_DIR}/ \
+                                        current/misc/redboot_RAM.ecm
+ecosconfig tree 
+make </PRE
+></TD
+></TR
+></TABLE
+>This will create a RedBoot S-record file: <TT
+CLASS="COMPUTEROUTPUT"
+>$BUILDDIR/install/bin/redboot.srec</TT
+></P
+><P
+>To build the ROM version, in a different build/config directory, just
+use the <TT
+CLASS="COMPUTEROUTPUT"
+>config export redboot_ROM.ecm</TT
+> instead.
+The resulting files will be, in each of the ROM and RAM startup build places: <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>70456     ..../install/bin/redboot.bin 
+433104    ..../install/bin/redboot.elf 
+91407     ..../install/bin/redboot.img 
+194732    ..../install/bin/redboot.srec </PRE
+></TD
+></TR
+></TABLE
+>The .elf and .srec
+files have the obvious relationship to those supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>loaders/PLATFORM</TT
+> directory in the install.</P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="executing_programs.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="redboot.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="updating_redboot.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Executing Programs from RedBoot</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Updating RedBoot</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

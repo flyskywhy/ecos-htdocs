@@ -1,0 +1,7 @@
+cdl_option CYGNUM_FILEIO_NFILE {
+        user_value 32
+    };
+
+    cdl_option CYGNUM_FILEIO_NFD {
+        user_value 32
+    };

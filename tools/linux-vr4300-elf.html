@@ -12,12 +12,11 @@ WARNING - this is a generated file - do not edit directly
 <TITLE>Building the NEC MIPS VR4300 development tools for Linux</TITLE>
 </HEAD>
 
-<!--#include virtual="../include/header.html"-->
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
 
-
-<H2>Building the NEC MIPS VR4300 development tools for Linux</H2>
-<HR SIZE=3>
-<h3>Introduction</h3>
+<h1>Building the NEC MIPS VR4300 development tools for Linux</h1>
+<HR noshade SIZE=3>
+<h2>Introduction</h2>
 
 eCos requires mips64vr4300-elf development tools to develop programs for NEC MIPS VR4300 targets.
 
@@ -27,22 +26,22 @@ which include the GNU assembler and linker.
 
 This page details the steps required to download and build these development tools.
 
-<h3>Downloading the tool sources</h3>
-<h4>GNU Binary Utilities</h4>
+<h2>Downloading the tool sources</h2>
+<h3>GNU Binary Utilities</h3>
 
 
 <p>It is recommended that eCos is used with the most recent official
 release of the GNU Binary Utilities (binutils), currently version 2.10.1.
 This is available from the binutils area of the
-<a href="http://www.gnu.org/order/ftp.html">main GNU software download site</a>
-or any of its mirror sites. It is also available at any of the
-<a href="http://sources.redhat.com/mirrors.html">
+<a href="http://www.gnu.org/order/ftp.html" target="_top">main GNU software
+download site</a> or any of its mirror sites. It is also available at any of the
+<a href="http://sources.redhat.com/mirrors.html" target="_top">
 mirror sites for sources.redhat.com</a>. Download sizes are in the
 region of 5.5MB for .bz2 format archives, or 7MB for .gz format archives.<p>
 
 Weekly and daily snapshots from the CVS repository are also available
-from the <a href="http://sources.redhat.com/binutils/"> main binutils
-development site</a>, but these have not been verified
+from the <a href="http://sources.redhat.com/binutils/" target="_top"> main
+binutils development site</a>, but these have not been verified
 for use with eCos.<p>
 
 
@@ -52,19 +51,20 @@ If you already have binutils sources available but are unsure
 of their version, you can search the file <tt>gas/configure</tt> for the string
 "VERSION" and examine its value.
 
-<h4>GNU Compiler Collection</h4>
+<h3>GNU Compiler Collection</h3>
 
-The <a href="http://gcc.gnu.org/">GNU Compiler Collection web site</a> contains plenty of
-information about installing and using GCC.
+The <a href="http://gcc.gnu.org/" target="_top">GNU Compiler Collection
+web site</a> contains plenty of information about installing and using GCC.
 
 
 
 
 
 Unfortunately the most recent official release (GCC 2.95.2) is not capable of
-supporting eCos for NEC MIPS VR4300. A <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/index.html">snapshot of the
-GCC development sources</a> should be used to obtain the most up-to-date compiler
-with new features and bug fixes.<p>
+supporting eCos for NEC MIPS VR4300. A
+<a href="ftp://gcc.gnu.org/pub/gcc/snapshots/index.html" target="_top">snapshot
+of the GCC development sources</a> should be used to obtain the most
+up-to-date compiler with new features and bug fixes.<p>
 
 
 eCos has been tested with the 2000-03-13 snapshot, but it is likely that later
@@ -73,7 +73,7 @@ problems you may wish to consider updating to a more recent snapshot, or
 reverting to an older one.
 
 
-When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/">
+When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/" target="_top">
 GCC snapshot download area</a> note that only the core compiler and C++
 distributions are required (prefix <tt>gcc-core-</tt> and <tt>gcc-g++-</tt>).<p>
 
@@ -81,21 +81,22 @@ distributions are required (prefix <tt>gcc-core-</tt> and <tt>gcc-g++-</tt>).<p>
 
 Note that the instructions for building GCC here are only intended for use
 with eCos. In any other environment, the tools may not function correctly.
-Refer to the <a href="http://www.objsw.com/CrossGCC/">CrossGCC FAQ</a>
-for details about building a standalone version of GCC.<p>
+Refer to the <a href="http://www.objsw.com/CrossGCC/" target="_top">CrossGCC
+FAQ</a> for details about building a standalone version of GCC.<p>
 
-It is strongly recommended you use a <a href="http://gcc.gnu.org/mirrors.html">mirror site</a>
-close to you, which will result in a faster download, reduced internet congestion, and
-reduced load on the central server.<p>
+It is strongly recommended you use a <a href="http://gcc.gnu.org/mirrors.html"
+target="_top">mirror site</a> close to you, which will result in a faster
+download, reduced internet congestion, and reduced load on the central
+server.<p>
 
-<h4>GNU Debugger</h4>
+<h3>GNU Debugger</h3>
 
 <p>Instructions for downloading the GNU Debugger (GDB) are provided
-on the <a href="http://sources.redhat.com/gdb/">
+on the <a href="http://sources.redhat.com/gdb/" target="_top">
 GDB home page</a>. 
 
 However, Red Hat has also released an open source graphical front-end to GDB based on
-Tcl/Tk called <i>Insight</i>, which has a separate <a href="http://sources.redhat.com/insight/">
+Tcl/Tk called <i>Insight</i>, which has a separate <a href="http://sources.redhat.com/insight/" target="_top">
 home page</a>.<p>
 
 The Insight sources are a superset of the standard GDB sources. It is also
@@ -114,7 +115,7 @@ Alternatively, click on on one of following links to download the files directly
 </ul>
 
 <p>
-<h3>Preparing the sources for building</h3>
+<h2>Preparing the sources for building</h2>
 
 Once the tools sources have been downloaded, they must be prepared before
 building. These instructions assume that the tool sources will be extracted in the <tt>/src</tt> directory hierarchy.
@@ -125,9 +126,12 @@ to occupy approximately 6 times the space required by the compressed archive its
 
 
 To extract the downloaded sources, you will need to have either the
-<a href="../../bzip2/">bzip2</a> or <a href="http://www.gzip.org/">gzip</a>
+<a href="/bzip2/" target="_top">bzip2</a> or <a href="http://www.gzip.org/"
+target="_top">gzip</a>
 compression utilities, depending on your choice of download format.
-A <i>patch</i> utility (preferably <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>) is also required.<p>
+A <i>patch</i> utility (preferably
+<a href="http://www.gnu.org/software/patch/patch.html" target="_top">GNU
+patch</a>) is also required.<p>
 The following steps should be followed at a <i>sh</i>, <i>ksh</i> or <i>bash</i> prompt. Users of
 the <i>csh</i> and <i>tcsh</i> shells should replace "<tt>2&gt;&amp;1</tt>" with "<tt>|&amp;</tt>" throughout:
 
@@ -248,7 +252,7 @@ then type <i>n</i> because this indicates the patch has already been applied
 in the master sources.
 </ol>
 
-<h3>Building the tools</h3>
+<h2>Building the tools</h2>
 
 Before attempting to build the tools, ensure that the GNU native compiler tools directory is on the
 PATH and precedes the current directory. The
@@ -359,7 +363,7 @@ On completion, the NEC MIPS VR4300 development tool executable files will be loc
 This directory should be added to the head of your PATH.
 
 
-<h3>Troubleshooting</h3>
+<h2>Troubleshooting</h2>
 
 If you encounter difficulties in building or using the development tools, first check
 the <a href="../faq.html#problems_toolchain">eCos FAQ</a> and the
@@ -369,23 +373,24 @@ may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
 there are other mailing lists which may be more appropriate if a problem is clearly
 related to a particular tool:
 <ul>
-<li><a href="http://sources.redhat.com/ml/binutils/">Binutils mailing list</a>
-<li><a href="http://sources.redhat.com/ml/gdb/">GDB mailing list</a>
-<li><a href="http://sources.redhat.com/ml/crossgcc/">CrossGCC mailing list</a> (for problems specific to GCC cross-compilation)
-<li><a href="http://gcc.gnu.org/lists.html">GCC mailing list</a> (for more general GCC problems)
+<li><a href="http://sources.redhat.com/ml/binutils/" target="_top">Binutils mailing list</a>
+<li><a href="http://sources.redhat.com/ml/gdb/" target="_top">GDB mailing list</a>
+<li><a href="http://sources.redhat.com/ml/crossgcc/" target="_top">CrossGCC mailing list</a> (for problems specific to GCC cross-compilation)
+<li><a href="http://gcc.gnu.org/lists.html" target="_top">GCC mailing list</a> (for more general GCC problems)
 </ul>
 
 Before sending messages to the mailing lists, you would also be advised to
 consult the various web sites associated with each list, to see if there is
 any relevant documentation or FAQs:
 <ul>
-<li><a href="http://sources.redhat.com/binutils/">Binutils home page</a>
-<li><a href="http://sources.redhat.com/gdb/">GDB home page</a>
-<li><a href="http://sources.redhat.com/insight/">Insight home page</a>
-<li><a href="http://gcc.gnu.org/">GCC web site</a>
-<li><a href="http://www.objsw.com/CrossGCC/">CrossGCC FAQ</a>
+<li><a href="http://sources.redhat.com/binutils/" target="_top">Binutils home page</a>
+<li><a href="http://sources.redhat.com/gdb/" target="_top">GDB home page</a>
+<li><a href="http://sources.redhat.com/insight/" target="_top">Insight home page</a>
+<li><a href="http://gcc.gnu.org/" target="_top">GCC web site</a>
+<li><a href="http://www.objsw.com/CrossGCC/" target="_top">CrossGCC FAQ</a>
 </ul>
  
 It is also worth noting that all these mailing lists have searchable archives.
 
-<!--#include virtual="../include/footer.html"-->
+<HR noshade SIZE=3>
+</body></html>

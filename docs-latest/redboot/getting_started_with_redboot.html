@@ -1,0 +1,283 @@
+<!-- Copyright (C) 2001 Red Hat, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/)                            -->
+<!-- Distribution of substantively modified versions of this         -->
+<!-- document is prohibited without the explicit permission of the   -->
+<!-- copyright holder.                                               -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission obtained from the copyright holder                   -->
+<HTML
+><HEAD
+><TITLE
+>Getting Started with RedBoot</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
+REL="HOME"
+TITLE="RedBoot&#8482; User's Guide"
+HREF="redboot.html"><LINK
+REL="PREVIOUS"
+TITLE="How to Contact Red Hat"
+HREF="t37.html"><LINK
+REL="NEXT"
+TITLE="User Interface"
+HREF="x91.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="t37.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x91.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="GETTING_STARTED_WITH_REDBOOT"
+>Chapter 1. Getting Started with RedBoot</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="getting_started_with_redboot.html#AEN79"
+>Installing RedBoot</A
+></DT
+><DT
+><A
+HREF="x91.html"
+>User Interface</A
+></DT
+><DT
+><A
+HREF="configuring_the_redboot_environment.html"
+>Configuring the RedBoot Environment</A
+></DT
+></DL
+></DIV
+><P
+>RedBoot&reg; is an acronym for "Red Hat Embedded Debug and Bootstrap",
+and is the standard embedded system debug/bootstrap environment from Red Hat,
+replacing the existing debug/boot tools: CygMon and GDB
+stubs. It provides a complete bootstrap environment for a range of embedded
+operating systems, such as embedded Linux and eCos<SPAN
+CLASS="TRADEMARK"
+></SPAN
+>&#8482;,
+and includes facilities such as network downloading and debugging. It also
+provides a simple flash file system for boot images.</P
+><P
+>RedBoot provides a wide set of tools for downloading and executing programs
+on embedded target systems, as well as tools for manipulating the target system's
+environment. It can be used for both product development (debug support) and
+for end product deployment (flash and network booting).</P
+><P
+>Here are some highlights of RedBoot&#8217;s capabilities:  </P
+><P
+></P
+><UL
+><LI
+><P
+>Serial and network (Ethernet) based debugging support, providing
+connectivity between host and target systems</P
+></LI
+><LI
+><P
+>Boot scripting support</P
+></LI
+><LI
+><P
+>Simple command line interface for RedBoot configuration and
+management, accessible via serial (terminal) or Ethernet (telnet) </P
+></LI
+><LI
+><P
+>Integrated GDB stubs for connection to a host-based debugger
+via serial or ethernet. (Ethernet connectivity is limited to local network
+only)</P
+></LI
+><LI
+><P
+>Attribute Configuration - user control of aspects such as
+system time and date (if applicable), default Flash image to boot from, default
+failsafe image, static IP address, etc.</P
+></LI
+><LI
+><P
+>Configurable and extensible, specifically adapted to the target
+environment </P
+></LI
+><LI
+><P
+>Network bootstrap support including setup and download, via
+BOOTP, DHCP and TFTP</P
+></LI
+><LI
+><P
+>X/YModem support for image download via serial</P
+></LI
+><LI
+><P
+>Power On Self Test</P
+></LI
+></UL
+><P
+>Although RedBoot is derived from Red Hat eCos, it may be used as a generalized
+system debug and bootstrap control software for any embedded system and any
+operating system. For example, with appropriate additions, RedBoot could replace
+the commonly used BIOS of PC (and certain other) architectures. Red Hat is
+currently installing RedBoot on all embedded platforms as a standard practice,
+and RedBoot is now generally included as part of all Red Hat Embedded Linux
+and eCos ports. Users who specifically wish to use RedBoot with the eCos operating
+system should refer to the <I
+CLASS="EMPHASIS"
+>Getting Started with eCos</I
+>
+document, which provides information about the portability and extendability
+of RedBoot in an eCos environment.</P
+><P
+>This chapter explains how to install and configure RedBoot for your
+target.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN79"
+>Installing RedBoot</A
+></H1
+><P
+>To install the RedBoot
+package, follow the procedures detailed in the accompanying README. </P
+><P
+>Although there are other possible configurations, RedBoot is usually
+run from the target platform&#8217;s flash boot sector or boot ROM, and is
+designed to run when your system is initially powered on. The method used
+to install the RedBoot image into non-volatile storage varies from platform
+to platform. In general, it requires that the image be programmed into flash
+in situ or programmed into the flash or ROM using a device programmer. In
+some cases this will be done at manufacturing time; the platform being delivered
+with RedBoot already in place. In other cases, you will have to program RedBoot
+into the appropriate device(s) yourself. Installing to flash in situ may require
+special cabling or interface devices and software provided by the board manufacturer.
+The details of this installation process for a given platform will be found
+in Installation and Testing. Once installed, user-specific configuration options
+may be applied, using the <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+> command,
+providing that persistent data storage in flash is present in the relevant
+RedBoot version. See <A
+HREF="configuring_the_redboot_environment.html"
+>the section called <I
+>Configuring the RedBoot Environment</I
+></A
+>
+for details.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="t37.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="redboot.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x91.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to Contact Red Hat</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>User Interface</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -3,14 +3,14 @@
 <TITLE>Known Problems</TITLE>
 </HEAD>
 
-<!--#include virtual="include/header.html"-->
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
 
-<H2>Known Problems</H2>
+<h1>Known Problems</h1>
 <HR SIZE=3>
 
-<h3>Current release</h3>
+<h2>Current release</h2>
 
-<table border=0 cellspacing=2 cellpadding=7 width=100%>
+<table border=0 cellspacing=2 cellpadding=4>
 
   <tr bgcolor="#666666">
     <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
@@ -200,7 +200,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>101393</td>
-    <td><CENTER><IMG SRC="tick.gif"></CENTER></td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>Libc malloc does not use all available memory on
                 target.</td>
     <td valign=top>Manually set malloc memory pool as large as required
@@ -296,7 +296,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>902538</td>
-    <td><CENTER><IMG SRC="tick.gif"></CENTER></td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>Enabling GDB break support on PID in Thumb mode
                    causes the kernel to fail with random memory 
                    corruption.</td>
@@ -518,9 +518,9 @@
 
 </table>
 
-<h3>Previous releases</h3>
+<h2>Previous releases</h2>
 
-<table border=0 cellspacing=2 cellpadding=7 width=100%>
+<table border=0 cellspacing=2 cellpadding=4>
 
   <tr bgcolor="#666666">
     <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
@@ -738,7 +738,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18956</td>
-    <td><CENTER><IMG SRC="tick.gif"></CENTER></td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>An additional linker output section is required when linking
 		eCos tests compiled for the i386-linux synthetic target with
 		CYGIMP_LIBC_MALLOC_CXX_DELETE_CALLS_FREE enabled. The Linux
@@ -851,7 +851,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19912</td>
-    <td><CENTER><IMG SRC="tick.gif"></CENTER></td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>If compiler optimization level is set to -O0, then in very
 		rare circumstances the MN10300 HAL cache macros can cause
 		lockups.</td>
@@ -915,7 +915,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19991</td>
-    <td><CENTER><IMG SRC="tick.gif"></CENTER></td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>There is an race condition in the eCos stress_threads test
 		which can cause failures to be erroneously reported if the
 		bitmap scheduler has been configured.</td>
@@ -1066,7 +1066,7 @@
     target. <BR>Reported by Andrew Lunn &lt;andrew.lunn@ascom.ch&gt;
 	</td>
     <td valign=top>Upgrade to the latest net release of <A
-    HREF="http://sourceware.cygnus.com/gdb/">GDB</A>.
+    HREF="http://sources.redhat.com/gdb/" target="_top">GDB</A>.
     </td>
   </tr>
 
@@ -1227,9 +1227,9 @@
 
 </table>
 
-<h3>Other Issues</h3>
+<h2>Other Issues</h2>
 
-<table border=0 cellspacing=2 cellpadding=7 width=100%>
+<table border=0 cellspacing=2 cellpadding=4>
 
   <tr bgcolor="#666666">
     <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
@@ -1257,4 +1257,4 @@
 
 <p><font size=-1>Revision 1.3.1.0</font>
 
-<!--#include virtual="include/footer.html"-->
+</body></html>

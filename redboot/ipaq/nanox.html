@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>eCos NanoX demo</title>
+  </head>
+
+  <body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
+    <h1>eCos NanoX demo</h1>
+    <hr noshade size=3>
+
+    <p>
+      This is a sample program, based on
+      <a href="/ecos/">eCos</a> for the Compaq iPAQ, running
+      <a href="http://microwindows.org/" target-"_top">MicroWindows/NanoX.</a>
+      <br>
+      The demo consists of:
+    <ul>
+      <li>nanowm - A [minimal] NanoX window manager</li>
+      <li>nxkbd - Keyboard popup</li>
+      <li>nxscribble - Handwriting recognizer demo</li>
+      <li>ntetris - NanoX version of classic Tetris game</li>
+      <li>landmine - NanoX version of landmine game</li>
+    </ul>
+  </p>
+    
+    <h2>Building the demo application</h2>
+    <p>
+      The following components must be installed:
+    <ul>
+      <li><a href="/ecos/boards/ipaq.html">eCos for Compaq iPAQ</a></li>
+      <li>StrongARM development tools</li>
+      <li>
+        <a href="ftp://microwindows.org/pub/microwindows/microwindows-0.89pre7.tar.gz">
+          MicroWindows
+        </a>
+      </li>
+      <li><a href="nx.patch">eCos patches for MicroWindows</a></li>
+    </ul>
+  </p>
+    <h3>Building the eCos kernel</h2>
+    <p>
+      The eCos kernel can be built as follows. It is assumed that the arm-elf
+      development tools are in your PATH, and that the environment variable
+      ECOS_REPOSITORY is pointed at the eCos source tree.
+    </p>
+    <pre>
+&nbsp;&nbsp;&nbsp;&nbsp;mkdir /tmp/ipaq_ecos
+&nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/ipaq_ecos
+&nbsp;&nbsp;&nbsp;&nbsp;ecosconfig new ipaq net
+&nbsp;&nbsp;&nbsp;&nbsp;ecosconfig add romfs
+&nbsp;&nbsp;&nbsp;&nbsp;ecosconfig import <a href="NFD.ecm">NFD.ecm</a>
+&nbsp;&nbsp;&nbsp;&nbsp;ecosconfig tree
+&nbsp;&nbsp;&nbsp;&nbsp;make
+    </pre>
+    <h3>Building MicroWindows/NanoX</h3>
+    <pre>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/ipaq_ecos
+&nbsp;&nbsp;&nbsp;&nbsp;mkdir nx
+&nbsp;&nbsp;&nbsp;&nbsp;cd nx
+&nbsp;&nbsp;&nbsp;&nbsp;tar xvzpf <a href="ftp://microwindows.org/pub/microwindows/microwindows-0.89pre7.tar.gz">microwindows-0.89pre7.tar.gz</a>
+&nbsp;&nbsp;&nbsp;&nbsp;cd microwin
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p4 &lt; <a href="nx.patch">nx.patch</a>
+&nbsp;&nbsp;&nbsp;&nbsp;cd src
+&nbsp;&nbsp;&nbsp;&nbsp;make
+    </pre>
+    <p>
+      <b>Note:</b> this patch contains hard-wired path information in an
+      effort to make building the initial demo simpler.
+    </p>
+    <p>
+      The executable should now be at
+      <tt>/tmp/ipaq_ecos/nx/microwin/src/ecos/ecos_app.</tt>. This needs to
+      be converted to binary format and compressed with gzip:
+    </p>
+    <pre>
+&nbsp;&nbsp;&nbsp;&nbsp;arm-elf-objcopy -O binary /tmp/ipaq_ecos/nx/microwin/src/ecos/ecos_app nanoxdemo
+&nbsp;&nbsp;&nbsp;&nbsp;gzip nanoxdemo
+    </pre>
+    <h2>Building the eCos NanoX ROM filesystem</h3>
+    <ul>
+      <li>
+        Build the ROM file system, using a local directory for staging:
+        <pre>
+mkdir /tmp/rom_fs
+mkdir /tmp/rom_fs/bin
+cp <a href="redhat.logo">redhat.logo</a> /tmp/rom_fs
+cp /tmp/ipaq_ecos/nx/microwin/src/bin/*.cl /tmp/rom_fs/bin
+        </pre>
+      </li>
+      <li>Build the mk_romfs application:
+        <pre>
+mkdir /tmp/mkromfs
+cd /tmp/mkromfs
+cp ${ECOS_REPOSITORY}/fs/rom/current/support/* .
+make
+        </pre>
+      </li>
+      <li>
+        Create the ROM file system image, as needed by the eCos application:
+        <pre>
+cd /tmp
+/tmp/mkromfs/mk_romfs -v /tmp/rom_fs ecosromfs
+gzip ecosromfs
+        </pre>
+      </li>
+    <p>
+      The file <tt>/tmp/ecosromfs.gz</tt> can now be used by the eCos
+      demonstration.
+    </p>
+    <hr noshade size=3>
+  </body>
+</html>

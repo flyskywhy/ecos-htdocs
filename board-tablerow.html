@@ -1,0 +1,63 @@
+<tr align="center" valign="middle" bgcolor="#CCCCCC">
+  <!--#if expr="$arch != $arch_prev"-->
+  <td bgcolor="#CC0000" link="#FFFFFF" alink="#FFFFFF" vlink="#FFFFFF" align="left" colspan=9>
+  <a name="<!--#echo var="arch" -->"></a>
+  <font color="#FFFFFF" link="#FFFFFF" alink="#FFFFFF" vlink="#FFFFFF" size="+2"><b>Architecture: 
+<!--#if expr="$archurl" --><a href="<!--#echo var="archurl" -->" target="_top"><!--#endif --><!--#echo var="arch" --><!--#if expr="$archurl" --></a><!--#endif --></b></font></td>
+  </tr>
+  <tr align="center" valign="middle" bgcolor="#CCCCCC">
+  <!--#endif -->
+
+  <td><!--#if expr="$procurl" --><a href="<!--#echo var="procurl" -->" target="_top"><!--#endif -->
+  <!--#echo var="proc" --><!--#if expr="$procurl" --></a><!--#endif --></td>
+
+  <td><!--#if expr="$platurl" --><a href="<!--#echo var="platurl" -->" target="_top"><!--#endif -->
+  <!--#echo var="plat" --><!--#if expr="$procurl" --></a><!--#endif --></td>
+
+  <!--#if expr="$maker" -->
+  <td><!--#if expr="$makerurl" --><a href="<!--#echo var="makerurl" -->" target="_top"><!--#endif -->
+  <!--#echo var="maker" --><!--#if expr="$makerurl" --></a><!--#endif --></td>
+  <!--#else -->
+  <td>&nbsp;</td>
+  <!--#endif -->
+
+  <!--#if expr="$ethernetsupport = 1" -->
+  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <!--#else -->
+  <td width=1>&nbsp;</td>
+  <!--#endif -->
+
+  <!--#if expr="$usbsupport = 1" -->
+  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <!--#else -->
+  <td width=1>&nbsp;</td>
+  <!--#endif -->
+
+  <!--#if expr="$flashsupport = 1" -->
+  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <!--#else -->
+  <td width=1>&nbsp;</td>
+  <!--#endif -->
+
+  <!--#if expr="$redbootsupport = 1" -->
+  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <!--#else -->
+  <td width=1>&nbsp;</td>
+  <!--#endif -->
+
+  <td width=1>
+  <!--#if expr="$quality" -->
+  <!--#echo var="quality" -->
+  <!--#endif -->
+  <!--#if expr="$contributed = 1" -->
+  C
+  <!--#endif -->
+  </td>
+
+  <!--#if expr="$infourl" -->
+  <td width=1><a href="<!--#echo var="infourl" -->">More info</a></td>
+  <!--#else -->
+  <td width=1>&nbsp;</td>
+  <!--#endif -->
+</tr>
+<!--#set var="arch_prev" value="$arch" -->

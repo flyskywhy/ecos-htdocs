@@ -3,15 +3,15 @@
 <TITLE>Frequently Asked Questions</TITLE>
 </HEAD>
 
-<!--#include virtual="include/header.html"-->
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
 
-<H2>Frequently Asked Questions</H2>
+<h1>Frequently Asked Questions</h2>
 
-<HR SIZE=3>
+<HR noshade SIZE=3>
 
-<h3>Index</h3>
+<h2>Index</h2>
 <OL>
-  <H4>What is eCos?</H4>
+  <h3>What is eCos?</h3>
   <LI><A HREF="#what_ecos">What is eCos?</A></LI>
   <LI><A HREF="#what_why">Why has Red Hat produced another embedded real-time operating system?</A></LI>
   <LI><A HREF="#what_source">Do you provide the source code?</A></LI>
@@ -19,7 +19,7 @@
   <LI><A HREF="#what_mail">Are there any mailing lists?</A></LI>
   <LI><A HREF="#support_how">How do I get support?</A></LI>
   <LI><A HREF="#what_size">What are the performance figures?</A></LI>
-  <h4>What are the licensing terms?</h4>
+  <h3>What are the licensing terms?</h3>
   <LI><A HREF="#license_terms">What are the licensing terms?</A></LI>
   <LI><A HREF="#license_meaning">OK, but what does this license actually mean?</A></LI>
   <LI><A HREF="#license_give_source">Do I have to give away the source code of my application?</A></LI>
@@ -29,14 +29,14 @@
   <LI><A HREF="#license_new_packages">What if I create a new package?</A></LI>      
   <LI><A HREF="#license_why_new">Why has Red Hat created a new license?</A></LI>      
   <LI><A HREF="#license_coverage">Does the license cover situation ...?</A></LI>
-  <h4>Porting</h4>
+  <h3>Porting</h3>
   <LI><A HREF="#porting_does_it">Does eCos run on processor X?</A></LI>
   <LI><A HREF="#porting_will_redhat">Will Red Hat be porting eCos to processor X?</A></LI>
   <LI><A HREF="#porting_how_would_I">How would I go about porting eCos to a new processor?</A></LI>
   <LI><A HREF="#porting_adopt">Will Red Hat adopt my port?</A></LI>
   <LI><A HREF="#porting_board">How about porting eCos to a new board?</A></LI>
   <LI><A HREF="#porting_compiler">What are the compiler dependencies?</A></LI>
-  <h4>Contributing</h4>
+  <h3>Contributing</h3>
   <LI><A HREF="#contrib_have_to">Do I have to contribute?</A></LI>
   <LI><A HREF="#contrib_bazaar">Which development model - cathedral or bazaar?</A></LI>
   <LI><A HREF="#contrib_how">How do I contribute?</A></LI>
@@ -45,7 +45,7 @@
   <LI><A HREF="#contrib_projects">I want to start work today! What should I work on?</A></LI>
   <LI><A HREF="#contrib_anoncvs">What is anonymous CVS?</A></LI>
   <LI><A HREF="#contrib_write">Will external developers be given write access?</A></LI>
-  <h4>Common Problems</h4>
+  <h3>Common Problems</h3>
   <LI><A HREF="#problems_known">Is there a list of known problems?</A></LI>
   <LI><A HREF="#problems_report">How should I report a problem?</A></LI>
   <LI><A HREF="#problems_toolchain">General toolchain build problems</A></LI>      
@@ -54,16 +54,16 @@
   <LI><A HREF="#problems_unix">Toolchain build problems on other Unix systems</A></LI>      
   <LI><A HREF="#problems_alpha">Host tools build problems on Alpha systems</A></LI>      
   <LI><A HREF="#problems_building_ecos">Problems building eCos</A></LI>      
-  <h4>Miscellaneous</h4>
+  <h3>Miscellaneous</h3>
   <LI><A HREF="#misc_printed">Where can I get hold of printed documentation?</A></LI>
   <LI><A HREF="#misc_jobs">Red Hat sounds like a wonderful company - are there any jobs going?</A></LI>
 </OL>
 
-<H3>What is eCos?</H3>
+<h2>What is eCos?</h2>
 
-<H4><A NAME="what_ecos">What is eCos?</A></H4>
+<h3><A NAME="what_ecos">What is eCos?</A></h3>
 
-eCos (embedded Configurable operating system) is an open-source,
+<p>eCos (embedded Configurable operating system) is an open-source,
 royalty-free, highly configurable, application-specific operating
 system ideal for embedded systems development. eCos is targeted at
 high-volume applications in consumer electronics, telecommunications,
@@ -72,12 +72,12 @@ embedded developers have a common software infrastructure for
 delivering a diverse range of embedded products and enables embedded
 software developers to focus on delivering better products, instead of
 developing or maintaining a real-time operating system in addition
-to the products themselves.
+to the products themselves.</p>
 
-<H4><A NAME="what_why">Why has Red Hat produced another embedded
-real-time operating system?</A></H4>
+<h3><A NAME="what_why">Why has Red Hat produced another embedded
+real-time operating system?</A></h3>
 
-Even with so many commercially available run-time solutions, more than
+<p>Even with so many commercially available run-time solutions, more than
 50 percent of all embedded projects today are built using in-house
 proprietary, or &quot;roll your own&quot;, real-time technologies (Venture
 Development Corporation). Red Hat partnered with microprocessor vendors
@@ -85,43 +85,37 @@ and embedded product manufacturing companies to develop eCos around
 the requirement of an open, technically advanced run-time solution.
 eCos was designed to address the following fundamental issues that
 force embedded product manufacturing companies to develop their own
-run-time technologies:
+run-time technologies:</p>
 
 <UL TYPE=DISC>
   <LI><B>Cost</B> - eCos is royalty free and license cost free. It is
 portable across chip architectures, which makes it well-suited for
 software developers of high-volume applications in consumer
 electronics, telecommunications, automotive and other deeply embedded
-applications,
-  <P>
+applications,</li><br>
   <LI><B>Control</B> - eCos is an open-source run-time
 technology which fosters innovation, reduces risk, and places
 customers in control of their application specific content by enabling
 programmers on the Internet to read, redistribute, and modify the
-source code for eCos.
-  <P>
+source code for eCos.</li><br>
   <LI><B>Technical Fit</B> - eCos provides source-level
 configuration (more than 200 configuration points) to exactly match
 application needs and is tightly integrated with the latest version of
 GNUPro tools, including highly optimized compilation technology,
-multi-threaded debugging, graphical configuration, test suites, etc.
+multi-threaded debugging, graphical configuration, test suites, etc.</li>
 </UL>
 
-<P>
-<H4><A NAME="what_source">Do you provide the source code?</A></H4>
+<h3><A NAME="what_source">Do you provide the source code?</A></h3>
 
-<P>
-Absolutely. eCos is an open source project, and Red Hat works with the
+<p>Absolutely. eCos is an open source project, and Red Hat works with the
 development community on the net. Red Hat has many years of experience
 in this field through our work on Linux, the gcc and g++ compilers, the gdb
 debugger, and many other tools. The same development model has proved
-an overwhelming success in many other projects.
+an overwhelming success in many other projects.</p>
 
-<P>
-<H4><A NAME="what_configurability">What do you mean by configurability?</A></H4>
+<h3><A NAME="what_configurability">What do you mean by configurability?</A></h3>
 
-<P>
-Embedded systems have an amazing range of requirements, from 4 bit
+<p>Embedded systems have an amazing range of requirements, from 4 bit
 controllers up to large radar arrays with a thousand or so top of
 the range processors. Even if we limit the eCos target market to
 deeply embedded devices and to processors for which a gcc port is
@@ -133,10 +127,9 @@ whole range of options and let the developer configure a system that
 best matches the needs of the application. Typical configuration
 options include the type of scheduler and the number of priority
 levels. The current release of the system has over 200 such options,
-and plenty more will be added as the system evolves.
+and plenty more will be added as the system evolves.</p>
 
-<P>
-Code and data size are vitally important for many embedded
+<p>Code and data size are vitally important for many embedded
 applications, so configurability must be achieved without adding any
 overheads. Some of it can be done at link time, but for maximum
 benefit most of it happens at compile time. It is possible for a
@@ -145,10 +138,9 @@ appropriate. On the other hand a single configuration option might
 control the presence or absence of a complete TCP/IP stack. For system
 code written in C or C++ the main mechanism that is employed is C
 preprocessor #ifdef statements, which will be familiar to most
-embedded application developers.
+embedded application developers.</p>
 
-<P>
-Using #ifdef statements to provide a small number of configuration
+<p>Using #ifdef statements to provide a small number of configuration
 options is of course not very original. The critical problem is that
 configuration options are not independent: for example, changing a
 kernel option may affect whether or not the C library can provide
@@ -158,10 +150,9 @@ own right, complete with descriptions of all the dependencies between
 the various options. There is a graphical configuration tool which
 allows users to conveniently manipulate the various options,
 understand the various interactions, and check that the resulting
-configuration is valid.
+configuration is valid.</p>
 
-<P>
-The configuration framework also serves to componentize the system
+<p>The configuration framework also serves to componentize the system
 into different packages. The core system consists of a number of
 different packages including the kernel, the C library, and the math
 library. It is possible to enable or disable entire
@@ -176,101 +167,86 @@ into an application. We expect large numbers of these packages to
 become available over time, and already there are software vendors who
 want to turn their existing software into eCos packages. We expect
 that many contributions from the open source community will take the
-form of ports of existing software or of completely new packages.
+form of ports of existing software or of completely new packages.</p>
 
-<P>
-The eCos configuration system does not affect how you develop your own
+<p>The eCos configuration system does not affect how you develop your own
 application code. It is not necessary to write your application in any
 special language, or to provide lots of configuration options in your
 own code, or to use a special development environment. The main output
 from the configuration system is a library that gets linked with your
-application code in the usual manner.
+application code in the usual manner.</p>
 
-<P>
-<H4><A NAME="what_mail">Are there any mailing lists?</A></H4>
+<h3><A NAME="what_mail">Are there any mailing lists?</A></h3>
 
-<P>
-Certainly. There are two main mailing lists which anybody can <A
+<p>Certainly. There are two main mailing lists which anybody can <A
 HREF="intouch.html">subscribe</A> to. The ecos-announce
 mailing list is a low-volume moderated list for major announcements.
 The ecos-discuss mailing list is an unmoderated list for
 general discussion, both technical and non-technical. All of Red Hat's
 eCos development team will read this list and join in the discussions
 as appropriate. If you prefer you can subscribe to digest versions of
-these mailing lists instead. Archives for both <A
-HREF="/ml/ecos-announce/">ecos-announce</A> and <A
-HREF="/ml/ecos-discuss/">ecos-discuss</A> are available.
+these mailing lists instead. Archives for both
+<A HREF="/ml/ecos-announce/">ecos-announce</A> and <A
+HREF="/ml/ecos-discuss/">ecos-discuss</A> are available.</p>
 
-<P>
-We <b>strongly</b> recommend you read both the eCos documentation fully
+<p>We <em>strongly</em> recommend you read both the eCos documentation fully
 and search the above mail archives before asking simple questions
 on the list, particularly if they are likely to be problems that people
-would have encountered before.
+would have encountered before.</p>
 
-<P>
-If you have a question which you do not want to discuss in a public
-forum then there is a separate <A
-HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers</A> mail
+<p>If you have a question which you do not want to discuss in a public
+forum then there is a separate
+<A HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers</A> mail
 address. All requests sent to this request will be considered
 confidential, and nobody outside Red Hat is able to subscribe to this
 list.  However note that general requests for help or information that
 would be more appropriate to the public
 <nobr><a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss</a></nobr>
-list may not be answered.
+list may not be answered.</p>
 
-<P>
-<H4><A NAME="support_how">How do I get support?</A></H4>
+<h3><A NAME="support_how">How do I get support?</A></h3>
 
-The <a href="#what_mail">above mailing lists</a> are open to all to use
+<p>The <a href="#what_mail">above mailing lists</a> are open to all to use
 freely and Red Hat developers read and post there. However the scope
 is limited as to what can be answered, and queries or problems, even simple
-ones, may be ignored.
+ones, may be ignored.</p>
 
-<p>
-Red Hat can provide a complete development support package including
+<p>Red Hat can provide a complete development support package including
 verified tested GNUPro development tools and a solid reliable eCos source
 base along with several options for incident support. More information can
 be obtained at the
-<a href="http://www.redhat.com/embedded/technologies/ecos/">eCos
+<a href="http://www.redhat.com/embedded/technologies/ecos/" target="_top">eCos
 product web site</a>. Information can also be found there for the
 custom engineering and contract porting services that Red Hat is
 also able to provide. Commercial enquires covering eCos development,
 porting and support contracts may also be addressed to the eCos commercial
 team at
-<nobr>&lt;<a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>&gt;</nobr>.
+&lt;<a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>&gt;.</p>
 
+<h3><A NAME="what_size">What are the performance figures?</A></h3>
 
-<P>
-<H4><A NAME="what_size">What are the performance figures?</A></H4>
-
-<P>
-A side effect of a fully configurable system is that it is just about
+<p>A side effect of a fully configurable system is that it is just about
 impossible to answer questions like &quot;What is the memory footprint
 of the kernel?&quot or &quot;What is the interrupt latency?&quot;
 These figures depend in large part on the configuration options
 selected by the user. For example if a simple application does not
 require the kernel at all, directly or indirectly, then the kernel
 package can be disabled completely and its memory footprint is 0
-bytes. 
+bytes.</p>
 
-<P>
-Basic performance characterization data is available as part of the
+<p>Basic performance characterization data is available as part of the
 <a href="docs.html">documentation</a> as part of the architecture specific
 Getting Started manual, together with a description of
 the tests that were used to obtain this data. The sources for these
-tests are included with the eCos distribution.
+tests are included with the eCos distribution.</p>
 
-<P>
 <A HREF="#top">Top</A>
-<P>
 
+<h2>What are the licensing terms?</h2>
 
-<h3>What are the licensing terms?</h3>
+<h3><A NAME="license_terms">What are the licensing terms?</A></h3>
 
-<h4><A NAME="license_terms">What are the licensing terms?</A></h4>
-
-<P>
-eCos is released under a new license, the <A HREF="license.html">Red Hat
+<p>eCos is released under a new license, the <A HREF="license.html">Red Hat
 eCos Public License</A> or RHEPL for short.
 <!--
 You can also read an
@@ -279,67 +255,57 @@ version</A> of the license and the <A
 HREF="http://www.cygnus.com/ecos/motiv.html">motivations</A> for the
 license.
 -->
-<P>
+</p>
 
-<h4><A NAME="license_meaning">OK, but what does this license actually mean?</A></h4>
+<h3><A NAME="license_meaning">OK, but what does this license actually mean?</A></h3>
 
-<P>
-You can use eCos to develop products without paying anybody anything,
+<p>You can use eCos to develop products without paying anybody anything,
 no matter how many developers are working on the product or how many
 units you expect to ship. This applies not only to the core system
-itself but also to any changes anybody makes to the core system.
+itself but also to any changes anybody makes to the core system.</p>
 
-<P>
-A key aspect of the eCos public license is that it is intended to
+<p>A key aspect of the eCos public license is that it is intended to
 protect the eCos user community as a whole. It should prevent any
 company or individual contributing code to the system and then claim
 that all eCos users are now guilty of copyright or patent
 infringements and have to pay royalties. It should also prevent any
 company from making some small improvements, calling the result a
 completely new system, and releasing this under a new and less
-generous license.
+generous license.</p>
 
-<P>
-The license does impose one obligation on application developers: you
+<p>The license does impose one obligation on application developers: you
 must include a <A HREF="license.html#B">notice</A> with your
-product indicating that it makes use of eCos. 
+product indicating that it makes use of eCos.</p>
 
-<P>
-<h4><A NAME="license_give_source">Do I have to give away the source code of my application?</A></h4>
+<h3><A NAME="license_give_source">Do I have to give away the source code of my application?</A></h3>
 
-<P>
-No. Your application source code is your own, to do with as you
+<p>No. Your application source code is your own, to do with as you
 please. As far as the eCos public license is concerned you are under
 no obligation to reveal a single line of your source code to Red Hat or
 to anybody else. In fact you do not even have to tell Red Hat about the
 existence of your project, although we would love to know about all
-the different products that use eCos.
+the different products that use eCos.</p>
 
-<P>
-<h4><A NAME="license_core_changes">What about changes to the core system?</A></h4>
+<h3><A NAME="license_core_changes">What about changes to the core system?</A></h3>
 
-<P>
-If you make a change to the core eCos system then we believe that
+<p>If you make a change to the core eCos system then we believe that
 the entire user community should have the opportunity to benefit from
 that change. This does not necessarily mean that your changes will
 become part of the core system, since there are fairly strict criteria
 that have to be satisfied before any contribution will be
 incorporated. However any such decisions will be made by the eCos
-maintainers, not by the person making the changes.
+maintainers, not by the person making the changes.</p>
 
-<P>
-<h4><A NAME="license_core">What exactly is the core system?</A></h4>
+<h3><A NAME="license_core">What exactly is the core system?</A></h3>
 
-<P>
-eCos is designed to be the component framework for the embedded
+<p>eCos is designed to be the component framework for the embedded
 systems industry. An eCos release consists of a number of different
 packages including the kernel, the C library, and a uITRON
 compatibility layer. All the packages that go into such a release and
 the associated documentation constitute the core system, and the
-license describes this using the term &quot;Original Code&quot;.
+license describes this using the term &quot;Original Code&quot;.</p>
 
-<P>
-Another way of looking at this is from a purely practical perspective.
+<p>Another way of looking at this is from a purely practical perspective.
 At the end of the day building an application involves linking
 together some application-specific object files with some libraries.
 The current eCos build system will produce a library libtarget.a,
@@ -350,36 +316,30 @@ into the application-specific object files is not part of the core
 system and is not covered by the public license. Note that this is not
 a legally binding definition - in particular you cannot get around the
 public license simply by copying bits of eCos sources and making them
-part of your application code.
+part of your application code.</p>
 
-<P>
-<h4><A NAME="license_packages">What about other packages?</A></h4>
+<h3><A NAME="license_packages">What about other packages?</A></h3>
 
-<P>
-Typically other packages will end up as other libraries that need to
+<p>Typically other packages will end up as other libraries that need to
 be linked with the application code. These other packages may be
 covered by different licenses, and application developers should make
-sure that the requirements for all licenses are satisfied.
+sure that the requirements for all licenses are satisfied.</p>
 
-<P>
-Some companies or organizations may release packages that are not open
+<p>Some companies or organizations may release packages that are not open
 source or freely available. Instead the application developer may have
 to pay a one-off license fee or quite possibly per-unit royalties if
 the application uses such a package. Not only is this perfectly legal,
 Red Hat would very much like other companies to make money by providing
-such packages.
+such packages.</p>
 
-<P>
-Some packages may be released under the eCos public license without
+<p>Some packages may be released under the eCos public license without
 becoming part of the core system. Typically this will happen if the
 eCos maintainers believe that they would be unable to maintain such a
-package themselves, for example because it relies on special hardware.
+package themselves, for example because it relies on special hardware.</p>
 
-<P>
-<h4><A NAME="license_new_packages">What if I create a new package?</A></h4>
+<h3><A NAME="license_new_packages">What if I create a new package?</A></h3>
 
-<P>
-There are two possibilities. If the new package is derived in large
+<p>There are two possibilities. If the new package is derived in large
 part from some existing software then it is likely that there are
 existing license restrictions that will apply. For example if you
 create a new eCos device driver by copying an existing one and editing
@@ -388,83 +348,70 @@ eCos public license would apply to the new device driver. If you
 create a new device driver from scratch then you can decide for
 yourself what license should apply. If you want the package to be
 freely available to the entire eCos community then we recommend the
-eCos public license, but the choice is yours.
+eCos public license, but the choice is yours.</p>
 
-<P>
-<h4><A NAME="license_why_new">Why has Red Hat created a new license?</A></h4>
+<h3><A NAME="license_why_new">Why has Red Hat created a new license?</A></h3>
 
-<P>
-Balancing the needs and desires of all the companies, organizations,
+<p>Balancing the needs and desires of all the companies, organizations,
 and individuals involved with eCos is difficult. The most important
 requirement is that the freedom of all eCos users is protected: it
 must be impossible for anybody, even Red Hat, to impose restrictions on
 how the system can be used now or in the future. Some existing
-licenses such as the X11 license do not provide this.
+licenses such as the X11 license do not provide this.</p>
 
-<P>
-It is also desirable that all enhancements are made available to the
+<p>It is also desirable that all enhancements are made available to the
 community as a whole, thus improving the system and making it even
 more attractive to potential users. Some existing licenses such as the
-BSD license do not provide this.
+BSD license do not provide this.</p>
 
-<P>
-The GNU Public License does meet these requirements, but it goes
+<p>The GNU Public License does meet these requirements, but it goes
 further: all applications that get linked with GPL'd code are also
 covered by the GPL, which means in practice that application
 developers have to make the sources available. In the embedded systems
 market this requirement is generally considered unacceptable and many
 companies refuse to use any GPL'd code as a result. This would reduce
 the uptake of eCos, and we want as many people as possible to use the
-system. 
+system.</p>
 
-<P>
-The Netscape Public License came closest to meeting the requirements.
+<p>The Netscape Public License came closest to meeting the requirements.
 There were some modifications to reflect the needs of embedded system
-developers, and the result was the eCos public license.
+developers, and the result was the eCos public license.</p>
 
-<P>
-<h4><A NAME="license_coverage">Does the license cover situation ...?</A></h4>
-Hopefully yes, but there may be situations that we have missed. If you
+<h3><A NAME="license_coverage">Does the license cover situation ...?</A></h3>
+
+<p>Hopefully yes, but there may be situations that we have missed. If you
 have any queries about the license and how it applies to your
 situation, please contact us. There are both public and private
 channels of communication available, depending on your requirements.
 We are always interested in suggested improvements to the license that
-are compatible with our overall goals.
+are compatible with our overall goals.</p>
 
-<P>
-<A HREF="#top">Top</A>
+<p><A HREF="#top">Top</A></p>
 
-<P>
-<h3><A NAME="porting">Porting</A></h3>
+<h2><A NAME="porting">Porting</A></h2>
 
-<P>
-<h4><A NAME="porting_does_it">Does eCos run on processor X?</A></h4>
+<h3><A NAME="porting_does_it">Does eCos run on processor X?</A></h3>
 
-<P>
-Refer to the <a href="hardware.html">supported targets</a> page for
+<p>Refer to the <a href="boards.html">supported targets</a> page for
 details of the supported architectures. If a particular processor is
-not listed there then support for that processor is not yet available.
+not listed there then support for that processor is not yet available.</p>
 
-<P>
-<h4><A NAME="porting_will_redhat">Will Red Hat be porting eCos to
-processor X?</A></h4>
+<h3><A NAME="porting_will_redhat">Will Red Hat be porting eCos to
+processor X?</A></h3>
 
-<P>
-Whenever possible once Red Hat starts working on a particular port we
+<p>Whenever possible once Red Hat starts working on a particular port we
 will announce this fact immediately, to avoid any risk of contributors
 duplicating work that is already ongoing. If a port has not yet
 started but is under consideration then typically we will also make
 this clear. Occasionally we have to be cautious in what we can reveal,
-and an understanding of the underlying business model is useful here.
+and an understanding of the underlying business model is useful here.</p>
 
-<P>
-eCos is freely available, so Red Hat cannot earn any direct revenues in
+<p>eCos is freely available, so Red Hat cannot earn any direct revenues in
 the form of unit royalties or development seat licenses. However we
 still need to earn money by one means or another - Red Hat is a
-company, not a charitable organization.
+company, not a charitable organization.</p>
 
-<P>
-When Red Hat makes a reference release of eCos which includes ports to
+<p>When Red Hat makes a reference release of eCos which includes ports to
 particular processors, those ports are certified. This means that we
 are willing to provide guarantees about the quality of the system on
 that processor. If somebody takes out a technical support contract for
@@ -475,26 +422,23 @@ can make guarantees like this. This requires very extensive QA work
 and continuous testing on all supported targets as the system evolves,
 and such things require a significant allocation of resources. In fact
 the initial port to a particular processor is a relatively small
-proportion of the overall effort involved.
+proportion of the overall effort involved.</p>
 
-<P>
-As the use of eCos spreads through the embedded industry we can expect
+<p>As the use of eCos spreads through the embedded industry we can expect
 to earn revenue through technical support contracts, through
 consultancy work in the form of custom modifications or enhancements
 to the system, and through a number of other means. This is
 essentially the same model as used in some other parts of our
 business, for example the GnuPro toolkit. However these revenue
-sources take time to ramp up.
+sources take time to ramp up.</p>
 
-<P>
-For Red Hat to embark on a new port we must be confident that we can
+<p>For Red Hat to embark on a new port we must be confident that we can
 recoup the investment involved. In addition, given that there are many
 processors we could be porting to, not to mention further development
 to the main system, and also given that engineering resources are
-limited, we need to prioritize the ports in some fashion.
+limited, we need to prioritize the ports in some fashion.</p>
 
-<P>
-It so happens that Red Hat already has very close relationships with
+<p>It so happens that Red Hat already has very close relationships with
 many leading silicon vendors through the GnuPro business. Typically
 when a silicon vendor produces a new processor they will want various
 tools such as a C compiler, a C++ compiler, and a debugger. These
@@ -505,10 +449,9 @@ industry-leading; the quality is very high, again a prerequisite
 before we can offer technical support; the tools are already familiar
 to many developers; and they are free, source and all. This is a
 winning combination, and a proportion of Red Hat's revenue comes from
-porting the tools to new processors.
+porting the tools to new processors.</p>
 
-<P>
-The same reasoning applies to eCos: having an open source and free
+<p>The same reasoning applies to eCos: having an open source and free
 operating system available for a given processor makes that processor
 more attractive to potential application developers, so the silicon
 vendor is likely to sell more chips. Hence Red Hat is in discussion
@@ -517,10 +460,9 @@ particular processors. Having the silicon vendors sponsor ports in
 this way provides Red Hat with early revenue, which can then be pumped
 back into further development of the system. The silicon vendors gain
 an initial competitive advantage by having eCos available on their
-processor early on.
+processor early on.</p>
 
-<P>
-Unfortunately negotiating deals like this is a non-trivial operation.
+<p>Unfortunately negotiating deals like this is a non-trivial operation.
 Typically all such discussions involve non-disclosure agreements
 (NDA's), so legally we are not allowed to discuss the status of any of
 these negotiations or even which processors are involved. There are
@@ -529,20 +471,18 @@ might be talking to a number of different parties about porting to a
 processor architecture, to a specific processor, or to a particular
 board. Providing detailed information to the net community may harm
 such negotiations, resulting in loss of revenue for Red Hat and hence
-fewer resources which can be used for further system development.
+fewer resources which can be used for further system development.</p>
 
-<P>
-If we are specifically asked whether or not Red Hat is planning a port
+<p>If we are specifically asked whether or not Red Hat is planning a port
 to a particular architecture and such a port is under consideration,
 then we will say so. However we will not reveal any detailed
 information which is commercially sensitive or which would violate an
 NDA, for example we might not be able to say which particular variant
 of a processor architecture we would be working on. This is a
 necessary compromise between our commercial requirements and our
-desire for an open development process.
+desire for an open development process.</p>
 
-<P>
-In most cases, once work starts on a particular port we will announce
+<p>In most cases, once work starts on a particular port we will announce
 this fact immediately. This avoids people doing their own port to a
 particular processor at the same time as Red Hat. If there is already a
 port to that processor in progress then typically we would work with
@@ -550,14 +490,12 @@ the existing developers to avoid duplication of effort. Such
 collaboration would save Red Hat a certain amount of work, but there
 would still be plenty left for us to do: most importantly the QA and
 continuous testing that comes with a certified port of eCos, but also
-board ports to whichever board(s) are selected by the silicon vendor.
+board ports to whichever board(s) are selected by the silicon vendor.</p>
 
-<P>
-<h4><A NAME="porting_how_would_I">How would I go about porting eCos to
-a new processor?</A></h4>
+<h3><A NAME="porting_how_would_I">How would I go about porting eCos to
+a new processor?</A></h3>
 
-<P>
-A sensible first step for this, as for any other non-trivial project
+<p>A sensible first step for this, as for any other non-trivial project
 involving eCos, would be to find out whether or not anybody else
 (either inside or outside Red Hat) is already working on something
 similar. One way of doing this is to post a message to the <A
@@ -567,10 +505,9 @@ for any reason you can instead send email to <A
 HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers@redhat.com</A>
 - any such messages will not be seen by anybody outside Red Hat. We aim
 to keep track of every ongoing eCos project that we know about, to
-avoid duplication of effort.
+avoid duplication of effort.</p>
 
-<P>
-The next step is to make sure that you have a toolchain that is
+<p>The next step is to make sure that you have a toolchain that is
 suitable for your target hardware. This means the compilers gcc and
 g++, the assembler gas, the linker, and the various binutils such as
 ar. It will also be necessary to have some way of actually running an
@@ -582,10 +519,9 @@ download page includes the sources for such a toolchain: it has only
 been tested for the processors that are officially supported, and only
 on Red Hat 5.1 Linux and on Windows NT hosts; it is likely that these
 tools can also be built for many other processors and hosts, possibly
-with a little bit of tweaking, but we do not offer any guarantees.
+with a little bit of tweaking, but we do not offer any guarantees.</p>
 
-<P>
-It should be noted that eCos uses a number of relatively new
+<p>It should be noted that eCos uses a number of relatively new
 extensions to the GNU tools, and you may well run into problems if you
 try to use some other release of the tools. The most important
 extension is constructor priority ordering, which allows us to control
@@ -601,10 +537,9 @@ modifications to the toolchain for each architecture, and is not yet
 available except for the supported architectures. Work is in progress
 to make sure that these extensions work correctly for all
 architectures that use ELF object format, and to make the extensions
-available as part of the main net releases for the various tools.
+available as part of the main net releases for the various tools.</p>
 
-<P>
-Assuming a working toolchain, porting to a new processor mainly
+<p>Assuming a working toolchain, porting to a new processor mainly
 involves implementing a new architectural HAL package. There are
 existing packages for those architectures which are already supported,
 and these can be used as a starting point. The current specification
@@ -613,25 +548,21 @@ HREF="docs-1.2.1/ref/ecos-ref/the-ecos-hardware-abstraction-layer-hal.html">
 online</A>. As you might expect, the work involved in porting eCos is
 very similar to the work involved in porting any embedded operating
 system: hardware initialization, interrupt handling, processor
-exceptions, context switching, etc.
+exceptions, context switching, etc.</p>
 
-<P>
-In addition to the architectural HAL package it will be necessary to
+<p>In addition to the architectural HAL package it will be necessary to
 do a platform HAL package, in other words to provide the support for
 an actual development board. This involves issues such as board
 initialization, diagnostics, possibly gdb support, and linker scripts.
 There are existing platform HAL packages for the supported boards, and
-for various simulators.
+for various simulators.</p>
 
-<P>
-See the <a href="docs-latest/porting/index.html">eCos Porting
-Guide</a> for more specific details on the porting process.
+<p>See the <a href="docs-latest/porting/index.html">eCos Porting
+Guide</a> for more specific details on the porting process.</p>
 
-<P>
-<h4><A NAME="porting_adopt">Will Red Hat adopt my port?</A></h4>
+<h3><A NAME="porting_adopt">Will Red Hat adopt my port?</A></h3>
 
-<P>
-If somebody produces a port to a new processor but does not wish to
+<p>If somebody produces a port to a new processor but does not wish to
 maintain it indefinitely then Red Hat may be willing to adopt this
 port. This involves certifying the port: extensive QA, quite possibly
 code clean-ups so that it satisfies the coding standards, possibly new
@@ -643,10 +574,9 @@ afford to do so if there are likely to be sufficient long-term
 revenues, for example if there are enough existing users of the
 processor who might be interested in technical support. Also, we would
 need a ready source of suitable hardware that can be used for the
-testing, and we would need a copyright assignment for such ports.
+testing, and we would need a copyright assignment for such ports.</p>
 
-<P>
-However a port does not have to be supported by Red Hat or by anybody
+<p>However a port does not have to be supported by Red Hat or by anybody
 else for it to be useful to somebody. If a port (or any other eCos
 package) does not have an active maintainer then Red Hat can still make
 it available as unsupported software, providing space on our ftp
@@ -654,39 +584,33 @@ server and suitable links in the web pages. This allows people to
 download and use such ports. If there are enough users for an
 unsupported port then perhaps somebody else will take over the
 maintainership. The same is of course true for any piece of
-contributed software.
+contributed software.</p>
 
-<P>
-If a port is not included in the reference releases but still has a
+<p>If a port is not included in the reference releases but still has a
 maintainer outside Red Hat, we can provide certain resources to assist
 with this. For example we can provide mailing lists, web and ftp
-services, and anonymous CVS access.
+services, and anonymous CVS access.</p>
 
-<P>
-<h4><A NAME="porting_board">How about porting eCos to a new
-board?</A></h4>
+<h3><A NAME="porting_board">How about porting eCos to a new
+board?</A></h3>
 
-<P>
-As with a processor port, usually the first step is to publicize your
+<p>As with a processor port, usually the first step is to publicize your
 intention and make sure that nobody else is already doing this. The
 second step is to make sure that you have the necessary tools, in
 particular some way of running an executable on the target board. It
 is possible that gdb already provides support for that board.
 Alternatively it may be necessary to add the necessary support to gdb,
-or to use some other means of running programs.
+or to use some other means of running programs.</p>
 
-<P>
-Assuming a working toolchain, the work involved on the eCos side is to
+<p>Assuming a working toolchain, the work involved on the eCos side is to
 implement a new platform HAL package. This involves issues such as
 board initialization, diagnostics, possibly gdb support, and linker
 scripts. There are existing platform HAL packages for the supported
-boards, and any of these can be used as starting points.
+boards, and any of these can be used as starting points.</p>
 
-<P>
-<h4><A NAME="porting_compiler">What are the compiler dependencies?</A></h4>
+<h3><A NAME="porting_compiler">What are the compiler dependencies?</A></h3>
 
-<P>
-eCos depends heavily on a number of language extensions provided by
+<p>eCos depends heavily on a number of language extensions provided by
 the gcc and g++ compilers. In fact a number of these extensions were
 added to these compilers specifically to support eCos (although they
 have wider applications as well). The first such extension is C++
@@ -700,45 +624,37 @@ of compilation units, in other words entire files: if an application
 needed a particular function from a library then all other library
 functions which happened to be in the same source file would become
 part of the application's executable. Instead the linker will now work
-at the finer granularity of individual functions or variables.
+at the finer granularity of individual functions or variables.</p>
 
-<P>
-Other extensions provided by gcc and g++ are used wherever
+<p>Other extensions provided by gcc and g++ are used wherever
 appropriate. For example attributes are used to define some functions
 with weak linkage and to provide aliases for some functions. Inline
 assembler is used to establish memory barriers and prevent the
 compiler from optimizing in places where this would be undesirable,
 for example in context switch code. Computed goto's may be used during
-exception handling.
+exception handling.</p>
 
-<P>
-The use of these extensions makes it very difficult to use compilers
+<p>The use of these extensions makes it very difficult to use compilers
 other than gcc and g++ to build eCos. In addition it is possible that
 other extensions will be used in future if they prove to be
 appropriate for the problem at hand. Therefore we recommend against
-attempting to use any other compiler technology for eCos development.
+attempting to use any other compiler technology for eCos development.</p>
 
-<P>
-<A HREF="#top">Top</A>
+<p><A HREF="#top">Top</A></p>
 
-<P>
-<h3>Contributing</h3>
-<P>
+<h2>Contributing</h2>
 
-<h4><A NAME="contrib_have_to">Do I have to contribute?</A></h4>
+<h3><A NAME="contrib_have_to">Do I have to contribute?</A></h3>
 
-<P>
-No. We expect that most people will simply want to use the system as
+<p>No. We expect that most people will simply want to use the system as
 it is (or rather, as it is after they have configured it to meet their
 specific needs), without changing the core system itself or adding any
-new packages. Such users are under no obligation to contribute.
+new packages. Such users are under no obligation to contribute.</p>
 
-<P>
-<h4><A NAME="contrib_bazaar">Which development model - cathedral or bazaar?</A></h4>
+<h3><A NAME="contrib_bazaar">Which development model - cathedral or bazaar?</A></h3>
 
-<P>
-The <A
-HREF="http://www.tuxedo.org/~esr/writings/cathedral-bazaar/cathedral-bazaar.html">bazaar</A>
+<p>The
+<A HREF="http://www.tuxedo.org/~esr/writings/cathedral-bazaar/cathedral-bazaar.html" target="_top">bazaar</A>
 of course. For the eCos system Red Hat is committed to an open
 development model. In addition to the full releases we provide
 anonymous CVS access to the current development sources. Discussions
@@ -748,13 +664,11 @@ is necessary to apply a caveat to this. Many of Red Hat's commercial
 dealings involve confidential information and are covered by
 non-disclosure agreements. A potential port to another architecture
 would generally be covered by such an agreement, and hence we would
-not be able to disclose any details in an open forum.
+not be able to disclose any details in an open forum.</p>
 
-<P>
-<h4><A NAME="contrib_how">How do I contribute?</A></h4>
+<h3><A NAME="contrib_how">How do I contribute?</A></h3>
 
-<P>
-There are ways of contributing to eCos development which involve very
+<p>There are ways of contributing to eCos development which involve very
 little effort. Providing constructive comments on any part of the
 system, including the documentation and the web site, helps us to
 identify areas which need improvement. Reporting a problem gives us a
@@ -762,10 +676,9 @@ chance to fix it, especially if you provide us with a simple test case
 and sufficient information to reproduce the problem. Participation in
 the discussions in the <A HREF="intouch.html">ecos-discuss</A> mailing
 list gives us a better understanding of the user community, and
-perhaps some new ideas.
+perhaps some new ideas.</p>
 
-<P>
-If you wish to contribute to the actual code there are multiple
+<p>If you wish to contribute to the actual code there are multiple
 levels of involvement. You can write a new package. This could be a
 HAL package as part of a port of the system to new hardware. It could
 be a device driver. It could provide some new functionality such as a
@@ -776,27 +689,23 @@ can provide a patch that fixes it. You may also find a way to rewrite
 some existing code so that it becomes more efficient and/or needs less
 memory. You may add new functionality. Contributions to the
 documentation and to the test suites are particularly welcome, since
-these areas are often overlooked by contributors.
+these areas are often overlooked by contributors.</p>
 
-<P>
-Small patches can be sent directly to the ecos-discuss mailing
+<p>Small patches can be sent directly to the ecos-discuss mailing
 list. For larger patches it is better to send a message to the mailing
 list indicating where the patch can be found, or to send the entire
 patch to the <A
 HREF="mailto:ecos-maintainers@redhat.com">maintainers</A>. For
 non-trivial patches to the core system we may require a copyright
-assignment.
+assignment.</p>
 
-<P>
-<h4><A NAME="contrib_what">What code contributions would be accepted?</A></h4>
+<h3><A NAME="contrib_what">What code contributions would be accepted?</A></h3>
 
-<P>
-The most important criterion is that the contribution must enhance the
+<p>The most important criterion is that the contribution must enhance the
 system. If it meets this fundamental criterion then there is a good
 chance that the contribution will be accepted. More specific criteria
 include the following:
 
-<P>
 <OL>
   <LI>It must not have undesirable effects in terms of code
       size, data size, CPU cycles, or determinism of the system. This
@@ -818,11 +727,11 @@ include the following:
   <LI>There must not be any confusion about licensing or ownership.
       This may require a copyright assignment.
 </OL>
+</p>
 
-<P>
-A contribution need not meet all these requirements immediately. In
-fact it often makes sense to start with a proposal on the <A
-HREF="intouch.html">ecos-discuss</A> mailing list, possibly including
+<p>A contribution need not meet all these requirements immediately. In
+fact it often makes sense to start with a proposal on the
+<A HREF="intouch.html">ecos-discuss</A> mailing list, possibly including
 an initial patch which is known to be unacceptable, with the
 understanding that the contributor will make further changes. If there
 are major problems with the proposed contribution then it is better to
@@ -831,24 +740,21 @@ much the same job then it is good to know about this as well, to avoid
 duplication of effort. There may be better and easier ways to tackle
 the problem. If you want to discuss a proposal using more private
 communication channels rather than a public mailing list then you can
-send email directly to the <A
-HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers</A>.
+send email directly to the
+<A HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers</A>.</p>
 
-<P>
-<h4><A NAME="contrib_assign">Why do I need to sign a copyright assignment?</A></h4>
+<h3><A NAME="contrib_assign">Why do I need to sign a copyright assignment?</A></h3>
 
-<P>
-If a contribution involves a significant change to part of the core
-system, for example the kernel, then usually we will need a <A
-HREF="assign.html">copyright assignment</A> before we can incorporate
+<p>If a contribution involves a significant change to part of the core
+system, for example the kernel, then usually we will need a
+<A HREF="assign.html">copyright assignment</A> before we can incorporate
 the changes into the system. The reason for this is to protect the
 community at large. In theory there is no need for copyright
 assignments because all changes to code covered by the eCos public
 license are also covered by that license. In practice copyright
-assignment provides a useful extra level of protection.
+assignment provides a useful extra level of protection.</p>
 
-<P>
-As an example, consider a scenario where a junior programmer makes a
+<p>As an example, consider a scenario where a junior programmer makes a
 change to the system and releases it without the knowledge or consent
 of management. Some time later management finds out about the
 contribution, and decides that it should not have happened. The junior
@@ -860,31 +766,26 @@ would be a significant amount of fear, uncertainty, and doubt amongst
 the development community. This would be very harmful. The process of
 copyright assignment should prevent this and many other scenarios from
 ever arising, because it includes having a disclaimer signed by an
-officer of the company or a person with the necessary authority.
+officer of the company or a person with the necessary authority.</p>
 
-<P>
-We are aware that copyright assignments involve an unpleasant amount
+<p>We are aware that copyright assignments involve an unpleasant amount
 of bureaucracy for many contributors, especially since we have to deal
 with the paperwork at the other end. However, we believe that the
 additional protection offered is necessary for the eCos user community
-as a whole. 
+as a whole.</p>
 
-<P>
-<h4><A NAME="contrib_projects">I want to start work today! What should I work on?</A></h4>
+<h3><A NAME="contrib_projects">I want to start work today! What should I work on?</A></h3>
 
-<P>
-Our <a href="contrib.html">contributions</a> page indicates various
+<p>Our <a href="contrib.html">contributions</a> page indicates various
 projects that people are working on. In the future, these pages will
 be expanded to include projects that have been suggested but
 have not yet started. Typically additions to these projects will be
 proposed on the <A HREF="intouch.html">ecos-discuss</A> mailing list,
-discussed for a while, and then a summary will be prepared.
+discussed for a while, and then a summary will be prepared.</p>
 
-<P>
-<h4><A NAME="contrib_anoncvs">What is anonymous CVS?</A></h4>
+<h3><A NAME="contrib_anoncvs">What is anonymous CVS?</A></h3>
 
-<P>
-CVS is the source code control system used internally within Red Hat to
+<p>CVS is the source code control system used internally within Red Hat to
 manage the eCos sources (and the sources for our other projects). The
 <A HREF="anoncvs.html">anonymous CVS service</A> on sourceware allows
 net developers to get hold of an up-to-date set of eCos sources,
@@ -892,106 +793,96 @@ without having to wait for the next full release of the system. These
 sources may include new functionality and fixes to various problems.
 The disadvantage of anoncvs sources compared with full releases is
 that the latter are given a full QA cycle, whereas there is no
-guarantee that the anoncvs sources will even build at any one time.
+guarantee that the anoncvs sources will even build at any one time.</p>
 
-<P>
-<h4><A NAME="contrib_write">Will external developers be given write
-access?</A></h4>
+<h3><A NAME="contrib_write">Will external developers be given write
+access?</A></h3>
 
-<P>
-Initially the sources available via the anonymous CVS servers will be
+<p>Initially the sources available via the anonymous CVS servers will be
 a snapshot of the master sources held on a Red Hat internal machine.
 When a contribution is received and accepted it will first be
 integrated into the internal sources, and will then become visible to
 the wider community at the time of the next snapshot - typically
 within a week or so. Currently the majority of eCos development
 still happens within Red Hat, and maintenance is easier if changes are
-made to only one master copy.
-<P>
-At some future stage, once there is a sufficiently large number of
+made to only one master copy.</p>
+
+<p>At some future stage, once there is a sufficiently large number of
 external developers, some of these developers may well be given write
 access to the CVS server. Red Hat would now make contributions to this
 from its internal copy of the sources, and there would be merges from
 the sourceware CVS server into the internal copy. The latter would
 still be used for making commercial reasons of the system, and for any
 work which is still confidential and cannot yet be contributed to the
-pubic sources.
-<P>
-For contributed packages which are not in the core system, the
+pubic sources.</p>
+
+<p>For contributed packages which are not in the core system, the
 intention is to set up a separate area on the anonymous CVS server and
 give the relevant developers write access to just the relevant
-directories. 
+directories.</p>
 
-<P>
-<A HREF="#top">Top</A>
-<P>
+<p><A HREF="#top">Top</A></p>
 
-<h3>Common Problems</h3>
+<h2>Common Problems</h2>
 
-<P>
-<h4><A NAME="problems_known">Is there a list of known problems?</A></h4>
+<h3><A NAME="problems_known">Is there a list of known problems?</A></h3>
 
-<P>
-There is a <A HREF="problemlist.html">list</A> of known problems and,
+<p>There is a <A HREF="problemlist.html">list</A> of known problems and,
 in most cases, recommended workarounds. It is manually generated from
 our internal problem report database. Full external access to this
 problem report database is not currently available because of
-confidentiality issues.
+confidentiality issues.</p>
 
-<P>
-<h4><A NAME="problems_report">How should I report a problem?</A></h4>
+<h3><A NAME="problems_report">How should I report a problem?</A></h3>
 
-<P>
-The preferred approach is to use the <A
-HREF="problemreport.html">problem reporting</A> web page, which
+<p>The preferred approach is to use the
+<A HREF="problemreport.html">problem reporting</A> web page, which
 ensures that the report is in our database. Note that Red Hat does not
 provide free technical support for eCos, if such support is required
-then it may be obtained via the <A
-HREF="http://www.redhat.com/products/ecos/ecos_support.html">eCos Developer
-Support Program</A>. However reporting problems does allow Red Hat to improve
+then it may be obtained via the
+<A HREF="http://www.redhat.com/embedded/technologies/ecos/ecos_support.html"
+target="_top">eCos Developer Support Program</A>. However reporting
+problems does allow Red Hat to improve
 the system for all users, and in some cases we may be able to supply a
-simple patch for individual problem reports.
-<P>
-Alternatively problems can be reported on the <A
-HREF="mailto:ecos-discuss@sourceware.cygnus.com">ecos-discuss</A>
+simple patch for individual problem reports.</p>
+
+<p>Alternatively problems can be reported on the
+<A HREF="mailto:ecos-discuss@sourceware.cygnus.com">ecos-discuss</A>
 mailing list. This is particularly appropriate if the problem report
 is accompanied by a small patch that would help out other users of the
-system. 
-<P>
-Minor problems which are unlikely to be of general interest, for
+system.</p>
+
+<p>Minor problems which are unlikely to be of general interest, for
 example a spelling mistake on one of the web pages, can be sent to <A
 HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers@redhat.com</A>.
 The same address can be used for any communications which you wish to
-be treated as confidential.
+be treated as confidential.</p>
 
-<P>
-<h4><A NAME="problems_toolchain">General toolchain build problems</A></h4>
+<h3><A NAME="problems_toolchain">General toolchain build problems</A></h3>
 
-<P>
-Always make sure that you follow the instructions exactly. A lot of
+<p>Always make sure that you follow the instructions exactly. A lot of
 the problems that get reported are caused by some apparently minor
 deviation from these instructions, but they still take time to track
 down. Take special care with the target triplets specified during the
-configure step.
-<P>
-One common problem is lack of disk space. Building a full toolchain
+configure step.</p>
+
+<p>One common problem is lack of disk space. Building a full toolchain
 requires a lot of disk space, especially on a FAT-based file system.
 If you come across a strange toolchain build failure then please check
-there is plenty of disk space available on all the relevant drives.
+there is plenty of disk space available on all the relevant drives.</p>
 
-<h4><A NAME="problems_windows">Toolchain build problems under Windows</A></h4>
+<h3><A NAME="problems_windows">Toolchain build problems under Windows</A></h3>
 
-<P>
-Note that under windows, running the configure script will output:
+<p>Note that under windows, running the configure script will output:
 <PRE>
     This configuration is not supported in the following directories:
       texinfo
     (Any other directories should still work fine.)
 </PRE>
 
-This is normal, and is not an error message.
-<p>
-A common source of problems on Windows is that applying patches may
+This is normal, and is not an error message.</p>
+
+<p>A common source of problems on Windows is that applying patches may
 inadvertently lead to CRLFs getting inserted into source files where they
 are not wanted.
 When applying the patches you should verify that the <tt>/tmp</tt> directory (or
@@ -1001,26 +892,26 @@ the patches will apply, but the build will later fail. You may verify this
 using the Cygwin <tt>mount</tt> command. If /tmp is not explicitly listed,
 the entry for / will be used. If it says "<tt>textmode</tt>" for this entry,
 use the following command from a Cygwin bash prompt:<p>
-<nobr><tt>
+<nobr><kbd>
 &nbsp;&nbsp;&nbsp;&nbsp;mount -f -b c:/cygwin/tmp /tmp
-</tt></nobr>
-<p>
-You may need to substitute another path for <tt>c:/cygwin</tt> if Cygwin
-was installed to another directory.
-<p>
-If you already have a set of sources which may have CRLFs in, then you can
-use the following command from a cygwin prompt on affected files:<p>
-<nobr><tt>
+</kbd></nobr></p>
+
+<p>You may need to substitute another path for <tt>c:/cygwin</tt> if Cygwin
+was installed to another directory.</p>
+
+<p>If you already have a set of sources which may have CRLFs in, then you can
+use the following command from a cygwin prompt on affected files:</p>
+<p><nobr><kbd>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' < AFFECTEDFILE > foo<br>
 &nbsp;&nbsp;&nbsp;&nbsp;mv foo AFFECTEDFILE
-</tt></nobr>
-<p>
-<h5>What if the patches fail to apply?</h5>
-<P>
-Some of the tools patches are against sources that are under continuous development,
+</kbd></nobr></p>
+
+<h4>What if the patches fail to apply?</h4>
+
+<p>Some of the tools patches are against sources that are under continuous development,
 which may mean that the patches may no longer apply. Analyze the patch reject (.rej) files 
 to determine if this is the case, and if so, send a message to the <a href="intouch.html">
-ecos-discuss</a> mailing list.
+ecos-discuss</a> mailing list.</p>
 
 <p>If you get a message from the patch utility reporting that it cannot create a file
 <tt>C:\TEMP/xxxx</tt> where <tt>xxxx</tt> is some number, then this probably indicates
@@ -1030,180 +921,175 @@ Cygwin-style location, such as <tt>/tmp</tt>. This may also cause other problems
 is highly recommended that you override this environment variable in the cygwin.bat
 startup file (located in the bin directory of the Cygwin installation) which is executed
 when the Start Menu is used to start a Cygwin bash shell. This may be done in cygwin.bat
-with a command such as:<p>
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;set TMP=/tmp</tt>
-<p>Alternatively, after invoking a bash shell, remember to issue the command:<p>
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;TMP=/tmp ; export TMP</tt><p>
-or similar.<p>
+with a command such as:</p>
 
-<h5><A NAME="newcygwindll">I have Cygwin v1.1.1 and the build is failing</A></h5>
+<p><kbd>&nbsp;&nbsp;&nbsp;&nbsp;set TMP=/tmp</kbd></p>
 
-<P>If your build is failing with the message:<p>
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;Makefile:nn: *** commands commence before first target.  Stop.</tt><p>
+<p>Alternatively, after invoking a bash shell, remember to issue the command:</p>
+
+<p><kbd>&nbsp;&nbsp;&nbsp;&nbsp;TMP=/tmp ; export TMP</kbd></p>
+
+<p>or similar.</p>
+
+<h4><A NAME="newcygwindll">I have Cygwin v1.1.1 and the build is failing</A></h4>
+
+<p>If your build is failing with the message:</p>
+
+<p><samp>&nbsp;&nbsp;&nbsp;&nbsp;Makefile:nn: *** commands commence before first target.  Stop.</samp></p>
 this indicates that the Makefile contains carriage return characters at the end
 of each line which is confusing <tt>make</tt>. This happens most frequently
 when using Cygwin v1.1.1. You may determine the version of the installed Cygwin
-DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
-<p>
+DLL by executing the command "<kbd>uname&nbsp;-r</kbd>" at the Cygwin bash prompt.</p>
+
 <p>The most complete solution is to upgrade your Cygwin DLL to at least
 version 1.1.2.
-Instructions for this may be found in the <A HREF="http://sourceware.cygnus.com/cygwin/faq">
-Cygwin FAQ</A> or in <A HREF="http://sourceware.cygnus.com/ml/cygwin-announce/2000/msg00023.html">this mail message</A>.
+Instructions for this may be found in the <A HREF="http://www.cygwin.com/faq"
+target="_top">Cygwin FAQ</A> or in
+<A HREF="http://sourceware.cygnus.com/ml/cygwin-announce/2000/msg00023.html"
+target="_top">this mail message</A>.</p>
 
-<p>
-<h5>My gcc build fails with the message "<tt>conflicting types for `strsignal'</tt>"</h5>
-<p>
-This problem is also fixed in Cygwin versions 1.1.2 and later, so update
-your cygwin installation as above.
+<h4>My gcc build fails with the message "<samp>conflicting types for `strsignal'</samp>"</h4>
 
-<h5>My build fails with the message "<tt>tinfo2.cc:31:33: stdlib.h: No such file or directory</tt>"</h5>
-<p>
-Download the <a href="tools/patches/tinfo2inhibitlibc.pat">tinfo2inhibitlibc.pat</a>
-patch to a file and apply it:<p>
-<nobr><tt>
+<p>This problem is also fixed in Cygwin versions 1.1.2 and later, so update
+your cygwin installation as above.</p>
+
+<h4>My build fails with the message "<samp>tinfo2.cc:31:33: stdlib.h: No such file or directory</samp>"</h4>
+
+<p>Download the <a href="tools/patches/tinfo2inhibitlibc.pat">tinfo2inhibitlibc.pat</a>
+patch to a file and apply it:</p>
+
+<p><nobr><kbd>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; tinfo2inhibitlibc.pat | patch -p0
-</nobr></tt>
-<p>The make command can now simply be reexecuted.
+</nobr></kbd></p>
 
-<h5>Insight 5.0 cannot display my source files, although gdb -nw works</h5>
-<p>
-You need to apply a patch to the Insight TCL directory. Download the
+<p>The make command can now simply be reexecuted.</p>
+
+<h4>Insight 5.0 cannot display my source files, although gdb -nw works</h4>
+
+
+<p>You need to apply a patch to the Insight TCL directory. Download the
 <a href="tools/patches/insight-tcl.pat">
-insight-tcl.pat</a> patch to a file and apply it:<p>
-<nobr><tt>
+insight-tcl.pat</a> patch to a file and apply it:</p>
+
+<p><nobr><kbd>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; insight-tcl.pat | patch -p0
-</tt></nobr>
-<p>
-You must now rebuild and reinstall Insight as described in the build instructions
+</kbd></nobr></p>
+
+<p>You must now rebuild and reinstall Insight as described in the build instructions
 you originally used. It is safest to use a new empty build directory rather than
-reusing the Insight build directory from the previous build.
-<p>
+reusing the Insight build directory from the previous build.</p>
 
-<h5>I have Cygwin b20.1 and....</h5>
+<h4>I have Cygwin b20.1 and....</h4>
 
-<P>
-Cygwin b20.1 is now obsolete. While it may still be possible to get
+<p>Cygwin b20.1 is now obsolete. While it may still be possible to get
 support on the cygwin and ecos-discuss lists when using this version
 of Cygwin, it is likely the initial recommended solution will be
-to upgrade your Cygwin installation to v1.1 or later.
+to upgrade your Cygwin installation to v1.1 or later.</p>
 
-<h5>I'm using Windows 95/98</h5>
+<h4>I'm using Windows 95/98</h4>
 
-<P>
-Building the tools under Windows 95 or 98 is not supported. It may
+<p>Building the tools under Windows 95 or 98 is not supported. It may
 work, but it has proven unreliable in the past. It is recommended to
 use an NT system instead for the initial toolchain build.
 On some Windows 95 machines it may be possible to get a working
 toolchain if you install the very latest version of cygwin and try
-hard enough, but there are no guarantees.
+hard enough, but there are no guarantees.</p>
 
-<P>
-<h4><A NAME="problems_linux">Toolchain build problems under Linux</A></h4>
+<h3><A NAME="problems_linux">Toolchain build problems under Linux</A></h3>
 
-<P>
-Toolchain builds will fail if you have . in your PATH before the
+<p>Toolchain builds will fail if you have . in your PATH before the
 native tools. Specifically, at some points during the build it will
 execute ./as rather than /usr/bin/as: since ./as will be e.g. a
 PowerPC assembler it will not be happy when the compiler invokes it
-with an ix86 intermediate file.
+with an ix86 intermediate file.</p>
 
-<P>
-Some of the toolchains, especially the PowerPC one, require a
+<p>Some of the toolchains, especially the PowerPC one, require a
 reasonable amount of memory to build. If you have less than 64MB of
 memory or only a small amount of swap space then you may run into
 problems, but a lot depends on what else is running on the system at
-the time.
+the time.</p>
 
-<P>
-If you have installed only a minimal Linux system then some libraries
+<p>If you have installed only a minimal Linux system then some libraries
 may be missing. The most likely candidates are the ncurses and
 ncurses-devel packages, and it will be necessary to install these
-first.
+first.</p>
 
+<h3><A NAME="problems_unix">Toolchain build problems on other Unix systems</A></h3>
 
-<P>
-<h4><A NAME="problems_unix">Toolchain build problems on other Unix systems</A></h4>
-
-<P>
-Officially Red Hat Linux is the only supported host Unix system for use
+<p>Officially Red Hat Linux is the only supported host Unix system for use
 with eCos, but in practice it is possible to build the tools on other
 systems as well. As with <A HREF="#problems_linux">Linux</A> care has to be
 taken care with the position of . in your PATH. In addition you will
 need to have a reasonable set of existing tools on your Unix machine
 before you can build a cross-compiler. A good starting point is the <A
-HREF="http://gcc.gnu.org">gcc</A> compiler.
-<P>
-Two problems are occasionally encountered on Solaris systems. One of
-these relates to the <A
-HREF="/ml/ecos-discuss/1999-02/msg00005.html">admin</A>
-command. Another involves <A
-HREF="/ml/ecos-discuss/1999-02/msg00003.html">termio</A> although
+HREF="http://gcc.gnu.org" target="_top">gcc</A> compiler.</p>
+
+<p>Two problems are occasionally encountered on Solaris systems. One of
+these relates to the
+<A HREF="/ml/ecos-discuss/1999-02/msg00005.html">admin</A>
+command. Another involves
+<A HREF="/ml/ecos-discuss/1999-02/msg00003.html">termio</A> although
 this is believed to be fixed in recent tools sources.
 Solutions to these problems are available via the mailing list
-archives.
-<P>
+archives.</p>
 
-<h4><A NAME="problems_alpha">Host tools build problems on Alpha systems</A></H4>
+<h3><A NAME="problems_alpha">Host tools build problems on Alpha systems</A></h3>
 
-It has been reported that egcs-1.1.2 is not capable of building the eCos
+<p>It has been reported that egcs-1.1.2 is not capable of building the eCos
 host-side tools (ecosconfig, etc.). Alpha users should use at least
-gcc 2.95.2 to compile these tools.
+gcc 2.95.2 to compile these tools.</p>
 
-<p>
+<h3><A NAME="problems_building_ecos">Problems building eCos</A></h3>
 
-<h4><A NAME="problems_building_ecos">Problems building eCos</A></h4>
+<h4>When I run the gcc 2.95.2 I just installed I get an error "<samp>cpp: too many input files</samp>"</h4>
 
-<h5>When I run the gcc 2.95.2 I just installed I get an error "<tt>cpp: too many input files</tt>"</h5>
-<p>
-<tt>gcc</tt> tends to report the error message "<tt>cpp: too many input files</tt>" when
-it cannot find tools in the places it expects them to be. One cause is if you <tt>configure</tt>d
-with a <tt>--prefix</tt> or a <tt>--exec-prefix</tt> argument with a trailing slash. You must ensure
-there are no trailing slashes to the arguments to <tt>--prefix</tt> and <tt>--exec-prefix</tt>.
+<tt>gcc</tt> tends to report the error message "<samp>cpp: too many input files</samp>" when
+it cannot find tools in the places it expects them to be. One cause is if you <kbd>configure</kbd>d
+with a <kbd>--prefix</kbd> or a <kbd>--exec-prefix</kbd> argument with a trailing slash. You must ensure
+there are no trailing slashes to the arguments to <kbd>--prefix</kbd> and <kbd>--exec-prefix</kbd>.
 Another cause is if you have moved your gcc installation from the location you originally
 specified when it was configured. This location is determined primarily by the
-<tt>--exec-prefix</tt> argument to gcc's configure script.
-<p>
-More recent gcc snapshots do not have this limitation, which is specific to gcc 2.95.2
+<kbd>--exec-prefix</kbd> argument to gcc's configure script.</p>
+
+<p>More recent gcc snapshots do not have this limitation, which is specific to gcc 2.95.2
 or earlier. To resolve it, you can: use a more recent gcc snapshot; reconfigure gcc
 with the intended installation location set correctly; or set up symlinks from the
-old location to the new one.
-<P>
-<h5>The eCos Configuration Tool stops with errors when building eCos</h5>
-<p>
-If you get errors when building eCos from the eCos Configuration Tool, you
+old location to the new one.</p>
+
+<h4>The eCos Configuration Tool stops with errors when building eCos</h4>
+
+<p>If you get errors when building eCos from the eCos Configuration Tool, you
 should ensure that there are text-mode Cygwin mount points representing
-each of the drives in use. For example:<p>
+each of the drives in use. For example:</p>
 
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;c:/&nbsp;/c</tt><br>
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;d:/&nbsp;/d</tt><br>
-<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;h:/&nbsp;/h</tt><br>
-<p>and so forth.
+<p><kbd>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;c:/&nbsp;/c<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;d:/&nbsp;/d<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;h:/&nbsp;/h</kbd></p>
 
-<h3>Miscellaneous</h3>
+<p>and so forth.</p>
 
-<P>
-<h4><A NAME="misc_printed">Where can I get hold of printed
-documentation?</A></h4>
+<h2>Miscellaneous</h2>
 
 <P>
-Suitable PDF files are available <A HREF="docs.html">online</A>.
+<h3><A NAME="misc_printed">Where can I get hold of printed
+documentation?</A></h3>
+
+<p>Suitable PDF files are available <A HREF="docs.html">online</A>.
 The HTML versions of the documentation are included in the main
 release files, and are also available <A HREF="getstart.html">
 separately</A>. Printed copies are provided as part of a technical support
-contract. 
+contract. </p>
 
-<P>
-<h4><A NAME="misc_jobs">Red Hat sounds like a wonderful company - are there
-any jobs going?</A></h4>
+<h3><A NAME="misc_jobs">Red Hat sounds like a wonderful company - are there
+any jobs going?</A></h3>
 
-<P>
-Details of our <A HREF="http://www.redhat.com/about/careers.html">
-current job openings</A> are available on our corporate web
-site. 
+<p>Details of our <A HREF="http://www.redhat.com/about/careers.html"
+target="_top"> current job openings</A> are available on our corporate web
+site.</p>
 
-<P>
-<A HREF="#top">Top</A>
+<p><A HREF="#top">Top</A></p>
 
-<!--#include virtual="include/footer.html"-->
+<HR noshade SIZE=3>
+</body></html>

@@ -1,10 +1,708 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
-<HTML>
-<HEAD><!--version 1.0-Intel/Thu Feb  1 18:29:59  2001-->
-<TITLE>redirect</TITLE>
-<meta http-equiv="refresh" content="0;url=redboot.2.html">
-</HEAD>
-<BODY>
-</BODY>
-</HTML>
-
+<!-- Copyright (C) 2001 Red Hat, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/)                            -->
+<!-- Distribution of substantively modified versions of this         -->
+<!-- document is prohibited without the explicit permission of the   -->
+<!-- copyright holder.                                               -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission obtained from the copyright holder                   -->
+<HTML
+><HEAD
+><TITLE
+>RedBoot&#8482; User's Guide</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
+REL="NEXT"
+TITLE="Copyright"
+HREF="t9.html"></HEAD
+><BODY
+CLASS="BOOK"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="BOOK"
+><A
+NAME="REDBOOT"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="REDBOOT"
+>RedBoot&#8482; User's Guide</A
+></H1
+><P
+CLASS="COPYRIGHT"
+>Copyright &copy; 2001 by <SPAN
+CLASS="HOLDER"
+>Red Hat</SPAN
+></P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="t9.html"
+>Copyright</A
+></DT
+><DT
+><A
+HREF="t30.html"
+>Warranty</A
+></DT
+><DT
+><A
+HREF="t37.html"
+>How to Contact Red Hat</A
+></DT
+><DT
+>1. <A
+HREF="getting_started_with_redboot.html"
+>Getting Started with RedBoot</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="getting_started_with_redboot.html#AEN79"
+>Installing RedBoot</A
+></DT
+><DT
+><A
+HREF="x91.html"
+>User Interface</A
+></DT
+><DT
+><A
+HREF="configuring_the_redboot_environment.html"
+>Configuring the RedBoot Environment</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="configuring_the_redboot_environment.html#AEN122"
+>Target Network Configuration</A
+></DT
+><DT
+><A
+HREF="configuring_the_redboot_environment.html#AEN166"
+>Host Network Configuration</A
+></DT
+><DT
+><A
+HREF="configuring_the_redboot_environment.html#AEN249"
+>Verification</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>2. <A
+HREF="redboot_commands_and_examples.html"
+>RedBoot Commands and Examples</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="redboot_commands_and_examples.html#AEN263"
+>Introduction</A
+></DT
+><DT
+><A
+HREF="redboot_editing_commands.html"
+>RedBoot Editing Commands</A
+></DT
+><DT
+><A
+HREF="x324.html"
+>Common Commands</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="x324.html#AEN338"
+>Connectivity</A
+></DT
+><DT
+><A
+HREF="x324.html#AEN380"
+>General</A
+></DT
+><DT
+><A
+HREF="x324.html#AEN422"
+>Download Process</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="flash_image_system.html"
+>Flash Image System (FIS)</A
+></DT
+><DT
+><A
+HREF="persistent_state_flash.html"
+>Persistent State Flash-based Configuration and Control</A
+></DT
+><DT
+><A
+HREF="executing_programs.html"
+>Executing Programs from RedBoot</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="rebuilding_redboot.html"
+>Rebuilding RedBoot</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="rebuilding_redboot.html#AEN693"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="rebuilding_redboot.html#CONFIGURATION_EXPORT_FILES"
+>Configuration export files</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>4. <A
+HREF="updating_redboot.html"
+>Updating RedBoot</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="updating_redboot.html#AEN760"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="updating_redboot.html#AEN779"
+>Start RedBoot, Running from flash</A
+></DT
+><DT
+><A
+HREF="updating_redboot.html#DIFFERENT_VERSION_FROM_RAM"
+>Load and start a different version of RedBoot, running from RAM</A
+></DT
+><DT
+><A
+HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+>Update the primary RedBoot flash image</A
+></DT
+><DT
+><A
+HREF="updating_redboot.html#AEN806"
+>Reboot; run RedBoot from flash</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>5. <A
+HREF="installation_and_testing.html"
+>Installation and Testing</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="installation_and_testing.html#IQ80310"
+>Cyclone IQ80310</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="installation_and_testing.html#AEN822"
+>Overview</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN842"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN853"
+>Error codes</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN857"
+>Using RedBoot with ARM Bootloader</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN860"
+>Flash management</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN879"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN883"
+>IQ80310 Hardware Tests</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN888"
+>Rebuilding RedBoot</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN896"
+>Interrupts</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN904"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="installation_and_testing.html#AEN912"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="brutus.html"
+>Intel SA1100 (Brutus)</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="brutus.html#AEN920"
+>Overview</A
+></DT
+><DT
+><A
+HREF="brutus.html#AEN935"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="brutus.html#AEN938"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="brutus.html#AEN941"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="brutus.html#AEN948"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="ebsa285.html"
+>Intel StrongArm EBSA 285</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ebsa285.html#AEN953"
+>Overview</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN968"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN972"
+>Flash management</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN984"
+>Communication Channels</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN987"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN990"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN997"
+>Resource Usage</A
+></DT
+><DT
+><A
+HREF="ebsa285.html#AEN1001"
+>Intel StrongARM EBSA-285 Building Test Cases to run with RedBoot</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="sa1100mm.html"
+>Intel SA1100 Multimedia Board</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="sa1100mm.html#AEN1009"
+>Overview</A
+></DT
+><DT
+><A
+HREF="sa1100mm.html#AEN1023"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="sa1100mm.html#AEN1026"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="sa1100mm.html#AEN1029"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="sa1100mm.html#AEN1036"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="assabet.html"
+>Intel SA1110 (Assabet)</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="assabet.html#AEN1042"
+>Overview</A
+></DT
+><DT
+><A
+HREF="assabet.html#AEN1056"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="assabet.html#AEN1060"
+>Flash management</A
+></DT
+><DT
+><A
+HREF="assabet.html#AEN1072"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="assabet.html#AEN1075"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="assabet.html#AEN1082"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="atlas.html"
+>MIPS Atlas Board with CoreLV 4Kc and CoreLV 5Kc</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="atlas.html#AEN1088"
+>Overview</A
+></DT
+><DT
+><A
+HREF="atlas.html#AEN1102"
+>Initial Installation</A
+></DT
+><DT
+><A
+HREF="atlas.html#AEN1151"
+>Flash management</A
+></DT
+><DT
+><A
+HREF="atlas.html#AEN1169"
+>Interrupts</A
+></DT
+><DT
+><A
+HREF="atlas.html#AEN1179"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="atlas.html#AEN1186"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="ocelot.html"
+>QED MIPS RM7000 Ocelot</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ocelot.html#AEN1191"
+>Overview</A
+></DT
+><DT
+><A
+HREF="ocelot.html#AEN1205"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="ocelot.html#AEN1208"
+>Flash Management</A
+></DT
+><DT
+><A
+HREF="ocelot.html#AEN1220"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="ocelot.html#AEN1223"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="ocelot.html#AEN1231"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="mbx.html"
+>Motorola PowerPC MBX</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="mbx.html#AEN1237"
+>Overview</A
+></DT
+><DT
+><A
+HREF="mbx.html#AEN1252"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="mbx.html#AEN1278"
+>Flash management</A
+></DT
+><DT
+><A
+HREF="mbx.html#AEN1290"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="mbx.html#AEN1293"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="mbx.html#AEN1297"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="pid.html"
+>ARM ARM7 PID, Dev7 and Dev9</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="pid.html#AEN1302"
+>Overview</A
+></DT
+><DT
+><A
+HREF="pid.html#AEN1316"
+>Initial Installation Method</A
+></DT
+><DT
+><A
+HREF="pid.html#AEN1322"
+>Special RedBoot Commands</A
+></DT
+><DT
+><A
+HREF="pid.html#AEN1325"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="pid.html#AEN1329"
+>Resource Usage</A
+></DT
+></DL
+></DD
+><DT
+><A
+HREF="ipaq.html"
+>Compaq iPAQ PocketPC</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ipaq.html#AEN1342"
+>Overview</A
+></DT
+><DT
+><A
+HREF="ipaq.html#AEN1346"
+>Initial Installation</A
+></DT
+><DT
+><A
+HREF="ipaq.html#AEN1406"
+>Flash Management</A
+></DT
+><DT
+><A
+HREF="ipaq.html#AEN1430"
+>Memory Maps</A
+></DT
+><DT
+><A
+HREF="ipaq.html#AEN1437"
+>Resource Usage</A
+></DT
+><DT
+><A
+HREF="ipaq.html#AEN1440"
+>Rebuilding RedBoot</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+><FONT
+COLOR="RED"
+>Document Version 1.3, April 2001</FONT
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="t9.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Copyright</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

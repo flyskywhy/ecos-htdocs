@@ -1,0 +1,518 @@
+#!/bin/sh
+FAMILIAR=familiar-0.3-mh1
+KERNELVER=2.4.2-rmk1-np3-20010324
+LIBMODULES=libmodules-2.4.2-rmk1-np3-20010324
+
+#Changelog
+# 0.3-pre3-dw1
+# First familiar-0.3-pre3 build
+#
+# 0.3-pre3-dw2
+# New libmodules tarball, with modules.dep and correct permissions
+# sjohnson's xcalibrate with save/restore settings
+#
+# 0.3-pre3-dw3
+# /dev/ppp and modules.conf additions for PPP
+# sjohnson's xcalibrate startup script
+#
+# 0.3-pre3-dw4
+# One-liner just to wind curious up and encourage him to use build.sh
+#	instead of downloading the prebuilt images
+# remove backupToFlash - we really don't want people trying to use it.
+#
+# 0.3-dw1
+# Update to the real familiar-0.3 release
+# Add --no-backup-if-mismatch to the patch args
+#
+# 0.3-dw2
+# Add reboot, suspend and IrDA enable/disable to blackbox menu
+# Add fixed wvlan_cs module - new libmodules 20010312
+# Fix sa1100-rtc name
+# Ensure we remove 'build' and 'modules.dep' from the lib/modules dir
+#	after installing them.
+# insmod ramfs.o and unix.o in /linuxrc
+# fix scale script to load module
+# Add CPU speed to blackbox menus
+#
+# 0.3-mh1 2001/03/16
+# Add more mount points in /etc/fstab
+# Add fix for ssh start script to generate keyfiles if they do not yet exist
+# Set hostname to ipaq
+# Add new files /etc/pointercal, /root/.profile, /root/.ssh/authorized_keys
+# Add links for Qt/embedded, QPE and KONQ
+
+
+echo "Building JFFS2 image for $FAMILIAR"
+
+if [ ! -x $MKJFFS2 ]; then
+    echo "mkfs.jffs2 not found at $MKJFFS2. Exiting"
+    exit 1
+fi
+
+if [ -e $FAMILIAR ]; then
+    echo "File or directory \"$FAMILIAR\" already exists. Exiting"
+    exit 1
+fi
+
+if [ ! -x mkfs.jffs2 ]; then 
+    echo "mkfs.jffs2 not found. Downloading from ftp.uk.linux.org"
+    wget ftp://ftp.uk.linux.org/pub/people/dwmw2/iPAQ/mkfs.jffs2
+    if [ ! -e mkfs.jffs2 ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+    chmod +x mkfs.jffs2
+fi
+
+echo "Checking presence of tarballs"
+if [ ! -e $LIBMODULES.tar.gz ]; then
+#    echo "Downloading $LIBMODULES.tar.gz from ftp.uk.linux.org"
+#    wget ftp://ftp.uk.linux.org/pub/people/dwmw2/iPAQ/bits/$LIBMODULES.tar.gz
+    echo "Downloading $LIBMODULES.tar.gz from www.chez-thomas.org"
+    wget http://www.chez-thomas.org/gary/iPAQ/build/$LIBMODULES.tar.gz
+    if [ ! -e $LIBMODULES.tar.gz ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+
+if [ ! -e pppd ]; then
+    echo "Downloading pppd binary from ftp.uk.linux.org"
+    wget ftp://ftp.uk.linux.org/pub/people/dwmw2/iPAQ/bits/pppd
+    if [ ! -e pppd ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+
+if [ ! -e apm ]; then
+    echo "Downloading apm binary from ftp.handhelds.org"
+    wget ftp://ftp.handhelds.org/pub/linux/compaq/ipaq/v0.21/apm
+    if [ ! -e apm ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+
+if [ ! -e xcalibrate ]; then
+    echo "Downloading xcalibrate binary from ftp.uk.linux.org"
+    wget ftp://ftp.uk.linux.org/pub/people/dwmw2/iPAQ/bits/xcalibrate
+    if [ ! -e xcalibrate ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+
+if [ ! -e init-v0.3-src.tar.gz ]; then
+    echo "Downloading init-v0.3-src.tar.gz from ftp.handhelds.org"
+    wget ftp://ftp.handhelds.org/pub/linux/dists/familiar/v0.3/init-v0.3-src.tar.gz
+    if [ ! -e init-v0.3-src.tar.gz ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+if [ ! -e root-v0.3-src.tar.gz ]; then
+    echo "Downloading root-v0.3-src.tar.gz from ftp.handhelds.org"
+    wget ftp://ftp.handhelds.org/pub/linux/dists/familiar/v0.3/root-v0.3-src.tar.gz
+    if [ ! -e root-v0.3-src.tar.gz ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+if [ ! -e usr-v0.3-src.tar.gz ]; then
+    echo "Downloading usr-v0.3-src.tar.gz from ftp.handhelds.org"
+    wget ftp://ftp.handhelds.org/pub/linux/dists/familiar/v0.3/usr-v0.3-src.tar.gz
+    if [ ! -e usr-v0.3-src.tar.gz ]; then
+	echo "Download failed. Exiting"
+	exit 1
+    fi
+fi
+
+echo "Verifying tarballs"
+
+if !( md5sum -c <<EOF
+f5b19f2594247471defef16ba4a92571  init-v0.3-src.tar.gz
+8d335fa077fbc587b8f216ea8b2c2107  root-v0.3-src.tar.gz
+363790f18c52cb00962864403b599adf  usr-v0.3-src.tar.gz
+8ce65332165b1067da7cb57e318832b0  libmodules-2.4.2-rmk1-np3-20010324.tar.gz
+67a6925705228df2185abb11ae26f279  pppd
+59436cd631b3e6bb4bfc55019ed3c1b5  apm
+5c999e3f83408a5030ff9830c77f043c  xcalibrate
+EOF
+); then
+	exit 1
+fi
+
+if [ -e init-v0.3-src ]; then
+    echo "Removing old init-v0.3-src"
+    if ! rm -rf init-v0.3-src &>/dev/null; then
+	echo Removal failed. Exiting.
+	exit 1
+    fi
+fi
+if [ -e root-v0.3-src ]; then
+    echo "Removing old root-v0.3-src"
+    if ! rm -rf root-v0.3-src &>/dev/null; then
+	echo Removal failed. Exiting.
+	exit 1
+    fi
+fi
+if [ -e usr-v0.3-src ]; then
+    echo "Removing old usr-v0.3-src"
+    if ! rm -rf usr-v0.3-src &>/dev/null; then
+	echo Removal failed. Exiting.
+	exit 1
+    fi
+fi
+
+echo "Extracting init-v0.3-src.tar.gz"
+if ! tar xfz init-v0.3-src.tar.gz ; then
+    echo Extraction failed. Exiting
+    exit 1
+fi
+echo "Extracting root-v0.3-src.tar.gz"
+if ! tar xfz root-v0.3-src.tar.gz ; then
+    echo Extraction failed. Exiting
+    exit 1
+fi
+echo "Extracting usr-v0.3-src.tar.gz"
+if ! tar xfz usr-v0.3-src.tar.gz ; then
+    echo Extraction failed. Exiting
+    exit 1
+fi
+
+mv root-v0.3-src $FAMILIAR
+
+echo "Moving /usr directory into place"
+rmdir $FAMILIAR/usr
+mv usr-v0.3-src $FAMILIAR/usr
+
+echo "Copying extra devices into place"
+cp -a init-v0.3-src/dev/{mtd?,mtdr?,ircomm0,tty?} $FAMILIAR/dev
+
+echo "Moving /root directory into place"
+rm $FAMILIAR/root
+mv init-v0.3-src/mnt/ramfs/root $FAMILIAR/root
+
+echo "Moving /home directory into place"
+rm $FAMILIAR/home
+mv init-v0.3-src/mnt/ramfs/home $FAMILIAR/home
+
+echo "Moving /etc directory into place"
+rm $FAMILIAR/etc
+mv init-v0.3-src/mnt/ramfs/etc $FAMILIAR/etc
+
+echo "Fixing modules.conf for PPP"
+cat >> $FAMILIAR/etc/modules.conf <<EOF
+alias char-major-108 ppp_generic
+alias tty-ldisc-3 ppp_async
+alias tty-ldisc-14 ppp_synctty
+alias irda0 sa1100_ir
+EOF
+
+echo "Making /dev/ppp node"
+mknod $FAMILIAR/dev/ppp c 108 0
+
+echo "Making symlink from /etc/mtab to /proc/mounts"
+ln -sf /proc/mounts $FAMILIAR/etc/mtab
+
+echo "Fixing /etc/pcmcia/config for ide-cs"
+# perl -pi would be better, but we don't know it's installed 
+cat $FAMILIAR/etc/pcmcia/config | sed s/ide_cs/ide-cs/g > tmp-pcmcia-config
+mv tmp-pcmcia-config $FAMILIAR/etc/pcmcia/config
+
+echo "Fixing /etc/modules for sa1100-rtc"
+cat $FAMILIAR/etc/modules | sed s/sa1100_rtc/sa1100-rtc/ > tmp-etc-modules
+mv tmp-etc-modules $FAMILIAR/etc/modules
+
+echo "Making symlink for /etc/network/ifstate into ramfs"
+ln -sf ../../mnt/ramfs/etc/network/ifstate $FAMILIAR/etc/network/ifstate 
+mkdir -p init-v0.3-src/mnt/ramfs/etc/network
+touch init-v0.3-src/mnt/ramfs/etc/network/ifstate
+
+echo "Removing /mnt/ramfs/lib"
+rm -rf init-v0.3-src/mnt/ramfs/lib
+
+echo "Removing /mnt/ramfs/var/db"
+rm -rf init-v0.3-src/mnt/ramfs/var/db
+
+echo "Making tarball of /mnt/ramfs for extraction at boot"
+tar cfz $FAMILIAR/.ramfs.tar.gz -C init-v0.3-src/mnt/ramfs .
+
+echo "Installing new modules"
+rm -rf $FAMILIAR/lib/modules
+tar xfz $LIBMODULES.tar.gz -C $FAMILIAR
+chown root.root -R $FAMILIAR/lib/modules
+rm -f $FAMILIAR/lib/modules/modules.dep
+rm -f $FAMILIAR/lib/modules/build
+
+echo "Updating pppd"
+cp pppd $FAMILIAR/usr/sbin
+chown root.root $FAMILIAR/usr/sbin/pppd
+chmod 4755 $FAMILIAR/usr/sbin/pppd
+
+echo "Installing apm"
+cp apm $FAMILIAR/usr/bin
+chown root.root $FAMILIAR/usr/bin/apm
+chmod 0755 $FAMILIAR/usr/bin/apm
+
+echo "Installing xcalibrate"
+cp xcalibrate $FAMILIAR/usr/X11R6/bin
+chown root.root $FAMILIAR/usr/X11R6/bin/xcalibrate
+chmod 0755 $FAMILIAR/usr/X11R6/bin/xcalibrate
+
+echo "Patching /etc/init.d/x to restore touch screen settings"
+patch -p0 --no-backup-if-mismatch <<EOF 
+--- $FAMILIAR/etc/init.d/x.orig	Sun Mar 11 22:48:58 2001
++++ $FAMILIAR/etc/init.d/x	Sun Mar 11 22:50:03 2001
+@@ -26,6 +26,11 @@
+ 
+ 	(cd familiar ; ./splash )
+ 
++	if [ -f /etc/xcalibrate.conf ]; then
++		echo "Restoring touch screen calibration"
++		/usr/X11R6/bin/xcalibrate -cal \`cat /etc/xcalibrate.conf\`
++	fi
++
+ 	blackbox &
+ 
+ 	xset s 30 180
+EOF
+
+echo "Patching /etc/X11/blackbox/blackbox-menu"
+patch -p0 --no-backup-if-mismatch <<EOF
+--- $FAMILIAR/etc/X11/blackbox/blackbox-menu.orig	Sun Mar 11 22:51:54 2001
++++ $FAMILIAR/etc/X11/blackbox/blackbox-menu	Sun Mar 11 22:52:51 2001
+@@ -20,6 +20,18 @@
+ 			[exec] (fscrib) {fscrib}
+ 			[exec] (xvkbd) {xvkbd -ipaq -compact -geom 230x80}
+ 		[end]
++		[submenu] (IrDA)
++			[exec] (Enable) {ifconfig irda0 up ; echo 1 > /proc/sys/net/irda/discovery}
++			[exec] (Disable) {ifconfig irda0 down ; echo 0 > /proc/sys/net/irda/discovery}
++		[end]
++		[submenu] (Suspend iPAQ)
++			[exec] (Sure?) {/usr/bin/apm -s}
++			[exec] (No) {/bin/false}
++		[end]
++		[submenu] (Reboot iPAQ)
++			[exec] (Sure?) {/sbin/reboot}
++			[exec] (No) {/bin/false}
++		[end]
+ 		[nop]
+ 		[exec] (Xrefresh) {xrefresh}
+       	[end]
+@@ -54,8 +62,27 @@
+ 		[end]
+ 		[nop]
+ 		[exec] (System Settings) {sysset}
+-		[exec] (Calibrate Touch Screen) {xcalibrate}
+-		[exec] (Backup To Flash) {rxvt -title "Backup to Flash" -e /root/backupToFlash}
++		[submenu] (Touch Screen)
++		      [exec] (Calibrate) {xcalibrate}
++		      [exec] (Save Settings) {xcalibrate -view >/etc/xcalibrate.conf}
++		      [exec] (Restore Settings) {xcalibrate -cal \`cat /etc/xcalibrate.conf\`}
++		      [exec] (Delete Settings) {rm /etc/xcalibrate.conf}
++		[end]
++		[submenu] (CPU Speed)
++			[exec] (59 Mhz) {echo 0 > /proc/scale}
++			[exec] (74 Mhz) {echo 1 > /proc/scale}
++			[exec] (89 Mhz) {echo 2 > /proc/scale}
++			[exec] (103 Mhz) {echo 3 > /proc/scale}
++			[exec] (118 Mhz) {echo 4 > /proc/scale}
++			[exec] (133 Mhz) {echo 5 > /proc/scale}
++			[exec] (148 Mhz) {echo 6 > /proc/scale}
++			[exec] (162 Mhz) {echo 7 > /proc/scale}
++			[exec] (177 Mhz) {echo 8 > /proc/scale}
++			[exec] (192 Mhz) {echo 9 > /proc/scale}
++			[exec] (206 Mhz) {echo 10 > /proc/scale}
++			[exec] (OVERCLOCK to 221 Mhz) {echo 11 > /proc/scale}
++			[exec] (OVERCLOCK to 235 Mhz) {echo 12 > /proc/scale}
++		[end]
+ 	[end]
+ 	[workspaces] (Workspaces)
+ 	[nop]
+EOF
+
+echo "Removing backupToFlash"
+rm -f $FAMILIAR/root/backupToFlash
+
+echo "Changing fstab"
+cat > $FAMILIAR/etc/fstab <<EOF
+# <device>    <mountpoint>   <filesystemtype> <options> <dump> <fsckorder>
+/dev/mtdblock3 	/               jffs2           defaults 0 0
+ramfs		/mnt/ramfs	ramfs		defaults 0 0
+proc            /proc           proc            defaults 0 0
+devpts		/dev/pts	devpts		mode=0622       0 0
+
+/dev/hda1	/usr/local	vfat		noauto,owner,user,exec,umask=000	0 0
+
+merkur:/	/mnt/merkur		nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+merkur:/home	/mnt/merkur/home	nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+merkur:/opt	/mnt/merkur/opt		nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+saturn:/	/mnt/saturn		nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+saturn:/home	/mnt/saturn/home	nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+saturn:/opt	/mnt/saturn/opt		nfs	noauto,nolock,bg,intr,soft,rw,user,exec,suid,rsize=8192,wsize=8192 0 0
+EOF
+
+echo "Patching linuxrc"
+patch -p0 --no-backup-if-mismatch <<EOF
+--- $FAMILIAR/linuxrc.orig	Sun Mar 11 18:50:14 2001
++++ $FAMILIAR/linuxrc	Sun Mar 11 18:54:25 2001
+@@ -3,18 +3,19 @@
+ 
+ export PATH=/bin:/sbin
+ 
+-echo "Setting up RAMFS, please wait... "
+-mount -n -t ramfs ramfs /mnt/ramfs
+-mount -n -t ramfs ramfs /dev
+-
++echo "Loading floating point emulator..."
++/sbin/insmod nwfpe
+ 
+-# Hack to make this all work:
++echo "Mounting /proc"
++mount -n /proc
+ 
+-mknod /dev/mtdblock3 b 31 3
+-
+-echo "Untarring overlay... "
+-cd /
+-tar xfpz /dev/mtdblock3 > /dev/null 2>&1
++echo "Loading Unix socket support"
++/sbin/insmod unix
++
++echo "Setting up RAMFS, please wait... "
++/sbin/insmod ramfs
++mount /mnt/ramfs
++tar xfpz .ramfs.tar.gz -C /mnt/ramfs > /dev/null 2>&1
+ 
+ if [ ! -s /etc/inittab ]
+ then
+@@ -23,17 +24,6 @@
+     cd /tmp
+     exec /bin/sh
+ fi
+-
+-
+-# Now we have to do a little housekeeping
+-rm -f /etc/mtab
+-
+-# re-create the /etc/mtab entries
+-echo "Recreating /etc/mtab..."
+-mount -f -t cramfs -o ro /dev/mtdblock4 /
+-mount -f -t ramfs ramfs /mnt/ramfs
+-mount -f -t ramfs ramfs /dev
+-mount -f -t proc none /proc
+
+ echo "Setting Date/Time from previous settings"
+ /bin/date -s "\`/bin/cat /etc/lastdate\`"
+EOF
+
+echo "Fixing /etc/init.d/scale.sh to load cpu-scale module"
+patch -p0 --no-backup-if-mismatch <<EOF
+--- $FAMILIAR/etc/init.d/scale.sh.orig	Mon Mar 12 13:20:49 2001
++++ $FAMILIAR/etc/init.d/scale.sh	Mon Mar 12 13:21:01 2001
+@@ -1,4 +1,5 @@
+ #!/bin/sh
+ 
+ echo "Setting CPU Speed"
++insmod cpu-scale
+ echo "10" > /proc/scale
+EOF
+
+echo "Fixing /etc/init.d/modutils not to recreate modules.dep on _every_ boot"
+patch -p0 --no-backup-if-mismatch <<EOF
+--- $FAMILIAR/etc/init.d/modutils.orig	Mon Mar 12 12:55:15 2001
++++ $FAMILIAR/etc/init.d/modutils	Mon Mar 12 12:56:06 2001
+@@ -10,9 +10,13 @@
+ # This is to make depmod and modprobe shut up about file timestamps. -- a7r
+ touch /etc/modules.conf
+ 
+-echo -n "Calculating module dependencies... "
+-depmod -a > /dev/null
+-echo "done."
++if [ -r /lib/modules/`uname -r`/modules.dep ]; then
++	echo "Not recalculating module dependencies"
++else
++	echo -n "Calculating module dependencies... "
++	depmod -a > /dev/null
++	echo "done."
++fi
+ 
+ # Loop over every line in /etc/modules.
+ echo -n 'Loading modules: '
+EOF
+
+echo "Fixing /etc/init.d/ssh to create keyfiles if they are missing"
+patch -p0 --no-backup-if-mismatch <<EOF
+--- $FAMILIAR/etc/init.d/ssh.orig	Mon Nov 27 09:00:13 2000
++++ $FAMILIAR/etc/init.d/ssh	Fri Mar 16 16:40:40 2001
+@@ -16,6 +16,12 @@ fi
+ case "$1" in
+   start)
+ 	test -f /etc/ssh/sshd_not_to_be_run && exit 0
++	if [ ! -s /etc/ssh/ssh_host_key ]; then
++		/usr/bin/ssh-keygen -b 1024 -f /etc/ssh/ssh_host_key -N ""
++	fi
++	if [ ! -s /etc/ssh/ssh_host_dsa_key ]; then
++		/usr/bin/ssh-keygen -d -f /etc/ssh/ssh_host_dsa_key -N ""
++	fi
+         echo -n "Starting OpenBSD Secure Shell server: sshd"
+ 	start-stop-daemon --start --quiet --pidfile /var/run/sshd.pid --exec /usr/sbin/sshd
+         echo "."
+EOF
+
+echo "Setting hostname to ipaq"
+echo "ipaq" > $FAMILIAR/etc/hostname
+
+echo "Creating file /etc/pointercal"
+cat > $FAMILIAR/etc/pointercal << EOF
+-23214 0 22672968 0 -16475 16612355 65536
+EOF
+chmod 644 $FAMILIAR/etc/pointercal
+
+echo "Creating file /root/.profile"
+cat > $FAMILIAR/root/.profile << EOF
+stty erase '^h'
+EOF
+chmod 644 $FAMILIAR/root/.profile
+
+echo "Creating file /root/.ssh/authorized_keys"
+mkdir -p $FAMILIAR/root/.ssh
+cat > $FAMILIAR/root/.ssh/authorized_keys << EOF
+1024 35 143985527095068390282660586917395100065862359820729871547697175205456829978397884886346966743792393902168387418456490325948123669771415321224782605521035100572702226254092410103902530172362293459473841250900005727781875536889088269930205293965240646193286980242973872611815751707702003109897471936252708124479 manfred@merkur
+1024 35 121848419853302915486438393367201365626028451944728842756208062703210139677993243433227155682893684020235452683382335165729003810914358474630024230739564102460781647675132561983750967341646086246046806989215557228171284261251258237185697119334981894199752688087880759484037190717550988815789104020928680174073 manfred@saturn
+EOF
+chmod 600 $FAMILIAR/root/.ssh/authorized_keys
+chmod 700 $FAMILIAR/root/.ssh
+
+echo "Removing some unused files"
+xargs -t rm -f <<EOF
+familiar-0.3-mh1/etc/ppp/options
+familiar-0.3-mh1/usr/sbin/pppd
+familiar-0.3-mh1/usr/sbin/chat
+familiar-0.3-mh1/usr/sbin/fsck.ext2
+familiar-0.3-mh1/usr/sbin/mkfs.ext2
+familiar-0.3-mh1/usr/sbin/e2label
+EOF
+
+echo "Setting up links for Qt/embedded, QPE and KONQ"
+rm -f $FAMILIAR/usr/lib/qt
+ln -s /mnt/nfs/opt/redhat/comp-tools/armv4l-redhat-linux-gnu/H-ia32-linux/armv4l-redhat-linux-gnu/qt-2.2.4 $FAMILIAR/usr/lib/qt
+rm -f $FAMILIAR/usr/lib/libmng.so.0 $FAMILIAR/usr/lib/libqpe.so.1 $FAMILIAR/usr/lib/libqte.so.2
+ln -s qt/lib/libmng.so.0 $FAMILIAR/usr/lib/libmng.so.0
+ln -s qt/lib/libqpe.so.1 $FAMILIAR/usr/lib/libqpe.so.1
+ln -s qt/lib/libqte.so.2 $FAMILIAR/usr/lib/libqte.so.2
+rm -f $FAMILIAR/root/qpe.rc
+ln -s /usr/lib/qt/qpe.rc $FAMILIAR/root/qpe.rc
+ln -s ../X11R6/bin/bl $FAMILIAR/usr/bin
+mkdir -p $FAMILIAR/mnt/merkur
+mkdir -p $FAMILIAR/mnt/saturn
+ln -s saturn $FAMILIAR/mnt/nfs
+
+echo "Making JFFS2 image"
+./mkfs.jffs2 -o $FAMILIAR.jffs2 -r $FAMILIAR -p -e 0x40000
+
+echo "Making md5sum"
+md5sum $FAMILIAR.jffs2 > $FAMILIAR.jffs2.md5sum

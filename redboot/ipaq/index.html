@@ -1,0 +1,300 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>iPAQ RedBoot, eCos and Embedded Linux demonstration</title>
+  </head>
+
+  <body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
+    <h1>iPAQ RedBoot, eCos and Embedded Linux demonstration</h1>
+    <hr noshade size=3>
+
+    <p>
+      On this page, you can try out RedBoot, and demonstration applications
+      of both eCos and embedded Linux on your own Compaq iPAQ PocketPC.
+    </p>
+    <h2>Installing RedBoot</h2>
+    <p>
+      The first step to try the demo is to install RedBoot on the iPAQ.
+      To do this, follow the instructions in the
+      <a href="/ecos/docs-latest/redboot/redboot.html">RedBoot
+      User's Guide</a>. As advised and described there, we recommend you
+      use the Compaq OSloader to save your existing FLASH contents.
+    </p>
+    <p>
+      Prebuilt RedBoot binaries for the iPAQ are available from
+      <a href="/ecos/boards/redbootbins/ipaq/">this page</a>.
+    </p>
+    <h2>Running the eCos MicroWindows/NanoX demo</h2>
+    <p>
+      Once RedBoot is working, you can download and run the eCos
+      MicroWindows/NanoX demo. Prebuilt images are available from
+      <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/">
+      ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/</a> or (preferably)
+      a <a href="/mirrors.html">mirror site closer to you</a>.
+    </p>
+    <h3>Loading via TFTP</h3>
+    <p>
+      To load the demo via TFTP, ensure the images are located in /tftpboot on
+      your TFTP server and execute these commands:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -d -r -b 0x200000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">ecosromfs.gz</a>
+<b>Raw file loaded 0x00200000-0x002736c0</b>
+<b>RedBoot></b> lo -d -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a>
+<b>Raw file loaded 0x00020000-0x0005f367</b>
+      </pre>
+    </blockquote>
+    </p>
+    <h3>Loading via serial</h3>
+    <p>
+      To load the demo via serial, for example with XMODEM, type the following
+      command:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -d -m xmodem -r -b 0x200000
+      </pre>
+    </blockquote>
+    Now send the
+    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">
+    ecosromfs.gz</a> file via XMODEM. Then enter the command:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -d -m xmodem -r -b 0x20000
+      </pre>
+    </blockquote>
+    Send the
+    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">
+    nanoxdemo.gz</a> file via XMODEM.
+    </p>
+    <h3>Running the demo without programming in FLASH</h3>
+    <p>
+      It is possible to run the demo with just the nanoxdemo.gz file loaded
+      (without needing the ecosromfs.gz file), without programming anything
+      into the FLASH. The demo may be run simply with the command:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> go 0x20040
+      </pre>
+    </blockquote>
+    </p>
+    <p>
+      However note that without the ecosromfs.gz file programmed into FLASH,
+      the Scribbles application will not work.
+    </p>
+    <h3>Installing permanently in FLASH</h3>
+    <p>
+      This demo may be permanently installed in FLASH with the following
+      commands. Before these commands are executed, you must first ensure the
+      two images have been loaded as described above, but do not enter the
+      <b>go</b> command. 
+    </p>
+    <p>
+      If you have not already initialized RedBoot's FLASH image system, do
+      so now:
+    <blockquote>
+      <pre><b>RedBoot> </b>fi in
+<b>About to initialize [format] FLASH image system - are you sure (y/n)? </b>y
+<b>*** Initialize FLASH Image System
+&nbsp;&nbsp;&nbsp; Warning: device contents not erased, some blocks may not be usable
+... Unlock from 0x50fc0000-0x51000000: .
+... Erase from 0x50fc0000-0x51000000: .
+... Program from 0x01f70000-0x01f70400 at 0x50fc0000: .
+... Lock from 0x50fc0000-0x51000000: .</b></pre></blockquote></p>
+    <p>
+      Now program the images:
+    <blockquote>
+      <pre><b>RedBoot> </b>fi cr ROM_DISK -f 0x50f00000 -l 0x80000 -b 0x200000
+<b>... Erase from 0x50f00000-0x50f80000: ..
+... Program from 0x00200000-0x00280000 at 0x50f00000: ..
+... Unlock from 0x50fc0000-0x51000000: .
+... Erase from 0x50fc0000-0x51000000: .
+... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .
+... Lock from 0x50fc0000-0x51000000: .
+RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040
+<b>An image named 'RedBoot[backup]' exists - are you sure (y/n)? </b>y
+<b>* CAUTION * about to program 'RedBoot[backup]'
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at 0x50040000..0x5007ffff from 0x00100000 - are you sure (y/n)? </b>y
+<b>... Erase from 0x50040000-0x50080000: .
+... Program from 0x0020000-0x00060000 at 0x50040000: .
+... Unlock from 0x50fc0000-0x51000000: .
+... Erase from 0x50fc0000-0x51000000: .
+... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .
+... Lock from 0x50fc0000-0x51000000: .</b>
+      </pre>
+    </blockquote>
+  <b>Note:</b> For now, we'll put the NanoX in the RedBoot[backup] slot.
+  </p>
+
+    <h2>Running the Embedded Linux demo</h2>
+    <p>
+      Once RedBoot is working, you can download and run the eCos
+      Embedded Linux demo. Prebuilt images are available from
+      <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/">
+      ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/</a> or (preferably)
+      a <a href="/mirrors.html">mirror site closer to you</a>.
+    </p>
+    <h3>Loading the JFFS2 image via TFTP</h3>
+    <p>
+      To load the JFFS2 filesystem image via TFTP, ensure the image is
+      located in /tftpboot on your TFTP server and execute these commands:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">ipaqjffs2.img</a>
+<b>Raw file loaded 0x00100000-0x00cc0000</b>
+      </pre>
+    </blockquote>
+    </p>
+    <h3>Loading the JFFS2 image via serial</h3>
+    <p>
+      To load the JFFS2 filesystem image via serial, for example with XMODEM,
+      type the following command:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -d -m xmodem -r -b 0x100000
+      </pre>
+    </blockquote>
+    Now send the
+    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">
+    ipaqjffs2.img</a> file via XMODEM.
+  </p>
+    <h3>Saving the JFFS2 image to FLASH</h3>
+    <p>
+      Now save this image to flash with the command:
+    <blockquote>
+      <pre>
+<b>RedBoot> </b>fi cr JFFS2 -f 0x50100000 -b 0x100000 -l 0xe00000 -s 0xbc0000
+<b>... Erase from 0x50100000-0x50f00000: ........................................................
+... Program from 0x00100000-0x00cc0000 at 0x50100000: ...............................................
+... Unlock from 0x50fc0000-0x51000000: .
+... Erase from 0x50fc0000-0x51000000: .
+... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .
+... Lock from 0x50fc0000-0x51000000: .</b>
+      </pre>
+    </blockquote>
+  </p>
+    <p>
+      <i>
+        <font color="#FF0000">
+          *** caution: make sure the size matches the load size of ipaqjffs2.img
+        </font>
+      </i>
+    </blockquote>
+    </p>
+    <h3>Loading the Linux kernel image via TFTP</h3>
+    <p>
+      To load the Linux kernel image via TFTP, ensure the image is
+      located in /tftpboot on your TFTP server and execute these commands:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqzimage.img">ipaqzimage.img</a>
+<b>Raw file loaded 0x00100000-0x0017dfd8</b>
+      </pre>
+    </blockquote>
+    </p>
+    <h3>Loading the Linux kernel image via serial</h3>
+    <p>
+      To load the Linux kernel image via serial, for example with XMODEM,
+      type the following command:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> lo -d -m xmodem -r -b 0x100000
+      </pre>
+    </blockquote>
+    Now send the
+    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqzimage.img">
+    ipaqzimage.img</a> file via XMODEM.
+  </p>
+    <h3>Saving the Linux kernel image to FLASH</h3>
+    <p>
+      Now save this image to flash with the command:
+    <blockquote>
+      <pre>
+<b>RedBoot> </b>fi cr Linux -f 0x50080000 -b 0x100000 -l 0x80000 -r 0x100000
+<b>... Erase from 0x50080000-0x50100000: ..
+... Program from 0x00100000-0x00180000 at 0x50080000: ..
+... Unlock from 0x50fc0000-0x51000000: .
+... Erase from 0x50fc0000-0x51000000: .
+... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .
+... Lock from 0x50fc0000-0x51000000: .</b>
+      </pre>
+    </blockquote>
+  </p>
+    <p>
+      <i>
+        <font color="#FF0000">
+          *** caution: make sure the size matches the load size of ipaqzimage.img
+        </font>
+      </i>
+    </blockquote>
+    </p>
+
+    <h2>Running the demos</h2>
+    <p>
+      If all images have been programmed as above, then the FLASH directory
+      listing should be as follows:
+<p><blockquote>
+<pre><b>RedBoot></b> fi li
+<b>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FLASH addr&nbsp; Mem addr&nbsp;&nbsp;&nbsp; Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entry point
+RedBoot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50000000&nbsp; 0x00100000&nbsp; 0x00040000&nbsp; 0x50000040
+RedBoot[backup]&nbsp;&nbsp; 0x50040000&nbsp; 0x00020000&nbsp; 0x00040000&nbsp; 0x00020040
+RedBoot config&nbsp;&nbsp;&nbsp; 0x50F80000&nbsp; 0x50F80000&nbsp; 0x00040000&nbsp; 0x00000000
+FIS directory&nbsp;&nbsp;&nbsp;&nbsp; 0x50FC0000&nbsp; 0x50FC0000&nbsp; 0x00040000&nbsp; 0x00000000
+JFFS2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50100000&nbsp; 0x00100000&nbsp; 0x00E00000&nbsp; 0x00000000
+ROM_DISK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50F00000&nbsp; 0x01F00000&nbsp; 0x00080000&nbsp; 0x00000000
+Linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50080000&nbsp; 0x00100000&nbsp; 0x00080000&nbsp; 0x00000000</b></pre>
+</blockquote></p>
+    <p>
+      The eCos Microwindows/NanoX demo can be run using the commands:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> fi loa -d RedBoot[backup]
+<b>RedBoot></b> go 0x20040
+      </pre>
+    </blockquote>
+    </p>
+    <p>
+      The Embedded Linux demo can be run using the commands:
+    <blockquote>
+      <pre>
+<b>RedBoot></b> fi loa Linux
+<b>RedBoot></b> ex -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock3 init=/linuxrc console=ttySA0,38400"
+      </pre>
+    </blockquote>
+    </p>
+    <p>
+      The demo can be set up to run automatically at boot/reset time:
+<blockquote>
+<pre><b>RedBoot></b> fc
+<b>Run script at boot: false</b> t
+<b>Enter script, terminate with empty line
+>></b> fi loa -d RedBoot[backup]
+<b>>></b> go -w 5 0x20040
+<b>>></b> fi loa Linux
+<b>>></b> ex -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock3 init=/linuxrc console=ttySA0,38400" -w 5
+<b>>>
+Boot script timeout (1000ms resolution): 5</b> .
+<b>Update RedBoot non-volatile configuration - are you sure (y/n)?</b> y</pre>
+</blockquote>
+    <p>
+Now when you reset the unit, RedBoot will display this message indicating
+that you have 5 seconds to abort or the script will be executed. Note: you
+can abort via the "return" (funny curved arrow) button on the iPAQ itself
+or by typing ^C on the serial port.
+    </p>
+    <p>
+      Once the script starts, it will load the NanoX demo. Again, you
+      have 5 seconds to abort this step.
+    </p>
+    <p>If the NanoX step is aborted, then the Linux kernel will be loaded
+      and you have 5 seconds to abort.
+    </p>
+    <h2>Building the demos</h2>
+    <p>
+      To rebuild the eCos NanoX demo from source, go to
+      <a href="nanox.html">this page</a>. To rebuild the
+      Embedded Linux demo from source, go to <a href="elinux.html">
+      this page</a>.
+    </p>
+    <hr noshade size=3>
+  </body>
+</html>

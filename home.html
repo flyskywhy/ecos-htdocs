@@ -1,0 +1,323 @@
+<html>
+<head>
+  <title>eCos</title>
+  <META NAME="description" CONTENT="Information concerning the embedded Configurable operating system (eCos).">
+  <META NAME="keywords" CONTENT="eCos, operating system, Red Hat, RedHat, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time, RTOS">
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
+<h1>Home Page</h1>
+
+<hr noshade size=3>
+
+<h2>eCos news</h2>
+
+<h3>Embedded Systems Conference, San Francisco</h3>
+<p>
+Red Hat is exhibiting at <a href="http://www.esconline.com/sf/" target="_top">
+ESC San Francisco</a>, from Tuesday April 10th to Thursday April 12th. Come
+and see us demo RedBoot, eCos, and Embedded Linux on stand 2110!
+</p>
+<h3>Site updated</h3>
+<p>
+We've given parts of this site a new look, particularly the
+<a href="boards.html">Supported Hardware section</a>, and adding a new
+area dedicated to <a href="redboot/">RedBoot</a>. <a href="intouch.html">Let
+us know</a> what you think!
+</p>
+<h3>New eCos and RedBoot ports</h3>
+<p>
+Again Red Hat and the eCos community have been working hard to deliver
+more new ports and features to eCos and RedBoot. Here's a highlight
+of new ports and features we've added. More details can be found in the
+<a href="/cgi-bin/cvsweb.cgi/~checkout~/ecos/packages/NEWS?content-type=text/plain&cvsroot=ecos">
+eCos NEWS file</a>.</p>
+<ul>
+<li>eCos and RedBoot <a href="boards/ipaq.html">ported to the Compaq iPAQ
+PocketPC</a>. Try out our <a href="/redboot/ipaq/">eCos Microwindows demo for the iPAQ</a>! Support includes keypad, touch screen, watchdog, FLASH, PCMCIA
+and Compact Flash drivers. RedBoot includes support for booting ARM Linux. 
+Derived from an initial port by Richard Panton of
+<a href="http://www.3glab.com/" target="_top"> 3G Lab</a> and enhanced
+significantly by Red Hat.
+</li>
+<li>eCos/RedBoot port to the <a href="boards/e7t.html">ARM Evaluator-7T</a>.
+Currently beta quality.</li>
+<li>eCos/RedBoot port to <a href="boards/ocelot.html">QED RM7000 Ocelot</a>,
+including PCI, ethernet and FLASH support.</li>
+<li>RedBoot ported to the MIPS Atlas eval board with
+<a href="boards/atlas-4Kc.html">MIPS32 4Kc</a> or
+<a href="boards/atlas-5K.html">MIPS64 5Kc</a> processor modules, including
+PCI, serial, ethernet and FLASH drivers.</li>
+<li>RedBoot support for ARM <a href="boards/arm-pid7.html">PID</a>/<a
+href="boards/epi-dev7.html">EPI Dev7</a>/<a href="boards/epi-dev9.html">
+EPI Dev9</a> targets.</li>
+<li>Port added to the <a href="boards/cosmo-sb1.html">Cosmo CEB-V850/SB1</a>
+</li>
+<li>Compressed image support has been added to RedBoot</li>
+<li>ROM based file system support has been added, contributed by Richard
+Panton of <a href="http://www.3glab.com/" target="_top">3G Lab</a>.</li>
+<li>Generic FLASH drivers added for Intel FlashFile 28Fxxx, AMD AM29xxxxx,
+Atmel AT29C040 and Intel StrataFLASH</li>
+<li>Watchdog driver for Intel SA11x0 StrongARM added.</li>
+</ul>
+
+<h3>Intel&reg; Xscale[tm] IQ80310 port</h3>
+
+<p>A port to the <a href="http://developer.intel.com/design/IIO/prodbref/iq80310.htm" target="_top">
+Intel&reg; XScale[tm] IQ80310 Software Development and Processor
+Evaluation Kit</a> has been added.</p>
+
+<p>The port includes flash and ethernet drivers, and support for RedBoot, Red
+Hat's bootstrap firmware. The status of the port is currently beta.</p>
+
+<p>As an Open Source company, Red Hat has made these improvements available
+from the development repository via <a href="anoncvs.html">anonymous CVS</a>
+including <a href="docs-latest/">RedBoot documentation</a>.</p>
+
+<p>Tool binaries and sources are available from
+<a href="ftp://ftp.redhat.com/redhat/gnupro/" target="_top">
+ftp://ftp.redhat.com/redhat/gnupro/</a> or (preferably) a
+<a href="http://www.redhat.com/download/mirror.html" target="_top">mirror site</a>.</p>
+
+<h3>USB slave support</h3>
+
+<p>Red Hat has added support for USB slave devices to eCos, the Embedded
+Configurable Operating System. This includes generic USB slave support,
+a device driver for the Intel StrongARM SA11x0 on-chip USB device, and
+an additional support package for developing USB-ethernet and similar
+peripherals.</p>
+
+<p>These improvements are available
+from the development repository via <a href="anoncvs.html">anonymous CVS</a>
+including <a href="docs-latest/">documentation</a>.</p>
+
+<h3>Recent updates</h3>
+
+<p>Red Hat has recently added other significant features to eCos, currently
+only available from the <a href="anoncvs.html">anonymous CVS development
+repository</a>.</p>
+
+<p>Key additions to generic eCos functionality include:</p>
+
+<ul>
+<li>EL/IX compatibility layer - POSIX 1003.1 threads and
+  synchronization primitives (beta)
+<li>Plug-in filesystem and network stack support (including a sample
+  RAM-based filesystem)
+<li>RedBoot ROM monitor permitting ethernet debugging and flash management (alpha)
+<li>SNMP support
+<li>PCMCIA and flash support
+</ul>
+</p>
+
+<p>Support for the following new platforms and peripherals has also been
+added:</p>
+
+<ul>
+<li>Intel StrongARM SA1110 Assabet evaluation board
+
+<li>Intel StrongARM SA1100 Brutus evaluation board port (beta)
+ 
+<li>NEC V850 architecture, with an initial
+platform port to the NEC CEB-v850/SA1
+
+<li>CqREEK SH7708 (SH3) board (contributed by Haruki Kashiwaya)
+
+<li>Hitachi SH7707A and SH7709A variants
+
+<li>PCMCIA and Compact Flash, including drivers for the
+ARM-Assabet board (beta)
+
+<li>Flash memory for Intel StrongARM EBSA285 and Cirrus Logic
+ARM EDB7xxx boards
+
+<li>Socket Communications <a href="http://www.socketcom.com/lpecfmp.htm">Ethernet CF+ Card</a> (tested on the Assabet board only)
+</ul>
+
+<p>The complete list of <a href="hardware.html">supported targets</a> has been updated accordingly. A more detailed <a href="/ml/ecos-announce/2000/msg00001.html">announcement</a> of all these
+developments is available in the archives of the <a href="intouch.html">ecos-announce</a> mailing list.</p>
+
+<hr noshade size=3>
+
+<h3>eCos 1.3.1 release</h3>
+
+<p>In the third major public release of eCos, we have added a wealth of
+new features, enhancements, and have further extended the target platform
+coverage.</p>
+
+<p>The configuration system has been completely revised and updated. Major new
+elements include:</p>
+
+<ul>
+<li>Package management that supports the extension of eCos functionality via
+third party add-on packages
+<li>A standardized configuration save file format that is human readable and
+editable, and compatible between both GUI and command line configuration
+tools.
+<li>Enhanced web based help and component documentation system integrated into
+the GUI configuration tool
+<li>The Component Definition Language (CDL) has been radically revised and
+has now been implemented as a TCL extension for maximum flexibility. CDL is
+now fully documented in the <i>eCos Component Writer's Guide</i>.
+<li>Template support for straightforward control of multiple configuration
+elements, which can be used to provide easy access to standard eCos
+configurations such as a debug stub boot ROM.
+<li>Best of all, the source of the new configuration tools and underlying
+libCDL technology has been open sourced under the
+<a href="http://www.gnu.org/copyleft/gpl.html">GNU Public License</a> (GPL).
+</ul>
+
+<p>A companion beta version of the eCos TCP/IP stack has been released in
+conjunction with 1.3.1. The stack is derived from the OpenBSD source base
+and provides UDP, TCP, ICMP and BOOTP protocol support on an IPv4 standards
+base. Device driver support for Cirrus Logic EP72xx evaluation boards and
+Motorola MBX is included. The stack, ethernet core support, and device
+drivers are all distributed as configurable eCos packages.</p>
+
+<p>A PCI bus support library has also been added that provides generic PCI bus
+based device initialization, discovery, and configuration. The library has
+been ported to both the VR4300 DDB-VRC4373 and StrongARM EBSA285 development
+boards.</p>
+
+<p>New architectures and platforms added in this release include:
+
+<ul>
+<li>ARM Thumb
+<li>ARM9
+<li>Cirrus Logic CL-PS7111 and EP72xx
+<li>Cogent CMA222 and CMA230 ARM boards
+<li>Hitachi SH3
+<li>Intel StrongARM
+<li>Intel x86 PC
+<li>Matsushita AM33
+<li>Motorola MBX evaluation board
+<li>NEC MIPS VR4300
+</ul>
+
+For further details of all the changes see the <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/~checkout~/ecos/packages/NEWS?content-type=text/plain&cvsroot=ecos">NEWS</a> file.</p>
+
+<p>This is the first release of eCos since the merger of Red Hat and Cygnus
+Solutions was completed. Red Hat is dedicated to continued enhancement and
+maintenance of the eCos system. Developers can look forward to upcoming
+releases that further expand the architectural and board coverage, extend
+the functionality of the TCP/IP stack, add a Linux version of the GUI
+configuration tool, and add major new features such as a Linux/Posix
+compatibility layer based on the upcoming EL/IX standard - see the 
+<a href="../elix/">EL/IX web site</a> for more details.</p>
+
+<p>The merger has brought about some minor changes to eCos's Mozilla-derived
+public license, the most fundamental of which is simply the change of name
+from Cygnus eCos Public License (CEPL) to Red Hat eCos Public License
+(RHEPL). The license terms themselves have not changed in any material way
+other than alterations necessary to accommodate the change in company
+details.</p>
+
+<hr noshade size=3>
+
+<h2>About eCos</h2>
+
+<p>eCos is provided as an open source runtime system supported by the Red Hat
+GNUPro and GNU open source development tools. Developers have full and
+unfettered access to all aspects of the runtime system. No parts of it are
+proprietary or hidden, and you are at liberty to examine, add to, and modify
+the code as you deem necessary. These rights are granted to you and
+protected by the Red Hat eCos Public License (RHEPL). It also grants you the
+right to freely develop and distribute applications based on eCos. You are
+not expected or required to make your embedded applications or any
+additional components that you develop freely available, although we do
+require that you make publicly available any modifications to the eCos code
+itself. Red Hat of course welcomes all contributions back to eCos such as
+board ports, device drivers and other components, as this helps the growth
+and development of eCos, and is of benefit to the entire eCos community.</p>
+
+<p>One of the key technological innovations in eCos is our configuration
+system. The configuration system allows the application writer to impose
+their requirements on the run-time components, both in terms of their
+functionality and implementation, whereas traditionally the operating system
+has constrained the application's own implementation. Essentially, this
+enables eCos developers to create their own application-specific operating
+system and makes eCos suitable for a wide range of embedded uses.
+Configuration also ensures that the resource footprint of eCos is minimized
+as all unnecessary functionality and features are removed. The configuration
+system also presents eCos as a component architecture. This provides a
+standardized mechanism for component suppliers to extend the functionality
+of eCos and allows applications to be built from a wide set of optional
+configurable run-time components. Components can be provided from a variety
+of sources including: the standard eCos release; commercial third party
+developers; open source contributors; or additional optional components from
+Red Hat.</p>
+
+<p>The royalty-free nature of eCos means that you can develop and deploy your
+application using the standard eCos release without incurring any royalty
+charges. In addition, there are no up-front license charges for the eCos
+runtime source code and associated tools. We provide, without charge,
+everything necessary for basic embedded applications development.</p>
+
+<p>eCos is designed to be portable to a wide range of target architectures and
+target platforms including 16, 32, and 64 bit architectures, MPUs, MCUs and
+DSPs. The eCos kernel, libraries and runtime components are layered on the
+Hardware Abstraction Layer (HAL), and thus will run on any target once the
+HAL and relevant device drivers have been ported to the target's processor
+architecture and board. Currently eCos supports seven different target
+architectures (ARM, Hitachi SH3, Intel x86, MIPS, Matsushita AM3x, PowerPC
+and SPARC) including many of the popular variants of these architectures and
+evaluation boards. Many new ports are in development and will be released as
+they become available.</p>
+
+<p>eCos has been designed to support applications with real-time requirements,
+providing features such as full preemptability, minimal interrupt latencies,
+and all the necessary synchronization primitives, scheduling policies, and
+interrupt handling mechanisms needed for these type of applications. eCos
+also provides all the functionality required for general embedded
+application support including device drivers, memory management, exception
+handling, C, math libraries, etc. In addition to runtime support, the eCos
+system includes all the tools necessary to develop embedded applications,
+including eCos software configuration and build tools, and GNU based
+compilers, assemblers, linkers, debuggers, and simulators.</p>
+
+<p>The following core functionality is provided:</p>
+<UL>
+  <LI>Hardware Abstraction Layer (HAL)</LI>
+  <LI>Real-time kernel</LI>
+      <UL>
+	<LI>Interrupt handling</LI>
+	<LI>Exception handling</LI>
+	<LI>Choice of schedulers</LI>
+	<LI>Thread support</LI>
+	<LI>Rich set of synchronization primitives</LI>
+	<LI>Timers, counters and alarms</LI>
+	<LI>Choice of memory allocators</LI>
+	<LI>Debug and instrumentation support</LI>
+      </UL>
+  <LI><A HREF="http://www.itron.gr.jp/">&micro;ITRON</A> 3.0 compatible API layered on top of the basic kernel</LI>
+  <LI>ISO C and math libraries
+  <LI>Serial device drivers
+  <LI>GDB debug support
+</UL>
+
+
+<h2>Supported hosts</h2>
+<p>The eCos net distribution is available in both Linux
+and Windows versions. The Linux version has been tested under <a
+href="http://www.redhat.com/">Red Hat</a> Linux 6.1 (and later releases) but should work
+under most Linux variants. The Windows version has been tested under <a
+href="http://www.microsoft.com/">Microsoft</a>&reg; Windows NT 4.0 and also
+works under Windows 95, Windows 98 and Windows 2000. However, please note that it is not possible to
+build the eCos development tools under Windows 95 or Windows 98 at this time.</p>
+
+<h2>Host software</h2>
+<p>The system comes with full support for manual configuration of the
+system on all host platforms. In addition Windows users get a
+graphical configuration tool which simplifies the process of
+configuring a system and validating the resulting system. This tool is
+not yet available for Linux users. It has, however, been used successfully with
+Windows NT 4.0 running as a guest operating system under
+<A HREF="http://www.vmware.com/">VMware for Linux</A>.</p>
+
+<p>The eCos net distribution is intended to be used in conjunction with GNU development
+tools which are available freely on the net. As a minimum, the <i>gcc</i> compiler,
+<i>gdb</i> debugger and <i>binutils</i> tools are required to build eCos, link with
+application code and undertake debugging.</p>
+
+<hr noshade size=3>
+
+</body></html>

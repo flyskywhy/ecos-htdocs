@@ -3,63 +3,84 @@
 <TITLE>Keeping in Touch</TITLE>
 </HEAD>
 
-<!--#include virtual="include/header.html"-->
+<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
 
-<H2>Keeping in Touch</H2>
-<HR SIZE=3>
+<h1>Keeping in Touch</h1>
+<HR noshade SIZE=3>
 
-<h3>Mailing lists</h3>
+<h2>Mailing lists</h2>
 
-There are two principal mailing lists relating to eCos. Subscribers
-to the <nobr><i>ecos-announce</i></nobr> list will receive details
-of all eCos developments as they unfold. This is a moderated list
-intended principally for the announcement of new packages, snapshots and
-patches. Subscribers to the <nobr><i>ecos-discuss</i></nobr> list can participate
-in open discussion with others concerning all aspects of eCos. This is an
-unmoderated list. Archives of both the <a HREF="/ml/ecos-announce/">ecos-announce</a> and <a href="/ml/ecos-discuss/">ecos-discuss</a> mailing lists are available.<p>
+<p>There are two principal mailing lists relating to eCos. Subscribers to the
+<nobr><i>ecos-announce</i></nobr> list will receive details of all eCos
+developments as they unfold. This is a moderated list intended principally
+for the announcement of new packages, snapshots and patches. Subscribers to
+the <nobr><i>ecos-discuss</i></nobr> list can participate in open discussion
+with others concerning all aspects of eCos. This is an unmoderated list.
+Archives of both the <a HREF="/ml/ecos-announce/">ecos-announce</a> and
+<a href="/ml/ecos-discuss/">ecos-discuss</a> mailing lists are available.</p>
 
-We strongly recommend you read both the eCos documentation fully
+<p>We strongly recommend you read both the eCos documentation fully
 and search the above mail archives before asking simple questions
 on the discussion list, particularly if they are likely to be problems
-that people would have encountered before.<P>
+that people would have encountered before.</p>
 
-There are additional mailing lists specifically for
-those requiring notification of changes at this site. Subscribers to the <nobr><i>ecos-cvs</i></nobr> list will receive notification of any
-changes to the eCos anonymous CVS repository.  <a href="/ml/ecos-cvs/">Archives of ecos-cvs</a> are also available. 
-Subscribers to the <nobr><i>ecos-webpages-cvs</i></nobr> list will receive notification of any
-changes to the eCos web pages.<p>
+<p>There are additional mailing lists specifically for those requiring
+notification of changes at this site. Subscribers to the
+<nobr><i>ecos-cvs</i></nobr> list will receive notification of any changes to
+the eCos anonymous CVS repository.  <a href="/ml/ecos-cvs/">Archives of
+ecos-cvs</a> are also available.  Subscribers to the
+<nobr><i>ecos-webpages-cvs</i></nobr> list will receive notification of any
+changes to the eCos web pages.</p>
 
-To subscribe to any of these mailing lists, use the mailing list request form below.
-Digest versions of each list are also available where messages are forwarded on a daily basis.
-If you are experiencing problems with
-the use of these mailing lists, please refer to the
-<a href="http://sources.redhat.com/lists.html#faqs">mailing list FAQ</a>.
+<p>To subscribe to any of these mailing lists, use the mailing list request
+form below. Digest versions of each list are also available where messages
+are forwarded on a daily basis. If you are experiencing problems with the use
+of these mailing lists, please refer to the
+<a href="/lists.html#faqs" target="_top">mailing list FAQ</a>.</p>
 
-<h3>Mailing list request form</h3>
+<h2>Mailing list request form</h2>
 
 <form method="get" action="/cgi-bin/ml-request">
-<table>
-<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;E-mail address:</TD><TD><input type="text" name="username"></TD></TR>
-<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;Command:</TD><TD>
-  <select name="operation">
-  <option value="subscribe">subscribe to
-    <option value="unsubscribe">unsubscribe from
-  </select>
-  <select name="listname" size=1>
-    <option selected>ecos-announce
-    <option>ecos-cvs
-    <option>ecos-discuss
-    <option>ecos-webpages-cvs
-  </select>
-  <input type=checkbox name="digest">digest version
-</TD></TR>
-<TR><TD>&nbsp;</TD><TD><input type=submit value="Submit">&nbsp;&nbsp;<input type=reset value="Reset"></TD></tr>
+<table width="60%" border=0 cellpadding=4 cellspacing=0>
+<tr>
+  <td align="right" nowrap>E-mail address:</td>
+  <td align="left" colspan=3>
+    <input type="text" name="username">
+  </td>
+</tr>
+<tr>
+  <td align="right">Command:</td>
+  <td align="left">
+    <select name="operation">
+    <option value="subscribe">subscribe to
+      <option value="unsubscribe">unsubscribe from
+    </select>
+  </td>
+  <td align="left">
+    <select name="listname" size=1>
+      <option selected>ecos-announce
+      <option>ecos-cvs
+      <option>ecos-discuss
+      <option>ecos-webpages-cvs
+    </select>
+  </td>
+  <td align="left" nowrap>
+    <input type=checkbox name="digest"> digest version
+  </td>
+</tr>
+<tr>
+  <td>&nbsp;</td>
+  <td align="left" colspan=3>
+    <input type=submit value="Submit">&nbsp;
+    <input type=reset value="Reset">
+  </td>
+</tr>
 </table>
 </form>
 
-<h3>Contacting Red Hat</h3>
+<h2>Contacting Red Hat</h2>
 
-Commercial enquires covering eCos development, porting and support contracts
+<p>Commercial enquires covering eCos development, porting and support contracts
 should be addressed to the eCos commercial team at
 <nobr>&lt;<a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>&gt;</nobr>.
 Private technical queries concerning eCos development and
@@ -69,10 +90,10 @@ Please note that the eCos maintainers are unable to provide technical
 support, and general technical queries or requests for help or information
 that would have been more appropriate for
 <nobr>&lt;<a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss@sources.redhat.com</a>&gt;</nobr>
-may not be answered.<p>
+may not be answered.</p>
 
- Please use our pre-sale inquiries address
+<p>Please use our pre-sale inquiries address
 <nobr>&lt;<a href="mailto:presales@redhat.com">presales@redhat.com</a>&gt;</nobr>
-for information concerning other Red Hat products.
+for information concerning other Red Hat products.</p>
 
-<!--#include virtual="include/footer.html"-->
+</body></html>
