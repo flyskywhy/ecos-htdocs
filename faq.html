@@ -34,6 +34,7 @@
   <LI><A HREF="#porting_how_would_I">How would I go about porting eCos to a new processor?</A></LI>
   <LI><A HREF="#porting_adopt">Will Cygnus adopt my port?</A></LI>
   <LI><A HREF="#porting_board">How about porting eCos to a new board?</A></LI>
+  <LI><A HREF="#porting_compiler">What are the compiler dependencies?</A></LI>
   <h4>Contributing</h4>
   <LI><A HREF="#contrib_have_to">Do I have to contribute?</A></LI>
   <LI><A HREF="#contrib_bazaar">Which development model - cathedral or bazaar?</A></LI>
@@ -636,6 +637,42 @@ implement a new platform HAL package. This involves issues such as
 board initialization, diagnostics, possibly gdb support, and linker
 scripts. There are existing platform HAL packages for the stdeval1,
 jmr3904, and Cogent boards, and these can be used as starting points.
+
+<P>
+<h4><A NAME="porting_compiler">What are the compiler dependencies?</A></h4>
+
+<P>
+eCos depends heavily on a number of language extensions provided by
+the gcc and g++ compilers. In fact a number of these extensions were
+added to these compilers specifically to support eCos (although they
+have wider applications as well). The first such extension is C++
+constructor priority ordering. When you define several C++ static
+objects the language does not define the order in which these objects
+get constructed. g++ now allows static objects to be ordered using the
+<TT>__attribute__</TT> mechanism, so for example it is possible to
+create a scheduler object before any thread objects. The second
+extension is selective linking. Traditionally linkers worked in terms
+of compilation units, in other words entire files: if an application
+needed a particular function from a library then all other library
+functions which happened to be in the same source file would become
+part of the application's executable. Instead the linker will now work
+at the finer granularity of individual functions or variables.
+
+<P>
+Other extensions provided by gcc and g++ are used wherever
+appropriate. For example attributes are used to define some functions
+with weak linkage and to provide aliases for some functions. Inline
+assembler is used to establish memory barriers and prevent the
+compiler from optimising in places where this would be undesirable,
+for example in context switch code. Computed goto's may be used during
+exception handling.
+
+<P>
+The use of these extensions makes it very difficult to use compilers
+other than gcc and g++ to build eCos. In addition it is possible that
+other extensions will be used in future if they prove to be
+appropriate for the problem at hand. Therefore we recommend against
+attempting to use any other compiler technology for eCos development.
 
 <P>
 <A HREF="#top">Top</A>
