@@ -795,6 +795,55 @@ outputfunc linux-sh-elf.html
 unset GCCSNAP
 
 ##################
+# V850
+
+TOOLPREFIX=v850-elf
+TARGETNAME="NEC V850"
+GCCSNAP=
+
+###################
+# Windows V850
+
+HOST=Windows
+WINDOWS=
+# Note GZIP set this time for the gcc snapshot because it only comes in .gz format
+GZIP=
+unset LINUX
+HOSTPREFIX=i686-pc-cygwin
+BINUTILSBLDDSK=28MB
+BINUTILSINSTDSK=21MB
+GCCBLDDSK=33MB
+GCCINSTDSK=13MB
+INSIGHTBLDDSK=110MB
+INSIGHTINSTDSK=63MB
+TOTBLDDSK=171MB
+TOTINSTDSK=97MB
+
+outputfunc win-v850-elf.html
+
+###################
+# Linux V850
+
+
+HOST=Linux
+LINUX=
+GZIP=
+unset WINDOWS
+HOSTPREFIX=i686-pc-linux-gnu
+BINUTILSBLDDSK=28MB
+BINUTILSINSTDSK=21MB
+GCCBLDDSK=33MB
+GCCINSTDSK=13MB
+INSIGHTBLDDSK=110MB
+INSIGHTINSTDSK=63MB
+TOTBLDDSK=171MB
+TOTINSTDSK=97MB
+
+outputfunc linux-v850-elf.html
+
+unset GCCSNAP
+
+##################
 # mn10300
 
 TOOLPREFIX=mn10300-elf

@@ -106,19 +106,20 @@ Use of a new repository with an old build tree is not recommended. Changes
 may have been made to the repository CDL files that will not be present in
 the working versions in your build tree. 
 
-<h3>Optional Networking Support</h3>
+<h3>Optional networking support</h3>
 <P>
-Networking support is an optional feature in eCos, and as such, it is not
-checked out from the repository by default. However it can be added to
-an already checked out tree. This can be done with the command:
+Networking support is an optional feature in eCos and is not
+checked out from the repository by default. Such support can be added to
+an already checked out tree by executing the following command:
 <PRE>
      cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P net
 </PRE>
 <P>
-Note that the entries in ecos.db will be present regardless of whether
-it is checked out or not, and updated configuration tools (see below) are
-required when the networking support is not present, otherwise the
-configuration tools will report errors.
+Note that the networking package records will be present in the package
+database (<tt>ecos.db</tt>) regardless of whether networking support
+is checked out. Updated configuration tools (see below) are
+required when the networking support is not present. The
+eCos 1.3.1 tools will report errors.
 
 <h3>Release tags</h3>
 <P>
@@ -154,12 +155,7 @@ recommended that you rename the existing file <CODE>Configtool.exe</CODE> to
 <P>
 Install the revised configuration tool by executing the downloaded file.
 Modify the suggested target folder as necessary to place the extracted files in the
-<CODE>tools/bin</CODE> directory of your eCos installation. <!--Before using
-the new tool with an existing eCos 1.2.1 installation, registry keys
-describing the target platforms must be added. Double click on the
-extracted file <code>Platforms121.reg</code> in the <code>tools/bin</code>
-directory to set up the registry appropriately.
--->
+<CODE>tools/bin</CODE> directory of your eCos installation.
 <P>
 
 <h3>Other notes</h3>
