@@ -7,25 +7,32 @@
 <HR SIZE=3>
 
 <H3>Index</H3>
-<A HREF="#arm">ARM Family</A><br>
-<A HREF="#sparclite">Fujitsu SPARClite 32-bit Product Family</A><br>
-<A HREF="#mn10300">Matsushita MN10300 32-bit Microcontroller Series</A><br>
-<A HREF="#tx39">Toshiba TX39 32-bit TX SystemRISC Series</A><br>
-<A HREF="#powerpc">MPC800 Embedded PowerPC(tm) Family</A> (beta)
+<A HREF="#arm">ARM family</A><br>
+<A HREF="#sparclite">Fujitsu SPARClite 32-bit product family</A><br>
+<A HREF="#mn10300">Matsushita MN10300 32-bit microcontroller series</A><br>
+<A HREF="#tx39">Toshiba TX39 32-bit TX SystemRISC series</A><br>
+<A HREF="#powerpc">MPC800 embedded PowerPC(tm) family</A>
 
 <p>
-Note that support for the <a href="http://semiconductor.hitachi.com/superh/">Hitachi SH-3</a>,
-<a href="http://www.necel.com/home.nsf/WebSearch?OpenForm&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&V(*R*)4300(TM)+Family">NEC
-VR4300</a>, <a href="http://developer.intel.com/design/strong/sa110.htm">Intel
-SA-110 StrongARM</A>, Matsushita AM33 and Cirrus Logic <a href="http://www.cirrus.com/products/overviews/ep7209.html">EP7209</a>,
-<a href="http://www.cirrus.com/products/overviews/ep7211.html">EP7211</a>,
-<a href="http://www.cirrus.com/products/overviews/ep7212.html">EP7212</a> &amp;
-<a href="http://www.cirrus.com/products/overviews/ps7111.html">CL-PS7111</a>
-processors is available under an <a href="http://www.cygnus.com/ecos/ecos_early.html">early access program</a>.
-Contact Cygnus at <a href="mailto:ecos-info@cygnus.com">ecos-info@cygnus.com</a> for further information.
 Support for other targets is planned and will be announced via the <a href="intouch.html">ecos-announce</a> mailing list. For further information concerning the porting of eCos, see the porting section of the <a href="faq.html">FAQ</a>.
 
-<H3><A NAME="arm">ARM Family</A></H3>
+<h3>Early access program</h3>
+Support for the following additional processors is available under an <a href="http://www.cygnus.com/ecos/ecos_early.html">early access program</a>:
+<ul>
+
+<li><a href="http://semiconductor.hitachi.com/superh/">Hitachi SH-3</a>
+<li><a href="http://www.necel.com/home.nsf/WebSearch?OpenForm&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&V(*R*)4300(TM)+Family">NEC
+VR4300</a>
+<li><a href="http://developer.intel.com/design/strong/sa110.htm">Intel SA-110 StrongARM</A>
+<li>Matsushita AM33
+<li>Cirrus Logic <a href="http://www.cirrus.com/products/overviews/ep7209.html">EP7209</a>,
+  <a href="http://www.cirrus.com/products/overviews/ep7211.html">EP7211</a> &amp;
+  <a href="http://www.cirrus.com/products/overviews/ep7212.html">EP7212</a>
+</ul>
+
+Contact Cygnus at <a href="mailto:ecos-info@cygnus.com">ecos-info@cygnus.com</a> for further information.
+
+<H3><A NAME="arm">ARM family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
@@ -39,16 +46,21 @@ Support for other targets is planned and will be announced via the <a href="into
 </tr>
 <tr valign=top bgcolor=#dddddd>
   <td><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM7TDMI/">ARM7TDMI</a><br><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM9TDMI/">ARM9TDMI</a></td>
-  <td><A HREF="http://www.arm.com/DevSupp/Boards/pid7t.html">ARM Development Board</a> (formerly PID board)</td>
+  <td><A HREF="http://www.arm.com/DevSupp/Boards/pid7t.html">ARM development board</a> (formerly PID board)</td>
   <td rowspan=2>ARM Ltd, UK<br>Head Office<br>tel +44 (1223) 400400<br>fax +44 (1223) 400410<br>e-mail <a href="mailto:info@arm.com">info@arm.com</a><p>ARM Inc, USA<br>tel +1 (408) 3995199<br>fax +1 (408) 3998854</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
   <td><A HREF="http://www.sharpmeg.com/lh77/lh77.html">Sharp LH77790</a> (ARM7DI core)</td>
   <td><A HREF="http://www.arm.com/Documentation/Overviews/AEB/index.html">ARM AEB-1</a></td>
 </tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ps7111.html">Cirrus Logic CL-PS7111</a> (ARM710A core)</td>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ps7111dk.html">CL-PS7111 development board</a></td>
+  <td>Cirrus Logic Inc, USA<br>tel +1 (510) 6238300<br>fax +1 (510) 2526020</td>
+</tr>
 </table>
 
-<H3><A NAME="sparclite">Fujitsu SPARClite 32-bit Product Family</A></H3>
+<H3><A NAME="sparclite">Fujitsu SPARClite 32-bit product family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
@@ -67,7 +79,7 @@ Support for other targets is planned and will be announced via the <a href="into
 </tr>
 </table>
 
-<H3><A NAME="mn10300">Matsushita MN10300 32-bit Microcontroller Series</A></H3>
+<H3><A NAME="mn10300">Matsushita MN10300 32-bit microcontroller series</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
@@ -81,7 +93,7 @@ Support for other targets is planned and will be announced via the <a href="into
 </tr>
 </table>
 
-<H3><A NAME="tx39">Toshiba TX39 32-bit TX SystemRISC Series</A></H3>
+<H3><A NAME="tx39">Toshiba TX39 32-bit TX SystemRISC series</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
@@ -99,7 +111,7 @@ Support for other targets is planned and will be announced via the <a href="into
 </tr>
 </table>
 
-<H3><A NAME="powerpc">MPC800 Embedded PowerPC(tm) Family</A></H3>
+<H3><A NAME="powerpc">MPC800 embedded PowerPC(tm) family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
