@@ -13,16 +13,52 @@
 
 <br>
 <table border=0 cellspacing=2 cellpadding=7 width=100%>
+  <tr bgcolor="#666666">
+    <td valign=top><FONT color="#FFFFFF"><b>ID</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
+  </tr>
+
   <tr bgcolor="#999999">
-    <td valign=top><b>ID</b></td>
-    <td valign=top><b>Problem</b></td>
-    <td valign=top><b>Workaround</b></a>
+    <td colspan=3><b>eCos 1.1</b></td>
   </tr>
+
   <tr bgcolor="#DDDDDD">
-    <td valign=top>000000</td>
-    <td valign=top>The first problem in the list. This web site will not look good under lynx.</td>
-    <td valign=top>Install a decent browser. MSIE 4 and Communicator 4 are good choices.</td>
+    <td valign=top>17814</td>
+    <td valign=top>Windows only problem. InstallShield incorrectly calculates the
+		amount of disk free-space. It calculates available space on a
+		character, not disk allocation unit basis. As the eCos
+		distribution contains many small files, this can lead to
+		installation being allowed to proceed when there is
+		insufficient disk space available.</td>
+    <td valign=top>Please manually check that enough disk space exists after
+		consulting the installation requirements in the documentation.</td>
   </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18003</td>
+    <td valign=top>The Windows based eCos Configuration Tool does not support
+		early versions of Internet Explorer - version 2 or earlier.
+		When accessing help in the Configuration Tool, the browser
+		may display errors regarding the URL that it was invoked
+		with. This is due to an inability to handle URL fragments.</td>
+    <td valign=top>Install Internet Explorer version 3 or later, or Netscape.
+		Note that Netscape cannot however provide an integrated
+		browser pane within the Configuration Tool.</td>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=3><b>GNU Tools for eCos 1.1 and CygMon</b></td>
+  </tr>
+
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top></td>
+    <td valign=top></td>
+    <td valign=top></td>
+  </tr>
+
+
 </table>
 
 <!-- eCos template HTML start -->
