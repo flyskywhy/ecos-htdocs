@@ -224,6 +224,16 @@ devices for debugging and serial communication.</p>
 </dl></p>
 </ol>
 
+<p><HR SIZE=3>
+<h3><a name="thread_debug">Thread debugging [TBD]</a></h3>
+
+<pre>
+Application will set DBG_SYSCALL in virtual vector table, allowing ROM
+monitor to call into the application kernel context and retrieve
+debugging information. This is all set up in hal_if_init().
+</pre>
+
+
 <!--#include virtual="../../include/footer.html"-->
 
 <!--

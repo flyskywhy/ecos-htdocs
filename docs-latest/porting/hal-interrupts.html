@@ -73,7 +73,7 @@ VSRs, it has to be in 'interrupt_end', thus the additional complexity.
 </pre>
 
 
-Huge had another nice description (pretty much the same):
+Hugo had another nice description (pretty much the same):
 
 <pre>
 eCos interrupt handlers currently tend to go
@@ -98,6 +98,41 @@ eCos interrupt handlers currently tend to go
 
 [1] recursive interrupts might mean you are already in the interrupt stack,
     so you don't switch stacks at all in that case.
+</pre>
+
+
+And Nick had something to say about separate interrupt stacks:
+
+
+<pre>
+> As far as i know there is no separate interrupt stack for the i386-PC
+> target, am I right?
+> 
+> So how should this be done ? Any advice ? Someone already thought of that?
+> 
+
+The basic advice here is to take a look at an architecture that
+already has this done, I always suggest MIPS. Take a look at the bits
+surrounded by the CYGIMP_HAL_COMMON_INTERRUPTS_USE_INTERRUPT_STACK
+ifdefs in vectors.S.
+
+There are basically three pieces of code that need to be written:
+
+1. Early in the interrupt VSR detect whether you are already on the
+   interrupt stack and move to it if not.
+
+2. Before calling interrupt_end() move back to the thread stack for
+   the last nested interrupt to be returned from. The technique of
+   always pushing the original stack address in step 1 and just
+   popping it here makes this very simple.
+
+3. Write the hal_interrupt_stack_call_pending_DSRs function. This just
+   switches to the interrupt stack, enables interrupts and calls back
+   into the kernel to call DSRs. The only complication here is to make
+   sure that the original interrupt state is restored before
+   returning.
+
+And that's all there is to it.
 </pre>
 
 <!--#include virtual="../../include/footer.html"-->

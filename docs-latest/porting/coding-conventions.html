@@ -40,7 +40,6 @@ There are a few implementation issues that should be kept in mind:
 	different platforms than the one you are writing it for.</dd>
 
 <dt>MMU</dt>
-
 	<dd>If it is necessary to use the MMU (e.g., to prevent
 	caching of IO areas), use a simple 1-1 mapping of memory if
 	possible. On most platforms where using the MMU is necessary,
@@ -48,6 +47,13 @@ There are a few implementation issues that should be kept in mind:
 	provision for mapping large continous areas (hardwired TLBs or
 	BATs). This reduces the footprint (no MMU table) and avoids
 	execution overhead (no MMU-related exceptions).</dd>
+
+<dt>Assertions</dt> 
+        <dd>The code should contain assertions to validate argument
+	values, state information and any assumptions the code may be
+	making. Assertions are not enabled in production builds, so
+	liberally sprinkling assertions throughout the code is
+	good.</dd>
 
 <dt>Testing</dt>
 	<dd>The ability to test your code is very important. In

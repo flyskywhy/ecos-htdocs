@@ -8,11 +8,21 @@
 <H2>HAL Architecture Porting Process [TBD]</H2>
 <HR SIZE=3>
 
-<ul>
-<li>Toolchain requirements
-<li>Debugging requirements
-<li>Linker script
-</ul>
+<h4>Brief overview</h4>
 
+<p>The easiest way to make a new architecture HAL is simply to copy an
+existing architecture HAL of a, if possible, closely matching
+architecture and change all the files to match the new
+architecture. The MIPS architecture HAL should be used if possible, as
+it has the appropriate layout and coding conventions. Other HALs
+may deviate from that norm in various ways.</p>
+
+<p><b>Note:</b> eCos is written for GCC. It requires C and C++
+compiler support as well as a few compiler features introduced during
+eCos development - so compilers older than eCos may not provide these
+feaures. Note that there is no C++ support for any 8 or 16 bit
+CPUs. Before you can undertake an eCos port, you need the required
+compiler support.
+</p>
 
 <!--#include virtual="../../include/footer.html"-->

@@ -12,7 +12,7 @@
 events - that is, any event that is caused by the instruction
 currently being executed.<p>
 
-<p>On exception, a CPU will normally jump to a predefined exception
+<p>On exception, the CPU will normally jump to a predefined exception
 handler entry point. At this place, the HAL will have a small piece of
 code which does minimal decoding of the event causing the exception -
 just enough to find a pointer to the exception vector service routine
@@ -22,7 +22,7 @@ the user state registers.</p>
 <p>The exception VSR (written in assembly) stores the user state
 registers on the stack and makes it safe to call C - then calls the C
 function cyg_hal_exception_handler. Depending on the configuration,
-cyg_hal_exception_handler feeds the exception to the GDB stub, or to
+cyg_hal_exception_handler feeds the exception to the GDB stub or to
 the eCos kernel.</p>
 
 <p>Eventually cyg_hal_exception_handler returns, registers are

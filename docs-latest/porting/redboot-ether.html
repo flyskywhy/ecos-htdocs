@@ -17,5 +17,24 @@ thus drive the state machine of the driver.</p>
 eCos.</p>
 
 
+<pre>
+
+_send & _recieve semantics - the sg list used to separate ethernet
+frame header from IP frame.
+
+Getting started: use server_test and ping target to see output. The
+other way can be tricky if there's no output, or if the output gets
+ignored by the host.
+
+gotcha: frame padding, may need to be enabled specifically, and hosts
+will (silently!) ignore small packets.
+
+_poll function
+
+generic & platform implementation
+
+</pre>
+
+
 
 <!--#include virtual="../../include/footer.html"-->

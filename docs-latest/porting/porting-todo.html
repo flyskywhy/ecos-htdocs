@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<TITLE>TODO</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>TODO</H2>
+<HR SIZE=3>
+
+<p>This is a list of things that should eventually be covered by the
+porting guide.</p>
+
+<h4>Constructors</h4>
+<pre>
+typedef void (*pfunc) (void)
+extern pfunc __CTOR_LIST__[];
+extern pfunc __CTOR_END__[];
+
+void cyg_invoque_constructors(void)
+{
+   pfunc *p;
+  for (p=&__CTOR_END__[-1];p >= __CTOR_LIST__;p--)
+       (*p) ();
+}
+
+
+The two symbols are the limits of an array of pointers to
+constructors. The pointers in this array get sorted (see linker
+script) according to their priority. We add the brackets in the C code
+to make the compiler treat the symbols as array references -- type
+information only exists in the compiler; in the linker a symbols is
+just named entity associated with an address.
+
+The code above iterates through the array from the top to the bottom
+(end-1 to start), calling each constructor in turn.
+
+> How do I tell gcc which constructor is more prioritary?
+
+There's a compiler attribute for that:
+
+#if defined(__cplusplus) && defined(__GNUC__)
+# define CYGBLD_ATTRIB_INIT_PRI( _pri_ ) __attribute__((init_priority(_pri_)))
+#else
+// FIXME: should maybe just bomb out if this is attempted anywhere else?
+// Not sure
+# define CYGBLD_ATTRIB_INIT_PRI( _pri_ )
+#endif
+
+This is used a few places in the eCos code to control in which order
+various constructors get run. Grep for CYGBLD_ATTRIB_INIT_PRI in the
+sources.
+
+</pre>
+
+
+<h4></h4>
+<pre>
+</pre>
+
+
+<!--#include virtual="../../include/footer.html"-->

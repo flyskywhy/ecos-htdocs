@@ -163,7 +163,13 @@ the thread information gets registered in the table during startup of
 a RAM startup configuration.
 
 <p>Further implementation details are described where the service itself
-is described.
+is described.</p>
+
+<pre>
+FIXME: Need to describe the CYGARC_HAL_SAVE_GP() and
+CYGARC_HAL_RESTORE_GP() macros.
+</pre>
+
 
 <h4>New platform ports</h4>
 
@@ -333,6 +339,10 @@ monitor.</p>
 <p>See hal_if_diag_* routines in hal_if.c for more details of the stream
 path of diagnostic output. See cyg_hal_gdb_diag_* routines in
 hal_stub.c for the mangler used for GDB communication.</p>
+
+<pre>
+FIXME: Other special channels are reserved for ethernet communication.
+</pre>
 
 
 <h4>New platform ports</h4>
