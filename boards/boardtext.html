@@ -40,7 +40,10 @@ have been tested.</p>
 <p>Device drivers are included for:
 <ul>
 <!--#if expr="$serialsupport = 1" -->
-<li>Serial
+<li>Interrupt-driven serial I/O
+<!--#endif -->
+<!--#if expr="$nodiagserialsupport != 1" -->
+<li>Diagnostic (polled) serial I/O
 <!--#endif -->
 <!--#if expr="$ethernetsupport = 1" -->
 <li>Ethernet
@@ -93,7 +96,7 @@ from
 <!--#if expr="$eloc = 'CVS'" -->
 the <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
 <!--#else -->
-eCos releases <!--#echo var="loc" --> and onwards, as well as
+eCos releases <!--#echo var="eloc" --> and onwards, as well as
 from the <a href="/ecos/anoncvs.html">anonymous CVS repository</a>.
 </p>
 <!--#endif -->
