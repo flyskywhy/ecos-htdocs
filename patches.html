@@ -1,0 +1,239 @@
+<HTML>
+<HEAD>
+<TITLE>Submitting Patches to eCos</TITLE>
+</HEAD>
+
+<!--#include virtual="../include/header.html"-->
+
+<BR><H2>Submitting Patches to eCos</H2>
+Revision 1.0
+<HR noshade SIZE=3>
+
+<p> This page describes how to prepare and submit a patch to
+eCos. While patches prepared and submitted in ways other than
+described by these guidelines will not be rejected out of hand,
+following these suggestions will greatly improve your chances of
+having a patch accepted.  </p>
+
+<p>
+Even if you do follow these guidelines to the letter, there is no
+guarantee that the maintainers will accept the patch.  The maintainers
+have a duty to the eCos community to ensure eCos stays stable and
+maintainable. Anything that performs "open heart surgery" on an
+important piece of code, or which takes eCos in a direction the
+maintainers do not think eCos should go in will be rejected. Such
+patches can always be placed on the contributions page.  </p>
+
+<h3>Preparing the Patch</h3>
+
+<p>A patch consists of the output of the <b>diff</b> program and
+should contain not only the changes made to any existing files, but
+also any new files that have been added. Most importantly, it must
+contain new entries for the <b>ChangeLog</b> files which are contained
+in the root directory of each package. Failure to include suitable
+ChangeLogs will result in certain rejection. You should also consider
+including a test program for any new or extended functionality you
+have added to eCos.</p>
+
+<p>Patches should be relative to the current eCos CVS
+repository. First, make sure you have two copies of the current CVS
+repository. You can do this by either checking it out twice, or by
+copying an existing repository with the following command:
+
+<pre>
+$ cp -a clean devo
+</pre>
+
+<p>We will call these two copies <b>clean</b>, which will be an
+unchanged copy of the CVS repository, and <b>devo</b>, which is where
+you will do your patch development work.</p>
+
+<p>Now you can work on your patch in the <b>devo</b> repository. When
+it is complete, make sure it is tested and update the ChangeLog files
+or, if you are adding a new package, create new ChangeLog files. If it
+has been some time since you checked out the repository, do a <b>cvs
+update</b> in both repositories before continuing. Any new files you
+have added to the <b>devo</b> repository will be listed with a "?",
+this is normal and simply indicates that they are not currently
+checked in. Any files listed with a "C" indicate conflicts between
+your changes and any new changes in the repository. You must resolve
+these before continuing.</p>
+
+<p>To generate the patch, execute the following command:</p>
+
+<pre>
+$ diff -r -u5 -N -x CVS -x "*~" -x ".#*" clean/ecos/packages devo/ecos/packages >my.patch
+</pre>
+
+<p>The "-r" option causes the diff to operate recursively; the "-u5"
+option generates unified diffs with a five line context, which are
+easier to read than other diff formats; the "-N" option causes all new
+files to be included in the diff; the "-x CVS" causes all CVS
+directories to be excluded and the "-x "*~" -x ".#*"" causes any
+editor backup files to be excluded -- these are for emacs, you may
+need to change them if you use a different editor. The <b>clean</b>
+repository should come first on the command line and the <b>devo</b>
+second. In this example we are only diffing the packages directories,
+if you have made changes to the host tools or the generic
+documentation, leave off the "packages" component from both paths. If
+the patch only applies to a single package then you can add
+directories to these paths to diff only that package. The final part
+redirects the output of the diff command into the file "my.patch". You
+should choose a more descriptive filename, although the ".patch"
+extension may be kept since it is recognised by various tools.</p>
+
+<h3>Submitting the Patch</h3>
+
+<p>Patches are submitted through the eCos <b>Bugzilla</b> bug tracking
+system. This allows contributors and maintainers to keep track of the
+state and progress of a patch, and stops them getting lost or
+forgotten.</p>
+
+<p>To submit a patch, go to the eCos Bugzilla page at <a
+href="http://bugs.ecos.sourceware.org">http://bugs.ecos.sourceware.org</a>
+and click on <b>Report a Problem</b>.</p>
+
+<p>Bugzilla will now ask you to login. If you are a new user, click on
+the <b>create a new account</b> link and follow the instructions. If
+you have a Bugzilla account, log in and proceed to the first page
+where you will be asked to pick a product. Choose <b>eCos</b>.</p>
+
+<p>You will now be taken to the <b>Enter bug</b> page. Fill out the
+fields of this form as follows: </p>
+
+<dl>
+        <dt><b>Version</b>
+        <dd>Choose <b>CVS</b> here, unless you know that you should
+            choose something else.
+
+        <dt><b>Component</b>
+        <dd>If the patch is against a specific component in this list
+            then choose that, otherwise choose <b>Patches and contributions</b>.
+
+        <dt><b>Platform</b>
+        <dd>If the patch applies to a specific platform that is in
+            this list then choose that, if it applies to platform
+            independent code then choose <b>All</b>, otherwise choose
+            <b>Other</b>.
+
+        <dt><b>Architecture/HostOS</b>
+        <dd>If this patch is specific to a particular architecture
+            then choose that architecture here. If it applies to all
+            architectures then choose <b>All</b>. Otherwise choose
+            <b>Other</b>.
+
+        <dt><b>Severity</b>
+        <dd>If this is an addition to eCos then select "enhancement"
+            here, otherwise leave it as "normal".
+
+        <dt><b>Summary</b>
+        <dd>Enter a <b>brief</b> description of the patch here. Just a
+            few words which are used as a title in bug lists.
+
+        <dt><b>Description</b>
+        <dd>Enter a more complete description of the patch here. A copy
+            of the ChangeLog entry would be suitable.
+
+</dl>
+
+<p>Leave all other fields unchanged and press the <b>Commit</b> button
+to submit the report.</p>
+
+<p>You will now be taken to a page which should say "Bug XXXXXXX has
+been added to the database" where XXXXXXX will be the number assigned
+to your new bug. Midway down this page is a table containing a link
+titled "Create a New Attachment". Click on this link which will take
+you to the "Create New Attachment for Bug XXXXXXX" page.</p>
+
+<p>Here you should fill in the local pathname of the patch file, or
+use the <b>Browse</b> button, and enter a description that identifies
+this as the initial or candidate patch. Select the <b>patch</b>
+checkbox in the <b>Content Type</b> field, leave all the remaining
+fields alone, and click <b>Submit</b>.</p>
+
+<p>After uploading the patch file to the Bugzilla server, it will take
+you to a page with the message "Attachment #YY to Bug XXXXXXX Created".</p>
+
+<p>Your patch has now been submitted to the Bugzilla system. However,
+this is not the end of the process, the patch still has to be
+reviewed, committed and re-tested.</p>
+
+<h3>Reviewing the Patch</h3>
+
+<p>Once your patch has been submitted it is open for review. Initially
+it will be assigned to the maintainer who is responsible for the
+component you selected when first submitting the patch.</p>
+
+<p>The maintainer will review the patch and may add comments
+suggesting improvements or changes. These comments will be sent to you
+by email and will be reflected into a public list. Note that
+maintainers are busy people and they may not be able to review your
+patch immediately. You may also get comments from other users.</p>
+
+<p>You may respond to comments by responding to the emails, or by
+filling in the <b>Additional Comments</b> field on the bug's page and
+clicking <b>Commit</b>.</p>
+
+<p>If, as a result of the comments you want to submit an updated patch
+then click the "Create New Attachment" link on the bug page and fill
+in the form as before. This time, however, you should give a
+description that identifies this as a new version, you may also check
+the box for the original patch in the <b>Obsoletes</b>
+section. Finally, fill in the <b>Comment</b> with a description of the
+changes between this patch and the last before clicking the
+<b>Submit</b> button.</p>
+
+<p>This process may have to repeat several times until your patch is
+in a state that the maintainer considers acceptable for inclusion in
+to the main CVS repository. However, before the patch is committed, it
+may be necessary for you to get a copyright assignment.</p>
+
+<h3>Assignments</h3>
+
+<p>Any patch greater than a few lines (around 10 as a general rule)
+needs to be accompanied by and assignment to the FSF. The rationale
+behind this assignment is to avoid any possible confusion over the
+legal ownership of eCos, and to indemnify the FSF and all eCos users
+against copyright or patent claims on contributed code used within
+eCos.  The FSF would be especially vulnerable, but all users and their
+eCos based applications could be affected.</p>
+
+<p>The maintainers will let you know if they think an assignment is
+necessary. If it is, then go to <a href="assign.html">the eCos
+assignments page</a> and follow the instructions there. Once you have
+one assignment, you are covered for all future patches, so you only
+need to do this once.</p>
+
+<p>If an assignment is needed it is best to get the process moving
+before the patch is approved, the FSF will take a while to process
+it. It is probably best to send the assignment forms off as soon as
+the patch is submitted. The maintainers will be notified independently
+when the assignment has been processed.</p>
+
+<h3>Committing the Patch</h3>
+
+<p>Once the patch is approved and assigned, it can be committed. A
+maintainer will apply the patch to the CVS repository and commit
+it.</p>
+
+<p>If the maintainer has hardware on which he can test the patch he
+may do so, particularly if it applies to generic code. However this
+cannot be assumed: maintainers do not have access to all the possible
+targets supported by eCos, and may be too busy to do more than commit
+the patch. Therefore it is very important that you test the patched
+CVS repository yourself and check that the patch has been applied
+correctly.</p>
+
+<p>To test the patch, execute a "cvs update -d" command in your
+<b>clean</b> version of the repository, and then build and test that
+the patch functions correctly. If you supplied a test program with the
+patch then this should suffice.</p>
+
+<h3>All Done</h3>
+
+<p>Once the patch has been committed, the maintainer will resolve the
+bug by changing its state. At this point the whole process is complete.</p>
+
+<p> Congratulations, you have successfully submitted a patch to eCos!</p>
+
+<!--#include virtual="../include/footer.html"-->
