@@ -1,0 +1,243 @@
+<HTML
+><HEAD
+><TITLE
+>Hardware
+setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Installation Guide"
+HREF="installation-guide.html"><LINK
+REL="PREVIOUS"
+TITLE="Software 
+installation on UNIX"
+HREF="software-installation-on-unix.html"><LINK
+REL="NEXT"
+TITLE="TX39 hardware setup"
+HREF="tx39-hardware-setup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="software-installation-on-unix.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tx39-hardware-setup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="HARDWARE-SETUP"
+>Chapter 10. Hardware
+setup</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="hardware-setup.html#MN10300-HARDWARE-SETUP"
+>MN10300 hardware setup</A
+></DT
+><DT
+><A
+HREF="tx39-hardware-setup.html"
+>TX39 hardware setup</A
+></DT
+><DT
+><A
+HREF="powerpc-hardware-setup.html"
+>PowerPC hardware setup</A
+></DT
+><DT
+><A
+HREF="sparclite-hardware-setup.html"
+>SPARClite hardware setup</A
+></DT
+><DT
+><A
+HREF="arm-hardware-setup.html"
+>ARM7
+PID hardware setup</A
+></DT
+><DT
+><A
+HREF="build-install-arm-aeb-1.html"
+>How to build and install the GDB module on the AEB-1</A
+></DT
+><DT
+><A
+HREF="x1617.html"
+>i386/Linux
+synthetic target setup</A
+></DT
+><DT
+><A
+HREF="verification.html"
+>Verification</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="MN10300-HARDWARE-SETUP"
+>MN10300 hardware setup</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s Kit
+package comes with a pair of EPROMs which provide <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> support
+for the Matsushita MN10300 series evaluation board using <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>,
+the Cygnus ROM monitor. Images of these EPROMs are also provided
+at <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/loaders/mn10300-stdeval1/cygmon.bin</TT
+>.
+The LSB EPROM (LROM) is installed to socket IC8 on the board and
+the MSB EPROM (UROM) is installed to socket IC9. Attention should
+be paid to the correct orientation of these EPROMs during installation.</P
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> stubs allows communication
+with <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> by way of the serial port at connector
+CN2. The communication parameters are fixed at 38400 baud, 8 data
+bits, no parity bit, and 1 stop bit (8-N-1). No flow control is
+employed. Connection to the host computer should be made using a
+standard RS232C serial cable (not a null modem cable). A gender
+changer may also be required.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="software-installation-on-unix.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tx39-hardware-setup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Software 
+installation on UNIX</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="installation-guide.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>TX39 hardware setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,413 @@
+<HTML
+><HEAD
+><TITLE
+>ARM7
+PID hardware setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="SPARClite hardware setup"
+HREF="sparclite-hardware-setup.html"><LINK
+REL="NEXT"
+TITLE="How to build and install the GDB module on the AEB-1"
+HREF="build-install-arm-aeb-1.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="sparclite-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="build-install-arm-aeb-1.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ARM-HARDWARE-SETUP"
+>ARM7
+PID hardware setup</A
+></H1
+><P
+>The optimal environment for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+provided by running <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stubs on the
+PID/7T board. The <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stubs
+comprise a minimal environment for downloading and debugging <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> programs.
+The stubs can be programmed into either the programmable ROM (U12)
+or the FLASH (U13). A pre-built set of <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stubs
+is included for this environment, along with a tool that will program
+the stubs into the FLASH memory on the board. Note that some unreliability
+has been experienced in downloading files using Angel 1.00. Angel
+1.02 appears to be more robust in this application.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1485"
+>Installing the stubs into FLASH</A
+></H2
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Configure the PID board to run Angel from
+ROM:</P
+><P
+>Attach a serial cable from Serial A on the PID board to con1
+on the development system. Install jumper LK6 pins 7-8 which enables
+Angel (the ARM debug agent) from the ROM.</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>On the PID boards that have been tested, the jumper for pins
+7-8 chooses FLASH vs. ROM mode. However, this does not match the
+ARM documentation which refers to the jumper from pins 5-6 for this
+selection.</P
+></BLOCKQUOTE
+></DIV
+></LI
+><LI
+><P
+>Download the <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stubs image
+using the host <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> tool and Angel:</P
+><P
+>Change directory to the installed <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> repository
+at the bash prompt of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Development
+Environment:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>bash$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd /Program\ Files/Cygnus\ Solutions/eCos/</B
+></TT
+></P
+><P
+>Run <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to load the image into
+RAM (note that on UNIX the serial device name, e.g. <TT
+CLASS="FILENAME"
+>/dev/ttyS0</TT
+> should
+be used in place of <TT
+CLASS="FILENAME"
+>com1</TT
+> here):</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13; bash$ arm-elf-gdb loaders/arm-pid/gdb_module.img
+ GNU gdb 4.17.1
+ Copyright 1998 Free Software Foundation, Inc.
+ GDB is free software, covered by the GNU General Public License, and you are
+ welcome to change it and/or distribute copies of it under certain conditions.
+ Type "show copying" to see the conditions.
+ There is absolutely no warranty for GDB. Type "show warranty" for details.
+ This GDB was configured as "--host=i586-pc-cygwin32 --target=arm-elf".
+ (no debugging symbols found)...
+ (gdb) target rdi com1
+ Angel Debug Monitor for PID (Built with Serial(x1), Parallel, DCC) 1.00 (Advanced RISC Machines SDT 2.10)
+ Angel Debug Monitor rebuilt on Jan 20 1997 at 02:33:43
+ Connected to ARM RDI target.
+ (gdb) load
+ Loading section .rom_vectors, size 0x44 lma 0x60000
+ Loading section .text, size 0x1f3c lma 0x60044
+ Loading section .rodata, size 0x2c lma 0x61f80
+ Loading section .data, size 0x124 lma 0x61fac
+ Start address 0x60044 , load size 8400
+ Transfer rate: 5169 bits/sec.
+ (gdb) q 
+ The program is running.  Exit anyway? (y or n) y </PRE
+></TD
+></TR
+></TABLE
+></LI
+><LI
+><P
+>Download and execute the FLASH programming tool:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13; bash$ arm-elf-gdb loaders/arm-pid/prog_flash.img 
+ GNU gdb 4.17.1
+ Copyright 1998 Free Software Foundation, Inc.
+ GDB is free software, covered by the GNU General Public License, and you are
+ welcome to change it and/or distribute copies of it under certain conditions.
+ Type "show copying" to see the conditions.
+ There is absolutely no warranty for GDB.  Type "show warranty" for details.
+ This GDB was configured as "--host=i586-pc-cygwin32 --target=arm-elf".
+ (gdb) target rdi com1
+ Angel Debug Monitor for PID (Built with Serial(x1), Parallel, DCC) 1.00 (Advanced RISC Machines SDT 2.10)
+ Angel Debug Monitor rebuilt on Jan 20 1997 at 02:33:43
+ Connected to ARM RDI target.
+ (gdb) load
+ Loading section .rom_vectors, size 0x44 lma 0x40000
+ Loading section .text, size 0x44a4 lma 0x40044
+ Loading section .rodata, size 0x318 lma 0x444e8
+ Loading section .data, size 0x1c8 lma 0x44800
+ Start address 0x40044 , load size 18888
+ Transfer rate: 5596 bits/sec.
+ (gdb) c</PRE
+></TD
+></TR
+></TABLE
+></LI
+><LI
+><P
+>Switch to FLASH mode by removing the jumper at LK6 pins
+7-8. The FLASH will be reprogrammed once the jumper has been removed. </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>There will be no output on the terminal at this point. Wait
+30 seconds and press the reset button on the PID/7T board.
+The <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> session must then be aborted.</P
+></BLOCKQUOTE
+></DIV
+></LI
+></OL
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1516"
+>Installing the stubs into ROM</A
+></H2
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Create a raw image:</P
+><P
+>Change directories to the arm-pid loaders directory at the
+bash prompt of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Development Environment:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd /Program\ Files/Cygnus\ Solutions/eCos/loaders/arm-pid</B
+></TT
+></P
+><P
+>Strip the image and generate a binary version:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>arm-elf-objcopy --strip-all gdb_module.img gdb_module.tmp</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>arm-elf-objcopy -O binary gdb_module.tmp gdb_module.bin</B
+></TT
+></P
+></LI
+><LI
+><P
+>Program the raw image file <TT
+CLASS="FILENAME"
+>gdb_module.bin</TT
+> into
+ROM referring to the instructions of your ROM programmer.</P
+></LI
+><LI
+><P
+>Plug the ROM into socket U12 and install jumper LK6
+pins 7-8 to enable the ROM.</P
+></LI
+></OL
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="sparclite-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="build-install-arm-aeb-1.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SPARClite hardware setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How to build and install the GDB module on the AEB-1</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

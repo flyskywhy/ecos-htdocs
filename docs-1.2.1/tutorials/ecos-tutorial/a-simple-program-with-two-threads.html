@@ -1,0 +1,378 @@
+<HTML
+><HEAD
+><TITLE
+>A sample
+program with two threads</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Building and running sample applications"
+HREF="build-and-run-simple-applications.html"><LINK
+REL="PREVIOUS"
+TITLE="Building and running sample applications"
+HREF="build-and-run-simple-applications.html"><LINK
+REL="NEXT"
+TITLE="More features  clocks
+and alarm handlers"
+HREF="more-features-clocks-and-alarm-handlers.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="build-and-run-simple-applications.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. Building and running sample applications</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="more-features-clocks-and-alarm-handlers.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="A-SIMPLE-PROGRAM-WITH-TWO-THREADS"
+>A sample
+program with two threads</A
+></H1
+><P
+>Below is a program that uses some of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>&#8217;s
+system calls. It creates two <I
+CLASS="FIRSTTERM"
+>threads</I
+>, each of
+which goes into an infinite loop in which it sleeps for a while
+(using <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_delay()</B
+></TT
+>). This code is found
+in the file <TT
+CLASS="FILENAME"
+>twothreads.c</TT
+> in
+the <TT
+CLASS="FILENAME"
+>examples</TT
+> directory.</P
+><P
+></P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 14-2. eCos two-threaded program listing</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#include &#60;cyg/kernel/kapi.h&#62;
+
+#include &#60;stdio.h&#62;
+#include &#60;math.h&#62;
+#include &#60;stdlib.h&#62;
+
+/* now declare (and allocate space for) some kernel objects,
+ like the two threads we will use */
+cyg_thread thread_s[2];	/* space for two thread objects */
+
+char stack[2][4096];	/* space for two 4K stacks */
+
+/* now the handles for the threads */
+cyg_handle_t simple_threadA, simple_threadB;
+
+/* and now variables for the procedure which is the thread */
+cyg_thread_entry_t simple_program;
+
+/* and now a mutex to protect calls to the C library */
+cyg_mutex_t cliblock;
+
+/* we install our own startup routine which sets up threads */
+void cyg_user_start(void)
+{
+ printf("Entering twothreads" cyg_user_start() function\n");
+
+ cyg_mutex_init(&#38;cliblock);
+
+ cyg_thread_create(4, simple_program, (cyg_addrword_t) 0,
+	"Thread A", (void *) stack[0], 4096,
+	&#38;simple_threadA, &#38;thread_s[0]);
+ cyg_thread_create(4, simple_program, (cyg_addrword_t) 1,
+	"Thread B", (void *) stack[1], 4096,
+	&#38;simple_threadB, &#38;thread_s[1]);
+
+ cyg_thread_resume(simple_threadA);
+ cyg_thread_resume(simple_threadB);
+}
+
+/* this is a simple program which runs in a thread */
+void simple_program(cyg_addrword_t data)
+{
+ int message = (int) data;
+ int delay;
+
+ printf("Beginning execution; thread data is %d\n", message);
+
+ cyg_thread_delay(200);
+
+ for (;;) {
+ delay = 200 + (rand() % 50);
+
+ /* note: printf() must be protected by a
+ call to cyg_mutex_lock() */
+ cyg_mutex_lock(&#38;cliblock); {
+ printf("Thread %d: and now a delay of %d clock ticks\n",
+	message, delay);
+ }
+ cyg_mutex_unlock(&#38;cliblock);
+ cyg_thread_delay(delay);
+ }
+} </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>When you run the program (by typing <B
+CLASS="COMMAND"
+>run</B
+> at
+the <TT
+CLASS="PROMPT"
+>(gdb)</TT
+> prompt) the output should look like this:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;Starting program: <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/examples/twothreads.exe
+Entering twothreads" cyg_user_start() function
+Beginning execution; thread data is 0
+Beginning execution; thread data is 1
+Thread 0: and now a delay of 240 clock ticks
+Thread 1: and now a delay of 225 clock ticks
+Thread 1: and now a delay of 234 clock ticks
+Thread 0: and now a delay of 231 clock ticks
+Thread 1: and now a delay of 224 clock ticks
+Thread 0: and now a delay of 249 clock ticks
+Thread 1: and now a delay of 202 clock ticks
+Thread 0: and now a delay of 235 clock ticks &#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>When running in a simulator the delays might be
+quite long. On a hardware board (where the clock speed is 100 ticks/second)
+the delays should average to about 2.25 seconds. In simulation,
+the delay will depend on the speed of the processor and will almost
+always be much slower than the actual board. You might want to reduce
+the delay parameter when running in simulation. </P
+></BLOCKQUOTE
+></DIV
+><P
+><A
+HREF="a-simple-program-with-two-threads.html#FIGURE-TWOTHREADS"
+>Figure 14-1</A
+> shows
+how this multitasking program executes. Note that apart from the
+thread creation system calls, this program also creates and uses
+a <I
+CLASS="FIRSTTERM"
+>mutex</I
+> for synchronization
+between the <TT
+CLASS="FUNCTION"
+><B
+>printf()</B
+></TT
+> calls in the two threads.
+This is because the C library standard I/O (by default)
+is configured not to be thread-safe, which means that if more than
+one thread is using standard I/O they might corrupt each
+other. This is fixed by a mutual exclusion (or <I
+CLASS="EMPHASIS"
+>mutex</I
+>)
+lockout mechanism: the threads do not call <TT
+CLASS="FUNCTION"
+><B
+>printf()</B
+></TT
+> until <TT
+CLASS="FUNCTION"
+><B
+>cyg_mutex_lock()</B
+></TT
+> has
+returned, which only happens when the other thread calls <TT
+CLASS="FUNCTION"
+><B
+>cyg_mutex_unlock()</B
+></TT
+>.</P
+><P
+>You could avoid using the mutex by configuring the C library
+to be thread-safe (by selecting the component <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_LIBC_STDIO_THREAD_SAFE_STREAMS</I
+></TT
+>). Keep
+in mind that if the C library is thread-safe, you can no longer
+use <TT
+CLASS="FUNCTION"
+><B
+>printf()</B
+></TT
+> in <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+>. </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="FIGURE-TWOTHREADS"
+>Figure 14-1. Two threads with simple
+print statements after random delays</A
+></B
+></P
+><P
+><IMG
+SRC="../twothreads.gif"
+ALIGN="CENTER"></P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="build-and-run-simple-applications.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="more-features-clocks-and-alarm-handlers.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Building and running sample applications</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="build-and-run-simple-applications.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>More features &#8212; clocks
+and alarm handlers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

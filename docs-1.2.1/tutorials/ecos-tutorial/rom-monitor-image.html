@@ -1,0 +1,273 @@
+<HTML
+><HEAD
+><TITLE
+>ROM
+monitor image</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Overview of the release"
+HREF="overview-of-the-release.html"><LINK
+REL="PREVIOUS"
+TITLE="Using the simulator"
+HREF="using-the-simulator.html"><LINK
+REL="NEXT"
+TITLE="Tests and examples"
+HREF="tests-and-examples.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="using-the-simulator.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Overview of the release</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tests-and-examples.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ROM-MONITOR-IMAGE"
+>ROM
+monitor image</A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> ships with a <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> ROM monitor for the MN10300,
+TX39, and SPARClite evaluation boards. This includes a 
+<SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub, thus allowing <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to
+be used to debug <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> applications on
+these evaluation boards. In addition to shipping the actual ROM, the
+image of that ROM is provided in case you need to burn identical
+copies for additional boards (see <A
+HREF="hardware-setup.html"
+>Chapter 10</A
+>). </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>The TCP stack in the SPARClite version of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> uses
+timer1 of the 86940 as a freerunning millisecond counter. This means
+timer1 cannot be used by the application.</P
+></BLOCKQUOTE
+></DIV
+><P
+>For the PowerPC Cogent and ARM7 PID boards, the ROM images
+include a <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub. This allows <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to
+connect to the board and download <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> programs.
+For the ARM7 AEB-1 board, the ROM image includes a <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub
+that can be installed in the FLASH ROM on the board. See the file <TT
+CLASS="FILENAME"
+>hal/arm/aeb/v1_2_1/misc/Notes</TT
+> for
+details of the downloading procedure. <DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>When an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> program is run on
+the PowerPC board, the <SPAN
+CLASS="APPLICATION"
+><SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+></SPAN
+> stub
+in ROM loses control. This means that if you require debugging capabilities,
+you must include <SPAN
+CLASS="APPLICATION"
+><SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+></SPAN
+> stub
+support when configuring <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.</P
+></BLOCKQUOTE
+></DIV
+></P
+><P
+>No ROM image is required for the synthetic Linux target. </P
+><P
+>The source code to <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> is included
+as part of the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> package, so that
+you may recompile it as described in the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> documentation. </P
+><P
+>Please note that previous releases of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> are
+incompatible with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. You must use
+the version of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> that is provided
+with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> rather than an older version
+of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="using-the-simulator.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tests-and-examples.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Using the simulator</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="overview-of-the-release.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Tests and examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

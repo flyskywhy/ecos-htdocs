@@ -1,0 +1,2046 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>GNUPRO TOOLS</TITLE>
+</HEAD>
+<BODY LINK="#0000FF" VLINK="#800080">
+<B><FONT FACE="Arial"><FONT SIZE=+2>GNUPro<SUP>&reg;</SUP>
+Toolkit</FONT></FONT></B>
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>GNUPro Toolkit
+Reference for eCos</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>ARM7</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>eCos 1.2.1</FONT></FONT></B></DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>April 1999</FONT></FONT></B></DIV>
+<B><FONT SIZE=+2>&nbsp;</FONT><FONT FACE="Arial"><FONT SIZE=+3> </FONT></FONT></B><FONT SIZE=+1><A HREF="#Table of Contents">Table
+of Contents</A></FONT>
+<BR>
+<HR WIDTH="100%">
+
+<P><FONT SIZE=-1>Copyright <FONT FACE="Symbol">&Oacute;</FONT> 1999 <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B> All rights reserved.</FONT>
+<BR><FONT SIZE=-1>No part of this document may be reproduced in any form
+or by any means without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>No part of this document may be changed and/or modified
+without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>GNUPro<SUP>&reg;</SUP>, the GNUPro<SUP>&reg;</SUP> logo,
+and the Cygnus Solutions logo are registered trademarks of</FONT>
+<BR><FONT SIZE=-1><B><FONT FACE="Arial">CYGNUS SOLUTIONS, Inc.</FONT></B>
+All other brand and product names are trademarks of their respective owners.</FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Corporate Headquarters</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>1325 Chesapeake Terrace</FONT>
+<BR><FONT SIZE=-1>Sunnyvale, CA 94089 USA</FONT>
+<BR><FONT SIZE=-1>TEL: +1 408 542 9600</FONT>
+<DIR><FONT SIZE=-1>Support:</FONT>
+<BR><FONT SIZE=-1>Within USA/Canada: +1 800 CYGNUS1</FONT>
+<BR><FONT SIZE=-1>Outside USA/Canada: +1 408 542 9601</FONT></DIR>
+<FONT SIZE=-1>FAX: +1 408 542 9699</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.com</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.com/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus Japan</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>NIHON CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>Madre Matsuda Building</FONT>
+<BR><FONT SIZE=-1>4-13 Kioi-cho Chiyoda-ku</FONT>
+<BR><FONT SIZE=-1>Tokyo 102-0094 JAPAN</FONT>
+<BR><FONT SIZE=-1>TEL: +81-3-3234-3896</FONT>
+<BR><FONT SIZE=-1>FAX: +81-3-3239-3300</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.co.jp</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.co.jp/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus Europe</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>35-36 Cambridge Place</FONT>
+<BR><FONT SIZE=-1>Cambridge CB2 1NS</FONT>
+<BR><FONT SIZE=-1>United Kingdom</FONT>
+<BR><FONT SIZE=-1>TEL: +44 1223 728728</FONT>
+<BR><FONT SIZE=-1>FAX: +44 1223 728777</FONT>
+<BR>&nbsp;
+<DIV ALIGN=right><FONT FACE="Arial"><FONT SIZE=-1>Part #: 300-400-1010060-1.2.1</FONT></FONT></DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+<A NAME="Table of Contents"></A><B><FONT SIZE=+3>Table of Contents</FONT></B>
+<BR>
+<HR SIZE=0 WIDTH="100%">
+<BR><B><FONT SIZE=-1><A HREF="#_Toc445540716">Introduction</A></FONT></B>
+<UL><FONT SIZE=-1><A HREF="#_Toc445540717">Tool naming conventions</A></FONT>
+<BR><FONT SIZE=-1><A HREF="#_Toc445540718">Toolkit features</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc445540719">Processor version(s)</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540720">Targets Supported</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540721">Hosts Supported</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540722">Object file format</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc445540723">GNUPro on Windows NT</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc445540724">Windows environment settings</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540725">Case Sensitivity</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc445540726">GNUPro on Redhat Linux</A></FONT></UL>
+<B><FONT SIZE=-1><A HREF="#_Toc445540727">Reference</A></FONT></B>
+<UL><FONT SIZE=-1><A HREF="#_Toc445540728">Compiler</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc445540729">ARM7-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540730">Preprocessor symbols</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540731">ARM7-specific attributes</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc445540732">New compiler and linker features</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc445540733">Initialization prioritization</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc445540734">Selective linking</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc445540735">ABI Summary</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540736">Data types sizes
+and alignments</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540737">Subroutine calls</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540738">The Stack Frame</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540739">C Language Calling
+Conventions</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540740">Function Return
+Values</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540741">Assembler</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540742">ARM7-specific
+command-line options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540743">Syntax</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540744">Special characters</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540745">Register names</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540746">Addressing modes</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540747">Floating point</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540748">Opcodes</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540749">Synthetic Instructions</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540750">Linker</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc445540751">ARM7-specific command-line
+options</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#Debugger">Debugger</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#GDB-CLO">ARM7-specific command-line options</A></FONT></I>
+<BR><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540752">Debugging programs
+with multiple threads</A></FONT></UL>
+</UL>
+<B><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540753">Appendix A: ARM7-specific
+Assembler Error Messages</A></FONT></B>
+
+<P><B><FONT SIZE=-1><A HREF="ARM7REF2.html#_Toc445540754">Appendix B: Bibliography</A></FONT></B>
+<BR>&nbsp;
+<BR><FONT SIZE=+0>&nbsp;</FONT>&nbsp;<FONT SIZE=-1>&nbsp;</FONT>
+
+<P><A NAME="_Toc445540716"></A><B><FONT SIZE=+3>Introduction</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><A NAME="_Toc382726584"></A><FONT SIZE=+0>The GNUPro Toolkit for eCos
+is a complete solution for C and C++ development for the ARM7. The tools
+include the compiler, assembler, linker, and interactive debugger. Linker
+and debugger support is also included for the PID Series evaluation board.
+In addition to this manual, please read </FONT>“<B><I>Getting started with
+eCos</I></B>.”</DIR>
+</DIR>
+<A NAME="_Toc399038257"></A><A NAME="_Toc425129974"></A><A NAME="_Toc425237788"></A><A NAME="_Toc445540717"></A><B><FONT SIZE=+2>Tool
+naming conventions</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Cross-development tools in the Cygnus GNUPro Toolkit
+normally have names that reflect the target processor and the object file
+format output by the tools (for example ELF). This makes it possible to
+install more than one set of tools in the same binary directory, including
+both native and cross-development tools.</FONT>
+
+<P><FONT SIZE=+0>The complete tool name is a three-part hyphenated string.
+The first part indicates the processor family (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>arm</FONT></FONT><FONT SIZE=+0>’).
+The second part indicates the file format output by the tool (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>elf</FONT></FONT><FONT SIZE=+0>’).
+The third part is the generic tool name (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gcc</FONT></FONT><FONT SIZE=+0>’).
+For example, the GCC compiler for the ARM7 is ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-gcc</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><FONT SIZE=+0>The ARM7 package includes the following supported tools:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="444" >
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><B><FONT SIZE=-1>Tool Description</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><B><FONT SIZE=-1>Tool Name</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GCC compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-gcc</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>C++ compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-c++</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GAS assembler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-as</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GLD linker</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-ld</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>Binary Utilities</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-ar</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-nm</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-objcopy</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-objdump</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-ranlib</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-size</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-strings</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-strip</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GDB debugger</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-gdb</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The binaries for a Windows NT hosted toolchain are installed
+with an ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix. However, the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix does not need to be specified when running the executable.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc425129976"></A><A NAME="_Toc425237790"></A><A NAME="_Toc445540718"></A><B><FONT SIZE=+2>Toolkit
+features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following describes ARM7-specific features of the
+GNUPro Toolkit.</FONT></DIR>
+</DIR>
+<A NAME="_Toc445540719"></A><B><FONT SIZE=+1>Processor version(s)</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>ARM7</FONT></DIR>
+</DIR>
+<A NAME="_Toc382726586"></A><A NAME="_Toc431791383"></A><A NAME="_Toc445540720"></A><B><FONT SIZE=+1>Targets
+Supported</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>PID Series evaluation board</FONT>
+
+<P><FONT SIZE=+0>Both big-endian and little-endian mode may be selected.
+The default is</FONT>
+<BR><FONT SIZE=+0>little endian.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791384"></A><A NAME="_Toc445540721"></A><B><FONT SIZE=+1>Hosts
+Supported</FONT></B>
+<BR>&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="469" >
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><B><FONT SIZE=+0>CPU</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Operating System</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Vendor</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Windows NT 4.0</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Microsoft</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat Linux 5.x</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat</FONT></TD>
+</TR>
+</TABLE></CENTER>
+<A NAME="_Toc445540722"></A><B><FONT SIZE=+1>Object file format</FONT></B>
+<DIR>
+<DIR>The ARM7 tools support the ELF object file format. Refer to Chapter
+4, <B><I>System V Application Binary Interface</I></B> (Prentice Hall,
+1990.). Use ‘<FONT FACE="Courier New,Courier"><FONT SIZE=-1>ld</FONT></FONT>’
+(refer to Using LD in <B><I>GNUPro Utilities</I></B>) or ‘<FONT FACE="Courier New,Courier"><FONT SIZE=-1>objcopy</FONT></FONT>’
+(refer to The GNU Binary Utilities in <B><I>GNUPro Utilities</I></B>) to
+produce S-records.</DIR>
+</DIR>
+<B><FONT SIZE=+3>&nbsp;</FONT></B>
+<BR><A NAME="_Toc445540723"></A><B><FONT SIZE=+2>GNUPro on Windows NT</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><A NAME="_Toc445540724"></A><B><FONT SIZE=+1>Windows environment settings</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The Windows NT hosted toolchain requires the following
+environmental settings to function properly. Assuming the release is installed
+in:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>C:\cygnus\gnupro\i386-cygwin32\arm-elf\ecos-99r1</FONT></FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>SET PROOT=C:\cygnus\gnupro\i386-cygwin32\arm-elf\ecos-99r1</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>SET PATH=%PROOT%\H-i386-cygwin32\bin;%PATH%</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>SET INFOPATH=%PROOT%\info</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>REM Set TMPDIR to point to a
+ramdisk if you have one</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>SET TMPDIR=C:\TEMP</FONT></FONT></DIR>
+<FONT SIZE=+0>For the Sourceware release of eCos, ensure that the Cygwin
+B20.1 tools are also installed. Assuming these are installed in their default
+location in</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>C:\cygnus\cygwin-b20</FONT></FONT></DIR>
+<FONT SIZE=+0>then add the environmental setting:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>SET PATH=C:\cygnus\cygwin-b20\H-i586-cygwin32\bin;%PATH%</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>If you are using the eCos Developer’s Kit CD release (not
+included in the sourceware release), a working environment can be established
+by using the following shortcut from the Windows Start menu:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Arial"><FONT SIZE=-1>Programs->Cygnus eCos->eCos Development
+Environment</FONT></FONT></DIR>
+<FONT SIZE=+0>This will bring up a window running “bash”, and your Windows
+environment will be automatically set up.</FONT></DIR>
+</DIR>
+<A NAME="_Toc445540725"></A><B><FONT SIZE=+1>Case Sensitivity<A NAME="_Toc368474905"></A></FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>command line options</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler labels</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>linker script commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>section names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are not case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>gdb commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler instructions and register names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Case sensitivity for Windows NT is dependent on system
+configuration. By default, file names under Windows NT are not case sensitive.</FONT></DIR>
+</DIR>
+<A NAME="_Toc368474908"></A><A NAME="_Toc433705440"></A><A NAME="_Toc445540726"></A><B><FONT SIZE=+2>GNUPro
+on Redhat Linux</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro Tools for Redhat Linux are supplied in a
+ZIP format file. Detailed instructions for installation can be found on
+the eCos sourceware site:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>http://sourceware.cygnus.com/ecos/</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Assuming the sources for the tools were installed in</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-arm-990321/src</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>By following the instructions in the Installation Guide,
+you should eventually have the tools installed in</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-arm-990321/H-i386-pc-linux-gnu/bin</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>In which case, we recommend you have the following settings
+in your appropriate shell startup script.</FONT>
+
+<P><FONT SIZE=+0>For Bourne shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>PROOT=/usr/cygnus/ecosSWtools-arm-990321</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>PATH=$PROOT/H-i386-pc-linux-gnu/bin:$PATH</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>INFOPATH=$PROOT/info:${INFOPATH-/usr/local/info:/usr/info}</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>MANPATH=$PROOT/man:${MANPATH-/usr/local/man:/usr/man}</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>export PATH INFOPATH MANPATH</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>For C-shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>setenv PROOT /usr/cygnus/ecosSWtools-arm-990321</FONT></FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>if ( "$?MANPATH" == "0" ) then</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>setenv MANPATH "/usr/local/man:/usr/man"</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>if ( "$?INFOPATH" == "0" ) then</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>setenv INFOPATH "/usr/local/info:/usr/info"</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>setenv MANPATH $PROOT/man:$MANPATH</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>setenv INFOPATH $PROOT/info:$INFOPATH</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>set path = ( $PROOT/H-i386-pc-linux-gnu/bin
+$path )</FONT></FONT>
+
+<P><B><FONT SIZE=+0>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc445540727"></A><B><FONT SIZE=+3>Reference</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="_Toc395075402"></A><A NAME="_Toc415038407"></A><A NAME="_Toc431791408"></A><A NAME="_Toc445540728"></A><B><FONT SIZE=+2>Compiler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes ARM7 and ARM7T-specific features
+of the GNUPro Compiler.</FONT></DIR>
+</DIR>
+<A NAME="_Ref413205429"></A><A NAME="_Ref413205467"></A><A NAME="_Toc431791409"></A><A NAME="_Toc445540729"></A><B>ARM7-specific
+command-line options</B>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic compiler options, see
+“GNU CC Command Options” in <I>Using GNU CC</I> in <B><I>GNUPro Compiler
+Tools</I></B>. In addition, the following ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>arm-elf-gcc</FONT></FONT><FONT SIZE=+0>’
+specific command-line options are supported:</FONT></DIR>
+</DIR>
+
+<DIR>
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-frame</FONT></FONT>
+<DIR><FONT SIZE=+0>Generate a stack frame upon entry to a function, as
+defined in the ARM Procedure Calling Standard.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-apcs-frame</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not generate a stack frame upon entry to a function.
+The APCS specifies generating stack frames produces slightly smaller and
+faster code. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-32</FONT></FONT>
+<DIR><FONT SIZE=+0>Procedure Calling Standard. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-26</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which conforms to the 26 bit version
+of the ARM Procedure Calling Standard, as used by earlier versions of the
+ARM processor (ARM2, ARM3).</FONT>
+
+<P><B><FONT SIZE=+0>This option is not supported for use with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-stack-check</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which checks the amount of stack
+space available upon entry to a function and which calls a suitable function
+if their is insufficient space available.</FONT>
+
+<P><B><FONT SIZE=+0>This option is not supported for use with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-apcs-stack-check</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not produce code to check for stack space upon entry
+to a function. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-reentrant</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code that is position independent and
+reentrant.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-apcs-rentrant</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not produce position independent, reentrant assembly
+code. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mshort-load-bytes</FONT></FONT>
+<DIR><FONT SIZE=+0>Two byte values should be loaded by performing two individual
+byte loads and then merging the results. This allows shorts to be loaded
+from</FONT>
+<BR><FONT SIZE=+0>non-aligned addresses without generating a memory access
+fault.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-short-load-bytes</FONT></FONT>
+<DIR><FONT SIZE=+0>Two byte values should be loaded using the most space
+efficient method. On an ARM processor that supports half word loads these
+instructions will be used. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mfpe</FONT></FONT>
+<DIR><FONT SIZE=+0>Floating point instructions should be emulated by the
+ARM Floating Point Emulator code, which is supplied by the operating system.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mfpe=<I>N</I></FONT></FONT>
+<DIR><FONT SIZE=+0>Floating point instructions should be emulated by the
+ARM Floating Point Emulator code version ‘</FONT><I><FONT FACE="Courier New,Courier"><FONT SIZE=-1>N</FONT></FONT></I><FONT SIZE=+0>’.
+Valid version numbers are 2 and 3. 2 is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-msoft-float</FONT></FONT>
+<DIR><FONT SIZE=+0>Floating point instructions should be emulated by library
+calls. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mhard-float</FONT></FONT>
+<DIR><FONT SIZE=+0>Floating point instructions can be performed in hardware.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mbig-endian</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which is targeted for a big endian
+processor.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mlittle-endian</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which is targeted for a little
+endian processor. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mwords-little-endian</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which is targeted for a big endian
+processor, but which stores words in a little endian format. This is for
+backward compatibility with older versions of GCC.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mthumb-interwork</FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code which supports calls between the
+ARM instruction set and the THUMB instruction set.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-thumb-interwork</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not produce code specifically intended to support
+calling between ARM and THUMB instruction sets. This is the default setting.</FONT>
+
+<P><B><FONT SIZE=+0><I>Note</I>:</FONT></B><FONT SIZE=+0> In regard to
+the two previous options, ARM/Thumb inter-working is not supported by eCos
+at this time.</FONT></DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-msched-prolog</FONT></FONT>
+<DIR><FONT SIZE=+0>Allow instructions in function prologues to be rearranged
+to improve performance. This is the default setting.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-sched-prolog</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not allow the instructions in function prologues
+to be rearranged. This guarantees that function prologues will have a well-defined
+form, depending upon their nature.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=<I>XXXX</I></FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code specifically for the indicated
+processor. The variable ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>XXXX</FONT></FONT></I><FONT SIZE=+0>’
+can be one of the following processors.</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>arm2</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm250</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm3</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm6</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm600</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm610</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm620</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7m </FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>arm7m</FONT></FONT><FONT SIZE=+0>’
+is the default setting</FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7d</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7dm</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7di</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7dmi</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm70</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm700</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm700i</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm710</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm710c</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7100</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7500</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7500fe</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm7tdmi</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>arm8</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-march=<I>XXXX</I></FONT></FONT>
+<DIR><FONT SIZE=+0>Produce assembly code specifically for an ARM processor
+of the indicated architecture. The variable ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>XXXX</FONT></FONT></I><FONT SIZE=+0>’
+can be one of the following architectures.</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>armv2</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>armv2a</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>armv3</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>armv3m</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>armv4 </FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>armv4</FONT></FONT><FONT SIZE=+0>’
+is the default setting</FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>armv4t</FONT></FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc431791410"></A><A NAME="_Toc445540730"></A><B><FONT SIZE=+1>Preprocessor
+symbols</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The following ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>arm-elf-gcc</FONT></FONT><FONT SIZE=+0>’
+specific preprocessor symbols are supported:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="511" >
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><B><FONT SIZE=-1>Symbol</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><B><FONT SIZE=-1>Condition</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>arm</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>Is always defined.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__semi__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>Is always defined.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__APCS_32__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-26</FONT></FONT><FONT SIZE=+0>’
+has NOT been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__APCS_26__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-26</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__SOFTFP__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mhard-float</FONT></FONT><FONT SIZE=+0>’
+has NOT been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__ARMWEL__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mwords-little-endian</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__ARMEB__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mbig-endian</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__ARMEL__</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mbig-endian</FONT></FONT><FONT SIZE=+0>’
+has NOT been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm2</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm2</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm250</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm250</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm3</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm3</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm6</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm6</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm60</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm60</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm600</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm600</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm610</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm610</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm620</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm620</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7m</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7m</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7d</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7d</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7dm</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7dm</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7di</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7di</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7dmi</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7dmi</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm70</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm70</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm700</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm700</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm700i</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm700i</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm710</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm710</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm710c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm710c</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7100</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7100</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7500</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7500</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7500fe</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7500fe</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm7tdmi</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm7tdmi</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="32%"><FONT FACE="Courier New"><FONT SIZE=-1>__arm8</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="68%"><FONT SIZE=+0>If ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mcpu=arm8</FONT></FONT><FONT SIZE=+0>’
+has been specified.</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+
+<P><A NAME="_Toc431791411"></A><A NAME="_Toc445540731"></A><B><FONT SIZE=+1>ARM7-specific
+attributes</FONT></B>
+<DIR>
+<DIR>There are no ARM7-specific attributes. See “Declaring Attributes of
+Functions” and “Specifying Attributes of Variables” in “Extensions to the
+C Language Family” in <I>Using GNU CC</I> in <B><I>GNUPro Compiler Tools</I></B>
+for more information.
+<BR>&nbsp;</DIR>
+</DIR>
+<B><FONT SIZE=+2>&nbsp;</FONT></B>
+<BR><A NAME="_Toc445540732"></A><B><FONT SIZE=+2>New compiler and linker
+features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro compiler and linker have been improved by
+Cygnus to provide even more benefits for customers developing for embedded
+targets. These features are guaranteed order of initialization at startup,
+and selective linking.</FONT></DIR>
+</DIR>
+<A NAME="_Toc445540733"></A><B><FONT SIZE=+1>Initialization prioritization</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>In C++, you can define static and global objects with
+constructors, or initialize static and global variables from a function.
+This means that the constructors or functions are run before the rest of
+your program starts. However, when you have these objects spread over multiple
+files, the C++ standard does not specify the order in which they are initialized,
+and for all practical purposes the order is random. For an embedded system,
+this can be a problem, as you may want to ensure that a static scheduler
+object is initialized before static threads can attach to it, or that devices
+are initialized before they are used. GNUPro solves this problem by allowing
+you to define a priority when the static or global is declared. The following
+example shows the syntax:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>static object_t myobj __attribute__((init_priority
+(30000) ));</FONT></FONT>
+
+<P><FONT SIZE=+0>The syntax is slightly different if the object takes any
+arguments to its constructor:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>static object_t myobj __attribute__((init_priority
+(30000) )) = \ object_t(arg1, arg2);</FONT></FONT>
+
+<P><FONT SIZE=+0>The numeric priority can be from 1 to 65535, with 1 being
+the highest priority, and 65535 being the lowest. The default priority
+for objects without this attribute is 65535. Constructors with a higher
+priority are guaranteed execution before constructors with lower priority.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must provide the argument ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-finit-priority</FONT></FONT><FONT SIZE=+0>’
+to the compiler on its command-line for it to recognize this attribute
+when you are compiling your C++ source files.</FONT>
+
+<P><FONT SIZE=+0>If you are using eCos, be warned that eCos uses initialization
+priorities internally. Ensure you choose an appropriate priority level
+so that other eCos subsystems will have initialized before you refer to
+them in your own constructor.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc445540734"></A><B><FONT SIZE=+1>Selective linking</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>When writing C and C++ code, it is sometimes natural
+to include more than one function in a source file. For example in C++,
+it is common to have all methods for a particular class contained in the
+same C++ source file. However, there is a drawback that, conventionally,
+if you use just one of these functions, then all the functions defined
+in that file also get included in the final executable image. For an embedded
+system, this can substantially and unnecessarily increase the size of the
+final image stored in ROM, or loaded into RAM when debugging.</FONT>
+
+<P><FONT SIZE=+0>The GNUPro C and C++ compilers can now optionally remove
+these unnecessary functions from the final image. They also ensure that
+any shared global data is removed that is only referenced by functions
+that are removed. This can be done by including the options ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+on the command-line, when you invoke the C or C++ compiler. The ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary functions, and the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary data.</FONT>
+
+<P><FONT SIZE=+0>In addition, when classes define virtual methods in C++,
+it is possible to remove any unused methods from the final image by passing
+the option</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-fvtable-gc</FONT></FONT><FONT SIZE=+0>’
+to the C++ compiler on its command-line.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must also supply a command-line option
+when linking. If invoking the linker ld directly, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on its command-line; alternatively, if you are using the preferred method
+of linking your executable, using the form ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gcc
+-o</FONT></FONT><FONT SIZE=+0> </FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;program
+name></FONT></FONT></I><FONT SIZE=+0> </FONT><I><FONT SIZE=-1><FONT FACE="Courier New">&lt;file</FONT><FONT FACE="Courier New,Courier">1>.o
+&lt;file2>.o</FONT></FONT></I><FONT SIZE=+0>’, then also pass the option
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-Wl,--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on the compiler command-line, for example:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>gcc -o prog f1.o f2.o -Wl,--gc-sections</FONT></FONT>
+
+<P><B><FONT SIZE=+0>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc431791412"></A><A NAME="_Toc445540735"></A><B><FONT SIZE=+2>ABI
+Summary</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The ARM7 tools adhere by default to the APCS (ARM Procedure
+Call Standard). The ARM7T tools adhere to the TPCS (Thumb Procedure Call
+Standard). The following ABI summary is consistent with both these standards.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791413"></A><A NAME="_Toc445540736"></A><B><FONT SIZE=+1>Data
+types sizes and alignments</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following table shows the size and alignment for
+all data types:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="432" >
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Type</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Size (bytes)</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Alignment (bytes)</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>char</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>1 byte</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>1 byte</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>short</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>2 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>2 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>int</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>unsigned</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>float</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>Alignment within aggregates (structs and unions) is as above,
+with padding added if needed</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Aggregates have alignment equal to that of their most aligned
+member</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Aggregates have sizes which are a multiple of their alignment</FONT></LI>
+</UL>
+</UL>
+</UL>
+<A NAME="_Toc417876195"></A>
+
+<P><A NAME="_Toc425237826"></A><A NAME="_Toc431791414"></A><A NAME="_Toc445540737"></A><B><FONT SIZE=+1>Subroutine
+calls</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following describes the calling conventions for
+subroutine calls. The first table outlines the registers used for passing
+parameters. The second table outlines other register usage.</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="288" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><B>Parameter registers:</B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>general-purpose</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r0-r3</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="288" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><B>Register usage:</B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>volatile</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r0-r3,
+r12</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>non-volatile</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r4-r10</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>frame pointer&nbsp;</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r11</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>stack pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r13</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>return address</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r14</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="50%"><FONT SIZE=+0>program counter</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="50%"><FONT FACE="Courier New"><FONT SIZE=-1>r15</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<UL>
+<DIR>
+<DIR>
+<UL>
+<LI>
+<FONT SIZE=+0>Structures that are less than or equal to 32 bits in length
+are passed as values.</FONT></LI>
+
+<LI>
+<A NAME="_Toc395075405"></A><A NAME="_Toc415038408"></A><FONT SIZE=+0>Structures
+that are greater than 32 bits in length are passed as pointers.</FONT></LI>
+</UL>
+</DIR>
+</DIR>
+</UL>
+<B><FONT SIZE=+1>&nbsp;</FONT></B>
+
+<P><A NAME="_Toc425237827"></A><A NAME="_Toc431791415"></A><A NAME="_Toc445540738"></A><B><FONT SIZE=+1>The
+Stack Frame</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes ARM stack frame:</FONT></DIR>
+</DIR>
+
+<UL>
+<DIR>
+<DIR>
+<UL>
+<LI>
+<FONT SIZE=+0>The stack grows downwards from high addresses to low addresses.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A leaf function need not allocate a stack frame if it does
+not need one.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A frame pointer need not be allocated.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The stack pointer shall always be aligned to 4 byte boundaries.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The stack pointer always points to the lowest addressed word
+currently stored on the stack.</FONT></LI>
+</UL>
+</DIR>
+</DIR>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Stack frames for functions that take a fixed number
+of arguments look like this:</FONT>
+
+<P><IMG SRC="Image20.gif" HEIGHT=316 WIDTH=336></DIR>
+</DIR>
+<FONT SIZE=+0>&nbsp;</FONT>&nbsp;
+<HR WIDTH="100%">
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>Stack frames for functions that take a variable number
+of arguments look like this:</FONT>
+
+<P><IMG SRC="Image21.gif" HEIGHT=384 WIDTH=336>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc431791416"></A><A NAME="_Toc445540739"></A><B><FONT SIZE=+1>C
+Language Calling Conventions</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><B>Argument Representation</B>
+<DIR>
+<DIR><FONT SIZE=+0>A floating-point value occupies one, two, or three words,
+as appropriate to its type. Floating point values are encoded in IEEE 754
+format, with the most significant word of a double having the lowest address.</FONT>
+
+<P><I><FONT SIZE=+0>Note:</FONT></I>
+<DIR><FONT SIZE=+0>When targetting little-endian ARMs, the words that make
+up a double will be stored in big-endian order, while the bytes inside
+each word will be stored in little-endian order.</FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>The C compiler widens arguments of type float to type double
+to support inter-working between ANSI C and classic C.</FONT>
+
+<P><FONT SIZE=+0>Char, short, pointer and other integral values occupy
+one word in an argument list. Character and short values are widened by
+the C compiler during argument marshalling.</FONT>
+
+<P><FONT SIZE=+0>A structure always occupies an integral number of words
+(unless this is overridden by the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-mstructure-size-boundry</FONT></FONT><FONT SIZE=+0>’
+command line option).</FONT></DIR>
+</DIR>
+<B>Argument List Collation</B>
+<DIR>
+<DIR><FONT SIZE=+0>Argument values are collated in the order written in
+the source program</FONT>
+
+<P><FONT SIZE=+0>The first four words of the argument values are loaded
+into ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’
+through ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r3</FONT></FONT><FONT SIZE=+0>’,
+and the remainder are pushed on to the stack in reverse order (so that
+arguments later in the argument list have higher addresses than those earlier
+in the argument list). As a consequence, a FP value can be passed in integer
+registers, or even split between an integer register and the stack.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc425237831"></A><A NAME="_Toc431791417"></A><A NAME="_Toc445540740"></A><B><FONT SIZE=+1>Function
+Return Values</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following sections describe how different data types
+are returned.</FONT></DIR>
+</DIR>
+<B>Floats and Integer-like values</B>
+<DIR>
+<DIR><FONT SIZE=+0>Floats and integer-like values are returned in register
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><FONT SIZE=+0>A type is integer-like if its size is less than or equal
+to one word and if the type is a structure, union or array, then all of
+its addressable sub-fields must have an offset of zero.</FONT>
+
+<P><FONT SIZE=+0>For example:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>struct {int a:8, b:8, c:8,
+d:8;}</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>is integer-like, as is;</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>union {int i; char*p;}</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>but</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>struct {char A; char B; char
+c; char D;}</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>is not, because it is possible to take the address of fields
+B, C or D, and their offsets from the start of the structure are not zero.</FONT></DIR>
+</DIR>
+<B>Doubles and ‘<FONT FACE="Courier New"><FONT SIZE=-1>long long</FONT></FONT>’
+integers</B>
+<DIR>
+<DIR><FONT SIZE=+0>Doubles and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT><FONT SIZE=+0>’ integers are returned in registers ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r1</FONT></FONT><FONT SIZE=+0>’.
+For doubles ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’
+always contains the most significant word of the double. For ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT><FONT SIZE=+0>’ values ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’
+only contains the most significant word if the target is</FONT>
+<BR><FONT SIZE=+0>big-endian.</FONT></DIR>
+</DIR>
+<B>Other values</B>
+<DIR>
+<DIR><FONT SIZE=+0>All other values are returned by placing them into a
+suitably sized area of memory provided for this purpose by the function’s
+caller. A pointer to this area of memory is passed to the function as a
+hidden first argument, generated at compile time:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>LargeType t;</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>t = func(arg);</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>is implemented as:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>LargeType t;</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>(void) func(&amp;t,arg);</FONT></FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc431791418"></A><A NAME="_Toc445540741"></A><B><FONT SIZE=+2>Assembler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes ARM7-specific features of the
+GNUPro Assembler.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791419"></A><A NAME="_Toc445540742"></A><B><FONT SIZE=+1>ARM7-specific
+command-line options</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic assembler options, see
+“Command-Line Options” in <I>Using AS</I> in <B><I>GNUPro Utilities</I></B>.
+The following are ARM7/7T specific assembler command-line options.</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>-m[arm][1|2|250|3|6|7[t][d][m][i]]</FONT></FONT>
+<DIR><FONT SIZE=+0>Select processor variant.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-m[arm]v[2|2a|3|3m|4|4t]</FONT></FONT>
+<DIR><FONT SIZE=+0>Select architecture variant.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mthumb</FONT></FONT>
+<DIR><FONT SIZE=+0>Only allow Thumb instructions.</FONT>
+
+<P><B><FONT SIZE=+0>This option is not supported for use with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mall</FONT></FONT>
+<DIR><FONT SIZE=+0>Allow any instruction.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mfpa10</FONT></FONT>
+<DIR><FONT SIZE=+0>Select the v1.0 floating point architecture.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mfpa11</FONT></FONT>
+<DIR><FONT SIZE=+0>Select the v1.1 floating point architecture.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mfpe-old</FONT></FONT>
+<DIR><FONT SIZE=+0>Don’t allow floating-point multiple instructions.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mno-fpu</FONT></FONT>
+<DIR><FONT SIZE=+0>Don’t allow any floating-point instructions.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mthumb-interwork</FONT></FONT>
+<DIR><FONT SIZE=+0>Mark the assembled code as supporting inter-working.</FONT>
+
+<P><B><FONT SIZE=+0>This option is not supported for use with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-32</FONT></FONT>
+<DIR><FONT SIZE=+0>Mark the code as supporting the 26 bit variant of the
+ARM Procedure calling standard. This is the default.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-mapcs-26</FONT></FONT>
+<DIR><FONT SIZE=+0>Mark the code as supporting the 26 bit variant of the
+ARM Procedure calling standard.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-EB</FONT></FONT>
+<DIR><FONT SIZE=+0>Assemble code for a big endian CPU.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>-EL</FONT></FONT>
+<DIR><FONT SIZE=+0>Assemble code for a little endian CPU. This is the default.</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc431791420"></A><A NAME="_Toc445540743"></A><B><FONT SIZE=+1>Syntax</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The ARM7 syntax is based on the syntax in ARM’s <B><I>ARM7
+Architecture Manual</I></B>.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791421"></A><A NAME="_Toc445540744"></A><B><FONT SIZE=+1>Special
+characters</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>Assembler comments start with the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>@</FONT></FONT><FONT SIZE=+0>’
+(at symbol) and extend to<B> </B>the end of the line.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791422"></A><A NAME="_Toc445540745"></A><B><FONT SIZE=+1>Register
+names</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>These are the register names supported for the ARM7/7T,
+in the format:</FONT>
+<BR><FONT SIZE=+0>{‘</FONT><I><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&lt;name></FONT></FONT></I><FONT SIZE=+0>’,
+</FONT><I><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&lt;register number></FONT></FONT></I><FONT SIZE=+0>}</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="404" >
+<TR>
+<TD VALIGN=TOP COLSPAN="4"><B><FONT SIZE=+0>General registers</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’,
+0}</FONT></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r1</FONT></FONT><FONT SIZE=+0>’,
+1}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r2</FONT></FONT><FONT SIZE=+0>’,
+2}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r3</FONT></FONT><FONT SIZE=+0>’,
+3}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r4</FONT></FONT><FONT SIZE=+0>’,
+4}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r5</FONT></FONT><FONT SIZE=+0>’,
+5}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r6</FONT></FONT><FONT SIZE=+0>’,
+6}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r7</FONT></FONT><FONT SIZE=+0>’,
+7}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r8</FONT></FONT><FONT SIZE=+0>’,
+8}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r9</FONT></FONT><FONT SIZE=+0>’,
+9}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r10</FONT></FONT><FONT SIZE=+0>’,
+10}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r11</FONT></FONT><FONT SIZE=+0>’,
+11}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r12</FONT></FONT><FONT SIZE=+0>’,
+12}</FONT></TD>
+
+<TD ALIGN=LEFT VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r13</FONT></FONT><FONT SIZE=+0>’,
+13},</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r14</FONT></FONT><FONT SIZE=+0>’,
+14},</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r15</FONT></FONT><FONT SIZE=+0>’,
+15}</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;<FONT SIZE=+0>:</FONT>
+<BR>&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="404" >
+<TR>
+<TD VALIGN=TOP COLSPAN="4"><B><FONT SIZE=+0>APCS names for the general
+registers:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a1</FONT></FONT><FONT SIZE=+0>’,
+0}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a2</FONT></FONT><FONT SIZE=+0>’,
+1}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’,
+2}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a4</FONT></FONT><FONT SIZE=+0>’,
+3},</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v1</FONT></FONT><FONT SIZE=+0>’,
+4}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v2</FONT></FONT><FONT SIZE=+0>’,
+5}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v3</FONT></FONT><FONT SIZE=+0>’,
+6}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v4</FONT></FONT><FONT SIZE=+0>’,
+7},</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v5</FONT></FONT><FONT SIZE=+0>’,
+8}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v6</FONT></FONT><FONT SIZE=+0>’,
+9}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>sb</FONT></FONT><FONT SIZE=+0>’,
+9}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>v7</FONT></FONT><FONT SIZE=+0>’,
+10},</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>sl</FONT></FONT><FONT SIZE=+0>’,
+10}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>fp</FONT></FONT><FONT SIZE=+0>’,
+11}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ip</FONT></FONT><FONT SIZE=+0>’,
+12}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>sp</FONT></FONT><FONT SIZE=+0>’,
+13},</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lr</FONT></FONT><FONT SIZE=+0>’,
+14}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’,
+15}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%">&nbsp;</TD>
+
+<TD VALIGN=TOP WIDTH="25%">&nbsp;</TD>
+</TR>
+</TABLE></CENTER>
+<FONT SIZE=+0>&nbsp;</FONT>&nbsp;<FONT SIZE=+0>&nbsp;</FONT>
+<BR>&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="404" >
+<TR>
+<TD VALIGN=TOP COLSPAN="4"><B><FONT SIZE=+0>Floating point registers:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f0</FONT></FONT><FONT SIZE=+0>’,
+16}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f1</FONT></FONT><FONT SIZE=+0>’,
+17}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f2</FONT></FONT><FONT SIZE=+0>’,
+18}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f3</FONT></FONT><FONT SIZE=+0>’,
+19}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f4</FONT></FONT><FONT SIZE=+0>’,
+20}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f5</FONT></FONT><FONT SIZE=+0>’,
+21}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f6</FONT></FONT><FONT SIZE=+0>’,
+22}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f7</FONT></FONT><FONT SIZE=+0>’,
+23}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c0</FONT></FONT><FONT SIZE=+0>’,
+32}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c1</FONT></FONT><FONT SIZE=+0>’,
+33}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c2</FONT></FONT><FONT SIZE=+0>’,
+34}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c3</FONT></FONT><FONT SIZE=+0>’,
+35}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c4</FONT></FONT><FONT SIZE=+0>’,
+36}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c5</FONT></FONT><FONT SIZE=+0>’,
+37}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c6</FONT></FONT><FONT SIZE=+0>’,
+38}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c7</FONT></FONT><FONT SIZE=+0>’,
+39}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c8</FONT></FONT><FONT SIZE=+0>’,
+40}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c9</FONT></FONT><FONT SIZE=+0>’,
+41}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c10</FONT></FONT><FONT SIZE=+0>’,
+42}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c11</FONT></FONT><FONT SIZE=+0>’,
+43}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c12</FONT></FONT><FONT SIZE=+0>’,
+44}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c13</FONT></FONT><FONT SIZE=+0>’,
+45}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c14</FONT></FONT><FONT SIZE=+0>’,
+46}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c15</FONT></FONT><FONT SIZE=+0>’,
+47}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr0</FONT></FONT><FONT SIZE=+0>’,
+32}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr1</FONT></FONT><FONT SIZE=+0>’,
+33}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr2</FONT></FONT><FONT SIZE=+0>’,
+34}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr3</FONT></FONT><FONT SIZE=+0>’,
+35}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr4</FONT></FONT><FONT SIZE=+0>’,
+36}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr5</FONT></FONT><FONT SIZE=+0>’,
+37}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr6</FONT></FONT><FONT SIZE=+0>’,
+38}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr7</FONT></FONT><FONT SIZE=+0>’,
+39}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr8</FONT></FONT><FONT SIZE=+0>’,
+40}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr9</FONT></FONT><FONT SIZE=+0>’,
+41}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr10</FONT></FONT><FONT SIZE=+0>’,
+42}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr11</FONT></FONT><FONT SIZE=+0>’,
+43}</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr12</FONT></FONT><FONT SIZE=+0>’,
+44}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr13</FONT></FONT><FONT SIZE=+0>’,
+45}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr14</FONT></FONT><FONT SIZE=+0>’,
+46}</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="25%"><FONT SIZE=+0>{‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr15</FONT></FONT><FONT SIZE=+0>’,
+47}</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="_Toc431791423"></A><A NAME="_Toc445540746"></A><B><FONT SIZE=+1>Addressing
+modes</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><A NAME="tuesday"></A><A NAME="_Toc431791424"></A><A NAME="_Toc445540747"></A><B><FONT SIZE=+1>Floating
+point</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The assembler supports hardware floating point, but
+the compiler does not.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791425"></A><A NAME="_Toc445540748"></A><B><FONT SIZE=+1>Opcodes</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For detailed information on the ARM7 machine instruction
+set, see <B><I>ARM7 Series Instruction Manual</I></B>. The GNU Assembler
+(GAS) implements all the standard opcodes.</FONT></DIR>
+</DIR>
+<A NAME="_Toc431791426"></A><A NAME="_Toc445540749"></A><B><FONT SIZE=+1>Synthetic
+Instructions</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The assembler supports the following synthesized instructions
+(pseudo instructions, which correspond to two or more actual machine instructions).</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>.arm</FONT></FONT>
+<DIR><FONT SIZE=+0>The following code uses the ARM instruction set.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.thumb</FONT></FONT>
+<DIR><FONT SIZE=+0>The following code uses the THUMB instruction set.</FONT>
+
+<P><B><FONT SIZE=+0>This synthetic instruction is not supported for use
+with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.code 16</FONT></FONT>
+<DIR><FONT SIZE=+0>An alias for .thumb</FONT>
+
+<P><B><FONT SIZE=+0>This synthetic instruction is not supported for use
+with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.code 32</FONT></FONT>
+<DIR><FONT SIZE=+0>An alias for .arm</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.force_thumb</FONT></FONT>
+<DIR><FONT SIZE=+0>The following code uses the THUMB instruction set, and
+should be assembled even if the target processor does not support THUMB
+instructions.</FONT>
+
+<P><B><FONT SIZE=+0>This synthetic instruction is not supported for use
+with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.thumb_func</FONT></FONT>
+<DIR><FONT SIZE=+0>The following label is the name of function which has
+been encoded using THUMB instructions, rather than ARM instructions.</FONT>
+
+<P><B><FONT SIZE=+0>This synthetic instruction is not supported for use
+with eCos.</FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>.ltorg</FONT></FONT>
+<DIR><FONT SIZE=+0>Start a literal pool.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc445540750"></A><B><FONT SIZE=+2>Linker</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>eCos generates linker scripts appropriate for the exact
+eCos configuration<B> </B>you have chosen. Instructions on how to use this
+linker script are provided<B> </B>in the manual <B><I>Getting Started with
+eCos</I>.</B></FONT></DIR>
+</DIR>
+<A NAME="_Toc434221548"></A><A NAME="_Toc445540751"></A><FONT SIZE=+1>ARM7-specific
+command-line options</FONT>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic linker options, refer
+to “ld command line options” in <I>Using LD</I> in <B><I>GNUPro Utilities</I></B>.
+There are no ARM7-specific command-line linker options.</FONT>
+<BR>&nbsp;
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="Debugger"></A><B><FONT SIZE=+2>Debugger</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<UL>
+<UL>This section describes ARM7-specific features of the GNUPro Debugger.
+
+
+<P>
+Remote target board:<BR>
+<FONT SIZE=+0>To load your program onto the standard evaluation board,
+build eCos for the hardware with RAM startup. Provided the board is fitted
+with CygMon ROMs, you may connect to the target board in GDB using the
+command ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target remote <I>&lt;devicename></I></FONT></FONT><FONT SIZE=+0>’
+where ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;devicename></FONT></FONT></I><FONT SIZE=+0>’
+will be a serial device such as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>com2</FONT></FONT><FONT SIZE=+0>’
+(Windows NT) or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>/dev/ttyS1</FONT></FONT><FONT SIZE=+0>’
+(Linux). Then load the code onto the target board by typing ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>load</FONT></FONT><FONT SIZE=+0>’.
+After being downloaded, the program can be executed.</FONT>
+
+
+<P><B><FONT SIZE=+0><I>Note</I>:</FONT></B>
+<BR><FONT SIZE=+0>When using the remote target, GDB does not accept the
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>run</FONT></FONT><FONT SIZE=+0>’
+command. However, since downloading the program has the side effect of
+setting the PC to the start address, you can start your program by typing
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>continue</FONT></FONT><FONT SIZE=+0>’
+(the letter ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c</FONT></FONT><FONT SIZE=+0>’
+works as a shortcut for the ‘continue’ command).</FONT>
+
+</UL>
+
+</UL>
+<A NAME="GDB-CLO"></A><B><FONT SIZE=+1>ARM7-specific command-line options</FONT></B>
+<BR>&nbsp;
+<UL>
+<UL>For the available generic debugger options, see Debugging with GDB
+in GNUPro Debugging Tools. There are no ARM7-specific debugger command-line
+options</UL>
+</UL>
+.
+<BR><A NAME="_Ref370778797"></A><A NAME="_Toc386594255"></A><A NAME="_Toc390691984"></A><A NAME="_Toc390692120"></A><A NAME="_Toc401042769"></A><A NAME="_Toc401633243"></A><A NAME="_Toc445540752"></A><B><FONT SIZE=+1>Debugging
+programs with multiple threads</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Programs with multiple threads can be debugged using
+either the graphic user interface to GDB, GDBTk or the GDB command line
+interface. The following describes how to debug multiple threads using
+the GDB command line.</FONT>
+
+<P><FONT SIZE=+0>In some operating systems, such as eCos, a single program
+may have more than one thread of execution. The precise semantics of threads
+differ from one operating system to another, but in general the threads
+of a single program are akin to multiple processes, except that they share
+one address space (that is, they can all examine and modify the same variables).
+On the other hand, each thread has its own registers and execution stack,
+and perhaps private memory.</FONT>
+
+<P><FONT SIZE=+0>GDB provides the following functions for debugging multi-thread
+programs</FONT>
+<BR>&nbsp;
+<DIR>
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>threadno</I></FONT></FONT><FONT SIZE=+0>’,
+a command to switch among threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info threads</FONT></FONT><FONT SIZE=+0>’,
+a command to inquire about existing threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread apply</FONT></FONT><FONT SIZE=+0>
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>[<I>threadno</I>][<I>all</I>]
+<I>args </I></FONT></FONT><FONT SIZE=+0>’, a command to apply a command
+to a list of threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>thread-specific breakpoints</FONT></LI>
+</DIR>
+<FONT SIZE=+0>The GDB thread-debugging facility allows you to observe all
+threads while your program runs, but whenever GDB takes control, one thread
+in particular is always the focus of debugging. This thread is called the
+current thread. Debugging commands show program information from the perspective
+of the current thread.</FONT>
+
+<P><FONT SIZE=+0>For debugging purposes, GDB associates its own thread
+number, always a single integer, with each thread in your program.</FONT>
+<BR>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>info threads</FONT></FONT>
+<DIR><FONT SIZE=+0>Display a summary of all threads currently in your program.
+GDB displays for each thread (in the following order):</FONT>
+<LI>
+<FONT SIZE=+0>The thread number assigned by GDB</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The target system’s thread I.D.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The current stack frame summary for that thread</FONT></LI>
+
+<BR><FONT SIZE=+0>An asterisk ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>*</FONT></FONT><FONT SIZE=+0>’
+to the left of the GDB thread number indicates the current thread. Use
+the following example for clarity.</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb) </B>info threads</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>* 2 thread 2 breakme
+()</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_2_1/tests/thread_gdb.c:91</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: controller,
+State: running, Priority: 0, More: &lt;none></FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>1 thread 1 Cyg_HardwareThread::thread_entry
+(thread=0x1111aaa2)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_2_1/src/common/thread.cxx:68</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: Idle Thread,
+State: running, Priority: 31, More: &lt;none></FONT></FONT></B></DIR>
+</DIR>
+&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT>
+<DIR><FONT SIZE=+0>Make thread number ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’the
+current thread. The command argument, ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. GDB responds by displaying
+the system identifier of the thread you selected, and its current stack
+frame summary, as in the following output.</FONT></DIR>
+</DIR>
+&nbsp;
+<DIR>
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb) </B>thread
+2</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>[Switching to thread
+2]</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>#0 change_state (id=0,
+newstate=0 '\000')</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/kernel/current/tests/bin_sem2.cxx:93</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>93 if (PHILO_LOOPS
+== state_changes++)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Current language:
+auto; currently c++</FONT></FONT></B>
+<BR>&nbsp;
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread apply [<I>&lt;threadno></I>][<I>&lt;all></I>]
+<I>&lt;args></I></FONT></FONT>
+<DIR><FONT SIZE=+0>The thread apply command allows you to apply a command
+to one or more threads. Specify the numbers of the threads that you want
+affected with the command argument ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+where</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1> </FONT></FONT></I><FONT SIZE=+0>‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. To apply a command to all
+threads, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread apply
+all args</FONT></FONT><FONT SIZE=+0>’.</FONT>
+<DIR>&nbsp;</DIR>
+</DIR>
+<FONT SIZE=+0>Whenever GDB stops your program, due to a breakpoint or a
+signal, it automatically selects the thread where that breakpoint or signal
+happened.</FONT>
+
+<P><FONT SIZE=+0>When your program has multiple threads, you can choose
+whether to set breakpoints on all threads, or on a particular thread.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>break <I>&lt;linespec></I>
+thread <I>&lt;threadno></I></FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>If ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;linespec></FONT></FONT></I><FONT SIZE=+0>’
+specifies source lines, then there are several ways of writing them. Use
+the qualifier ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’
+with a breakpoint command to specify that you only want GDB to stop the
+program when a particular thread reaches this breakpoint. ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is one of the numeric thread identifiers assigned by GDB, shown in the
+first column of the ‘info threads’ display.</FONT>
+
+<P><FONT SIZE=+0>If you do not specify ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ when you set a breakpoint,
+the breakpoint applies to all threads of your program.</FONT>
+
+<P><FONT SIZE=+0>You can use the thread qualifier on conditional breakpoints
+as well; in this case, place ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ before the breakpoint
+condition, as the following example shows.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb) </B>break
+frik.c:13 thread 28 if bartab > lim</FONT></FONT>
+<BR><FONT SIZE=+0>&nbsp;</FONT></DIR>
+<FONT SIZE=+0>Whenever your program stops under GDB for any reason, all
+threads of execution stop; not just the current thread. This allows you
+to examine the overall state of the program, including switching between
+threads, without worrying that things may change.</FONT>
+
+<P><FONT SIZE=+0>Conversely, whenever you restart the program, all threads
+start executing. This is true even when single stepping with commands like
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>next</FONT></FONT><FONT SIZE=+0>’.
+In particular, GDB cannot single-step all threads in lockstep. Since thread
+scheduling is up to your debugging target’s operating system (not controlled
+by GDB), other threads may execute more than one statement while the current
+thread completes a single step. In general other threads stop in the middle
+of a statement, rather than at a clean statement boundary, when the program
+stops.</FONT>
+
+<P><FONT SIZE=+0>You might even find your program stopped in another thread
+after continuing or even single stepping. This happens whenever some other
+thread runs into a breakpoint, a signal, or an exception before the first
+thread completes whatever you requested.</FONT>
+
+<P><B>&nbsp;</B></DIR>
+<B>SET SCHEDULER-LOCKING</B>
+<BR>&nbsp;
+<DIR><FONT SIZE=+0>For targets that support it, GDB has a new command that
+helps to debug</FONT>
+<BR><FONT SIZE=+0>multi-threaded programs. The ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>set
+scheduler-locking [on off step]</FONT></FONT><FONT SIZE=+0>’ command allows
+the GDB user to exert some control over how threads are scheduled while
+debugging.</FONT>
+
+<P><FONT SIZE=+0>Normally GDB does not attempt to interfere with thread
+scheduling. This means that in the default mode (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>scheduler-locking
+off</FONT></FONT><FONT SIZE=+0>’), the current thread may be scheduled
+out, and a different thread may begin running, at any time (as determined
+by the native scheduler). For instance, you may give a GDB command such
+as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>finish</FONT></FONT><FONT SIZE=+0>’,
+and when the command completes, you may be looking at a different thread.</FONT>
+
+<P><FONT SIZE=+0>If you set the scheduler-locking mode to ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’,
+then GDB will try to interfere with the native scheduler just enough to
+prevent another thread from popping up while you debug. Other threads may
+get to run sometimes, but whenever a command such as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>finish</FONT></FONT><FONT SIZE=+0>’
+completes, you should be looking at the same thread that was running before
+the command. Of course, if another thread gets to run and hits a breakpoint,
+GDB will still switch you to that thread (so if you don’t want that to
+happen, then disable your breakpoints).</FONT>
+
+<P><FONT SIZE=+0>For even greater (and more intrusive) control over the
+thread scheduler, GDB provides the mode ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>scheduler-locking
+on</FONT></FONT><FONT SIZE=+0>’. In this mode, the native scheduler is
+completely locked, and no thread may run except the current one. Obviously
+this will radically change the behavior of your program, and may lead to
+deadlock or other unpleasant consequences, so use it with caution.</FONT>
+
+<P><B><FONT SIZE=+0>Syntax:</FONT></B>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>set scheduler-locking
+[off on step]</FONT></FONT>
+<DIR><FONT SIZE=+0>Set mode for locking scheduler during target execution.</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>off</FONT></FONT>
+<DIR><FONT SIZE=+0>No locking (threads may preempt at any time).</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>on</FONT></FONT>
+<DIR><FONT SIZE=+0>Full locking (no thread except the current thread may
+run).</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>step</FONT></FONT>
+<DIR><FONT SIZE=+0>The scheduler is locked during every single-step operation.
+In this mode, no other thread may run during a step command. However, other
+threads may run while stepping over a function call (‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>next</FONT></FONT><FONT SIZE=+0>’).</FONT></DIR>
+<FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc368474915"></A><A NAME="_Toc431791434"></A><A NAME="_Toc445540753"></A><B><FONT SIZE=+3>Appendix
+A: ARM7-specific Assembler Error Messages</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=-1>Error: Unrecognized opcode</FONT></FONT></B>
+<DIR><FONT SIZE=+0>This instruction is misspelled or there is a syntax
+error somewhere.</FONT>
+<BR>&nbsp;</DIR>
+<B><FONT FACE="Courier New"><FONT SIZE=-1>Warning: operand out of range</FONT></FONT></B>
+<DIR><FONT SIZE=+0>An immediate value was specified that is too large for
+the instruction</FONT>
+<DIR><FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc445540754"></A><B><FONT SIZE=+3>Appendix B: Bibliography</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><B><I><FONT SIZE=+0>ARM7TDMI Data Sheet</FONT></I></B>
+<BR>(ARMDDI0029E, Advanced RISC Machines Ltd. (ARM), August, 1995)
+
+<P><B><I>Getting Started with eCos version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>eCos User Guides version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>eCos Reference Manual version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>Getting Started with GNUPro Toolkit</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Compiler Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Debugging Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Libraries</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Utilities</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Advanced Topics</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Tools for Embedded Systems</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>System V Application Binary Interface</I></B>
+<BR>(Prentice Hall, 1990)
+
+<P><B>&nbsp;</B>
+
+<P><B>&nbsp;</B></DIR>
+</DIR>
+
+</BODY>
+</HTML>

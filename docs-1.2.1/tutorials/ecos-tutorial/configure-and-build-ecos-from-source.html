@@ -1,0 +1,483 @@
+<HTML
+><HEAD
+><TITLE
+>Configuring and building eCos from source</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Programming Tutorial"
+HREF="programming-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Programming with eCos"
+HREF="introduction-the-quickest-way.html"><LINK
+REL="NEXT"
+TITLE="Using 
+pkgconf.tcl on UNIX"
+HREF="using-pkgconf-tcl-on-unix.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="introduction-the-quickest-way.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="using-pkgconf-tcl-on-unix.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="CONFIGURE-AND-BUILD-ECOS-FROM-SOURCE"
+>Chapter 12. Configuring and building eCos from source</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="configure-and-build-ecos-from-source.html#USING-THE-CONFIGURATION-TOOL-ON-WINDOWS"
+>Using
+the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> on Windows</A
+></DT
+><DT
+><A
+HREF="using-pkgconf-tcl-on-unix.html"
+>Using 
+<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="USING-THE-CONFIGURATION-TOOL-ON-WINDOWS"
+>Using
+the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> on Windows</A
+></H1
+><P
+>To run the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> and
+build a sample configuration of the kernel library and its tests,
+invoke <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> by selecting <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> -&#62; <SPAN
+CLASS="GUISUBMENU"
+>Programs</SPAN
+> -&#62; <SPAN
+CLASS="GUISUBMENU"
+>Cygnus eCos</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Configuration
+Tool</SPAN
+>.</P
+><P
+>The <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> (see <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-INITIAL"
+>Figure 12-1</A
+>) has
+five main elements: the <I
+CLASS="FIRSTTERM"
+>configuration pane</I
+> (top
+left), the <I
+CLASS="FIRSTTERM"
+>documentation pane</I
+> (top right),
+the <I
+CLASS="FIRSTTERM"
+>properties table</I
+> (middle-right), the <I
+CLASS="FIRSTTERM"
+>short
+description pane</I
+> (middle-right, below the properties
+table), and the <I
+CLASS="FIRSTTERM"
+>output pane</I
+> (bottom). These
+are described in detail in the <I
+CLASS="CITETITLE"
+>eCos User&#8217;s Guide</I
+>.</P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-INITIAL"
+>Figure 12-1. Initial screen</A
+></B
+></P
+><P
+><IMG
+SRC="../initial.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>In this example you will make a small modification to the
+default configuration (selecting ROM start-up instead of RAM start-up)
+making it easier to run with the simulator (see <A
+HREF="a-note-on-using-the-simulator.html"
+>Chapter 7</A
+>). </P
+><P
+>From the configuration pane, select the <SPAN
+CLASS="GUIBUTTON"
+>eCos HAL</SPAN
+> package,
+then select your architecture component, followed by your board,
+and for the <SPAN
+CLASS="GUIBUTTON"
+>Startup type</SPAN
+> option select <SPAN
+CLASS="GUIMENUITEM"
+>rom</SPAN
+>.
+An example of this for the MN10300 is shown in <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-SELECTING-MN10300-ROM-STARTUP"
+>Figure 12-2</A
+>. </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-SELECTING-MN10300-ROM-STARTUP"
+>Figure 12-2. Selecting
+MN10300 ROM start-up</A
+></B
+></P
+><P
+><IMG
+SRC="../MNstart.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>Select <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Library</SPAN
+>,
+as shown in <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-MENU-BUILD-LIBRARY"
+>Figure 12-3</A
+>. </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-MENU-BUILD-LIBRARY"
+>Figure 12-3. Selecting the
+build library menu item</A
+></B
+></P
+><P
+><IMG
+SRC="../menu-build-library.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>The <SPAN
+CLASS="GUIMENU"
+>Save As</SPAN
+> dialog box will appear, asking
+you to specify a directory in which to place your build tree. You
+can use the default, but it is a good idea to make a subdirectory,
+called <TT
+CLASS="FILENAME"
+>ecos-work</TT
+> for example. </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-BUILD-DIALOG"
+>Figure 12-4. Build dialog</A
+></B
+></P
+><P
+><IMG
+SRC="../build-dialog.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>The first time you build an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> library
+for a specific architecture, the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> will
+prompt you for the location of the appropriate build tools (including
+make and gcc) using a Build Tools dialog box (as shown in <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-BUILD-TOOLS"
+>Figure 12-5</A
+>).
+You can select a location from the drop down list, browse to the
+directory using the Browse button, or type in the location of the
+build tools manually.</P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-BUILD-TOOLS"
+>Figure 12-5. Build tools dialog</A
+></B
+></P
+><P
+><IMG
+SRC="../build-tools.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>The <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> will also
+prompt you for the location of the user tools (including cat and
+ls) using a User Tools dialog box (as shown in <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-USER-TOOLS"
+>Figure 12-6</A
+>). As
+with the Build Tools dialog, you can select a location from the
+drop down list, browse to the directory using the Browse button,
+or type in the location of the user tools manually.</P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-USER-TOOLS"
+>Figure 12-6. User tools dialog</A
+></B
+></P
+><P
+><IMG
+SRC="../user-tools.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>When the tool locations have been entered, the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> will configure the sources, prepare a build tree,
+and build the <TT
+CLASS="FILENAME"
+>libtarget.a</TT
+> library, which contains
+the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel and other packages.</P
+><P
+>The output from the configuration process and the building
+of <TT
+CLASS="FILENAME"
+>libtarget.a</TT
+> will be shown in the output
+pane. </P
+><P
+>Once the build process has finished you will have a kernel
+with other packages in <TT
+CLASS="FILENAME"
+>libtarget.a</TT
+>. You should
+now build the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> tests for your particular
+configuration. </P
+><P
+>You can do this by selecting <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+>.
+Notice that you could have selected <SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+> instead
+of <SPAN
+CLASS="GUIMENUITEM"
+>Library</SPAN
+> in the earlier step and it
+would have built <I
+CLASS="EMPHASIS"
+>both</I
+> the library and the tests,
+but this would increase the build time substantially, and if you
+do not need to build the tests it is unnecessary.</P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-MENU-BUILD-TESTS"
+>Figure 12-7. Selecting the
+build tests menu item</A
+></B
+></P
+><P
+><IMG
+SRC="../menu-build-tests.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+><A
+HREF="run-an-ecos-test-case.html"
+>Chapter 13</A
+> will
+guide you through running one of the test cases you just built using <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> and
+the simulator for your architecture. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="introduction-the-quickest-way.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="using-pkgconf-tcl-on-unix.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Programming with eCos</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="programming-tutorial.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Using 
+<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

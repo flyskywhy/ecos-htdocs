@@ -1,0 +1,189 @@
+<HTML
+><HEAD
+><TITLE
+>Known bugs in GNUPro</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Known limitations in the eCos version 1.2.1 release"
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"><LINK
+REL="PREVIOUS"
+TITLE="Known limitations in the eCos version 1.2.1 release"
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"><LINK
+REL="NEXT"
+TITLE="Installation Guide"
+HREF="installation-guide.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Known limitations in the eCos version 1.2.1 release</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="installation-guide.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN1187"
+>Known bugs in GNUPro</A
+></H1
+><P
+>Here is the list of known bugs in the GNUPro Toolkit as it
+relates to <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>: </P
+><P
+></P
+><UL
+><LI
+><P
+>The simulators built into <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> have
+a memory leak when repeatedly loading and running different binaries.
+After a certain number of loads, there can be a VM allocation failure.</P
+><P
+>Work around: always re-run <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> when
+you wish to load a different binary. </P
+></LI
+><LI
+><P
+>When <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> is running
+in command line mode, the <B
+CLASS="COMMAND"
+>load</B
+> instruction to <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> does
+not function correctly.</P
+><P
+>Workaround: use <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> instead of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> to
+load executables.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="installation-guide.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Known limitations in the eCos version 1.2.1 release</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installation Guide</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

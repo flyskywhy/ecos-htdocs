@@ -1,0 +1,220 @@
+<HTML
+><HEAD
+><TITLE
+>TX39 hardware setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="NEXT"
+TITLE="PowerPC hardware setup"
+HREF="powerpc-hardware-setup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="powerpc-hardware-setup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TX39-HARDWARE-SETUP"
+>TX39 hardware setup</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s Kit
+package comes with a pair of ROMs that provide <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> support
+for the Toshiba JMR-TX3904 RISC processor reference board by way
+of <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>. </P
+><P
+>Images of these ROMs are also provided at <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/loaders/tx39-jmr3904/cygmon50.bin</TT
+> and <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/loaders/tx39-jmr3904/cygmon66.bin for
+50 MHz and 66 MHz boards respectively. The ROMs are installed to
+sockets IC6 and IC7 on the memory daughterboard according to their
+labels. Attention should be paid to the correct orientation of these
+ROMs during installation.</P
+><P
+>The <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub allows communication
+with <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> using the serial port (channel
+C) at connector PJ1. The communication parameters are fixed at 38400
+baud, 8 data bits, no parity bit, and 1 stop bit (8-N-1). No handshaking
+is employed. Connection to the host computer should be made using
+an RS232C null modem cable.</P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> and <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> currently
+provide support for a 16Mbyte 60ns 72pin DRAM SIMM fitted to the
+PJ21 connector. Different size DRAMs may require changes in the value
+stored in the DCCR0 register. This value may be found near line
+211 in <TT
+CLASS="FILENAME"
+>hal/mips/arch/v1_2/src/vectors.S</TT
+> in <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>,
+and near line 99 in <TT
+CLASS="FILENAME"
+>libstub/mips/tx39jmr/tx39jmr-power.S</TT
+> in <SPAN
+CLASS="PRODUCTNAME"
+>Cygmon</SPAN
+>. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> does
+not currently use the DRAM for any purpose itself, so it is entirely
+available for application use.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="powerpc-hardware-setup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Hardware
+setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>PowerPC hardware setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,616 @@
+<HTML
+><HEAD
+><TITLE
+>Test Suites</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release
+Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="Reporting Problems"
+HREF="reporting-problems.html"><LINK
+REL="NEXT"
+TITLE="eCos start-up configurations"
+HREF="a-note-on-using-the-simulator.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="reporting-problems.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="a-note-on-using-the-simulator.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="A-NOTE-ON-TESTING"
+>Chapter 6. Test Suites</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel and other packages
+have test suites which rigorously exercise the available features
+and confirm correct execution. The tests are run on many different possible
+configurations &#8212; the total number of permutations makes
+it impossible to test them all. The use of test suites is particularly
+important for embedded systems, where software robustness is a priority.
+All <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> software is tested prior to
+shipping, but if you define your own configuration, you will probably
+want to verify that the test cases work for it.</P
+><P
+>This release includes test
+suites for the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel, kernel C
+API, C library, µITRON compatibility, and device driver
+packages. The use of the test suites is similar for all packages.
+The tests are supplied both as prebuilt images (if you have the
+CD distribution of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s
+Kit) and as source code for building with specific <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> configurations. </P
+><P
+>Each test suite consists of a number of test cases, which
+must be executed individually, for the TX39, MN10300, PowerPC, and
+ARM7 hardware targets. This is also the way to run tests on the
+Fujitsu SPARClite Evaluation Board if connecting via a serial line.</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Compile and link the test cases with the
+appropriately configured <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> packages, using
+the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>&#8217;s <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> menu
+and choosing the <SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+> item, or by typing <TT
+CLASS="COMPUTEROUTPUT"
+>make
+tests</TT
+> (further details in <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 12</A
+>). </P
+></LI
+><LI
+><P
+>Start <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>, using the correct
+command prefix for your platform (see &#8220;GDB and GCC command
+notation&#8221;, page 17).</P
+></LI
+><LI
+><P
+>Set up the baud rate, usually with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>set
+remotebaud 38400</B
+></TT
+></TT
+> (this must be 19200 for the
+SPARClite board).</P
+></LI
+><LI
+><P
+>Select the target board, usually with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target
+remote com1</B
+></TT
+></TT
+> on Windows or <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target
+remote /dev/ttyS0</B
+></TT
+></TT
+> on Linux.</P
+></LI
+><LI
+><P
+>Download the test program, usually with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+></TT
+>.
+This can take some time.</P
+></LI
+><LI
+><P
+>Execute the test program, usually with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>continue</B
+></TT
+></TT
+>.</P
+></LI
+></OL
+></DIV
+><P
+>When executing test
+cases on the Fujitsu SPARClite Evaluation Board via an TCP connection
+to the board, the following steps are required:</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Start <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> using
+the test case file name as an argument. </P
+></LI
+><LI
+><P
+>Connect to the target board with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target
+remote xxx:1000</B
+></TT
+></TT
+> where xxx is the IP address
+or hostname assigned to the board. </P
+></LI
+><LI
+><P
+>Download the test program with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+></TT
+>.</P
+></LI
+><LI
+><P
+>Execute the test program with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>continue</B
+></TT
+></TT
+>.</P
+></LI
+></OL
+></DIV
+><P
+>When executing test cases on the Linux
+synthetic target, it is possible to run them directly from the command
+line. If debugging is needed, only the following steps are required:</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Start <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> using
+the test case file name as an argument. </P
+></LI
+><LI
+><P
+>Execute the test program with <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>run</B
+></TT
+></TT
+>. </P
+></LI
+></OL
+></DIV
+><P
+>Each test case runs without further intervention. A test case
+may involve one or more individual tests. Successful completion
+of each test within the test case is reported as a line of text
+that is sent to the diagnostic channel (usually the serial port)
+for display on a terminal or terminal emulator.</P
+><P
+>Each test case runs only once and usually requires the target
+hardware to be reset on completion. Note that certain test cases
+may not terminate immediately, especially if they involve delays
+and run on the target simulators.</P
+><P
+>In the CD distribution of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s
+Kit, the test cases are located in the following directories:</P
+><P
+></P
+><UL
+><LI
+><P
+>one prebuilt testsuite compiled for RAM
+start-up (needs <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> or an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> 
+<SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub in ROM, and will only run on
+real hardware): <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/mn10300-stdeval-ram</TT
+> for
+the MN10300, <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/tx39-jmr3904-ram</TT
+> for
+the TX39, <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/powerpc-cogent-ram</TT
+> for
+the PowerPC, <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/sparclite-sleb-ram</TT
+> for
+the SPARClite, and <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/arm-pid-ram</TT
+> for
+the ARM7. </P
+></LI
+><LI
+><P
+>one prebuilt testsuite compiled for ROM
+start-up (will work in real hardware and in the simulator): <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/mn10300-stdeval-rom</TT
+> for
+the MN10300, <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/tx39-jmr3904-rom</TT
+> for
+the TX39, <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/powerpc-cogent-rom</TT
+> for
+the PowerPC. 
+<DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>The PowerPC ROM tests do not work with
+the simulator, but they do work if blown into a PROM or if used
+with a PROM emulator.</P
+></BLOCKQUOTE
+></DIV
+></P
+></LI
+><LI
+><P
+>one prebuilt synthetic target testsuite
+(will work on Linux only): <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_1/linux-i386</TT
+> for
+i386.</P
+></LI
+><LI
+><P
+>test case source code is under the base
+source directory <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/</TT
+>:</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>compat/uitron/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>io/serial/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>hal/powerpc/arch/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/wallclock/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/watchdog/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>kernel/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>language/c/libc/v1_2_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>language/c/libm/v1_2_1/tests</TT
+></P
+></LI
+></UL
+></LI
+></UL
+><P
+>In <A
+HREF="verification.html"
+>the section called <I
+>Verification</I
+> in Chapter 10</A
+> you
+will find detailed instructions on running a test case to verify
+that your hardware board is working with the supplied software. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="reporting-problems.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="a-note-on-using-the-simulator.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reporting Problems</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>eCos start-up configurations</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

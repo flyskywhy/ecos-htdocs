@@ -1,0 +1,281 @@
+<HTML
+><HEAD
+><TITLE
+>Notation and conventions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release
+Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="Release
+Notes"
+HREF="release-notes.html"><LINK
+REL="NEXT"
+TITLE="Directory
+and file system conventions"
+HREF="directory-and-file-system-conventions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="release-notes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="directory-and-file-system-conventions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="NOTATION-AND-CONVENTIONS-IN-THIS-MANUAL"
+>Chapter 1. Notation and conventions</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="notation-and-conventions-in-this-manual.html#GDB-AND-GCC-COMMAND-NOTATION"
+>GDB and GCC
+command notation</A
+></DT
+><DT
+><A
+HREF="directory-and-file-system-conventions.html"
+>Directory
+and file system conventions</A
+></DT
+></DL
+></DIV
+><P
+>Since the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> development environment
+can run on both Windows and UNIX, and since there are six supported
+target architectures (MN10300, TX39, PowerPC, SPARClite, ARM7 and
+i386), notation conventions will be used to avoid repeating instructions
+which are very similar to each other. </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="GDB-AND-GCC-COMMAND-NOTATION"
+>GDB and GCC
+command notation</A
+></H1
+><P
+>Cross-development commands like <B
+CLASS="COMMAND"
+>gcc</B
+> and <B
+CLASS="COMMAND"
+>gdb</B
+> will
+be shown prefixed with information about the platform for which
+you are cross-compiling. </P
+><P
+>For example, <B
+CLASS="COMMAND"
+>gcc</B
+> for the MN10300 is invoked
+as <B
+CLASS="COMMAND"
+>mn10300-elf-gcc</B
+>; for the TX39, <B
+CLASS="COMMAND"
+>gcc</B
+> is
+invoked as <B
+CLASS="COMMAND"
+>mips-tx39-elf-gcc</B
+>; for the PowerPC
+it is <B
+CLASS="COMMAND"
+>powerpc-eabi-gcc</B
+>; for the SPARClite it
+is <B
+CLASS="COMMAND"
+>sparclite-elf-gcc</B
+>; for the ARM7 it is <B
+CLASS="COMMAND"
+>arm-elf-gcc</B
+>;
+and for the i386 it is <B
+CLASS="COMMAND"
+>i686-pc-linux-gnu-gcc</B
+>.</P
+><P
+>The same is true for <B
+CLASS="COMMAND"
+>gdb</B
+>: the commands
+are <B
+CLASS="COMMAND"
+>mn10300-elf-gdb</B
+>, <B
+CLASS="COMMAND"
+>mips-tx39-elf-gdb</B
+>, <B
+CLASS="COMMAND"
+>powerpc-eabi-gdb</B
+>, <B
+CLASS="COMMAND"
+>sparclite-elf-gdb</B
+>, <B
+CLASS="COMMAND"
+>arm-elf-gdb</B
+>,
+and <B
+CLASS="COMMAND"
+>i686-pc-linux-gnu-gdb</B
+>.</P
+><P
+>When you see examples that invoke <B
+CLASS="COMMAND"
+>gcc</B
+> and <B
+CLASS="COMMAND"
+>gdb</B
+> you
+should remember to add the appropriate prefix for the architecture
+you are using. </P
+><P
+>The <SPAN
+CLASS="APPLICATION"
+>GCC</SPAN
+> cross compiler generates
+executable files with the <TT
+CLASS="FILENAME"
+>.exe</TT
+> suffix on Windows, but
+not on UNIX. The suffix <TT
+CLASS="FILENAME"
+>.exe</TT
+> will be omitted
+from executable file names, so you will see <TT
+CLASS="FILENAME"
+>hello</TT
+> instead
+of <TT
+CLASS="FILENAME"
+>hello.exe</TT
+>.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="directory-and-file-system-conventions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Release
+Notes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Directory
+and file system conventions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,2504 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>GNUPRO TOOLS</TITLE>
+</HEAD>
+<BODY LINK="#0000FF" VLINK="#800080">
+<B><FONT FACE="Arial"><FONT SIZE=+2>GNUPro<SUP>&reg;</SUP>
+Toolkit</FONT></FONT></B>
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>GNUPro Toolkit
+Reference for eCos</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>Matsushita
+MN10300</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>eCos 1.2.1</FONT></FONT></B></DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>April 1999</FONT></FONT></B></DIV>
+<B><FONT SIZE=+2>&nbsp;</FONT></B>
+<BR><FONT SIZE=+1><A HREF="#Table of Contents">&nbsp;Table of Contents</A></FONT>
+<BR>
+<HR WIDTH="100%">
+
+<P><FONT SIZE=-1>Copyright <FONT FACE="Symbol">&Oacute;</FONT> 1999 <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B> All rights reserved.</FONT>
+<BR><FONT SIZE=-1>No part of this document may be reproduced in any form
+or by any means without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>No part of this document may be changed and/or modified
+without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>GNUPro<SUP>&reg;</SUP>, the GNUPro<SUP>&reg;</SUP>&nbsp;
+logo, and the Cygnus Solutions logo are registered trademarks of</FONT>
+<BR><FONT SIZE=-1><B><FONT FACE="Arial">CYGNUS SOLUTIONS, Inc.</FONT></B>
+All other brand and product names are trademarks of their respective owners.</FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Corporate Headquarters</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>1325 Chesapeake Terrace</FONT>
+<BR><FONT SIZE=-1>Sunnyvale, CA 94089 USA</FONT>
+<BR><FONT SIZE=-1>TEL: +1 408 542 9600</FONT>
+<DIR><FONT SIZE=-1>Support:</FONT>
+<BR><FONT SIZE=-1>Within USA/Canada: +1 800 CYGNUS1</FONT>
+<BR><FONT SIZE=-1>Outside USA/Canada: +1 408 542 9601</FONT></DIR>
+<FONT SIZE=-1>FAX: +1 408 542 9699</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.com</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.com/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus Japan</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>NIHON CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>Madre Matsuda Building</FONT>
+<BR><FONT SIZE=-1>4-13 Kioi-cho Chiyoda-ku</FONT>
+<BR><FONT SIZE=-1>Tokyo 102-0094 JAPAN</FONT>
+<BR><FONT SIZE=-1>TEL: +81-3-3234-3896</FONT>
+<BR><FONT SIZE=-1>FAX: +81-3-3239-3300</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.co.jp</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.co.jp/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus Europe</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>35-36 Cambridge Place</FONT>
+<BR><FONT SIZE=-1>Cambridge CB2 1NS</FONT>
+<BR><FONT SIZE=-1>United Kingdom</FONT>
+<BR><FONT SIZE=-1>TEL: +44 1223 728728</FONT>
+<BR><FONT SIZE=-1>FAX: +44 1223 728777</FONT>
+<DIV ALIGN=right><FONT FACE="Arial"><FONT SIZE=-1>Part #: 300-400-1010048-1.2.1</FONT></FONT></DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+<A NAME="Table of Contents"></A><B><FONT SIZE=+3>Table of Contents</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR><B><FONT SIZE=-1><A HREF="#_Toc434115513">Introduction</A></FONT></B>
+<DIR><FONT SIZE=-1><A HREF="#_Toc434115514">Tool naming conventions</A></FONT>
+<BR><FONT SIZE=-1><A HREF="#_Toc434115515">Toolkit features</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115516">Processor version(s)</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115517">Targets Supported</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115518">Hosts Supported</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115519">Object file format</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115520">GNUPro on Windows NT</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115521">Windows environment settings</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115522">Case Sensitivity</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115523">GNUPro on Redhat Linux</A></FONT></DIR>
+<B><FONT SIZE=-1><A HREF="#_Toc434115524">Reference</A></FONT></B>
+<DIR><FONT SIZE=-1><A HREF="#_Toc434115525">Compiler</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115526">MN10300-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115527">Preprocessor symbols</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115528">MN10300-specific attributes</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115529">New compiler and linker features</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115530">Initialization prioritization</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115531">Selective linking</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115532">ABI Summary</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115533">Data types sizes and alignments</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115534">Register allocation</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115535">Register usage:</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115536">Switches</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115537">The Stack Frame</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115538">Argument Passing</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115539">Function Return Values</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115540">Assembler</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115541">MN10300-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115542">Syntax</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115543">Special characters</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115544">Register names</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115545">Addressing modes</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115546">Floating point</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115547">Opcodes</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115548">Synthetic Instructions</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115549">Linker</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115550">MN10300-specific command-line
+options</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115551">Debugger</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115552">MN10300-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115553">Debugging programs with multiple
+threads</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115554">Simulator</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115555">Features</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115556">MN10300-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115557">Using the simulator</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115558">Simulator exceptions within
+GDB</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115559">CygMon, the simulator, and
+thread-aware debugging</A></FONT></I></DIR>
+</DIR>
+<B><FONT SIZE=-1><A HREF="#_Toc434115560">Appendix A: CygMon (Cygnus ROM
+Monitor)</A></FONT></B>
+<DIR><FONT SIZE=-1><A HREF="#_Toc434115561">Installing and building CygMon</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115562">Installing CygMon Source</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115563">Building CygMon</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115564">CygMon command list</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434115565">baud</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115566">break</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115567">disassemble</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115568">dump</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115569">go</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115570">help</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115571">load&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115572">memory&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115573">port&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115574">register</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115575">reset</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115576">step</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115577">terminal&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115578">transfer</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115579">unbreak</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115580">usage</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434115581">version</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434115582">CygMon command editing</A></FONT>
+<BR><FONT SIZE=-1><A HREF="#_Toc434115583">Debugging CygMon</A></FONT></DIR>
+<B><FONT SIZE=-1><A HREF="#_Toc434115584">Appendix B: MN10300-specific
+Assembler Error Messages</A></FONT></B>
+
+<P><B><FONT SIZE=-1><A HREF="#_Toc434115585">Appendix C: Bibliography</A></FONT></B>
+
+<P><FONT SIZE=+0>&nbsp;</FONT>
+<BR><A NAME="_Ref417790229"></A><A NAME="_Toc434115513"></A><B><FONT SIZE=+3>Introduction</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><A NAME="_Toc382726584"></A><FONT SIZE=+0>The GNUPro Toolkit for eCos
+is a complete solution for C and C++ development for the Matsushita MN10300.
+The tools include the compiler, assembler, linker, simulator and interactive
+debugger. Simulator, linker and debugger support is also included for the
+MN10300 Series evaluation board.&nbsp; In addition to this manual, please
+read </FONT>“<B><I>Getting started with eCos</I></B>.”</DIR>
+</DIR>
+<A NAME="_Toc434115514"></A><B><FONT SIZE=+2>Tool naming conventions</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Cross-development tools in the Cygnus GNUPro Toolkit
+normally have names that reflect the target processor and the object file
+format output by the tools (for example ELF). This makes it possible to
+install more than one set of tools in the same binary directory, including
+both native and cross-development tools.</FONT>
+
+<P><FONT SIZE=+0>The complete tool name is a three-part hyphenated string.
+The first part indicates the processor or processor family (‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300</FONT></FONT><FONT SIZE=+0>’).
+The second part indicates the file format output by the tool (‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>elf</FONT></FONT><FONT SIZE=+0>’).
+The third part is the generic tool name (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gcc</FONT></FONT><FONT SIZE=+0>’).
+For example, the GCC compiler for the Matsushita MN10300 is,</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-gcc</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><FONT SIZE=+0>The MN10300 package includes the following supported tools:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="444" >
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><B><FONT SIZE=-1>Tool Description</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><B><FONT SIZE=-1>Tool Name</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GCC compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-gcc</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>C++ compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-c++</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GAS assembler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-as</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GLD linker</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-ld</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>Standalone simulator</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-run</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>Binary Utilities</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-ar&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-nm&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-objcopy&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-objdump&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-ranlib&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-size&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-strings&nbsp;</FONT></FONT>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-strip</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GDB debugger</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf-gdb</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The binaries for a Windows NT hosted toolchain are installed
+with an ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix. However, the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix does not need to be specified when running the executable.</FONT></DIR>
+</DIR>
+<A NAME="_Toc368474908"></A><A NAME="_Toc399038257"></A><A NAME="_Toc425129974"></A><A NAME="_Toc425237788"></A><A NAME="_Toc428004728"></A><A NAME="_Toc428087535"></A><A NAME="_Toc425129976"></A><A NAME="_Toc428087537"></A><A NAME="_Toc434115515"></A><B><FONT SIZE=+2>Toolkit
+features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following describes MN10300-specific features of
+the GNUPro Toolkit.</FONT></DIR>
+</DIR>
+<A NAME="_Toc428087538"></A><A NAME="_Toc434115516"></A><B><FONT SIZE=+1>Processor
+version(s)</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>Matsushita MN10300 family, incorporating the MN10300
+and MN103002. These parts are also sold under the Panasonic or Pana-X brand
+name. Wherever Matsushita or 10300 are used in this document, Panasonic
+or Pana-X should be considered identical.</FONT></DIR>
+</DIR>
+<A NAME="_Toc382726586"></A><A NAME="_Toc428087539"></A><A NAME="_Toc434115517"></A><B><FONT SIZE=+1>Targets
+Supported</FONT></B>
+<DIR>
+<DIR>GNUPro Instruction Set Simulator with architectural extensions to
+support eCos execution
+
+<P><FONT SIZE=+0>MN10300 Series evaluation board.</FONT>
+
+<P><FONT SIZE=+0>Both targets run in little-endian mode.</FONT></DIR>
+</DIR>
+<A NAME="_Toc428087540"></A><A NAME="_Toc434115518"></A><B><FONT SIZE=+1>Hosts
+Supported</FONT></B>
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="469" >
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><B><FONT SIZE=+0>CPU</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Operating System</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Vendor</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Windows NT 4.0</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Microsoft</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat Linux 5.x</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat</FONT></TD>
+</TR>
+</TABLE></CENTER>
+<A NAME="_Toc428087541"></A><A NAME="_Toc434115519"></A><B><FONT SIZE=+1>Object
+file format</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The MN10300<B>&nbsp;</B> tools support the ELF object
+file format. Refer to Chapter 4, <B><I>System V Application Binary Interface</I></B>
+(Prentice Hall, 1990.). Use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ld</FONT></FONT><FONT SIZE=+0>’
+(refer to <B><I>Using LD</I> in<I> GNUPro Utilities</I></B>) or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>objcopy</FONT></FONT><FONT SIZE=+0>’
+(refer to <B><I>The GNU Binary Utilities</I> in<I> GNUPro Utilities</I></B>)
+to produce S-records.</FONT>
+
+<P><B><FONT SIZE=+3>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115520"></A><B><FONT SIZE=+2>GNUPro on Windows NT</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><A NAME="_Toc434115521"></A><B><FONT SIZE=+1>Windows environment settings</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The Windows NT hosted toolchain requires the following
+environmental settings to function properly. Assume the release is installed
+in:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>C:\cygnus\gnupro\i386-cygwin32\mn10300-elf\ecos-98r1p6</FONT></FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>SET PROOT=C:\cygnus\gnupro\i386-cygwin32\mn10300-elf\ecos-98r1p6</FONT></FONT>
+<BR><A NAME="_Toc368474905"></A><FONT FACE="Courier New,Courier"><FONT SIZE=-1>SET
+PATH=%PROOT%\H-i386-cygwin32\bin;%PATH%</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>SET INFOPATH=%PROOT%\info</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>REM Set TMPDIR to point
+to a ramdisk if you have one</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>SET TMPDIR=C:\TEMP</FONT></FONT></DIR>
+For the Sourceware release of eCos, ensure that the Cygwin B20.1 tools
+are also installed. Assuming these are installed in their default location
+in
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>C:\cygnus\cygwin-b20</FONT></FONT></DIR>
+then add the environmental setting
+<BR>:
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>SET PATH=C:\cygnus\cygwin-b20\H-i586-cygwin32\bin;%PATH%</FONT></FONT></DIR>
+&nbsp;
+<BR><FONT SIZE=+0>If you are using the eCos Developer’s Kit CD release
+(not included in the sourceware release), a working environment can be
+established by using the following shortcut from the Windows Start menu:</FONT>
+<BR>&nbsp;
+<DIR><FONT SIZE=-1><FONT FACE="Arial">Programs->Cygnus eCos->eCos Development
+Environment</FONT><FONT FACE="Courier New">.</FONT></FONT></DIR>
+<FONT SIZE=+0>This will bring up a window running “bash”, and your Windows
+environment will be automatically set up.</FONT></DIR>
+</DIR>
+<A NAME="_Toc433628179"></A><A NAME="_Toc434115522"></A><B><FONT SIZE=+1>Case
+Sensitivity</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>command line options</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler labels</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>linker script commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>section names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are not case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>gdb commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler instructions and register names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Case sensitivity for Windows NT is dependent on system
+configuration. By default, file names under Windows NT are not case sensitive.</FONT>
+
+<P><B><FONT FACE="Courier New"><FONT SIZE=+2>&nbsp;</FONT></FONT></B></DIR>
+</DIR>
+<A NAME="_Toc433705440"></A><A NAME="_Toc434115523"></A><B><FONT SIZE=+2>GNUPro
+on Redhat Linux</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro Tools for Redhat Linux are supplied in a
+ZIP format file. Detailed instructions for installation can be found on
+the eCos sourceware site:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1><A HREF="http://www.sourceware.cygnus.com/ecos/">http://sourceware.cygnus.com/ecos/</A></FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Assuming the sources for the tools were installed in</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-990319/src</FONT></FONT>
+<BR>&nbsp;</DIR>
+By following the instructions in the Installation Guide, you should eventually
+have the tools installed in
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-990319/H-i386-pc-linux-gnu/bin</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>In which case, we recommend you have the following settings
+in your appropriate shell startup script.</FONT>
+
+<P><FONT SIZE=+0>For Bourne shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>PROOT=/usr/cygnus/ecosSWtools-990319</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>PATH=$PROOT/H-i386-pc-linux-gnu/bin:$PATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>INFOPATH=$PROOT/info:${INFOPATH-/usr/local/info:/usr/info}</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>MANPATH=$PROOT/man:${MANPATH-/usr/local/man:/usr/man}</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>export PATH INFOPATH
+MANPATH</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>For C-shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv PROOT /usr/cygnus/ecosSWtools-990319</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>if ( "$?MANPATH" == "0"
+) then</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv MANPATH "/usr/local/man:/usr/man"</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>if ( "$?INFOPATH" ==
+"0" ) then</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv INFOPATH "/usr/local/info:/usr/info"</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv MANPATH $PROOT/man:$MANPATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv INFOPATH $PROOT/info:$INFOPATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>set path = ( $PROOT/H-i386-pc-linux-gnu/bin
+$path )</FONT></FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434115524"></A><B><FONT SIZE=+3>Reference</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="_Toc434115525"></A><B><FONT SIZE=+2>Compiler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes MN10300-specific features of
+the GNUPro Compiler.</FONT></DIR>
+</DIR>
+<A NAME="_Ref413205429"></A><A NAME="_Ref413205467"></A><A NAME="_Toc434115526"></A><A NAME="MN10300-specific command-line"></A><B><FONT SIZE=+1>MN10300-specific
+command-line options</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic compiler options, see
+"GNU CC Command Options" in <I>Using GNU CC </I>in <B><I>GNUPro Compiler
+Tools</I></B>. In addition, the following MN10300-specific command-line
+options are supported:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-mmult-bug</FONT></FONT>
+<DIR><FONT SIZE=+0>Generate code to work around bugs in the mn10300 multiply
+instruction. This is the default.</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>-mno-mult-bug</FONT></FONT>
+<DIR><FONT SIZE=+0>Do not generate code to work around bugs in the mn10300
+multiply instruction.</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434115527"></A><B><FONT SIZE=+1>Preprocessor symbols</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>By default, the compiler defines the preprocessor symbols</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>__MN10300__</FONT></FONT>’
+and ‘<FONT FACE="Courier New,Courier"><FONT SIZE=-1>__mn10300__</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Ref422909728"></A><A NAME="_Toc434115528"></A><B><FONT SIZE=+1>MN10300-specific
+attributes</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>There are no MN10300-specific attributes. See "Declaring
+Attributes of Functions" and "Specifying Attributes of Variables" in "Extensions
+to the C Language Family" in <I>Using GNU CC</I> in <B><I>GNUPro Compiler
+Tools</I></B> for more information.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115529"></A><B><FONT SIZE=+2>New compiler and linker features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro compiler and linker have been improved by
+Cygnus to provide even more benefits for customers developing for embedded
+targets. These features are guaranteed order of initialization at startup,
+and selective linking.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115530"></A><B><FONT SIZE=+1>Initialization prioritization</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>In C++, you can define static and global objects with
+constructors, or initialize static and global variables from a function.
+This means that the constructors or functions are run before the rest of
+your program starts. However, when you have these objects spread over multiple
+files the C++ standard does not specify the order in which they are initialized,
+and for all practical purposes the order is random. For an embedded system,
+this can be a problem, as you may want to ensure that a static scheduler
+object is initialized before static threads can attach to it, or that devices
+are initialized before they are used. GNUPro solves this problem by allowing
+you to define a priority when the static or global is declared. The following
+example shows the syntax:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>static object_t myobj
+__attribute__((init_priority (30000) ));</FONT></FONT>
+
+<P><FONT SIZE=+0>The syntax is slightly different if the object takes any
+arguments to its constructor:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>static object_t myobj __attribute__((init_priority
+(30000) )) = object_t(arg1, arg2);</FONT></FONT>
+
+<P><FONT SIZE=+0>The numeric priority can be from 1 to 65535, with 1 being
+the highest priority, and 65535 being the lowest. The default priority
+for objects without this attribute is 65535. Constructors with a higher
+priority are guaranteed execution before constructors with lower priority.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must provide the argument ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-finit-priority</FONT></FONT><FONT SIZE=+0>’
+to the compiler on its command-line for it to recognize this attribute
+when you are compiling your C++ source files.</FONT>
+
+<P><FONT SIZE=+0>If you are using eCos, be warned that eCos uses initialization
+priorities internally. Ensure you choose an appropriate priority level
+so that other eCos subsystems will have initialized before you refer to
+them in your own constructor.</FONT>
+<BR>&nbsp;
+<BR>&nbsp;</DIR>
+</DIR>
+<B><FONT SIZE=+1>&nbsp;<A NAME="_Toc434115531"></A>Selective linking</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>When writing C and C++ code, it is sometimes natural
+to include more than one function in a source file. For example in C++,
+it is common to have all methods for a particular class contained in the
+same C++ source file. However, there is a drawback that, conventionally,
+if you use just one of these functions, then all the functions defined
+in that file also get included in the final executable image. For an embedded
+system, this can substantially and unnecessarily increase the size of the
+final image stored in ROM, or loaded into RAM when debugging.</FONT>
+
+<P><FONT SIZE=+0>The GNUPro C and C++ compilers can now optionally remove
+these unnecessary functions from the final image. They also ensure that
+any shared global data is removed that is only referenced by functions
+that are removed. This can be done by including the options ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+on the command-line, when you invoke the C or C++ compiler. The ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary functions, and the ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary data.</FONT>
+
+<P><FONT SIZE=+0>In addition, when classes define virtual methods in C++,
+it is possible to remove any unused methods from the final image by passing
+the option</FONT> <FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-fvtable-gc</FONT></FONT><FONT SIZE=+0>’
+to the C++ compiler on its command-line.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must also supply a command-line option
+when linking. If invoking the linker ld directly, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on its command-line; alternatively, if you are using the preferred method
+of linking your executable, using the form</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>gcc
+-o <I>&lt;program name></I> <I>&lt;file1>.o &lt;file2>.o</I></FONT></FONT><FONT SIZE=+0>’,
+then also pass the option ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-Wl,--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on the compiler command-line, for example:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>gcc -o prog f1.o f2.o
+-Wl,--gc-sections</FONT></FONT></DIR>
+&nbsp;
+<DIR><FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434115532"></A><B><FONT SIZE=+2>ABI Summary</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes the MN10300 Application Binary
+Interface.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115533"></A><B><FONT SIZE=+1>Data types sizes and alignments</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This table describes the size and alignment of the data
+types:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="432" >
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Type</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Size (bytes)</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Alignment (bytes)</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>char</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>1 byte</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>1 byte</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>short</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>2 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>2 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>int</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>float</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT FACE="Courier New"><FONT SIZE=-1>long
+double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>The stack is kept 4-byte aligned.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Structures and unions have the same alignment as their most
+strictly aligned component.</FONT></LI>
+</UL>
+</UL>
+</UL>
+<A NAME="_Toc434115534"></A><B><FONT SIZE=+1>Register allocation</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The compiler allocates registers in the following order:</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a1</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d3</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’</FONT></DIR>
+</DIR>
+<A NAME="_Toc417876195"></A>
+
+<P><A NAME="_Toc434115535"></A><B><FONT SIZE=+1>Register usage:</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This table describes register usage:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="500" >
+<TR>
+<TD VALIGN=TOP WIDTH="30%"><B><FONT SIZE=+0>Type</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><B><FONT SIZE=+0>Registers</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="26%"><B><FONT SIZE=+0>Notes</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="30%" HEIGHT="25"><FONT SIZE=+0>volatile</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%" HEIGHT="25"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a1</FONT></FONT><FONT SIZE=+0>’</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="26%" HEIGHT="25"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="30%" HEIGHT="25"><FONT SIZE=+0>saved</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%" HEIGHT="25"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d3</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="26%" HEIGHT="25"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="30%" HEIGHT="25"><FONT SIZE=+0>special purpose</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%" HEIGHT="25"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>sp</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ccr</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>mdr</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lar</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lir</FONT></FONT><FONT SIZE=+0>’</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="26%" HEIGHT="25"><FONT SIZE=+0>(1) (2)</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="30%" HEIGHT="25"><FONT SIZE=+0>frame pointer&nbsp;</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%" HEIGHT="25"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’
+(if needed)</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="26%" HEIGHT="25"><FONT SIZE=+0>(3)</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>Table notes:</FONT></DIR>
+</DIR>
+
+<OL>
+<OL>
+<OL>
+<LI>
+<FONT SIZE=+0>The compiler does not generate code that uses ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ccr</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lar</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lir</FONT></FONT><FONT SIZE=+0>’.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>mdr</FONT></FONT><FONT SIZE=+0>’</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+i</FONT></FONT><FONT SIZE=+0>s only used for integer division and modulo
+operations.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’
+is the frame pointer in functions that need a frame pointer; otherwise
+it is an allocatable register.</FONT></LI>
+</OL>
+</OL>
+</OL>
+<A NAME="_Toc434115536"></A><B><FONT SIZE=+1>Switches</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>There are no switches that effect the ABI or calling
+conventions. There are two switches that control a particular aspect of
+code generation. See <A HREF="#MN10300-specific command-line">MN10300-specific
+command-line options</A>.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc434115537"></A><B><FONT SIZE=+1>The Stack Frame</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The following describes the MN10300 stack frame.</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>The stack grows downwards from high addresses to low addresses.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A leaf function need not allocate a stack frame if it does
+not need one.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A frame pointer need not be allocated.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The stack pointer shall always be aligned to 4 byte boundaries.</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Stack frames for functions that take a fixed number
+of arguments look like this:</FONT>
+
+<P><IMG SRC="Image12.gif" HEIGHT=317 WIDTH=317>
+<DIR><I><FONT SIZE=+0>Note:</FONT></I>
+<BR><FONT SIZE=+0>FP points to the same location as SP.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+</DIR>
+<FONT SIZE=+0>&nbsp;</FONT>&nbsp;
+<HR WIDTH="100%">
+<DIR>
+<DIR>&nbsp;
+
+<P><FONT SIZE=+0>Stack frames for functions that take a variable number
+of arguments look like:</FONT>
+
+<P><IMG SRC="Image13.gif" HEIGHT=384 WIDTH=316>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115538"></A><B><FONT SIZE=+1>Argument Passing</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>’
+are used for passing the first two argument words, any additional argument
+words are passed on the stack.</FONT>
+
+<P><FONT SIZE=+0>Any argument, more than 8 bytes in size, is passed by
+invisible reference. The callee is responsible for copying the argument
+if the callee modifies the argument.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115539"></A><B><FONT SIZE=+1>Function Return Values</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a0</FONT></FONT><FONT SIZE=+0>’
+is used to return pointer values</FONT>
+
+<P><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>’</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>and</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>’
+are used for returning other scalars and structures less than or equal
+to 8 bytes in length.</FONT>
+
+<P><FONT SIZE=+0>If a function returns a structure that is greater than
+8 bytes in length, then the caller is responsible for passing in a pointer
+to the callee which specifies a location for the callee to store the return
+value. This pointer is passed as the first argument word before any of
+the function’s declared parameters.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115540"></A><B><FONT SIZE=+2>Assembler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes MN10300-specific features of
+the GNUPro Assembler.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115541"></A><B><FONT SIZE=+1>MN10300-specific command-line
+options</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic assembler options, see
+"Command-Line Options" in <I>Using AS</I> in <B><I>GNUPro Utilities</I></B>.
+There are no MN10300 specific assembler command-line options.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115542"></A><B><FONT SIZE=+1>Syntax</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The MN10300 syntax is based on the syntax in Matsushita’s
+<B><I>MN10300 Architecture Manual</I></B>.</FONT>
+
+<P><FONT SIZE=+0>The assembler does not support "user defined instructions"
+nor does it support synthesized instructions (pseudo instructions, which
+correspond to two or more actual machine instructions).</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115543"></A><B><FONT SIZE=+1>Special characters</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The MN10300 assembler supports ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>;</FONT></FONT><FONT SIZE=+0>’
+(semi-colon) and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>#</FONT></FONT><FONT SIZE=+0>’
+(pound). Both characters are line comment characters when used in column
+zero. The semi-colon may also be used to start a comment anywhere within
+a line.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115544"></A><B><FONT SIZE=+1>Register names</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>These are the register names supported for the MN10300:
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d3</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a0</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a1</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a2</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>sp</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>mdr</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ccr</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lir</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lar</FONT></FONT><FONT SIZE=+0>’</FONT><FONT FACE="Courier New"><FONT SIZE=-2>.</FONT></FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115545"></A><B><FONT SIZE=+1>Addressing modes</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<UL>
+<UL><FONT SIZE=+0>The following describes MN10300 assembler addressing
+modes:</FONT></UL>
+</UL>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="318" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Register Direct:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>Dm/Dn</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>Am/An</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Immediate value:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT SIZE=-1><FONT FACE="Courier New">imm8</FONT>/<FONT FACE="Courier New">regs</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>imm16</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>imm32</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>imm40</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>imm48</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Register Indirect:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><FONT FACE="Courier New"><FONT SIZE=-1>(Am)/(An)</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Register indirect
+with displacement</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d8,Am)/(d8,An)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d8</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d16,Am)/(d16,An)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d16</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d32,Am)/(d32,An)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d8,pc)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>d8</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d16,pc)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d16</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d32,pc)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d8,sp)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d8</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d16,sp)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d16</FONT></FONT><FONT SIZE=+0>’
+is sign extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(d32,sp)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Absolute:</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(abs16)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"><FONT SIZE=-1>‘<FONT FACE="Courier New">abs16</FONT>’
+is zero extended</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="49%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(abs32)</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="51%" HEIGHT="22"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="12"></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><B><FONT SIZE=+0>Register indirect
+with index</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>(Di,Am)/(Di,An)</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The subscripts ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>m</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>n</FONT></FONT><FONT SIZE=+0>’,
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>i</FONT></FONT><FONT SIZE=+0>’
+indicate source, destination and index respectively. The values of ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>m</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>n</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>i</FONT></FONT><FONT SIZE=+0>'
+are from 0 to 3.</FONT>
+
+<P><FONT SIZE=+0>For detailed information, see <B><I>MN10300 Series Instruction
+Manual</I></B>.</FONT></DIR>
+</DIR>
+<A NAME="tuesday"></A><A NAME="_Toc434115546"></A><B><FONT SIZE=+1>Floating
+point</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>Although the MN10300 has no hardware floating point,
+the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.float</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.double</FONT></FONT><FONT SIZE=+0>’
+directives generate IEEE-format floating-point values for compatibility
+with other development tools.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115547"></A><B><FONT SIZE=+1>Opcodes</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For detailed information on the MN10300 machine instruction
+set, see <B><I>MN10300 Series Instruction Manual</I></B>. The GNU Assembler
+(GAS) implements all the standard MN10300 opcodes.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115548"></A><B><FONT SIZE=+1>Synthetic Instructions</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The assembler does not support "user defined instructions"
+nor does it support synthesized instructions (pseudo instructions, which
+correspond to two or more actual machine instructions).</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115549"></A><B><FONT SIZE=+2>Linker</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>eCos generates linker scripts appropriate for the exact
+eCos configuration<B> </B>you have chosen. Instructions on how to use this
+linker script are provided<B> </B>in the manual <B><I>Getting Started with
+eCos</I>.</B></FONT></DIR>
+</DIR>
+<A NAME="_Toc433541684"></A><A NAME="_Toc434115550"></A><FONT SIZE=+1>MN10300-specific
+command-line options</FONT>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic linker options, refer
+to "ld command line options" in <I>Using LD</I> in <B><I>GNUPro Utilities</I></B>.
+There are no MN10300-specific command-line linker options.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Ref372526299"></A><A NAME="_Ref372526330"></A><A NAME="_Toc434115551"></A><B><FONT SIZE=+2>Debugger</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes MN10300-specific features of
+the GNUPro Debugger.</FONT>
+<BR><FONT SIZE=+0>For debugging examples, see chapter "Run an eCos test
+case" in<I> <B>Getting Started with eCos</B></I></FONT>
+
+<P><FONT SIZE=+0>There are two ways for GDB to talk to an MN10300 target.
+Each target requires that the program be compiled with a target specific
+linker script.</FONT></DIR>
+</DIR>
+
+<OL>
+<OL>
+<LI>
+<FONT SIZE=+0>Simulator:</FONT></LI>
+
+<BR><FONT SIZE=+0>To build eCos for the simulator you may either configure
+it to build for the standard evaluation board with ROM startup, or for
+the minimal simulator with RAM startup. Linking your program against the
+eCos ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>libtarget.a</FONT></FONT><FONT SIZE=+0>’
+library, and with the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target.ld</FONT></FONT><FONT SIZE=+0>’
+linker script will produce the correct final executable that should be
+loaded into the simulator.</FONT>
+
+<P><B><I><FONT SIZE=+0>Note:</FONT></I></B>
+<BR><FONT SIZE=+0>Loading binaries into the simulator that were built for
+the standard evaluation board with RAM startup will not work.</FONT>
+
+<P><FONT SIZE=+0>To activate the simulator in GDB, follow the instructions
+in the Simulator section later in this document.</FONT>
+<BR>&nbsp;
+<LI>
+<FONT SIZE=+0>Remote target board:</FONT></LI>
+
+<BR><FONT SIZE=+0>To load your program onto the standard evaluation board,
+build eCos for the hardware with RAM startup. Provided the board is fitted
+with CygMon ROMs, or GDB loader stub ROMs, you may connect to the target
+board in GDB using the command</FONT>
+
+<P><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target
+remote <I>&lt;devicename></I></FONT></FONT><FONT SIZE=+0>’</FONT>
+
+<P><FONT SIZE=+0>where ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;devicename></FONT></FONT></I><FONT SIZE=+0>’
+will be a serial device such as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>com2</FONT></FONT><FONT SIZE=+0>’
+(Windows NT) or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>/dev/ttyS1</FONT></FONT><FONT SIZE=+0>’
+(Linux). Then load the code onto the target board by typing ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>load</FONT></FONT><FONT SIZE=+0>’.
+After being downloaded, the program can be executed.</FONT></OL>
+</OL>
+
+<DIR>
+<DIR><B><FONT SIZE=+0><I>Note</I>:</FONT></B>
+<BR><FONT SIZE=+0>When using the remote target, GDB does not accept the
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>run</FONT></FONT><FONT SIZE=+0>’
+command. However, since downloading the program has the side effect of
+setting the PC to the start address, you can start your program by typing
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>continue</FONT></FONT><FONT SIZE=+0>’
+(the letter ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c</FONT></FONT><FONT SIZE=+0>’
+works as a shortcut for the ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>continue</FONT></FONT><FONT SIZE=+0>’
+command).</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115552"></A><B><FONT SIZE=+1>MN10300-specific command-line
+options</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For the available generic debugger options, see <I>Debugging
+with GDB</I> in <B><I>GNUPro Debugging Tools</I></B>. There are no MN10300-specific
+debugger command-line options.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115553"></A><B><FONT SIZE=+1>Debugging programs with multiple
+threads</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Programs with multiple threads can be debugged using
+either the graphic user interface to GDB, GDBTk or the GDB command line
+interface. The following describes how to debug multiple threads using
+the GDB command line.</FONT>
+
+<P><FONT SIZE=+0>In some operating systems, such as eCos, a single program
+may have more than one thread of execution. The precise semantics of threads
+differ from one operating system to another, but in general the threads
+of a single program are akin to multiple processes, except that they share
+one address space (that is, they can all examine and modify the same variables).
+On the other hand, each thread has its own registers and execution stack,
+and perhaps private memory.</FONT>
+
+<P><FONT SIZE=+0>GDB provides the following functions for debugging multi-thread
+programs</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>threadno</I></FONT></FONT><FONT SIZE=+0>’,
+a command to switch among threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’, a command to inquire about existing
+threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread
+apply [<I>threadno</I>][<I>all</I>] <I>args</I></FONT></FONT><I><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT></I><FONT SIZE=+0>’, a command to apply a command to a list
+of threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>thread-specific breakpoints</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>The GDB thread-debugging facility allows you to observe
+all threads while your program runs, but whenever GDB takes control, one
+thread in particular is always the focus of debugging. This thread is called
+the current thread. Debugging commands show program information from the
+perspective of the current thread.</FONT>
+<BR>&nbsp;
+<BR><FONT SIZE=+0>For debugging purposes, GDB associates its own thread
+number, always a single integer, with each thread in your program.</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>info threads</FONT></FONT>
+<DIR><FONT SIZE=+0>Display a summary of all threads currently in your program.
+GDB displays for each thread (in the following order):</FONT>
+<OL>
+<LI>
+<FONT SIZE=+0>The thread number assigned by GDB.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The target system’s thread I.D.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The current stack frame summary for that thread.</FONT></LI>
+</OL>
+<FONT SIZE=+0>An asterisk ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>*</FONT></FONT><FONT SIZE=+0>’
+to the left of the GDB thread number indicates the current thread. Use
+the following example for clarity.</FONT></DIR>
+&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb)</B> info threads</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>* 2 thread 2 breakme
+()</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_2_1/tests/thread_gdb.c:91</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: controller,
+State: running, Priority: 0, More: &lt;none></FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>1 thread 1 Cyg_HardwareThread::thread_entry
+(thread=0x1111aaa2)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_2_1/src/common/thread.cxx:68</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: Idle Thread,
+State: running, Priority: 31, More: &lt;none></FONT></FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT>
+<DIR><FONT SIZE=+0>Make thread number ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’the
+current thread. The command argument, ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. GDB responds by displaying
+the system identifier of the thread you selected, and its current stack
+frame summary, as in the following output.</FONT>
+<BR>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb) </B>thread
+2</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>[Switching to thread
+2]</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>#0 change_state (id=0,
+newstate=0 '\000')</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/kernel/current/tests/bin_sem2.cxx:93</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>93 if (PHILO_LOOPS
+== state_changes++)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Current language:
+auto; currently c++</FONT></FONT></B></DIR>
+<FONT FACE="Courier New,Courier">&nbsp;</FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread apply [<I>&lt;threadno></I>][<I>&lt;all></I>]
+<I>&lt;args></I></FONT></FONT>
+<DIR><FONT SIZE=+0>The thread apply command allows you to apply a command
+to one or more threads. Specify the numbers of the threads that you want
+affected with the command argument ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+where</FONT><I><FONT FACE="Courier New"><FONT SIZE=-2> </FONT></FONT></I><FONT SIZE=+0>‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. To apply a command to all
+threads, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread apply
+all args</FONT></FONT><FONT SIZE=+0>’.</FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Whenever GDB stops your program, due to a breakpoint or a
+signal, it automatically selects the thread where that breakpoint or signal
+happened.</FONT>
+
+<P><FONT SIZE=+0>When your program has multiple threads, you can choose
+whether to set breakpoints on all threads, or on a particular thread.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>break <I>&lt;linespec></I>
+thread <I>&lt;threadno></I></FONT></FONT>
+<DIR>
+<DIR>
+<DIR>&nbsp;</DIR>
+</DIR>
+</DIR>
+</DIR>
+<FONT SIZE=+0>If ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;linespec></FONT></FONT></I><FONT SIZE=+0>’
+specifies source lines, then there are several ways of writing them. Use
+the qualifier ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’
+with a breakpoint command to specify that you only want GDB to stop the
+program when a particular thread reaches this breakpoint. ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is one of the numeric thread identifiers assigned by GDB, shown in the
+first column of the ‘info threads’ display.</FONT>
+
+<P><FONT SIZE=+0>If you do not specify ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ when you set a breakpoint,
+the breakpoint applies to all threads of your program.</FONT>
+
+<P><FONT SIZE=+0>You can use the thread qualifier on conditional breakpoints
+as well; in this case, place ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ before the breakpoint
+condition, as the following example shows.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb</B>) break
+frik.c:13 thread 28 if bartab > lim</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Whenever your program stops under GDB for any reason, all
+threads of execution stop; not just the current thread. This allows you
+to examine the overall state of the program, including switching between
+threads, without worrying that things may change.</FONT>
+
+<P><FONT SIZE=+0>Conversely, whenever you restart the program, all threads
+start executing. This is true even when single stepping with commands like
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>next</FONT></FONT><FONT SIZE=+0>’.
+In particular, GDB cannot single-step all threads in lockstep. Since thread
+scheduling is up to your debugging target’s operating system (not controlled
+by GDB), other threads may execute more than one statement while the current
+thread completes a single step. In general other threads stop in the middle
+of a statement, rather than at a clean statement boundary, when the program
+stops.</FONT>
+
+<P><FONT SIZE=+0>You might even find your program stopped in another thread
+after continuing or even single stepping. This happens whenever some other
+thread runs into a breakpoint, a signal, or an exception before the first
+thread completes whatever you requested.</FONT>
+<BR>&nbsp;
+<BR>&nbsp;</DIR>
+<B><FONT SIZE=+0>SET SCHEDULER-LOCKING</FONT></B>
+<BR>&nbsp;
+<DIR><FONT SIZE=+0>For targets that support it, GDB has a new command that
+helps to debug</FONT>
+<BR><FONT SIZE=+0>multi-threaded programs. The ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>set
+scheduler-locking [on off step]</FONT></FONT><FONT SIZE=+0>’ command allows
+the GDB user to exert some control over how threads are scheduled while
+debugging.</FONT>
+
+<P><FONT SIZE=+0>Normally GDB does not attempt to interfere with thread
+scheduling. This means that in the default mode (‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>scheduler-locking
+off</FONT></FONT><FONT SIZE=+0>’), the current thread may be scheduled
+out, and a different thread may begin running, at any time (as determined
+by the native scheduler). For instance, you may give a GDB command such
+as ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>finish</FONT></FONT><FONT SIZE=+0>’,
+and when the command completes, you may be looking at a different thread.</FONT>
+
+<P><FONT SIZE=+0>If you set the scheduler-locking mode to ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’,
+then GDB will try to interfere with the native scheduler just enough to
+prevent another thread from popping up while you debug. Other threads may
+get to run sometimes, but whenever a command such as ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>finish</FONT></FONT><FONT SIZE=+0>’
+completes, you should be looking at the same thread that was running before
+the command. Of course, if another thread gets to run and hits a breakpoint,
+GDB will still switch you to that thread (so if you don’t want that to
+happen, then disable your breakpoints).</FONT>
+
+<P><FONT SIZE=+0>For even greater (and more intrusive) control over the
+thread scheduler, GDB provides the mode ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>scheduler-locking
+on</FONT></FONT><FONT SIZE=+0>’. In this mode, the native scheduler is
+completely locked, and no thread may run except the current one. Obviously
+this will radically change the behavior of your program, and may lead to
+deadlock or other unpleasant consequences, so use it with caution.</FONT>
+
+<P><B><FONT SIZE=+0>Syntax:</FONT></B>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>set scheduler-locking
+[off on step]</FONT></FONT>
+<DIR><FONT SIZE=+0>Set mode for locking scheduler during target execution.</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>off</FONT></FONT>
+<DIR><FONT SIZE=+0>No locking (threads may preempt at any time).</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>on</FONT></FONT>
+<DIR><FONT SIZE=+0>Full locking (no thread except the current thread may
+run).</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>step</FONT></FONT>
+<DIR><FONT SIZE=+0>The scheduler is locked during every single-step operation.
+In this mode, no other thread may run during a step command. However, other
+threads may run while stepping over a function call (‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>next</FONT></FONT><FONT SIZE=+0>’).</FONT></DIR>
+&nbsp;</DIR>
+&nbsp;</DIR>
+&nbsp;<A NAME="_Toc434115554"></A><B><FONT SIZE=+2>Simulator</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro simulator allows execution of a program compiled
+for the MN10300 target CPU on any supported host computer. It includes
+a simulator module for the target CPU instruction set, memory, and may
+also include simulated peripheral devices such as serial I/O and timers.
+Altogether, these features allow developers to test their MN10300 programs,
+without need for an actual board with that CPU.</FONT>
+
+<P><FONT SIZE=+0>The MN10300 simulator is not designed to match timing
+characteristics of its target board. For example, the CPU module uses a
+single clock cycle for all instructions, its memory is infinitely fast,
+and its simulated serial I/O is infinitely fast. Furthermore, a number
+of obscure or inapplicable functions were omitted from the simulated peripherals.
+The simulator is just complex and accurate enough to run eCos programs.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115555"></A><B><FONT SIZE=+1>Features</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro simulator supports the following registers:</FONT>
+
+<P><FONT SIZE=+0>Volatile registers: </FONT><FONT FACE="Courier New"><FONT SIZE=-1>d0</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d1</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a0</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a1</FONT></FONT>
+
+<P><FONT SIZE=+0>Saved registers: </FONT><FONT FACE="Courier New"><FONT SIZE=-1>d2</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>d3</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a2</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>a3</FONT></FONT>
+
+<P><FONT SIZE=+0>Special purpose registers: </FONT><FONT FACE="Courier New"><FONT SIZE=-1>sp</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ccr</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>mdr</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lar</FONT></FONT><FONT SIZE=+0>,
+</FONT><FONT FACE="Courier New"><FONT SIZE=-1>lir</FONT></FONT>
+
+<P><FONT SIZE=+0>Memory is 4mb starting at location ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>0x48000000</FONT></FONT><FONT SIZE=+0>’.
+The stack starts at the highest memory address and works downward. The
+heap starts at the lowest address after the text, data and bss.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115556"></A><B><FONT SIZE=+1>MN10300-specific command-line
+options</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The following general options, are supported by the
+simulator:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>--board=BOARD</FONT></FONT>
+<DIR><FONT SIZE=+0>Specifies that the simulator be tailored to a model
+of a specified hardware board. For the mn10300, the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--board=stdeval1</FONT></FONT><FONT SIZE=+0>’
+option will add support for several peripherals on the evaluation board,
+including the mn103002 on-board interrupt controller, timers, and serial
+I/O modules. The board’s actual RAM &amp; ROM memory layouts are matched
+by the simulator.</FONT></DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>--profile [on|off]</FONT></FONT>
+<DIR><FONT SIZE=+0>This option creates a file called ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gmon.out</FONT></FONT><FONT SIZE=+0>’
+that contains profiling information. This file can be used as input to
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gprof</FONT></FONT><FONT SIZE=+0>’,
+the GNU profiler.</FONT></DIR>
+<FONT FACE="Courier New"><FONT SIZE=-1>--sockser-addr=HOSTNAME:PORT</FONT></FONT>
+<DIR><FONT SIZE=+0>Specifies that the simulation of the primary serial
+I/O peripherals should send data to and from a TCP/IP socket rather than
+to and from the simulator console. The TCP/IP socket’s listening address
+is specified by the argument. HOSTNAME should refer to an IP address of
+the host, and PORT should be an unused port number between 1024 and 65535.
+You may use any terminal program that connects to TCP/IP sockets, such
+as telnet, kermit, or socket, to interact directly with the simulated program.
+You can also use gdb’s</FONT> <FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target
+remote HOSTNAME:PORT</FONT></FONT><FONT SIZE=+0>’ command to connect, if
+the simulator is running a program equipped with a gdb stub.</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>--trace=[on|off]</FONT></FONT>
+<DIR><FONT SIZE=+0>This creates a file called ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>trace.din</FONT></FONT><FONT SIZE=+0>’
+that contains tracing information. Use the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--tracefile</FONT></FONT><FONT SIZE=+0>’
+switch (discussed below) to change the name of the output file.</FONT></DIR>
+&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT COLOR="#000000"><FONT SIZE=-1><B>C:\>
+</B>mn10300-elf-run --trace hello</FONT></FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT COLOR="#000000"><FONT SIZE=-1>Hello,
+world!</FONT></FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT COLOR="#000000"><FONT SIZE=-1>3
++ 4 = 7</FONT></FONT></FONT></B>
+
+<P><FONT SIZE=+0>Here are the first 10 lines of the file produced by the
+above run:</FONT>
+
+<P><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040004 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040008 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a004000c ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040010 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040014 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040018 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a004001c ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040020 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040024 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>2 a0040028 ; width
+4 ; load instruction</FONT></FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>--tracefile <I>&lt;file></I></FONT></FONT>
+<DIR><FONT SIZE=+0>This changes the name of the file to which trace information
+will be written.</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>C:\> </B>mn10300-elf-run
+--trace --tracefile=trace.out hello</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Placing trace information
+into file "trace.out"</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Hello, world!</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>3 + 4 = 7</FONT></FONT></B>
+<BR><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434115557"></A><B><FONT SIZE=+1>Using the simulator</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>An eCos program is normally built with a particular
+"download method" in mind, that is, the means by which the program is to
+be ultimately loaded into the target hardware. With some special considerations,
+the simulator is able to run programs built for any of these methods. Use
+the configuration options in eCos’s Hardware Abstraction Layer (HAL) package
+to support the different download methods. The following table summarizes
+the ways in which an eCos image can be prepared for different types of
+download.</FONT>
+
+<P><FONT SIZE=+0>HAL configuration, for various download methods</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="439" >
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><B><FONT SIZE=+0>Download method</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><B><FONT SIZE=+0>HAL configuration</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Burn hardware ROM</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>ROM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to ROM emulator</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>ROM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to board
+with CygMon</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>RAM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to simulator
+without CygMon</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>ROM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to simulator
+with CygMon</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>RAM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to simulator,
+ignoring devices</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>SIM configuration</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><B><I><FONT SIZE=+0>CAUTION:</FONT></I></B>
+<DIR>An application configured for RAM startup cannot be run directly on
+the simulator: it will fail during startup. You can only download it to
+the simulator if you are already running CygMon in the simulator, as described
+below.
+<BR>&nbsp;</DIR>
+The simulator-specific configuration does not include device drivers or
+watchdog devices that the simulator would otherwise have to emulate.
+
+<P>In most circumstances, you should not download to simulator ignoring
+devices. If you use this download method, the binaries built with this
+configuration will not run on the target board; they can only run on the
+simulator. Likewise, binaries built to run on the target board will not
+run on the simulator.
+
+<P>In some cases, you may want to use a simulator specific configuration
+to try to work around problems with the device drivers or with the simulator
+itself.
+
+<P>Simulator clocks and timers sometimes appear to be running very slowly,
+even when there are apparently no active threads. Delays that should only
+be in seconds can run to minutes. These delays occur because the eCos kernel
+idle thread is running intensively, and the simulator emulates it faithfully.
+With the SIM configuration, however, the eCos kernel realizes it is in
+a simulated environment, and can therefore adjust the clock settings to
+be more realistic.
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115558"></A><B><FONT SIZE=+1>Simulator exceptions within
+GDB</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>If you invoke the simulator within GDB, using the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target
+sim</FONT></FONT><FONT SIZE=+0>’ command, you may encounter some ambiguities
+when processing signals and exceptions. When an exception is raised in
+the simulator, GDB does not known whether the simulated program is intended
+to handle the exception, or if GDB is intended to handle it.</FONT>
+
+<P><FONT SIZE=+0>For example, suppose you are debugging a ROM monitor in
+the simulator invoked from GDB (we’ll call this GDB1), and you have downloaded
+an application to it from a second GDB session (which we will call GDB2).
+The second GDB session, GDB2, would simply consider the simulated target
+as a remote target and nothing more. Now suppose that in GDB2 you set a
+breakpoint in the program. The breakpoint will be physically set in GDB1.
+So when the breakpoint is reached, instead of the breakpoint being handled
+by the ROM monitor as if it was a real target, the breakpoint will be interpreted
+by GDB1 as if you had asked GDB1 to set a breakpoint in the ROM monitor
+code. This may not be your desired intention. To solve this, you can tell
+GDB1 not to process breakpoints itself, but to let the simulated target
+process them.</FONT>
+
+<P><FONT SIZE=+0>To do this, use the following command:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>handle SIGxxxx pass nostop
+noprint</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>where ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>SIGxxxx</FONT></FONT><FONT SIZE=+0>’
+is one of the signals listed by GDB when you use the</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info handle</FONT></FONT><FONT SIZE=+0>’
+command to the GDB console prompt.</FONT>
+
+<P><FONT SIZE=+0>For example the command ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>handle
+SIGTRAP pass nostop noprint</FONT></FONT><FONT SIZE=+0>’ tells GDB to not
+stop the simulated target at a breakpoint, or even to print that it has
+been stopped. Instead, the command tells GDB to pass the information back
+to the program. You can modify the command to use with other signals and
+exceptions.</FONT>
+
+<P><FONT SIZE=+0>Note: if you use the aforementioned command, you will
+no longer be able to set breakpoints in the ROM monitor code (as in the
+example). You may be able to work around this problem by using conditional
+breakpoints. Please consult the GDB manual on how to use conditional-breakpoints.</FONT>
+
+<P><FONT SIZE=+0>The ambiguities discussed in this section are not a problem
+when you are using the standalone simulator. In such a case, the standalone
+simulator is the only target program that can handle the exception</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115559"></A><B><FONT SIZE=+1>CygMon, the simulator, and
+thread-aware debugging</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The simulator does not support thread-aware debugging.
+However, CygMon does support it. To obtain this functionality in the simulator,
+run CygMon under the simulator, and interact with it as if it were actually
+running on the real hardware.</FONT>
+
+<P><FONT SIZE=+0>While this approach offers the desired functionality,
+it is has a few disadvantages. The simulator is not only slow to execute
+code compared with real hardware, but simulation of the ROM monitor also
+slows the downloading of code to approximately the speed of a serial port.
+In addition, since the simulator must run continuously to execute CygMon,
+it can interfere with the performance of GDB. If there is insufficient
+memory for both programs to be in memory together, there may also be delays
+due to memory paging.</FONT>
+
+<P><FONT SIZE=+0>This technique uses TCP/IP for communication between the
+simulator and GDB, so you must ensure that the TCP/IP protocol stack is
+installed on your machine.</FONT>
+
+<P><FONT SIZE=+0>To run CygMon in the simulator, type the following command
+at the command line:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>mn10300-elf-run --board=stdeval1
+--sockser-addr=localhost:<I>XXXX</I> cygmon.rom</FONT></FONT>
+
+<P><FONT SIZE=+0>Where ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>XXXX</FONT></FONT></I><FONT SIZE=+0>’,
+is an unused TCP port number on your computer. A value of 1234 usually
+works, but any number between 1024 and 65535, which does not result in
+an error will do. The executable, ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cygmon.rom</FONT></FONT><FONT SIZE=+0>’
+can be found in the directory, ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>loaders/mn10300-stdeval1</FONT></FONT><FONT SIZE=+0>’
+within the eCos installation.</FONT>
+
+<P><FONT SIZE=+0>This has started the simulator running CygMon. To make
+use of it you must run a separate GDB session and connect to it.</FONT>
+
+<P><FONT SIZE=+0>If you run GDB in command-line mode, you can attach it
+to the simulated CygMon with the following command:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb)</B> target
+remote <I>localhost</I>:<I>XXXX</I></FONT></FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT></DIR>
+<FONT SIZE=+0>Where ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>XXXX</FONT></FONT></I><FONT SIZE=+0>’
+is the port number given in the call to the simulator. GDB should connect
+to the simulator and talk to the version of CygMon running in it in exactly
+the same way as if it were talking to CygMon running on the real hardware.</FONT>
+
+<P><FONT SIZE=+0>If you are running the GDBTk then, in the ‘Target Settings’
+dialog, select ‘Remote/TCP’ in the ‘Target’ edit field. Type ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>localhost</FONT></FONT></I><FONT SIZE=+0>’
+into the ‘Host’ edit field, and put the value chosen for the port number
+in the ‘Port’ entry.</FONT>
+
+<P><FONT SIZE=+0>You should use executables configured to run on the target
+board with RAM startup, and not executables configured for the simulator.</FONT>
+
+<P><FONT SIZE=+0>If the performance of the two programs on a single machine
+is too slow, it is possible to use two machines: one to run the simulator
+and one to run GDB. These machines must be connected together on a TCP/IP
+network. Run the simulator on one machine, but supply the name of the machine
+in place of ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>localhost</FONT></FONT></I><FONT SIZE=+0>’
+in the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--sockser-addr</FONT></FONT><FONT SIZE=+0>’
+option. When running GDB on the other machine, replace ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>localhost</FONT></FONT></I><FONT SIZE=+0>’
+with the name of the machine running the simulator.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc368474915"></A><A NAME="_Toc405179933"></A><A NAME="_Toc434115560"></A><B><FONT SIZE=+3>Appendix
+A:</FONT></B>&nbsp; <B><FONT SIZE=+3>CygMon (Cygnus ROM Monitor)</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>CygMon is a ROM monitor designed to be portable across
+a large number of embedded systems. It is also completely compatible with
+existing GDB protocols, thus allowing the use of a standard ROM monitor
+with existing GNU tools across a wide range of embedded platforms.</FONT>
+
+<P><FONT SIZE=+0>CygMon has basic program handling and debugging commands,
+programs can be loaded into memory and run, and the contents of memory
+can be viewed. There are several more advanced options that can be included
+at compile time, such as a disassembler (this of course increases the code
+size significantly).</FONT>
+
+<P><FONT SIZE=+0>Since CygMon contains a GDB remote stub, full debugging
+can be done from a host running GDB to a target running CygMon. Switching
+between CygMon monitor mode and GDB stub mode is designed to be transparent
+to the user, since CygMon can detect when GDB is communicating with the
+target and switch into stub mode. When GDB stops communicating with the
+target normally, it sends a termination packet which lets the stub know
+when to switch to the CygMon monitor mode.</FONT>
+
+<P><FONT SIZE=+0>The command parser was written specifically for CygMon,
+to provide necessary functionality in limited space. All commands consist
+of words followed by arguments separated by spaces. Abbreviations of command
+names may be used. Any unique subset of a command name is recognized as
+being that command, so ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>du</FONT></FONT><FONT SIZE=+0>’
+is recognized to be the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>dump</FONT></FONT><FONT SIZE=+0>’
+command. The user is prompted to resolve any ambiguities. Generally, a
+command with some or all of its arguments empty will either assume a default-set
+of arguments or return the status of the operation controlled by the command.</FONT>
+
+<P>CygMon includes an API, which allows user programs, running under it,
+to use system calls for various functions. The available system calls allow
+access to the serial ports and on-board timer functions, if they are available.
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434038808"></A><A NAME="_Toc434115561"></A><B><FONT SIZE=+2>Installing
+and building CygMon</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section explains to owners of the eCos Development
+Kit how to install the CygMon source, and build the CygMon ROM monitor
+program under the Windows NT operating system.</FONT>
+
+<P><FONT SIZE=+0>For users of the Sourceware release of eCos, instructions
+can be found at</FONT>
+
+<P><FONT SIZE=+0><A HREF="http://sourceware.cygnus.com/ecos/">http://sourceware.cygnus.com/ecos/</A></FONT></DIR>
+</DIR>
+<A NAME="_Toc434038809"></A><A NAME="_Toc434115562"></A><B><FONT SIZE=+1>Installing
+CygMon Source</FONT></B>
+<DIR>
+<DIR>By selecting the appropriate component, the eCos installer will install
+the CygMon source code, and we recommend you do so. When installed the
+sources would then be found in:
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>C:\Program Files\Cygnus
+Solutions\eCos\ecos-98r1p6\cygmon-src</FONT></FONT>
+
+<P>If you choose to install the sources to a different location, the ‘<FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon-src</FONT></FONT>’
+directory will be located at ‘<FONT FACE="Courier New,Courier"><FONT SIZE=-1>ecos-98r1p6\cygmon-src</FONT></FONT>’
+relative to the specified location. Please note that due to the configuration
+and build tools being used, the sources must be installed in a directory
+hierarchy that uses only alphanumeric, dash or underscore characters in
+the directory names.
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc434115563"></A><B><FONT SIZE=+1>Building CygMon</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>From the Start Menu, select:</FONT>
+
+<P><FONT FACE="Arial"><FONT SIZE=-1>Programs->Cygnus eCos->eCos Development
+Environment</FONT></FONT>
+
+<P><FONT SIZE=+0>This will bring up a window running “bash”.</FONT>
+
+<P><FONT SIZE=+0>Mount the sources such that the full path to the CygMon
+sources uses only alphanumeric, dash or underscore characters:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>mount C:/Program\ Files/Cygnus\
+Solutions/eCos /ecos</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>In addition, you must mount the bin directory for the unsupported
+tools as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>/bin</FONT></FONT><FONT SIZE=+0>’:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>mount C:/cygnus/gnupro/i386-cygwin32/i386-cygwin32/\</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>unsupported-98r1p2/H-i386-cygwin32/bin
+/bin</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>You should now be able to configure and build CygMon as follows:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>mkdir /ecos/ecos-98r1p6/objdir</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>cd /ecos/ecos-98r1p6/objdir</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>../cygmon-src/configure --host=i386-cygwin32
+--target=mn10300-elf</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>make -w</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1></FONT></FONT>&nbsp;</DIR>
+<FONT SIZE=+0>When complete, you will have CygMon images built in:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>mn10300-elf/cygmon/eval</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>The images are:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>cygmon.img</FONT></FONT>
+<BR><FONT SIZE=+0>Is the ROM-resident version of CygMon in binary format.</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>cygmon.rom</FONT></FONT>
+<BR><FONT SIZE=+0>Is the ELF executable of the ROM-resident version of
+CygMon. It is used in the standalone simulator for thread-aware debugging.</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>cygmon.sre</FONT></FONT>
+<BR><FONT SIZE=+0>Is the ROM-resident version of CygMon in S-Record format.</FONT>
+
+<P>If you want to read the source code, here are the names of the files
+in the cygmon and libstub directories, specific to this version of CygMon.
+<BR>&nbsp;
+<BR>&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="600" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><B><FONT SIZE=+0>File names</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><B><FONT SIZE=+0>Descriptions</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">
+<CENTER><B><FONT SIZE=+0>Generic Parts</FONT></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New"><FONT SIZE=-1>libstub/generic-stub.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Generic remote debug stub</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New"><FONT SIZE=-1>libstub/relocate.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Segment relocation while booting
+ROMS</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon/bsp/monitor.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Detailed vector table management</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon/bsp/monitor_cmd.c</FONT></FONT></TD>
+
+<TD><FONT SIZE=-1>Cygmon command interpreter</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon/bsp/ledit.c</FONT></FONT></TD>
+
+<TD><FONT SIZE=-1>CygMon line editor</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">
+<CENTER><B><FONT SIZE=+0>Processor Specific Parts</FONT></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>libstub/mn10300/mn10300.mk</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Makefile common to all MN10300
+variants</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>libstub/mn10300/mn10300-stub.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Specific to MN10300, gdb stub
+support</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon/mn10300/mn10300.mon.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Specific to MN10300, CygMon support</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="3">
+<CENTER><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Board Specific
+Parts</FONT></FONT></B></CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>libstub/mn10300/eval.mk</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Makefile specific to MN10300 EVB<FONT FACE="Courier New,Courier">&nbsp;</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>libstub/mn10300/mn10300-lib.c</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>Support for MN10300 EVB</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP COLSPAN="2" WIDTH="56%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>cygmon/mn10300/mn10300.mon.ld</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="44%"><FONT SIZE=-1>CygMon linker script for EVB</FONT></TD>
+</TR>
+</TABLE></CENTER>
+<B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&nbsp;</FONT></FONT></B>
+
+<P><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&nbsp;</FONT></FONT></B></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc428087596"></A>
+
+<P><A NAME="_Toc434115564"></A><B><FONT SIZE=+2>CygMon command list</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This is a list of all the commands that can be typed
+at the CygMon command prompt. Arguments in [</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>brackets</FONT></FONT></I><FONT SIZE=+0>]
+are optional, arguments without brackets are required. Note that all commands
+can be invoked by typing enough of the command name to uniquely specify
+the command. Some commands have aliases, which are single letter abbreviations
+for commands which do not have unique first letters. Aliases for all commands
+are shown in the help screens.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115565"></A><B><FONT SIZE=+1>baud</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>baud
+<I>speed</I></FONT></FONT>
+
+<P><FONT SIZE=+0>The baud command sets the speed of the active serial port.
+It takes one argument, which specifies the speed to which the port will
+be set.</FONT>
+
+<P><B><FONT SIZE=+0>Example:</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>baud 9600</FONT></FONT>
+
+<P><FONT SIZE=+0>Sets the speed of the active port to 9600 baud.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115566"></A><B><FONT SIZE=+1>break</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT></B> <FONT FACE="Courier New"><FONT SIZE=-1>break
+[<I>location</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The break command displays and sets breakpoints in memory.
+It takes zero or one argument. With zero arguments, it displays a list
+of all currently set breakpoints. With one argument it sets a new breakpoint
+at the specified location.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>break
+4ff5</FONT></FONT>
+
+<P><FONT SIZE=+0>Sets a breakpoint at address ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>4ff5</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115567"></A><B><FONT SIZE=+1>disassemble</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>disassemble
+[<I>location</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The disassemble command disassembles the contents of memory.
+Because of the way breakpoints are handled, all instructions are shown
+and breakpoints are not visible in the disassembled code. The disassemble
+command takes zero or one argument. When called with zero arguments, it
+starts disassembling from the current (user program) ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’.
+When called with a location, it starts disassembling from the specified
+location. When called after a previous call and with no arguments, it disassembles
+the next area of memory after the one previously disassembled.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>disassemble
+45667000</FONT></FONT>
+
+<P><FONT SIZE=+0>Displays disassembled code starting at location ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>45667000</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115568"></A><B><FONT SIZE=+1>dump</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>dump
+<I>location</I></FONT></FONT>
+
+<P><FONT SIZE=+0>The dump command shows a region of 16 bytes around the
+specified location, aligned to 16 bytes. Thus, ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>dump
+65</FONT></FONT><FONT SIZE=+0>’ would show all bytes from ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>60</FONT></FONT><FONT SIZE=+0>’
+through ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>6f</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>dump
+44f5</FONT></FONT>
+
+<P><FONT SIZE=+0>Displays 16 bytes starting with ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>44f0</FONT></FONT><FONT SIZE=+0>’
+and ending with ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>44ff</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115569"></A><B><FONT SIZE=+1>go</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>go
+[<I>location</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The go command starts user program execution. It can take
+zero or one argument. If no argument is provided, go starts execution at
+the current ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’.
+If an argument is specified, go sets the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’
+to that location, and then starts execution at that location.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>go
+40020000</FONT></FONT>
+
+<P><FONT SIZE=+0>Sets the ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’
+to ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>40020000</FONT></FONT><FONT SIZE=+0>’,
+and starts program execution.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115570"></A><B><FONT SIZE=+1>help</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>help
+[<I>command</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The help command without arguments shows a list of all
+available commands with a short description of each one. With a command
+name as an argument it shows usage for the command and a paragraph describing
+the command. Usage is shown as command name followed by names of extensions
+or arguments.</FONT>
+
+<P><FONT SIZE=+0>Arguments in [</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>brackets</FONT></FONT></I><FONT SIZE=+0>]
+are optional, plain text arguments are required. Note that all commands
+can be invoked by typing enough of the command name to uniquely specify
+the command. Some commands have aliases, which are</FONT>
+<BR><FONT SIZE=+0>one-letter abbreviations for commands which do not have
+unique first letters. Aliases for all commands are shown in the help screen,
+which displays commands in the format:</FONT>
+
+<P><FONT SIZE=+0>command name: (alias, if any) description of command</FONT>
+
+<P><FONT SIZE=+0><B>Example:</B> </FONT><FONT FACE="Courier New"><FONT SIZE=-2>help
+foo</FONT></FONT>
+
+<P><FONT SIZE=+0>Shows the help screen for the command ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>foo</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115571"></A><B><FONT SIZE=+1>load</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>load</FONT></FONT>
+
+<P><FONT SIZE=+0>The load command switches the monitor into a state where
+it takes all input as s-records and stores them in memory. The monitor
+exits this mode when a termination record is hit, or certain errors (such
+as an invalid s-record) cause the load to fail.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115572"></A><B><FONT SIZE=+1>memory</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>memory[<I>.size</I>]
+<I>location</I> [<I>value</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The memory command is used to view and modify single locations
+in memory. It can take a size extension, which follows the command name
+or partial command name without a space, and is a period, followed by the
+number of bits to be viewed or modified. Options are 8, 16, 32, and 64.
+Without a size extension, the memory command defaults to displaying or
+changing 8 bits at a time.</FONT>
+
+<P><FONT SIZE=+0>The memory command can take one or two arguments, independent
+of whether a size extension is specified. With one argument, it displays
+the contents of the specified location. With two arguments, it replaces
+the contents of the specified location with the specified value.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>memory.8
+45f6b2 57</FONT></FONT>
+
+<P><FONT SIZE=+0>Places the 8-bit value 57 at the location ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>45f6b2</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115573"></A><B><FONT SIZE=+1>port</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>port
+[<I>port number</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The port command allows control over the serial port being
+used by the monitor. It takes zero or one argument. Called with zero arguments
+it displays the port currently in use by the monitor. Called with one argument
+it switches the port in use by the monitor to the one specified. It then
+prints out a message on the new port to confirm the switch.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>port
+1</FONT></FONT>
+
+<P><FONT SIZE=+0>Switches the port in use by the monitor to port 1.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115574"></A><B><FONT SIZE=+1>register</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>register
+[<I>register name</I>] [<I>value</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The register command allows the viewing and manipulation
+of register contents. It can take zero, one, or two arguments. When called
+with zero arguments, the register command displays the values of all registers.
+When called with only the register name argument, it displays the contents
+of the specified register. When called with both a register name and a
+value, it places that value into the specified register.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>register
+g1 1f</FONT></FONT>
+
+<P><FONT SIZE=+0>Places the value 1f in the register ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>g1</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115575"></A><B><FONT SIZE=+1>reset</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>reset</FONT></FONT>
+
+<P><FONT SIZE=+0>The reset command resets the board.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115576"></A><B><FONT SIZE=+1>step</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>step
+[<I>location</I>]</FONT></FONT>
+
+<P><FONT SIZE=+0>The step command causes one instruction of the user program
+to execute, then returns control to the monitor. It can take zero or one
+argument. If no argument is provided, step executes one instruction at
+the current ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’.
+If a location is specified, step executes one instruction at the specified
+location.</FONT>
+
+<P><FONT SIZE=+0><B>Example:</B> </FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT>
+
+<P><FONT SIZE=+0>Executes one instruction at the current ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>pc</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115577"></A><B><FONT SIZE=+1>terminal</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>terminal
+<I>type</I></FONT></FONT>
+
+<P><FONT SIZE=+0>The terminal command sets the type of the current terminal
+to that specified in the type argument. The only available terminal types
+are vt100 and dumb. This is used by the line editor to determine how to
+update the terminal display.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>terminal
+dumb</FONT></FONT>
+
+<P><FONT SIZE=+0>Sets the type of the current terminal to a dumb terminal.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434115578"></A><B><FONT SIZE=+1>transfer</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>transfer</FONT></FONT>
+
+<P><FONT SIZE=+0>The transfer or $ function transfers control to the gdb
+stub. This function does not actually need to be called by the user, as
+connecting to the board with gdb will call it automatically. The transfer
+command takes no arguments. The $ command does not wait for a return, but
+executes immediately. A telnet setup in line mode will require a return
+when executed by the user, as the host computer does not pass any characters
+to the monitor until a return is pressed. Disconnecting from the board
+in gdb automatically returns control to the monitor.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115579"></A><B><FONT SIZE=+1>unbreak</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT> </B><FONT FACE="Courier New"><FONT SIZE=-1>unbreak
+<I>location</I></FONT></FONT>
+
+<P><FONT SIZE=+0>The unbreak command removes breakpoints from memory. It
+takes one argument, the location to remove the breakpoint from.</FONT>
+
+<P><B><FONT SIZE=+0>Example: </FONT></B><FONT FACE="Courier New"><FONT SIZE=-1>unbreak
+4ff5</FONT></FONT>
+
+<P><FONT SIZE=+0>Removes a previously set breakpoint at memory location
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>4ff5</FONT></FONT><FONT SIZE=+0>’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115580"></A><B><FONT SIZE=+1>usage</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT></B> <FONT FACE="Courier New"><FONT SIZE=-1>usage</FONT></FONT>
+
+<P><FONT SIZE=+0>Shows the amount of memory being used by the monitor,
+broken down by category. Despite its name, it has nothing to do with the
+usage of any other command.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434115581"></A><B><FONT SIZE=+1>version</FONT></B>
+<DIR>
+<DIR><B><FONT SIZE=+0>Usage:</FONT></B> <FONT FACE="Courier New"><FONT SIZE=-1>version</FONT></FONT>
+
+<P><FONT SIZE=+0>The version command displays the version of the monitor.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc429555799"></A><A NAME="_Toc433796676"></A><A NAME="_Toc434115582"></A><B><FONT SIZE=+2>CygMon
+command editing</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>CygMon has a line-editing interface. If you type the
+wrong thing, you can correct it. Position the cursor back, delete the wrong
+characters and entry the right ones. The user can recover previous commands
+and edit them or simply re-execute them.</FONT>
+
+<P><FONT SIZE=+0>These are common “EMACS” and “X” text editing escape sequences.
+Here are the keys for editing.</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="474" >
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><B><FONT SIZE=+0>Keystroke</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><B><FONT SIZE=+0>Command</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>CR ‘\n’</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Execute the currently displayed
+command</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-a</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Move to Beginning of line</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-e</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>End of line</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-f</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Forward char</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-b</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Backward char</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-k</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Delete to end of line</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-y</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Yank Character (undelete)</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-d</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Delete current character</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-p</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Edit previous command</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-u</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Erase Line</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="22%"><FONT SIZE=+0>ctl-n</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="78%"><FONT SIZE=+0>Edit next command</FONT></TD>
+</TR>
+</TABLE></CENTER>
+<B><FONT SIZE=+2>&nbsp;</FONT></B>
+
+<P><A NAME="_Toc433628240"></A><A NAME="_Toc434115583"></A><B><FONT SIZE=+2>Debugging
+CygMon</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The CygMon directories build two binaries. One is a
+ROM image. The other is a downloadable program, which can be run under
+the supervision of the previous monitor. The downloaded CygMon will be
+using the serial connection. GDB can be used to talk to the downloaded
+CygMon. Once the downloaded CygMon has initialized to the point of installing
+the exception handler, the original ROM monitor will no longer support
+debugging. At that point CygMon can be used to download and run additional
+programs. It is important to watch your memory layouts carefully.</FONT>
+
+<P><FONT SIZE=+0>When developing and debugging CygMon, it is convenient
+to run CygMon itself as a downloadable application. There are some modifications
+that the developer may want to make temporarily, to debug CygMon. Reconfigure
+CygMon so it does not patch the exception handler. Have your test program
+call breakpoint explicitly. This combination disables CygMon in some serious
+ways, but many essential features remain functional and debuggable. Breakpoints
+can be administered, memory accesses can be tested, or registers fetched.
+You can debug the serial driver. But, you cannot resume execution, single
+step or test if a breakpoint has been hit. You can force CygMon through
+its context-save and context-restore. This is the plan; get all the basics
+working and verified, and then restore the exception patching capability.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc434115584"></A><B><FONT SIZE=+3>Appendix B:</FONT></B>&nbsp;
+<B><FONT SIZE=+3>MN10300-specific Assembler Error Messages</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR>
+<DIR><B><FONT FACE="Courier New"><FONT SIZE=-1>Error: Unrecognized opcode</FONT></FONT></B>
+<DIR><FONT SIZE=+0>This instruction is misspelled or there is a syntax
+error somewhere.</FONT>
+<BR>&nbsp;</DIR>
+<B><FONT FACE="Courier New"><FONT SIZE=-1>Warning: operand out of range</FONT></FONT></B>
+<DIR><FONT SIZE=+0>An immediate value was specified that is too large for
+the instruction</FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434115585"></A><B><FONT SIZE=+3>Appendix C:</FONT></B> <B><FONT SIZE=+3>Bibliography</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><B><I><FONT SIZE=+0>MN10300 Series Instruction Manual</FONT></I></B>
+<BR>(Version 1.03, Matsushita Electronics Corporation, November, 1996)
+
+<P><B><I>MN103000 LSI User’s Manual</I></B>
+<BR>(1st Edition, Matsushita Electronics Corporation, November, 1996)
+
+<P><B><I>32-bit Microcontroller MN103002A LSI Manual</I></B>
+<BR>(Version 3.0, Matsushita Electronics Corporation)
+
+<P><B><I>Getting Started with eCos version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>eCos User's Guide version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>eCos Reference Manual version 1.2.1</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>Getting Started with GNUPro Toolkit</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Compiler Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Debugging Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Libraries</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Utilities</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Advanced Topics</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>GNUPro Tools for Embedded Systems</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1999)
+
+<P><B><I>System V Application Binary Interface</I></B>
+<BR>(Prentice Hall, 1990)
+
+<P><B>&nbsp;</B>
+
+<P><B>&nbsp;</B></DIR>
+</DIR>
+
+</BODY>
+</HTML>
