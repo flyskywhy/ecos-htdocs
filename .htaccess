@@ -3,4 +3,5 @@ deny from all
 allow from cygnus.com
 allow from cygnus.co.uk
 allow from cygnus.co.jp
+allow from best.com
 </Limit>
