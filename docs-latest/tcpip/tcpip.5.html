@@ -1,0 +1,465 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.1.0/Tue Nov 21 11:01:40 GMT 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> SNMP for eCos</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="100%" BORDER="0" ALIGN="LEFT" CELLPADDING="3"><TR><TH COLSPAN="2" ALIGN="center"><P CLASS="Gotos">SNMP for eCos</P></TH></TR><TR><TD WIDTH="47%" ALIGN="center"><P CLASS="Gotos"><A HREF="tcpip.html">Contents</A></P></TD><TD WIDTH="47%" ALIGN="center"><P CLASS="Gotos"><A HREF="tcpip.4.html">To&nbsp;previous&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1136691">
+ </A>
+SNMP for eCos<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1136692">
+ </A>
+Release notes</H3>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136693">
+ </A>
+Version</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136694">
+ </A>
+This is a port of UCD-SNMP-4.1.2</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136695">
+ </A>
+See http://ucd-snmp.ucdavis.edu/ for details.  And send them a postcard.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136696">
+ </A>
+Package contents</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136697">
+ </A>
+The SNMP/eCos package consists of two eCos packages; the SNMP library and the SNMP agent.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136698">
+ </A>
+The sources are arranged this way partly for consistency with the original release from UCD, and so as to accommodate possible future use of the SNMP library without having an agent present.  That could be used to build an eCos-based SNMP client application.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136699">
+ </A>
+The library contains support code for talking SNMP over the net - the SNMP protocol itself - and a MIB file parser (ASN-1) which is not used in the agent case.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136700">
+ </A>
+The agent contains the application specific handler files to get information about the system into the SNMP world, together with the SNMP agent thread (snmpd in UNIX terms).</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136701">
+ </A>
+Additional requirements</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136799">
+ </A>
+These packages are intended for use with eCos release 1.4.4 or later; an updated TCP/IP stack which exposes additional statistical information to SNMP; and an updated ethernet device driver where applicable.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136800">
+ </A>
+Current release contents</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136801">
+ </A>
+The release consists of two EPKs:  </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1136705">
+ </A>
+Two SNMP packages; versions are to accompany the 1.4.<EM CLASS="Emphasis">
+x</EM>
+ release: </LI>
+</UL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1137420">
+ </A>
+<TT CLASS="Code">
+snmp-10b</TT>
+<EM CLASS="Emphasis">
+y</EM>
+<TT CLASS="Code">
+.epk</TT>
+ (i.e. 1.0beta<EM CLASS="Emphasis">
+y</EM>
+), substituting <TT CLASS="Code">
+/1_0b</TT>
+<EM CLASS="Emphasis">
+y</EM>
+<TT CLASS="Code">
+/</TT>
+ for &#153<TT CLASS="Code">
+/VERSION/</TT>
+' </P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1137422">
+ </A>
+in source repository pathnames, where <EM CLASS="Emphasis">
+y</EM>
+ is the minor version number of the current release).               <BR>
+305kB</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1136706">
+ </A>
+Updated TCP/IP networking package plus common ethernet support. Both    versions are to accompany the 1.4.<EM CLASS="Emphasis">
+x</EM>
+ release: </LI>
+</UL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1137435">
+ </A>
+<TT CLASS="Code">
+net-10b</TT>
+<EM CLASS="Emphasis">
+y</EM>
+<TT CLASS="Code">
+.epk</TT>
+ (i.e. 1.0beta<EM CLASS="Emphasis">
+y</EM>
+), substituting <TT CLASS="Code">
+/1_0b</TT>
+<EM CLASS="Emphasis">
+y</EM>
+<TT CLASS="Code">
+/</TT>
+ for &#153<TT CLASS="Code">
+/VERSION/</TT>
+' </P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1137440">
+ </A>
+in source repository pathnames, where <EM CLASS="Emphasis">
+y</EM>
+ is the minor version number of the current release).                   <BR>
+494kB</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136708">
+ </A>
+The EPKs can be added to the current eCos release.  See below for further instructions on selecting these new package versions for your build; be sure to get the versions above first.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136709">
+ </A>
+To add the new EPKs to the eCos 1.4.<EM CLASS="Emphasis">
+x</EM>
+ repository, run up the GUI Package Administration Tool, click &#153<SPAN CLASS="Bold">
+Add...</SPAN>
+' and select all relevant .epk files (hold down the <SPAN CLASS="Bold">
+Ctrl</SPAN>
+ key to extend the selection).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136710">
+ </A>
+In the config tool, most packages should be version &quot;v1_4_<EM CLASS="Emphasis">
+x</EM>
+&quot;. The EBSA ethernet driver should be version &quot;v1_4_<EM CLASS="Emphasis">
+x</EM>
+&quot;. When you add the &quot;Networking&quot; and &quot;Common ethernet support&quot; packages to the config, they should be &quot;v1_0b<EM CLASS="Emphasis">
+y</EM>
+&quot;. When you add the &quot;SNMP agent&quot; and &quot;SNMP library&quot; packages to the config, they should be &quot;v1_0b<EM CLASS="Emphasis">
+y</EM>
+&quot;.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136711">
+ </A>
+Please be sure to choose these versions in the config tool to build a fully working SNMP-capable eCos library.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136712">
+ </A>
+If you have an existing configuration customized to your application which already uses the network and ethernet drivers, you can add the SNMP packages to it and switch over to the newer versions of the network and ether driver packages using the <SPAN CLASS="Bold">
+Build</SPAN>
+<IMG SRC="arrow.gif"><SPAN CLASS="Bold">
+Packages</SPAN>
+ dialog.  NB: SNMP requires the later versions of the network and ether drivers.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136713">
+ </A>
+For command-line use (eg. under Linux), use the script ecosadmin.tcl which will be found in the packages directory.  Ensure that either the environment variable ECOS_REPOSITORY is set correctly, or unset it and run the script from within the packages directory itself.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136714"> </A>
+cd packages
+./ecosadmin.tcl add ebsa285eth-1.4.<EM CLASS="Emphasis">x.</EM>
+epk   
+./ecosadmin.tcl add net-1.0b<EM CLASS="Emphasis">y.</EM>
+epk   
+./ecosadmin.tcl add snmp-1.0b<EM CLASS="Emphasis">y.</EM>
+epk</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136715">
+ </A>
+After this, use ecosconfig as usual, but remember that you may now have a choice of versions for the net and ether driver packages if you added this distribution to an existing repository rather than to a pure 1.4.<EM CLASS="Emphasis">
+x</EM>
+ installation.  Starting from scratch in a new empty build directory with &quot;ecosconfig new ebsa285&quot; will collect the newest versions of all the packages.  Re-building in an existing build tree will not; to continue with an existing configuration, add the two SNMP packages, and change the versions of the networking, common ethernet, and ebsa ethernet driver to the new ones using the &quot;ecosconfig version VERSION PACKAGE&quot;, like this:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136716"> </A>
+	% ecosconfig version v1_0b<EM CLASS="Emphasis">y</EM>
+     net    net_drivers
+	% ecosconfig version v1_4_<EM CLASS="Emphasis">x</EM>
+  ebsa285_eth_driver
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136717">
+ </A>
+(the VERSION part is in version-directory-name style, as in the repository)</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136718">
+ </A>
+MIBs supported</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136719">
+ </A>
+The standard set in MIB-II, together with the Ether-Like MIB.  The MIB files used to compile the handlers in the agent and to &quot;drive&quot; the testing (<TT CLASS="Code">
+snmpwalk</TT>
+ <EM CLASS="Emphasis">
+et al</EM>
+ under LINUX) are those acquired from that same UCD distribution.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136720">
+ </A>
+These are the supported MIBs; all are below mib2 == 1.3.6.1.2.1:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136721"> </A>
+system        { mib2 1 }   
+interfaces    { mib2 2 }
+              [ address-translation &quot;at&quot; { mib2 3 } is deprecated ]
+ip            { mib2 4 }   
+icmp          { mib2 5 }   
+tcp           { mib2 6 }   
+udp           { mib2 7 }
+              [ exterior gateway protocol &quot;egp&quot; { mib2 8 } not
+                  supported ]
+              [ cmot { mib2 9 } is &quot;historic&quot;, just a placeholder ]
+dot3          { mib2 10 7 } == { transmission 7 } &quot;EtherLike MIB&quot;
+snmp          { mib2 11 }</PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136722"> </A>
+</PRE>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136723">
+ </A>
+eCos changes</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136724">
+ </A>
+Small changes have been made in two areas:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136725">
+ </A>
+1) the ARM/EBSA-285 Ethernet driver <BR>
+2) the OpenBSD TCP/IP networking package</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136726">
+ </A>
+These changes were made in order to export information about the driver and the network that the SNMP agent must report.  The changes were trivial in the case of the network stack, since it was already SNMP-friendly.  The ethernet device driver was re-organized to have an extensive header file and to add a couple of APIs to extract statistics that the i82559 keeps within itself.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136727">
+ </A>
+There is a performance hit for recording that data; disabling config option CYGDBG_DEVS_ETH_ARM_EBSA285_KEEP_STATISTICS in the device driver will prevent that.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136728">
+ </A>
+The other platform ethernet device drivers have not been changed to match at this stage; if the exported information is missing, SNMP will report zero values for such data (in the dot3 MIB).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136729">
+ </A>
+The interface chipset has an ID which is an OID; that which means Intel i82558 is returned since none is yet defined for the 82559.  It may need to be added to the client MIB, it was not defined in those from UCD.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1136730">
+ </A>
+Starting the SNMP Agent</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136731">
+ </A>
+A routine to instantiate and start the SNMP agent thread is provided in</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136732"> </A>
+PACKAGES/net/snmp/agent/VERSION/src/snmptask.c</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136733">
+ </A>
+It starts the snmpd thread at priority CYGPKG_NET_THREAD_PRIORITY-2, ie. two below the TCP/IP stack service thread.  To use that convenience function, this code fragment may be copied (in plain C).</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136734"> </A>
+#ifdef CYGPKG_SNMPAGENT  {
+                extern void cyg_net_snmp_init(void);
+                cyg_net_snmp_init();             
+}
+#endif</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136735">
+ </A>
+The entry point to the SNMP agent is simply <TT CLASS="Code">
+externC void snmpd(void)</TT>
+; so you can of course easily start it in a thread of your choice at another priority instead if required, after performing whatever other initialization your SNMP MIBs need.  A larger than default stacksize is required.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136736">
+ </A>
+Configuring eCos</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136737">
+ </A>
+Apart from adding the networking, common ethernet device drivers, snmp library and snmp agent packages, there is no configuration required.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136738">
+ </A>
+Test cases</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136739">
+ </A>
+Currently only one test program is provided which uses SNMP.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136740">
+ </A>
+&quot;snmpping&quot; in the SNMP agent package runs the ping test from the TCPIP package, essentially, for 10 times, with the snmpd running also, so you can interrogate it using host tools of your choice.  It supports MIBs as documented above, so eg. &quot;<TT CLASS="Code">
+snmpwalk &lt;hostname&gt; public dot3</TT>
+&quot; under Linux/UNIX should have the desired effect.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136741">
+ </A>
+Starting the SNMP agent is not integrated into other network tests, nor is it started automatically in normal eCos startup - it is up to the application to start the agent when it is ready, at least after the network interfaces are both &quot;up&quot;.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136742">
+ </A>
+SNMP clients and package use</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136743">
+ </A>
+SNMP clients may use these packages, but this usage is currently untested: the reason why this port to eCos exists is to acquire the SNMP agent.  The fact that that the SNMP API (for clients) exists is a side-effect.  See the standard man page SNMP_API(3) for details.  There are further caveats below about client-side use of the SNMP library.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136744">
+ </A>
+All of the SNMP header files are installed beneath .../include/ucd-snmp in the install tree.  The SNMP code itself assumes that directory is on its include path, so we recommend that client code does the same.  Further, like the TCP/IP stack, compiling SNMP code requires definition of _KERNEL and __ECOS, and additionally IN_UCD_SNMP_SOURCE.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136745">
+ </A>
+Therefore, add all of these to your compile lines if you wish to include SNMP header files: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136746"> </A>
+-D_KERNEL 
+-D__ECOS 	
+-DIN_UCD_SNMP_SOURCE=1	 	
+-I$(PREFIX)/include/ucd-snmp</PRE>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136747">
+ </A>
+Unimplemented features</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136748">
+ </A>
+Currently, the filesystem and persistent storage areas are left undone, to be implemented by the application.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136749">
+ </A>
+The SNMP library package is intended to support client and agent code alike.  It therefore contains lots of assumptions about the presence of persistent storage ie. a filesystem.  Currently, by default, eCos has no such thing, so those areas have been simply commented out and made to return empty lists or say &quot;no data here.&quot;</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136750">
+ </A>
+Specifically,</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136751"> </A>
+PACKAGES/net/snmp/lib/VERSION/src/parse.c</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136752">
+ </A>
+contains code to enumerate MIB files discovered in the system MIB directories (&quot;/usr/share/snmp/mibs&quot;), and read them all in, building data structures that are used by client programs to interrogate an agent.  This is not required in an agent, so the routine which enumerates the directories returns an empty list.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136753"> </A>
+PACKAGES/net/snmp/lib/VERSION/src/read_config.c</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136754">
+ </A>
+contains two systems, the first reads various configuration files (&quot;/usr/share/snmp/snmp.conf&quot;, &quot;/usr/share/snmp/snmpd.conf&quot;, &quot;/usr/local/share/snmp/snmpd.local.conf&quot; and the like) to control both the SNMP applications and the agent in the usual UNIX fashion.  The second system contains code to record persistent data as files in a directory (typically &quot;/var/ucd-snmp/&quot;) thus preserving state permanently.  Neither of these is supported because there is no filesystem present; as required, a cleaner interface to permit application code to manage persistent data will be developed in consultation with customers.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1136755">
+ </A>
+MIB Compiler </H3>
+<P CLASS="Body">
+<A NAME="pgfId=1136756">
+ </A>
+In the directory net/snmp/agent/VERSION/utils/mib2c, there are the following files:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136757"> </A>
+README-eCos             notes about running with a nonstandard 
+                        perl path.   
+README.mib2c            the README from UCD; full instructions on
+                        using mib2c   
+mib2c                   the perl program
+mib2c.conf               a configuration file altered to include the
+                        eCos/UCD   
+mib2c.conf-ORIG         copyright and better #include paths; and
+                        the ORIGinal.   
+mib2c.storage.conf      other config files, not modified.   
+mib2c.vartypes.conf</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136758">
+ </A>
+mib2c is provided BUT it requires the SNMP perl package SNMP-3.1.0, and that in turn requires perl nsPerl5.005_03 (part of Red Hat Linux from 6.0, April 1999).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136759">
+ </A>
+These are available from the CPAN (&quot;the Comprehensive Perl Archive Network&quot;) as usual; http://www.cpan.org and links from there. Specifically:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136760">
+ </A>
+PERL itself:   <BR>
+http://people.netscape.com/kristian/nsPerl/   <BR>
+http://people.netscape.com/richm/nsPerl/nsPerl5.005_03-11-i686-linux.tar.gz  SNMP.pl   <BR>
+http://www.cpan.org/modules/01modules.index.html   <BR>
+http://cpan.valueclick.com/modules/by-category/05_Networking_Devices_IPC/SNMP/   <BR>
+http://www.cpan.org/authors/id/G/GS/GSM/SNMP.tar.gz</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136761">
+ </A>
+(note that the .tar.gz files are not browsable)</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136762">
+ </A>
+For documentation on the files produced, see the documentation available at http://ucd-snmp.ucdavis.edu/ in general, and file AGENT.txt in particular.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136763">
+ </A>
+It is likely that the output of mib2c will be further customized depending on eCos customer needs; it's easy to do this by editing the mib2c.conf file to add or remove whatever you need with the resulting C sources.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1136764">
+ </A>
+The UCD autoconf-style configuration does not apply to eCos.  So if you add a completely new MIB to the agent, and support it using mib2c so that the my_new_mib.c file contains a init_my_new_mib() routine to register the MIB handler, you will also need to edit a couple of control files; these claim to be auto-generated, but in the eCos release, they're not, don't worry.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136765"> </A>
+PACKAGES/net/snmp/agent/VERSION/include/mib_module_includes.h </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136766">
+ </A>
+contains a number of lines like</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136767"> </A>
+#include &quot;mibgroup/mibII/interfaces.h&quot;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136768">
+ </A>
+so add your new MIB thus: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136769"> </A>
+#include &quot;mibgroup/mibII/my_new_mib.h&quot;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136770">
+ </A>
+</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136771"> </A>
+PACKAGES/net/snmp/agent/VERSION/include/mib_module_inits.h </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136772">
+ </A>
+contains a number of lines like</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136773"> </A>
+init_interfaces();         
+init_dot3(); </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136774">
+ </A>
+and so on; add your new MIB as follows:         </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1136775"> </A>
+init_my_new_mib(); </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1136776">
+ </A>
+and this should work correctly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1133835">
+ </A>
+</P>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS"WIDTH="100%" BORDER="0" ALIGN="LEFT" CELLPADDING="3"><TR><TH COLSPAN="2" ALIGN="center"><P CLASS="Gotos">SNMP for eCos</P></TH></TR><TR><TD WIDTH="47%" ALIGN="center"><P CLASS="Gotos"><A HREF="tcpip.html">Contents</A></P></TD><TD WIDTH="47%" ALIGN="center"><P CLASS="Gotos"><A HREF="tcpip.4.html">To&nbsp;previous&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
