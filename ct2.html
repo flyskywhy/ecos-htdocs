@@ -36,9 +36,9 @@ MFC, Windows-only version but at present lacks a few of its features,
 such as the Memory Layout Tool and the ability to run tests from
 within the tool.</P>
 <P>Please note that this is alpha-level code. However, all feedback
-to the eCos team is appreciated, via <a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss@sources.redhat.com</a>
-or the bug reporting form at
-<A HREF="http://sources.redhat.com/ecos/problemreport.html">http://sources.redhat.com/ecos/problemreport.html</A>.</P>
+to the eCos team is appreciated, via <a href="mailto:ecos-discuss@ecos.sourceware.org">ecos-discuss@ecos.sourceware.org</a>
+or the 
+<A HREF="problemreport.html">bug reporting form</A>.</P>
 <P>The source for the Configuration Tool is available from anonymous
 CVS.</P>
 <P>Binary packages are also available (see instructions below).</P>
@@ -79,13 +79,12 @@ when the repository is first seen by the Configuration Tool).</P>
 <H2>Installing the Configuration Tool</H2>
 <P>The Configuration Tool can be used with existing eCos
 installations and CVS source hierarchies. You can get the binaries
-from <A HREF="ftp://sources.redhat.com/pub/ecos/ct2/">ftp://sources.redhat.com/pub/ecos/ct2/</A>. A history of recent changes is in <a href="ftp://sources.redhat.com/pub/ecos/ct2/CHANGES.txt">this file</a>.</P>
-<P>See also mirror sites at:</P>
-<P><A HREF="http://sources.redhat.com/ecos/mirror.html">http://sources.redhat.com/ecos/mirror.html</A><BR><A HREF="http://sources.redhat.com/mirrors.html">http://sources.redhat.com/mirrors.html</A></P>
+from <A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/">ftp://ecos.sourceware.org/pub/ecos/ct2/</A>. A history of recent changes is in <a href="ftp://ecos.sourceware.org/pub/ecos/ct2/CHANGES.txt">this file</a>.</P>
+<P>See also the <A HREF="mirror.html">mirror sites</a>.</P>
 <P>Please try to use a mirror site close to you, as it will be
 faster.</P>
 <H3>Under Linux:</H3>
-<P>Download <A HREF="ftp://sources.redhat.com/pub/ecos/ct2/configtool-2.11-i386.tar.gz">configtool-2.11-i386.tar.gz</A> (3.1Mb) or <A HREF="ftp://sources.redhat.com/pub/ecos/ct2/configtool-2.11-i386.tar.bz2">configtool-2.11-i386.tar.bz2</A> (2.8Mb)
+<P>Download <A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/configtool-2.11-i386.tar.gz">configtool-2.11-i386.tar.gz</A> (3.1Mb) or <A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/configtool-2.11-i386.tar.bz2">configtool-2.11-i386.tar.bz2</A> (2.8Mb)
 </P>
 <P>Unarchive the tar file into a suitable directory and add the
 directory to your path. You do not have to install it as root. For
@@ -109,7 +108,7 @@ warnings.</P>
 does require the GTK+ 1.2, GDK 1.2 and TCL 8.x libraries to be
 installed.</P>
 <H3>Under Windows:</H3>
-<P>Download <A HREF="ftp://sources.redhat.com/pub/ecos/ct2/configtool-2.11-setup.exe">configtool-2.11-setup.exe</A>.</P>
+<P>Download <A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/configtool-2.11-setup.exe">configtool-2.11-setup.exe</A>.</P>
 <P>Run the installer provided, preferably having installed eCos for
 Windows on your PC previously so the tool can pick up the relevant
 registry information added by the eCos installer. A new eCos
@@ -183,11 +182,10 @@ been implemented, and the tool has been subject to the required
 quality assurance procedure, then we can retire the old tool.</P>
 <P><B>Q: How can I help improve the Configuration Tool?</B></P>
 <P>A: All help is very welcome: please see
-<A HREF="http://sources.redhat.com/fom/ecos">http://sources.redhat.com/fom/ecos</A>
-for how to contribute.</P>
+<A HREF="/fom/ecos">the eCos FAQ</A> for how to contribute.</P>
 <P><B>Q: Who do I contact when things go wrong?</B></P>
-<P>A: Please discuss problems on the ecos-discuss mailing list: see
-<A HREF="http://sources.redhat.com/ecos/intouch.html">http://sources.redhat.com/ecos/intouch.html</A>.</P>
+<P>A: Please discuss problems on the 
+<A HREF="intouch.html">ecos-discuss mailing list</A>.</P>
 <P><B>Q: The compiler fails to compile dcclient.cpp. What do I do?</B></P>
 <P>A: It may be that you have a non-standard GTK+ 1.2.6 which has
 changes backported from 1.2.7. Use the makefile target 'wxgtkfix' to
@@ -212,10 +210,10 @@ wxgtkfix</TT></P>
 	<P>You can get GTK+ and glib for Red Hat 6.2 and above
 	from:<BR><BR><A HREF="ftp://ftp.gtk.org/pub/gtk/v1.2/binary/RPMS/RedHat-6.2/RPMS/i386/gtk+-1.2.8-1.i386.rpm">ftp://ftp.gtk.org/pub/gtk/v1.2/binary/RPMS/RedHat-6.2/RPMS/i386/gtk+-1.2.8-1.i386.rpm</A><BR><A HREF="ftp://ftp.gtk.org/pub/gtk/v1.2/binary/RPMS/RedHat-6.2/RPMS/i386/glib-1.2.8-1.i386.rpm">ftp://ftp.gtk.org/pub/gtk/v1.2/binary/RPMS/RedHat-6.2/RPMS/i386/glib-1.2.8-1.i386.rpm</A></P>
 	<LI><P>a suitable version of wxWindows for GTK+, available from
-	<A HREF="ftp://sources.redhat.com/pub/ecos/ct2/">ftp://sources.redhat.com/pub/ecos/ct2/</A>.</P>
+	<A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/">ftp://ecos.sourceware.org/pub/ecos/ct2/</A>.</P>
 	<P>Unarchive the file wxGTK-x.y.z.tar.bz2 (downloaded from
-        <A href="ftp://sources.redhat.com/pub/ecos/ct2/">
-        ftp://sources.redhat.com/pub/ecos/ct2/</A>) into a suitable directory,
+        <A href="ftp://ecos.sourceware.org/pub/ecos/ct2/">
+        ftp://ecos.sourceware.org/pub/ecos/ct2/</A>) into a suitable directory,
 	e.g. 
 	</P>
 	<P><TT>% mkdir /home/julians/wxWindows<BR>% cd /home/julians/wxWindows<BR>%
@@ -225,9 +223,9 @@ wxgtkfix</TT></P>
 	<P><TT>% cd /home/julians/wxWindows<BR>% unzip -a
 	wxWindows-x.y.z-HTML.zip</TT></P>
 	<LI><P>an eCos source hierarchy. See
-	<A HREF="http://sources.redhat.com/ecos/anoncvs.html">http://sources.redhat.com/ecos/anoncvs.html</A>
+	<A HREF="anoncvs.html">here</A>
 	for how to download this from the CVS repository. For example:</P>
-	<P><TT>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co ecos/host</TT></P>
+	<P><TT>cvs -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos co ecos/host</TT></P>
 	<LI><P>other tools:</P>
 	<P>Tcl/Tk 8.2 or above. See <A HREF="http://www.tcl.tk/">http://www.tcl.tk/</A></P>
 </OL>
@@ -340,7 +338,7 @@ dcclient.cpp fails to compile.</P>
 <OL>
 	<LI><P>Microsoft Visual C++ 6.0 or later</P>
 	<LI><P>a suitable version of wxWindows for MS Windows, available
-	from <A HREF="ftp://sources.redhat.com/pub/ecos/ct2/">ftp://sources.redhat.com/pub/ecos/ct2/</A>.
+	from <A HREF="ftp://ecos.sourceware.org/pub/ecos/ct2/">ftp://ecos.sourceware.org/pub/ecos/ct2/</A>.
 	To install the sources in 'setup' form, just run the executable and
 	follow the instructions. If you have downloaded the sources in zip
 	format, you will need to unarchive the file wxMSW-x.y.z.zip into a
@@ -355,13 +353,13 @@ dcclient.cpp fails to compile.</P>
 	setup or zipped distribution and does not have to be downloaded
 	separately.</P>
 	<LI><P>an eCos source hierarchy. See
-	<A HREF="http://sources.redhat.com/ecos/anoncvs.html">http://sources.redhat.com/ecos/anoncvs.html</A>
+	<A HREF="anoncvs.html">here</A>
 	for how to download this from the CVS repository. For example:</P>
-	<TT><P>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co ecos/host</P></TT>
+	<TT><P>cvs -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos co ecos/host</P></TT>
 	<LI><P>other tools:</P>
 	<UL>
-		<LI><P>Cygwin (sometimes called GNUPro). See
-		<A HREF="http://sources.redhat.com/cygwin/">http://sources.redhat.com/cygwin/</A></P>
+		<LI><P>Cygwin. See
+		<A HREF="http://www.cygwin.com/">http://www.cygwin.com/</A></P>
 		<LI><P>Tcl/Tk 8.2 or above. See <A HREF="http://www.tcl.tk/">http://www.tcl.tk/</A></P>
 	</UL>
 </OL>

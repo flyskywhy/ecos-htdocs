@@ -78,7 +78,7 @@ above) and direct TCP/IP access. If you are behind a firewall, you should
 discuss access with your local systems administrator.</p>
 
 <p>Type the following command to login to the CVS server:</p>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos login</kbd>
+<kbd>cvs -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos login</kbd>
 
 <p>You will be prompted for a password which is <i>anoncvs</i>. You only need to
 perform this login the first time you access the eCos/RedBoot CVS repository.
@@ -92,7 +92,7 @@ full releases of eCos. </p>
 <p>To check out a complete set of sources for <i>all</i> targets, Create a new
 directory for the check out, change to that directory, and type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P redboot-all</kbd>
+<kbd>cvs -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos -z 9 co -P redboot-all</kbd>
 
 <p>This command should initiate a connection to the CVS server and check out
 the latest version of RedBoot. In the future, when you want to update your
@@ -150,9 +150,9 @@ and Red Hat Linux 6.x hosts.</p>
 <h3>Updated configuration tools for Windows</h3>
 
 <p>Self-extracting zip files for updated binaries of both the
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/Configtool1312.exe">
+<A HREF="ftp://ecos.sourceware.org/pub/ecos/anoncvs/Configtool1312.exe">
 eCos Configuration Tool for Windows</A> and the
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/ecosconfig1314.exe">
+<A HREF="ftp://ecos.sourceware.org/pub/ecos/anoncvs/ecosconfig1314.exe">
 command-line <tt>ecosconfig</tt> tool</A> are available.</p>
 
 <p>It is recommended that you rename the existing files <tt>Configtool.exe</tt>
@@ -166,7 +166,7 @@ in the <CODE>tools/bin</CODE> directory of your eCos installation.</p>
 
 <p>To update the platforms list for the "Run Tests" feature, you will need
 to download and run 
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/eCos1312.reg">this
+<A HREF="ftp://ecos.sourceware.org/pub/ecos/anoncvs/eCos1312.reg">this
 registry fragment</a>. Once downloaded, simply double click the file to install
 it.</p>
 
@@ -177,7 +177,7 @@ repository will lead to problems if the memory layout is modified.</p>
 
 <p>An unsupported prebuilt binary of the updated <tt>ecosconfig</tt> tool for
 Red Hat Linux 6.x and above is
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/ecosconfig1314-linux.gz">
+<A HREF="ftp://ecos.sourceware.org/pub/ecos/anoncvs/ecosconfig1314-linux.gz">
 available for download</a>.</p>
 
 <p>It is recommended that you rename the existing <tt>ecosconfig</tt>

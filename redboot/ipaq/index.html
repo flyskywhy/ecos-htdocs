@@ -28,9 +28,9 @@
     <p>
       Once RedBoot is working, you can download and run the eCos
       MicroWindows/NanoX demo. Prebuilt images are available from
-      <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/">
-      ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/</a> or (preferably)
-      a <a href="/mirrors.html">mirror site closer to you</a>.
+      <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/">
+      ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/</a> or (preferably)
+      a <a href="/ecos/mirror.html">mirror site closer to you</a>.
     </p>
     <h3>Loading via TFTP</h3>
     <p>
@@ -38,9 +38,9 @@
       your TFTP server and execute these commands:
     <blockquote>
       <tt>
-<b>RedBoot></b> lo -d -r -b 0x200000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">ecosromfs.gz</a><br>
+<b>RedBoot></b> lo -d -r -b 0x200000 /tftpboot/<a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">ecosromfs.gz</a><br>
 <b>Raw file loaded 0x00200000-0x002736c0</b><br>
-<b>RedBoot></b> lo -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
+<b>RedBoot></b> lo -r -b 0x20000 /tftpboot/<a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
 <b>Raw file loaded 0x00020000-0x00054d3c</b><br>
       </tt>
     </blockquote>
@@ -55,7 +55,7 @@
       </tt>
     </blockquote>
     Now send the
-    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">
+    <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">
     ecosromfs.gz</a> file via XMODEM. Then enter the command:
     <blockquote>
       <tt>
@@ -63,7 +63,7 @@
       </tt>
     </blockquote>
     Send the
-    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">
+    <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">
     nanoxdemo.gz</a> file via XMODEM.
     </p>
     <h3>Running the demo without programming in FLASH</h3>
@@ -73,7 +73,7 @@
       into the FLASH. The demo may be run simply with the commands:
     <blockquote>
       <tt>
-<b>RedBoot></b> lo -d -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
+<b>RedBoot></b> lo -d -r -b 0x20000 /tftpboot/<a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
 <b>Raw file loaded 0x00020000-0x00054d3c</b><br>
 <b>RedBoot></b> go 0x20040<br>
       </tt>
@@ -131,8 +131,8 @@ RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0
     <p>
       Once RedBoot is working, you can download and run the iPaq
       Embedded Linux demo. Prebuilt images are available from
-      <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/">
-      ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/</a> or (preferably)
+      <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/">
+      ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/</a> or (preferably)
       a <a href="/mirrors.html">mirror site closer to you</a>.
     </p>
     <h3>Loading the JFFS2 image via TFTP</h3>
@@ -141,7 +141,7 @@ RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0
       located in /tftpboot on your TFTP server and execute these commands:
     <blockquote>
       <pre>
-<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">ipaqjffs2.img</a>
+<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">ipaqjffs2.img</a>
 <b>Raw file loaded 0x00100000-0x00c99540</b>
       </pre>
     </blockquote>
@@ -156,7 +156,7 @@ RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0
       </pre>
     </blockquote>
     Now send the
-    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">
+    <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">
     ipaqjffs2.img</a> file via XMODEM.
   </p>
     <h3>Saving the JFFS2 image to FLASH</h3>
@@ -188,7 +188,7 @@ RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0
       located in /tftpboot on your TFTP server and execute these commands:
     <blockquote>
       <pre>
-<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqzimage.img">ipaqzimage.img</a>
+<b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/ipaqzimage.img">ipaqzimage.img</a>
 <b>Raw file loaded 0x00100000-0x0017e122</b>
       </pre>
     </blockquote>
@@ -203,7 +203,7 @@ RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0
       </pre>
     </blockquote>
     Now send the
-    <a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqzimage.img">
+    <a href="ftp://ecos.sourceware.org/pub/ecos/ipaqdemo/linux/ipaqzimage.img">
     ipaqzimage.img</a> file via XMODEM.
   </p>
     <h3>Saving the Linux kernel image to FLASH</h3>

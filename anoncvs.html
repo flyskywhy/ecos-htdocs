@@ -83,21 +83,21 @@ discuss access with your local systems administrator.</p>
 <p>If you are using CVS v1.10 or earlier (use '<kbd>cvs -v</kbd>' to determine),
 you will first need to run the following command before you can access the
 repository the very first time:</p>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos login</kbd>
+<kbd>cvs -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos login</kbd>
 <p>Any password is accepted.</p>
 
 <p>It is recommended that you use different directory trees for the
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
 
-<kbd>cvs -z3 -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -P ecos</kbd>
+<kbd>cvs -z3 -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos co -P ecos</kbd>
 
 <p>This command should initiate a connection to the CVS server and check out
 the latest version of eCos, including TCP/IP networking stack and SNMP. For
 those who want the last version of eCos to be released under the RHEPL,
 instead type:</p>
 
-<kbd>cvs -z3 -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r last-rhepl -P ecos</kbd>
+<kbd>cvs -z3 -d :pserver:anoncvs@ecos.sourceware.org:/cvs/ecos co -r last-rhepl -P ecos</kbd>
 
 <p>In the future, when you want to update your
 repository to the latest version, go to the base of the repository tree and
@@ -133,7 +133,7 @@ the working versions in your build tree.</p>
 
 <!--<p>To update the platforms list for the "Run Tests" feature, you will need
 to download and run
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/eCos-011025.reg">this
+<A HREF="ftp://ecos.sourceware.org/pub/ecos/anoncvs/eCos-011025.reg">this
 registry fragment</a>. Once downloaded, simply double click the file to install
 it.</p>
 -->
