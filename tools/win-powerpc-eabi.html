@@ -30,23 +30,19 @@ This page details the steps required to download and build these development too
 <h3>Downloading the tool sources</h3>
 <h4>GNU Binary Utilities</h4>
 
-<p>Instructions for downloading the GNU Binary Utilities (binutils) are provided
-on the <a href="http://sourceware.cygnus.com/binutils/">
-binutils home page</a>. However, at the time of writing, the most recent official
-release of these utilities was version 2.9.1. This version does not contain certain
-functionality required by eCos.<p>
+<p>It is recommended that eCos is used with the most recent official
+release of the GNU Binary Utilities (binutils), currently version 2.10.
+This is available from the binutils area of the
+<a href="http://www.gnu.org/order/ftp.html">main GNU software download site</a>
+or any of its mirror sites. It is also available at any of the
+<a href="http://sourceware.cygnus.com/mirrors.html">
+mirror sites for sourceware.cygnus.com</a>. Download sizes are in the
+region of 5.5MB for .bz2 format archives, or 7MB for .gz format archives.<p>
 
-Until binutils 2.10 is released, eCos users must download a
-<a href="ftp://sourceware.cygnus.com/pub/binutils/snapshots/">
-development snapshot</a>. Download sizes are
-in the region of 5.5MB.
-
-Both weekly and daily snapshots are available. There are no stability
-advantages of one over the other. The advantage of using the weekly
-snapshots lies in the convenience of applying the <nobr><tt>diffs-weekly-*</tt></nobr>
-files that are also present in the snapshots directory on the FTP site.
-The weekly diffs are preserved for longer than the daily diffs,
-providing a more prolonged opportunity to upgrade.<p>
+Weekly and daily snapshots from the CVS repository are also available
+from the <a href="http://sourceware.cygnus.com/binutils/"> main binutils
+development site</a>, but these have not been verified
+for use with eCos.<p>
 
 If you already have binutils sources available but are unsure
 of their version, you can search the file <tt>gas/configure</tt> for the string
@@ -143,7 +139,7 @@ build system:
 <li>Extract the sources for each tool directory in turn. For <i>bzip2</i> archives:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-<i>YYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-2.10.tar.bz2 | tar xvf -<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-core-2.95.2.tar.bz2 | tar xvf -<br>
@@ -158,7 +154,7 @@ build system:
 <p>
 The following directories should be generated and populated during the extraction process:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2<br>
 
@@ -278,7 +274,7 @@ installed to <tt>/tools</tt>. Other locations may be substituted throughout:
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/binutils<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/binutils<br>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i>/configure --target=powerpc-eabi \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10/configure --target=powerpc-eabi \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-cygwin \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
