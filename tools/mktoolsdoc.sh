@@ -35,19 +35,32 @@ This page details the steps required to download and build these development too
 <h3>Downloading the tool sources</h3>
 <h4>GNU Binary Utilities</h4>
 
+${BINUSNAP-
 <p>It is recommended that eCos is used with the most recent official
 release of the GNU Binary Utilities (binutils), currently version 2.10.1.
 This is available from the binutils area of the
 <a href="http://www.gnu.org/order/ftp.html">main GNU software download site</a>
 or any of its mirror sites. It is also available at any of the
-<a href="http://sourceware.cygnus.com/mirrors.html">
-mirror sites for sourceware.cygnus.com</a>. Download sizes are in the
+<a href="http://sources.redhat.com/mirrors.html">
+mirror sites for sources.redhat.com</a>. Download sizes are in the
 region of 5.5MB for .bz2 format archives, or 7MB for .gz format archives.<p>
 
 Weekly and daily snapshots from the CVS repository are also available
-from the <a href="http://sourceware.cygnus.com/binutils/"> main binutils
+from the <a href="http://sources.redhat.com/binutils/"> main binutils
 development site</a>, but these have not been verified
 for use with eCos.<p>
+}
+
+${BINUSNAP+
+<p>Unfortunately, the most recent official release of the GNU Binary Utilities (binutils),
+currently 2.10.1, is not capable of supporting eCos for $TARGETNAME. Instead the devlopment
+tools must be built using a snapshot release of binutils.
+This is available from the <a href="http://sources.redhat.com/binutils/"> main binutils
+development site</a>. It is also available at any of the
+<a href="http://sources.redhat.com/mirrors.html">
+mirror sites for sources.redhat.com</a>. Download sizes are in the
+region of 7.5MB for .bz2 format archives, or 10MB for .gz format archives.<p>
+}
 
 If you already have binutils sources available but are unsure
 of their version, you can search the file <tt>gas/configure</tt> for the string
@@ -124,11 +137,11 @@ reduced load on the central server.<p>
 <h4>GNU Debugger</h4>
 
 <p>Instructions for downloading the GNU Debugger (GDB) are provided
-on the <a href="http://sourceware.cygnus.com/gdb/">
+on the <a href="http://sources.redhat.com/gdb/">
 GDB home page</a>. 
 
 However, Red Hat has also released an open source graphical front-end to GDB based on
-Tcl/Tk called <i>Insight</i>, which has a separate <a href="http://sourceware.cygnus.com/insight/">
+Tcl/Tk called <i>Insight</i>, which has a separate <a href="http://sources.redhat.com/insight/">
 home page</a>.<p>
 
 The Insight sources are a superset of the standard GDB sources. It is also
@@ -140,9 +153,9 @@ The latest release (version 5.0) is recommended and may be downloaded via the GD
 Alternatively, click on on one of following links to download the files directly:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/insight-5.0.tar.bz2">
+<li><a href="ftp://sources.redhat.com/pub/gdb/releases/insight-5.0.tar.bz2">
   Insight 5.0 distribution</a> (insight-5.0.tar.bz2 - 14MB)
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/gdb-5.0.tar.bz2">
+<li><a href="ftp://sources.redhat.com/pub/gdb/releases/gdb-5.0.tar.bz2">
   GDB 5.0 distribution</a> (gdb-5.0.tar.bz2 - 9.1MB)
 </ul>
 
@@ -180,7 +193,12 @@ build system:
 <li>Extract the sources for each tool directory in turn. For <i>bzip2</i> archives:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
+${BINUSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-2.10.1.tar.bz2 | tar xvf -<br>
+}
+${BINUSNAP+
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-<i>YYMMDD</i>.tar.bz2 | tar xvf -<br>
+}
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-core-2.95.2.tar.bz2 | tar xvf -<br>
@@ -198,7 +216,12 @@ ${GZIP+
 <p>For <i>gzip</i> archives:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
+${BINUSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; binutils-2.10.1.tar.gz | tar xvf -<br>
+}
+${BINUSNAP+
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; binutils-<i>YYMMDD</i>.tar.gz | tar xvf -<br>
+}
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-core-2.95.2.tar.gz | tar xvf -<br>
@@ -215,7 +238,12 @@ ${GCCSNAP+
 <p>
 The following directories should be generated and populated during the extraction process:<p>
 <nobr><tt>
+${BINUSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10.1<br>
+}
+${BINUSNAP+
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i><br>
+}
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2<br>
 }
@@ -375,7 +403,12 @@ installed to <tt>/tools</tt>. Other locations may be substituted throughout:
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/binutils<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/binutils<br>
+${BINUSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10.1/configure --target=$TOOLPREFIX \\<br>
+}
+${BINUSNAP+
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i>/configure --target=$TOOLPREFIX \\<br>
+}
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-$HOSTPREFIX \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
@@ -457,9 +490,9 @@ may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
 there are other mailing lists which may be more appropriate if a problem is clearly
 related to a particular tool:
 <ul>
-<li><a href="http://sourceware.cygnus.com/ml/binutils/">Binutils mailing list</a>
-<li><a href="http://sourceware.cygnus.com/ml/gdb/">GDB mailing list</a>
-<li><a href="http://sourceware.cygnus.com/ml/crossgcc/">CrossGCC mailing list</a> (for problems specific to GCC cross-compilation)
+<li><a href="http://sources.redhat.com/ml/binutils/">Binutils mailing list</a>
+<li><a href="http://sources.redhat.com/ml/gdb/">GDB mailing list</a>
+<li><a href="http://sources.redhat.com/ml/crossgcc/">CrossGCC mailing list</a> (for problems specific to GCC cross-compilation)
 <li><a href="http://gcc.gnu.org/lists.html">GCC mailing list</a> (for more general GCC problems)
 </ul>
 
@@ -467,9 +500,9 @@ Before sending messages to the mailing lists, you would also be advised to
 consult the various web sites associated with each list, to see if there is
 any relevant documentation or FAQs:
 <ul>
-<li><a href="http://sourceware.cygnus.com/binutils/">Binutils home page</a>
-<li><a href="http://sourceware.cygnus.com/gdb/">GDB home page</a>
-<li><a href="http://sourceware.cygnus.com/insight/">Insight home page</a>
+<li><a href="http://sources.redhat.com/binutils/">Binutils home page</a>
+<li><a href="http://sources.redhat.com/gdb/">GDB home page</a>
+<li><a href="http://sources.redhat.com/insight/">Insight home page</a>
 <li><a href="http://gcc.gnu.org/">GCC web site</a>
 <li><a href="http://www.objsw.com/CrossGCC/">CrossGCC FAQ</a>
 </ul>
@@ -766,6 +799,7 @@ outputfunc linux-sparclite-elf.html
 TOOLPREFIX=sh-elf
 TARGETNAME="Hitachi SH"
 GCCSNAP=
+BINUSNAP=
 
 ###################
 # Windows SH
@@ -808,6 +842,7 @@ TOTINSTDSK=115MB
 outputfunc linux-sh-elf.html
 
 unset GCCSNAP
+unset BINUSNAP
 
 ##################
 # V850
