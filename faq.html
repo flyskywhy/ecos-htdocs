@@ -957,10 +957,11 @@ Note that under windows, running the configure script will output:
 </PRE>
 
 This is normal, and is not an error message.
-
-A common general problem on Windows is that applying patches may inadvertently
-lead to CRLFs getting inserted into source files where they are not wanted.
-Cygwin users should verify that their <tt>/tmp</tt> directory (or
+<p>
+A common source of problems on Windows is that applying patches may
+inadvertently lead to CRLFs getting inserted into source files where they
+are not wanted.
+When applying the patches you should verify that the <tt>/tmp</tt> directory (or
 the directory specified by the <tt>TMPDIR</tt>, <tt>TMP</tt> or <tt>TEMP</tt>
 environment variables) is mounted in binary mode. If this is not the case
 the patches will apply, but the build will later fail. You may verify this
@@ -973,6 +974,13 @@ use the following command from a Cygwin bash prompt:<p>
 <p>
 You may need to substitute another path for <tt>c:/cygwin</tt> if Cygwin
 was installed to another directory.
+<p>
+If you already have a set of sources which may have CRLFs in, then you can
+use the following command from a cygwin prompt on affected files:<pp>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' < AFFECTEDFILE > foo
+&nbsp;&nbsp;&nbsp;&nbsp;mv foo AFFECTEDFILE
+</tt></nobr>
 <p>
 <h5>What if the patches fail to apply?</h5>
 <P>
