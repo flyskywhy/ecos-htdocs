@@ -475,7 +475,7 @@ ${GCCSNAP+
 
 <nobr><tt>
 ${WINDOWS+
-&nbsp;&nbsp;&nbsp;&nbsp;CC='gcc -mwin32' make -w all install 2&gt;&1 | tee make.out }${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install CC='gcc -mwin32' 2&gt;&1 | tee make.out }${WINDOWS-
 &nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out }
 </tt></nobr>
 <p>
