@@ -165,7 +165,8 @@ TCP/IP stack and may not be usable in the current release of eCos.</p>
 <p>Carl van Schaik has made available an unsupported port to the Atmel
 AT91M40400-based EB01 board. More information is available from 
 <a href="/ml/ecos-discuss/2001-01/msg00496.html">this message to the
-ecos-discuss list</a>.</p>
+ecos-discuss list</a>. This is unrelated to the port in the latest versions
+of the eCos sources.</p>
 
 <h4>Floating point hardware support</h4>
 
@@ -179,25 +180,34 @@ available.</p>
 microcontroller (ARM7TDMI core) and SNDS development hardware. Sources are
 not yet available (estimated availability - January 2000).</p>
 
+<hr noshade size=3>
+<h2>Thanks to our contributors</h2>
+
+<h4>Andrew Lunn at Ascom</h4>
+
+<a href="mailto:andrew.lunn@ascom.ch">Andrew Lunn</a> at
+<a href="http://www.ascom.com/">Ascom</a> has contributed many useful things
+back to the eCos community, including an FTP client, DNS support, OpenSSL,
+linux synthetic target flash driver and many many small fixes and improvements.
+(Note: Some of these features are still being integrated).</p>
+
+<p>The entire eCos community is grateful to Andrew and Ascom for their
+excellent efforts!</p>
+
+<h4>3GLAB</h4>
+
+<p>The eCos community would also like to thank Richard Panton and Dominic
+Ostrowski working for <a href="http://www.3glab.com/">3GLAB</a> who have
+contributed many excellent features, including
+the initial Compaq IPAQ port, ROMFS filesystem and (soon) JFFS2 filesystem
+support.</p>
+
 <h4>ARM Integrator HAL and drivers</h4>
 
 <p>Philippe Robin at <a href="http://www.arm.com/" target="_top">ARM</a>
  has contributed a
 port to the <a href="http://www.arm.com/sitearchitek/devtools.ns4/iwpList113/F025F4F0A97DB15D802569190038F93F?OpenDocument&style=Dev_Tools" target="_top">
-ARM Integrator</a> platform. This port is available in tarred gzip format
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/ecos_integrator.tar.gz">here</a>.</p>
-
-<p>It is supplied as-is and was made against anonymous CVS as of the beginning
-of October 2000. It will inevitably require some merging to work against
-current anonymous CVS sources. There are some more comments from Philippe
-on the status as contributed in
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/hal/arm/integrator/readme.txt">this readme</a>.</p>
-
-<p>When the port is finished, it will be integrated into the anonymous CVS
-repository in due course.</p>
-
-<hr noshade size=3>
-<h2>Thanks to our contributors</h2>
+ARM Integrator</a> platform. This port is available from anonymous CVS.</p>
 
 <h4>PC mouse driver</h4>
 
@@ -217,7 +227,8 @@ Systems</a> contributed serial device drivers for the ARM Evaluator-7T
 
 <h4>PC platform HAL</h4>
 
-<p>Patrick O'Grady developed the initial port of eCos for the PC platform. 
+<p><a href="mailto:patrick@softprocess.com">Patrick O'Grady</a> developed the
+initial port of eCos for the PC platform. 
 The sources are included in the eCos net distribution as
 of release 1.3.1.</p>
 
@@ -242,13 +253,11 @@ net distribution as of release 1.2.1.</p>
 contributed to eCos:
 
 <ul>
-  <li>Grant Edwards &lt;<a href="mailto:grante@visi.com">grante@visi.com</a>&gt;
+  <li>Grant Edwards &lt;<a href="mailto:grante@visi.com">grante@visi.com</a>&gt; for the Samsung SNDS100 port
   <li>Tristan Gingold &lt;<a href="mailto:gingold@email.enst.fr">gingold@email.enst.fr</a>&gt;
-  <li>Kevin Hester &lt;<a href="mailto:khester@opticalnetworks.com">khester@opticalnetworks.com</a>&gt;
-  <li>Lars Lindqvist &lt;<a href="mailto:Lars.Lindqvist@combitechsystems.com">Lars.Lindqvist@combitechsystems.com</a>&gt;
-  <li>Andrew Lunn &lt;<a href="mailto:lunn@ma.tech.ascom.ch">lunn@ma.tech.ascom.ch</a>&gt;
-  <li>Koichi Nagashima <a href="mailto:naga@r-lab.co.jp">&lt;naga@r-lab.co.jp&gt;</a>
-  <li>Patrick O'Grady &lt;<a href="mailto:patrick@softprocess.com">patrick@softprocess.com</a>&gt;
+  <li>Kevin Hester &lt;<a href="mailto:khester@opticalnetworks.com">khester@opticalnetworks.com</a>&gt; for the MPC8xx FADS port
+  <li>Lars Lindqvist &lt;<a href="mailto:Lars.Lindqvist@combitechsystems.com">Lars.Lindqvist@combitechsystems.com</a>&gt; for the ARM E7T serial drivers
+  <li>Koichi Nagashima <a href="mailto:naga@r-lab.co.jp">&lt;naga@r-lab.co.jp&gt;</a> for the SH CQ7750 flash driver
   <li>Sergei Organov <!-- &lt;<a href="mailto:osv@javad.ru">osv@javad.ru</a>&gt; -->
   <li>Richard Panton &lt;<a href="mailto:rpanton@3glab.com">rpanton@3glab.com</a>&gt;
   <li>Chris Provenzano <!-- &lt;<a href="mailto:proven@proven.org">proven@proven.org</a>&gt; -->
