@@ -1,14 +1,13 @@
 <HTML>
-
-<!-- eCos template HTML start-->
 <HEAD>
 <TITLE>Frequently Asked Questions</TITLE>
 </HEAD>
-<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#CC0000" ALINK="#CC0000" VLINK="#666666">
-<IMG SRC="ecos.gif" ALT="eCos Sourceware"><P>
-<BR><H2>Frequently Asked Questions</H2>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>Frequently Asked Questions</H2>
+
 <HR SIZE=3>
-<!-- eCos template HTML end-->
 
 <h3>Index</h3>
 <OL>
@@ -87,8 +86,10 @@ application needs and is tightly integrated with the latest version of
 GNUPro tools, including highly optimized compilation technology,
 multi-threaded debugging, graphical configuration, test suites, etc.
 </UL>
+
 <P>
 <H4><A NAME="what_source">Do you provide the source code?</A></H4>
+
 <P>
 Absolutely. In fact Cygnus wants to run eCos development as an open
 source project, with the cooperation of the development community on
@@ -96,8 +97,10 @@ the net. Cygnus has many years of experience in this field through our
 work on the gcc and g++ compilers, the gdb debugger, and many other
 tools. The same development model has proved an overwhelming success
 in many other projects, most famously Linux. 
+
 <P>
 <H4><A NAME="what_configurability">What do you mean by configurability?</A></H4>
+
 <P>
 Embedded systems have an amazing range of requirements, from 4 bit
 controllers up to large radar arrays with a thousand or so top of
@@ -112,6 +115,7 @@ best matches the needs of the application. Typical configuration
 options include the type of scheduler and the number of priority
 levels. The current release of the system has over 200 such options,
 and plenty more will be added as the system evolves.
+
 <P>
 Code and data size are vitally important for many embedded
 applications, so configurability must be achieved without adding any
@@ -123,6 +127,7 @@ control the presence or absence of a complete TCP/IP stack. For system
 code written in C or C++ the main mechanism that is employed is C
 preprocessor #ifdef statements, which will be familiar to most
 embedded application developers.
+
 <P>
 Using #ifdef statements to provide a small number of configuration
 options is of course not very original. The critical problem is that
@@ -135,6 +140,7 @@ the various options. There is a graphical configuration tool which
 allows users to conveniently manipulate the various options,
 understand the various interactions, and check that the resulting
 configuration is valid.
+
 <P>
 The configuration framework also serves to componentize the system
 into different packages. The core system consists of a number of
@@ -152,6 +158,7 @@ become available over time, and already there are software vendors who
 want to turn their existing software into eCos packages. We expect
 that many contributions from the open source community will take the
 form of ports of existing software or of completely new packages.
+
 <P>
 The eCos configuration system does not affect how you develop your own
 application code. It is not necessary to write your application in any
@@ -159,8 +166,10 @@ special language, or to provide lots of configuration options in your
 own code, or to use a special development environment. The main output
 from the configuration system is a library that gets linked with your
 application code in the usual manner.
+
 <P>
 <H4><A NAME="what_size">What are the performance figures?</A></H4>
+
 <P>
 A side effect of a fully configurable system is that it is just about
 impossible to answer questions like &quot;What is the memory footprint
@@ -170,15 +179,17 @@ selected by the user. For example if a simple application does not
 require the kernel at all, directly or indirectly, then the kernel
 package can be disabled completely and its memory footprint is 0
 bytes. 
+
 <P>
 <A
-HREF="docs/guides/user-guides/real-time-characterization.html">Basic
+HREF="docs-1.1/guides/user-guides/real-time-characterization.html">Basic
 performance characterization data</A> is available as part of the
 documentation, together with a description of the tests that were used
 to obtain this data. The sources for these tests are included with the
 eCos distribution.
 <P>
 <H4><A NAME="what_mail">Are there any mailing lists?</A></H4>
+
 <P>
 Certainly. There are two main mailing lists which anybody can <A
 HREF="intouch.html">subscribe</A> to. The &lt;ecos-announce&gt; mailing list
@@ -187,6 +198,7 @@ is a low-volume moderated list for major announcements. The
 discussion, both technical and non-technical. All of Cygnus's eCos
 development team will read this list and join in the discussions as
 appropriate.
+
 <P>
 If you have a question which you do not want to discuss in a public
 forum then there is a separate <A
@@ -194,28 +206,32 @@ HREF="mailto:ecos-maintainers@cygnus.com">&lt;ecos-maintainers&gt;</A> mail
 address. All requests sent to this request will be considered
 confidential, and nobody outside Cygnus is able to subscribe to this
 list. 
+
 <P>
 <A HREF="#top">Top</A>
 <P>
 
 
 <h3>What are the licensing terms?</h3>
+
 <h4><A NAME="license_terms">What are the licensing terms?</A></h4>
+
 <P>
-eCos is released under a new license, the
-<A HREF="license.html">Cygnus eCos Public License</A> or CEPL for
-short. You can also read an <A
-HREF="http://www.cygnus.com/ecos/ecoslicense.html">annotated
+eCos is released under a new license, the <A HREF="license.html">Cygnus
+eCos Public License</A> or CEPL for short. You can also read an
+<A HREF="http://www.cygnus.com/ecos/annotate.html">annotated
 version</A> of the license and the <A
-HREF="http://www.cygnus.com/ecos/motiv.html">motivations</A> for
-the license.
-<P>
+HREF="http://www.cygnus.com/ecos/motiv.html">motivations</A> for the
+license.  <P>
+
 <h4><A NAME="license_meaning">OK, but what does this license actually mean?</A></h4>
+
 <P>
 You can use eCos to develop products without paying anybody anything,
 no matter how many developers are working on the product or how many
 units you expect to ship. This applies not only to the core system
 itself but also to any changes anybody makes to the core system.
+
 <P>
 A key aspect of the eCos public license is that it is intended to
 protect the eCos user community as a whole. It should prevent any
@@ -225,12 +241,15 @@ infringements and have to pay royalties. It should also prevent any
 company from making some small improvements, calling the result a
 completely new system, and releasing this under a new and less
 generous license.
+
 <P>
 The license does impose one obligation on application developers: you
 must include a <A HREF="license.html#B">notice</A> with your
 product indicating that it makes use of eCos. 
+
 <P>
 <h4><A NAME="license_give_source">Do I have to give away the source code of my application?</A></h4>
+
 <P>
 No. Your application source code is your own, to do with as you
 please. As far as the eCos public license is concerned you are under
@@ -238,8 +257,10 @@ no obligation to reveal a single line of your source code to Cygnus or
 to anybody else. In fact you do not even have to tell Cygnus about the
 existence of your project, although we would love to know about all
 the different products that use eCos.
+
 <P>
 <h4><A NAME="license_core_changes">What about changes to the core system?</A></h4>
+
 <P>
 If you make a change to the core eCos system then we believe that
 the entire user community should have the opportunity to benefit from
@@ -248,8 +269,10 @@ become part of the core system, since there are fairly strict criteria
 that have to be satisfied before any contribution will be
 incorporated. However any such decisions will be made by the eCos
 maintainers, not by the person making the changes.
+
 <P>
 <h4><A NAME="license_core">What exactly is the core system?</A></h4>
+
 <P>
 eCos is designed to be the component framework for the embedded
 systems industry. An eCos release consists of a number of different
@@ -257,6 +280,7 @@ packages including the kernel, the C library, and a uITRON
 compatibility layer. All the packages that go into such a release and
 the associated documentation constitute the core system, and the
 license describes this using the term &quot;Original Code&quot;.
+
 <P>
 Another way of looking at this is from a purely practical perspective.
 At the end of the day building an application involves linking
@@ -270,13 +294,16 @@ system and is not covered by the public license. Note that this is not
 a legally binding definition - in particular you cannot get around the
 public license simply by copying bits of eCos sources and making them
 part of your application code.
+
 <P>
 <h4><A NAME="license_packages">What about other packages?</A></h4>
+
 <P>
 Typically other packages will end up as other libraries that need to
 be linked with the application code. These other packages may be
 covered by different licenses, and application developers should make
 sure that the requirements for all licenses are satisfied.
+
 <P>
 Some companies or organizations may release packages that are not open
 source or freely available. Instead the application developer may have
@@ -284,13 +311,16 @@ to pay a one-off license fee or quite possibly per-unit royalties if
 the application uses such a package. Not only is this perfectly legal,
 Cygnus would very much like other companies to make money by providing
 such packages.
+
 <P>
 Some packages may be released under the eCos public license without
 becoming part of the core system. Typically this will happen if the
 eCos maintainers believe that they would be unable to maintain such a
 package themselves, for example because it relies on special hardware.
+
 <P>
 <h4><A NAME="license_new_packages">What if I create a new package?</A></h4>
+
 <P>
 There are two possibilities. If the new package is derived in large
 part from some existing software then it is likely that there are
@@ -302,8 +332,10 @@ create a new device driver from scratch then you can decide for
 yourself what license should apply. If you want the package to be
 freely available to the entire eCos community then we recommend the
 eCos public license, but the choice is yours.
+
 <P>
 <h4><A NAME="license_why_new">Why has Cygnus created a new license?</A></h4>
+
 <P>
 Balancing the needs and desires of all the companies, organizations,
 and individuals involved with eCos is difficult. The most important
@@ -311,11 +343,13 @@ requirement is that the freedom of all eCos users is protected: it
 must be impossible for anybody, even Cygnus, to impose restrictions on
 how the system can be used now or in the future. Some existing
 licenses such as the X11 license do not provide this.
+
 <P>
 It is also desirable that all enhancements are made available to the
 community as a whole, thus improving the system and making it even
 more attractive to potential users. Some existing licenses such as the
 BSD license do not provide this.
+
 <P>
 The GNU Public License does meet these requirements, but it goes
 further: all applications that get linked with GPL'd code are also
@@ -325,10 +359,12 @@ market this requirement is generally considered unacceptable and many
 companies refuse to use any GPL'd code as a result. This would reduce
 the uptake of eCos, and we want as many people as possible to use the
 system. 
+
 <P>
 The Netscape Public License came closest to meeting the requirements.
 There were some modifications to reflect the needs of embedded system
 developers, and the result was the eCos public license.
+
 <P>
 <h4><A NAME="license_coverage">Does the license cover situation ...?</A></h4>
 Hopefully yes, but there may be situations that we have missed. If you
@@ -337,24 +373,28 @@ situation, please contact us. There are both public and private
 channels of communication available, depending on your requirements.
 We are always interested in suggested improvements to the license that
 are compatible with our overall goals.
+
 <P>
 <A HREF="#top">Top</A>
 <P>
 
 <h3>Contributing</h3>
 <P>
+
 <h4><A NAME="contrib_have_to">Do I have to contribute?</A></h4>
+
 <P>
 No. We expect that most people will simply want to use the system as
 it is (or rather, as it is after they have configured it to meet their
 specific needs), without changing the core system itself or adding any
 new packages. Such users are under no obligation to contribute.
+
 <P>
 <h4><A NAME="contrib_bazaar">Which development model - cathedral or bazaar?</A></h4>
+
 <P>
 The <A
-HREF="http://www.earthspace.net/~esr/writings/cathedral-bazaar/cathedral-bazaar.html"
-TARGET="_top">bazaar</A> of course. For the eCos system Cygnus is
+HREF="http://www.earthspace.net/~esr/writings/cathedral-bazaar/cathedral-bazaar.html">bazaar</A> of course. For the eCos system Cygnus is
 committed to an open development model. In addition to the full
 releases we will be making regular snapshot releases and provide
 anonymous CVS access to the sources. Discussions about the system will
@@ -364,8 +404,10 @@ of Cygnus's commercial dealings involve confidential information and
 are covered by non-disclosure agreements. A potential port to another
 architecture would generally be covered by such an agreement, and
 hence we would not be able to disclose any details in an open forum.
+
 <P>
 <h4><A NAME="contrib_how">How do I contribute?</A></h4>
+
 <P>
 There are ways of contributing to eCos development which involve very
 little effort. Providing constructive comments on any part of the
@@ -376,6 +418,7 @@ and sufficient information to reproduce the problem. Participation in
 the discussions in the <A HREF="intouch.html">&lt;ecos-discuss&gt;</A> mailing
 list gives us a better understanding of the user community, and
 perhaps some new ideas.
+
 <P>
 If you wish to contribute to the actual code there are multiple
 levels of involvement. You can write a new package. This could be a
@@ -389,6 +432,7 @@ some existing code so that it becomes more efficient and/or needs less
 memory. You may add new functionality. Contributions to the
 documentation and to the test suites are particularly welcome, since
 these areas are often overlooked by contributors.
+
 <P>
 Small patches can be sent directly to the &lt;ecos-discuss&gt; mailing list.
 For larger patches it is better to send a message to the mailing list
@@ -396,13 +440,16 @@ indicating where the patch can be found. An ftp upload area will be
 installed on the sourceware server in the near future to facilitate
 submission of patches. For non-trivial patches to the core system we
 may require a copyright assignment.
+
 <P>
 <h4><A NAME="contrib_what">What code contributions would be accepted?</A></h4>
+
 <P>
 The most important criterion is that the contribution must enhance the
 system. If it meets this fundamental criterion then there is a good
 chance that the contribution will be accepted. More specific criteria
 include the following:
+
 <P>
 <OL>
   <LI>It must not have undesirable effects in terms of code
@@ -425,6 +472,7 @@ include the following:
   <LI>There must not be any confusion about licensing or ownership.
       This may require a copyright assignment.
 </OL>
+
 <P>
 A contribution need not meet all these requirements immediately. In
 fact it often makes sense to start with a proposal on the <A
@@ -439,8 +487,10 @@ the problem. If you want to discuss a proposal using more private
 communication channels rather than a public mailing list then you can
 send email directly to <A
 HREF="mailto:ecos-maintainers@cygnus.com">&lt;ecos-maintainers@cygnus.com&gt;</A>.
+
 <P>
 <h4><A NAME="contrib_assign">Why do I need to sign a copyright assignment?</A></h4>
+
 <P>
 If a contribution involves a significant change to part of the core
 system, for example the kernel, then usually we will need a <A
@@ -450,6 +500,7 @@ community at large. In theory there is no need for copyright
 assignments because all changes to code covered by the eCos public
 license are also covered by that license. In practice copyright
 assignment provides a useful extra level of protection.
+
 <P>
 As an example, consider a scenario where a junior programmer makes a
 change to the system and releases it without the knowledge or consent
@@ -464,14 +515,17 @@ the development community. This would be very harmful. The process of
 copyright assignment should prevent this and many other scenarios from
 ever arising, because it includes having a disclaimer signed by an
 officer of the company or a person with the necessary authority.
+
 <P>
 We are aware that copyright assignments involve an unpleasant amount
 of bureaucracy for many contributors, especially since we have to deal
 with the paperwork at the other end. However, we believe that the
 additional protection offered is necessary for the eCos user community
 as a whole. 
+
 <P>
 <h4><A NAME="contrib_projects">I want to start work today! What should I work on?</A></h4>
+
 <P>
 Our intention is to provide a set of web pages indicating various
 projects that people can work on. These pages will include projects
@@ -481,25 +535,24 @@ proposed on the <A HREF="intouch.html">&lt;ecos-discuss&gt;</A> mailing list,
 discussed for a while, and then a summary will be prepared. Until
 these pages are ready the best place to start would be the
 &lt;ecos-discuss&gt; mailing list itself.
+
 <P>
 <A HREF="#top">Top</A>
 <P>
 
 <h3>Miscellaneous</h3>
+
 <P>
 <h4><A NAME="misc_jobs">Cygnus sounds like a wonderful company - are there
 any jobs going?</A></h4>
+
 <P>
-Details of our <A HREF="http://www.cygnus.com/jobs/" TARGET="_top">
+Details of our <A HREF="http://www.cygnus.com/jobs/">
 current job openings</A> are available on our corporate web
 site. 
+
 <P>
 <A HREF="#top">Top</A>
 <P>
 
-<!-- eCos template HTML start -->
-<H3><A HREF="index.html" TARGET="_top">Home</A></H3>
-</BODY>
-<!-- eCos template HTML end -->
-
-</HTML>
+<!--#include virtual="include/footer.html"-->
