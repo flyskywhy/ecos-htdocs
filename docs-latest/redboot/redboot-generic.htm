@@ -42,7 +42,7 @@ name="a1"></a>RedBoot User&#8217;s Guide</span></div><h2 class="l14al" style="pa
 class="f18sbB" style="font-size: 13pt"><a name="a3"></a>March 2001</span></h2><div
 class="fltp" style="text-align: justify; padding-top: 7pt"><span class="f9s">&#169;
 2001<span style="font-size: 12pt">&nbsp;</span>Red Hat</span></div><div class="p8"
-style="text-align: justify"><span class="f9s"><img src="redboot-generic.htm.graphics/tallshadowman.jpg"
+style="text-align: justify"><span class="f9s"><img src="tallshadowman.jpg"
 alt="tallshadowman.jpg"></span></div></div><div class="pgbrk" style="padding-top: 48pt"><br
 class="pgbrk" style="padding-top: 48pt" clear="all"><div class="fltp"><span
 class="f9sb" style="color: blue">Copyright</span></div><div class="fltp" style="text-align: justify; padding-top: 5pt"><span
@@ -993,8 +993,7 @@ supports this dynamic IP address mode by use of the <a name="a1801"></a><a
 name="a1805"></a>BOOTP (a subset of <a name="a1807"></a><a name="a1811"></a>DHCP)
 protocol. In this case, RedBoot will ask the network (actually some generic
 server on the network) for the IP address to use.</span></div><div class="p8"
-style="padding-left: 5.1%"><span style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
+style="padding-left: 5.1%"><span
 class="f18sbB" style="font-size: 13pt">NOTE</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">Currently, RedBoot only supports BOOTP. In future
 releases, DHCP may also be supported, but such support will be limited to
@@ -1082,9 +1081,7 @@ class="fltp" style="padding: 8pt 0% 0% 7.6%"><pre class="flts" style="padding-le
 class="p8" style="line-height: 13pt; text-align: justify; padding-left: 3.8%"><span
 style="font-family: serif">Create the directory /tftpboot using the command </span></div><div
 class="fltp" style="padding: 8pt 0% 0% 7.6%"><pre class="flts" style="padding-left: 7.6%">mkdir /tftpboot</pre></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">Under Red Hat 7 you must address files by absolute
 pathnames, for example: </span><span class="m">/tftpboot/boot.img not /boot.img</span><span
@@ -1512,8 +1509,6 @@ are currently not in use. In use means that the block contains non-erased
 contents. Since it is possible to force an image to be loaded at a particular
 flash location, this command can be used to check whether that location is
 in use by any other image. </span></div><div class="p8" style="padding-left: 10.2%"><span
-style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
 class="f18sbB" style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 10.2%"><span
 style="font-family: serif">There is currently no cross-checking between actual
 flash contents and the image directory, which mans that there could be a segment
@@ -1665,9 +1660,7 @@ portion of flash memory, to prevent accidental overwriting of images. In order
 to make make any modifications to the flash, a matching unlock command must
 be issued. This command is optional and will only be provided on hardware
 which can support write-protection of the flash space.  </span></div><div
-class="p8" style="padding-left: 10.2%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 10.2%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 10.2%"><span
 style="font-family: serif">Depending on the system, attempting to write to
 write-protected flash may generate errors or warnings, or be benignly quiet.
@@ -1758,9 +1751,7 @@ class="b">y</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n
 >RedBoot>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br
 >=================================================================</span></div><div
 class="p8" style="line-height: 13pt; text-align: justify"><span style="font-family: serif"></span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The bold characters above indicate where something
 was entered on the console. As you can see, the fi li command at the end came
@@ -1774,9 +1765,7 @@ either via the </span><span class="m">load</span><span style="font-family: serif
 command or the </span><span class="m">fis load</span><span style="font-family: serif">
 command, execution may be transfered to that image.</span></div><div class="p8"
 style="line-height: 13pt; text-align: justify"><span style="font-family: serif"></span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The image is assumed to be a stand-alone entity,
 as RedBoot gives the entire platform over to it. Typical examples would be
@@ -1947,9 +1936,7 @@ then an alternate RAM based image must be loaded. Using the load command:
  </span></div><div class="fltp" style="padding: 8pt 0% 0% 3.8%"><pre class="flts"
 style="padding-left: 3.8%">RedBoot> load redboot_RAM.srec</pre></div><div
 class="p8" style="line-height: 13pt; text-align: justify"><span style="font-family: serif"></span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The details of how to load are installation specific.
 The file must be placed somewhere the host computer can provide it to the
@@ -1984,8 +1971,6 @@ platform, but the ideas are the same:  </span></div><div class="fltp" style="pad
 class="flts" style="padding-left: 3.8%">RedBoot> fis unlock -f 0xA0000000 -l 0x40000  
 RedBoot> fis create RedBoot -f 0xA0000000 -b 0x00100000 -l 0x40000 -s 0xCFAE  
 RedBoot> fis lock -f 0xA0000000 -l 0x40000</pre></div><div class="p8" style="padding-left: 5.1%"><span
-style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
 class="f18sbB" style="font-size: 13pt">NOTE</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">RedBoot will display a number of lines of information
 as it executes these commands. Also, the size (-s) value for the create operation
@@ -1999,8 +1984,6 @@ run RedBoot from flash</span></h3><div class="p8" style="line-height: 13pt; text
 style="font-family: serif"><a name="a10288"></a>Once the image has been successfully
 written into the flash, simply reboot the target and the new version of RedBoot
 will be running. </span></div><div class="p8" style="padding-left: 5.1%"><span
-style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
 class="f18sbB" style="font-size: 13pt">NOTE </span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">There may be times when RedBoot does not exist
 on the hardware, thus making step 1 impossible to do. In these cases, it should
@@ -2175,9 +2158,7 @@ style="font-family: serif"><a name="a11539"></a>The first level page table
 is located at 0xa0004000. Two second level tables are also used. One second
 level table is located at 0xa0008000 and maps the first 1MB of flash. The
 other second level table is at 0xa0008400, and maps the first 1MB of SDRAM. </span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2259,9 +2240,7 @@ name="a12050"></a>5.2.4<span style="font-size: 12pt">&nbsp;&nbsp;</span>Memory
 Maps </span></h3><div class="p8" style="line-height: 13pt; text-align: justify"><span
 style="font-family: serif"><a name="a12052"></a>The first level page table
 is located at physical address 0xc0004000. No second level tables are used.</span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2337,8 +2316,7 @@ Maps </span></h3><div class="p8" style="line-height: 13pt; text-align: justify">
 style="font-family: serif"><a name="a12564"></a>Physical and virtual mapping
 are mapped one to one on the EBSA-285 using a first level page table located
 at address 0x4000. No second level tables are used. </span></div><div class="p8"
-style="padding-left: 5.1%"><span style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
+style="padding-left: 5.1%"><span
 class="f18sbB" style="font-size: 13pt">NOTE </span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2412,9 +2390,7 @@ name="a13080"></a>5.4.4<span style="font-size: 12pt">&nbsp;&nbsp;</span>Memory
 Maps </span></h3><div class="p8" style="line-height: 13pt; text-align: justify"><span
 style="font-family: serif"><a name="a13082"></a>The first level page table
 is located at physical address 0xc0004000. No second level tables are used.</span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2492,9 +2468,7 @@ name="a13584"></a>5.5.4<span style="font-size: 12pt">&nbsp;&nbsp;</span>Memory
 Maps </span></h3><div class="p8" style="line-height: 13pt; text-align: justify"><span
 style="font-family: serif"><a name="a13586"></a>The first level page table
 is located at physical address 0xc0004000. No second level tables are used.</span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2590,8 +2564,6 @@ name="a23337"></a>5.6.3<span style="font-size: 12pt">&nbsp;&nbsp;</span>Memory
 Maps </span></h3><div class="p8" style="line-height: 13pt; text-align: justify"><span
 style="font-family: serif"><a name="a23339"></a>Memory Maps RedBoot sets up
 the following memory map on the Atlas board.</span></div><div class="p8" style="padding-left: 5.1%"><span
-style="font-family: serif"><img src="redboot-generic.htm.graphics/note.gif"
-alt="C:\Program Files\Epic\entities\note.eps" height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span
 class="f18sbB" style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
@@ -2644,9 +2616,7 @@ memory map on the Ocelot board. </span></div><div class="p8" style="line-height:
 style="font-family: serif">Note that these addresses are accessed through
 kseg0/1 and thus translate to the actual address range 0x80000000-0xbfffffff,
 depending on the need for caching/non-caching access to the bus.</span></div><div
-class="p8" style="padding-left: 5.1%"><span style="font-family: serif"><img
-src="redboot-generic.htm.graphics/note.gif" alt="C:\Program Files\Epic\entities\note.eps"
-height="38pt" width="37pt"></span><span>&nbsp;&nbsp;&nbsp;</span><span class="f18sbB"
+class="p8" style="padding-left: 5.1%"><span class="f18sbB"
 style="font-size: 13pt">NOTE:</span></div><div style="line-height: 13pt; text-align: justify; padding: 7pt 0% 0% 5.1%"><span
 style="font-family: serif">The virtual memory maps in this section use a C
 and B column to indicate whether or not the region is cached (C) or buffered
