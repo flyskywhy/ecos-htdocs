@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.4/Tue May  2 16:52:45 BST 2000-->
+<HEAD><!--version update1.4-20-2-01/Tue Feb 20 11:49:37  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Software Installation</TITLE></HEAD>
@@ -9,6 +9,8 @@
 <TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Software Installation</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.b.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.d.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=2529140">
+ </A>
+<A NAME="36086">
  </A>
 Software Installation<DIV>
 <IMG SRC="../botclear.gif">
@@ -24,11 +26,11 @@ Installation on Windows</H3>
 <P CLASS="Body">
 <A NAME="pgfId=2529144">
  </A>
-If you have a CD distribution of the eCos Developer's Kit, you have received the eCos software and its supporting utilities on a single CDROM for installation on a PC-compatible computer running Windows NT 4.0, Windows 95, Windows 98 or Windows 2000. If you use NT you must apply the NT 4.0 Service Pack 3 or above before installing eCos. Support is only for Windows NT 4.0. Installations on other Windows platforms are beta.</P>
+If you have a CD distribution of the eCos Developer's Kit, you have received the eCos software and its supporting utilities on a single CD-ROM for installation on a PC-compatible computer running Windows NT 4.0, Windows 95, Windows 98 or Windows 2000. If you use NT you must apply the NT 4.0 Service Pack 3 or above before installing eCos. Support is only for Windows NT 4.0. Installations on other Windows platforms are beta.</P>
 <P CLASS="Body">
 <A NAME="pgfId=2529145">
  </A>
-The following components are provided on the eCos CDROM: </P>
+The following components are provided on the eCos CD-ROM: </P>
 <UL>
 <P><LI>
 <A NAME="pgfId=2529146">
@@ -64,7 +66,7 @@ Documentation for the GNUPro tools, including a Reference Manual for the particu
  </A>
 If you have obtained the <A NAME="marker=2529155">
  </A>
-Net release of eCos for Windows, you will have the distribution in a self-extracting archive. Apart from the difference in medium, the installation procedure for eCos itself will be the same as for the CDROM-based distribution. </P>
+Net release of eCos for Windows, you will have the distribution in a self-extracting archive. Apart from the difference in medium, the installation procedure for eCos itself will be the same as for the CD-ROM-based distribution. </P>
 <P CLASS="Body">
 <A NAME="pgfId=2529157">
  </A>
@@ -73,9 +75,9 @@ The software installation process involves a number of installation utilities. S
 <P><LI>
 <A NAME="pgfId=2529158">
  </A>
-Invoke the file Setup.exe on the CDROM. This will start the installation procedure. If you have the <TT CLASS="Code">
+Invoke the file Setup.exe on the CD-ROM. This will start the installation procedure. If you have the <TT CLASS="Code">
 autorun</TT>
- feature enabled, Windows will run Setup.exe automatically when the CDROM is inserted into the drive.</LI>
+ feature enabled, Windows will run Setup.exe automatically when the CD-ROM is inserted into the drive.</LI>
 <P><LI>
 <A NAME="pgfId=2529159">
  </A>
@@ -85,7 +87,7 @@ OK.</SPAN>
 <P><LI>
 <A NAME="pgfId=2529160">
  </A>
-You will be prompted for a path in which to install the GNU user tools. The default will be in the <TT CLASS="Code">
+You will be prompted for a file  path in which to install the GNU user tools. The default will be in the <TT CLASS="Code">
 /cygnus/gnupro/i686-cygwin32/i686-cygwin32</TT>
  hierarchy (usually on drive C). It will then offer to install the source code and documentation for the GNU user tools. It is recommended that you install the documentation, but not the source code, unless you are interested in modifying or recompiling the GNU user tools. </LI>
 <P><LI>
@@ -131,6 +133,14 @@ Package Administration Tool,</SPAN>
 At this point you are ready to configure and build a customized eCos kernel as described in <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
  Configuring and Building eCos from Source</A>
 . </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2686803">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2686804">
+ </A>
+The order of directories in the PATH is very important, and build failures may result if the PATH is not set correctly. If you are having difficulties in building eCos, please make sure you have set the PATH exactly as above.</P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
@@ -158,29 +168,29 @@ Installing the eCos Developer's Kit under Linux</H3>
 <P CLASS="Body">
 <A NAME="pgfId=2529178">
  </A>
-Users of the eCos Developer's Kit under Red Hat Linux 6.x should use the following instructions, for most of which you will normally need to be the root user. </P>
+Users of the eCos Developer's Kit under Red Hat Linux should use the following instructions, for most of which you will normally need to be the root user. </P>
 <OL>
 <P><LI>
 <A NAME="pgfId=2529179">
  </A>
-The CD-ROM must be &quot;mounted&quot; before installation can proceed. Execute the command:<TT CLASS="Code">
-<BR>
+The CD-ROM must be &quot;mounted&quot; before installation can proceed. Execute the command:<BR>
+<TT CLASS="Code">
 <BR>
 # mount /dev/cdrom/ /mnt/cdrom<BR>
 </TT>
 <BR>
-Install the eCos repository from the RPM file ecos13x.rpm (where x or xx are final digits of the current version number), located in the root directory of the CD-ROM using the following command:<TT CLASS="Code">
+Install the eCos repository from the RPM file ecos14x.rpm (where x or xx are final digits of the current version number), located in the root directory of the CD-ROM using the following command:<BR>
+<TT CLASS="Code">
 <BR>
-<BR>
-# rpm -i /mnt/cdrom/ecos13x.rpm<BR>
+# rpm -i /mnt/cdrom/ecos14x.rpm<BR>
 </TT>
 <BR>
-Note that root privileges are required to perform this installation. On completion, the eCos repository may be found in the directory /opt/ecos/ecos-1.3.x.</LI>
+Note that root privileges are required to perform this installation. On completion, the eCos repository may be found in the directory /opt/ecos/ecos-1.4.x.</LI>
 <P><LI>
 <A NAME="pgfId=2529192">
  </A>
-Extract the eCos development tools from the compressed tar archive tool-bin.tgz, located in the root directory of the CD-ROM, using the following commands:<TT CLASS="Code">
-<BR>
+Extract the eCos development tools from the compressed tar archive tool-bin.tgz, located in the root directory of the CD-ROM, using the following commands:<BR>
+<TT CLASS="Code">
 <BR>
 # mkdir /usr/cygnus<BR>
 # cd /usr/cygnus<BR>
@@ -189,10 +199,10 @@ Extract the eCos development tools from the compressed tar archive tool-bin.tgz,
 <P><LI>
 <A NAME="pgfId=2529194">
  </A>
-On completion, the eCos development tools may be found in the directory /usr/cygnus/ecos-<TT CLASS="Code">
-DEVTOOLSVERSION</TT>
-. The source code for the development tools may optionally be installed in the same way:<TT CLASS="Code">
-<BR>
+On completion, the eCos development tools may be found in the directory <TT CLASS="Code">
+/usr/cygnus/ecos-DEVTOOLSVERSION</TT>
+. The source code for the development tools may optionally be installed in the same way:<BR>
+<TT CLASS="Code">
 <BR>
 # gunzip -c &lt; /mnt/cdrom/tool-src.tgz | tar xvf -</TT>
 </LI>
@@ -200,31 +210,33 @@ DEVTOOLSVERSION</TT>
 <A NAME="pgfId=2571141">
  </A>
 Add the eCos host tools and development tools to the front of your path. Under Linux, you should modify the PATH environment variable as follows.<BR>
-Using sh, ksh, or bash:<TT CLASS="Code">
+Using sh, ksh, or bash:<BR>
+<TT CLASS="Code">
 <BR>
-<BR>
-      $ PATH=/opt/ecos/ecos-1.3.x/tools/bin:/usr/cygnus/DEVTOOLSVERSION/H-i686-pc-linux-gnu/bin:$PATH<BR>
+$ PATH=/opt/ecos/ecos-1.4.x/tools/bin:/usr/cygnus/\<BR>
+  DEVTOOLSVERSION/H-i686-pc-linux-gnu/bin:$PATH<BR>
 $ export PATH<BR>
 </TT>
 <BR>
-Using csh or tcsh: Note that csh also requires the shell command &quot;rehash&quot; after modifying the path for the path change to take effect.<TT CLASS="Code">
+Using csh or tcsh: Note that csh also requires the shell command &quot;rehash&quot; after modifying the path for the path change to take effect.<BR>
+<TT CLASS="Code">
 <BR>
-<BR>
-      $ setenv PATH /opt/ecos/ecos-1.3.x/tools/bin:/usr/cygnus/DEVTOOLSVERSION/H-i686-pc-linux-gnu/bin:$PATH<BR>
+$ setenv PATH /opt/ecos/ecos-1.4.x/tools/bin:/usr/cygnus/\<BR>
+  DEVTOOLSVERSION/H-i686-pc-linux-gnu/bin:$PATH<BR>
 </TT>
 <BR>
 Set the ECOS_REPOSITORY environment variable as follows.<BR>
-Using sh, ksh or bash:<TT CLASS="Code">
+Using sh, ksh or bash:<BR>
+<TT CLASS="Code">
 <BR>
-<BR>
-$ ECOS_REPOSITORY=/opt/ecos/ecos-1.3.x/packages   <BR>
+$ ECOS_REPOSITORY=/opt/ecos/ecos-1.4.x/packages   <BR>
 $ export ECOS_REPOSITORY<BR>
 </TT>
 <BR>
 Using csh or tcsh:<BR>
 <TT CLASS="Code">
 <BR>
-$ setenv ECOS_REPOSITORY /opt/ecos/ecos-1.3.x/packages</TT>
+$ setenv ECOS_REPOSITORY /opt/ecos/ecos-1.4.x/packages</TT>
 </LI>
 </OL>
 <P CLASS="Body">
@@ -233,6 +245,14 @@ $ setenv ECOS_REPOSITORY /opt/ecos/ecos-1.3.x/packages</TT>
 At this point you are ready to configure and build a customized eCos kernel as shown in <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
  Configuring and Building eCos from Source</A>
 . </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2686792">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2686793">
+ </A>
+The order of directories in the PATH is very important, and build failures may result if the PATH is not set correctly. If you are having difficulties in building eCos, please make sure you have set the PATH exactly as above.</P>
 <H3 CLASS="Heading2">
 <A NAME="pgfId=2529223">
  </A>
@@ -250,17 +270,19 @@ Users of the eCos Developer's Kit under Solaris should use the following instruc
 <A NAME="pgfId=2529228">
  </A>
 Extract the eCos repository from the compressed tar archive <EM CLASS="Command">
-ecos13x.taz</EM>
+ecos14x.taz</EM>
  (where x or xx are the final digits of the version number), located in the root directory of the CD-ROM using the following commands:<BR>
 <TT CLASS="Code">
 <BR>
 # mkdir /usr/local<BR>
 # cd /usr/local<BR>
-# zcat &lt; /cdrom/cdrom0/ecos13x.taz | tar xvf -<BR>
+# zcat &lt; /cdrom/cdrom0/ecos14x.taz | tar xvf -<BR>
 </TT>
 <BR>
-      On completion, the eCos repository may be found in the directory <TT CLASS="Code"> 
-      /usr/local/ecos-1.3.x</TT> .</LI>
+On completion, the eCos repository may be found in the directory <TT CLASS="Code">
+/usr/local/\<BR>
+ecos-1.4.x</TT>
+.</LI>
 <P><LI>
 <A NAME="pgfId=2529235">
  </A>
@@ -289,7 +311,8 @@ Add the eCos host tools, development tools and any native tools supporting the e
 Using sh, ksh, or bash:<BR>
 <TT CLASS="Code">
 <BR>
-      $ PATH=/usr/local/ecos-1.3.x/tools/bin:/usr/xpg4/bin:/usr/ucb:$PATH<BR>
+$ PATH=/usr/local/ecos-1.4.x/tools/bin:/usr/xpg4/bin:\<BR>
+/usr/ucb:$PATH<BR>
 $ export PATH<BR>
 </TT>
 <BR>
@@ -298,8 +321,9 @@ Using csh or tcsh:<BR>
 Note that csh also requires the shell command &quot;rehash&quot; after modifying the path for the path change to take effect.<BR>
 <TT CLASS="Code">
 <BR>
-      % setenv PATH /usr/local/ecos-1.3.x/tools/bin:/usr/xpg4/bin:/usr/ucb:$PATH</TT> 
-    </LI>
+% setenv PATH  /usr/local/ecos-1.4.x/tools/bin:/usr/xpg4/bin:\<BR>
+  /usr/ucb:$PATH</TT>
+</LI>
 <P><LI>
 <A NAME="pgfId=2529244">
  </A>
@@ -311,7 +335,7 @@ Set the ECOS_REPOSITORY environment varable as follows:</LI>
 Using sh, ksh or bash:<BR>
 <BR>
 <TT CLASS="Code">
-$ ECOS_REPOSITORY=/usr/local/ecos-1.3.x/packages<BR>
+$ ECOS_REPOSITORY=/usr/local/ecos-1.4.x/packages<BR>
 $ export ECOS_REPOSITORY</TT>
 </P>
 <P CLASS="BodyListFollow">
@@ -322,7 +346,7 @@ Using csh or tcsh:</P>
 <A NAME="pgfId=2529253">
  </A>
 <TT CLASS="Code">
-% setenv ECOS_REPOSITORY /usr/local/ecos-1.3.x/packages</TT>
+% setenv ECOS_REPOSITORY /usr/local/ecos-1.4.x/packages</TT>
 </P>
 <P CLASS="Body">
 <A NAME="pgfId=2529254">
