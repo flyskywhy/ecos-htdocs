@@ -183,6 +183,20 @@ DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
 If the version installed is v1.1.1, please read <a href="../faq.html#newcygwindll">
 this FAQ entry</a> to resolve the problem.
 <p>
+<b>All</b> users of Cygwin should verify that their <tt>/tmp</tt> directory (or
+the directory specified by the <tt>TMPDIR</tt>, <tt>TMP</tt> or <tt>TEMP</tt>
+environment variables) is mounted in binary mode. If this is not the case
+the patches will apply, but the build will later fail. You may verify this
+using the Cygwin <tt>mount</tt> command. If /tmp is not explicitly listed,
+the entry for / will be used. If it says "<tt>textmode</tt>" for this entry,
+use the following command from a Cygwin bash prompt:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;mount -f -b c:/cygwin/tmp /tmp
+</tt></nobr>
+<p>
+You may need to substitute another path for <tt>c:/cygwin</tt> if Cygwin
+was installed to another directory.
+<p>
 
 
 
@@ -204,18 +218,6 @@ patch to a file and apply it:<p>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gcc-snap-cpp.pat | patch -p0
-
-
-</tt></nobr>
-<p>
-
-If you are using a GCC snapshot more recent than 2000-05-29, download
-the <a href="patches/tinfo2inhibitlibc.pat">tinfo2inhibitlibc.pat</a>
-patch to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
-
-&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; tinfo2inhibitlibc.pat | patch -p0
 
 
 </tt></nobr>
