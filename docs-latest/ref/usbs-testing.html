@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="usbs-writing.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="io-usb-slave-eth.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -80,12 +77,12 @@ WIDTH="100%"></DIV
 ><H1
 ><A
 NAME="USBS-TESTING"
-></A
->Testing</H1
+>Testing</A
+></H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16872"
+NAME="AEN17153"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +90,7 @@ NAME="AEN16872"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16875"
+NAME="AEN17156"
 ></A
 ><H2
 >Introduction</H2
@@ -243,7 +240,7 @@ obviously be problematical.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16908"
+NAME="AEN17189"
 ></A
 ><H2
 >Building and Running the Target-side Code</H2
@@ -298,7 +295,7 @@ connect to the target-side software, and testing can now commence.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16919"
+NAME="AEN17200"
 ></A
 ><H2
 >Building and Running the Host-side Code</H2
@@ -339,39 +336,27 @@ CLASS="SCREEN"
 $ cd usbhost_build
 $ &lt;repo&gt;packages/io/usb/slave/current/host/configure <A
 NAME="PATH"
-><IMG
-SRC="../images/callouts/1.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(1)"></A
+><B
+>(1)</B
+></A
 > <A
 NAME="VERSION"
-><IMG
-SRC="../images/callouts/2.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(2)"></A
+><B
+>(2)</B
+></A
 > &lt;args&gt; <A
 NAME="ARGS"
-><IMG
-SRC="../images/callouts/3.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(3)"></A
+><B
+>(3)</B
+></A
 >
 $ make
 &lt;output from make&gt;
 $ su <A
 NAME="ROOT"
-><IMG
-SRC="../images/callouts/4.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(4)"></A
+><B
+>(4)</B
+></A
 >
 $ make install
 &lt;output from make install&gt;
@@ -386,12 +371,9 @@ COMPACT="COMPACT"
 ><DT
 ><A
 HREF="usbs-testing.html#PATH"
-><IMG
-SRC="../images/callouts/1.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(1)"></A
+><B
+>(1)</B
+></A
 ></DT
 ><DD
 >The location of the eCos component repository should be substituted
@@ -402,12 +384,9 @@ CLASS="LITERAL"
 ><DT
 ><A
 HREF="usbs-testing.html#VERSION"
-><IMG
-SRC="../images/callouts/2.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(2)"></A
+><B
+>(2)</B
+></A
 ></DT
 ><DD
 >If the package has been obtained via CVS or anonymous CVS then the
@@ -428,12 +407,9 @@ CLASS="FILENAME"
 ><DT
 ><A
 HREF="usbs-testing.html#ARGS"
-><IMG
-SRC="../images/callouts/3.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(3)"></A
+><B
+>(3)</B
+></A
 ></DT
 ><DD
 >The <B
@@ -485,12 +461,9 @@ CLASS="PARAMETER"
 ><DT
 ><A
 HREF="usbs-testing.html#ROOT"
-><IMG
-SRC="../images/callouts/4.gif"
-HSPACE="0"
-VSPACE="0"
-BORDER="0"
-ALT="(4)"></A
+><B
+>(4)</B
+></A
 ></DT
 ><DD
 >One of the host-side executables that gets built,
@@ -803,7 +776,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17024"
+NAME="AEN17305"
 ></A
 ><H2
 >Writing a Test</H2
@@ -888,7 +861,7 @@ are reported.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17039"
+NAME="AEN17320"
 ></A
 ><H2
 >Available Hardware</H2
@@ -1271,7 +1244,7 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17146"
+NAME="AEN17427"
 ></A
 ><H2
 >Testing Bulk Transfers</H2
@@ -1359,7 +1332,7 @@ receive size, transmit delay, and receive delay.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17171"
+NAME="AEN17452"
 ></A
 ><H3
 >Data</H3
@@ -1647,7 +1620,7 @@ returned correctly.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17241"
+NAME="AEN17522"
 ></A
 ><H3
 >I/O Mechanism</H3
@@ -1671,7 +1644,7 @@ CLASS="PARAMETER"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17246"
+NAME="AEN17527"
 ></A
 ><H3
 >Transmit Size</H3
@@ -1789,7 +1762,7 @@ current size falls outside the bounds then it will be normalized.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17271"
+NAME="AEN17552"
 ></A
 ><H3
 >Receive Size</H3
@@ -1899,7 +1872,7 @@ be added automatically to the receive size if necessary.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17292"
+NAME="AEN17573"
 ></A
 ><H3
 >Transmit and Receive Delays</H3
@@ -2031,7 +2004,7 @@ depend on the kernel clock speed.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17318"
+NAME="AEN17599"
 ></A
 ><H2
 >Other Types of Transfer</H2
@@ -2042,7 +2015,7 @@ transfers is not yet implemented.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17321"
+NAME="AEN17602"
 ></A
 ><H2
 >Starting a Test and Collecting Results</H2
@@ -2082,7 +2055,7 @@ list of string messages.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17331"
+NAME="AEN17612"
 ></A
 ><H2
 >Existing Test Scripts</H2
@@ -2179,7 +2152,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17354"
+NAME="AEN17635"
 ></A
 ><H2
 >Possible Problems</H2
@@ -2225,7 +2198,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -2237,7 +2209,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="usbs-writing.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -2246,7 +2217,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -2255,7 +2225,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="io-usb-slave-eth.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -2271,7 +2240,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-usb-slave.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

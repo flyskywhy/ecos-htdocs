@@ -13,13 +13,13 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Extended Synchronization and Communication Functions"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-extended-sync-comm-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-INTERRUPT-MANAGEMENT-FUNCTIONS"
-></A
->Interrupt management functions</H1
+>Interrupt management functions</A
+></H1
 ><P
 >These functions are fully supported in this release:</P
 ><TABLE
@@ -144,12 +141,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >dis_int</TT
 >( 
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >eintno</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -166,12 +160,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ena_int</TT
 >( 
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >eintno</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -188,12 +179,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ret_wup</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -210,12 +198,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >iwup_tsk</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -232,12 +217,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >isig_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -254,19 +236,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >iset_flg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >flgid ,</I
-></SPAN
 >
-    UID<SPAN
-CLASS="emphasis"
-><I
+    UID<I
 CLASS="EMPHASIS"
 > setptn</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -283,19 +259,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >isend_msg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mbxid ,</I
-></SPAN
 >
-    T_MSG<SPAN
-CLASS="emphasis"
-><I
+    T_MSG<I
 CLASS="EMPHASIS"
 > *pk_msg</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -334,12 +304,9 @@ CLASS="FUNCTION"
 functions also.</P
 ><P
 >If you are writing interrupt handlers more in the
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > style, with separate ISR and DSR routines both of
 your own devising, do not use these special functions from a DSR: use plain
 <TT
@@ -362,19 +329,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >def_int</TT
 >( 
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >dintno,</I
-></SPAN
 >
-  T_DINT *<SPAN
-CLASS="emphasis"
-><I
+  T_DINT *<I
 CLASS="EMPHASIS"
 >pk_dint</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -391,12 +352,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >chg_iXX</TT
 >( 
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >iXXXX</I
-></SPAN
 > )
   </PRE
 ></TD
@@ -414,24 +372,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_iXX</TT
 >( 
-    UINT * <SPAN
-CLASS="emphasis"
-><I
+    UINT * <I
 CLASS="EMPHASIS"
 >p_iXXXX</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >These unsupported functions are all Level C (CPU dependent).
-Equivalent functionality is available via other <SPAN
-CLASS="emphasis"
-><I
+Equivalent functionality is available via other <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 >-specific
 APIs. </P
 ><DIV
@@ -439,9 +391,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13830"
-></A
->Error checking</H2
+NAME="AEN14035"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -479,7 +431,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -491,7 +442,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-extended-sync-comm-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -500,7 +450,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -509,7 +458,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -525,7 +473,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

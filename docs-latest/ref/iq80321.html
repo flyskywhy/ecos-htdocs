@@ -9,11 +9,11 @@
 <HTML
 ><HEAD
 ><TITLE
->ARM/Xscale Intel IQ80321</TITLE
+>ARM/XScale Intel IQ80321</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -22,11 +22,11 @@ REL="UP"
 TITLE="Installation and Testing"
 HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="ARM/Xscale Cyclone IQ80310"
+TITLE="ARM/XScale Cyclone IQ80310"
 HREF="iq80310.html"><LINK
 REL="NEXT"
-TITLE="CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board "
-HREF="calmrisc16.html"></HEAD
+TITLE="ARM/Intel XScale IXDP425 Network Processor Evaluation Board"
+HREF="ixdp425.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="iq80310.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -68,8 +66,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="calmrisc16.html"
-ACCESSKEY="N"
+HREF="ixdp425.html"
 >Next</A
 ></TD
 ></TR
@@ -83,16 +80,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IQ80321"
-></A
->ARM/Xscale Intel IQ80321</H1
+>ARM/XScale Intel IQ80321</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6268"
-></A
->Overview</H2
+NAME="AEN6345"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 the serial port and the built-in ethernet port for communication and downloads.
@@ -104,7 +101,7 @@ management for the onboard 8MB flash.</P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6278"
+NAME="AEN6355"
 ></A
 ><P
 ></P
@@ -182,9 +179,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6297"
-></A
->Initial Installation Method</H2
+NAME="AEN6374"
+>Initial Installation Method</A
+></H2
 ><P
 >The board manufacturer provides a DOS application which is capable of
 programming the flash over the PCI bus, and this is required for initial installations
@@ -247,9 +244,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6306"
-></A
->Switch Settings</H2
+NAME="AEN6383"
+>Switch Settings</A
+></H2
 ><P
 >The 80321 board is highly configurable through a number of switches and jumpers.
 RedBoot makes some assumptions about board configuration and attention must be paid
@@ -279,7 +276,7 @@ configuration:
 <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6316"
+NAME="AEN6393"
 ></A
 ><P
 ></P
@@ -412,9 +409,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6352"
-></A
->LED Codes</H2
+NAME="AEN6429"
+>LED Codes</A
+></H2
 ><P
 >RedBoot uses the two digit LED display to indicate status during   board
 initialization. Possible codes are:</P
@@ -505,9 +502,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6356"
-></A
->Special RedBoot Commands</H2
+NAME="AEN6433"
+>Special RedBoot Commands</A
+></H2
 ><P
 >A special RedBoot command, <B
 CLASS="COMMAND"
@@ -561,9 +558,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6363"
-></A
->Memory Tests</H3
+NAME="AEN6440"
+>Memory Tests</A
+></H3
 ><P
 >This test is used to test installed DDR SDRAM memory. Five different
 tests are run over the given address ranges. If errors are encountered, the
@@ -621,9 +618,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6370"
-></A
->Repeating Memory Tests</H3
+NAME="AEN6447"
+>Repeating Memory Tests</A
+></H3
 ><P
 >The repeating memory tests are exactly the same as the above memory tests,
 except that the tests are automatically rerun after completion. The only way out
@@ -634,9 +631,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6373"
-></A
->Repeat-On-Fail Memory Tests</H3
+NAME="AEN6450"
+>Repeat-On-Fail Memory Tests</A
+></H3
 ><P
 >This is similar to the repeating memory tests except that when an error
 is found, the failing test continuously retries on the failing address.</P
@@ -646,9 +643,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6376"
-></A
->Rotary Switch S1 Test</H3
+NAME="AEN6453"
+>Rotary Switch S1 Test</A
+></H3
 ><P
 >This tests the operation of the sixteen position rotary switch. When run,
 this test will display the current position of the rotary switch on the LED
@@ -659,9 +656,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6379"
-></A
->7 Segment LED Tests</H3
+NAME="AEN6456"
+>7 Segment LED Tests</A
+></H3
 ><P
 >This tests the operation of the seven segment displays. When run, each
 LED cycles through 0 through F and a decimal point.</P
@@ -671,9 +668,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6382"
-></A
->i82544 Ethernet Configuration</H3
+NAME="AEN6459"
+>i82544 Ethernet Configuration</A
+></H3
 ><P
 >This test initializes the ethernet controller&#8217;s serial EEPROM if
 the current contents are invalid. In any case, this test will also allow the
@@ -713,9 +710,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6388"
-></A
->Battery Status Test</H3
+NAME="AEN6465"
+>Battery Status Test</A
+></H3
 ><P
 >This tests the current status of the battery. First, the test checks to
 see if the battery is installed and reports that finding. If the battery is
@@ -744,9 +741,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6398"
-></A
->Battery Backup SDRAM Memory Test</H3
+NAME="AEN6475"
+>Battery Backup SDRAM Memory Test</A
+></H3
 ><P
 >This tests the battery backup of SDRAM memory. This test is a three
 step process:</P
@@ -775,9 +772,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6408"
-></A
->Timer Test</H3
+NAME="AEN6485"
+>Timer Test</A
+></H3
 ><P
 >This tests the internal timer by printing a number of dots at one
 second intervals.</P
@@ -787,9 +784,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6411"
-></A
->PCI Bus Test</H3
+NAME="AEN6488"
+>PCI Bus Test</A
+></H3
 ><P
 >This tests the secondary PCI-X bus and socket. This test requires that
 an IQ80310 board be plugged into the secondary slot of the IOP80321 board.
@@ -802,9 +799,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6414"
-></A
->CPU Cache Loop</H3
+NAME="AEN6491"
+>CPU Cache Loop</A
+></H3
 ><P
 >This test puts the CPU into a tight loop run entirely from the ICache.
 This should prevent all external bus accesses.</P
@@ -815,9 +812,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6417"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN6494"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -849,9 +846,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6423"
-></A
->Interrupts</H2
+NAME="AEN6500"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0x8004.
 Entries in this table are pointers to functions with this protoype::      <TABLE
@@ -930,9 +927,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6431"
-></A
->Memory Maps</H2
+NAME="AEN6508"
+>Memory Maps</A
+></H2
 ><P
 >The RAM based page table is located at RAM start + 0x4000. RedBoot may be configured
 for one of two memory maps. The difference between them is the location of RAM and the
@@ -1031,9 +1028,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6441"
-></A
->Platform Resource Usage</H2
+NAME="AEN6518"
+>Platform Resource Usage</A
+></H2
 ><P
 >The Verde programmable timer0 is used for timeout support
 for networking and XModem file transfers.</P
@@ -1044,7 +1041,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1056,7 +1052,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="iq80310.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1065,7 +1060,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1073,8 +1067,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="calmrisc16.html"
-ACCESSKEY="N"
+HREF="ixdp425.html"
 >Next</A
 ></TD
 ></TR
@@ -1083,21 +1076,20 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->ARM/Xscale Cyclone IQ80310</TD
+>ARM/XScale Cyclone IQ80310</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
 HREF="installation-and-testing.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board</TD
+>ARM/Intel XScale IXDP425 Network Processor Evaluation Board</TD
 ></TR
 ></TABLE
 ></DIV

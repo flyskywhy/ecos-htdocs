@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-common-building-the-network-tests.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-performance-test.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-COMMON-STANDALONE-TESTS"
-></A
->Standalone Tests</H1
+>Standalone Tests</A
+></H1
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -93,19 +90,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >socket_test</I
-></SPAN
 > - trivial test of socket creation API 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >mbuf_test</I
-></SPAN
 > - trivial test of mbuf allocation API</PRE
 ></TD
 ></TR
@@ -121,12 +112,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >ftp_test</I
-></SPAN
 >      - simple FTP test, connects to &#8220;server&#8221;</PRE
 ></TD
 ></TR
@@ -144,12 +132,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >ping_test</I
-></SPAN
 >      - pings &#8220;server&#8221; and non-existent host to test timeout</PRE
 ></TD
 ></TR
@@ -163,6 +148,10 @@ the receive timeout.  If there is such a machine, of course the
 2nd set of pings succeeds, confirming that we can talk to a machine
 not previously mentioned by configuration or by bootp. It then does
 the same thing on the other interface, eth1.</P
+><P
+>If IPv6 is enabled, the program will also ping to the address it
+last received a router advertisement from. Also a ping will be made to
+that address plus 32, in a similar way the the IPv4 case.</P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -171,12 +160,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >dhcp_test</I
-></SPAN
 >    - ping test, but also manipulates DHCP leases</PRE
 ></TD
 ></TR
@@ -195,12 +181,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >flood</I
-></SPAN
 >        - a flood ping test; use with care</PRE
 ></TD
 ></TR
@@ -216,7 +199,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -228,7 +210,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-common-building-the-network-tests.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -237,7 +218,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -246,7 +226,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-performance-test.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -262,7 +241,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

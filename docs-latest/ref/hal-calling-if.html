@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="hal-porting-structure.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="hal-porting-coding-conventions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-CALLING-IF"
-></A
->Virtual Vectors (eCos/ROM Monitor Calling Interface)</H1
+>Virtual Vectors (eCos/ROM Monitor Calling Interface)</A
+></H1
 ><P
 >Some eCos platforms have supported full debugging capabilities via
 CygMon since day one. Platforms of the architectures PowerPC, ARM, and
@@ -103,20 +100,17 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-VIRTUAL-VECTORS"
-></A
->Virtual Vectors</H2
+>Virtual Vectors</A
+></H2
 ><P
 >What are virtual vectors, what do they do, and why are they
 needed?</P
 ><P
 >"Virtual vectors" is the name of a table located at a static
 location in the target address space. This table contains 64 vectors
-that point to <SPAN
-CLASS="emphasis"
-><I
+that point to <I
 CLASS="EMPHASIS"
 >service</I
-></SPAN
 > functions or data.</P
 ><P
 >The fact that the vectors are always placed at the same location in
@@ -125,12 +119,9 @@ can access these and thus the services pointed to.</P
 ><P
 >The primary goal is to allow services to be provided by ROM
 configurations (ROM monitors such as RedBoot in particular) with
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >clients</I
-></SPAN
 > in RAM configurations being able to use these
 services.</P
 ><P
@@ -147,16 +138,13 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8970"
-></A
->Initialization (or Mechanism vs. Policy)</H3
+NAME="AEN9175"
+>Initialization (or Mechanism vs. Policy)</A
+></H3
 ><P
->Virtual vectors are a <SPAN
-CLASS="emphasis"
-><I
+>Virtual vectors are a <I
 CLASS="EMPHASIS"
 >mechanism</I
-></SPAN
 > for decoupling services
 from clients in the address space.</P
 ><P
@@ -165,12 +153,9 @@ monitor, a RAM application, to be switched out at run-time, to be
 disabled by installing pointers to dummy functions, etc.</P
 ><P
 >The appropriate use of the mechanism is specified loosely by a
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >policy</I
-></SPAN
 >. The general policy dictates that the vectors are
 initialized in whole by ROM monitors (built for ROM or RAM), or by
 stand-alone applications.</P
@@ -208,9 +193,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8984"
-></A
->Pros and Cons of Virtual Vectors</H3
+NAME="AEN9189"
+>Pros and Cons of Virtual Vectors</A
+></H3
 ><P
 >There are pros and cons associated with the use of virtual
 vectors. We do believe that the pros generally outweigh the cons by a
@@ -318,9 +303,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9017"
-></A
->Available services</H3
+NAME="AEN9222"
+>Available services</A
+></H3
 ><P
 >The <TT
 CLASS="FILENAME"
@@ -352,9 +337,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9028"
-></A
->The COMMS channels</H2
+NAME="AEN9233"
+>The COMMS channels</A
+></H2
 ><P
 >As all HAL IO happens via the COMMS channels these deserve to be
 described in a little more detail. In particular the controls of where
@@ -365,9 +350,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9031"
-></A
->Console and Debugging Channels</H3
+NAME="AEN9236"
+>Console and Debugging Channels</A
+></H3
 ><P
 >There are two COMMS channels - one for console IO and one for
 debugging IO. They can be individually configured to use any of the
@@ -397,9 +382,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9038"
-></A
->Mangling</H3
+NAME="AEN9243"
+>Mangling</A
+></H3
 ><P
 >As debuggers usually have a protocol using specialized commands
 when communicating with the stub on the target, sending out text as
@@ -421,9 +406,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9043"
-></A
->Controlling the Console Channel</H3
+NAME="AEN9248"
+>Controlling the Console Channel</A
+></H3
 ><P
 >Console output configuration is either inherited from the ROM
 monitor launching the application, or it is specified by the
@@ -566,9 +551,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9085"
-></A
->Footnote: Design Reasoning for Control of Console Channel</H3
+NAME="AEN9290"
+>Footnote: Design Reasoning for Control of Console Channel</A
+></H3
 ><P
 >The current code for controlling the console channel is a
 replacement for an older implementation which had some shortcomings
@@ -623,9 +608,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9099"
-></A
->The calling Interface API</H2
+NAME="AEN9304"
+>The calling Interface API</A
+></H2
 ><P
 >The calling interface API is defined by hal_if.h and hal_if.c in
 hal/common.</P
@@ -678,9 +663,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9112"
-></A
->Implemented Services</H3
+NAME="AEN9317"
+>Implemented Services</A
+></H3
 ><P
 >This is a brief description of the services, some of which are
 described in further detail below.</P
@@ -723,7 +708,7 @@ CLASS="LITERAL"
 >The communication procedure table used for console IO
         (see <A
 HREF="hal-calling-if.html#HAL-PORTING-IO-CHANNELS"
->the Section called <I
+>the section called <I
 >IO channels</I
 ></A
 >.</P
@@ -738,7 +723,7 @@ CLASS="LITERAL"
 >The communication procedure table used for debugger IO
         (see <A
 HREF="hal-calling-if.html#HAL-PORTING-IO-CHANNELS"
->the Section called <I
+>the section called <I
 >IO channels</I
 ></A
 >).</P
@@ -856,9 +841,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9188"
-></A
->Compatibility</H3
+NAME="AEN9393"
+>Compatibility</A
+></H3
 ><P
 >When a platform is changed to support the calling interface,
 applications will use it if so configured. That means that if an
@@ -884,17 +869,14 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9194"
-></A
->Implementation details</H3
+NAME="AEN9399"
+>Implementation details</A
+></H3
 ><P
 >During the startup of a ROM monitor, the calling table will be
-initialized. This also happens if eCos is configured <SPAN
-CLASS="emphasis"
-><I
+initialized. This also happens if eCos is configured <I
 CLASS="EMPHASIS"
 >not</I
-></SPAN
 > to rely on
 a ROM monitor.</P
 ><DIV
@@ -923,9 +905,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9203"
-></A
->New Platform Ports</H3
+NAME="AEN9408"
+>New Platform Ports</A
+></H3
 ><P
 >The <TT
 CLASS="FUNCTION"
@@ -968,9 +950,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9215"
-></A
->New architecture ports</H3
+NAME="AEN9420"
+>New architecture ports</A
+></H3
 ><P
 >There are no specific requirements for a new architecture port in
 order to support the calling interface, but the basic debugging
@@ -983,8 +965,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-IO-CHANNELS"
-></A
->IO channels</H2
+>IO channels</A
+></H2
 ><P
 >The calling interface provides procedure tables for all IO channels on
 the platform. These are used for console (diagnostic) and debugger IO,
@@ -1002,9 +984,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9222"
-></A
->Available Procedures</H3
+NAME="AEN9427"
+>Available Procedures</A
+></H3
 ><P
 >This is a brief description of the procedures</P
 ><P
@@ -1187,9 +1169,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9312"
-></A
->Usage</H3
+NAME="AEN9517"
+>Usage</A
+></H3
 ><P
 >The standard eCos diagnostics IO functions use the channel
 procedure table when <TT
@@ -1246,9 +1228,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9320"
-></A
->Compatibility</H3
+NAME="AEN9525"
+>Compatibility</A
+></H3
 ><P
 >The use of this service is controlled by the option
 <TT
@@ -1263,9 +1245,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9324"
-></A
->Implementation Details</H3
+NAME="AEN9529"
+>Implementation Details</A
+></H3
 ><P
 >There is an array of procedure tables (raw comm channels) for each
 IO device of the platform which get initialized by the ROM monitor, or
@@ -1309,9 +1291,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9334"
-></A
->New Platform Ports</H3
+NAME="AEN9539"
+>New Platform Ports</A
+></H3
 ><P
 >Define CDL options <TT
 CLASS="LITERAL"
@@ -1362,12 +1344,9 @@ CLASS="NOTE"
 ><P
 ><B
 >Note:: </B
-> When vector table console code is <SPAN
-CLASS="emphasis"
-><I
+> When vector table console code is <I
 CLASS="EMPHASIS"
 >not</I
-></SPAN
 > used,
 the platform HAL must map the HAL_DIAG_INIT, HAL_DIAG_WRITE_CHAR and
 HAL_DIAG_READ_CHAR macros directly to the low-level IO functions,
@@ -1394,12 +1373,9 @@ CLASS="LITERAL"
 >HAL_DIAG_READ_CHAR</TT
 > implementations will also
 contain code to O-packetize the output for GDB. This should
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >not</I
-></SPAN
 > be adopted for new ports! On new ports the
 ROM monitor is guaranteed to provide the necessary mangling via the
 vector table. The hardwired configuration should be reserved for ROM
@@ -1414,7 +1390,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1426,7 +1401,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="hal-porting-structure.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1435,7 +1409,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1444,7 +1417,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="hal-porting-coding-conventions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1460,7 +1432,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="hal-porting-guide.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="posix-message-passing.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="posix-thread-specific-data.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,16 +80,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="POSIX-THREAD-MANAGEMENT"
-></A
->Thread Management &#0091;POSIX Section 16&#0093;</H1
+>Thread Management &#0091;POSIX Section 16&#0093;</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13262"
-></A
->Functions Implemented</H2
+NAME="AEN13467"
+>Functions Implemented</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -135,9 +132,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13265"
-></A
->Functions Omitted</H2
+NAME="AEN13470"
+>Functions Omitted</A
+></H2
 ><P
 >&lt;none&gt;</P
 ></DIV
@@ -146,9 +143,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13268"
-></A
->Notes</H2
+NAME="AEN13473"
+>Notes</A
+></H2
 ><P
 ></P
 ><UL
@@ -184,12 +181,9 @@ CLASS="SCREEN"
 ><P
 >      Dynamic thread stack allocation is only provided if there is an
       implementation of
-      <SPAN
-CLASS="emphasis"
-><I
+      <I
 CLASS="EMPHASIS"
 >malloc()</I
-></SPAN
 > configured (i.e. a package
       implements the
       CYGINT&#0095;MEMALLOC&#0095;MALLOC&#0095;ALLOCATORS
@@ -213,12 +207,9 @@ CLASS="EMPHASIS"
 ><LI
 ><P
 >    When the POSIX package is installed, the thread that calls 
-    <SPAN
-CLASS="emphasis"
-><I
+    <I
 CLASS="EMPHASIS"
 >main()</I
-></SPAN
 > is initialized as a POSIX thread. The
     priority of that thread is controlled by the
     CYGNUM&#0095;POSIX&#0095;MAIN&#0095;DEFAULT&#0095;PRIORITY option.
@@ -232,7 +223,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -244,7 +234,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="posix-message-passing.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -253,7 +242,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -262,7 +250,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="posix-thread-specific-data.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -278,7 +265,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="posix-standard-support.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

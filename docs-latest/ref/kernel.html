@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -34,7 +34,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -52,7 +51,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -66,7 +64,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="kernel-overview.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -95,112 +92,112 @@ CLASS="TOC"
 ><A
 HREF="kernel-overview.html"
 >Kernel Overview</A
->&nbsp;--&nbsp;Overview of the eCos Kernel</DT
+> &#8212; Overview of the eCos Kernel</DT
 ><DT
 ><A
 HREF="kernel-smp.html"
 >SMP Support</A
->&nbsp;--&nbsp;Support Symmetric Multiprocessing Systems</DT
+> &#8212; Support Symmetric Multiprocessing Systems</DT
 ><DT
 ><A
 HREF="kernel-thread-create.html"
 >Thread creation</A
->&nbsp;--&nbsp;Create a new thread</DT
+> &#8212; Create a new thread</DT
 ><DT
 ><A
 HREF="kernel-thread-info.html"
 >Thread information</A
->&nbsp;--&nbsp;Get basic thread information</DT
+> &#8212; Get basic thread information</DT
 ><DT
 ><A
 HREF="kernel-thread-control.html"
 >Thread control</A
->&nbsp;--&nbsp;Control whether or not a thread is running</DT
+> &#8212; Control whether or not a thread is running</DT
 ><DT
 ><A
 HREF="kernel-thread-termination.html"
 >Thread termination</A
->&nbsp;--&nbsp;Allow threads to terminate</DT
+> &#8212; Allow threads to terminate</DT
 ><DT
 ><A
 HREF="kernel-thread-priorities.html"
 >Thread priorities</A
->&nbsp;--&nbsp;Examine and manipulate thread priorities</DT
+> &#8212; Examine and manipulate thread priorities</DT
 ><DT
 ><A
 HREF="kernel-thread-data.html"
 >Per-thread data</A
->&nbsp;--&nbsp;Manipulate per-thread data</DT
+> &#8212; Manipulate per-thread data</DT
 ><DT
 ><A
 HREF="kernel-thread-destructors.html"
 >Thread destructors</A
->&nbsp;--&nbsp;Call functions on thread termination</DT
+> &#8212; Call functions on thread termination</DT
 ><DT
 ><A
 HREF="kernel-exceptions.html"
 >Exception handling</A
->&nbsp;--&nbsp;Handle processor exceptions</DT
+> &#8212; Handle processor exceptions</DT
 ><DT
 ><A
 HREF="kernel-counters.html"
 >Counters</A
->&nbsp;--&nbsp;Count event occurrences</DT
+> &#8212; Count event occurrences</DT
 ><DT
 ><A
 HREF="kernel-clocks.html"
 >Clocks</A
->&nbsp;--&nbsp;Provide system clocks</DT
+> &#8212; Provide system clocks</DT
 ><DT
 ><A
 HREF="kernel-alarms.html"
 >Alarms</A
->&nbsp;--&nbsp;Run an alarm function when a number of events have occurred</DT
+> &#8212; Run an alarm function when a number of events have occurred</DT
 ><DT
 ><A
 HREF="kernel-mutexes.html"
 >Mutexes</A
->&nbsp;--&nbsp;Synchronization primitive</DT
+> &#8212; Synchronization primitive</DT
 ><DT
 ><A
 HREF="kernel-condition-variables.html"
 >Condition Variables</A
->&nbsp;--&nbsp;Synchronization primitive</DT
+> &#8212; Synchronization primitive</DT
 ><DT
 ><A
 HREF="kernel-semaphores.html"
 >Semaphores</A
->&nbsp;--&nbsp;Synchronization primitive</DT
+> &#8212; Synchronization primitive</DT
 ><DT
 ><A
 HREF="kernel-mail-boxes.html"
 >Mail boxes</A
->&nbsp;--&nbsp;Synchronization primitive</DT
+> &#8212; Synchronization primitive</DT
 ><DT
 ><A
 HREF="kernel-flags.html"
 >Event Flags</A
->&nbsp;--&nbsp;Synchronization primitive</DT
+> &#8212; Synchronization primitive</DT
 ><DT
 ><A
 HREF="kernel-spinlocks.html"
 >Spinlocks</A
->&nbsp;--&nbsp;Low-level Synchronization Primitive</DT
+> &#8212; Low-level Synchronization Primitive</DT
 ><DT
 ><A
 HREF="kernel-schedcontrol.html"
 >Scheduler Control</A
->&nbsp;--&nbsp;Control the state of the scheduler</DT
+> &#8212; Control the state of the scheduler</DT
 ><DT
 ><A
 HREF="kernel-interrupts.html"
 >Interrupt Handling</A
->&nbsp;--&nbsp;Manage interrupt handlers</DT
+> &#8212; Manage interrupt handlers</DT
 ><DT
 ><A
 HREF="kernel-characterization.html"
 >Kernel Real-time Characterization</A
->&nbsp;--&nbsp;Measure the performance of the eCos kernel</DT
+> &#8212; Measure the performance of the eCos kernel</DT
 ></DL
 ></DIV
 ></DIV
@@ -210,7 +207,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -222,7 +218,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -231,7 +226,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -240,7 +234,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="kernel-overview.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR

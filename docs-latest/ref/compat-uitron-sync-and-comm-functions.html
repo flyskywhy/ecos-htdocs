@@ -13,13 +13,13 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Task-Dependent Synchronization Functions"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-task-dependent-synch-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-extended-sync-comm-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-SYNC-AND-COMM-FUNCTIONS"
-></A
->Synchronization and Communication Functions</H1
+>Synchronization and Communication Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -99,12 +96,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >sig_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -121,12 +115,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >wai_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -143,12 +134,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >preq_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -165,18 +153,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >twai_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid,</I
-></SPAN
->    TMO <SPAN
-CLASS="emphasis"
-><I
+>    TMO <I
 CLASS="EMPHASIS"
 >tmout</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -193,18 +175,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_sem</TT
 >( 
-    T_RSEM *<SPAN
-CLASS="emphasis"
-><I
+    T_RSEM *<I
 CLASS="EMPHASIS"
 >pk_rsem ,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -221,18 +197,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >set_flg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >flgid,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >setptn</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -249,18 +219,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >clr_flg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >flgid,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >clrptn</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -277,31 +241,19 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >wai_flg</TT
 >( 
-    UINT *<SPAN
-CLASS="emphasis"
-><I
+    UINT *<I
 CLASS="EMPHASIS"
 >p_flgptn,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >flgid ,</I
-></SPAN
 >
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >waiptn ,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >wfmode</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -318,31 +270,19 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >pol_flg</TT
 >( 
-    UINT *<SPAN
-CLASS="emphasis"
-><I
+    UINT *<I
 CLASS="EMPHASIS"
 >p_flgptn,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >flgid ,</I
-></SPAN
 >
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >waiptn ,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >wfmode</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -359,37 +299,22 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >twai_flg</TT
 >( 
-    UINT *<SPAN
-CLASS="emphasis"
-><I
+    UINT *<I
 CLASS="EMPHASIS"
 >p_flgptn</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >flgid ,</I
-></SPAN
 >
-    UINT <SPAN
-CLASS="emphasis"
-><I
+    UINT <I
 CLASS="EMPHASIS"
 >waiptn ,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >wfmode,</I
-></SPAN
->    TMO <SPAN
-CLASS="emphasis"
-><I
+>    TMO <I
 CLASS="EMPHASIS"
 >tmout</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -406,18 +331,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_flg</TT
 >( 
-    T_RFLG *<SPAN
-CLASS="emphasis"
-><I
+    T_RFLG *<I
 CLASS="EMPHASIS"
 >pk_rflg,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >flgid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -434,18 +353,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >snd_msg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mbxid,</I
-></SPAN
->    T_MSG <SPAN
-CLASS="emphasis"
-><I
+>    T_MSG <I
 CLASS="EMPHASIS"
 >*pk_msg</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -462,18 +375,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rcv_msg</TT
 >( 
-    T_MSG **<SPAN
-CLASS="emphasis"
-><I
+    T_MSG **<I
 CLASS="EMPHASIS"
 >ppk_msg,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mbxid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -490,18 +397,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >prcv_msg</TT
 >( 
-    T_MSG **<SPAN
-CLASS="emphasis"
-><I
+    T_MSG **<I
 CLASS="EMPHASIS"
 >ppk_msg,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mbxid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -518,24 +419,15 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >trcv_msg</TT
 >( 
-    T_MSG **<SPAN
-CLASS="emphasis"
-><I
+    T_MSG **<I
 CLASS="EMPHASIS"
 >ppk_msg,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mbxid ,</I
-></SPAN
->    TMO <SPAN
-CLASS="emphasis"
-><I
+>    TMO <I
 CLASS="EMPHASIS"
 >tmout</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -552,18 +444,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_mbx</TT
 >( 
-    T_RMBX *<SPAN
-CLASS="emphasis"
-><I
+    T_RMBX *<I
 CLASS="EMPHASIS"
 >pk_rmbx,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mbxid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -588,18 +474,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid,</I
-></SPAN
->    T_CSEM *<SPAN
-CLASS="emphasis"
-><I
+>    T_CSEM *<I
 CLASS="EMPHASIS"
 >pk_csem</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -616,12 +496,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_sem</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >semid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -638,18 +515,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_flg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >flgid,</I
-></SPAN
->    T_CFLG *<SPAN
-CLASS="emphasis"
-><I
+>    T_CFLG *<I
 CLASS="EMPHASIS"
 >pk_cflg</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -666,12 +537,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_flg</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >flgid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -688,18 +556,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_mbx</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mbxid,</I
-></SPAN
->    T_CMBX *<SPAN
-CLASS="emphasis"
-><I
+>    T_CMBX *<I
 CLASS="EMPHASIS"
 >pk_cmbx</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -716,12 +578,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_mbx</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mbxid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -765,9 +624,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13715"
-></A
->Error checking</H2
+NAME="AEN13920"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -954,7 +813,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -966,7 +824,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-task-dependent-synch-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -975,7 +832,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -984,7 +840,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-extended-sync-comm-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1000,7 +855,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

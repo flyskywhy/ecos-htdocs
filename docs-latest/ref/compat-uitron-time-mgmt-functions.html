@@ -13,13 +13,13 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="	  Memory pool Management Functions"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-system-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-TIME-MGMT-FUNCTIONS"
-></A
->Time Management Functions</H1
+>Time Management Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -99,12 +96,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >set_tim</TT
 >( 
-    SYSTIME *<SPAN
-CLASS="emphasis"
-><I
+    SYSTIME *<I
 CLASS="EMPHASIS"
 >pk_tim</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -147,12 +141,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_tim</TT
 >( 
-    SYSTIME *<SPAN
-CLASS="emphasis"
-><I
+    SYSTIME *<I
 CLASS="EMPHASIS"
 >pk_tim</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -169,12 +160,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >dly_tsk</TT
 >( 
-    DLYTIME <SPAN
-CLASS="emphasis"
-><I
+    DLYTIME <I
 CLASS="EMPHASIS"
 >dlytim</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -191,18 +179,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >def_cyc</TT
 >( 
-    HNO <SPAN
-CLASS="emphasis"
-><I
+    HNO <I
 CLASS="EMPHASIS"
 >cycno,</I
-></SPAN
->    T_DCYC *<SPAN
-CLASS="emphasis"
-><I
+>    T_DCYC *<I
 CLASS="EMPHASIS"
 >pk_dcyc</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -219,18 +201,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >act_cyc</TT
 >( 
-    HNO <SPAN
-CLASS="emphasis"
-><I
+    HNO <I
 CLASS="EMPHASIS"
 >cycno,</I
-></SPAN
->    UINT <SPAN
-CLASS="emphasis"
-><I
+>    UINT <I
 CLASS="EMPHASIS"
 >cycact</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -247,18 +223,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_cyc</TT
 >( 
-    T_RCYC *<SPAN
-CLASS="emphasis"
-><I
+    T_RCYC *<I
 CLASS="EMPHASIS"
 >pk_rcyc,</I
-></SPAN
->    HNO <SPAN
-CLASS="emphasis"
-><I
+>    HNO <I
 CLASS="EMPHASIS"
 >cycno</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -275,18 +245,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >def_alm</TT
 >( 
-    HNO <SPAN
-CLASS="emphasis"
-><I
+    HNO <I
 CLASS="EMPHASIS"
 >almno,</I
-></SPAN
->    T_DALM *<SPAN
-CLASS="emphasis"
-><I
+>    T_DALM *<I
 CLASS="EMPHASIS"
 >pk_dalm</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -303,18 +267,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_alm</TT
 >( 
-    T_RALM *<SPAN
-CLASS="emphasis"
-><I
+    T_RALM *<I
 CLASS="EMPHASIS"
 >pk_ralm,</I
-></SPAN
->    HNO <SPAN
-CLASS="emphasis"
-><I
+>    HNO <I
 CLASS="EMPHASIS"
 >almno</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -339,9 +297,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN14009"
-></A
->Error checking</H2
+NAME="AEN14214"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -455,7 +413,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -467,7 +424,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -476,7 +432,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -485,7 +440,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-system-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -501,7 +455,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

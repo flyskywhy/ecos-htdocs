@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,19 +54,15 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-starting-the-snmp-agent.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 47. SNMP for <SPAN
-CLASS="emphasis"
-><I
+>Chapter 47. SNMP for <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 ></TD
 ><TD
 WIDTH="10%"
@@ -75,7 +70,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-test-cases.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -89,55 +83,13 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-SNMP-CONFIGURING-ECOS"
-></A
->Configuring eCos</H1
+>Configuring eCos</A
+></H1
 ><P
->To use the SNMP agent, the SNMP library and agent packages must
-be included in your configuration. In addition, at this point, the SNMP
-stack only works with the OpenBSD-based TCP/IP stack, not the FreeBSD-based
-stack. The "old_net" template can be used as a starting point for using
-the OpenBSD-based TCP/IP stack, for example:
-<TABLE
-BORDER="5"
-BGCOLOR="#E0E0F0"
-WIDTH="70%"
-><TR
-><TD
-><PRE
-CLASS="SCREEN"
->$ <TT
-CLASS="USERINPUT"
-><B
->ecosconfig new mytarget old_net</B
-></TT
-></PRE
-></TD
-></TR
-></TABLE
->
-or you can add the various required packages to an existing configuration with:
-<TABLE
-BORDER="5"
-BGCOLOR="#E0E0F0"
-WIDTH="70%"
-><TR
-><TD
-><PRE
-CLASS="SCREEN"
->$ <TT
-CLASS="USERINPUT"
-><B
->ecosconfig add net openbsd_net eth_drivers</B
-></TT
-></PRE
-></TD
-></TR
-></TABLE
-></P
-><P
->To incorporate the stack into your configuration select the SNMP library
-and SNMP agent packages in the eCos Configuration Tool, or at the command
-line type:
+>To use the SNMP agent, the SNMP library and agent packages must be
+included in your configuration. To incorporate the stack into your
+configuration select the SNMP library and SNMP agent packages in the
+eCos Configuration Tool, or at the command line type:
 <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -177,8 +129,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-SNMP-VERSION-USAGE"
-></A
->Version usage (v1, v2 or v3)</H2
+>Version usage (v1, v2 or v3)</A
+></H2
 ><P
 >The default build supports all three versions of the SNMP protocol, but without
 any dispatcher functionality (rfc 2571, section 3.1.1.2). This has the
@@ -211,8 +163,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="TRAPS"
-></A
->Traps</H2
+>Traps</A
+></H2
 ><P
 >The support of the <TT
 CLASS="LITERAL"
@@ -270,11 +222,11 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-SNMP-SNMPD-CONF"
-></A
 ><TT
 CLASS="LITERAL"
 >snmpd.conf</TT
-> file</H2
+> file</A
+></H2
 ><P
 >Using snmpd.conf requires the inclusion of one of the file-system packages
 (eg. CYGPKG_RAMFS) and CYGPKG_FILEIO. With these two packages included, the
@@ -349,7 +301,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -361,7 +312,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-snmp-starting-the-snmp-agent.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -370,7 +320,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -379,7 +328,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-snmp-test-cases.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -395,7 +343,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-snmp-ecos-port.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

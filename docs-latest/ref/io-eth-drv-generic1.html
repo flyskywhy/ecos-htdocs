@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="io-eth-drv-generic.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="io-eth-drv-api-funcs.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="IO-ETH-DRV-GENERIC1"
-></A
->Chapter 46. Generic Ethernet Device Driver</H1
+>Chapter 46. Generic Ethernet Device Driver</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -119,8 +116,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-DRV-API"
-></A
->Generic Ethernet API</H1
+>Generic Ethernet API</A
+></H1
 ><P
 >This file provides a simple description of how to write a low-level,
 hardware dependent ethernet driver.</P
@@ -247,12 +244,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >
-Your driver does <SPAN
-CLASS="emphasis"
-><I
+Your driver does <I
 CLASS="EMPHASIS"
 >not</I
-></SPAN
 > create an instance of this
 structure.  It is provided for driver code to use in the
 <SPAN
@@ -261,7 +255,7 @@ CLASS="TYPE"
 > member of the function record.
 Its usage is described below in <A
 HREF="io-eth-drv-upper-api.html"
->the Section called <I
+>the section called <I
 >Upper Layer Functions</I
 ></A
 ></P
@@ -289,7 +283,7 @@ interrupt handler.  It will awaken the
 &#8220;Network Delivery Thread&#8221;
 to call your deliver routine.  See <A
 HREF="io-eth-drv-api-funcs.html#IO-ETH-DRV-API-DELIVER"
->the Section called <I
+>the section called <I
 >Deliver function</I
 ></A
 >.</P
@@ -517,7 +511,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -529,7 +522,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-generic.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -538,7 +530,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -547,7 +538,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-api-funcs.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -563,7 +553,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-generic.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="posix-standard-support.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="posix-files-and-directories.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,16 +80,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="POSIX-PROCESS-ENVIRONMENT"
-></A
->Process Environment &#0091;POSIX Section 4&#0093;</H1
+>Process Environment &#0091;POSIX Section 4&#0093;</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13010"
-></A
->Functions Implemented</H2
+NAME="AEN13215"
+>Functions Implemented</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -115,9 +112,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13013"
-></A
->Functions Omitted</H2
+NAME="AEN13218"
+>Functions Omitted</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -153,20 +150,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13016"
-></A
->Notes</H2
+NAME="AEN13221"
+>Notes</A
+></H2
 ><P
 ></P
 ><UL
 ><LI
 ><P
->The fields of the <SPAN
-CLASS="emphasis"
-><I
+>The fields of the <I
 CLASS="EMPHASIS"
 >utsname</I
-></SPAN
 >
 	    structure are initialized as follows:
             <TABLE
@@ -199,12 +193,9 @@ CLASS="SCREEN"
 ></LI
 ><LI
 ><P
->	    The <SPAN
-CLASS="emphasis"
-><I
+>	    The <I
 CLASS="EMPHASIS"
 >time()</I
-></SPAN
 > function is currently
 	    implemented in the C library.
 	    </P
@@ -214,24 +205,18 @@ CLASS="EMPHASIS"
 >A set of environment strings may be defined at configuration
 	    time with the CYGDAT&#0095;LIBC&#0095;DEFAULT&#0095;ENVIRONMENT
 	    option. The application may also define an environment by direct
-	    assignment to the <SPAN
-CLASS="strong"
-><B
+	    assignment to the <I
 CLASS="EMPHASIS"
->environ</B
-></SPAN
+>environ</I
 >
 	    variable.
 	    </P
 ></LI
 ><LI
 ><P
->	    At present <SPAN
-CLASS="emphasis"
-><I
+>	    At present <I
 CLASS="EMPHASIS"
 >isatty()</I
-></SPAN
 > assumes that
 	    any character device is a tty and that all other devices are not
 	    ttys. Since the only kind of device that eCos currently supports
@@ -259,7 +244,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -271,7 +255,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="posix-standard-support.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -280,7 +263,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -289,7 +271,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="posix-files-and-directories.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -305,7 +286,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="posix-standard-support.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,16 +13,16 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
-TITLE="ÂµITRON and eCos"
+TITLE="µITRON and eCos"
 HREF="compat-uitron-over-ecos.html"><LINK
 REL="NEXT"
 TITLE="Task-Dependent Synchronization Functions"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-over-ecos.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-task-dependent-synch-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-TASK-MANAGEMENT-FUNCTIONS"
-></A
->Task Management Functions</H1
+>Task Management Functions</A
+></H1
 ><P
 >The following functions are fully supported in this release: </P
 ><TABLE
@@ -99,19 +96,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >sta_tsk</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid,</I
-></SPAN
 >
-  INT <SPAN
-CLASS="emphasis"
-><I
+  INT <I
 CLASS="EMPHASIS"
 >stacd</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -188,19 +179,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >chg_pri</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid,</I
-></SPAN
 >
-  PRI <SPAN
-CLASS="emphasis"
-><I
+  PRI <I
 CLASS="EMPHASIS"
 >tskpri</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -217,12 +202,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rot_rdq</TT
 >( 
-  PRI <SPAN
-CLASS="emphasis"
-><I
+  PRI <I
 CLASS="EMPHASIS"
 >tskpri</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -239,12 +221,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_tid</TT
 >( 
-  ID *<SPAN
-CLASS="emphasis"
-><I
+  ID *<I
 CLASS="EMPHASIS"
 >p_tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -261,19 +240,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_tsk</TT
 >( 
-  T_RTSK *<SPAN
-CLASS="emphasis"
-><I
+  T_RTSK *<I
 CLASS="EMPHASIS"
 >pk_rtsk,</I
-></SPAN
 >
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -290,12 +263,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ter_tsk</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -312,12 +282,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rel_wai</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -342,19 +309,13 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_tsk</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid,</I
-></SPAN
 >
-  T_CTSK *<SPAN
-CLASS="emphasis"
-><I
+  T_CTSK *<I
 CLASS="EMPHASIS"
 >pk_ctsk</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -371,12 +332,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_tsk</TT
 >( 
-  ID <SPAN
-CLASS="emphasis"
-><I
+  ID <I
 CLASS="EMPHASIS"
 >tskid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -402,12 +360,9 @@ not in any sense free the memory that was in use for the task's
 stack. </P
 ><P
 >The task attributes (pk_ctsk-&gt;tskatr) are
-ignored; current versions of <SPAN
-CLASS="emphasis"
-><I
+ignored; current versions of <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > do not need
 to know whether a task is written in assembler or C/C&#0043;&#0043; so
 long as the procedure call standard appropriate to the CPU is followed.</P
@@ -419,9 +374,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13489"
-></A
->Error checking</H2
+NAME="AEN13694"
+>Error checking</A
+></H2
 ><P
 >For all these calls, an invalid task id (tskid) (less than
 1 or greater than the number of configured tasks) only returns E_ID
@@ -562,12 +517,9 @@ CLASS="FUNCTION"
 >del_tsk()</TT
 >
 : the underlying 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 >
  thread must not be running - this would imply either a bug or some
 program bypassing the 
@@ -622,7 +574,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -634,7 +585,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-over-ecos.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -643,7 +593,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -652,7 +601,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-task-dependent-synch-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -661,12 +609,9 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->&micro;ITRON and <SPAN
-CLASS="emphasis"
-><I
+>&micro;ITRON and <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 ></TD
 ><TD
 WIDTH="34%"
@@ -674,7 +619,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

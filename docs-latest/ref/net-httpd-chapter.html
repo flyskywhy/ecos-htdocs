@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-httpd.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-httpd-organization.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="NET-HTTPD-CHAPTER"
-></A
->Chapter 48. Embedded HTTP Server</H1
+>Chapter 48. Embedded HTTP Server</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -124,26 +121,20 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-HTTPD-INTRO"
-></A
->Intrduction</H1
+>Intrduction</A
+></H1
 ><P
->The <SPAN
-CLASS="emphasis"
-><I
+>The <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > HTTPD package provides a simple HTTP
 server for use with applications in eCos. This server is specifically
 aimed at the remote control and monitoring requirements of embedded
 applications. For this reason the emphasis is on dynamically generated
 content, simple forms handling and a basic CGI interface. It is
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >not</I
-></SPAN
 > intended to be a general purpose server for
 delivering arbitrary web content. For these purposes a port of the
 GoAhead web server is available from <A
@@ -151,6 +142,9 @@ HREF="www.goahead.com"
 TARGET="_top"
 >www.goahead.com</A
 >.</P
+><P
+>This server is also capable of serving content using IPv6 when
+the eCos configuration contains IPv6.</P
 ></DIV
 ></DIV
 ><DIV
@@ -158,7 +152,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -170,7 +163,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-httpd.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -179,7 +171,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -188,7 +179,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-httpd-organization.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -204,7 +194,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-httpd.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

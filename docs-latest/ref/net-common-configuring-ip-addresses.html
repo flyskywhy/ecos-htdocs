@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-common-sample-code.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="NET-COMMON-CONFIGURING-IP-ADDRESSES"
-></A
->Chapter 35. Configuring IP Addresses</H1
+>Chapter 35. Configuring IP Addresses</A
+></H1
 ><P
 >Each interface (&#8220;eth0&#8221; and &#8220;eth1&#8221;)
 has independent configuration of its setup.  Each can be set up
@@ -151,6 +148,14 @@ CYGHWR_NET_DRIVER_ETH0_IPV6_PREFIX for &#8220;eth0&#8221;, etc.
 This is a CDL booldata type, allowing this address to be suppressed if
 not desired.</P
 ><P
+>Alternatively, the system can configure its IPv6 address using
+router solicitation. When the CDL option
+CYGOPT_NET_IPV6_ROUTING_THREAD is enabled,
+<TT
+CLASS="FUNCTION"
+>init_all_network_interface</TT
+> will start a thread which sends out router solicit messages, process router advertisements and thus configure an IPv6 address to the interface.</P
+><P
 >Refer to the test cases,
 <TT
 CLASS="FILENAME"
@@ -195,12 +200,9 @@ DHCP, and it contains an option to have the system provide a thread
 to renew DHCP leases and manage lease expiry. Secondly, the individual
 interfaces &#8220;eth0&#8221; and &#8220;eth1&#8221; each
 have new options within the &#8220;Use BOOTP/DHCP to
-initialize &#8216;<SPAN
-CLASS="emphasis"
-><I
+initialize &#8216;<I
 CLASS="EMPHASIS"
 >ethX</I
-></SPAN
 >&#8217;&#8221; to
 select whether to use DHCP rather than BOOTP.</P
 ><P
@@ -255,7 +257,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -267,7 +268,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-common-sample-code.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -276,7 +276,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -285,7 +284,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -301,7 +299,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-common-tcpip.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

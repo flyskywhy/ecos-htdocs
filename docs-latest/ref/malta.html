@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="atlas.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="ocelot.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,16 +80,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="MALTA"
-></A
->MIPS/MIPS32(CoreLV 4Kc)+MIPS64(CoreLV 5Kc) Malta Board</H1
+>MIPS/MIPS32(CoreLV 4Kc)+MIPS64(CoreLV 5Kc) Malta Board</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6808"
-></A
->Overview</H2
+NAME="AEN7013"
+>Overview</A
+></H2
 ><P
 >RedBoot supports both front
 facing serial ports and the built in ethernet port for communication and downloads.
@@ -104,7 +101,7 @@ flash management for the system flash region.</P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6818"
+NAME="AEN7023"
 ></A
 ><P
 ></P
@@ -182,15 +179,15 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6837"
-></A
->Initial Installation</H2
+NAME="AEN7042"
+>Initial Installation</A
+></H2
 ><P
 >RedBoot is installed using the code download facility built into the
 Malta board. See the Malta User manual for details, and also the Malta download
 format in <A
 HREF="malta.html#MALTA-DOWNLOAD-FORMAT"
->the Section called <I
+>the section called <I
 >Malta download format</I
 ></A
 >.</P
@@ -199,9 +196,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6841"
-></A
->Quick download instructions</H3
+NAME="AEN7046"
+>Quick download instructions</A
+></H3
 ><P
 >Here are quick start instructions for downloading the prebuilt RedBoot
 image. </P
@@ -309,13 +306,13 @@ CLASS="COMMAND"
 >fconfig</B
 > commands to initialize the flash. See <A
 HREF="flash-image-system.html"
->the Section called <I
+>the section called <I
 >Flash Image System (FIS)</I
 > in Chapter 2</A
 >
 and <A
 HREF="persistent-state-flash.html"
->the Section called <I
+>the section called <I
 >Persistent State Flash-based Configuration and Control</I
 > in Chapter 2</A
 > for details. </P
@@ -328,8 +325,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="MALTA-DOWNLOAD-FORMAT"
-></A
->Malta download format</H3
+>Malta download format</A
+></H3
 ><P
 >In order to download RedBoot to the Malta board, it must be converted
 to the Malta download format.</P
@@ -388,9 +385,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6887"
-></A
->Additional commands</H2
+NAME="AEN7092"
+>Additional commands</A
+></H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -399,7 +396,7 @@ CLASS="COMMAND"
 loading and execution of Linux kernels, is supported for this architecture
  (see <A
 HREF="executing-programs.html"
->the Section called <I
+>the section called <I
 >Executing Programs from RedBoot</I
 > in Chapter 2</A
 >). The
@@ -493,9 +490,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6919"
-></A
->Interrupts</H2
+NAME="AEN7124"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0x80000200.
 Entries in this table are pointers to functions with this protoype:      <TABLE
@@ -569,9 +566,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6928"
-></A
->Memory Maps</H2
+NAME="AEN7133"
+>Memory Maps</A
+></H2
 ><P
 >Memory Maps RedBoot sets up the following memory map on the Malta board.<DIV
 CLASS="NOTE"
@@ -613,9 +610,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6935"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN7140"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -648,7 +645,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -660,7 +656,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="atlas.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -669,7 +664,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -678,7 +672,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="ocelot.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -694,7 +687,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="installation-and-testing.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

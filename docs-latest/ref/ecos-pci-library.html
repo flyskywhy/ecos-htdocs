@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="io-pci.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="pci-library-reference.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="ECOS-PCI-LIBRARY"
-></A
->Chapter 30. The eCos PCI Library</H1
+>Chapter 30. The eCos PCI Library</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -112,8 +109,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PCI-LIBRARY"
-></A
->PCI Library</H1
+>PCI Library</A
+></H1
 ><P
 >The eCos PCI library provides the following functionality:</P
 ><P
@@ -160,9 +157,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12690"
-></A
->PCI Overview</H2
+NAME="AEN12895"
+>PCI Overview</A
+></H2
 ><P
 >The PCI bus supports several address spaces: memory, IO, and configuration. All PCI
 devices must support mandatory configuration space registers. Some devices may also present
@@ -188,9 +185,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12694"
-></A
->Initializing the bus</H2
+NAME="AEN12899"
+>Initializing the bus</A
+></H2
 ><P
 >The PCI bus needs to be initialized before it can be used.
 This only needs to be done once - some HALs may do it as part of
@@ -216,9 +213,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12698"
-></A
->Scanning for devices</H2
+NAME="AEN12903"
+>Scanning for devices</A
+></H2
 ><P
 >After the bus has been initialized, it is possible to scan
 it for devices. This is done using the function:</P
@@ -355,9 +352,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12725"
-></A
->Generic config information</H2
+NAME="AEN12930"
+>Generic config information</A
+></H2
 ><P
 >When a valid device ID (devid) is found using one of the above
 functions, the associated device can be queried and controlled using
@@ -419,9 +416,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12736"
-></A
->Specific config information</H2
+NAME="AEN12941"
+>Specific config information</A
+></H2
 ><P
 >The above functions only allow access to generic PCI config
 registers. A device can have extra config registers not specified
@@ -460,9 +457,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12741"
-></A
->Allocating memory</H2
+NAME="AEN12946"
+>Allocating memory</A
+></H2
 ><P
 >A PCI device ignores all IO and memory access from the PCI
 bus until it has been activated. Activation cannot happen until
@@ -580,8 +577,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PCI-INTERRUPTS"
-></A
->Interrupts</H2
+>Interrupts</A
+></H2
 ><P
 >A device may generate interrupts. The HAL vector associated
 with a given device on the bus is platform specific. This function
@@ -633,9 +630,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12769"
-></A
->Activating a device</H2
+NAME="AEN12974"
+>Activating a device</A
+></H2
 ><P
 >When the device has been allocated memory space it can be
 activated. This is not done by the library since a driver may have
@@ -702,9 +699,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN12781"
-></A
->Links</H2
+NAME="AEN12986"
+>Links</A
+></H2
 ><P
 >See these links for more information about PCI:</P
 ><P
@@ -747,7 +744,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -759,7 +755,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="io-pci.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -768,7 +763,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -777,7 +771,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="pci-library-reference.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -793,7 +786,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-pci.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -9,11 +9,11 @@
 <HTML
 ><HEAD
 ><TITLE
->ARM/Xscale Cyclone IQ80310</TITLE
+>ARM/XScale Cyclone IQ80310</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -25,7 +25,7 @@ REL="PREVIOUS"
 TITLE="ARM/StrongARM(SA11X0) Intrinsyc CerfCube"
 HREF="cerfcube.html"><LINK
 REL="NEXT"
-TITLE="ARM/Xscale Intel IQ80321"
+TITLE="ARM/XScale Intel IQ80321"
 HREF="iq80321.html"></HEAD
 ><BODY
 CLASS="SECT1"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="cerfcube.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="iq80321.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,16 +80,16 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IQ80310"
-></A
->ARM/Xscale Cyclone IQ80310</H1
+>ARM/XScale Cyclone IQ80310</A
+></H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6163"
-></A
->Overview</H2
+NAME="AEN6240"
+>Overview</A
+></H2
 ><P
 >RedBoot supports
 both serial ports and the built-in ethernet port for communication and downloads.
@@ -104,7 +101,7 @@ management for the onboard 8MB flash.</P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6173"
+NAME="AEN6250"
 ></A
 ><P
 ></P
@@ -220,9 +217,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6202"
-></A
->Initial Installation Method</H2
+NAME="AEN6279"
+>Initial Installation Method</A
+></H2
 ><P
 >The board manufacturer provides a DOS application which is
 capable of programming the flash over the PCI bus, and this is
@@ -360,9 +357,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6223"
-></A
->Error codes</H2
+NAME="AEN6300"
+>Error codes</A
+></H2
 ><P
 >RedBoot uses the two digit LED display to indicate errors during   board
 initialization. Possible error codes are:      <P
@@ -378,9 +375,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6227"
-></A
->Using RedBoot with ARM Bootloader</H2
+NAME="AEN6304"
+>Using RedBoot with ARM Bootloader</A
+></H2
 ><P
 >RedBoot can coexist with ARM tools in flash on the IQ80310 board. In
 this configuration, the ARM bootloader will occupy the flash boot sector while
@@ -394,9 +391,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6230"
-></A
->Special RedBoot Commands</H2
+NAME="AEN6307"
+>Special RedBoot Commands</A
+></H2
 ><P
 >A special RedBoot command, <B
 CLASS="COMMAND"
@@ -448,9 +445,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6236"
-></A
->IQ80310 Hardware Tests</H2
+NAME="AEN6313"
+>IQ80310 Hardware Tests</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -495,9 +492,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6241"
-></A
->Rebuilding RedBoot</H2
+NAME="AEN6318"
+>Rebuilding RedBoot</A
+></H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -529,9 +526,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6247"
-></A
->Interrupts</H2
+NAME="AEN6324"
+>Interrupts</A
+></H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0xA000A004.
 Entries in this table are pointers to functions with this protoype::      <TABLE
@@ -652,9 +649,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6255"
-></A
->Memory Maps</H2
+NAME="AEN6332"
+>Memory Maps</A
+></H2
 ><P
 >The first level page table is located at 0xa0004000. Two second level
 tables are also used. One second level table is located at 0xa0008000 and
@@ -724,9 +721,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6263"
-></A
->Platform Resource Usage</H2
+NAME="AEN6340"
+>Platform Resource Usage</A
+></H2
 ><P
 >The external timer is used as a polled timer to provide timeout support
 for networking and XModem file transfers.</P
@@ -737,7 +734,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -749,7 +745,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="cerfcube.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -758,7 +753,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -767,7 +761,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="iq80321.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -783,14 +776,13 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="installation-and-testing.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->ARM/Xscale Intel IQ80321</TD
+>ARM/XScale Intel IQ80321</TD
 ></TR
 ></TABLE
 ></DIV

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="hal-porting-coding-conventions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="hal-porting-variant.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-PLATFORM"
-></A
->Platform HAL Porting</H1
+>Platform HAL Porting</A
+></H1
 ><P
 >This is the type of port that takes the least effort. It basically
 consists of describing the platform (board) for the HAL: memory
@@ -98,17 +95,17 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9414"
-></A
->HAL Platform Porting Process</H2
+NAME="AEN9619"
+>HAL Platform Porting Process</A
+></H2
 ><DIV
 CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9416"
-></A
->Brief overview</H3
+NAME="AEN9621"
+>Brief overview</A
+></H3
 ><P
 >The easiest way to make a new platform HAL is simply to copy an
 existing platform HAL of the same architecture/variant and change all
@@ -167,9 +164,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9430"
-></A
->Step-by-step</H3
+NAME="AEN9635"
+>Step-by-step</A
+></H3
 ><P
 >Given that no two platforms are exactly the same, you may have to
 deviate from the below. Also, you should expect a fair amount of
@@ -187,9 +184,9 @@ CLASS="SECTION"
 ><H4
 CLASS="SECTION"
 ><A
-NAME="AEN9434"
-></A
->Minimal requirements</H4
+NAME="AEN9639"
+>Minimal requirements</A
+></H4
 ><P
 >These are the changes you must make before you attempt to build
 RedBoot. You are advised to read all the sources though.</P
@@ -213,7 +210,7 @@ TYPE="1"
     where not used on the platform you copied. If so, add appropriate
     ones. See <A
 HREF="hal-porting-platform.html#HAL-PORTING-CDL-REQUIREMENTS"
->the Section called <I
+>the section called <I
 >HAL Platform CDL</I
 ></A
 > for more
@@ -227,7 +224,7 @@ CLASS="FILENAME"
 >ecos.db</TT
 > file. See <A
 HREF="hal-porting-platform.html#HAL-PORTING-ECOS-DATABASE"
->the Section called <I
+>the section called <I
 >eCos Database</I
 ></A
 >. Initially, the target entry
@@ -246,7 +243,7 @@ CLASS="FILENAME"
     files using the memory layout editor in the configuration
     tool. See <A
 HREF="hal-porting-platform.html#HAL-PORTING-PLATFORM-MEMORY-LAYOUT"
->the Section called <I
+>the section called <I
 >Platform Memory Layout</I
 ></A
 > for
@@ -410,9 +407,9 @@ CLASS="SECTION"
 ><H4
 CLASS="SECTION"
 ><A
-NAME="AEN9483"
-></A
->Adding features</H4
+NAME="AEN9688"
+>Adding features</A
+></H4
 ><P
 >Now you should have a basic RedBoot running on the board. This
 means you have a the correct board initialization and a working serial
@@ -446,12 +443,9 @@ CLASS="LITERAL"
 >HAL_STUB_PLATFORM_RESET_ENTRY</TT
 > - this should be the address
 where the CPU will start execution after a reset. Re-initializing the
-board and drivers will <SPAN
-CLASS="emphasis"
-><I
+board and drivers will <I
 CLASS="EMPHASIS"
 >usually</I
-></SPAN
 > be good enough to make a
 hardware reset unnecessary.</P
 ><P
@@ -544,9 +538,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9516"
-></A
->Hints</H3
+NAME="AEN9721"
+>Hints</A
+></H3
 ><P
 ></P
 ><UL
@@ -637,8 +631,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-CDL-REQUIREMENTS"
-></A
->HAL Platform CDL</H2
+>HAL Platform CDL</A
+></H2
 ><P
 >The platform CDL both contains details necessary for the building
 of eCos, and platform-specific configuration options. For this reason
@@ -655,8 +649,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-ECOS-DATABASE"
-></A
->eCos Database</H3
+>eCos Database</A
+></H3
 ><P
 >The eCos configuration system is made aware of a package by
 adding a package description in <TT
@@ -754,9 +748,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9558"
-></A
->CDL File Layout</H3
+NAME="AEN9763"
+>CDL File Layout</A
+></H3
 ><P
 >All the platform options are contained in a CDL package named
 <TT
@@ -831,9 +825,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9570"
-></A
->Startup Type</H3
+NAME="AEN9775"
+>Startup Type</A
+></H3
 ><P
 >eCos uses an option to select between a set of valid startup
 configurations. These are normally RAM, ROM and possibly ROMRAM. This
@@ -888,9 +882,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9578"
-></A
->Build options</H3
+NAME="AEN9783"
+>Build options</A
+></H3
 ><P
 >A set of options under the components
 <TT
@@ -987,9 +981,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9584"
-></A
->Common Target Options</H3
+NAME="AEN9789"
+>Common Target Options</A
+></H3
 ><P
 >All platforms also specify real-time clock details:</P
 ><TABLE
@@ -1048,7 +1042,7 @@ default rate is typically 100Hz.</P
 >Platforms that make use of the virtual vector
 ROM calling interface (see <A
 HREF="hal-calling-if.html"
->the Section called <I
+>the section called <I
 >Virtual Vectors (eCos/ROM Monitor Calling Interface)</I
 ></A
 >) will also
@@ -1254,8 +1248,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-PLATFORM-MEMORY-LAYOUT"
-></A
->Platform Memory Layout</H2
+>Platform Memory Layout</A
+></H2
 ><P
 >The platform memory layout is defined using the Memory
 Configuration Window  in the Configuration Tool.</P
@@ -1284,9 +1278,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9614"
-></A
->Layout Files</H3
+NAME="AEN9819"
+>Layout Files</A
+></H3
 ><P
 >The memory configuration details are saved in three files:</P
 ><P
@@ -1337,9 +1331,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9634"
-></A
->Reserved Regions</H3
+NAME="AEN9839"
+>Reserved Regions</A
+></H3
 ><P
 >Some areas of the memory space are reserved for specific
 purposes, making room for exception vectors and various tables. RAM
@@ -1357,9 +1351,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9638"
-></A
->Platform Serial Device Support</H2
+NAME="AEN9843"
+>Platform Serial Device Support</A
+></H2
 ><P
 >The first step is to set up the CDL definitions. The configuration
 options that need to be set are the following:</P
@@ -1647,7 +1641,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1659,7 +1652,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="hal-porting-coding-conventions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1668,7 +1660,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1677,7 +1668,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="hal-porting-variant.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1693,7 +1683,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="hal-porting-guide.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

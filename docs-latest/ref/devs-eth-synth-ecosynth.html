@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="devs-eth-synth-ecosynth-ref.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="devs-watchdog-synth-ref.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -80,12 +77,12 @@ WIDTH="100%"></DIV
 ><H1
 ><A
 NAME="DEVS-ETH-SYNTH-ECOSYNTH"
-></A
->Synthetic Target Ethernet Driver</H1
+>Synthetic Target Ethernet Driver</A
+></H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN18905"
+NAME="AEN19182"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +90,7 @@ NAME="AEN18905"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN18908"
+NAME="AEN19185"
 ></A
 ><H2
 >Overview</H2
@@ -142,7 +139,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="INFORMALFIGURE"
 ><A
-NAME="AEN18918"
+NAME="AEN19195"
 ></A
 ><P
 ></P
@@ -150,8 +147,9 @@ NAME="AEN18918"
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
-SRC="overview.gif"
-ALIGN="CENTER"></P
+SRC="overview.png"
+></IMG
+></P
 ></DIV
 ><P
 ></P
@@ -683,6 +681,57 @@ address information. Instead the eCos configuration should use manual
 or static addresses.
     </P
 ><P
+>When <B
+CLASS="COMMAND"
+>rawether</B
+> exits, the tap interface is removed
+by the kernel. By adding the parameter persistent
+<B
+CLASS="COMMAND"
+>rawether</B
+> will set the persistent flag on the tap
+device.
+    </P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>synth_device ethernet {
+    eth0 ethertap tap3 00:01:02:03:FE:05
+    eth1 ethertap tap4 00:01:02:03:FE:06 persistent
+    &#8230;
+}</PRE
+></TD
+></TR
+></TABLE
+><P
+>With this flag set the kernel will not remove the interface when
+<B
+CLASS="COMMAND"
+>rawether</B
+> exits. This means applications such as
+<B
+CLASS="COMMAND"
+>dhcpd</B
+>, <B
+CLASS="COMMAND"
+>radvd</B
+>, and
+<B
+CLASS="COMMAND"
+>tcpdump</B
+> will continue to run on the interface
+between invocations of synthetic targets. As a result the target can
+dynamically obtain its IP addresses from these daemons. Note it is a
+good idea to specify a MAC address otherwise a different random MAC
+address will be used each time and the dhcpd daemon will not be able
+to reissue the same IP address.
+    </P
+><P
 >An alternative approach would be to set up the Linux box as a network
 bridge, using commands like <B
 CLASS="COMMAND"
@@ -987,7 +1036,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -999,7 +1047,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="devs-eth-synth-ecosynth-ref.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1008,7 +1055,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1017,7 +1063,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="devs-watchdog-synth-ref.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1033,7 +1078,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="devs-eth-synth-ecosynth-ref.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

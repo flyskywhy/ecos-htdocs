@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="libc.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="math-library-compatibility-modes.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="C-AND-MATH-LIBRARY-OVERVIEW"
-></A
->Chapter 13. C and math library overview</H1
+>Chapter 13. C and math library overview</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -122,23 +119,17 @@ HREF="c-library-startup.html"
 NAME="ISO-C-AND-MATH-LIBRARIES"
 ></A
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > provides compatibility with the
 	ISO 9899:1990 specification for the standard C library, which
 	is essentially the same as the better-known ANSI C3.159-1989
 	specification (C-89).</P
 ><P
->There are three aspects of this compatibility supplied by <SPAN
-CLASS="emphasis"
-><I
+>There are three aspects of this compatibility supplied by <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 >.
 First there is a <I
 CLASS="FIRSTTERM"
@@ -148,12 +139,9 @@ implements the functions defined by the ISO standard, except for the
 mathematical functions. This is provided by the eCos C library
 packages. </P
 ><P
->Then <SPAN
-CLASS="emphasis"
-><I
+>Then <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > provides a math
 library, which implements the mathematical functions from the ISO
 C library. This distinction between C and math libraries is frequently
@@ -170,7 +158,7 @@ environment in which applications run when they use the standard
 C library. This environment is set up by the C library startup procedure
 (<A
 HREF="c-library-startup.html"
->the Section called <I
+>the section called <I
 >C library startup</I
 ></A
 >)
@@ -192,19 +180,13 @@ CLASS="FUNCTION"
 >getenv()</TT
 >. </P
 ><P
->The description in this manual focuses on the <SPAN
-CLASS="emphasis"
-><I
+>The description in this manual focuses on the <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 >-specific
-aspects of the C library (mostly related to <SPAN
-CLASS="emphasis"
-><I
+aspects of the C library (mostly related to <I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 >'s
 configurability) as well as mentioning the omissions from the standard
 in this release. We do not attempt to define the semantics of each
@@ -218,8 +200,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="INCLUDE-NON-ISO-FUNCTIONS"
-></A
->Included non-ISO functions</H1
+>Included non-ISO functions</A
+></H1
 ><P
 >The following functions from the POSIX specification
 are included for convenience: </P
@@ -227,12 +209,9 @@ are included for convenience: </P
 >	<TT
 CLASS="LITERAL"
 >extern char **</TT
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >environ</I
-></SPAN
 > variable
 (for setting up the environment for use with <TT
 CLASS="FUNCTION"
@@ -274,12 +253,9 @@ CLASS="FUNCTION"
 >gmtime_r()</TT
 > </P
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >eCos</I
-></SPAN
 > provides the following additional
 implementation-specific functions within the standard C library
 to adjust the date and time settings:</P
@@ -391,7 +367,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -403,7 +378,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="libc.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -412,7 +386,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -421,7 +394,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="math-library-compatibility-modes.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -437,7 +409,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="libc.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

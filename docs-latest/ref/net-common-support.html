@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-common-maintenance-tools.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-dhcp.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,8 +79,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="NET-COMMON-SUPPORT"
-></A
->Chapter 37. Support Features</H1
+>Chapter 37. Support Features</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -109,19 +106,130 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-COMMON-TFTP"
-></A
->TFTP</H1
+>TFTP</A
+></H1
 ><P
 >The TFTP client and server are described in
 <TT
 CLASS="FILENAME"
 >tftp_support.h</TT
->;
-the client API is simple and can be easily understood by reading
-<TT
-CLASS="FILENAME"
->tftp_client_test.c</TT
->.</P
+>;</P
+><P
+>The TFTP client has and new and an older, deprecated, API. The
+new API works for both IPv4 and IPv6 where as the deprecated API is
+IPv4 only.</P
+><P
+>The new API is as follows:</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int tftp_client_get(char *filename,
+		    char *server,
+		    int port,
+		    char *buf,
+		    int len,
+		    int mode,
+		    int *err);
+
+int tftp_client_put(char *filename,
+		    char *server,
+		    int port,
+		    char *buf,
+		    int len,
+		    int mode,
+		    int *err);</PRE
+></TD
+></TR
+></TABLE
+><P
+>Currently <TT
+CLASS="VARNAME"
+>server</TT
+> can only be a numeric IPv4 or
+IPv6 address. The resolver is currently not used, but it is planned to
+add this feature (patches welcome). If <TT
+CLASS="VARNAME"
+>port</TT
+> is zero
+the client connects to the default TFTP port on the server. Otherwise
+the specified port is used.</P
+><P
+> 
+The deprecated API is:
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int tftp_client_get(char *filename,
+		    struct sockaddr_in *server,
+		    char *buf,
+		    int len,
+		    int mode,
+		    int *err);
+
+int tftp_client_put(char *filename,
+		    struct sockaddr_in *server,
+		    char *buf,
+		    int len,
+		    int mode,
+		    int *err);</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>The <TT
+CLASS="VARNAME"
+>server</TT
+> should contain the address of the
+server to contact. If the <TT
+CLASS="VARNAME"
+>sin_port</TT
+> member of the
+structure is zero the default TFTP port is used. Otherwise the
+specified port is used.</P
+><P
+>Both API's report errors in the same way. The functions return a value
+of -1 and <TT
+CLASS="VARNAME"
+>*err</TT
+> will be set to one of the
+following values:</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define	TFTP_ENOTFOUND   1   /* file not found */
+#define	TFTP_EACCESS     2   /* access violation */
+#define	TFTP_ENOSPACE    3   /* disk full or allocation exceeded */
+#define	TFTP_EBADOP      4   /* illegal TFTP operation */
+#define	TFTP_EBADID      5   /* unknown transfer ID */
+#define	TFTP_EEXISTS     6   /* file already exists */
+#define	TFTP_ENOUSER     7   /* no such user */
+#define TFTP_TIMEOUT     8   /* operation timed out */
+#define TFTP_NETERR      9   /* some sort of network error */
+#define TFTP_INVALID    10   /* invalid parameter */
+#define TFTP_PROTOCOL   11   /* protocol violation */
+#define TFTP_TOOLARGE   12   /* file is larger than buffer */</PRE
+></TD
+></TR
+></TABLE
+><P
+>If there are no errors the return value is the number of bytes
+transfered.</P
 ><P
 >The server is more complex.  It requires a filesystem implementation
 to be supplied by the user, and attached to the tftp server by means
@@ -147,10 +255,74 @@ CLASS="PROGRAMLISTING"
 >These functions have the obvious semantics.  The structure
 describing the filesystem is an argument to the <TT
 CLASS="FUNCTION"
->tftpd_start(int,
-struct tftpd_fileops &#0042;);</TT
-> call.
- The first argument is the port to use for the server.</P
+>tftpd_start</TT
+>:
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int tftp_start(int port,
+               struct tftpd_fileops *ops);</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>The first argument is the port to use for the server. If this
+port number is zero, the default TFTP port number will be used. The
+return value from <TT
+CLASS="FUNCTION"
+>tftpd_start</TT
+> is a handle which
+can be passed to <TT
+CLASS="FUNCTION"
+>tftpd_stop</TT
+>. This will kill the
+tftpd thread. Note that this is not a clean shutdown. The thread will
+simply be killed. <TT
+CLASS="FUNCTION"
+>tftpd_stop</TT
+> will attempt to
+close the sockets the thread was listening on and free some of its
+allocated memory. But if the thread was actively transferreing data at
+the time <TT
+CLASS="FUNCTION"
+>tftpd_stop</TT
+> is called, it is quite likely
+some memory and a socket will be leaked. Use this function with
+caution (or implement a clean shutdown and please contribute the code
+back :-).</P
+><P
+>There are two CDL configuration options that control how many
+servers on how many different ports tftp can be
+started. CYGSEM_NET_TFTPD_MULTITHREADED, when enabled, allows multiple
+tftpd threads to operate on the same port number. With only one
+thread, while the thread is active transferring data, new requests for
+transfers will not be served until the active transfer is
+complete. When multiple threads are started on the same port, multiple
+transfers can take place simultaneous, up to the number of threads
+started. However a semaphore is required to synchronise the
+threads. This semaphore is required per port. The CDL option
+CYGNUM_NET_TFTPD_MULTITHREADED_PORTS controls how many different port
+numbers multithreaded servers can service.</P
+><P
+>If CYGSEM_NET_TFTPD_MULTITHREADED is not enabled, only one
+thread may be run per port number. But this removes the need for a
+semaphore and so CYGNUM_NET_TFTPD_MULTITHREADED_PORTS is not required
+and unlimited number of ports can be used. </P
+><P
+>It should be noted that the TFTPD does not perform any form of
+file locking. When multiple servers are active, it is assumed the
+underlying filesystem will refuse to open the same file multiple
+times, operate correctly with simultaneous read/writes to the same
+file, or if you are unlucky, corrupt itself beyond all repair.</P
+><P
+>When IPv6 is enabled the tftpd thread will listen for requests
+from both IPv4 and IPv6 addresses.</P
 ><P
 >As discussed in the description of the tftp_server_test
 above, an example filesystem is provided in
@@ -173,7 +345,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -185,7 +356,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-common-maintenance-tools.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -194,7 +364,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -203,7 +372,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-dhcp.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -219,7 +387,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-common-tcpip.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-common-standalone-tests.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-interactive-tests.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-COMMON-PERFORMANCE-TEST"
-></A
->Performance Test</H1
+>Performance Test</A
+></H1
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -93,12 +90,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >tcp_echo</I
-></SPAN
 >      - data forwarding program for performance test</PRE
 ></TD
 ></TR
@@ -116,10 +110,13 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >tcp_sink</TT
 >.
- To make these (under LINUX) cd to the tests source directory in
+ To make these (under your <I
+CLASS="EMPHASIS"
+>HOST</I
+> system) cd to the tests source directory in
 the eCos repository and type &#8220;<TT
 CLASS="LITERAL"
->make -f make.linux</TT
+>make -f make.host</TT
 >&#8221; -
 this should build <TT
 CLASS="LITERAL"
@@ -129,7 +126,7 @@ CLASS="LITERAL"
 >tcp_sink</TT
 >.</P
 ><P
->The LINUX program &#8220;<TT
+>The host program &#8220;<TT
 CLASS="LITERAL"
 >tcp_source</TT
 >&#8221; sends
@@ -141,7 +138,7 @@ it onwards to &#8220;<TT
 CLASS="LITERAL"
 >tcp_sink</TT
 >&#8221; running
-on LINUX.  So the target must receive and send on all the data that <TT
+on your host.  So the target must receive and send on all the data that <TT
 CLASS="LITERAL"
 >tcp_source</TT
 > sends
@@ -155,7 +152,7 @@ the target board and wait for it to become quiescent - it will report
 work to calibrate a CPU load which can be used to simulate real
 operating conditions for the stack.</P
 ><P
->Then on your LINUX machine, in one terminal window, invoke <TT
+>Then on your host machine, in one terminal window, invoke <TT
 CLASS="LITERAL"
 >tcp_sink</TT
 > giving
@@ -178,7 +175,7 @@ CLASS="LITERAL"
 > is
 correctly invoked.</P
 ><P
->Next, in another LINUX terminal window, invoke <TT
+>Next, in another host terminal window, invoke <TT
 CLASS="LITERAL"
 >tcp_source</TT
 >,
@@ -214,7 +211,7 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >tcp_source</TT
 > on
-the same LINUX machine or different ones.  TCP/IP and ARP
+the same host machine or different ones.  TCP/IP and ARP
 look after them finding one another, as intended.</P
 ><TABLE
 BORDER="5"
@@ -224,26 +221,20 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >nc_test_master</I
-></SPAN
 > - network characterization master
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >nc_test_slave</I
-></SPAN
 > - network characterization slave</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >These tests talk to each other to measure network performance.
-They can each run on either a test target or a LINUX host computer
+They can each run on either a test target or a host computer
 given some customization to your local environment. As provided, <TT
 CLASS="LITERAL"
 >nc_test_slave</TT
@@ -252,7 +243,7 @@ run on the test target, and <TT
 CLASS="LITERAL"
 >nc_test_master</TT
 > must
-be run on a LINUX host, and be given the test target's
+be run on a host computer, and be given the test target's
 IP address or hostname.</P
 ><P
 >The tests print network performance for various packet sizes
@@ -266,19 +257,13 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >nc6_test_slave</I
-></SPAN
 >
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >nc6_test_master</I
-></SPAN
 ></PRE
 ></TD
 ></TR
@@ -291,7 +276,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -303,7 +287,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-common-standalone-tests.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -312,7 +295,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -321,7 +303,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-interactive-tests.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -337,7 +318,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="usbs-data.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="usbs-testing.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -80,12 +77,12 @@ WIDTH="100%"></DIV
 ><H1
 ><A
 NAME="USBS-WRITING"
-></A
->Writing a USB Device Driver</H1
+>Writing a USB Device Driver</A
+></H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16709"
+NAME="AEN16990"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +90,7 @@ NAME="AEN16709"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16712"
+NAME="AEN16993"
 ></A
 ><H2
 >Introduction</H2
@@ -125,7 +122,7 @@ written.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16717"
+NAME="AEN16998"
 ></A
 ><H2
 >The Control Endpoint</H2
@@ -199,7 +196,7 @@ CLASS="STRUCTFIELD"
 ></TT
 > and other fields related to data
 transfers will be managed <A
-HREF="usbs-control.html#AEN16619"
+HREF="usbs-control.html#AEN16900"
 >jointly</A
 > by higher-level code and
 the device driver. The remaining fields are generally filled in by
@@ -227,7 +224,7 @@ after power-up.</P
 >Where possible the device driver should detect state changes, such as
 when the connection between host and peripheral is established, and
 <A
-HREF="usbs-control.html#AEN16556"
+HREF="usbs-control.html#AEN16837"
 >report</A
 > these to higher-level
 code via the <TT
@@ -277,7 +274,7 @@ no default handler for these.</P
 >Some control messages will involve further data transfer, not just the
 initial packet. The device driver must handle this in accordance with
 the USB specification and the <A
-HREF="usbs-control.html#AEN16619"
+HREF="usbs-control.html#AEN16900"
 >buffer management strategy</A
 >. The
 driver is also responsible for keeping track of whether or not the
@@ -293,7 +290,7 @@ the same code that the interrupt handler would.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16745"
+NAME="AEN17026"
 ></A
 ><H2
 >Data Endpoints</H2
@@ -436,7 +433,7 @@ devtab entries as well as via low-level accesses.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16772"
+NAME="AEN17053"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -522,7 +519,7 @@ provided, to avoid unnecessary memory overheads.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16785"
+NAME="AEN17066"
 ></A
 ><H2
 >Interrupt Handling</H2
@@ -553,7 +550,7 @@ be invoked at DSR or thread level.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16789"
+NAME="AEN17070"
 ></A
 ><H2
 >Support for USB Testing</H2
@@ -886,7 +883,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -898,7 +894,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="usbs-data.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -907,7 +902,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -916,7 +910,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="usbs-testing.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -932,7 +925,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-usb-slave.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

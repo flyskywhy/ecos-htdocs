@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="hal-diagnostic-support.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="hal-exception-handling.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-SMP-SUPPORT"
-></A
->SMP Support</H1
+>SMP Support</A
+></H1
 ><P
 >eCos contains support for limited Symmetric Multi-Processing
 (SMP). This is only available on selected architectures and platforms.</P
@@ -93,9 +90,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8274"
-></A
->Target Hardware Limitations</H2
+NAME="AEN8479"
+>Target Hardware Limitations</A
+></H2
 ><P
 >To allow a reasonable implementation of SMP, and to reduce the
 disruption to the existing source base, a number of assumptions have
@@ -185,9 +182,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8294"
-></A
->HAL Support</H2
+NAME="AEN8499"
+>HAL Support</A
+></H2
 ><P
 >SMP support in any platform depends on the HAL supplying the
 appropriate operations. All HAL SMP support is defined in the
@@ -212,9 +209,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8301"
-></A
->CPU Control</H3
+NAME="AEN8506"
+>CPU Control</A
+></H3
 ><P
 >This group consists of descriptive and control macros for managing the
 CPUs in an SMP system.</P
@@ -343,9 +340,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8350"
-></A
->Test-and-set Support</H3
+NAME="AEN8555"
+>Test-and-set Support</A
+></H3
 ><P
 >Test-and-set is the foundation of the SMP synchronization
 mechanisms.</P
@@ -431,9 +428,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8377"
-></A
->Spinlocks</H3
+NAME="AEN8582"
+>Spinlocks</A
+></H3
 ><P
 >Spinlocks provide inter-CPU locking. Normally they will be implemented
 on top of the test-and-set mechanism above, but may also be
@@ -548,9 +545,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8422"
-></A
->Scheduler Lock</H3
+NAME="AEN8627"
+>Scheduler Lock</A
+></H3
 ><P
 >The scheduler lock is the main protection for all kernel data
 structures. By default the kernel implements the scheduler lock itself
@@ -648,9 +645,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8454"
-></A
->Interrupt Routing</H3
+NAME="AEN8659"
+>Interrupt Routing</A
+></H3
 ><P
 >The routing of interrupts to different CPUs is supported by two new
 interfaces in hal_intr.h.</P
@@ -710,7 +707,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -722,7 +718,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="hal-diagnostic-support.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -731,7 +726,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -740,7 +734,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="hal-exception-handling.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -756,7 +749,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="hal-interfaces.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

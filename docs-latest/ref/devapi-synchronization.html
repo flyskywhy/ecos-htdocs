@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="devapi-device-driver-interface-to-the-kernel.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="devapi-smp-support.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-SYNCHRONIZATION"
-></A
->Synchronization</H1
+>Synchronization</A
+></H1
 ><P
 >There are three levels of synchronization supported:</P
 ><P
@@ -143,12 +140,9 @@ CLASS="FUNCTION"
 >Any data that is accessed from more than one level must be protected
 against concurrent access. Data that is accessed by ISRs must be
 protected with the ISR lock, or a spinlock at all times,
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >even in ISRs</I
-></SPAN
 >. Data that is shared between DSRs
 and threads should be protected with the DSR lock. Data that is only
 accessed by threads must be protected with mutexes.</P
@@ -158,7 +152,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -170,7 +163,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="devapi-device-driver-interface-to-the-kernel.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -179,7 +171,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -188,7 +179,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="devapi-smp-support.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -204,7 +194,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="devapi-device-driver-interface-to-the-kernel.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

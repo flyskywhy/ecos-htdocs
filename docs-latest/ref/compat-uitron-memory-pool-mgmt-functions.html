@@ -13,13 +13,13 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Interrupt management functions"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-interrupt-management-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-time-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-MEMORY-POOL-MGMT-FUNCTIONS"
-></A
->Memory pool Management Functions</H1
+>Memory pool Management Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -99,18 +96,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_blf</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blf,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mpfid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -127,18 +118,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >pget_blf</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blf,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mpfid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -155,24 +140,15 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >tget_blf</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blf,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mpfid,</I
-></SPAN
->    TMO <SPAN
-CLASS="emphasis"
-><I
+>    TMO <I
 CLASS="EMPHASIS"
 >tmout</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -189,18 +165,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rel_blf</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mpfid,</I
-></SPAN
->    VP <SPAN
-CLASS="emphasis"
-><I
+>    VP <I
 CLASS="EMPHASIS"
 >blf</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -217,18 +187,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_mpf</TT
 >( 
-    T_RMPF *<SPAN
-CLASS="emphasis"
-><I
+    T_RMPF *<I
 CLASS="EMPHASIS"
 >pk_rmpf,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mpfid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -245,24 +209,15 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_blk</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blk,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mplid,</I
-></SPAN
->    INT <SPAN
-CLASS="emphasis"
-><I
+>    INT <I
 CLASS="EMPHASIS"
 >blksz</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -279,24 +234,15 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >pget_blk</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blk,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mplid,</I
-></SPAN
->    INT <SPAN
-CLASS="emphasis"
-><I
+>    INT <I
 CLASS="EMPHASIS"
 >blksz</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -313,30 +259,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >tget_blk</TT
 >( 
-    VP *<SPAN
-CLASS="emphasis"
-><I
+    VP *<I
 CLASS="EMPHASIS"
 >p_blk,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mplid,</I
-></SPAN
->    INT <SPAN
-CLASS="emphasis"
-><I
+>    INT <I
 CLASS="EMPHASIS"
 >blksz,</I
-></SPAN
->    TMO <SPAN
-CLASS="emphasis"
-><I
+>    TMO <I
 CLASS="EMPHASIS"
 >tmout</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -353,18 +287,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rel_blk</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mplid,</I
-></SPAN
->    VP <SPAN
-CLASS="emphasis"
-><I
+>    VP <I
 CLASS="EMPHASIS"
 >blk</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -381,18 +309,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_mpl</TT
 >( 
-    T_RMPL *<SPAN
-CLASS="emphasis"
-><I
+    T_RMPL *<I
 CLASS="EMPHASIS"
 >pk_rmpl,</I
-></SPAN
->    ID <SPAN
-CLASS="emphasis"
-><I
+>    ID <I
 CLASS="EMPHASIS"
 >mplid )</I
-></SPAN
 ></PRE
 ></TD
 ></TR
@@ -428,18 +350,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_mpl</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mplid,</I
-></SPAN
->    T_CMPL *<SPAN
-CLASS="emphasis"
-><I
+>    T_CMPL *<I
 CLASS="EMPHASIS"
 >pk_cmpl</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -456,12 +372,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_mpl</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mplid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -478,18 +391,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_mpf</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mpfid,</I
-></SPAN
->    T_CMPF *<SPAN
-CLASS="emphasis"
-><I
+>    T_CMPF *<I
 CLASS="EMPHASIS"
 >pk_cmpf</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -506,12 +413,9 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_mpf</TT
 >( 
-    ID <SPAN
-CLASS="emphasis"
-><I
+    ID <I
 CLASS="EMPHASIS"
 >mpfid</I
-></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -554,9 +458,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13912"
-></A
->Error checking</H2
+NAME="AEN14117"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -770,7 +674,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -782,7 +685,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-interrupt-management-functions.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -791,7 +693,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -800,7 +701,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-time-mgmt-functions.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -816,7 +716,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
