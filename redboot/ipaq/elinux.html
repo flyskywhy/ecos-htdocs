@@ -10,25 +10,17 @@
     <h2>Building the Embedded Linux kernel</h2>
     <p>
       The sources for the Linux kernel running on the iPAQ can be obtained from
-      the <a href="http://www.handhelds.org/" target="_top">Handhelds</a>
-      project. Follow the <a href="http://www.handhelds.org/downloads.html"
-      target="_top">directions</a> to download the kernel source from
-      anonymous CVS.
+      the <a href="http://familiar.handhelds.org" target="_top">Familiar
+      distribution</a> of the <a href="http://www.handhelds.org/" target="_top">
+      Handhelds</a> project. Follow the
+      <a href="http://www.handhelds.org/downloads.html" target="_top">
+      directions</a> to download and build the Familiar 0.4 release.
     </p>
-    <p>
-      Once you have the sources in place, apply
-      <a href="elinux.patch">this</a> patch file. The kernel can then be built:
-    </p>
-    <pre>
-&nbsp;&nbsp;&nbsp;&nbsp;cd XXX/linux/kernel
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; elinux.patch
-&nbsp;&nbsp;&nbsp;&nbsp;make zImage
-    </pre>
     <h2>Creating the JFFS2 filesystem image</h2>
     <p>
       The JFFS image can be built using this <a href="build.sh-mh1">script</a>,
       which is a slightly modified version of the standard one from the
-      <a href="http://www.andern.org/familiar/" target="_top">Familiar</a>
+      <a href="http://familiar.handhelds.org/" target="_top">Familiar</a>
       project.
     </p>
     <hr noshare size=3>
