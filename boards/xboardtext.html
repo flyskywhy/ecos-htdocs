@@ -40,7 +40,10 @@ have been tested.</p>
 <p>Device drivers are included for:
 <ul>
 <!--#if expr="$serialsupport = 1" -->
-<li>Serial
+<li>Interrupt-driven serial I/O
+<!--#endif -->
+<!--#if expr="$nodiagserialsupport != 1" -->
+<li>Diagnostic (polled) serial I/O
 <!--#endif -->
 <!--#if expr="$ethernetsupport = 1" -->
 <li>Ethernet
@@ -93,7 +96,7 @@ from
 <!--#if expr="$eloc = 'CVS'" -->
 the <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
 <!--#else -->
-eCos releases <!--#echo var="loc" --> and onwards, as well as
+eCos releases <!--#echo var="eloc" --> and onwards, as well as
 from the <a href="/ecos/anoncvs.html">anonymous CVS repository</a>.
 </p>
 <!--#endif -->
@@ -159,7 +162,7 @@ are available on-line from the manufacturer's web site.
 <!--#if expr="$redbootsupport = 1" -->
 <p>
 Instructions for installing RedBoot on the <!--#echo var="platshortname" -->
-can be found in the <a href="http://www.ecos2.vsr.si/cvsdoc/ref/redboot.html">RedBoot
+can be found in the <a href="/ecos/docs-latest/ref/redboot.html">RedBoot
 User's Guide</a>.
 
 <!--#if expr="$rbplatdocurl" -->
