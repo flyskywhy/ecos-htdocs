@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version update1.4-20-2-01/Tue Feb 20 11:49:31  2001-->
+<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:15 BST 2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> System Requirements</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1415994">
  </A>
@@ -23,7 +23,7 @@ System Requirements<DIV>
 Required</H3>
 <UL>
 <P><LI>
-<A NAME="pgfId=1999533">
+<A NAME="pgfId=2806505">
  </A>
 Standard Intel<EM CLASS="FmSymbol">&#153</EM>
  architecture PC running Linux (tested on Red Hat Linux distributions 5.0-7.0), and English or Japanese versions of Microsoft Windows NT version 4.0 (service pack 3 or above must be installed), Windows 95, Windows 98, or Windows 2000. Other versions of Red Hat distributions, or Linux distributions from other vendors should work as well. </LI>
@@ -59,30 +59,50 @@ disk space for the installed distribution. The eCos installation process will de
 <P CLASS="BodyListFollow">
 <A NAME="pgfId=1999545">
  </A>
-If you are downloading the eCos Net Release distribution from Red Hat's Sourceware site, you will also need space to store that image and to compile GNUPro and eCos from source.</P>
+If you are downloading the eCos Net Release distribution from Red Hat's sources.redhat.com site, you will also need space to store that image and to compile GNUPro and eCos from source.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2695535">
+<A NAME="pgfId=2806665">
  </A>
 If you will be using an x86 board, you will also need:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2695536">
+<A NAME="pgfId=2806666">
  </A>
-A standard PC motherboard with an i386 or better processor and a 3.5&quot; floppy disk drive. Optionally, a color text-mode-only display card with monitor or keyboard may also be provided. Any standard PC will provide all the hardware required to run eCos.</LI>
+A standard PC motherboard with an i386 or better processor and a 3.5&quot; floppy disk drive. Optionally, a color text-mode-only display card with monitor or keyboard may also be provided. Any standard PC will provide all the hardware required to run eCos. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2806667">
+ </A>
+If serial debugging is to be used:</P>
+<UL>
 <P><LI>
-<A NAME="pgfId=2695537">
+<A NAME="pgfId=2806668">
  </A>
 A null modem cable to connect the COM1 port on the target motherboard to a serial port on the host system.</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2655329">
+<A NAME="pgfId=2806669">
  </A>
-If you will be using the <A NAME="marker=2625730">
+If network debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2806670">
+ </A>
+Suitable network interface card on the development PC and connecting cables</LI>
+<P><LI>
+<A NAME="pgfId=2806671">
+ </A>
+An Intel i82559 based PCI ethernet card (for example an Intel EtherExpress Pro 10/100) may be installed for use by the eCos network stack or for network debugging.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2806673">
+ </A>
+If you will be using the <A NAME="marker=2806672">
  </A>
 Linux synthetic target, you will also need: </P>
 <UL>
 <P><LI>
-<A NAME="pgfId=1996981">
+<A NAME="pgfId=2806674">
  </A>
 An x86 PC with an installed Linux distribution (tested with Red Hat Linux distributions 5.0 - 7.0). </LI>
 </UL>
@@ -109,5 +129,5 @@ The system has been tested only in the recommended configuration above, although
 </TR>
 </TABLE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version update1.4-20-2-01/Tue Feb 20 11:49:11  2001-->
+<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:12 BST 2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Appendix 1: Real-time characterization</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1100125">
  </A>
@@ -29,62 +29,31 @@ Users' Guide.</EM>
 <A NAME="marker=1092404">
  </A>
 Sample numbers:</H3>
-<P CLASS="Body">
-<A NAME="pgfId=1098129">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1098162">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119364">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119366">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119365">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119367">
- </A>
-</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1118941"> </A>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1134217"> </A>
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1119988">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1125068">
- </A>
-</P>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1128675">
+<A NAME="pgfId=1134218">
  </A>
 Board: PC</H3>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1128676">
+<A NAME="pgfId=1134219">
  </A>
 CPU: 433MHz Celeron</H3>
-<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1128677"> </A>
-Startup, main stack             : stack used   132 size  2912
-Startup              : Idlethread stack used    52 size  2048
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1133041"> </A>
+Startup, main stack             : stack used   124 size  2912
+Startup              :  Interrupt stack used   280 size  4108
+Startup              : Idlethread stack used    62 size  2048
 
 eCos Kernel Timings
 Notes: all times are in microseconds (.000001) unless otherwise stated
 
 Reading the hardware clock takes 8 'ticks' overhead
 ... this value will be factored out of all other measurements
-Clock interrupt took    8.43 microseconds (10 raw clock ticks)
+Clock interrupt took    6.75 microseconds (8 raw clock ticks)
 
 Testing parameters:
    Clock samples:            32
-   Threads:                  21
+   Threads:                  64
    Thread switches:         128
    Mutexes:                  32
    Mailboxes:                32
@@ -97,95 +66,97 @@ Testing parameters:
                                  Confidence
      Ave     Min     Max     Var  Ave  Min  Function
   ======  ======  ======  ====== ========== ========
-    3.43    1.68    8.38    0.78   66%  19% Create thread
-    0.88    0.00    1.68    0.84   52%  47% Yield thread [all suspended]
-    1.04    0.00    5.03    0.99   47%  47% Suspend [suspended] thread
-    0.72    0.00    1.68    0.82   57%  57% Resume thread
-    0.80    0.00    1.68    0.84   52%  52% Set priority
-    0.56    0.00    1.68    0.74   66%  66% Get priority
-    1.44    0.00    3.35    0.55   76%  19% Kill [suspended] thread
-    1.04    0.00    1.68    0.79   61%  38% Yield [no other] thread
-    1.04    0.00    1.68    0.79   61%  38% Resume [suspended low prio] thread
-    0.80    0.00    1.68    0.84   52%  52% Resume [runnable low prio] thread
-    1.20    0.00    1.68    0.68   71%  28% Suspend [runnable] thread
-    1.04    0.00    1.68    0.79   61%  38% Yield [only low prio] thread
-    0.72    0.00    1.68    0.82   57%  57% Suspend [runnable<IMG SRC="../pix/arrow.gif">not runnable]
-    1.52    0.00    3.35    0.43   80%  14% Kill [runnable] thread
-    1.04    0.00    3.35    0.89   52%  42% Destroy [dead] thread
-    1.60    0.00    1.68    0.15   95%   4% Destroy [runnable] thread
-    3.83    1.68   11.73    1.14   76%   9% Resume [high priority] thread
-    1.22    0.00    1.68    0.67   72%  27% Thread switch
+    3.93    1.68    8.38    0.93   68%   3% Create thread
+    0.71    0.00    3.35    0.84   59%  59% Yield thread [all suspended]
+    0.65    0.00    5.03    0.84   64%  64% Suspend [suspended] thread
+    0.63    0.00    1.68    0.79   62%  62% Resume thread
+    0.76    0.00    1.68    0.83   54%  54% Set priority
+    0.39    0.00    1.68    0.60   76%  76% Get priority
+    1.34    0.00    6.70    0.67   73%  25% Kill [suspended] thread
+    0.68    0.00    1.68    0.81   59%  59% Yield [no other] thread
+    0.92    0.00    1.68    0.83   54%  45% Resume [suspended low prio] thread
+    0.63    0.00    1.68    0.79   62%  62% Resume [runnable low prio] thread
+    0.84    0.00    1.68    0.84  100%  50% Suspend [runnable] thread
+    0.73    0.00    1.68    0.82   56%  56% Yield [only low prio] thread
+    0.58    0.00    1.68    0.76   65%  65% Suspend [runnable<IMG SRC="../pix/arrow.gif">not runnable]
+    1.26    0.00    3.35    0.67   71%  26% Kill [runnable] thread
+    0.86    0.00    3.35    0.86   98%  50% Destroy [dead] thread
+    1.44    0.00    1.68    0.40   85%  14% Destroy [runnable] thread
+    4.45    3.35    6.70    0.89   53%  40% Resume [high priority] thread
+    1.62    0.00    1.68    0.10   96%   3% Thread switch
 
-    0.52    0.00    1.68    0.72   68%  68% Scheduler lock
-    0.65    0.00    1.68    0.80   60%  60% Scheduler unlock [0 threads]
-    0.55    0.00    1.68    0.74   67%  67% Scheduler unlock [1 suspended]
-    0.63    0.00    1.68    0.79   62%  62% Scheduler unlock [many suspended]
-    0.68    0.00    1.68    0.81   59%  59% Scheduler unlock [many low prio]
+    0.41    0.00    1.68    0.61   75%  75% Scheduler lock
+    0.48    0.00    1.68    0.69   71%  71% Scheduler unlock [0 threads]
+    0.59    0.00    1.68    0.76   64%  64% Scheduler unlock [1 suspended]
+    0.45    0.00    1.68    0.65   73%  73% Scheduler unlock [many suspended]
+    0.45    0.00    1.68    0.65   73%  73% Scheduler unlock [many low prio]
 
-    0.84    0.00    5.03    0.94   96%  56% Init mutex
-    0.89    0.00    3.35    0.89   96%  50% Lock [unlocked] mutex
-    0.84    0.00    3.35    0.89   96%  53% Unlock [locked] mutex
-    0.84    0.00    1.68    0.84  100%  50% Trylock [unlocked] mutex
-    0.84    0.00    1.68    0.84  100%  50% Trylock [locked] mutex
-    0.68    0.00    1.68    0.81   59%  59% Destroy mutex
+    0.52    0.00    1.68    0.72   68%  68% Init mutex
+    0.79    0.00    5.03    0.93   96%  59% Lock [unlocked] mutex
+    0.84    0.00    5.03    0.94   96%  56% Unlock [locked] mutex
+    0.63    0.00    1.68    0.79   62%  62% Trylock [unlocked] mutex
+    0.52    0.00    1.68    0.72   68%  68% Trylock [locked] mutex
+    0.58    0.00    1.68    0.76   65%  65% Destroy mutex
     3.40    3.35    5.03    0.10   96%  96% Unlock/Lock mutex
 
-    1.20    0.00    1.68    0.68   71%  28% Create mbox
-    0.68    0.00    3.35    0.85   62%  62% Peek [empty] mbox
-    1.10    0.00    3.35    0.89   53%  40% Put [first] mbox
-    0.68    0.00    1.68    0.81   59%  59% Peek [1 msg] mbox
-    0.73    0.00    1.68    0.82   56%  56% Put [second] mbox
-    0.52    0.00    1.68    0.72   68%  68% Peek [2 msgs] mbox
-    0.89    0.00    3.35    0.89   96%  50% Get [first] mbox
-    0.84    0.00    1.68    0.84  100%  50% Get [second] mbox
-    0.99    0.00    1.68    0.81   59%  40% Tryput [first] mbox
-    0.79    0.00    1.68    0.83   53%  53% Peek item [non-empty] mbox
-    1.10    0.00    3.35    0.82   59%  37% Tryget [non-empty] mbox
-    0.79    0.00    1.68    0.83   53%  53% Peek item [empty] mbox
-    0.79    0.00    1.68    0.83   53%  53% Tryget [empty] mbox
-    0.68    0.00    1.68    0.81   59%  59% Waiting to get mbox
+    0.99    0.00    1.68    0.81   59%  40% Create mbox
+    0.47    0.00    1.68    0.68   71%  71% Peek [empty] mbox
+    0.79    0.00    5.03    0.93   96%  59% Put [first] mbox
+    0.42    0.00    1.68    0.63   75%  75% Peek [1 msg] mbox
+    0.79    0.00    1.68    0.83   53%  53% Put [second] mbox
+    0.37    0.00    1.68    0.57   78%  78% Peek [2 msgs] mbox
+    0.73    0.00    3.35    0.87   59%  59% Get [first] mbox
+    0.73    0.00    1.68    0.82   56%  56% Get [second] mbox
+    0.79    0.00    3.35    0.88   56%  56% Tryput [first] mbox
+    0.68    0.00    3.35    0.85   62%  62% Peek item [non-empty] mbox
+    0.73    0.00    3.35    0.87   59%  59% Tryget [non-empty] mbox
+    0.63    0.00    1.68    0.79   62%  62% Peek item [empty] mbox
+    0.68    0.00    1.68    0.81   59%  59% Tryget [empty] mbox
+    0.26    0.00    1.68    0.44   84%  84% Waiting to get mbox
     0.63    0.00    1.68    0.79   62%  62% Waiting to put mbox
-    1.05    0.00    3.35    0.85   56%  40% Delete mbox
-    1.78    1.68    3.35    0.20   93%  93% Put/Get mbox
+    0.73    0.00    3.35    0.87   59%  59% Delete mbox
+    3.25    1.68    3.35    0.20   93%   6% Put/Get mbox
 
-    0.84    0.00    1.68    0.84  100%  50% Init semaphore
-    0.79    0.00    1.68    0.83   53%  53% Post [0] semaphore
-    0.84    0.00    1.68    0.84  100%  50% Wait [1] semaphore
-    0.73    0.00    1.68    0.82   56%  56% Trywait [0] semaphore
-    0.68    0.00    1.68    0.81   59%  59% Trywait [1] semaphore
-    0.63    0.00    1.68    0.79   62%  62% Peek semaphore
-    0.68    0.00    1.68    0.81   59%  59% Destroy semaphore
-    1.78    1.68    3.35    0.20   93%  93% Post/Wait semaphore
+    0.63    0.00    1.68    0.79   62%  62% Init semaphore
+    0.63    0.00    1.68    0.79   62%  62% Post [0] semaphore
+    0.63    0.00    1.68    0.79   62%  62% Wait [1] semaphore
+    0.52    0.00    1.68    0.72   68%  68% Trywait [0] semaphore
+    0.52    0.00    1.68    0.72   68%  68% Trywait [1] semaphore
+    0.52    0.00    1.68    0.72   68%  68% Peek semaphore
+    0.21    0.00    1.68    0.37   87%  87% Destroy semaphore
+    3.30    1.68    3.35    0.10   96%   3% Post/Wait semaphore
 
-    0.84    0.00    1.68    0.84  100%  50% Create counter
-    0.68    0.00    1.68    0.81   59%  59% Get counter value
-    0.52    0.00    1.68    0.72   68%  68% Set counter value
-    0.89    0.00    1.68    0.83   53%  46% Tick counter
-    0.58    0.00    1.68    0.76   65%  65% Delete counter
+    0.79    0.00    3.35    0.88   56%  56% Create counter
+    0.42    0.00    1.68    0.63   75%  75% Get counter value
+    0.37    0.00    1.68    0.57   78%  78% Set counter value
+    0.73    0.00    1.68    0.82   56%  56% Tick counter
+    0.63    0.00    1.68    0.79   62%  62% Delete counter
 
-    0.68    0.00    1.68    0.81   59%  59% Create alarm
-    0.99    0.00    3.35    0.87   53%  43% Initialize alarm
-    0.63    0.00    1.68    0.79   62%  62% Disable alarm
-    1.05    0.00    5.03    0.92   53%  43% Enable alarm
-    0.73    0.00    1.68    0.82   56%  56% Delete alarm
-    0.99    0.00    1.68    0.81   59%  40% Tick counter [1 alarm]
-    2.67    1.68    3.35    0.81   59%  40% Tick counter [many alarms]
-    0.84    0.00    1.68    0.84  100%  50% Tick &amp; fire counter [1 alarm]
-   10.53   10.06   11.73    0.68   71%  71% Tick &amp; fire counters [&gt;1 together]
-    2.67    1.68    3.35    0.81   59%  40% Tick &amp; fire counters [&gt;1 separately]
-    1.69    1.68    3.35    0.03   99%  99% Alarm latency [0 threads]
-    1.78    1.68    3.35    0.20   93%  93% Alarm latency [2 threads]
-    1.96    1.68    5.03    0.49   84%  84% Alarm latency [many threads]
-    3.38    3.35    6.70    0.05   99%  99% Alarm <IMG SRC="../pix/arrow.gif"> thread resume latency
+    0.89    0.00    3.35    0.89   96%  50% Create alarm
+    0.84    0.00    1.68    0.84  100%  50% Initialize alarm
+    0.52    0.00    1.68    0.72   68%  68% Disable alarm
+    0.89    0.00    3.35    0.89   96%  50% Enable alarm
+    0.58    0.00    1.68    0.76   65%  65% Delete alarm
+    0.63    0.00    1.68    0.79   62%  62% Tick counter [1 alarm]
+    5.03    3.35    6.70    0.10   93%   3% Tick counter [many alarms]
+    0.94    0.00    1.68    0.82   56%  43% Tick &amp; fire counter [1 alarm]
+   11.16   10.06   11.73    0.76   65%  34% Tick &amp; fire counters [&gt;1 together]
+    5.19    5.03    6.70    0.28   90%  90% Tick &amp; fire counters [&gt;1 separately]
+    0.01    0.00    1.68    0.03   99%  99% Alarm latency [0 threads]
+    0.13    0.00    1.68    0.24   92%  92% Alarm latency [2 threads]
+    0.94    0.00    3.35    0.85   53%  45% Alarm latency [many threads]
+    1.75    1.68    6.70    0.15   96%  96% Alarm <IMG SRC="../pix/arrow.gif"> thread resume latency
 
-  509     456     580  (main stack:  1012)  Thread stack used (1712 total)
-All done, main stack            : stack used  1012 size  2912
-All done             : Idlethread stack used   608 size  2048
+   41       0     368  (main stack:  1036)  Thread stack used (1712 total)
+All done, main stack            : stack used  1036 size  2912
+All done             :  Interrupt stack used   368 size  4108
+All done             : Idlethread stack used   288 size  2048
 
-Timing complete - 27400 ms total
+Timing complete - 28520 ms total
 
 PASS:&lt;Basic timing OK&gt;
-EXIT:&lt;done&gt;</PRE>
+EXIT:&lt;done&gt;
+</PRE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version update1.4-20-2-01/Tue Feb 20 11:49:02  2001-->
+<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:10 BST 2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Configuring and Building eCos from Source</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1741554">
  </A>
@@ -545,9 +545,6 @@ versions: v1_3_x
 Package CYGPKG_DEVICES_WATCHDOG_SH_SH3 (Watchdog driver for the Hitachi SH3 chip): 
 aliases: devices_watchdog_sh3 device_watchdog_sh3 
 versions: v1_3_x 
-Package CYGPKG_DEVS_DSP_SH_GMX320 (SH3 GMX320 DSP device driver): 
-aliases: devs_dsp_sh3_gmx320 gmx320_dsp_driver 
-versions: v1_3_x 
 Package CYGPKG_DEVS_ETH_ARM_EBSA285 (Intel EBSA285 with PRO/100+ ethernet driver): 
 aliases: devs_eth_arm_ebsa285 ebsa285_eth_driver 
 versions: v1_3_x 
@@ -686,12 +683,6 @@ versions: v1_3_x
 Package CYGPKG_HAL_SH_SH7708_CQ7708 (CqREEK SH7708 board): 
 aliases: hal_sh_cq sh_cq_hal 
 versions: v1_3_x 
-Package CYGPKG_HAL_SH_SH7709A_GMX320 (Delphi GMX320 board): 
-aliases: hal_sh_sh7709a_gmx320 sh_sh7709a_gmx320_hal 
-versions: v1_3_x 
-Package CYGPKG_HAL_SH_SH7709A_MPC (Delphi MPC board): 
-aliases: hal_sh_sh7709a_mpc sh_sh7709a_mpc_hal 
-versions: v1_3_x 
 Package CYGPKG_HAL_SPARCLITE (SPARClite common HAL): 
 aliases: hal_sparclite sparclite_hal sparclite_arch_hal 
 versions: v1_3_x 
@@ -709,9 +700,6 @@ aliases: hal_v85x_v850 nec_v850_hal
 versions: v1_3_x 
 Package CYGPKG_HAL_V85X_V850_CEB (Cosmo CEB-V850/SA1 board): 
 aliases: hal_v85x_v850_ceb nec_v850_ceb_hal 
-versions: v1_3_x 
-Package CYGPKG_HAL_V85X_V850_DK177 (Delphi DK177 board): 
-aliases: hal_v85x_v850_dk177 nec_v850_dk177_hal 
 versions: v1_3_x 
 Package CYGPKG_INFRA (Infrastructure): 
 aliases: infra 
@@ -784,12 +772,6 @@ aliases: devs_serial_sh3_cq7708 devs_serial_sh_cq7708 cq7708_serial_driver
 versions: v1_3_x 
 Package CYGPKG_IO_SERIAL_SH_EDK7708 (SH3 EDK7708 serial device drivers): 
 aliases: devs_serial_sh3_edk7708 devs_serial_sh_edk7708 edk7708_serial_driver 
-versions: v1_3_x 
-Package CYGPKG_IO_SERIAL_SH_GMX320 (SH3 GMX320 serial device driver): 
-aliases: devs_serial_sh3_gmx320 gmx320_serial_driver devs_serial_sh_gmx320 gmx320_scif_serial_driver 
-versions: v1_3_x 
-Package CYGPKG_IO_SERIAL_SH_MPC (SH3 MPC serial device driver): 
-aliases: devs_serial_sh3_mpc mpc_serial_driver devs_serial_sh_mpc mpc_scif_serial_driver 
 versions: v1_3_x 
 Package CYGPKG_IO_SERIAL_SH_SCI (SH SCI serial device drivers): 
 aliases: devs_serial_sh_sci sci_serial_driver 
@@ -876,15 +858,11 @@ Target cma28x (Cogent CMA286/287 board):
 aliases: cma286 cma287 
 Target cq7708 (CqREEK SH7708 board): 
 aliases: cq7708 
-Target dk177 (Delphi DK177 board): 
-aliases: DK177 dk177_v850 
 Target ebsa285 (Intel EBSA285 StrongARM board): 
 aliases: ebsa 
 Target edb7xxx (Cirrus Logic development board): 
 aliases: edb7211 eb7xxx eb7211 
 Target fads (Motorola MPC8xxFADS board): 
-aliases: 
-Target gmx320 (Delphi GMX320 board): 
 aliases: 
 Target jmr3904 (Toshiba JMR-TX3904 board): 
 aliases: jmr tx39 
@@ -892,8 +870,6 @@ Target linux (Linux synthetic target):
 aliases: 
 Target mbx (Motorola MBX860/821 board): 
 aliases: mbx860 mbx821 
-Target mpc (Delphi MPC board): 
-aliases: 
 Target pc (i386 PC target): 
 aliases: 
 Target pid (ARM development board (PID)): 
@@ -1015,7 +991,7 @@ You should follow the manual configuration process described above very carefull
  </A>
 Architectural Notes</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2618251">
+<A NAME="pgfId=2726067">
  </A>
 There are no notes for this architecture.</P>
 <TABLE>
@@ -1025,5 +1001,5 @@ There are no notes for this architecture.</P>
 </TR>
 </TABLE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

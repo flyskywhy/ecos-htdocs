@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version update1.4-20-2-01/Tue Feb 20 11:49:39  2001-->
+<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:16 BST 2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Target Setup</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1740665">
  </A>
@@ -161,156 +161,45 @@ Run</SPAN>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
-<A NAME="pgfId=2696433">
+<A NAME="pgfId=2807350">
  </A>
-      <BR>
-      <A NAME="marker=2696432">
+<A NAME="marker=2807349">
  </A>
 i386 PC Hardware Setup</H3>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2696434">
- </A>
-Building the eCos Monitor Boot Floppy</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2696435">
+<A NAME="pgfId=2807351">
  </A>
-When building for the PC target, the resulting binaries must be downloaded to the PC via its serial line. The PC must be running the eCos monitor, which is booted from floppy disk.</P>
-<H5 CLASS="Heading4">
-<A NAME="pgfId=2696436">
- </A>
-Building the monitor images with the eCos Configuration Tool</H5>
-<OL>
-<P><LI>
-<A NAME="pgfId=2696437">
- </A>
-Start with a new document - selecting the <SPAN CLASS="Bold">
-File<IMG SRC="../pix/arrow.gif">New</SPAN>
- menu item if necessary to do this.</LI>
-<P><LI>
-<A NAME="pgfId=2696438">
- </A>
-Choose the <SPAN CLASS="Bold">
-Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
- menu item, and then select the i386 PC hardware.</LI>
-<P><LI>
-<A NAME="pgfId=2696439">
- </A>
-While still displaying the <SPAN CLASS="Bold">
-Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
- dialog box, select the &quot;stubs&quot; package template to build a GDB stub. Click <SPAN CLASS="BOLD">
-OK.</SPAN>
-</LI>
-<P><LI>
-<A NAME="pgfId=2696440">
- </A>
-Build eCos using <SPAN CLASS="BOLD">
-Build<IMG SRC="../pix/arrow.gif">Library.</SPAN>
- </LI>
-<P><LI>
-<A NAME="pgfId=2696441">
- </A>
-When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub images have the  prefix &quot;gdb_module&quot;.</LI>
-</OL>
-<H5 CLASS="Heading4">
-<A NAME="pgfId=2696442">
- </A>
-Building the monitor images with ecosconfig</H5>
-<OL>
-<P><LI>
-<A NAME="pgfId=2696443">
- </A>
-Make an empty directory to contain the build tree, and cd into it. </LI>
-<P><LI>
-<A NAME="pgfId=2696444">
- </A>
-To build a GDB stub image, enter the command: <BR>
-  <TT CLASS="Code">
-$ ecosconfig new pc stubs </TT>
-</LI>
-<P><LI>
-<A NAME="pgfId=2696445">
- </A>
-Enter the commands: <BR>
-<TT CLASS="Code">
-  $ ecosconfig tree<BR>
-  $ make</TT>
- </LI>
-<P><LI>
-<A NAME="pgfId=2696446">
- </A>
-When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub images have the prefix &quot;gdb_module&quot;.</LI>
-</OL>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2696447">
- </A>
-Installing the eCos Monitor Boot Floppy</H3>
-<P CLASS="Body">
-<A NAME="pgfId=2696448">
- </A>
-The build process will have created the file install/bin/gdb_module.bin. This is a self-booting image that must be written on to a floppy disk. The process will erase any file system or data that already exists on that disk, so proceed with caution.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2696449">
- </A>
-For Red Hat Linux users this can be done by:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2696450"> </A>
-$ dd conv=sync if=install/bin/gdb_module.bin of=/dev/fd0H1440</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=2696451">
- </A>
-For NT Cygwin users this can be done by first ensuring that the raw floppy device is mounted as /dev/fd0. To check if this is the case, type the command &quot;mount&quot; at the Cygwin bash prompt. If the floppy drive is already mounted, it will be listed as something similar to the following line:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2696452"> </A>
-<TT CLASS="Code">\\.\a:	/dev/fd0	user	binmode</TT>
-</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=2696453">
- </A>
-If this line is not listed, then mount the floppy drive using the command:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2696454"> </A>
-$ mount -f -b //./a: /dev/fd0</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=2697845">
- </A>
-To actually install the boot image on the floppy, use the command:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2697840"> </A>
-$ dd conv=sync if=install/bin/gdb_module.bin of=/dev/fd0</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=2696455">
- </A>
-Insert this floppy in the A: drive of the PC to be used as a target and ensure that the BIOS is configured to boot from A: by default. On reset, the PC will boot from the floppy and be ready to be debugged via serial line zero (COM1).</P>
-<P CLASS="Body">
-<A NAME="pgfId=2696456">
- </A>
-The serial line runs at 38400 baud 8-N-1 and should be connected to the debug host using a null modem cable.</P>
+For information about setting up the PC to run with RedBoot, consult the RedBoot User's Guide. If using serial debugging, the serial line runs at 38400 baud 8-N-1 and should be connected to the debug host using a null modem cable. If ethernet debugging is required, an i82559 compatible network interface card, such as an Intel EtherExpress Pro 10/100,  should be installed on the target PC and connected to the development PC running GDB. When RedBoot is configured appropriately to have an IP address set, then GDB will be able to debug directly over TCP/IP to the target PC.</P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
-<A NAME="pgfId=2655355">
+<A NAME="pgfId=2807353">
  </A>
-<A NAME="marker=1997404">
+<A NAME="marker=2807352">
  </A>
 i386/Linux Synthetic Target Setup</H3>
 <P CLASS="Body">
-<A NAME="pgfId=1997406">
+<A NAME="pgfId=2807354">
  </A>
 When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
 <H3 CLASS="Label">
-<A NAME="pgfId=2392364">
+<A NAME="pgfId=2807355">
  </A>
 NOTE:</H3>
 <P CLASS="Note">
-<A NAME="pgfId=2392365">
+<A NAME="pgfId=2807356">
  </A>
 Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
 <P CLASS="Body">
-<A NAME="pgfId=1997407">
+<A NAME="pgfId=2807357">
  </A>
 These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1997408">
+<A NAME="pgfId=2807358">
  </A>
 Tools</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2395006">
+<A NAME="pgfId=2807359">
  </A>
 For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
 gcc -v</TT>
@@ -320,7 +209,7 @@ egcs -v</TT>
 ld -v</TT>
 .</P>
 <P CLASS="Body">
-<A NAME="pgfId=2395013">
+<A NAME="pgfId=2807360">
  </A>
 If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools <TT CLASS="Code">
 i686-pc-linux-gnu-gcc</TT>
@@ -332,11 +221,11 @@ i686-pc-linux-gnu-ld</TT>
 i686-pc-linux-gnu-objcopy</TT>
  are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editing the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2395068">
+<A NAME="pgfId=2807361">
  </A>
 If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2395069"> </A>
-<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">http://sourceware.cygnus.com/ecos/getstart.html</A>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2807363"> </A>
+<A HREF="http://sources.redhat.com/ecos/getstart.html" CLASS="URL">http://sources.redhat.com/ecos/getstart.html</A>
 </PRE>
 <TABLE>
 <TR>
@@ -345,5 +234,5 @@ If you have any difficulties, it is almost certainly easiest overall to rebuild 
 </TR>
 </TABLE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>
