@@ -9,7 +9,7 @@
 <HR SIZE=3>
 
 <p>A flash device driver consists of two elements: a generic device
-driver which knows how to handle a particular part or series of flash
+driver which knows how to handle a particular part or family of flash
 devices, and a platform specific driver which contains information
 about how the devices are laid out on the particular platform. This
 allows the core device driver to be shared by multiple platforms which
@@ -21,16 +21,18 @@ AM29xxxxx</a> generic driver and the <a
 href="http://sources.redhat.com/cgi-bin/cvsweb.cgi/ecos/packages/devs/flash/powerpc/mbx/current/?cvsroot=ecos">PowerPC
 MBX</a> platform driver.</p>
 
-<p>Other device drivers rely on the platform driver to provide a
-header file with details which is included when the generic driver
-object is built. But in the flash device drivers, the generic driver
-is provided as an <tt>.inl</tt> header file which is included when the
-driver object is built in the platform driver.</p>
+<p>Other device drivers (e.g. ethernet drivers) rely on the platform
+driver to provide a header file with details which is included when
+the generic driver object is built. But in the flash device drivers,
+the generic driver is provided as an <tt>.inl</tt> header file which
+is included when the driver object is built in the platform
+driver.</p>
 
-<p>The reason for this is that the driver code needs macros to handle
-different configuration instances of interleaved devices. Letting the
-platform driver build the object allows the same generic driver to be
-built for different interleaved configurations.</p>
+<p>The reason for this is that the driver code needs compile-time
+configuration to handle different configurations of interleaved
+devices. Letting the platform driver build the object allows the same
+generic driver to be used in multiple different configurations on the
+same platform.</p>
 
 
 <h3>General Issues</h3>
@@ -67,8 +69,9 @@ built for different interleaved configurations.</p>
 
  <dd><p>Different drivers will have different word widths, depending
  on device types and number of interleaved devices. Since the IO
- driver must be able to use them all, device addresses and data is
- passed as void pointersm, and counts denote bytes.</p></dd>
+ driver must be able to use them all, device and data addresses are
+ passed as void pointers, and size arguments always denote
+ bytes.</p></dd>
 
 <dt><p>Flash interleaving</p></dt>
 
@@ -90,15 +93,10 @@ built for different interleaved configurations.</p>
 
 <dt><p>Flash access</p></dt>
 
- <dd><p>All access operations which takes the flash device out of its
+ <dd><p>All access operations that take the flash device out of its
  normal random access data mode must be done from RAM. Therefore all
  such functions must be put in the special <tt>.2ram</tt> section
- which will get copied to RAM during system initialization.</p>
-
- <p>The first generation of drivers would instead rely on the IO
- driver to copy the functions to memory and execute them from
- there. But that method has various problems with caching and
- portability.</p></dd>
+ which will get copied to RAM during system initialization.</p></dd>
 
 <dt><p>Caching during access</p></dt>
 
@@ -107,8 +105,8 @@ built for different interleaved configurations.</p>
  this, the IO driver disables caches before calling the driver
  functions. This is done using the macro <tt>HAL_FLASH_CACHES_OFF</tt>
  and the matching <tt>HAL_FLASH_CACHES_ON</tt> for which there are
- shared definitions in the IO driver. Some architectures/platforms may
- have to override these macros though</p></tt>
+ generic definitions in the IO driver. Some architectures/platforms may
+ have to override these macros though.</p></tt>
 
 </dl>
 
@@ -154,17 +152,18 @@ flash drivers in the same system.</p>
 
 <dt><tt>void flash_query(void* data)</tt></dt>
 
- <dd><p>Reads whatever codes from the flash device necessary to
- identify it. This is usually the manufacturer and part numbers which
- are written to <tt>data</tt>. This function is called via the IO
- driver, hence the need for a void pointer instead of type specific
- pointer.</p></dd>
+ <dd><p>Reads whatever information is needed from the flash device
+ necessary to identify it. This is usually the manufacturer and part
+ numbers which are written to <tt>data</tt>. This function should only
+ be called from within the driver (which knows the size of the data
+ stored). The function is only public because it needs to be called
+ via the IO driver.</p></dd>
 
 <dt><tt>int flash_hwr_map_error(int err)</tt></dt>
 
  <dd><p>Translates a flash error code to an eCos flash error
- code. This is a null operation since th driver should always return
- eCos flash error codes anyway.</p></dd>
+ code. This is a null operation (legacy function) since the driver
+ should always return eCos flash error codes anyway.</p></dd>
 
 <dt><tt>bool flash_code_overlaps(void *start, void *end)</tt></dt>
 
@@ -174,15 +173,17 @@ flash drivers in the same system.</p>
 
 <dt><tt>int flash_erase_block(volatile void* block)</tt></dt>
 
- <dd><p>Erase the specified block. Returns an error code if the
- operation failed.</p></dd>
+ <dd><p>Erase the specified block. Returns FLASH_ERR_OK if the
+ operation succeeded, otherwise an error code describing the
+ failure.</p></dd>
 
 <dt><tt>int flash_program_buf(volatile void* addr, void* data, 
                               int len)</tt></dt>
 
  <dd><p> Program the flash starting at <tt>addr</tt> with the data
  pointed to by <tt>data</tt>. <tt>len</tt> specifies number of bytes
- to program. Returns an error code if the operation failed.</p></dd>
+ to program. Returns FLASH_ERR_OK if the operation succeeded,
+ otherwise an error code describing the failure.</p></dd>
 
 </dl>
 
@@ -195,14 +196,16 @@ a reason for one taking a single block and the other a range?]</p>
 <dl>
 <dt><tt>int flash_lock_block(volatile void* block)</tt></dt>
 
- <dd><p>Locks the block specified. Returns an error code if the
- operation failed.</p></d>
+ <dd><p>Locks the block specified. Returns FLASH_ERR_OK if the
+ operation succeeded, otherwise an error code describing the
+ failure.</p></d>
 
 <dt><tt>int flash_unlock_block(volatile void* block,
                        int block_size, int blocks)</tt></dt>
 
- <dd><p>Unlocks specified range of blocks. Returns flash error code if
- operation failed.</p></dd>
+ <dd><p>Unlocks specified range of blocks. Returns FLASH_ERR_OK if the
+ operation succeeded, otherwise an error code describing the
+ failure.</p></dd>
 
 </dl>
 
@@ -231,24 +234,26 @@ cdl_package CYGPKG_DEVS_FLASH_MBX {
     }
 
     implements    CYGINT_DEVS_FLASH_AMD_AM29XXXXX_REQUIRED
+    requires      CYGHWR_DEVS_FLASH_AMD_AM29F040B
 }
 </pre>
 
-<p>It enables the generic driver by providing the interface
-option. The <tt>compile</tt> statement identifies the file which, when
-built, includes the generic driver code.</p>
+<p>It enables the generic driver by providing the interface option,
+and by the requires statement ensures that the driver includes the
+necessary device support. The <tt>compile</tt> statement identifies
+the file which, when built, includes the generic driver code.</p>
 
-<p>The driver file itself is quite simple, as all it has to do is
-specify device parameters and include the generic driver:</p>
+<p>The platform driver file itself is quite simple, as all it has to
+do is specify device parameters and include the generic driver:</p>
 
 <pre>
 //--------------------------------------------------------------------------
 // Device properties
 
 // We use the single AM29F040B on the MBX board.
-#define CYGPKG_DEVS_FLASH_AMD_AM29F040B
 #define CYGNUM_FLASH_INTERLEAVE	(1)
 #define CYGNUM_FLASH_SERIES	(1)
+#define CYGNUM_FLASH_WIDTH      (8)
 #define CYGNUM_FLASH_BASE 	(0xfe000000u)
 
 //--------------------------------------------------------------------------
@@ -263,12 +268,6 @@ specify device parameters and include the generic driver:</p>
 
 <dl>
 
-<dt><tt>CYGPKG_DEVS_FLASH_AMD_AM29F040B</tt></dt>
-
- <dd><p>The generic driver may contain support for multiple variants
- in the device family. This definition selects parameters specific for
- the AMD AM29F040B part.</p></dd>
-
 <dt><tt>CYGNUM_FLASH_INTERLEAVE</tt></dt>
 
  <dd><p>Defines how many devices are interleaved (sits in parallel)
@@ -281,6 +280,13 @@ specify device parameters and include the generic driver:</p>
  number of devices is then defined as
  (<tt>CYGNUM_FLASH_INTERLEAVE</tt> x
  <tt>CYGNUM_FLASH_SERIES</tt>).</p></dd>
+
+<dt><tt>CYGNUM_FLASH_WIDTH</tt></dt>
+
+ <dd><p>Defines the width of the devices. Some devices support being
+ used in more than one width configuration (i.e., some 16 bit wide
+ devices can be configured to only use the 8 lowest data
+ bits).</p></dd>
 
 <dt><tt>CYGNUM_FLASH_BASE</tt></dt>
 
