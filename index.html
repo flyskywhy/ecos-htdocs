@@ -13,58 +13,33 @@
 
 <h3>eCos News</h3>
 
+<h4>Hardware support</h4>
+
+Hardware support has been extended to many new boards and sub-systems recently:
+
+<ul>
+<li>ARM development board (PID) big-endian mode
+<li>ARM evaluation board (AEB-1) revision C and watchdog support
+<li>Cirrus Logic CL-PS7111 development board
+<li>Cogent CMA230 CPU module (ARM7TDMI)
+<li>Motorola MBX860 embedded controller board
+<li>PCI bus control
+</ul>
+
+The new hardware support packages are available via
+<A href="anoncvs.html">anonymous CVS</a> only at this time. Full details of
+all supported hardware are provided in the <a href="hardware.html">supported targets</a>
+table. For the very latest news on eCos, check out the
+<!-- rev=1 gives the latest version of a file via CVSweb -->
+<a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/NEWS?rev=1&content-type=text/x-cvsweb-markup&cvsroot=ecos">
+NEWS</a> file.
+
 <h4>Sourceware CD</H4>
 
 The eCos sources and development tools are now available on CD-ROM for
 those who prefer not to download them directly. The
 <a href="http://www.cygnus.com/sourcewarecd/">Cygnus Sourceware CD</a>
-includes both the latest eCos 1.2.1 sources and the earlier eCos 1.1 files.
-
-<h4>eCos 1.2.1 release</h4>
-
-The second public release of eCos is now available. Since the original eCos 1.1 release, Cygnus has continued its development
-adding a wealth of new features and additional ports. eCos 1.2.1 incorporates the following enhancements:
-
-<ul>
-<li>New architectures:<p> 
-  <ul>
-  <li>Advanced RISC Machines ARM7
-  <li>Fujitsu SPARClite MB8683x series of processors
-  </ul>
-
-<p>In addition to the new architectures, PowerPC support has been extended to include the MPC850 and MPC823 variants.
-
-<p><li>Several new evaluation board ports:<p>
-  <ul>
-  <li>ARM PID7T
-  <li>ARM AEB-1 (beta)
-  <li>Cogent CMA287-50 - PowerPC MPC850
-  <li>Cogent CMA287-23 - PowerPC MPC823
-  <li>Motorola FADS860 (unsupported contributed port)
-  <li>Fujitsu MB8683x evaluation boards
-  </ul>
-
-<p><li>New tools features:<p>
-  <ul>
-  <li>Synthetic target support under Linux x86 - run eCos apps natively under Linux
-  <li>Configuration Tool - built-in support for eCos testcase execution
-  <li>Configuration Tool - memory layout editor, simplifying the task of mapping eCos to your system’s memory map
-  <li>Configuration Tool - miscellaneous enhancements including progress bar for most operations
-  <li>Enhanced GDB multithreading support - user control of scheduler locking while debugging
-  <li>Enhanced GDB download protocol - halving the download time over serial connections
-  </ul>
-
-<p><li>New or extended runtime features:<p>
-  <ul>
-  <li>New eCos device driver architecture - including revised serial drivers for all supported boards
-  <li>Standardized kernel device driver API
-  <li>ISO C library now includes support for signals and date/time functions
-  <li>CygMon ROM monitor support for the SPARClite evaluation boards, including ethernet based download and debug
-  <li>Updated and expanded documentation including the new ports and device driver architecture
-  <li>Expanded testsuite
-  <li>A wealth of minor enhancements and bug fixes
-  </ul>
-</ul>
+includes both the eCos 1.2.1 sources and the earlier eCos 1.1 files.
 
 <h4>Anonymous CVS access</h4>
 
@@ -107,7 +82,7 @@ The following functionality is provided:<p>
 <H3>Supported hosts</H3>
 <P>
 The main supported host is Windows NT on x86-based hardware. The
-system has also been tested on Red Hat 5.x Linux using x86-based
+system has also been tested on Red Hat 5.x Linux (and later releases) using x86-based
 hardware, and on both Windows 95 and 98, but support for these hosts
 should be considered beta. In addition to the tested host platforms,
 eCos has been hosted on Linux using PowerPC hardware and on Solaris 2.5.1.
