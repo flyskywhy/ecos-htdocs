@@ -1,10 +1,22 @@
-<!-- Copyright (C) 2000 Red Hat, Inc. --> <HTML>
-<HEAD>
-<TITLE>
-CDL Language Specification</TITLE>
-<META
+<!-- Copyright (C) 2001 Red Hat, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/).                           -->
+<!-- Distribution of substantively modified versions of this         -->
+<!-- document is prohibited without the explicit permission of the   -->
+<!-- copyright holder.                                               -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission is obtained from the copyright holder.               -->
+<HTML
+><HEAD
+><TITLE
+>CDL Language Specification</TITLE
+><META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -13,407 +25,412 @@ TITLE="Building Test Cases"
 HREF="build.tests.html"><LINK
 REL="NEXT"
 TITLE="cdl_option"
-HREF="ref.cdl-option.html"></HEAD>
-<BODY
+HREF="ref.cdl-option.html"></HEAD
+><BODY
+CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
-TEXT="#000000">
-<DIV
-CLASS="NAVHEADER">
-<TABLE
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
-CELLSPACING="0">
-<TR>
-<TH
+CELLSPACING="0"
+><TR
+><TH
 COLSPAN="3"
-ALIGN="center">
-The <SPAN
-CLASS="APPLICATION">
-eCos</SPAN>
- Component Writer's Guide</TH>
-</TR>
-<TR>
-<TD
+ALIGN="center"
+>The <SPAN
+CLASS="APPLICATION"
+>eCos</SPAN
+> Component Writer's Guide</TH
+></TR
+><TR
+><TD
 WIDTH="10%"
 ALIGN="left"
-VALIGN="bottom">
-<A
-HREF="build.tests.html">
-Prev</A>
-</TD>
-<TD
+VALIGN="bottom"
+><A
+HREF="build.tests.html"
+>Prev</A
+></TD
+><TD
 WIDTH="80%"
 ALIGN="center"
-VALIGN="bottom">
-</TD>
-<TD
+VALIGN="bottom"
+></TD
+><TD
 WIDTH="10%"
 ALIGN="right"
-VALIGN="bottom">
-<A
-HREF="ref.cdl-option.html">
-Next</A>
-</TD>
-</TR>
-</TABLE>
-<HR
+VALIGN="bottom"
+><A
+HREF="ref.cdl-option.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
 ALIGN="LEFT"
-WIDTH="100%"></DIV>
-<DIV
-CLASS="CHAPTER">
-<H1>
-<A
-NAME="REFERENCE">
-Chapter 5. CDL Language Specification</A>
-</H1>
-<DIV
-CLASS="TOC">
-<DL>
-<DT>
-<B>
-Table of Contents</B>
-</DT>
-<DT>
-<A
-HREF="ref.cdl-option.html">
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="REFERENCE"
+>Chapter 5. CDL Language Specification</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="ref.cdl-option.html"
+><TT
+CLASS="LITERAL"
+>cdl_option</TT
+></A
+> &#8212; Define a single configuration option</DT
+><DT
+><A
+HREF="ref.cdl-component.html"
+><TT
+CLASS="LITERAL"
+>cdl_component</TT
+></A
+> &#8212; Define a component, a collection of configuration options</DT
+><DT
+><A
+HREF="ref.cdl-package.html"
+><TT
+CLASS="LITERAL"
+>cdl_package</TT
+></A
+> &#8212; Define a package, a component that can be distributed</DT
+><DT
+><A
+HREF="ref.cdl-interface.html"
+><TT
+CLASS="LITERAL"
+>cdl_interface</TT
+></A
+> &#8212; Define an interface, functionality that can be provided by
+a number of different implementations.</DT
+><DT
+><A
+HREF="ref.active-if.html"
+><SPAN
+CLASS="PROPERTY"
+>active_if</SPAN
+></A
+> &#8212; Allow additional control over the active state of an
+option or other CDL entity.</DT
+><DT
+><A
+HREF="ref.calculated.html"
+><SPAN
+CLASS="PROPERTY"
+>calculated</SPAN
+></A
+> &#8212; Used if the current option's value is not user-modifiable,
+but is calculated using a suitable CDL expression.</DT
+><DT
+><A
+HREF="ref.compile.html"
+><SPAN
+CLASS="PROPERTY"
+>compile</SPAN
+></A
+> &#8212; List the source files that should be built if this option
+is active and enabled.</DT
+><DT
+><A
+HREF="ref.default-value.html"
+><SPAN
+CLASS="PROPERTY"
+>default_value</SPAN
+></A
+> &#8212; Provide a default value for this option using a CDL expression.</DT
+><DT
+><A
+HREF="ref.define.html"
+><SPAN
+CLASS="PROPERTY"
+>define</SPAN
+></A
+> &#8212; Specify additional <TT
+CLASS="LITERAL"
+>#define</TT
+> symbols that
+should go into the owning package's configuration header file.</DT
+><DT
+><A
+HREF="ref.define-format.html"
+><SPAN
+CLASS="PROPERTY"
+>define_format</SPAN
+></A
+> &#8212; Control how an option's value will appear in the
+configuration header file.</DT
+><DT
+><A
+HREF="ref.define-header.html"
+><SPAN
+CLASS="PROPERTY"
+>define_header</SPAN
+></A
+> &#8212; Specify the  configuration header file that
+will be generated for a given package.</DT
+><DT
+><A
+HREF="ref.define-proc.html"
+><SPAN
+CLASS="PROPERTY"
+>define_proc</SPAN
+></A
+> &#8212; Use a fragment of Tcl code to output additional data to
+configuration header files.</DT
+><DT
+><A
+HREF="ref.description.html"
+><SPAN
+CLASS="PROPERTY"
+>description</SPAN
+></A
+> &#8212; Provide a textual description for an option.</DT
+><DT
+><A
+HREF="ref.display.html"
+><SPAN
+CLASS="PROPERTY"
+>display</SPAN
+></A
+> &#8212; Provide a short string describing this option.</DT
+><DT
+><A
+HREF="ref.doc.html"
+><SPAN
+CLASS="PROPERTY"
+>doc</SPAN
+></A
+> &#8212; The location of online-documentation for a configuration option.</DT
+><DT
+><A
+HREF="ref.flavor.html"
+><SPAN
+CLASS="PROPERTY"
+>flavor</SPAN
+></A
+> &#8212; Specify the nature of a configuration option.</DT
+><DT
+><A
+HREF="ref.hardware.html"
+><SPAN
+CLASS="PROPERTY"
+>hardware</SPAN
+></A
+> &#8212; Specify that a package is tied to specific hardware.</DT
+><DT
+><A
+HREF="ref.if-define.html"
+><SPAN
+CLASS="PROPERTY"
+>if_define</SPAN
+></A
+> &#8212; Output a common preprocessor construct to a configuration
+header file.</DT
+><DT
+><A
+HREF="ref.implements.html"
+><SPAN
+CLASS="PROPERTY"
+>implements</SPAN
+></A
+> &#8212; Enabling this option provides one instance of a more
+general interface.</DT
+><DT
+><A
+HREF="ref.include-dir.html"
+><SPAN
+CLASS="PROPERTY"
+>include_dir</SPAN
+></A
+> &#8212; Specify the desired location of a package's exported
+header files in the install tree.</DT
+><DT
+><A
+HREF="ref.include-files.html"
+><SPAN
+CLASS="PROPERTY"
+>include_files</SPAN
+></A
+> &#8212; List the header files that are exported by a package.</DT
+><DT
+><A
+HREF="ref.legal-values.html"
+><SPAN
+CLASS="PROPERTY"
+>legal_values</SPAN
+></A
+> &#8212; Impose constraints on the possible values for an option.</DT
+><DT
+><A
+HREF="ref.library.html"
+><SPAN
+CLASS="PROPERTY"
+>library</SPAN
+></A
+> &#8212; Specify which library should contain the object files
+generated by building this package.</DT
+><DT
+><A
+HREF="ref.make.html"
+><SPAN
+CLASS="PROPERTY"
+>make</SPAN
+></A
+> &#8212; Define an additional custom build step associated with an
+option, resulting in a target that should not go directly into a library.</DT
+><DT
+><A
+HREF="ref.make-object.html"
+><SPAN
+CLASS="PROPERTY"
+>make_object</SPAN
+></A
+> &#8212; Define a custom build step, resulting in an object file
+that should go into a library.</DT
+><DT
+><A
+HREF="ref.no-define.html"
+><SPAN
+CLASS="PROPERTY"
+>no_define</SPAN
+></A
+> &#8212; Suppress the normal generation of a preprocessor
 <TT
-CLASS="LITERAL">
-cdl_option</TT>
-</A>
- &#8212; Define a single configuration option</DT>
-<DT>
-<A
-HREF="ref.cdl-component.html">
-<TT
-CLASS="LITERAL">
-cdl_component</TT>
-</A>
- &#8212; Define a component, a collection of configuration options</DT>
-<DT>
-<A
-HREF="ref.cdl-package.html">
-<TT
-CLASS="LITERAL">
-cdl_package</TT>
-</A>
- &#8212; Define a package, a component that can be distributed</DT>
-<DT>
-<A
-HREF="ref.cdl-interface.html">
-<TT
-CLASS="LITERAL">
-cdl_interface</TT>
-</A>
- &#8212; Define an interface, functionality that can be provided by
-a number of different implementations.</DT>
-<DT>
-<A
-HREF="ref.active-if.html">
-<SPAN
-CLASS="PROPERTY">
-active_if</SPAN>
-</A>
- &#8212; Allow additional control over the active state of an
-option or other CDL entity.</DT>
-<DT>
-<A
-HREF="ref.calculated.html">
-<SPAN
-CLASS="PROPERTY">
-calculated</SPAN>
-</A>
- &#8212; Used if the current option's value is not user-modifiable,
-but is calculated using a suitable CDL expression.</DT>
-<DT>
-<A
-HREF="ref.compile.html">
-<SPAN
-CLASS="PROPERTY">
-compile</SPAN>
-</A>
- &#8212; List the source files that should be built if this option
-is active and enabled.</DT>
-<DT>
-<A
-HREF="ref.default-value.html">
-<SPAN
-CLASS="PROPERTY">
-default_value</SPAN>
-</A>
- &#8212; Provide a default value for this option using a CDL expression.</DT>
-<DT>
-<A
-HREF="ref.define.html">
-<SPAN
-CLASS="PROPERTY">
-define</SPAN>
-</A>
- &#8212; Specify additional <TT
-CLASS="LITERAL">
-#define</TT>
- symbols that
-should go into the owning package's configuration header file.</DT>
-<DT>
-<A
-HREF="ref.define-format.html">
-<SPAN
-CLASS="PROPERTY">
-define_format</SPAN>
-</A>
- &#8212; Control how an option's value will appear in the
-configuration header file.</DT>
-<DT>
-<A
-HREF="ref.define-header.html">
-<SPAN
-CLASS="PROPERTY">
-define_header</SPAN>
-</A>
- &#8212; Specify the  configuration header file that
-will be generated for a given package.</DT>
-<DT>
-<A
-HREF="ref.define-proc.html">
-<SPAN
-CLASS="PROPERTY">
-define_proc</SPAN>
-</A>
- &#8212; Use a fragment of Tcl code to output additional data to
-configuration header files.</DT>
-<DT>
-<A
-HREF="ref.description.html">
-<SPAN
-CLASS="PROPERTY">
-description</SPAN>
-</A>
- &#8212; Provide a textual description for an option.</DT>
-<DT>
-<A
-HREF="ref.display.html">
-<SPAN
-CLASS="PROPERTY">
-display</SPAN>
-</A>
- &#8212; Provide a short string describing this option.</DT>
-<DT>
-<A
-HREF="ref.doc.html">
-<SPAN
-CLASS="PROPERTY">
-doc</SPAN>
-</A>
- &#8212; The location of online-documentation for a configuration option.</DT>
-<DT>
-<A
-HREF="ref.flavor.html">
-<SPAN
-CLASS="PROPERTY">
-flavor</SPAN>
-</A>
- &#8212; Specify the nature of a configuration option.</DT>
-<DT>
-<A
-HREF="ref.hardware.html">
-<SPAN
-CLASS="PROPERTY">
-hardware</SPAN>
-</A>
- &#8212; Specify that a package is tied to specific hardware.</DT>
-<DT>
-<A
-HREF="ref.if-define.html">
-<SPAN
-CLASS="PROPERTY">
-if_define</SPAN>
-</A>
- &#8212; Output a common preprocessor construct to a configuration
-header file.</DT>
-<DT>
-<A
-HREF="ref.implements.html">
-<SPAN
-CLASS="PROPERTY">
-implements</SPAN>
-</A>
- &#8212; Enabling this option provides one instance of a more
-general interface.</DT>
-<DT>
-<A
-HREF="ref.include-dir.html">
-<SPAN
-CLASS="PROPERTY">
-include_dir</SPAN>
-</A>
- &#8212; Specify the desired location of a package's exported
-header files in the install tree.</DT>
-<DT>
-<A
-HREF="ref.include-files.html">
-<SPAN
-CLASS="PROPERTY">
-include_files</SPAN>
-</A>
- &#8212; List the header files that are exported by a package.</DT>
-<DT>
-<A
-HREF="ref.legal-values.html">
-<SPAN
-CLASS="PROPERTY">
-legal_values</SPAN>
-</A>
- &#8212; Impose constraints on the possible values for an option.</DT>
-<DT>
-<A
-HREF="ref.library.html">
-<SPAN
-CLASS="PROPERTY">
-library</SPAN>
-</A>
- &#8212; Specify which library should contain the object files
-generated by building this package.</DT>
-<DT>
-<A
-HREF="ref.make.html">
-<SPAN
-CLASS="PROPERTY">
-make</SPAN>
-</A>
- &#8212; Define an additional custom build step associated with an
-option, resulting in a target that should not go directly into a library.</DT>
-<DT>
-<A
-HREF="ref.make-object.html">
-<SPAN
-CLASS="PROPERTY">
-make_object</SPAN>
-</A>
- &#8212; Define a custom build step, resulting in an object file
-that should go into a library.</DT>
-<DT>
-<A
-HREF="ref.no-define.html">
-<SPAN
-CLASS="PROPERTY">
-no_define</SPAN>
-</A>
- &#8212; Suppress the normal generation of a preprocessor
-<TT
-CLASS="LITERAL">
-#define</TT>
- symbol in a configuration header file.</DT>
-<DT>
-<A
-HREF="ref.parent.html">
-<SPAN
-CLASS="PROPERTY">
-parent</SPAN>
-</A>
- &#8212; Control the location of an option in the configuration hierarchy.</DT>
-<DT>
-<A
-HREF="ref.requires.html">
-<SPAN
-CLASS="PROPERTY">
-requires</SPAN>
-</A>
- &#8212; List constraints that the configuration should satisfy if
-a given option is active and enabled..</DT>
-<DT>
-<A
-HREF="ref.script.html">
-<SPAN
-CLASS="PROPERTY">
-script</SPAN>
-</A>
- &#8212; Include additional configuration information from another
-CDL script.</DT>
-</DL>
-</DIV>
-<P>
-This chapter contains reference information for the main <SPAN
-CLASS="APPLICATION">
-CDL</SPAN>
-
+CLASS="LITERAL"
+>#define</TT
+> symbol in a configuration header file.</DT
+><DT
+><A
+HREF="ref.parent.html"
+><SPAN
+CLASS="PROPERTY"
+>parent</SPAN
+></A
+> &#8212; Control the location of an option in the configuration hierarchy.</DT
+><DT
+><A
+HREF="ref.requires.html"
+><SPAN
+CLASS="PROPERTY"
+>requires</SPAN
+></A
+> &#8212; List constraints that the configuration should satisfy if
+a given option is active and enabled..</DT
+><DT
+><A
+HREF="ref.script.html"
+><SPAN
+CLASS="PROPERTY"
+>script</SPAN
+></A
+> &#8212; Include additional configuration information from another
+CDL script.</DT
+></DL
+></DIV
+><P
+>This chapter contains reference information for the main <SPAN
+CLASS="APPLICATION"
+>CDL</SPAN
+>
 commands <TT
-CLASS="LITERAL">
-cdl_option</TT>
-, <TT
-CLASS="LITERAL">
-cdl_component</TT>
-, <TT
-CLASS="LITERAL">
-cdl_package</TT>
- and
+CLASS="LITERAL"
+>cdl_option</TT
+>, <TT
+CLASS="LITERAL"
+>cdl_component</TT
+>, <TT
+CLASS="LITERAL"
+>cdl_package</TT
+> and
 <TT
-CLASS="LITERAL">
-cdl_interface</TT>
-, followed by the various properties such as
+CLASS="LITERAL"
+>cdl_interface</TT
+>, followed by the various properties such as
 <SPAN
-CLASS="PROPERTY">
-active_if</SPAN>
- and <SPAN
-CLASS="PROPERTY">
-compile</SPAN>
- in alphabetical order.</P>
-</DIV>
-<DIV
-CLASS="NAVFOOTER">
-<HR
+CLASS="PROPERTY"
+>active_if</SPAN
+> and <SPAN
+CLASS="PROPERTY"
+>compile</SPAN
+> in alphabetical order.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
-CELLSPACING="0">
-<TR>
-<TD
+CELLSPACING="0"
+><TR
+><TD
 WIDTH="33%"
 ALIGN="left"
-VALIGN="top">
-<A
-HREF="build.tests.html">
-Prev</A>
-</TD>
-<TD
+VALIGN="top"
+><A
+HREF="build.tests.html"
+>Prev</A
+></TD
+><TD
 WIDTH="34%"
 ALIGN="center"
-VALIGN="top">
-<A
-HREF="cdl-guide.html">
-Home</A>
-</TD>
-<TD
+VALIGN="top"
+><A
+HREF="cdl-guide.html"
+>Home</A
+></TD
+><TD
 WIDTH="33%"
 ALIGN="right"
-VALIGN="top">
-<A
-HREF="ref.cdl-option.html">
-Next</A>
-</TD>
-</TR>
-<TR>
-<TD
+VALIGN="top"
+><A
+HREF="ref.cdl-option.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
 WIDTH="33%"
 ALIGN="left"
-VALIGN="top">
-Building Test Cases</TD>
-<TD
+VALIGN="top"
+>Building Test Cases</TD
+><TD
 WIDTH="34%"
 ALIGN="center"
-VALIGN="top">
-&nbsp;</TD>
-<TD
+VALIGN="top"
+>&nbsp;</TD
+><TD
 WIDTH="33%"
 ALIGN="right"
-VALIGN="top">
-<TT
-CLASS="LITERAL">
-cdl_option</TT>
-</TD>
-</TR>
-</TABLE>
-</DIV>
-</BODY>
-</HTML>
+VALIGN="top"
+><TT
+CLASS="LITERAL"
+>cdl_option</TT
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
