@@ -103,6 +103,11 @@ eCos GDB stub. You are advised to read all the sources though.
     &lt;platform&gt;.S, FIXME). This step can be postponed if you are
     doing RAM startup stubs first.
 
+<li>Define HAL_STUB_PLATFORM_RESET (optionally empty) and
+    HAL_STUB_PLATFORM_RESET_ENTRY so the minimal stub can
+    reset-on-detach - this is very handy, often removing the need for
+    physically resetting the board between downloads.
+
 </ol>
 
 <p>You should now be able to build some simple stubs. For ROM startup:

@@ -40,8 +40,8 @@ mark IO regions non-cachable.
   (show-paren-mode 1)
   (setq c-basic-offset 4)
 
-  (set-variable 'add-log-full-name "<Your Name>")
-  (set-variable 'add-log-mailing-address "<Your email address>"))
+  (set-variable 'add-log-full-name "Your Name")
+  (set-variable 'add-log-mailing-address "Your email address"))
 
 (defun ecos-asm-mode ()
   "ASM mode with adjusted defaults for use with the eCos sources."
@@ -51,8 +51,8 @@ mark IO regions non-cachable.
   (asm-mode)
   (setq c-basic-offset 4)
 
-  (set-variable 'add-log-full-name "<Your Name>")
-  (set-variable 'add-log-mailing-address "<Your email address>"))
+  (set-variable 'add-log-full-name "Your Name")
+  (set-variable 'add-log-mailing-address "Your email address"))
 
 (setq auto-mode-alist
       (append '(("/local/ecc/.*\\.C$"   . ecos-c-mode)
