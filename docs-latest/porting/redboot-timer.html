@@ -25,7 +25,9 @@ hal_delay_us(int usecs)
     volatile unsigned char *tstr = (volatile unsigned char *)CYGARC_REG_TSTR;
     volatile unsigned long *tcnt = (volatile unsigned long *)CYGARC_REG_TCNT1;
     volatile unsigned long *tcor = (volatile unsigned long *)CYGARC_REG_TCOR1;
-    unsigned long clocks_per_us = (CYGHWR_HAL_SH_ONCHIP_PERIPHERAL_SPEED+(CYGHWR_HAL_SH_TMU_PRESCALE_0-1))/CYGHWR_HAL_SH_TMU_PRESCALE_0;  // Rounded up
+    unsigned long clocks_per_us =
+      ((CYGHWR_HAL_SH_ONCHIP_PERIPHERAL_SPEED+(CYGHWR_HAL_SH_TMU_PRESCALE_0-1))
+       / CYGHWR_HAL_SH_TMU_PRESCALE_0);  // Rounded up
     int diff, diff2;
     cyg_uint32 val1, val2;
 
