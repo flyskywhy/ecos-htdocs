@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.net/Wed Jul 11 18:11:07  2001-->
+<HEAD><!--version 1.3.net/Wed Jul 11 17:11:41  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> System Requirements</TITLE></HEAD>
@@ -61,38 +61,348 @@ disk space for the installed distribution. The eCos installation process will de
  </A>
 If you are downloading the eCos Net Release distribution from Red Hat's sources.redhat.com site, you will also need space to store that image and to compile GNUPro and eCos from source.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2829070">
+<A NAME="pgfId=2812735">
  </A>
-If you will be using an x86 board, you will also need:</P>
+If you will be using the <A NAME="marker=2812734">
+ </A>
+ARM PID evaluation board, you will also need: </P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2829071">
+<A NAME="pgfId=2812736">
  </A>
-A standard PC motherboard with an i386 or better processor and a 3.5&quot; floppy disk drive. Optionally, a color text-mode-only display card with monitor or keyboard may also be provided. Any standard PC will provide all the hardware required to run eCos. </LI>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812737">
+ </A>
+ARM PID evaluation board with eCos<SPAN CLASS="Bold">
+ </SPAN>
+GDB stubs ROM installed, or GDB stubs programmed in the FLASH ROM (see <A HREF="ecos-tutorial.d.html#42063" CLASS="XRef">
+ ARM PID Hardware Setup</A>
+). </LI>
+<P><LI>
+<A NAME="pgfId=2812741">
+ </A>
+Null modem cable to connect the serial port on the PC to the SerialA serial I/O connector on the evaluation board.</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2829072">
+<A NAME="pgfId=2812743">
+ </A>
+If you will be using the <A NAME="marker=2812742">
+ </A>
+ARM AEB-1 evaluation board, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812744">
+ </A>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812745">
+ </A>
+ARM AEB-1 evaluation board with eCos<SPAN CLASS="Bold">
+ </SPAN>
+GDB stubs ROM image installed in the FLASH ROM. </LI>
+<P><LI>
+<A NAME="pgfId=2812746">
+ </A>
+Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812748">
+ </A>
+If you will be using the <A NAME="marker=2812747">
+ </A>
+ARM Evaluator-7T evaluation board, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812749">
+ </A>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812750">
+ </A>
+ARM E7T evaluation board with RedBoot image installed in the FLASH ROM. </LI>
+<P><LI>
+<A NAME="pgfId=2812751">
+ </A>
+Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812753">
+ </A>
+If you will be using the <A NAME="marker=2812752">
+ </A>
+Cogent CMA230 evaluation board, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812754">
+ </A>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812755">
+ </A>
+Cogent CMA101/102 evaluation board with a CMA (ARM7tdmi) daughterboard and eCos<SPAN CLASS="Bold">
+ </SPAN>
+<A HREF="http://www.cogcomp.com/" CLASS="URL">
+GDB stubs ROM  installed. Information and online manuals for the Cogent board can be found at http://www.cogcomp.com/.</A>
+</LI>
+<P><LI>
+<A NAME="pgfId=2812757">
+ </A>
+Serial cable to connect the serial port on the PC to the RJ-11 serial I/O connector, P11 (CMA101) or P3 (CMA102), on the evaluation board.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812759">
+ </A>
+If you will be using the <A NAME="marker=2812758">
+ </A>
+Cirrus Logic CL-PS7111 Evaluation Board, you will also need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812760">
+ </A>
+One 16550-based serial port on the PC.</LI>
+<P><LI>
+<A NAME="pgfId=2812761">
+ </A>
+A Cirrus Logic CL-PS7111 Evaluation Board with an eCos<SPAN CLASS="Bold">
+ </SPAN>
+GDB stubs ROM image installed in the FLASH ROM.</LI>
+<P><LI>
+<A NAME="pgfId=2812762">
+ </A>
+Custom cable that is supplied with the CL-PS7111 Evaluation Board connected from a serial port on the PC to the serial I/O connector labelled &quot;Serial Port 1&quot;.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812764">
+ </A>
+If you will be using the <A NAME="marker=2812763">
+ </A>
+Cirrus Logic EP7209, EP7211 or EP7212 Development Boards, you will also need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812765">
+ </A>
+One 16550-based serial port on the PC.</LI>
+<P><LI>
+<A NAME="pgfId=2812766">
+ </A>
+A Cirrus Logic ARM EP7211 or EP7212 Development Board, with either a RedBoot, CygMon or GDB stub ROM image installed in the FLASH ROM.</LI>
+<P><LI>
+<A NAME="pgfId=2812767">
+ </A>
+If connecting with a serial cable, use a null modem cable to connect the serial port on the PC to the serial I/O connector labelled &quot;UART 1&quot; on the EP7211 Development Board, and &quot;Serial Port 0&quot; on the EP7209 and EP7212 Development Boards. A gender changer may also be required.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812770">
+ </A>
+If you will be using the <A NAME="marker=2812769">
+ </A>
+Intel StrongARM EBSA-285 evaluation board, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812771">
+ </A>
+Intel StrongARM EBSA-285 evaluation board with RedBoot or eCos<EM CLASS="ProductName">
+ </EM>
+GDB stubs ROM image installed in the FLASH ROM. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812772">
  </A>
 If serial debugging is to be used:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2829073">
+<A NAME="pgfId=2812773">
  </A>
-A null modem cable to connect the COM1 port on the target motherboard to a serial port on the host system.</LI>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812774">
+ </A>
+Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board. A gender changer may also be required.</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2829074">
+<A NAME="pgfId=2812775">
  </A>
 If network debugging is to be used:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2829075">
+<A NAME="pgfId=2812776">
  </A>
 Suitable network interface card on the development PC and connecting cables</LI>
-<P><LI>
-<A NAME="pgfId=2829076">
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812777">
  </A>
-An Intel i82559 based PCI ethernet card (for example an Intel EtherExpress Pro 10/100) may be installed for use by the eCos network stack or for network debugging.</LI>
+If you will be using the Bright Star Engineering commEngine or nanoEngine boards, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812778">
+ </A>
+BSE commEngine or nanoEngine board with RedBoot image installed in the FLASH ROM. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812779">
+ </A>
+If serial debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812780">
+ </A>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812781">
+ </A>
+Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board. A gender changer may also be required.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812782">
+ </A>
+If network debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812783">
+ </A>
+Suitable network interface card on the development PC and connecting cables</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812784">
+ </A>
+If you will be using the Intel SA1100 Evaluation Platform (Brutus), you will need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812785">
+ </A>
+One 16550-based serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812786">
+ </A>
+Intel SA1100 board with RedBoot, CygMon or eCos GDB stubs programmed into the FLASH</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812787">
+ </A>
+If you will be using the Intel SA1100 Multimedia Board, you will need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812788">
+ </A>
+One 16550-based serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812789">
+ </A>
+Intel SA1100MM board with RedBoot installed into FLASH</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812790">
+ </A>
+If you will be using the Intel SA1110 Evaluation Platform (Assabet), you will need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812791">
+ </A>
+Intel SA1110 board with RedBoot, CygMon, or eCos GDB stubs programmed into the FLASH</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812792">
+ </A>
+If serial debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812793">
+ </A>
+One 16550-based serial port on the PC</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812794">
+ </A>
+If network debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812795">
+ </A>
+A Compact Flash ethernet card for the platform for use with network debugging under RedBoot</LI>
+<P><LI>
+<A NAME="pgfId=2812796">
+ </A>
+A suitable network interface card on the development PC and connecting cables</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812797">
+ </A>
+If you will be using the Compaq iPAQ PocketPC, you will need:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812798">
+ </A>
+Compaq iPAQ with RedBoot programmed into the FLASH</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812799">
+ </A>
+If serial debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812800">
+ </A>
+One 16550-based serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2812801">
+ </A>
+Cradle or cable to connect to the host PC</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2812802">
+ </A>
+If network debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2812803">
+ </A>
+A Compact Flash ethernet card for the platform for use with network debugging under RedBoot</LI>
+<P><LI>
+<A NAME="pgfId=2812804">
+ </A>
+Cradle and connectors for the CF ethernet card.</LI>
+<P><LI>
+<A NAME="pgfId=2812805">
+ </A>
+A suitable network interface card on the development PC and connecting cables</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2811672">
+ </A>
+If you will be using the <A NAME="marker=2811671">
+ </A>
+Intel XScale IQ80310 Evaluation Kit, you will also need: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2811673">
+ </A>
+Intel IQ80310 board with RedBoot installed in the FLASH. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2811674">
+ </A>
+If serial debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2811675">
+ </A>
+One (16550 based) serial port on the PC</LI>
+<P><LI>
+<A NAME="pgfId=2811676">
+ </A>
+Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board. A gender changer may also be required.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2811677">
+ </A>
+If network debugging is to be used:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2811678">
+ </A>
+Suitable network interface card on the development PC and connecting cables</LI>
 </UL>
 <P CLASS="Body">
 <A NAME="pgfId=2806673">

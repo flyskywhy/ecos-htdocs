@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.net/Wed Jul 11 18:11:24  2001-->
+<HEAD><!--version 1.3.net/Wed Jul 11 17:11:55  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Running Applications on the Target</TITLE></HEAD>
@@ -49,9 +49,21 @@ GNUPro Toolkit Reference Manual.</EM>
  </A>
 You will need to change directory to the prebuilt tests that are provided in the eCos installation, as follows:</P>
 <PRE CLASS="CodeExample"><A NAME="pgfId=2676952"> </A>
+for the SHARP LH77790A-based AEB-1 boards:
+  $ cd BASE_DIR/prebuilt/aeb/tests/kernel/v1_4_x/tests
+for the ARM7-based Cogent CMA230 board:
+  $ cd BASE_DIR/prebuilt/cma230/tests/kernel/v1_4_x/tests
+for the StrongARM based Intel EBSA board:
+  $ cd BASE_DIR/prebuilt/ebsa285/tests/kernel/v1_4_x/tests
+for the ARM-based Cirrus Logic EP72xx Development boards:
+  $ cd BASE_DIR/prebuilt/edb7xxx/tests/kernel/v1_4_x/tests
+for the ARM-based ARM PID board:
+  $ cd BASE_DIR/prebuilt/pid/tests/kernel/v1_4_x/tests
+for the StrongARM-based ARM Brutus board:
+  $ cd BASE_DIR/prebuilt/brutus/tests/kernel/v1_4_x/tests
+for the StrongARM-based ARM Assabet board:
+  $ cd BASE_DIR/prebuilt/assabet/tests/kernel/v1_4_x/tests
 
-for the i386 PC target:
-  $ cd BASE_DIR/prebuilt/pc/tests/kernel/v1_4_x/tests
 <TT CLASS="Code">for the i386-based Linux synthetic target:
   $ cd BASE_DIR/prebuilt/linux/tests/kernel/v1_4_x/tests
 </TT>
@@ -163,6 +175,18 @@ Ctrl+C</SPAN>
 Another way to stop the application is by means of a breakpoint. Before running the application, breakpoint  <TT CLASS="Code">
 cyg_test_exit()</TT>
  to stop an eCos test case at its end.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2813670">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2813671">
+ </A>
+When an eCos program is run on ARM or SH3 boards, the GDB<SPAN CLASS="Bold">
+ </SPAN>
+stub in ROM does not provide thread debugging or asynchronous GDB interrupt support. If you require full debugging capabilities, you must include GDB stub support when configuring eCos<SPAN CLASS="Bold">
+.</SPAN>
+</P>
 <P CLASS="Body">
 <A NAME="pgfId=2270261">
  </A>
