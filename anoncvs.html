@@ -16,11 +16,11 @@ features</a> and the rapid deployment of any necessary bug fixes.
 <P>
 For those unfamiliar with CVS, the following resources may be of use:
 <UL>
-<LI><A HREF="http://www.cyclic.com/">Cyclic Software</A> has CVS clients
-available for download. <A HREF="http://www.cyclic.com/cvs/info.html">Other
+<LI><A HREF="http://www.sourcegear.com/CVS/">OpenAvenue</A> has CVS clients
+available for download. <A HREF="http://www.sourcegear.com/CVS/support">Other
 information</A> and links to books on the subject can also be found at their site.
-<LI>Cyclic provides a fairly simple guide, the
-<A HREF="http://www.cyclic.com/cvs/doc-blandy.html">Introduction to CVS</A>
+<LI>OpenAvenue provides a fairly simple guide, the
+<A HREF="http://www.sourcegear.com/CVS/Docs/blandy">Introduction to CVS</A>
 by Jim Blandy.
 <LI>The CVS sources come with <i>texinfo</i> documentation which is also
 available in <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">
@@ -42,15 +42,14 @@ which has been put through extensive testing and QA. The repository should be
 used in situations where you need access to new features, bug fixes, or are
 working on a shared contributed project.
 <P>
-The snapshots include as much source code for the target side as we are able to
-publicise. They do <i>not</i> include our documentation sources, nor
-the source code to the host tools. There may also be new architectural ports,
+The snapshots include as much source code as we are able to
+publicize. However, there may be new architectural ports,
 board ports, or areas of functionality which are not released for commercial
 or contractual reasons.
 <P>
 The relevant host side build tools may be obtained by FTP from this site and are not provided by anonymous CVS.
 Any patches or changes required to enable the use of these tools
-with the latest version of eCos in the repository will be publicised.
+with the latest version of eCos in the repository will be publicized.
 If any updates to the eCos Configuration Tool are required, we
 will put up a new binary as soon as possible. You should ensure that you use the latest version of
 the Configuration Tool from the most recent net release of eCos when
@@ -88,15 +87,25 @@ the latest version, go to the base of the repository tree and use the command:
 </PRE>
 
 <h3>Using the repository</h3>
-<P>
+
 Once the sources have been checked out, Unix users (or Windows users using
-the command line) can work as if the checked out repository was their normal eCos
-repository. Users of the eCos Configuration Tool should select the new repository using the <i>Build->Repository</i> menu item.
-<P>
-Use of a new repository with an old build tree is not recommended.
-Changes may have been made to the repository <i>pkgconf</I> files that will not be
-present in the working versions in your build tree.
-<P>
+the command line) can switch to it by setting the <tt>ECOS_REPOSITORY</tt>
+environment variable to the <tt>ecos/packages</tt> subdirectory of the
+checked out tree. For example:<p>
+
+<nobr>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;ECOS_REPOSITORY=/ecoscvs/ecos/packages ; export ECOS_REPOSITORY&nbsp;&nbsp;&nbsp;&nbsp;</tt>(for <i>sh</i>, <i>ksh</i> and <i>bash</i> users)<br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;setenv ECOS_REPOSITORY /ecoscvs/ecos/packages&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>(for <i>csh</i> and <i>tcsh</i> users)
+</nobr>
+<p>
+
+Users of the eCos Configuration Tool should select the new repository using
+the Build->Repository menu item.<p>
+
+Use of a new repository with an old build tree is not recommended. Changes
+may have been made to the repository CDL files that will not be present in
+the working versions in your build tree. 
+
 <h3>Release tags</h3>
 <P>
 Our public releases have all been tagged in the repository so that you can
@@ -107,18 +116,19 @@ released version and the latest version in the repository:
      cvs diff -r ecos-v1_1-release ecos/packages/targets
 </PRE>
 <P>
-The release tags all take the form <CODE>ecos-&lt;version&gt;-release</CODE> (eg <CODE>ecos-v1_2_1-release</CODE>). The repository
+The release tags all take the form <CODE>ecos-&lt;version&gt;-release</CODE> (eg <CODE>ecos-v1_3_1-release</CODE>). The repository
 is also tagged every time a new snapshot is generated. These tags are of the
 form <CODE>ecos-sw-&lt;date in ISO format&gt;</CODE> (eg <CODE>ecos-sw-1999-05-11</CODE>).
 <P>
 To check out a particular version from scratch, use a command such as:
 <PRE>
-     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos co -r ecos-v1_2_1-release ecos
+     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos co -r ecos-v1_3_1-release ecos
 </PRE>
 <P>
 As with all such <i>sticky</I> checkouts, a cvs
 update will <i>not</i> update your sources to the latest version.
 <P>
+<!--
 <h3>eCos Configuration Tool</h3>
 <P>
 The current set of sources in the CVS repository requires an updated version
@@ -136,6 +146,7 @@ describing the target platforms must be added. Double click on the
 extracted file <code>Platforms121.reg</code> in the <code>tools/bin</code>
 directory to set up the registry appropriately.
 <P>
+-->
 <h3>Other notes</h3>
 <P>
 Anonymous CVS access to the repository is read-only. If
@@ -156,10 +167,12 @@ hierarchy to obtain history on the sources in that package.
 We are not generating any FTP snapshots currently - anonymous CVS access
 is superior. However, please tell us if you think FTP access would be useful.
 <P>
+<!--
 <a href="docs-latest/">Updated documentation</a> is available, covering
 changes to eCos since the last official public release. Users of the
 anonymous CVS sources should refer to the updated documentation.
 <P>
+-->
 Queries and problems regarding use of the anonymous CVS service should
 be directed to the <A HREF="intouch.html">
 ecos-discuss</A> mailing list. The eCos development team,

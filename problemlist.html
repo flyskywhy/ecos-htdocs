@@ -20,6 +20,516 @@
   </tr>
 
   <tr bgcolor="#999999">
+    <td colspan=4><b>eCos 1.3.1 documentation</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19739</td>
+    <td>&nbsp;</td>
+    <td valign=top>The need to specify the architecture-specific version of GDB
+		while following the tutorial text in 
+		'Getting Started with eCos' is not clear.</td>
+    <td valign=top>The user should substitute the appropriate architecture-
+		specific version of GDB (eg 'sparclite-elf-gdb') wherever 'gdb' 
+		is encountered in the documentation.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19871</td>
+    <td>&nbsp;</td>
+    <td valign=top>HAL stack size symbols are not documented.</td>
+    <td valign=top>HALs now define some symbols to make it easier to create stacks
+		of a suitable size for the system in question, if writing code
+		for many different eCos targets. This is target-dependent
+		because of the varying memory needs for stack frames and for
+		interrupt handling.<p>
+ 
+		The supported symbols are:<p>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;CYGNUM_HAL_STACK_SIZE_MINIMUM<br>
+		and<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;CYGNUM_HAL_STACK_SIZE_TYPICAL<p>
+
+		which are recommended for a thread which does almost nothing,
+		such as the idle thread and for one which makes substantial use
+		of system calls, a more typical thread, respectively. If your
+		threads have stack variables of any size, you should add their
+		size (in bytes) to these symbols when defining your stacks.<p>
+
+		If you enable asserts (CYGPKG_INFRA_DEBUG, CYGDBG_USE_ASSERTS),
+		then threads with stack size smaller than
+		CYGNUM_HAL_STACK_SIZE_MINIMUM will not be allowed to start; an
+		assert will fire, halting the system.<p>
+
+		These symbols are typically made up of others which may be
+		defined depending on architecture; an example is
+		CYGNUM_HAL_STACK_FRAME_SIZE which represents the stack space
+		needed to make a function call.  See your cyg/hal/hal_arch.h
+		file for details, or others that it includes, for the stack
+		requirements may vary with the number of simultaneously active
+		interrupt sources, for example.<p>
+ 
+		In future releases, these sizes may change depending on
+		configuration. Specifically, some target architectures are
+		undergoing HAL improvements for future releases that will
+		enable all interrupt processing code, including DSRs, to
+		execute on a single separate dedicated stack; this will mean
+		that normal thread stacks do not all need to have enough space
+		for fielding all possible simultaneous interrupts, but instead
+		just enough space to enter the interrupt system once.  This may
+		reduce memory requirements considerably, depending on target,
+		and so the values of these symbols will reduce to match in
+		versions where this feature is supported.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19935</td>
+    <td>&nbsp;</td>
+    <td valign=top>The configuration option
+		CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER is documented but
+		is no longer accessible from the eCos Configuration Tool.</td>
+    <td valign=top>Do not use CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20024</td>
+    <td>&nbsp;</td>
+    <td valign=top>The eCos serial filter tool (ser_filter) is not documented.</td>
+    <td valign=top>Refer to the file ser_filter.txt located in the tools/bin
+		directory under the base of the eCos installation for details
+		of this tool.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100880</td>
+    <td>&nbsp;</td>
+    <td valign=top>The prebuilt test, thread_gdb, does not contain the
+                GDB stubs, which means that C-c does not work as
+		described in the Running Applications on the Target
+                chapter on ARM, SH and PowerPC architectures.</td>
+    <td valign=top>Set breakpoint on cyg_test_exit before starting the test.</td>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=4><b>eCos 1.3.1</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17814</td>
+    <td>&nbsp;</td>
+    <td valign=top>During installation under Windows, InstallShield incorrectly calculates the amount of disk
+		free-space. It calculates available space on a character, not
+		disk allocation unit basis. As the eCos distribution contains
+		many small files, this can lead to installation being allowed
+		to proceed when there is insufficient disk space available.</td>
+    <td valign=top>Please manually check that enough disk space exists after
+		consulting the installation requirements in the documentation.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19787</td>
+    <td>&nbsp;</td>
+    <td valign=top>Under certain circumstances, the eCos Configuration Tool may
+		output a linker script fragment which has a forward reference.
+		This results in a linker error of the form "LOADADDR forward
+		reference ..." when attempting to build the eCos tests.</td>
+    <td valign=top>When modifying memory layouts, ensure that the order of memory
+		sections is preserved during any section relocation.</td>
+  </tr>
+
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19822</td>
+    <td>&nbsp;</td>
+    <td valign=top>When using the GDB 'thread' command to switch context to
+		another thread, any register values changed by the user are not
+		preserved.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19922</td>
+    <td>&nbsp;</td>
+    <td valign=top>eCos will not build correctly on a file system which has been
+		mounted using the Cygwin binary mode.</td>
+    <td valign=top>Do not attempt to mount eCos-related file systems in binary
+		mode.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20020</td>
+    <td>&nbsp;</td>
+    <td valign=top>Certain eCos tests do not start the scheduler and so interrupts
+		are disabled. When run on hardware, these tests cannot be
+		interrupted using Ctrl-C.</td>
+    <td valign=top>There is no workaround.</td>
+  </tr>
+
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100885</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>PowerPC QUICC Serial driver cannot reliably change
+                   baud rate on the fly as is required in the serial4
+                   test.</td>
+    <td valign=top>There is no workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101058</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Control-C only interrupts a running program when the
+                program prints output using the HAL diagnostic output,
+                when device drivers are enabled.
+                The problem is that device drivers install their own
+                serial ISR which replaces the one used normally to
+                process Ctrl-C.</td>
+    <td valign=top>Disable device driver support, or force the program to use
+                the diagnostic output when required.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101059</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Kernel exceptions fail to be delivered when GDB stubs
+                are included. This causes the except1 and kexcept1
+                tests to fail.</td>
+    <td valign=top>Do not enable the 'Include GDB stubs' option if the
+                program uses kernel exceptions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101393</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Libc malloc does not use all available memory on
+                target.</td>
+    <td valign=top>Manually set malloc memory pool as large as required
+                (CYGNUM_LIBC_MALLOC_MEMPOOL_SIZE).</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>901428</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>CMA230, EBSA285, EDB7xxx: k/except1 and signal2
+                   tests do not succeed in 
+                   generating bad alignment exceptions.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902157</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Changing compiler flags with either the eCos Configuration
+                Tool or by editing the ecos.ecc save file does not result in
+                automatic rebuild of all affected files.</td>
+    <td valign=top>Delete all object files with 'make clean'.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902158</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Deleting object files in the build tree does not cause
+                them to be rebuilt.</td>
+    <td valign=top>Delete the dependency file (.d) to force a rebuild.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902226</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>CygMon on ARM does not handle breakpoints after the
+                application starts to execute.</td>
+    <td valign=top>Use eCos GDB stubs instead of CygMon in the ROM/FLASH,
+                or include GDB stubs support when configuring eCos for
+                the application.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902232</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Problems may be encountered when using the eCos Configuration
+                Tool to save eCos build trees with very long paths.</td>
+    <td valign=top>Limit the length of build tree paths if this problem is
+                encountered.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902250</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Enabling the CPU cache on the AEB rev C causes random failures.</td>
+    <td valign=top>As a temporary measure, the CPU cache is not enabled by
+                default for the AEB Rev C.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902255</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>eCos Config and Package Admin Tools may not have the correct
+                installation path if you re-install eCos in a different
+                location.  The paths to the Build and User tools may also be
+                incorrect in the Config Tool.</td>
+    <td valign=top>On startup, the eCos Config tool will prompt you for the
+                path to the packages directory within eCos (e.g.
+                D:\Red Hat\eCos\packages) and the Package Admin Tool will
+                prompt you for the ecos.db file (e.g.
+                D:\Red Hat\eCos\packages\ecos.db).
+
+                To correct the paths for the Build tools, in the Config Tool
+                select 'Tools->Paths->Build Tools' and enter the correct
+                path (e.g.
+                D:\Red Hat\eCos\ecos-99r1-991015\H-i686-cygwin32\bin) and
+                for the User tools select 'Tools->Paths->User Tools' and
+                enter the correct path (e.g.
+                D:\cygnus\gnupro\i686-cygwin32\
+                i686-cygwin32\unsupported-990805\H-i686-cygwin32\bin).</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902263</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Some targets use the same architecture or platform HAL, but
+                with different options. Prebuilts are only provided
+                for the target's default configuration.</td>
+    <td valign=top>You will have to build tests for the target yourself
+                in order to verify that GDB communicates properly with
+                the target.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902538</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Enabling GDB break support on PID in Thumb mode
+                   causes the kernel to fail with ramdom memory 
+                   corruption.</td>
+    <td valign=top>Do not enable GDB BREAK support in this release.
+                   The next CVS snapshot will contain a fix for this problem.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902540</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Viewing [headers] with 'associated viewer' in the
+                   Configation Tool does not  work.</td>
+    <td valign=top>Specify the viewer as 'use this viewer'.  Problems have
+                been observed using WordPad to view headers.  Notepad
+                seems reliable.</td>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=4><b>Tools for eCos 1.3.1</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17574</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>The Insight target settings dialog can display the
+                selected serial communication speed incorrectly when a
+                radix other than 10 has been selected.</td>
+    <td valign=top>Avoid use of the 'set radix' command.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17614</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Mixing some operations between the Insight GUI and
+                console window can cause problems. </td>
+    <td valign=top>Avoid use of the Insight console window where possible.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18007</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB cannot cope with executables whose absolute pathnames are
+		longer than 128 characters. This is only a problem when gdb is
+		used with hardware. The built in simulators are OK. The failure
+		mode is that the application will download correctly, but then
+		GDB terminates with an error.</td>
+    <td valign=top>Only attempt to run applications located in a path consisting
+		of less than 128 characters.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18585</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB does not allow the value of variables of type 'bool' to be
+		changed.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18615</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB and GDBTk do not list/display inline functions correctly
+		for object files which have been created without the gcc -O2
+		flag.</td>
+    <td valign=top>Use the -O2 flag of gcc to create object files which call 
+		inline functions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18694</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB shows the code associated with a weak symbol when an
+		alternative symbol definition has been provided.</td>
+    <td valign=top>The developer may comment out the weak definitions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19388<br>19968<br>19970<br>19981<br>101030</td>
+    <td>&nbsp;</td>
+    <td valign=top>Certain entries in a GDB backtrace may be incorrect and the
+		backtrace may be incomplete. The nature of these errors
+		is target-dependent.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19978</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Sometimes the download progress dialog is not opened
+                when starting a download in Insight.</td>
+    <td valign=top>Download progress is shown in the main window's
+                status bar.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19980</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>The dots identifying breakpoints sometimes change
+                color from pink (thread-breakpoint) to red (global
+		breakpoint).</td>
+    <td valign=top>The tooltip displayed when the pointer is moved over
+                a breakpoint dot shows if the breakpoint is
+		thread-specific or global.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20402</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>PowerPC Simulator fails with 'events.c:165: assertion failed -
+                (events->time_from_event >= 0) == (events->queue !=
+		NULL)'</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100877</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>PowerPC: The list of threads presented in Insight when setting a
+                thread-specific breakpoint may contain garbage
+                ASCII strings from the GDB protocol.</td>
+    <td valign=top>This does not happen when using the 'info thread' or
+                Thread List window. Use these to find the thread
+                number and use the GDB CLI console to set the
+                thread-specific breakpoints.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100881</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Insight's Download Progress window doesn't
+                reset the progress bars if it is left open after an
+		earlier download.</td>
+    <td valign=top>Close the Download Progress window before starting a new
+                download.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100886</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Insight has bad performance when doing many operations
+                on threads. This is because the complete thread state of all
+                threads is transferred from the target every time the target
+                stops.</td>
+    <td valign=top>Close unnecessary windows in Insight so that Insight
+                does not need to update as much information when the target
+                stops.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>100914</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Insight reports "DOWNLOAD CANCELLED" even after a
+                successful download.</td>
+    <td valign=top>Ignore this message.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101035</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>Ctrl-C fails to work as expected inside a 'bash'
+                shell. If GDB is used in command-line mode, sometimes
+                both it and the bash shell will receive the Ctrl-C. In
+                other cases, if programs are run in the background in
+                a bash shell, and Ctrl-C is pressed, then those
+                programs will be terminated as well.</td>
+    <td valign=top>Use GDB in graphical mode (Insight) and use the
+                'console' window to control GDB. Alternatively start
+                GDB from within a normal 'Command Prompt' window,
+                setting the path up in the same way as the develop.bat
+                file in the eCos installation directory. For other
+                programs, there is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101036</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>GDB can lose track of what breakpoints are installed
+                when per-thread breakpoints are used with eCos. It
+		reports hitting a 'SIGTRAP Trace/Breakpoint trap',
+		instead of just reporting a breakpoint.
+                This problem only appears rarely.</td>
+    <td valign=top>Ignore the extra traps and just continue anyway.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>101293</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>If asked to show the thread list after hitting a
+                breakpoint in a function with varargs/string inputs
+		which are long, Insight may hang.</td>
+    <td valign=top>If you experience this problem, use the CLI 'info
+                threads' command instead of the thread list window.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902240</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>On Windows Control-C used in GDB CLI mode also affects bash, 
+                causing further input to randomly be read by either
+                GDB or bash.</td>
+    <td valign=top>The problem does not occur when launching GDB from a
+                DOS command prompt.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>902267</td>
+    <td><CENTER>&nbsp;</CENTER></td>
+    <td valign=top>When running an application which produces large amounts
+                of output, selecting 'q &lt;return&gt;' when presented with 
+                the prompt:
+                  ---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+                gdb will hang if you select 'q &lt;return&gt;' and then try to
+                exit gdb, reattach to the target, or other various gdb
+                operations.</td>
+    <td valign=top>Do not select 'q &lt;return&gt;'.  Instead select '&lt;return&gt;'
+                and press ^C to halt the application. Alternatively, remove
+                the prompts with the GDB command 'set height 0'.</td>
+  </tr>
+
+</table>
+
+<h3>Previous releases</h3>
+
+<table border=0 cellspacing=2 cellpadding=7 width=100%>
+
+  <tr bgcolor="#666666">
+    <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b><center>CVS fix</center></b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
+  </tr>
+
+  <tr bgcolor="#999999">
     <td colspan=4><b>eCos 1.2.1 documentation</b></td>
   </tr>
 
@@ -559,18 +1069,6 @@
     HREF="http://sourceware.cygnus.com/gdb/">GDB</A>.
     </td>
   </tr>
-</table>
-
-<h3>Previous releases</h3>
-
-<table border=0 cellspacing=2 cellpadding=7 width=100%>
-
-  <tr bgcolor="#666666">
-    <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b><center>CVS fix</center></b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
-  </tr>
 
   <tr bgcolor="#999999">
     <td colspan=4><b>eCos 1.1</b></td>
@@ -729,8 +1227,34 @@
 
 </table>
 
+<h3>Other Issues</h3>
+
+<table border=0 cellspacing=2 cellpadding=7 width=100%>
+
+  <tr bgcolor="#666666">
+    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=2><b>Windows</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>Building tools under NT using a Samba-mounted directory
+                   fails due to symbolic links not being supported by
+                   the default Samba configuration.</td>
+
+    <td valign=top>The Samba share must enable the mapping of the DOS
+                   System attribute to the Unix group execute
+                   attribute. See "map system" in the smb.conf man page.
+                   Shares that should provide symlinks need <tt>map
+                   system = yes</tt> and <tt>create mask = 754</tt>.
+		   (Kenneth Porter)</td>
+  </tr>
+</table>
 
 
-<p><font size=-1>Revision 1.2.1.0</font>
+<p><font size=-1>Revision 1.3.1.0</font>
 
 <!--#include virtual="include/footer.html"-->

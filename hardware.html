@@ -9,14 +9,17 @@
 <H3>Index</H3>
 <A HREF="#arm">ARM family</A><br>
 <A HREF="#sparclite">Fujitsu SPARClite 32-bit product family</A><br>
+<A HREF="#sh">Hitachi 32-bit SuperH RISC processors</A><br>
+<A HREF="#i386">i386 architecture processors<A><br>
+<A HREF="#strongarm">Intel StrongARM microprocessor family</A><br>
 <A HREF="#mn10300">Matsushita MN10300 32-bit microcontroller series</A><br>
+<A HREF="#vr">NEC VR Series 64-bit MIPS RISC microprocessors</A><br>
 <A HREF="#tx39">Toshiba TX39 32-bit TX SystemRISC series</A><br>
-<A HREF="#powerpc">MPC800 embedded PowerPC(tm) family</A>
+<A HREF="#powerpc">PowerPC family</A>
 
 <p>
 Support for new targets is announced via the <a href="intouch.html">ecos-announce</a> mailing list.
 For further information concerning the porting of eCos, see the porting section of the <a href="faq.html">FAQ</a>.
-Support for a number of additional targets is available under an <a href="#early">early access program</a>.
 
 <H3><A NAME="arm">ARM family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
@@ -35,7 +38,7 @@ Support for a number of additional targets is available under an <a href="#early
   <td><A href="http://www.cogcomp.com/data_sheets/cma230ds.htm">CMA230</a></td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
-  <td><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM7TDMI/">ARM7TDMI</a></td>
+  <td><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM7TDMI/">ARM7TDMI</a><br><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM9TDMI/">ARM9TDMI</a></td>
   <td><A HREF="http://www.arm.com/DevSupp/Boards/pid7t.html">ARM development board</a> (formerly PID board)</td>
   <td rowspan=2>ARM Ltd, UK<br>Head Office<br>tel +44 (1223) 400400<br>fax +44 (1223) 400410<br>e-mail <a href="mailto:info@arm.com">info@arm.com</a><p>ARM Inc, USA<br>tel +1 (408) 3995199<br>fax +1 (408) 3998854</td>
 </tr>
@@ -46,7 +49,19 @@ Support for a number of additional targets is available under an <a href="#early
 <tr valign=top bgcolor=#dddddd>
   <td><A HREF="http://www.cirrus.com/products/overviews/ps7111.html">Cirrus Logic CL-PS7111</a> (ARM710A core)</td>
   <td><A HREF="http://www.cirrus.com/products/overviews/ps7111dk.html">CL-PS7111 development board</a></td>
-  <td>Cirrus Logic Inc, USA<br>tel +1 (510) 6238300<br>fax +1 (510) 2526020</td>
+  <td rowspan=4>Cirrus Logic Inc, USA<br>tel +1 (510) 6238300<br>fax +1 (510) 2526020</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7209.html">Cirrus Logic EP7209</a> (ARM720T core)</td>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7209dk.html">EDB7209</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7211.html">Cirrus Logic EP7211</a> (ARM720T core)</td>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7211dk.html">EDB7211</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7212.html">Cirrus Logic EP7212</a> (ARM720T core)</td>
+  <td><A HREF="http://www.cirrus.com/products/overviews/ep7212dk.html">EDB7212</a></td>
 </tr>
 </table>
 
@@ -69,6 +84,53 @@ Support for a number of additional targets is available under an <a href="#early
 </tr>
 </table>
 
+<H3><A NAME="sh">Hitachi 32-bit SuperH RISC processors</A></H3>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://semiconductor.hitachi.com/superh/">SH-3</a></td>
+  <td><A HREF="http://semiconductor.hitachi.com/superh/index.cfm?menuselection=superhedk">SH7708</A></td>
+  <td>Hitachi Semiconductor (America) Inc, USA<br>tel +1 (408) 4331990</td>
+</tr>
+</table>
+
+<H3><A NAME="i386">i386 architecture processors</A></H3>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>i386</td>
+  <td>PC motherboard (beta)</td>
+  <td>Multiple vendors</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>i386</td>
+  <td>Linux synthetic target</td>
+  <td>&nbsp;</td>
+</tr>
+</table>
+
+<H3><A NAME="strongarm">Intel StrongARM microprocessor family</A></H3>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://developer.intel.com/design/strong/sa110.htm">SA-110</a></td>
+  <td><A HREF="http://developer.intel.com/design/strong/manuals/278136.htm">EBSA-285</A></td>
+  <td><A HREF="http://developer.intel.com/design/sitehelp/index.htm">Intel Corporation</A></td>
+</tr>
+</table>
+
 <H3><A NAME="mn10300">Matsushita MN10300 32-bit microcontroller series</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
@@ -77,9 +139,32 @@ Support for a number of additional targets is available under an <a href="#early
   <td><b>Information</b></td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
-  <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>
+  <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">AM31</a></td>
   <td>stdeval1</td>
-  <td>Syoichi Yamamoto<br>Kyoto Micro Computer Co Ltd, Japan<br>tel +81 (75) 9530963<br>fax +81 (75) 9530935<br>e-mail <a href="mailto:yama@kmckk.co.jp">yama@kmckk.co.jp</a></td>  </tr>  <tr valign=top bgcolor=#dddddd>    <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>    <td>stdeval1 simulator</td>    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
+  <td rowspan=2>Syoichi Yamamoto<br>Kyoto Micro Computer Co Ltd, Japan<br>tel +81 (75) 9530963<br>fax +81 (75) 9530935<br>e-mail <a href="mailto:yama@kmckk.co.jp">yama@kmckk.co.jp</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">AM33</a></td>
+  <td>stb</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+    <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">AM31</a></td>
+    <td>stdeval1 simulator</td>
+    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
+</tr>
+</table>
+
+<H3><A NAME="vr">NEC VR Series 64-bit MIPS RISC microprocessors</A></H3>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.necel.com/home.nsf/CreatePage?OpenAgent&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&V(*R*)4300(TM)+Family&ALL&ALL&ALL&ALL&&&">VR4300</a></td>
+  <td><A HREF="http://www.necel.com/home.nsf/Createpage?OpenAgent&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&Evaluation+Boards&&&&&&&">VRC4373</A></td>
+  <td>NEC Electronics Inc, USA<br>tel +1 (408) 5886000<br>fax +1 (408) 5886130</td>
 </tr>
 </table>
 
@@ -101,7 +186,7 @@ Support for a number of additional targets is available under an <a href="#early
 </tr>
 </table>
 
-<H3><A NAME="powerpc">MPC800 embedded PowerPC(tm) family</A></H3>
+<H3><A NAME="powerpc">PowerPC family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
   <td><b>Processor</b></td>
@@ -123,7 +208,7 @@ Support for a number of additional targets is available under an <a href="#early
 </tr>
 <tr valign=top bgcolor=#dddddd>
   <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
-  <td><A href="http://www.mot.com/SPS/ADC/pps/subpgs/refplat/8XX/fadsmb.html">MPC8xxFADS</a></td>
+  <td><A href="http://www.mot.com/SPS/ADC/pps/subpgs/refplat/8XX/fadsmb.html">MPC8xxFADS</a> (contributed)</td>
   <td>Motorola Inc, USA<br>tel +1 (800) 5216274<br>e-mail <a href="mailto:cfcsupt1@email.sps.mot.com">cfcsupt1@email.sps.mot.com</a></td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
@@ -132,29 +217,10 @@ Support for a number of additional targets is available under an <a href="#early
   <td>Motorola Computer Group, USA<br>tel +1 (800) 7591107</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
-  <td><A HREF="http://www.motorola.com/SPS/ADC/pps/prod/eppc/mpc823.html">MPC823</A><br><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC850.html">MPC850</a><br><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
-  <td><A href="http://sourceware.cygnus.com/psim/">PSIM</A> architectural simulator</td>
+  <td><A HREF="http://ebus.mot-sps.com/ProdCat/psp/0,1250,MPC603E~M98653,00.html">MPC603</A></td>
+  <td><A href="../psim/">PSIM</A> architectural simulator</td>
   <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
 </tr>
 </table>
-
-<h3><a name="early">Early access program</a></h3>
-
-Support for the following additional hardware is available under an early access program:
-<ul>
-
-<li>Hitachi <a href="http://semiconductor.hitachi.com/superh/">SH-3</a> processor and <A href="http://semiconductor.hitachi.com/superh/index.cfm?menuselection=superhedk">SH7708</a> evaluation board
-<li>NEC <a href="http://www.necel.com/home.nsf/CreatePage?OpenAgent&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&V(*R*)4300(TM)+Family&ALL&ALL&ALL&ALL&&&">
-VR4300</a> processor and <A href="http://www.necel.com/home.nsf/Createpage?OpenAgent&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&Evaluation+Boards&&&&&&&">VRC4373</a> evaluation board
-<li>Intel <a href="http://developer.intel.com/design/strong/sa110.htm">SA-110 StrongARM</a> processor and <a href="http://developer.intel.com/design/strong/manuals/278136.htm">EBSA-285</a> evaluation board
-<li>Matsushita AM33 processor
-<li>Cirrus Logic <a href="http://www.cirrus.com/products/overviews/ep7209.html">EP7209</a> processor and <a href="http://www.cirrus.com/products/overviews/ep7209dk.html">EDB7209</a> development board
-<li>Cirrus Logic <a href="http://www.cirrus.com/products/overviews/ep7211.html">EP7211</a> processor and <a href="http://www.cirrus.com/products/overviews/ep7211dk.html">EDB7211</a> development board
-<li>Cirrus Logic <a href="http://www.cirrus.com/products/overviews/ep7212.html">EP7212</a> processor and <a href="http://www.cirrus.com/products/overviews/ep7212dk.html">EDB7212</a> development board
-<li><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM9TDMI/">ARM9TDMI</a> processor
-<li>ARM <A HREF="http://www.arm.com/Pro+Peripherals/ArchExt/Thumb/">Thumb</A> and <A HREF="http://www.arm.com/products/MICE/">Multi-ICE</a> support</a>
-</ul>
-
-See our <a href="http://www.cygnus.com/ecos/ecos_early.html">corporate pages</a> for further information.
 
 <!--#include virtual="include/footer.html"-->
