@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.0/Mon Sep 18 18:08:37 BST 2000--><!--version 1.0/Mon Sep 18 18:08:24 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> Introduction</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Introduction</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.html">To&nbsp;main&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=2636228">
+ </A>
+Introduction<DIV>
+<IMG SRC="redboot-4.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2636229">
+ </A>
+RedBoot is the new debug/bootstrap environment from RedHat. It is designed to replace the existing debug/boot tools CygMon and GDB stubs. It provides a complete bootstrap environment, including network downloading and debugging. Also provided is a simple flash file system for boot images. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2636279">
+ </A>
+Some host services may be necessary in order to run RedBoot, especially the first time. In particular: </P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=2636280">
+ </A>
+TFTP - RedBoot uses TFTP for downloading images. Most systems come with this disabled, so it may be necessary to enable a TFTP server. Also note that the files mentioned below are assumed to be in the TFTP directory, normally &quot;/tftpboot&quot;. </LI>
+<P><P><LI>
+<A NAME="pgfId=2636281">
+ </A>
+BOOTP/DHCP - RedBoot will use BOOTP to get its network address parameters unless setup otherwise. For the initial setup, BOOTP will be required. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2636282">
+ </A>
+Since RedBoot is still quite new, there are some limitations (which we expect to remove very soon): </P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=2636290">
+ </A>
+The only format supported for image download is Motorola S-records. Thus files to be downloaded would have to be converted using the &quot;objcopy&quot; utility for the platform in question; for EBSA this is arm-elf-objcopy. S-record versions of the boot images are produced as part of the normal RedBoot build process (see below). </LI>
+<P><P><LI>
+<A NAME="pgfId=2636291">
+ </A>
+Serial downloads are not supported; TFTP only in this version. </LI>
+<P><P><LI>
+<A NAME="pgfId=2636292">
+ </A>
+RedBoot &quot;chatters&quot; somewhat about network packets that it discards; this is to help with our debugging. </LI>
+<P><P><LI>
+<A NAME="pgfId=2636293">
+ </A>
+Asynchronous interrupt (^C) of the board is not yet supported in RedBoot. </LI>
+</UL>
+<H3 CLASS="Label">
+<A NAME="pgfId=2636295">
+ </A>
+Notes: </H3>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=2636294">
+ </A>
+Only one network interface is used by RedBoot. This will be the first interface found, which on the EBSA is the board in the highest numbered PCI slot. </LI>
+<P><P><LI>
+<A NAME="pgfId=2636307">
+ </A>
+In order to use GDB, each network interface needs to have two IP addresses. One will be used for RedBoot/GDB and the other for eCos applications. After RedBoot is installed in the flash, we use the RedBoot configuration to force the IP address for the board's RedBoot persona, and then BOOTP for the eCos application's IP address. </LI>
+<P><P><LI>
+<A NAME="pgfId=2636312">
+ </A>
+In case of difficulties with RedBoot, it is possible to go back to the &quot;old way&quot; of doing things, with built-in debug stubs and serial-only debug and so on; that way the eCos application and its built-in GDB stubs &quot;takes over&quot; the whole machine. Installing RedBoot is not a one-way street; it can be used just as CygMon or an eCos stub ROM was. </LI>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</UL>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Introduction</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.html">To&nbsp;main&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="redboot.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
