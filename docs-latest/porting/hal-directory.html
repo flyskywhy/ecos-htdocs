@@ -5,7 +5,7 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>HAL Layout [TBD / in progress]</H2>
+<H2>HAL Layout</H2>
 <HR SIZE=3>
 
 
@@ -332,52 +332,63 @@ for handling interrupts/exceptions if it makes sense.
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/hal_diag.h</tt></td>
-  <td></td>
+  <td>Defines functions used for HAL diagnostics output. This would
+  normally be the <a href="hal-calling-if.html">ROM calling
+  interface</a> wrappers, but may also be the low-level IO functions
+  themselves, saving a little overhead.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/platform.inc</tt></td>
-  <td></td>
+
+  <td>Platform initialization code. This includes memory controller,
+  vectors, and monitor initialization. Depending on the architecture,
+  other things may need defining here as well: interrupt decoding,
+  status register initialization value, etc.</td>
+
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/plf_cache.h</tt></td>
-  <td></td>
+  <td>Platform specific cache handling.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/plf_intr.h</tt></td>
-  <td></td>
+  <td>Platform specific interrupt handling.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/plf_io.h</tt></td>
-  <td></td>
+  <td>PCI IO definitions and macros. May also be used to override
+  generic HAL IO macros if the platform endianess differs from that of
+  the CPU.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/plf_stub.h</tt></td>
-  <td></td>
+  <td>Defines stub initializer and board reset details.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
-<td><tt>src/hal_stub.c</tt></td>
-  <td></td>
+<td><tt>src/hal_diag.c</tt></td>
+  <td>May contain the low-level device drivers. But these may also
+  reside in plf_stub.c</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/platform.S</tt></td>
-  <td></td>
+  <td>Memory controller setup macro, and if necessary interrupt
+  springboard code.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/plf_misc.c</tt></td>
-  <td></td>
+  <td>Platfor initialization code.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/plf_mk_defs.c</tt></td>
-  <td></td>
+  <td>Used to export definitions from C header files to assembler
+  header files.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/plf_stub.c</tt></td>
-  <td></td>
+  <td>Platform specific stub initialization and possibly the low-level
+  device driver.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
-<td><tt>src/</tt></td>
-  <td></td>
-</tr>
 </table>
 
 <p>The platform HAL also contains files specifying the platform's <a
