@@ -28,7 +28,7 @@ mark IO regions non-cachable.
 ;;
 ;; bsd mode: indent = 4, &c &c
 ;; tail comments are at col 40.
-;; uses tabs not spaces in C
+;; uses spaces not tabs in C
 
 (defun ecos-c-mode ()
   "C mode with adjusted defaults for use with the eCos sources."
@@ -40,9 +40,8 @@ mark IO regions non-cachable.
   (show-paren-mode 1)
   (setq c-basic-offset 4)
 
-  (set-variable 'change-log-default-name "ChangeLog")
-  (set-variable 'add-log-full-name "Jesper Skov")
-  (set-variable 'add-log-mailing-address "jskov@redhat.com"))
+  (set-variable 'add-log-full-name "<Your Name>")
+  (set-variable 'add-log-mailing-address "<Your email address>"))
 
 (defun ecos-asm-mode ()
   "ASM mode with adjusted defaults for use with the eCos sources."
@@ -52,9 +51,8 @@ mark IO regions non-cachable.
   (asm-mode)
   (setq c-basic-offset 4)
 
-  (set-variable 'change-log-default-name "ChangeLog")
-  (set-variable 'add-log-full-name "Jesper Skov")
-  (set-variable 'add-log-mailing-address "jskov@redhat.com"))
+  (set-variable 'add-log-full-name "<Your Name>")
+  (set-variable 'add-log-mailing-address "<Your email address>"))
 
 (setq auto-mode-alist
       (append '(("/local/ecc/.*\\.C$"   . ecos-c-mode)
