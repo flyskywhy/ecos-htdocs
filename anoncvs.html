@@ -38,32 +38,33 @@ We also provide a simple but effective way to
 over the web using CVSweb. You can inspect the contents, history and
 differences between versions of all files in the repository in this way.</p>
 
-<h2>eCos v2.0</h2>
+<h2>eCos 2.0</h2>
 
-<p>An early version of the eCos v2.0 code base has been made available via
-anonymous CVS. This code is now the default, although it is only of alpha
-quality at this time. eCos v2.0 includes a change to the licence from
-the RHEPL to the GPL with a modification that makes it more suitable for
-embedded systems. To retrieve the last revision that was licensed under
-the RHEPL, you need to use the <tt>last-rhepl</tt> CVS tag in your
-CVS checkout as described below.</p>
+<p>A beta version of the eCos v2.0 code base is now available via
+anonymous CVS. eCos v2.0 includes a change to the licence from
+the old Red Hat eCos Public Licence (RHEPL) to the GNU General Public License (GPL)
+with a modification that makes it more suitable for embedded systems. Further
+details of the license change are available in our <a href="license-overview.html">
+licence overview</a>.
+To retrieve the last revision that was licensed under the RHEPL, you
+need to use the <tt>last-rhepl</tt> CVS tag in your CVS checkout as
+described below.</p>
 
 <h2>The CVS source repository</h2>
 
-<p>The anonymous CVS repository contains the latest version of our master
-internal repository and is generally updated on a weekly basis. However,
+<p>The anonymous CVS repository contains the latest changes to the
+eCos sources and is updated as necessary by the eCos maintainers. However,
 users should note that these updates have not been rigorously tested and
 cannot be guaranteed to build or function correctly. It is therefore
-recommended that new developers work with the latest full release of eCos
-and RedBoot
-which have been put through extensive testing and QA. The repository should be
-used in situations where you need access to new features, bug fixes, or are
-working on a shared contributed project.</p>
+recommended that new developers work with the v2.0 beta release of eCos
+and RedBoot currently. The repository should be used in situations where
+you need access to new features, bug fixes, or are working on a shared
+contributed project.</p>
 
-<p>The snapshots include as much source code as we are able to
+<p>The anonymous CVS repository includes as much source code as we are able to
 publicize. However, there may be new architectural ports,
-board ports, or areas of functionality which are not released for commercial
-or contractual reasons.</p>
+board ports, or areas of functionality which cannot be made available in this
+way for commercial or contractual reasons.</p>
 
 <p>The relevant host side build tools may be obtained by FTP from this site and are not provided by anonymous CVS.
 Any patches or changes required to enable the use of these tools
@@ -120,89 +121,28 @@ checked out tree. For example:</p>
 <kbd>setenv ECOS_REPOSITORY /ecoscvs/ecos/packages</kbd> (for <i>csh</i> and <i>tcsh</i> users)
 </nobr>
 
-<p>Users of the eCos Configuration Tool should select the new repository using
+<p>The current set of sources in the CVS repository requires recent versions
+of the host-side configuration tools for correct operation. The tools provided in
+eCos releases prior to the 2.0 beta release are not suitable.
+Users of the eCos Configuration Tool should select the new repository using
 the Build->Repository menu item.</p>
 
 <p>Use of a new repository with an old build tree is not recommended. Changes
 may have been made to the repository CDL files that will not be present in
 the working versions in your build tree.</p>
 
-<A name="host-tools"></a><h2>Host configuration tools</h2>
-
-<p>The current set of sources in the CVS repository require an updated version
-of the host-side configuration tools. You may wish to recompile these
-yourself using the host tool sources available from anonymous CVS.
-Alternatively, unsupported prebuilt binaries are available for Windows
-and Red Hat Linux 6.x hosts.</p>
-
-<h3>Updated configuration tools for Windows</h3>
-
-<p>Self-extracting zip files for updated binaries of both the
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/Configtool-011025.exe">
-eCos Configuration Tool for Windows</A> and the
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/ecosconfig-011025.exe">
-command-line <tt>ecosconfig</tt> tool</A> are available from
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/"> the eCos FTP site</a>
-or preferably a <a href="mirror.html">mirror site</a>.</p>
-
-<p>Alternatively, the BETA version of the Configuration Tool version 2 is
-available for download from <a href="ct2.html">a separate page</a> which
-describes the current status</a>. Be sure to check you do not require a
-feature which is currently unimplemenated.
-
-<p>It is recommended that you rename the existing files <tt>Configtool.exe</tt>
-and <tt>ecosconfig.exe</tt> to <tt>Configtool.exe.old</tt> and
-<tt>ecosconfig.exe.old</tt> before proceeding. These files are found in
-the <tt>tools/bin</tt> subdirectory of your eCos installation.</p>
-
-<p>Install the revised configuration tools by executing the downloaded files.
-Modify the suggested target folder as necessary to place the extracted files
-in the <CODE>tools/bin</CODE> directory of your eCos installation.</p>
-
-<p>To update the platforms list for the "Run Tests" feature, you will need
-to download and run 
+<!--<p>To update the platforms list for the "Run Tests" feature, you will need
+to download and run
 <A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/eCos-011025.reg">this
 registry fragment</a>. Once downloaded, simply double click the file to install
 it.</p>
-
-<p>Note that using the updated Configuration Tool with an eCos v1.3.1
-repository will lead to problems if the memory layout is modified. These
-can be rectified by creating an empty file in
-<tt>packages/infra/v1_3_1/include/cyg_type.inc</tt> relative to the base of
-your eCos installation.</p>
-
-<h3>Updated configuration tools for Red Hat Linux 6.x and 7.x</h3>
-
-<p>An unsupported prebuilt binary of the updated <tt>ecosconfig</tt> tool for
-Red Hat Linux 6.x and above is
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/ecosconfig1314-linux.gz">
-available for download</a> from
-<A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/"> the eCos FTP site</a>
-or preferably a <a href="mirror.html">mirror site</a>.</p>
-
-<p>It is recommended that you rename the existing <tt>ecosconfig</tt>
-executable to <tt>ecosconfig.old</tt> before proceeding. This file is
-located in the <tt>tools/bin</tt> subdirectory of your eCos installation.</p>
-
-<p>Uncompress the updated tool with the commands:</p>
-<kbd>
-gzip -N -d ecosconfig1314-linux.gz<br>
-chmod +x ecosconfig
-</kbd>
-
-<p>Move the resulting <tt>ecosconfig</tt> executable into the <tt>tools/bin</tt>
-subdirectory of your eCos installation.</p>
-
-<p>Alternatively, the BETA version of the Configuration Tool version 2 
-now supports running under Red Hat Linux hosts. It is
-available for download from <a href="ct2.html">a separate page</a> which
-describes the current status</a>.
+-->
 
 <h2>Other notes</h2>
 
 <p>Anonymous CVS access to the repository is read-only. If
 you would like to contribute a change, bug fix or other improvement
-to eCos then you should start by discussing it on the 
+to eCos then you should start by discussing it on the
 <A HREF="intouch.html">
 ecos-discuss</A> mailing list. If applicable, you may wish to post
 (or put up for FTP) the relevant diff or patch.</p>
@@ -236,5 +176,4 @@ ecos-discuss</A> mailing list. The eCos development team,
 including the anonymous CVS maintainer, read this list. Please clarify
 that the mail concerns an anonymous CVS problem in the subject field.</p>
 
-<HR noshade SIZE=3>
 <!--#include virtual="include/footer.html"-->

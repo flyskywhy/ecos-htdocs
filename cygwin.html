@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<TITLE>Installing Cygwin for use with eCos</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<h1>Installing Cygwin for use with eCos</h1>
+
+<hr noshade size=3>
+
+<h2>What is Cygwin?</h2>
+
+<p><a href="http://www.cygwin.com/">Cygwin</a> is a UNIX emulation system for Microsoft Windows.
+It provides a UNIX emulation library which enables many UNIX tools to be ported to run on Windows easily.
+It also includes a selection of tools which provide a UNIX-like working environment.
+The Windows versions of the eCos host tools make extensive use of Cygwin and it is
+therefore <i>essential</i> to download and install Cygwin before installing eCos on Microsoft Windows.</p>
+
+<h2>Running the Cygwin setup program</h2>
+
+<p>Cygwin is most readily installed by downloading and executing the Cygwin setup program.
+Click <a href="http://www.cygwin.com/setup.exe">here</a> to run this program.
+Most Windows web browsers will allow you to execute the program directly.
+Some browsers may warn that there is no <i>Authenticode signature</i>.
+Once the setup program has been downloaded and executed, the setup wizard will
+guide you through the installation of Cygwin. The following options
+in the setup wizard are recommended:</p>
+
+<table width="100%"><COL WIDTH="0*"><COL WIDTH="*">
+<tr valign=top><td>Choose&nbsp;a&nbsp;download&nbsp;source:&nbsp;</td><td><tt>install from internet</tt></td></tr>
+<tr valign=top><td>Root directory:</td><td><tt>c:\cygwin</tt></td></tr>
+<tr valign=top><td>Install for:</td><td><tt>all users</tt></td></tr>
+<tr valign=top><td>Default text file type:</td><td><tt>DOS</tt></td></tr>
+<tr valign=top><td>Local package directory:</td><td><tt>C:\cygwin-pkg</tt></td></tr>
+<tr valign=top><td>Internet connection:</td><td><tt>direct connection</tt></td></tr>
+<tr valign=top><td>Download site:</td><td>&lt;select a local site&gt;</td></tr>
+<tr valign=top><td>Select packages:</td><td>Click once on the <i>View</i> button to show the <i>Full</i> view.
+    In addition to the packages which are installed by default, it is <i>essential</i> to install
+    the following packages:<br>
+<!--    <tt>autoconf, autoconf-devel, autoconf-stable, automake, automake-conf, automake-stable, binutils, bison, bzip2, cvs, dejagnu, gcc, gdb, less, make, more, patch, unzip, wget, zip</tt><br>-->
+    <tt>gcc, make, sharutils, tcltk, wget</tt><br>
+    Click once on the rotating arrows symbol against each of the above packages to select them for installation.</td></tr>
+<tr valign=top><td>Create icons:</td><td>&lt;select both items&gt;</td></tr>
+</table>
+
+<p>Once the Cygwin setup program has completed, it is possible to install eCos by invoking
+the Cygwin bash shell using the desktop icon or the corresponding menu item and then following the
+instructions on the eCos <a href="getstart.html">downloading and installation</a> page.</p>
+
+<!--#include virtual="include/footer.html"-->

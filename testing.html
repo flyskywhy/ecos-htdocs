@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>eCos 2.0 beta Testing Guidelines</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<h1>eCos 2.0 beta Testing Guidelines</h1>
+
+<hr noshade size=3>
+
+<h2>Introduction</h2>
+
+<p>We are looking for as many developers as possible to support the push towards an eCos 2.0 final
+release by evaluating the eCos 2.0 beta. At present, the maintainers are able test on a
+small proportion of the total number of supported boards only. We hope that net users will be able
+to fill in some of the gaps in our coverage testing. If you are able to spare some time and have hardware
+supported by eCos, please consider downloading the beta release and providing feedback. We
+have assembled a set of testing guidelines which should help you to assess the state of eCos
+on a specific hardware platform. The guidelines will also ensure that feedback is as useful
+and consistent as possible.</p>
+
+<h2>eCos testing procedure</h2>
+
+<ol>
+<li>Send e-mail to <a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss@sources.redhat.com</a>
+stating your intention to test the eCos 2.0 beta release. Please also state the host platform
+(eg Red Hat Linux 8.0, Microsoft Windows 2000) and the target hardware platform
+(eg Intel IQ80321) you will be using.</li>
+<br>
+<li>Download and install the eCos 2.0 beta release by following the
+<a href="getstart.html">installation instructions</a>. If a pre-built toolchain
+is available for your target hardware architecture, please download and use the pre-built
+toolchain for all testing. If you will be testing on a Windows host and already have Cygwin
+installed, we recommend that you update your Cygwin installation to use the latest stable version
+of each package.</li>
+<br>
+<li>Build the eCos library and tests for your target using the <i>all</i> packages template
+and with no other modifications to the eCos configuration.
+We would like testers to use the eCos Configuration Tool (configtool) to
+do this. However, if you <i>really</i> don't like using graphical tools, we would still value your
+testing feedback using the command-line tool (ecosconfig). The <i>all</i> template is
+selected in the Configuration Tool by invoking the <i>Templates</i> dialog box from the <i>Build</i> menu.
+Users of ecosconfig should specify "all" as the third argument when creating a new
+configuration: <tt>ecosconfig&nbsp;new&nbsp;&lt;target&gt;&nbsp;all</tt></li>
+<br>
+<li>Run a subset of the eCos tests by invoking the <i>Run Tests</i> dialog box from the <i>Tools</i> menu
+and selecting the following tests:<br><br>
+
+<ul><tt>
+hal/*</tt> (all HAL tests)<tt><br>
+kernel/v2_0b1/tests/tm_basic<br>
+kernel/v2_0b1/tests/stress_threads<br>
+services/memalloc/common/v2_0b1/tests/malloc4<br>
+net/common/v2_0b1/tests/multi_lo_select<br>
+language/c/libc/*</tt> (one of the libc tests selected at random)<tt><br>
+language/c/libm/v2_0b1/tests/*</tt> (one of the libm tests selected at random)<tt><br>
+compat/posix/v2_0b1/tests/*</tt> (one of the POSIX tests selected at random)<tt><br>
+compat/uitron/v2_0b1/tests/*</tt> (one of the &mu;ITRON tests selected at random)<tt><br>
+</tt></ul>
+<br>
+
+If any of the above tests do not pass, please cut and paste the test output from the <i>Output</i>
+tab of the <i>Run Tests</i> dialog box into a text file.</li>
+
+<br>
+<li>Report any test failures or other problems using Bugzilla. Full instructions are provided on our
+<a href="problemreport.html">problem reports</a> page. Please ensure that problems are reported
+against version "2.0 beta 1" and mention the host and toolchain which you were using for testing.
+</ol>
+
+<h2>RedBoot testing procedure</h2>
+
+<p><b>Warning!</b> Updating RedBoot on an embedded target involves an element of risk. The level
+of risk depends on the alternative facilities which are at your disposal to reprogram the ROM should
+the update process fail or the new RedBoot image prove to be faulty. If you are not fully aware of
+the risk, we recommend that you do <i>not</i> attempt to update RedBoot or otherwise participate in RedBoot
+testing. The eCos maintainers cannot be held responsible for boards which are rendered inoperative
+by an attempt to update RedBoot.</p>
+
+<ol>
+<li>Install the eCos 2.0 beta release, as described in the eCos testing procedure (above).</li>
+<br>
+<li>Carefully follow the instructions for building and installing RedBoot for your
+target hardware provided in the <a href="docs-latest/redboot/redboot.html">RedBoot User's guide</a>.</li>
+<br>
+<li>Verify that you are able enter commands at the <tt>RedBoot&gt;</tt> prompt using
+both serial and ethernet ports as applicable.</li>
+<br>
+<li>Verify that you are able to download and execute eCos tests using GDB. Again,
+please verify correct operation using both serial and ethernet ports as applicable.</li>
+<br>
+<li>Report problems using Bugzilla, as described in the eCos testing procedure (above).</li>
+</ol>
+
+<!--#include virtual="include/footer.html"-->

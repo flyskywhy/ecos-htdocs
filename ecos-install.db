@@ -1,0 +1,72 @@
+# Install data used by eCos installer
+
+# Install data for v1 format - allows for changes in future installers.
+
+namespace eval installdatav1 {
+        # releases list. Array of n-tuples of dirname, directory name relative to base, appropriate ECOS_REPOSITORY setting, list of elements relative
+        # to base to add to PATH.
+        # First one listed should be default.
+
+        array set ecosreleases \
+            { \
+                  "Linux" { \
+                                { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.i386linux.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
+                        } \
+                  "windows" { \
+                                { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.cygwin.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
+                          } \
+          }
+
+        # list of available toolchains. Prefix and location relative to base. Then path suffix for what to add to PATH
+        array set toolchains \
+            { \
+                  "Linux" { \
+                                { "arm-elf"       "gnutools/i386linux/ecoscentric-gnutools-arm-elf-1.4-2.i386linux.tar.bz2"        "gnutools/arm-elf/bin" } \
+                                { "i386-elf"      "gnutools/i386linux/ecoscentric-gnutools-i386-elf-1.4-2.i386linux.tar.bz2"       "gnutools/i386-elf/bin" } \
+                                { "mipsisa32-elf" "gnutools/i386linux/ecoscentric-gnutools-mipsisa32-elf-1.4-2.i386linux.tar.bz2"  "gnutools/mipsisa32-elf/bin" } \
+                                { "powerpc-eabi"  "gnutools/i386linux/ecoscentric-gnutools-powerpc-eabi-1.4-2.i386linux.tar.bz2"   "gnutools/powerpc-eabi/bin" } \
+                                { "sh-elf"        "gnutools/i386linux/ecoscentric-gnutools-sh-elf-1.4-2.i386linux.tar.bz2"         "gnutools/sh-elf/bin" } \
+                        } \
+                  "windows" { \
+                                { "arm-elf"       "gnutools/cygwin/ecoscentric-gnutools-arm-elf-1.4-2.cygwin.tar.bz2"        "gnutools/arm-elf/bin" } \
+                                { "i386-elf"      "gnutools/cygwin/ecoscentric-gnutools-i386-elf-1.4-2.cygwin.tar.bz2"       "gnutools/i386-elf/bin" } \
+                                { "mipsisa32-elf" "gnutools/cygwin/ecoscentric-gnutools-mipsisa32-elf-1.4-2.cygwin.tar.bz2"  "gnutools/mipsisa32-elf/bin" } \
+                                { "powerpc-eabi"  "gnutools/cygwin/ecoscentric-gnutools-powerpc-eabi-1.4-2.cygwin.tar.bz2"   "gnutools/powerpc-eabi/bin" } \
+                                { "sh-elf"        "gnutools/cygwin/ecoscentric-gnutools-sh-elf-1.4-2.cygwin.tar.bz2"         "gnutools/sh-elf/bin" } \
+                          } \
+          }
+        
+        variable ecosmirrors [ list \
+                                   "ftp://mirrors.rcn.net/mirrors/sources.redhat.com/ecos" \
+                                   "http://mirrors.rcn.net/pub/sourceware/ecos" \
+                                   "ftp://mirror.ac.uk/sites/sources.redhat.com/pub/ecos" \
+                                   "http://www.mirror.ac.uk/sites/sources.redhat.com/pub/ecos" \
+                                   "ftp://ftp.yggdrasil.com/mirrors/site/sourceware.cygnus.com/pub/ecos" \
+                                   "ftp://planetmirror.com/pub/sourceware/ecos" \
+                                   "http://planetmirror.com/pub/sourceware/ecos" \
+                                   "ftp://gd.tuwien.ac.at/opsys/ecos" \
+                                   "http://gd.tuwien.ac.at/opsys/ecos" \
+                                   "ftp://sunsite.ms.mff.cuni.cz/MIRRORS/sources.redhat.com/pub/ecos" \
+                                   "ftp://ftp.funet.fi/pub/mirrors/sources.redhat.com/pub/ecos" \
+                                   "ftp://ftp.gwdg.de/pub/misc/sources.redhat.com/ecos" \
+                                   "http://ftp.gwdg.de/pub/misc/sources.redhat.com/ecos" \
+                                   "ftp://ftp-stud.fht-esslingen.de/pub/Mirrors/sources.redhat.com/ecos" \
+                                   "http://ftp-stud.fht-esslingen.de/pub/Mirrors/sources.redhat.com/ecos" \
+                                   "http://www.carfield.com.hk/mirror/sources.redhat.com/ecos" \
+                                   "ftp://ftp.unina.it/pub/Unix/cygnus/ecos" \
+                                   "http://ftp.unina.it/pub/Unix/cygnus/ecos" \
+                                   "ftp://ftp.chg.ru/pub/sourceware/ecos" \
+                                   "ftp://ftp.sun.ac.za/mirrorsites/sourceware.cygnus.com/pub/ecos" \
+                                   "http://ftp.sun.ac.za/ftp/mirrorsites/sourceware.cygnus.com/pub/ecos" \
+                                   "ftp://ftp1.sinica.edu.tw/pub3/GNU/CYGNUS/ecos" \
+                                   "ftp://sources.redhat.com/pub/ecos" \
+                                  ]
+}
+
+if { [get_install_data_version] == 1 } {
+        set_ecosreleases [array get installdatav1::ecosreleases]
+        set_toolchains [array get installdatav1::toolchains]
+        set_ecosmirrors $installdatav1::ecosmirrors
+}
+
+# EOF ecos-install.db

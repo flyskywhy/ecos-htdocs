@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>About eCos</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<h1>About eCos</h1>
+
+<hr noshade size=3>
+
+<h2>Overview</h2>
+<p>eCos is provided as an open source runtime system supported by the
+GNU open source development tools. Developers have full and
+unfettered access to all aspects of the runtime system. No parts of it are
+proprietary or hidden, and you are at liberty to examine, add to, and modify
+the code as you deem necessary. These rights are granted to you and
+protected by the <a href="license-overview.html">eCos license</a>. It also grants you the
+right to freely develop and distribute applications based on eCos. We
+welcome all contributions back to eCos such as
+board ports, device drivers and other components, as this helps the growth
+and development of eCos, and is of benefit to the entire eCos community.</p>
+
+<p>One of the key technological innovations in eCos is the configuration
+system. The configuration system allows the application writer to impose
+their requirements on the run-time components, both in terms of their
+functionality and implementation, whereas traditionally the operating system
+has constrained the application's own implementation. Essentially, this
+enables eCos developers to create their own application-specific operating
+system and makes eCos suitable for a wide range of embedded uses.
+Configuration also ensures that the resource footprint of eCos is minimized
+as all unnecessary functionality and features are removed. The configuration
+system also presents eCos as a component architecture. This provides a
+standardized mechanism for component suppliers to extend the functionality
+of eCos and allows applications to be built from a wide set of optional
+configurable run-time components. Components can be provided from a variety
+of sources including the standard eCos release, commercial third party
+developers and open source contributors.</p>
+
+<p>The royalty-free nature of eCos means that you can develop and deploy your
+application using the standard eCos release without incurring any royalty
+charges. In addition, there are no up-front license charges for the eCos
+runtime source code and associated tools. eCos delivers, without charge,
+everything necessary for basic embedded applications development.</p>
+
+<p>eCos is designed to be portable to a wide range of target architectures and
+target platforms including 16, 32, and 64 bit architectures, MPUs, MCUs and
+DSPs. The eCos kernel, libraries and runtime components are layered on the
+Hardware Abstraction Layer (HAL), and thus will run on any target once the
+HAL and relevant device drivers have been ported to the target's processor
+architecture and board. Currently eCos supports ten different target
+architectures (ARM, Hitachi H8300, Intel x86, MIPS, Matsushita AM3x, Motorola 68k, PowerPC,
+SuperH, SPARC and NEC V8xx) including many of the popular variants of these architectures and
+evaluation boards. Many new ports are in development and will be released as
+they become available.</p>
+
+<p>eCos has been designed to support applications with real-time requirements,
+providing features such as full preemptability, minimal interrupt latencies,
+and all the necessary synchronization primitives, scheduling policies, and
+interrupt handling mechanisms needed for these type of applications. eCos
+also provides all the functionality required for general embedded
+application support including device drivers, memory management, exception
+handling, C, math libraries, etc. In addition to runtime support, the eCos
+system includes all the tools necessary to develop embedded applications,
+including eCos software configuration and build tools, and GNU based
+compilers, assemblers, linkers, debuggers, and simulators.</p>
+
+<p>The following core functionality is provided:</p>
+<UL>
+  <LI>Hardware Abstraction Layer (HAL)</LI>
+  <LI>Real-time kernel</LI>
+      <UL>
+	<LI>Interrupt handling</LI>
+	<LI>Exception handling</LI>
+	<LI>Choice of schedulers</LI>
+	<LI>Thread support</LI>
+	<LI>Rich set of synchronization primitives</LI>
+	<LI>Timers, counters and alarms</LI>
+	<LI>Choice of memory allocators</LI>
+	<LI>Debug and instrumentation support</LI>
+      </UL>
+  <LI><A HREF="http://www.itron.gr.jp/">&micro;ITRON</A> 3.0 compatible API</LI>
+  <LI>POSIX</A> compatible API</LI>
+  <LI>ISO C and math libraries
+  <LI>Serial, ethernet, wallclock and watchdog device drivers
+  <LI>USB slave support
+  <LI>TCP/IP networking stacks
+  <LI>GDB debug support
+</UL>
+
+<h2>System requirements</h2>
+
+<p>The eCos net distribution is available in both Linux
+and Windows versions. The Linux version is tested under recent
+versions of the Red Hat, SuSE and Debian distributions for x86 and should work
+under most Linux variants. The Windows version has been tested under
+Microsoft Windows 2000 Professional and should also work under Windows 95, Windows 98,
+Windows ME and Windows XP. However, building the eCos
+GNU cross toolchains under Windows 95/98/ME has been found to be
+unreliable. We recommend that users avoid building the development tools on
+these systems if possible.</p>
+
+<p>The eCos net distribution is supplied with full support for configuration of eCos
+on all host platforms via both a graphical configuration tool and a
+command-line tool. It is intended to be used in conjunction with GNU development
+tools which are available freely on the net. As a minimum, the <i>gcc</i> compiler,
+<i>gdb</i> debugger and <i>binutils</i> tools are required to build eCos, link with
+application code and undertake debugging.</p>
+
+<!--#include virtual="include/footer.html"-->
