@@ -14,7 +14,7 @@ WARNING - this is a generated file - do not edit directly
 -->
 
 <HEAD>
-<TITLE>Building the $TOOLPREFIX development tools for $HOST</TITLE>
+<TITLE>Building the $TARGETNAME development tools for $HOST</TITLE>
 </HEAD>
 
 <!--#include virtual="../include/header.html"-->
@@ -108,7 +108,7 @@ reverting to an older one.
 
 When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/">
 GCC snapshot download area</a> note that only the core compiler and C++
-distributions are required (prefix <tt>egcs-core-</tt> and <tt>egcs-g++-</tt>).<p>
+distributions are required (prefix <tt>gcc-core-</tt> and <tt>gcc-g++-</tt>).<p>
 
 }
 
@@ -187,8 +187,8 @@ ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-g++-2.95.2.tar.bz2 | tar xvf -<br>
 }
 ${GCCSNAP+
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-core-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-core-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight-5.0.tar.bz2 | tar xvf -
@@ -205,8 +205,8 @@ ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-g++-2.95.2.tar.gz | tar xvf -<br>
 }
 ${GCCSNAP+
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-core-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-core-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; insight-5.0.tar.gz | tar xvf -
@@ -220,7 +220,7 @@ ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2<br>
 }
 ${GCCSNAP+
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-<i>YYYYMMDD</i><br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
 </tt></nobr>
@@ -293,7 +293,7 @@ If you are using a GCC snapshot dated 2000-03-20 or earlier, download
 the <a href="patches/ecos-gcc-snap-cpp.pat">ecos-gcc-snap-cpp.pat</a>
 patch to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
 ${WINDOWS+
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gcc-snap-cpp.pat | patch -p0
 }
@@ -405,7 +405,7 @@ ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2/configure --target=$TOOLPREFIX \\<br>
 }
 ${GCCSNAP+
-<br>&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i>/configure --target=$TOOLPREFIX \\<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-<i>YYYYMMDD</i>/configure --target=$TOOLPREFIX \\<br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-$HOSTPREFIX \\<br>
@@ -937,7 +937,7 @@ EXTRAPATCH=
 ##################
 # thumb
 
-TOOLPREFIX=thumb-elf
+TOOLPREFIX=arm-elf
 TARGETNAME="ARM THUMB"
 GCCSNAP=
 
@@ -965,7 +965,7 @@ download the
 <a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
 patch to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-thumb-stackalign.pat | patch -p0
 </tt></nobr><p>
 '
@@ -995,7 +995,7 @@ download the
 <a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
 patch to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-thumb-stackalign.pat
 </tt></nobr><p>
 '
@@ -1033,7 +1033,7 @@ EXTRASNAPPATCH='
 Download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
+<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>-->
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-gcc-snap.pat | patch -p0
 </tt></nobr><p>
 '
@@ -1061,7 +1061,7 @@ EXTRASNAPPATCH='
 Download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
+<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>-->
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap.pat
 </tt></nobr><p>
 '

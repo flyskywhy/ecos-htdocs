@@ -9,7 +9,7 @@ WARNING - this is a generated file - do not edit directly
 -->
 
 <HEAD>
-<TITLE>Building the mips64vr4300-elf development tools for Linux</TITLE>
+<TITLE>Building the NEC MIPS VR4300 development tools for Linux</TITLE>
 </HEAD>
 
 <!--#include virtual="../include/header.html"-->
@@ -69,7 +69,7 @@ reverting to an older one.
 
 When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/">
 GCC snapshot download area</a> note that only the core compiler and C++
-distributions are required (prefix <tt>egcs-core-</tt> and <tt>egcs-g++-</tt>).<p>
+distributions are required (prefix <tt>gcc-core-</tt> and <tt>gcc-g++-</tt>).<p>
 
 
 
@@ -143,8 +143,8 @@ build system:
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-core-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-core-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight-5.0.tar.bz2 | tar xvf -
@@ -158,8 +158,8 @@ build system:
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-core-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-core-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; insight-5.0.tar.gz | tar xvf -
@@ -171,7 +171,7 @@ The following directories should be generated and populated during the extractio
 &nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10.1<br>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-<i>YYYYMMDD</i><br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
 </tt></nobr>
@@ -194,7 +194,7 @@ If you are using a GCC snapshot dated 2000-03-20 or earlier, download
 the <a href="patches/ecos-gcc-snap-cpp.pat">ecos-gcc-snap-cpp.pat</a>
 patch to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap-cpp.pat
@@ -206,7 +206,7 @@ patch to a file and apply it:<p>
 Download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
+<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-<i>YYYYMMDD</i><br>-->
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap.pat
 </tt></nobr><p>
 
@@ -300,7 +300,7 @@ If there are any problems building the tools, you can use the file
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/gcc<br>
 
 
-<br>&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i>/configure --target=mips64vr4300-elf \<br>
+<br>&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-<i>YYYYMMDD</i>/configure --target=mips64vr4300-elf \<br>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-linux-gnu \<br>
