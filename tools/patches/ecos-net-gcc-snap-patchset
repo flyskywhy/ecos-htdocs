@@ -174,26 +174,3 @@ diff -u -5 -p -r1.30.4.1 config.sub
 +
 +#undef CPP_PREDEFINES
 +#define CPP_PREDEFINES "-Dmips -DMIPSEB -DR4300 -D_mips -D_MIPSEB -D_R4300"
-Index: gcc/config/mips/elf.h
-===================================================================
-RCS file: /cvs/gcc/egcs/gcc/config/mips/elf.h,v
-retrieving revision 1.11
-diff -u -5 -p -r1.11 elf.h
---- gcc/config/mips/elf.h	1999/05/10 20:35:32	1.11
-+++ gcc/config/mips/elf.h	2000/03/22 15:31:34
-@@ gcc/config/mips/elf.h									   \
-    via the SHF_WRITE attribute.)  */
- 
- #define CTORS_SECTION_ASM_OP    "\t.section\t.ctors,\"aw\""
- #define DTORS_SECTION_ASM_OP    "\t.section\t.dtors,\"aw\""
-  
-+/* There's no point providing a default definition of __CTOR_LIST__
-+   since people are expected either to use crtbegin.o, or an equivalent,
-+   or provide their own definition.  */
-+#define CTOR_LISTS_DEFINED_EXTERNALLY
-+
- /* A list of other sections which the compiler might be "in" at any
-    given time.  */
- #undef EXTRA_SECTIONS
- #define EXTRA_SECTIONS in_sdata, in_rdata, in_ctors, in_dtors
-  
