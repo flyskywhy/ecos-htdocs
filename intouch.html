@@ -14,86 +14,42 @@ There are two principal mailing lists relating to eCos sourceware. Subscribers
 to the <nobr><i>ecos-announce</i></nobr> list will receive details
 of all eCos developments as they unfold. This is a moderated list
 intended principally for the announcement of new packages, snapshots and
-patches. An <a HREF="/ml/ecos-announce/">archive</a> of this mailing list 
-is available.
-To subscribe to <nobr><i>ecos-announce</i></nobr>, enter your
-e-mail address in the following box and click on the <i>Subscribe</i>
-button:
-
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-announce">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-announce)
- </form>
-</blockquote>
-
-Subscribers to the <nobr><i>ecos-discuss</i></nobr> list can participate
+patches. Subscribers to the <nobr><i>ecos-discuss</i></nobr> list can participate
 in open discussion with others concerning all aspects of eCos. This is an
-unmoderated list. An <a href="/ml/ecos-discuss/">archive</a> of
-this mailing list is available.
-To subscribe to <nobr><i>ecos-discuss</i></nobr>, enter
-your e-mail address in the following box and click on the <i>Subscribe</i>
-button:
+unmoderated list. Archives of both the <a HREF="/ml/ecos-announce/">ecos-announce</a> and <a href="/ml/ecos-discuss/">ecos-discuss</a> mailing lists are available.<p>
 
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-discuss">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-discuss)
- </form>
-</blockquote>
+There are additional mailing lists specifically for
+those requiring notification of changes at this site. Subscribers to the <nobr><i>ecos-cvs</i></nobr> list will receive notification of any
+changes to the eCos anonymous CVS repository. Subscribers to the <nobr><i>ecos-webpages-cvs</i></nobr> list will receive notification of any
+changes to the eCos sourceware web pages.<p>
 
-Further, more specialized mailing lists will be created and announced
-as the volume of traffic grows. If your are experiencing problems with
+To subscribe to any of these mailing lists, use the mailing list request form below.
+Digest versions of each list are also available where messages are forwarded on a daily basis.
+If your are experiencing problems with
 the use of these mailing lists, please refer to the
 <a href="http://sourceware.cygnus.com/ml/index.html#faqs">mailing list FAQ</a>.
 
-<h3>Change notification mailings lists</H3>
+<h3>Mailing list request form</h3>
 
-There are additional mailing lists specifically for
-those requiring notification of changes to either eCos anonymous CVS repository or the 
-eCos sourceware web site.
-
-Subscribers
-to the <nobr><i>ecos-cvs</i></nobr> list will receive immediate notification of any
-changes to the anonymous CVS repository. A digest version is also available where
-such changes are notified on a daily basis. To subscribe to <nobr><i>ecos-cvs</i></nobr>, enter your
-e-mail address in one of the following boxes and click on the associated <i>Subscribe</i>
-button:
-
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-cvs">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-cvs)
- </form>
-</blockquote>
-
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-cvs-digest">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-cvs-digest)
- </form>
-</blockquote>
-
-Subscribers
-to the <nobr><i>ecos-webpages-cvs</i></nobr> list will receive immediate notification of any
-changes to the eCos sourceware web pages. A digest version is also available where
-such changes are notified on a daily basis. To subscribe to <nobr><i>ecos-webpages-cvs</i></nobr>, enter your
-e-mail address in one of the following boxes and click on the associated <i>Subscribe</i>
-button:
-
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-webpages-cvs">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-webpages-cvs)
- </form>
-</blockquote>
-
-<blockquote>
- <form method="get" action="/cgi-bin/subscribe-sourceware">
-     <input type="hidden" name="listname" value="ecos-webpages-cvs-digest">
-     <input type="text" name="username" size="10"> <input type="Submit" name="submit" value="Subscribe"> (ecos-webpages-cvs-digest)
- </form>
-</blockquote>
+<form method="get" action="/cgi-bin/ml-request">
+<table>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;E-mail address:</TD><TD><input type="text" name="username"></TD></TR>
+<TR><TD>&nbsp;&nbsp;&nbsp;&nbsp;Command:</TD><TD>
+  <select name="operation">
+  <option value="subscribe">subscribe to
+    <option value="unsubscribe">unsubscribe from
+  </select>
+  <select name="listname" size=1>
+    <option selected>ecos-announce
+    <option>ecos-cvs
+    <option>ecos-discuss
+    <option>ecos-webpages-cvs
+  </select>
+  <input type=checkbox name="digest">digest version
+</TD></TR>
+<TR><TD>&nbsp;</TD><TD><input type=submit value="Submit">&nbsp;&nbsp;<input type=reset value="Reset"></TD></tr>
+</table>
+</form>
 
 <h3>Contacting Cygnus</h3>
 
