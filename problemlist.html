@@ -497,6 +497,41 @@
 		signal2 and except1 tests to fail.</td>
     <td valign=top>There is no known workaround.</td>
   </tr>
+  
+  <tr bgcolor="#DDDDDD">
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+	
+    <td valign=top>When linking code with PC REL24 branches, the ARM
+                bfd linker does not complain nor modify the branch
+                instruction when the offset overflows, it just
+	        generates code that branch anywhere. The attached patch
+                should fix this problem.
+	        <BR>Reported by Robin Farine &lt;advanc@dial.eunet.ch&gt;
+	</td>
+    <td valign=top>
+<PRE>	
+*** ecosSWtools-arm-990321.orig/src/bfd/elf32-arm.h     Fri May  7 16:35:05 1999
+--- ecosSWtools-arm-990321/src/bfd/elf32-arm.h  Sat Aug  7 13:46:00 1999
+***************
+*** 913,917 ****
+                + input_section-&gt;output_offset + 8);
+        value -= offset;
+!       value = value &gt;&gt; howto-&gt;rightshift;
+  
+        value &amp;= 0xffffff;
+--- 913,920 ----
+                + input_section-&gt;output_offset + 8);
+        value -= offset;
+!       value = (bfd_signed_vma)value &gt;&gt; howto-&gt;rightshift;
+!       if ((bfd_signed_vma) value &gt; 0x7fffff ||
+!         (bfd_signed_vma) value &lt; -0x800000)
+!       return bfd_reloc_overflow;
+  
+        value &amp;= 0xffffff;
+</PRE>	
+</td>
+  </tr>
 
 </table>
 
@@ -667,6 +702,8 @@
 
 
 </table>
+
+
 
 <p><font size=-1>Revision 1.2.1.0</font>
 
