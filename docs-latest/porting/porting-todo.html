@@ -54,6 +54,41 @@ sources.
 </pre>
 
 
+<h4>Using ser_filter for serial IO monitoring</h4>
+<pre>
+
+Gary> On 19-Feb-2001 Rafael Rodríguez Velilla wrote:
+>> Has anyone got a program to spy the serial device transparently in
+>> order to see the dialog of GDB and my target's stub. I just want to
+>> see what's traveling along my serial conecction.
+>> 
+
+Gary> You can get this information from GDB itself.  (gdb) set
+Gary> remotedebug 1
+
+Unfortunately that doesn't always work. Any non-protocol data gets
+binned by some GDBs - it's not consistent in this regard across
+architectures.
+
+Instead I suggest using the ser_filter for which sources are available
+from the CVS repository in the host directory. You should be able to
+rebuild it for Linux by invoking make in the host/tools/ecostest/unix
+directory. For Windows I believe there are some MSVC build files
+somewhere.
+
+When you have ser_filter built you can do something like:
+
+ $ ser_filter -m 9999 /dev/ttyS0 38400
+
+And then connect to the target like this:
+
+ (gdb) ta re localhost:9999
+
+
+When you do, the ser_filter should dump all the traffic out on the
+console.
+</pre>
+
 <h4></h4>
 <pre>
 </pre>
