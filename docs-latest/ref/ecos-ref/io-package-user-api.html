@@ -1,0 +1,415 @@
+<HTML
+><HEAD
+><TITLE
+>User
+API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="IO Package (Device Drivers)"
+HREF="ecos-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction"
+HREF="io-package-introduction.html"><LINK
+REL="NEXT"
+TITLE="Serial driver details"
+HREF="serial-driver-details.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="io-package-introduction.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="serial-driver-details.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="IO-PACKAGE-USER-API"
+>Chapter 11. User
+API</A
+></H1
+><P
+>All functions, except <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_lookup()</B
+></TT
+> require
+an I/O &#8220;handle&#8221;. </P
+><P
+>All functions return a value of the type <SPAN
+CLASS="RETURNVALUE"
+>Cyg_ErrNo</SPAN
+>.
+If an error condition is detected, this value will be negative and
+the absolute value indicates the actual error, as specified in <TT
+CLASS="FILENAME"
+>cyg/error/codes.h</TT
+>.
+The only other legal return value will be <SPAN
+CLASS="RETURNVALUE"
+>ENOERR</SPAN
+>. All
+other function arguments are pointers (references). This allows
+the drivers to pass information efficiently, both into and out of
+the driver. The most striking example of this is the &#8220;length&#8221; value
+passed to the read and write functions. This parameter contains
+the desired length of data on input to the function and the actual
+transferred length on return. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+>// Lookup a device
+and return its handle </PRE
+></TD
+></TR
+></TABLE
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo <B
+CLASS="FSFUNC"
+>cyg_io_lookup</B
+></CODE
+>(const char *<VAR
+CLASS="PDPARAM"
+>name</VAR
+>, cyg_io_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>);<P
+></P
+></DIV
+><P
+>This function maps a device name onto an appropriate handle.
+If the named device is not in the system, then the error <SPAN
+CLASS="RETURNVALUE"
+>-ENOENT</SPAN
+> is
+returned. If the device is found, then the handle for the device
+is returned by way of the handle pointer <SPAN
+CLASS="RETURNVALUE"
+>*handle</SPAN
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+> // Write data
+to a device </PRE
+></TD
+></TR
+></TABLE
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo <B
+CLASS="FSFUNC"
+>cyg_io_write</B
+></CODE
+>(cyg_io_handle_t <VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, const void *<VAR
+CLASS="PDPARAM"
+>buf</VAR
+>, cyg_uint32 *<VAR
+CLASS="PDPARAM"
+>len</VAR
+>);<P
+></P
+></DIV
+><P
+>This function sends data to a device. The size of data to
+send is contained in <TT
+CLASS="PARAMETER"
+><I
+>*len</I
+></TT
+> and the actual
+size sent will be returned in the same place. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+> // Read data
+from a device </PRE
+></TD
+></TR
+></TABLE
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo 
+<B
+CLASS="FSFUNC"
+>cyg_io_read</B
+></CODE
+>(cyg_io_handle_t <VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>buf</VAR
+>, cyg_uint32 *<VAR
+CLASS="PDPARAM"
+>len</VAR
+>);<P
+></P
+></DIV
+><P
+>This function receives data from a device. The desired size
+of data to receive is contained in <TT
+CLASS="PARAMETER"
+><I
+>*len</I
+></TT
+> and
+the actual size obtained will be returned in the same place. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+> // Get the configuration
+of a device </PRE
+></TD
+></TR
+></TABLE
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo <B
+CLASS="FSFUNC"
+>cyg_io_get_config</B
+></CODE
+>(cyg_io_handle_t <VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_uint32 <VAR
+CLASS="PDPARAM"
+>key</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>buf</VAR
+>, cyg_uint32 *<VAR
+CLASS="PDPARAM"
+>len</VAR
+>);<P
+></P
+></DIV
+><P
+>This function is used to obtain run-time configuration about
+a device. The type of information retrieved is specified by the
+key. The data will be returned in the given buffer. The value of <TT
+CLASS="PARAMETER"
+><I
+>*len</I
+></TT
+> should
+contain the amount of data requested, which must be at least as
+large as the size appropriate to the selected key. The actual size
+of data retrieved is placed in <TT
+CLASS="PARAMETER"
+><I
+>*len</I
+></TT
+>. The
+appropriate key values differ for each driver and are all listed
+in the file <TT
+CLASS="FILENAME"
+>cyg/io/config_keys.h</TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="FUNCSYNOPSISINFO"
+> // Change the
+configuration of a device </PRE
+></TD
+></TR
+></TABLE
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo 
+<B
+CLASS="FSFUNC"
+>cyg_io_set_config</B
+></CODE
+>(cyg_io_handle_t <VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_uint32 <VAR
+CLASS="PDPARAM"
+>key</VAR
+>, const void *<VAR
+CLASS="PDPARAM"
+>buf</VAR
+>, cyg_uint32 *<VAR
+CLASS="PDPARAM"
+>len</VAR
+>);<P
+></P
+></DIV
+><P
+>This function is used to manipulate or change the run-time
+configuration of a device. The type of information is specified
+by the key. The data will be obtained from the given buffer. The
+value of <TT
+CLASS="PARAMETER"
+><I
+>*len</I
+></TT
+> should contain the amount of
+data provided, which must match the size appropriate to the selected
+key. The appropriate key values differ for each driver and are all
+listed in the file <TT
+CLASS="FILENAME"
+>cyg/io/config_keys.h</TT
+>.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="io-package-introduction.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="serial-driver-details.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Serial driver details</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

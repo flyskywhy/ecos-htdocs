@@ -1,0 +1,419 @@
+<HTML
+><HEAD
+><TITLE
+>Software installation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Installation Guide"
+HREF="installation-guide.html"><LINK
+REL="PREVIOUS"
+TITLE="Installation Guide"
+HREF="installation-guide.html"><LINK
+REL="NEXT"
+TITLE="Software 
+installation
+on UNIX"
+HREF="software-installation-on-unix.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="installation-guide.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="software-installation-on-unix.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="SOFTWARE-INSTALLATION"
+>Chapter 9. Software installation</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="software-installation.html#SOFTWARE-INSTALLATION-ON-WINDOWS-NT"
+>Software 
+installation
+on Windows</A
+></DT
+><DT
+><A
+HREF="software-installation-on-unix.html"
+>Software 
+installation
+on UNIX</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SOFTWARE-INSTALLATION-ON-WINDOWS-NT"
+>Software 
+installation
+on Windows</A
+></H1
+><P
+>If you have a CD distribution of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s
+Kit, you have received the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> software
+and its supporting utilities on a single CDROM for installation
+on a PC-compatible computer running Windows NT 4.0, Windows 95,
+or Windows 98. If you use NT you must apply the NT 4.0 Service Pack
+3 or above before installing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. Support
+is only for Windows NT 4.0. Installations on other Windows platforms are
+beta.</P
+><P
+>The following components are provided on the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> CDROM: <P
+></P
+><UL
+><LI
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> source code</P
+></LI
+><LI
+><P
+>Pre-built <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> libraries
+and tests</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> documentation</P
+></LI
+><LI
+><P
+>Cygnus <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> compiler
+toolchain for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> source code compilation</P
+></LI
+><LI
+><P
+>Cygnus 
+<SPAN
+CLASS="PRODUCTNAME"
+>Cygwin</SPAN
+> environment: this product provides
+a POSIX compatibility layer on top of Windows NT, and supports the 
+<SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> tools on Windows NT.</P
+></LI
+><LI
+><P
+>The GNU user tools&#8212;a collection of utilities
+that developers, particularly those with a UNIX background, will
+find useful. However, they are not supported by Cygnus.</P
+></LI
+><LI
+><P
+>Documentation for the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> tools,
+including a Reference Manual for the particular evaluation board
+being used to run <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.</P
+></LI
+></UL
+></P
+><P
+>If you have obtained the Sourceware
+release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> for Windows, you will
+have the distribution in a self-extracting archive. Apart from the
+difference in medium, the installation procedure for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> itself
+will be the same as for the CDROM-based distribution. </P
+><P
+>The software installation process involves a number of installation
+utilities. Some familiarity with Windows is assumed.</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Invoke the file <B
+CLASS="COMMAND"
+>Setup.exe</B
+> on
+the CDROM. This will start the installation procedure. If you have
+the <B
+CLASS="COMMAND"
+>autorun</B
+> feature enabled, Windows will run <B
+CLASS="COMMAND"
+>Setup.exe</B
+> automatically
+when the CDROM is inserted into the drive.</P
+></LI
+><LI
+><P
+>The setup program will offer to install the GNU user
+tools. Click <SPAN
+CLASS="GUIBUTTON"
+>Ok</SPAN
+>. </P
+></LI
+><LI
+><P
+>You will be prompted for a path in which to install
+the GNU user tools. The default will be in the <TT
+CLASS="FILENAME"
+>\cygnus\gnupro\i686-cygwin32\i686-cygwin32</TT
+> hierarchy
+(usually on drive C). It will then offer to install the source code
+and documentation for the GNU user tools. It is recommended that
+you install the documentation, but not the source code, unless you
+are interested in modifying or recompiling the GNU user tools. </P
+></LI
+><LI
+><P
+>At this point the setup program will begin installing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.
+Click <SPAN
+CLASS="GUIBUTTON"
+>Ok</SPAN
+>.</P
+></LI
+><LI
+><P
+>The default path offered for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> installation
+will be in the <TT
+CLASS="FILENAME"
+>\Program Files\Cygnus
+Solutions</TT
+> hierarchy (usually on drive C). You may change
+this path, and indeed you will need to change it if that partition
+does not have sufficient free disk space available. It is recommended
+that you accept the default selection of software components for
+installation.</P
+></LI
+><LI
+><P
+>You will be asked to select the <I
+CLASS="FIRSTTERM"
+>program folder</I
+> under
+which the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> menu items will be placed.
+The default folder name is <TT
+CLASS="FILENAME"
+>Cygnus eCos</TT
+>. </P
+></LI
+><LI
+><P
+>The installation should finish normally, offering to
+show you the <TT
+CLASS="FILENAME"
+>README</TT
+> file that contains any
+last minute information and a list of known problems detected after this
+document was printed. Once the installation is finished, you can
+start <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> or view the online documentation
+by selecting <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> -&#62; <SPAN
+CLASS="GUISUBMENU"
+>Programs</SPAN
+> -&#62; <SPAN
+CLASS="GUISUBMENU"
+>Cygnus eCos</SPAN
+>,
+and then choosing an option within this folder, as illustrated in <A
+HREF="software-installation.html#INVOKING-ECOS-FROM-THE-PROGRAM-MENU"
+>Figure 9-1</A
+>. </P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="INVOKING-ECOS-FROM-THE-PROGRAM-MENU"
+>Figure 9-1. Invoking
+eCos from the Program menu</A
+></B
+></P
+><P
+><IMG
+SRC="../program-menu-shot.gif"
+ALIGN="CENTER"></P
+></DIV
+><P
+>At this point you are ready to configure and build a customized <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel
+as described in <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 12</A
+>. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="installation-guide.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="software-installation-on-unix.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installation Guide</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="installation-guide.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Software 
+installation
+on UNIX</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

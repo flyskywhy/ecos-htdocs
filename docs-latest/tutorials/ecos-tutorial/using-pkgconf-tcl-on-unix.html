@@ -1,0 +1,933 @@
+<HTML
+><HEAD
+><TITLE
+>Using 
+pkgconf.tcl on UNIX</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Configuring and building eCos from source"
+HREF="configure-and-build-ecos-from-source.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuring and building eCos from source"
+HREF="configure-and-build-ecos-from-source.html"><LINK
+REL="NEXT"
+TITLE="Running an eCos test case"
+HREF="run-an-ecos-test-case.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Configuring and building eCos from source</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="USING-PKGCONF-TCL-ON-UNIX"
+>Using 
+<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</A
+></H1
+><P
+>On UNIX systems the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> is
+not yet available, but it is still possible to configure and build
+a kernel by editing some header files manually and using the <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> command
+(<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is the underlying engine used by
+the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>). </P
+><P
+><B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is a <SPAN
+CLASS="APPLICATION"
+>Tcl</SPAN
+> script,
+invoked on UNIX with the <B
+CLASS="COMMAND"
+>tclsh</B
+> interpreter. On Windows
+you should invoke the interpreter with <B
+CLASS="COMMAND"
+>cygtclsh80</B
+>.
+The examples will use <B
+CLASS="COMMAND"
+>tclsh</B
+>, as mentioned in <A
+HREF="notation-and-conventions-in-this-manual.html"
+>Chapter 1</A
+>. </P
+><P
+>Before invoking <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> you need to
+choose a directory in which to work. For the purposes of this tutorial,
+the default path will be <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</TT
+>.
+Create this directory and change to it by typing: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mkdir <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</B
+></TT
+><br>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</B
+></TT
+></P
+><P
+>To see what options can be used with <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>,
+type: <P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --help</B
+></TT
+></P
+>Useful commands to begin with are: <P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --packages</B
+></TT
+></P
+>to list available packages, and <P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --targets</B
+></TT
+></P
+>to list available targets. </P
+><P
+>Here is sample output from <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> showing
+you which options are available and enabled by default.</P
+><P
+></P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 12-1. Getting help from <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$ tclsh BASE_DIR/pkgconf.tcl --help
+Usage: pkgconf [options]
+Available options are:
+  --help               : display this text.
+  --packages           : list all packages.
+  --targets            : list all possible targets.
+  --target=&#60;arch&#62;      : target the specified architecture.
+  --platform=sim       : target the simulator rather than hardware.
+  --startup=rom        : generate code suitable for ROMming.
+  --disable-&#60;pkg&#62;      : disable a given package.
+  --enable-&#60;pkg&#62;       : enable a given package.
+  --&#60;pkg&#62;-version=v0.3 : use a specific version of a package.
+  --defaults           : use default settings instead of the save file.
+  --srcdir=&#60;dir&#62;       : specify location of the component repository.
+  --builddir=&#60;dir&#62;     : specify location of the build directory.
+  --prefix=&#60;dir&#62;       : specify location of the install directory.
+$  </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+></P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 12-2. <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> output &#8212; list of available
+targets</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$ tclsh &#60;BASE_DIR&#62;/pkgconf.tcl --targets
+Known targets:
+  mn10300_am31 : aliases  MN10300 mn10300-elf am30 am30-elf am31 am31-elf 
+    Required packages
+        MN10300 common HAL (CYGPKG_HAL_MN10300)
+        MN10300 AM31 variant HAL (CYGPKG_HAL_MN10300_AM31)
+    Platform stdeval1, supported startups  ram rom 
+      Required packages
+          MN10300 stdeval1 support (CYGPKG_HAL_MN10300_AM31_STDEVAL1)
+    Platform sim, supported startups  ram 
+      Required packages
+          MN10300 simulator support (CYGPKG_HAL_MN10300_AM31_SIM)
+  mips_tx39    : aliases  TX39 mips-tx39 mips-tx39-elf 
+    Required packages
+        MIPS common HAL (CYGPKG_HAL_MIPS)
+        TX39 chip HAL (CYGPKG_HAL_MIPS_TX39)
+    Platform jmr3904, supported startups  ram rom 
+      Required packages
+          TX39 jmr3904 support (CYGPKG_HAL_MIPS_TX39_JMR3904)
+    Platform sim, supported startups  ram 
+      Required packages
+          MIPS simulator support (CYGPKG_HAL_MIPS_SIM)
+  powerpc      : aliases  PowerPC powerpc-eabi 
+    Required packages
+        PowerPC common HAL (CYGPKG_HAL_POWERPC)
+    Platform cogent, supported startups  ram rom stubs 
+      Required packages
+          PowerPC Cogent board support (CYGPKG_HAL_POWERPC_COGENT)
+    Platform fads, supported startups  ram rom 
+      Required packages
+          PowerPC Motorola FADS board support (CYGPKG_HAL_POWERPC_FADS)
+    Platform sim, supported startups  ram 
+      Required packages
+          PowerPC simulator support (CYGPKG_HAL_POWERPC_SIM)
+  i386         : aliases  i386 i486 i586 i86 ix86 
+    Required packages
+        i386 common HAL (CYGPKG_HAL_I386)
+    Platform linux, supported startups  ram 
+      Required packages
+          Linux Synthetic target support (CYGPKG_HAL_I386_LINUX)
+  arm          : aliases  ARM arm-elf 
+    Required packages
+        ARM common HAL (CYGPKG_HAL_ARM)
+    Platform pid, supported startups  ram rom stubs 
+      Required packages
+          Arm Development board support (CYGPKG_HAL_ARM_PID)
+    Platform pid9, supported startups  ram rom 
+      Required packages
+          Arm Development board support (CYGPKG_HAL_ARM_PID)
+    Platform pidT, supported startups  ram rom stubs 
+      Required packages
+          Arm Development board support (CYGPKG_HAL_ARM_PID)
+    Platform aeb, supported startups  ram rom stubs 
+      Required packages
+          Arm evaluation board (AEB-1) support (CYGPKG_HAL_ARM_AEB)
+    Platform aebC, supported startups  ram rom stubs 
+      Required packages
+          Arm evaluation board (AEB-1) support (CYGPKG_HAL_ARM_AEB)
+    Platform cl7111, supported startups  ram rom stubs 
+      Required packages
+          Cirrus Logic CL7211 evaluation board support
+(CYGPKG_HAL_ARM_CL7211)
+    Platform eb7211, supported startups  ram rom stubs 
+      Required packages
+          Cirrus Logic CL7211 evaluation board support(CYGPKG_HAL_ARM_CL7211)
+    Platform cma230, supported startups  ram rom stubs 
+      Required packages
+          Cogent CMA230 (ARM7TDMI) (CYGPKG_HAL_ARM_CMA230)
+    Platform cma230T, supported startups  ram rom stubs 
+      Required packages
+          Cogent CMA230 (ARM7TDMI) (CYGPKG_HAL_ARM_CMA230)
+    Platform ebsa285, supported startups  ram rom stubs 
+      Required packages
+          Intel EBSA-285 StrongARM evaluation board support
+(CYGPKG_HAL_ARM_EBSA285)
+  sparclite    : aliases  SPARClite sparclite-elf 
+    Required packages
+        SPARClite common HAL (CYGPKG_HAL_SPARCLITE)
+    Platform sim, supported startups  ram 
+      Required packages
+          SPARClite ERC32 simulator support (CYGPKG_HAL_SPARCLITE_SIM)
+    Platform sleb, supported startups  ram rom 
+      Required packages
+          SPARClite Evaluation Board support (CYGPKG_HAL_SPARCLITE_SLEB)
+$</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN2790"
+>Selecting a target</A
+></H2
+><P
+>To select the <SPAN
+CLASS="HARDWARE"
+>MN10300 (AM31)</SPAN
+> target,
+building for running under the simulator, type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=mn10300 --platform=stdeval1 --startup=rom</B
+></TT
+></P
+><P
+>To select the <SPAN
+CLASS="HARDWARE"
+>AM33</SPAN
+> target, the STB reference
+board platform, and RAM start-up, type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=am33 
+--platform=stb --startup=ram</B
+></TT
+></P
+><P
+>To select the <SPAN
+CLASS="HARDWARE"
+>TX39</SPAN
+> target, building for
+running under the simulator, type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=tx39 --platform=jmr3904 --startup=rom</B
+></TT
+></P
+><P
+>To configure for a <SPAN
+CLASS="HARDWARE"
+>PowerPC</SPAN
+> target, building
+for running under the simulator, type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=powerpc --platform=sim --startup=ram</B
+></TT
+></P
+><P
+>To configure for a <SPAN
+CLASS="HARDWARE"
+>SPARClite</SPAN
+> target,
+building for running under the simulator, type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=sparclite --platform=sim --startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+PID evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=pid --startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+PID evaluation board platform in Thumb mode, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=pidT--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM9</SPAN
+> target, the
+PID evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=pid9 T--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+AEB-1 (Revision B) evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=aeb --startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+AEB-1 (Revision C) evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=aebC--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM7</SPAN
+> target, the
+Cogent CMA230 evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=cma230--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+Cirrus Logic EB7111 evaluation board platform, and RAM start-up
+type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=c17111--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>ARM</SPAN
+> target, the
+Cirrus Logic EDB7211 evaluation board platform, and RAM start-up
+type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=eb7211--startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>StrongARM</SPAN
+> target,
+the EBSA-285 evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=arm --platform=ebsa285 --startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>VR4300</SPAN
+> target, the
+VRC4373 evaluation board platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=vr4300 --platform=vrc4373 --startup=ram</B
+></TT
+></P
+><P
+>To configure for the <SPAN
+CLASS="HARDWARE"
+>SH3</SPAN
+> target, the
+EDK7708 platform, and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=sh --platform=edk7708 --startup=ram</B
+></TT
+></P
+><P
+>To configure for the i386 target, the synthetic Linux platform,
+and RAM start-up type: </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=i386 --platform=linux --startup=ram</B
+></TT
+></P
+><P
+>You can now run the command <B
+CLASS="COMMAND"
+>make</B
+> or <B
+CLASS="COMMAND"
+>make
+tests</B
+>, after which you will be at the same point you would
+be after running the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> on
+Windows&#8212; you can start developing your own applications,
+following the steps in <A
+HREF="build-and-run-simple-applications.html"
+>Chapter 14</A
+>. </P
+><P
+>The procedure shown above allows you to do very coarse-grained
+configuration of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel: you
+can select which packages to include in your kernel, and give target and
+start-up options. But you cannot select components within a package,
+or set the very fine-grained options. </P
+><P
+>To select fine-grained configuration options you will need
+to edit the header files in the directory <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+></I
+></TT
+>pkgconf/</TT
+> subdirectory
+of your build tree. You could also edit the original files in the
+component repository, stored in each component&#8217;s <TT
+CLASS="FILENAME"
+>include/pkgconf/</TT
+> directory,
+in which case the change would be permanent and would also affect
+any other users of that component repository. For example, to select a
+different scheduler for the kernel, edit the file <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work/pkgconf/kernel.h</TT
+> and
+change the two lines <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYGSEM_KERNEL_SCHED_MLQUEUE
+#undef CYGSEM_KERNEL_SCHED_BITMAP </PRE
+></TD
+></TR
+></TABLE
+> to <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#undef CYGSEM_KERNEL_SCHED_MLQUEUE
+#define CYGSEM_KERNEL_SCHED_BITMAP </PRE
+></TD
+></TR
+></TABLE
+> and then rebuild. </P
+><DIV
+CLASS="CAUTION"
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Caution</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>You should follow the manual configuration process described
+above very carefully, and you should read the comments in each file
+to see when one option depends on other options or packages being
+enabled or disabled. If you do not, you might end up with an inconsistently
+configured kernel which could fail to build or might execute incorrectly. </P
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuring and building eCos from source</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Running an eCos test case</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

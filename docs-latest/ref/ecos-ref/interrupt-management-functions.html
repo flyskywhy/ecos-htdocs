@@ -1,0 +1,338 @@
+<HTML
+><HEAD
+><TITLE
+>Interrupt management functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="ITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Extended
+Synchronization and Communication Functions"
+HREF="x2943.html"><LINK
+REL="NEXT"
+TITLE="Memory
+pool Management Functions"
+HREF="memory-pool-management-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2943.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="memory-pool-management-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTERRUPT-MANAGEMENT-FUNCTIONS"
+>Interrupt management functions</A
+></H1
+><P
+>These functions are fully supported in this release:</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void	<B
+CLASS="FSFUNC"
+> ret_int</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>loc_cpu</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>unl_cpu</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Note that <TT
+CLASS="FUNCTION"
+><B
+>ret_int()</B
+></TT
+> is implemented as
+a macro, defined as &#8220;return&#8221;.</P
+><P
+>The following functions are not supported in this release: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>def_int</B
+></CODE
+>(UINT <VAR
+CLASS="PDPARAM"
+>dintno</VAR
+>, T_DINT *<VAR
+CLASS="PDPARAM"
+>pk_dint</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void	<B
+CLASS="FSFUNC"
+>ret_wup</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>dis_int</B
+></CODE
+>(UINT <VAR
+CLASS="PDPARAM"
+>eintno</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ena_int</B
+></CODE
+>(UINT <VAR
+CLASS="PDPARAM"
+>eintno</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>chg_iXX</B
+></CODE
+>(UINT <VAR
+CLASS="PDPARAM"
+>iXXXX</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_iXX</B
+></CODE
+>(UINT * <VAR
+CLASS="PDPARAM"
+>p_iXXXX</VAR
+>);<P
+></P
+></DIV
+><P
+>These unsupported functions are all Level C (CPU dependent).
+Equivalent functionality is available via other <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>-specific
+APIs; in particular a producer-side operation such as <TT
+CLASS="FUNCTION"
+><B
+>wup_tsk()</B
+></TT
+>,
+as is implied by <TT
+CLASS="FUNCTION"
+><B
+>ret_wup()</B
+></TT
+>, can only be performed
+in a DSR. </P
+><H2
+CLASS="BRIDGEHEAD"
+>Error checking</H2
+><P
+>The following conditions are only checked for, and only return
+errors if <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_UITRON_BAD_PARAMS_RETURN_ERRORS</I
+></TT
+> is
+enabled:</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>loc/unl_cpu()</B
+></TT
+>:
+these must only be called in a µITRON task context, else E_CTX</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2943.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="memory-pool-management-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Extended
+Synchronization and Communication Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Memory
+pool Management Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

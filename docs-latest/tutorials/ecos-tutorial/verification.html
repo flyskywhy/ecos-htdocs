@@ -1,0 +1,799 @@
+<HTML
+><HEAD
+><TITLE
+>Verifying by running on hardware</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="i386Linux
+synthetic target setup"
+HREF="x2379.html"><LINK
+REL="NEXT"
+TITLE="Programming Tutorial"
+HREF="programming-tutorial.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2379.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="programming-tutorial.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="VERIFICATION"
+>Verifying by running on hardware</A
+></H1
+><P
+>To verify that your board has been set up correctly you need
+to download and execute an application. The following example demonstrates
+how to use <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to download an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel
+test case, execute it, and display its test output (to verify the
+setup of your synthetic i386/Linux target, see <A
+HREF="verification.html#BABEAIFG"
+>the section called <I
+>Verification for the i386/Linux
+synthetic target</I
+></A
+>). You will need to change
+directory to the pre-built tests that are provided in the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> installation.</P
+><P
+>On Windows you must have the <B
+CLASS="COMMAND"
+>bash</B
+> command
+line interpreter running with some environment variables which are
+useful for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> work. If you have purchased
+the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s Kit, you
+can select this by selecting <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Programs</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Cygnus eCos</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>eCos
+Development Environment</SPAN
+>. If you are using the Sourceware
+release, you should set the environment variables as shown in the <I
+CLASS="CITETITLE"
+>GNUPro
+Toolkit Reference</I
+> manual.</P
+><P
+>Change directory as follows:</P
+><P
+>for the MN10300:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/mn10300_am31-stdeval1-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the AM33:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/mn10300_am33-stb-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the TX39:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/tx39-jmr3904-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the PowerPC Cogent board:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/powerpc-cogent-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the PowerPC MBX860 board:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/powerpc-mbx-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the SPARClite:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/sparclite-sleb-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM PID:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-pid-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM PID in Thumb mode:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-pidT-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM9 PID:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-pid9-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM7 AEB-1 (Revision B):</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-aeb-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM7 AEB-1 (Revision C):</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-aebC-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM Cogent board:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-cma230-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM EB7111:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-c17111-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the ARM EDB7211:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-eb7211-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the StrongARM EBSA-285:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/arm-ebsa285-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the VR4300:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/mips_vr4300-vrc4370-ram/tests/kernel</B
+></TT
+></P
+><P
+>for the EDK7708:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/sh-edk7708-ram/tests/kernel</B
+></TT
+></P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>The tests have been built in two versions; RAM start-up for
+use on the evaluation board, and ROM start-up for burning into a
+PROM, or for use on the simulator. </P
+></BLOCKQUOTE
+></DIV
+><P
+>To execute the 
+<B
+CLASS="COMMAND"
+>thread_gdb</B
+> test case on the target hardware,
+run <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> in command line mode using the
+following command, remembering to substitute the appropriate name
+for your target&#8217;s <B
+CLASS="COMMAND"
+>gdb</B
+>:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>gdb -nw thread_gdb</B
+></TT
+></P
+><P
+><SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> will display a copyright banner
+and then display a prompt <TT
+CLASS="PROMPT"
+>(gdb)</TT
+>. Connect to the TX39, MN10300, PowerPC, ARM, StrongARM or VR4300 boards by
+typing the following commands at the prompt, which will set up the
+serial connection at 38400 baud on the COM1 serial port (this may
+need adjusting if a different port or host OS is used; for example,
+on Linux this may be <TT
+CLASS="FILENAME"
+>/dev/ttyS0</TT
+>.
+On Solaris this may be /dev/ttya): </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>set remotebaud 38400</B
+></TT
+><br>
+<TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote com1</B
+></TT
+></P
+><P
+>Connect to the SPARClite board (using serial connection) by
+typing the following commands at the prompt, which will set up the
+serial connection at 19200 baud on the COM1 serial port (this should
+be adjusted if a different port is used; for example, on Linux this
+may be <TT
+CLASS="FILENAME"
+>/dev/ttyS0</TT
+>. On Solaris
+this may be /dev/ttya): </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>set remotebaud 19200</B
+></TT
+><br>
+<TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote com1</B
+></TT
+></P
+><P
+>Connect to the SPARClite board via TCP by typing the following
+commands at the prompt:</P
+><P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote 	      xxx:1000</B
+></TT
+></P
+>where xxx is the IP address or hostname assigned
+to the board.</P
+><P
+>Now download and run the test by typing these commands:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+><br>
+<TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>continue</B
+></TT
+></P
+><P
+>The first command will load the test case executable into
+the memory of the target board, and the second command will start
+the test case running. You should now see a number of text messages
+appear, such as:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>         PASS:&#60;GDB Thread test OK&#62;
+         EXIT:&#60;done&#62;&#13;</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> has no concept of the application
+exiting. All <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> test cases complete and
+then run in a continuous tight loop. To return control to <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>,
+you must use <B
+CLASS="KEYCAP"
+>Ctrl</B
+>-<B
+CLASS="KEYCAP"
+>C</B
+>. </P
+></BLOCKQUOTE
+></DIV
+><P
+>The full functionality of <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> is
+now available to you, including breakpoints
+and watchpoints.
+Please consult the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> documentation
+for further information.</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>An idiosyncrasy in <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>&#8217;s
+handling of target boards as opposed to simulators means that you
+should use <B
+CLASS="COMMAND"
+>continue</B
+> to start executing on hardware
+and <B
+CLASS="COMMAND"
+>run</B
+> to start executing in the simulator. </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="BABEAIFG"
+>Verification for the i386/Linux
+synthetic target</A
+></H2
+><P
+>As for the other targets, a prebuilt test is supplied for
+the synthetic i386/Linux target. This can be used to ensure
+that synthetic binaries will actually run on your machine configuration.</P
+><P
+>To execute this test, <TT
+CLASS="FILENAME"
+>thread_gdb</TT
+>,
+either start it directly from the command line, or to test the debugging
+environment, run <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> in command line
+mode using the following command:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>gdb -nw <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_2_9/i386-linux-ram/tests/kernel/thread_gdb</B
+></TT
+></P
+><P
+><SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> will display a copyright banner
+and then display a prompt <TT
+CLASS="PROMPT"
+>(gdb)</TT
+>. You should now
+be able to run the test, which will print out some text:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>         (gdb) run
+         PASS:&#60;GDB Thread test OK&#62;
+         EXIT:&#60;done&#62;</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2379.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="programming-tutorial.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>i386/Linux
+synthetic target setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Programming Tutorial</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

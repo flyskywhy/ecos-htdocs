@@ -1,0 +1,534 @@
+<HTML
+><HEAD
+><TITLE
+>Coarse-grained
+configuration</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="PREVIOUS"
+TITLE="Packages"
+HREF="packages.html"><LINK
+REL="NEXT"
+TITLE="Fine-grained Configuration"
+HREF="fine-grained-configuration.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="packages.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Manual configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="fine-grained-configuration.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="COARSE-GRAINED-CONFIGURATION"
+>Coarse-grained
+configuration</A
+></H1
+><P
+>Coarse-grained configuration
+of an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> system means making changes
+that require <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> to be run again in an
+existing build tree. These changes include: </P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>switching to a different target architecture</P
+></LI
+><LI
+><P
+>changing the target platform</P
+></LI
+><LI
+><P
+>changing the start-up from RAM to ROM, or from ROM
+to RAM</P
+></LI
+><LI
+><P
+>disabling or enabling a package</P
+></LI
+><LI
+><P
+>changing the version of a package</P
+></LI
+></OL
+><P
+>Whenever <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> generates or updates
+a build tree it leaves a file <TT
+CLASS="FILENAME"
+>pkgconf.sav</TT
+> at
+the top level of the build tree. The next time that <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is
+run it is only necessary to specify what should change relative
+to the last time.</P
+><P
+>Suppose that the build tree was first created using the following
+command line: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --platform=stdeval1</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>To change the target architecture to PowerPC, the following
+command would be needed: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=powerpc</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>This will select the default platform for the PowerPC architecture,
+which is a Cogent board. To switch to the PowerPC simulator instead: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --platform=sim</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>It is not necessary to specify the PowerPC architecture again
+since this has not changed. Next, to switch back to the Cogent board
+but use the non-default ROM start-up: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --platform=cogent --startup=rom</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>As the target architecture or platform changes, hardware-related
+packages such as the HAL packages and device drivers will be added
+to and removed from the configuration as appropriate. </P
+><P
+>To remove any package from the current configuration, use
+the <TT
+CLASS="OPTION"
+>--disable</TT
+> argument: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --disable-uitron</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>You can disable multiple packages using multiple <TT
+CLASS="OPTION"
+>--disable</TT
+> arguments,
+for example: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --disable-uitron --disable-libm</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>If this turns out to have been a mistake then you can reenable
+one or more packages with the 
+<TT
+CLASS="OPTION"
+>--enable</TT
+> argument: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --enable-libm</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>When a package is disabled, <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will
+clean up the build and install trees to some extent. In particular,
+it will make sure that there is no trace of the disabled packages
+left in the target library, and that all of the disabled package&#8217;s
+header files are removed from the install tree. If any part of the
+application still tried to use a disabled package then this will
+result in an appropriate error message. However, when a package
+is disabled, <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will not delete any
+files in the build tree that you may have edited; in particular
+it will not delete the header files that are used for fine-grained
+configuration. </P
+><P
+>Changing the desired version for a package is also straightforward. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --kernel-version=ss19981130</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>The output from <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> contains full
+information about the target, platform, start-up, and all the packages
+that are in the system. To find out what is in a build tree without
+changing the current settings, run <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> without passing
+any additional arguments:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>If a build tree is changed so often that it cannot easily
+be restored to a sensible state by incremental changes, use the
+special argument 
+<TT
+CLASS="OPTION"
+>--defaults</TT
+>. This tells <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> to ignore
+the current state of the build tree completely and use default settings
+for everything. However, there is no default setting for the target
+architecture so this must be specified explicitly: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --defaults --target=mn10300</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>Using <TT
+CLASS="OPTION"
+>--defaults</TT
+> is not quite as drastic
+as deleting the entire contents of the build tree. In particular,
+it will not delete the fine-grained configuration header files in
+the build tree, since you may have edited these and it would be
+annoying if the configuration system deleted them. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="packages.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="fine-grained-configuration.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Packages</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Fine-grained Configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

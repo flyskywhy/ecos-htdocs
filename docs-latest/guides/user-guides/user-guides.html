@@ -1,0 +1,463 @@
+<HTML
+><HEAD
+><TITLE
+>eCos User&#8217;s
+Guide</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="NEXT"
+TITLE="The eCos Configuration Tool"
+HREF="the-ecos-configuration-tool.html"></HEAD
+><BODY
+><DIV
+CLASS="BOOK"
+><A
+NAME="USER-GUIDES"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</A
+></H1
+><P
+CLASS="COPYRIGHT"
+><A
+HREF="ln9.html"
+>Copyright</A
+> © 1998, 1999 by <SPAN
+CLASS="HOLDER"
+>Cygnus Solutions</SPAN
+></P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>I. <A
+HREF="the-ecos-configuration-tool.html"
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+></A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="config-tool-introduction.html"
+>Introduction</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="config-tool-introduction.html#INVOKING-THE-CONFIGURATION-TOOL"
+>Invoking the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+></A
+></DT
+><DT
+><A
+HREF="context-sensitive-help.html"
+>Context-Sensitive Help</A
+></DT
+><DT
+><A
+HREF="graphical-components.html"
+>Graphical Components</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="the-four-panes.html"
+>Configuration Tool Views</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="the-four-panes.html#CONFIGURATION-PANE"
+>Configuration Pane</A
+></DT
+><DT
+><A
+HREF="rules-help.html"
+>Rules Help</A
+></DT
+><DT
+><A
+HREF="properties-table.html"
+>Properties Table</A
+></DT
+><DT
+><A
+HREF="documentation-pane.html"
+>Documentation Pane</A
+></DT
+><DT
+><A
+HREF="output-pane.html"
+>Output Pane</A
+></DT
+><DT
+><A
+HREF="memory-layout.html"
+>Memory layout</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="basic-operations.html"
+>Basic Operations</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="basic-operations.html#CONFIGURATION-TOOL-DATA"
+><SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> Data</A
+></DT
+><DT
+><A
+HREF="searching.html"
+>Searching</A
+></DT
+><DT
+><A
+HREF="the-repository.html"
+>The Repository</A
+></DT
+><DT
+><A
+HREF="persistence.html"
+>Persistence</A
+></DT
+><DT
+><A
+HREF="consistency-rules.html"
+>Consistency Rules</A
+></DT
+><DT
+><A
+HREF="view-settings.html"
+>View Settings</A
+></DT
+><DT
+><A
+HREF="tool-options.html"
+>Tools Options</A
+></DT
+><DT
+><A
+HREF="building.html"
+>Building</A
+></DT
+><DT
+><A
+HREF="x806.html"
+>Executing Tests</A
+></DT
+><DT
+><A
+HREF="keyboard-accelerators.html"
+>Keyboard
+Accelerators</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>II. <A
+HREF="programming-concepts-and-techniques.html"
+>eCos Programming Concepts
+and Techniques</A
+></DT
+><DD
+><DL
+><DT
+>4. <A
+HREF="component-repository-versus.html"
+>The component repository and working directories</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="component-repository-versus.html#COMPONENT-REPOSITORY"
+>Component repository</A
+></DT
+><DT
+><A
+HREF="build-tree.html"
+>Build tree</A
+></DT
+><DT
+><A
+HREF="install-tree.html"
+>Install tree</A
+></DT
+><DT
+><A
+HREF="application-build-tree.html"
+>Application
+build tree</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="compiler-and-linker-options.html"
+>Compiler
+and linker options</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="compiler-and-linker-options.html#COMPILING-A-C-APPLICATION"
+>Compiling a C application</A
+></DT
+><DT
+><A
+HREF="compiling-a-cxx-application.html"
+>Compiling a C++ application</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="debugging-techniques.html"
+>Debugging techniques</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="debugging-techniques.html#TRACING"
+>Tracing</A
+></DT
+><DT
+><A
+HREF="kernel-instrumentation.html"
+>Kernel instrumentation</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>III. <A
+HREF="configuration-and-the-package-repository.html"
+>Configuration
+and the Package Repository</A
+></DT
+><DD
+><DL
+><DT
+>7. <A
+HREF="manual-configuration.html"
+>Manual configuration</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="manual-configuration.html#DIRECTORY-TREE-STRUCTURE"
+>Directory Tree Structure</A
+></DT
+><DT
+><A
+HREF="creating-the-build-tree.html"
+>Creating the Build
+Tree</A
+></DT
+><DT
+><A
+HREF="building-the-system.html"
+>Building the system</A
+></DT
+><DT
+><A
+HREF="packages.html"
+>Packages</A
+></DT
+><DT
+><A
+HREF="coarse-grained-configuration.html"
+>Coarse-grained
+configuration</A
+></DT
+><DT
+><A
+HREF="fine-grained-configuration.html"
+>Fine-grained Configuration</A
+></DT
+><DT
+><A
+HREF="make-flags.html"
+>Make flags</A
+></DT
+><DT
+><A
+HREF="editing-the-sources.html"
+>Editing the sources</A
+></DT
+><DT
+><A
+HREF="modifying-memory-layout.html"
+>Modifying the memory
+layout</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="managing-the-package-repository.html"
+>Managing the package repository</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="managing-the-package-repository.html#DETAILED-INFORMATION"
+>Package
+Structure</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>IV. <A
+HREF="special-topics.html"
+>Special Topics</A
+></DT
+><DD
+><DL
+><DT
+>9. <A
+HREF="real-time-characterization.html"
+>Real-time
+characterization</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="real-time-characterization.html#METHODOLOGY"
+>Methodology</A
+></DT
+><DT
+><A
+HREF="how-can-you-use-this-data.html"
+>Using these measurements</A
+></DT
+><DT
+><A
+HREF="whats-missing.html"
+>Influences on 
+performance</A
+></DT
+><DT
+><A
+HREF="measured-items.html"
+>Measured items</A
+></DT
+><DT
+><A
+HREF="sample-numbers.html"
+>Sample numbers</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="the-ecos-configuration-tool.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

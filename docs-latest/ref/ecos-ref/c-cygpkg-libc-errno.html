@@ -1,0 +1,210 @@
+<HTML
+><HEAD
+><TITLE
+>Component: errno</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C library"
+HREF="p-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: ISO C startup/termination"
+HREF="c-cygpkg-libc-startup.html"><LINK
+REL="NEXT"
+TITLE="Component: Date/Time"
+HREF="c-cygpkg-libc-time.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-libc-startup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 20. Package: C library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-libc-time.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-LIBC-ERRNO"
+>Component: errno</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_ERRNO</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This package controls the behaviour of the errno variable (or more
+strictly, expression) from &#60;errno.h&#62;.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-LIBC-PER-THREAD-ERRNO"
+>Option: Per-thread errno</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_PER_THREAD_ERRNO</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the standard error code reporting variable
+errno is a per-thread variable, rather than global. Enabling this
+option will use one slot of kernel per-thread data. You should ensure
+you have enough slots configured for all your per-thread data.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-LIBC-ERRNO-TRACE-LEVEL"
+>Option: Tracing level</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_LIBC_ERRNO_TRACE_LEVEL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Trace verbosity level for debugging the errno retrieval mechanism
+in errno.cxx. Increase this value to get additional trace output.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-libc-startup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-libc-time.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: ISO C startup/termination</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Date/Time</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

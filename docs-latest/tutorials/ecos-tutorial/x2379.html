@@ -1,0 +1,277 @@
+<HTML
+><HEAD
+><TITLE
+>i386Linux
+synthetic target setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="SH3EDK7708 hardware setup"
+HREF="x2364.html"><LINK
+REL="NEXT"
+TITLE="Verifying by running on hardware"
+HREF="verification.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="x2364.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN2379"
+>i386/Linux
+synthetic target setup</A
+></H1
+><P
+>When building for the synthetic Linux target, the resulting
+binaries are native Linux applications with the HAL providing suitable
+bindings between the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel and the
+Linux kernel.</P
+><P
+>These Linux applications cannot be run on a Windows system.
+However, it is possible to write a similar HAL emulation for the
+Windows kernel if such a testing target is desired.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN2388"
+>Tools</A
+></H2
+><P
+>The i386 tools&#8217; prefix must match the CPU type on
+the target Linux box to ensure proper operation. This prefix is
+determined by the script <TT
+CLASS="FILENAME"
+>config.guess</TT
+>. The
+prefix in itself, which identifies the model of the CPU in the machine
+on which the tools are built, does not affect the features of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.</P
+><P
+>Be aware that for a synthetic target, <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> relies
+on features not available in native compilers earlier than <SPAN
+CLASS="APPLICATION"
+>gcc-2.95.1</SPAN
+>.
+If you have <SPAN
+CLASS="APPLICATION"
+>gcc-2.95.1</SPAN
+> or later, then
+you do not need to build new tools. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> does
+not support earlier versions. You can check the version using <B
+CLASS="COMMAND"
+>gcc-v</B
+> or <B
+CLASS="COMMAND"
+>egcs-v</B
+>.</P
+><P
+>If you are not building new tools, you should be aware that <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> assumes
+that the tools <TT
+CLASS="FILENAME"
+>i686-pc-linux-gnu-gcc</TT
+>, <TT
+CLASS="FILENAME"
+>i686-pc-linux-gnu-ar</TT
+>, <TT
+CLASS="FILENAME"
+>i686-pc-linux-gnu-ld</TT
+>, and <TT
+CLASS="FILENAME"
+>i686-pc-linux-gnu-objcopy</TT
+> are
+on your system and are the correct versions for use with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.
+The easiest method to ensure that this is the case is probably by creating
+symlinks (using <B
+CLASS="COMMAND"
+>ln -s</B
+>) with these names, pointing
+to the real tools, in some directory on your PATH. For example (assuming
+that tools were installed in /usr/local):</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$ mkdir ecosbin
+$ cd ecosbin
+$ ln -s /usr/local/bin/gcc i686-pc-linux-gnu-gcc
+$ ln -s /usr/local/bin/ar i686-pc-linux-gnu-ar
+$ ln -s /usr/local/bin/ld i686-pc-linux-gnu-ld
+$ ln -s /usr/local/bin/objcopy i686-pc-linux-gnu-objcopy
+$ ln -s /usr/local/bin/gdb 1686-pc-linux-gnu-gdb</PRE
+></TD
+></TR
+></TABLE
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>For sh/ksh/bash users:
+$ PATH="pwd":$PATH ; export PATH</PRE
+></TD
+></TR
+></TABLE
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>For csh/tcsh users:
+% setenv PATH "pwd":$PATH</PRE
+></TD
+></TR
+></TABLE
+><P
+>If you have any difficulties, it is almost certainly easiest
+overall to rebuild the tools.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="x2364.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>SH3/EDK7708 hardware setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Verifying by running on hardware</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

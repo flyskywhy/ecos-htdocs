@@ -1,0 +1,407 @@
+<HTML
+><HEAD
+><TITLE
+>Package: Serial device drivers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: I/O sub-system"
+HREF="p-cygpkg-io.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: I/O sub-system"
+HREF="p-cygpkg-io.html"><LINK
+REL="NEXT"
+TITLE="Package: PCI configuration library"
+HREF="p-cygpkg-io-pci.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-io.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 23. Package: I/O sub-system</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-io-pci.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="P-CYGPKG-IO-SERIAL"
+>Package: Serial device drivers</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables drivers for basic I/O services on serial devices.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY"
+>Component: TTY-mode serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the terminal-like device driver used for serial
+devices that interact with humans, such as a system console.
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-CONSOLE"
+>Option: Console device name</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_CONSOLE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the TTY device to use for the console.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-HALDIAG"
+>Component: HAL/diag serial device driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_HALDIAG</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the use of the HAL diagnostic channel via the
+standard I/O drivers.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTYDIAG"
+>Component: TTY mode HAL/diag channel</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTYDIAG</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes '/dev/ttydiag' to be included in the standard drivers.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY0"
+>Component: TTY mode channel #0</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes '/dev/tty0' to be included in the standard drivers.
+      </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY0-DEV"
+>Option: TTY mode channel #0 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY0_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for '/dev/tty0'.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY1"
+>Component: TTY mode channel #1</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes '/dev/tty1' to be included in the standard drivers.
+      </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY1-DEV"
+>Option: TTY mode channel #1 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY1_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for '/dev/tty1'.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY2"
+>Component: TTY mode channel #2</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY2</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes '/dev/tty2' to be included in the standard drivers.
+      </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY2-DEV"
+>Option: TTY mode channel #2 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY2_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for '/dev/tty2'.
+      </P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="p-cygpkg-io.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-io-pci.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: I/O sub-system</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-io.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: PCI configuration library</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

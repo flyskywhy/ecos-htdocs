@@ -1,0 +1,305 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Kernel schedulers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="p-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Exception handling"
+HREF="c-cygpkg-kernel-exceptions.html"><LINK
+REL="NEXT"
+TITLE="Component: Counters and clocks"
+HREF="c-cygpkg-kernel-counters.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-exceptions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-counters.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-KERNEL-SCHED"
+>Component: Kernel schedulers</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_SCHED</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The eCos kernel provides a choice of schedulers. In addition there
+are a number of configuration options to control the detailed behaviour
+of these schedulers. 
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-KERNEL-SCHED-MLQUEUE"
+>Option: Multi-level queue scheduler</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_KERNEL_SCHED_MLQUEUE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The multi-level queue scheduler supports multiple priority levels
+and multiple threads at each priority level. Preemption between priority
+levels is automatic. Timeslicing within a given priority level is
+controlled by a separate configuration option
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-KERNEL-SCHED-BITMAP"
+>Option: Bitmap scheduler</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_KERNEL_SCHED_BITMAP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The bitmap scheduler supports multiple priority levels but only one
+thread can exist at each priority level. This means that scheduling
+decisions are very simple and hence the scheduler is efficient. Preemption
+between priority levels is automatic. Timeslicing within a given priority
+level is irrelevant since there can be only one thread at each priority
+level.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-SCHED-PRIORITIES"
+>Option: Number of priority levels</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_SCHED_PRIORITIES</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls the number of priority levels that are available.
+For some types of scheduler including the bitmap scheduler this may
+impose an upper bound on the number of threads in the system. For
+other schedulers such as the mlqueue scheduler the number of threads
+is independent from the number of priority levels. Note that the lowest
+priority level is normally used only by the idle thread, although
+application threads can run at this priority if necessary.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-KERNEL-SCHED-TIMESLICE"
+>Option: Scheduler timeslicing</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_KERNEL_SCHED_TIMESLICE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Some schedulers including the mlqueue scheduler support timeslicing.
+This means that the kernel will check regularly whether or not there
+is another runnable thread with the same priority, and if there is
+such a thread there will be an automatic context switch. Not all applications
+require timeslicing, for example because every thread performs a blocking
+operation regularly. For these applications it is possible to disable
+timeslicing, which reduces the overheads associated with timer interrupts.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-SCHED-TIMESLICE-TICKS"
+>Option: Number of clock ticks between timeslices</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_SCHED_TIMESLICE_TICKS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Assuming timeslicing is enabled, how frequently should it take place?
+The value of this option corresponds to the number of clock ticks
+that should occur before a timeslice takes place, so increasing the
+value reduces the frequency of timeslices.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-exceptions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-counters.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Exception handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Counters and clocks</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

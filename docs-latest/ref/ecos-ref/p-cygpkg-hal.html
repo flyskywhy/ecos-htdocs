@@ -1,0 +1,597 @@
+<HTML
+><HEAD
+><TITLE
+>Package: eCos HAL</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration
+Option Reference"
+HREF="configuration-option-reference.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuration
+Option Reference"
+HREF="configuration-option-reference.html"><LINK
+REL="NEXT"
+TITLE="Component: Source-level debugging support"
+HREF="c-cygpkg-hal-debug.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="configuration-option-reference.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-hal-debug.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="P-CYGPKG-HAL"
+>Chapter 16. Package: eCos HAL</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal.html#C-CYGPKG-HAL-COMMON"
+>Component: Platform-independent HAL options</A
+></DT
+><DT
+><A
+HREF="c-cygpkg-hal-debug.html"
+>Component: Source-level debugging support</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-arm.html"
+>Package: ARM architecture</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-i386.html"
+>Package: i386 architecture</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-mips.html"
+>Package: MIPS architecture</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-mn10300.html"
+>Package: MN10300 architecture</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-powerpc.html"
+>Package: PowerPC architecture</A
+></DT
+><DT
+><A
+HREF="p-cygpkg-hal-sparclite.html"
+>Package: SPARClite architecture</A
+></DT
+></DL
+></DIV
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The eCos HAL package provide a porting layer for higher-level parts
+of the system such as the kernel and the C library. Each installation
+should have HAL packages for one or more architectures, and for each
+architecture there may be one or more supported platforms. It is necessary
+to select one target architecture and one platform for that architecture.
+There are also a number of configuration options that are common to
+all HAL packages.
+      </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-HAL-COMMON"
+>Component: Platform-independent HAL options</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_COMMON</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>A number of configuration options are common to most or all HAL packages,
+for example options controlling how much state should be saved during
+a context switch. The implementations of these options will vary from
+architecture to architecture.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGFUN-HAL-COMMON-KERNEL-SUPPORT"
+>Option: Provide eCos kernel support</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGFUN_HAL_COMMON_KERNEL_SUPPORT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The HAL can be configured to either support the full eCos kernel,
+or to support only very simple applications which do not require a
+full kernel. If kernel support is not required then some of the startup,
+exception, and interrupt handling code can be eliminated.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-HAL-COMMON-INTERRUPTS"
+>Component: HAL interrupt handling</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_COMMON_INTERRUPTS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>A number of configuration options related to interrupt handling are
+common to most or all HAL packages, even though the implementations
+will vary from architecture to architecture.
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-HAL-COMMON-INTERRUPTS-USE-INTERRUPT-STACK"
+>Option: Use separate stack for interrupts</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_HAL_COMMON_INTERRUPTS_USE_INTERRUPT_STACK</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When an interrupt occurs this interrupt can be handled either on the
+current stack or on a separate stack maintained by the HAL. Using
+a separate stack requires a small number of extra instructions in
+the interrupt handling code, but it has the advantage that it is no
+longer necessary to allow extra space in every thread stack for the
+interrupt handlers. The amount of extra space required depends on
+the interrupt handlers that are being used.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-HAL-COMMON-INTERRUPTS-STACK-SIZE"
+>Option: Interrupt stack size</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_HAL_COMMON_INTERRUPTS_STACK_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This configuration option specifies the stack size in bytes for the
+interrupt stack. Typically this should be a multiple of 16, but the
+exact requirements will vary from architecture to architecture. The
+interrupt stack serves two separate purposes. It is used as the stack
+during system initialization. In addition, if the interrupt system
+is configured to use a separate stack then all interrupts will be
+processed on this stack. The exact memory requirements will vary from
+application to application, and will depend heavily on whether or
+not other interrupt-related options, for example nested interrupts,
+are enabled.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGSEM-HAL-COMMON-INTERRUPTS-ALLOW-NESTING"
+>Option: Allow nested interrupts</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_HAL_COMMON_INTERRUPTS_ALLOW_NESTING</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When an interrupt occurs the HAL interrupt handling code can either
+leave interrupts disabled for the duration of the interrupt handling
+code, or by doing some extra work it can reenable interrupts before
+invoking the interrupt handler and thus allow nested interrupts to
+happen. If all the interrupt handlers being used are small and do
+not involve any loops then it is usually better to disallow nested
+interrupts. However if any of the interrupt handlers are more complicated
+than nested interrupts will usually be required.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGDBG-HAL-COMMON-INTERRUPTS-SAVE-MINIMUM-CONTEXT"
+>Option: Save minimum context on interrupt</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDBG_HAL_COMMON_INTERRUPTS_SAVE_MINIMUM_CONTEXT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The HAL interrupt handling code can exploit the calling conventions
+defined for a given architecture to reduce the amount of state that
+has to be saved. Generally this improves performance and reduces code
+size. However it can make source-level debugging more difficult. 
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-HAL-COMMON-INTERRUPTS-CHAIN"
+>Option: Chain all interrupts together</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_HAL_COMMON_INTERRUPTS_CHAIN</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Interrupts can be attached to vectors either singly, or be chained
+together. The latter is necessary if there is no way of discovering
+which device has interrupted without inspecting the device itself.
+It can also reduce the amount of RAM needed for interrupt decoding
+tables and code.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-HAL-COMMON-INTERRUPTS-IGNORE-SPURIOUS"
+>Option: Ignore spurious [fleeting] interrupts</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_HAL_COMMON_INTERRUPTS_IGNORE_SPURIOUS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>On some hardware, interrupt sources may not be de-bounced or de-glitched.
+Rather than try to handle these interrupts (no handling may be possible),
+this option allows the HAL to simply ignore them. In most cases, if
+the interrupt is real it will reoccur in a detectable form.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-HAL-COMMON-CONTEXT"
+>Component: HAL context switch support</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_COMMON_CONTEXT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>A number of configuration options related to thread contexts are common
+to most or all HAL packages, even though the implementations will
+vary from architecture to architecture.
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGDBG-HAL-COMMON-CONTEXT-SAVE-MINIMUM"
+>Option: Use minimum thread context</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDBG_HAL_COMMON_CONTEXT_SAVE_MINIMUM</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The thread context switch code can exploit the calling conventions
+defined for a given architecture to reduce the amount of state that
+has to be saved during a context switch. Generally this improves performance
+and reduces code size. However it can make source-level debugging
+more difficult.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGPKG-HAL-EXCEPTIONS"
+>Option: HAL exception support</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_EXCEPTIONS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When a processor exception occurs, for example an attempt to execute
+an illegal instruction or to perform a divide by zero, this exception
+may be handled in a number of different ways. If the target system
+has gdb support then typically the exception will be handled by gdb
+code. Otherwise if the HAL exception support is enabled then the HAL
+will invoke a routine deliver_exception(). Typically this routine
+will be provided by the eCos kernel, but it is possible for application
+code to provide its own implementation. If the HAL exception support
+is not enabled and a processor exception occurs then the behaviour
+of the system is undefined. 
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-HAL-STOP-CONSTRUCTORS-ON-FLAG"
+>Option: Stop calling constructors early</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_HAL_STOP_CONSTRUCTORS_ON_FLAG</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option supports environments where some constructors must be
+run in the context of a thread rather than at simple system startup
+time. A boolean flag named cyg_hal_stop_constructors is set to 1 when
+constructors should no longer be invoked. It is up to some other package
+to deal with the rest of the constructors. In the current version
+this is only possible with the C library.
+      </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="configuration-option-reference.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-hal-debug.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuration
+Option Reference</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configuration-option-reference.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Source-level debugging support</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

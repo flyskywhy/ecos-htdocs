@@ -1,0 +1,448 @@
+<HTML
+><HEAD
+><TITLE
+>tty driver</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Serial driver details"
+HREF="serial-driver-details.html"><LINK
+REL="PREVIOUS"
+TITLE="Serial driver details"
+HREF="serial-driver-details.html"><LINK
+REL="NEXT"
+TITLE="How to write a driver"
+HREF="how-to-write-a-driver.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="serial-driver-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Serial driver details</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="how-to-write-a-driver.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="TTY-DRIVER"
+>&#8220;tty&#8221; driver</A
+></H1
+><P
+>Use the include file <TT
+CLASS="FILENAME"
+>cyg/io/ttyio.h</TT
+> for
+this driver. </P
+><P
+>This 
+driver
+is built on top of the simple serial driver and is typically used
+for a device that interfaces with humans such as a terminal. It
+provides some minimal formatting of data on output and allows for
+line-oriented editing on input. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4822"
+>Runtime configuration</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef struct {
+ cyg_uint32 tty_out_flags;
+ cyg_uint32 tty_in_flags;
+} cyg_tty_info_t;
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>The field &#8216;tty_out_flags&#8217; is
+used to control what happens to data as it is send to the serial
+port. It contains a bitmap comprised of the bits as defined by the 
+<TT
+CLASS="FUNCTION"
+><B
+>CYG_TTY_OUT_FLAGS_xxx</B
+></TT
+> values below. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYG_TTY_OUT_FLAGS_CRLF 0x0001 // Map '\n' =&#62; '\n\r' on output
+ 	</PRE
+></TD
+></TR
+></TABLE
+><P
+>If this bit is set in 'tty_out_flags',
+any occurrence of the character '\n' will
+be replaced by the sequence '\n\r' before
+sending to the device.</P
+><P
+>The field &#8216;tty_in_flags&#8217; is
+used to control how data is handles as it comes from the serial
+port. It contains a bitmap comprised of the bits as defined by the 
+<TT
+CLASS="FUNCTION"
+><B
+>CYG_TTY_IN_FLAGS_xxx</B
+></TT
+> values below. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYG_TTY_IN_FLAGS_CR 0x0001 // Map '\r' =&#62; '\n' on input
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>If this bit is set in &#8216;tty_in_flags&#8217;,
+the character &#8216;\r&#8217; (&#8220;return&#8221; or &#8220;enter&#8221; on
+most keyboards) will be mapped to &#8216;\n&#8217;.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYG_TTY_IN_FLAGS_CRLF 0x0002 // Map '\n\r' =&#62; '\n' on input
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>If this bit is set in &#8216;tty_in_flags&#8217;,
+the character sequence &#8216;\n\r&#8217; (often
+sent by DOS/Windows based terminals) will be mapped to &#8216;\n&#8217;. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYG_TTY_IN_FLAGS_BINARY 0x0004 // No input processing
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>If this bit is set in &#8216;tty_in_flags&#8217;,
+the input will not be manipulated in any way before being placed
+in the user&#8217;s buffer. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>#define CYG_TTY_IN_FLAGS_ECHO 0x0008 // Echo characters as processed
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>If this bit is set in &#8216;tty_in_flags&#8217;,
+characters will be echoed back to the serial port as they are processed. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4847"
+>API details</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_read</B
+></TT
+>(handle, buf, len)
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>This function is used to read data from the device. In the
+default case, data is read until an end-of-line character (&#8216;\n&#8217; or &#8216;\r&#8217;)
+is read. Additionally, the characters are echoed back to the [terminal] device.
+Minimal editing of the input is also supported. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>	
+ <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_write</B
+></TT
+>(handle, buf, len)
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>This function is used to send data to the device. In the default
+case, the end-of-line character &#8216;\n&#8217; is
+replaced by the sequence &#8216;\n\r&#8217;. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_get_config</B
+></TT
+>(handle, key, buf, len)
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>This function is used to get information about the channel&#8217;s
+configuration at runtime. </P
+><P
+></P
+><DL
+><DT
+>Key:</DT
+><DD
+><P
+>CYG_IO_GET_CONFIG_TTY_INFO</P
+></DD
+><DT
+>Buf type:</DT
+><DD
+><P
+>cyg_tty_info_t</P
+></DD
+><DT
+>Function:</DT
+><DD
+><P
+>This function retrieves the current state of the
+driver.</P
+></DD
+></DL
+><P
+>The key must be &#8220;CYG_IO_GET_CONFIG_TTY_INFO&#8221; which
+returns the control flags for the channel. The buffer &#8216;buf&#8217; must
+be of type &#8216;cyg_tty_info_t&#8217; and
+the length should match. </P
+><P
+>Serial driver keys (see above) may also be specified in which
+case the call is passed directly to the serial driver. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_set_config</B
+></TT
+>(handle, key, buf, len)
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>This function is used to modify the channel&#8217;s configuration
+at runtime. </P
+><P
+></P
+><DL
+><DT
+>Key:</DT
+><DD
+><P
+>CYG_IO_SET_CONFIG_TTY_INFO</P
+></DD
+><DT
+>Buf type:</DT
+><DD
+><P
+>cyg_tty_info_t</P
+></DD
+><DT
+>Function:</DT
+><DD
+><P
+>This function changes the current state of the driver.</P
+></DD
+></DL
+><P
+>The key must be <TT
+CLASS="FUNCTION"
+><B
+>CYG_IO_SET_CONFIG_TTY_INFO</B
+></TT
+> which
+returns the control flags for the channel. The buffer &#8216;buf&#8217; must
+be of type <TT
+CLASS="FILENAME"
+>cyg_tty_info_t</TT
+> and
+the length should match. </P
+><P
+>Serial driver keys (see above) may also be specified in which
+case the call is passed directly to the serial driver. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="serial-driver-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="how-to-write-a-driver.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Serial driver details</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="serial-driver-details.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How to write a driver</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,1429 @@
+<HTML
+><HEAD
+><TITLE
+>Kernel
+porting notes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The eCos Hardware Abstraction
+Layer (HAL)"
+HREF="the-ecos-hardware-abstraction-layer-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="Future developments"
+HREF="future-developments.html"><LINK
+REL="NEXT"
+TITLE="eCos Interrupt
+Model"
+HREF="c4403.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="future-developments.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Hardware Abstraction
+Layer (HAL)</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c4403.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="KERNEL-PORTING-NOTES"
+>Kernel
+porting notes</A
+></H1
+><P
+>This section briefly describes the issues involved in porting <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> to
+a new target platform and/or architecture. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4000"
+>Porting overview</A
+></H2
+><P
+>The effort required to port <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> to
+a new target varies. Adding support for a new platform/board
+may require almost no effort, while adding support for a new architecture
+is more demanding. Additionally, new device drivers may have to
+be written if there is no existing support for the target&#8217;s
+devices. </P
+><P
+>Given that there are usually more target platforms using the
+same microprocessor or microcontroller, adding <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> support
+for a new target would often be a question of adding support for
+the new target platform. The architectures supported by <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> include
+the following: ARM7, MIPS (TX39), MN10300, PowerPC (MPC8xx), and SPARClite. </P
+><P
+>Adding a new architecture support is a bigger job and also
+requires tool support (<SPAN
+CLASS="APPLICATION"
+>GCC</SPAN
+>, <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> and
+binutils) which is a big undertaking in itself. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4010"
+>Platform support</A
+></H3
+><P
+>Adding support for a new platform requires (a subset of): </P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>Adding <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> configuration
+information. </P
+></LI
+><LI
+><P
+>Memory layout description. </P
+></LI
+><LI
+><P
+>Memory controller initialization. </P
+></LI
+><LI
+><P
+>Interrupt controller handling. </P
+></LI
+><LI
+><P
+>Minimal serial device driver for <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> interaction
+and simple diagnostics output. </P
+><P
+>System timer initialization and control.</P
+><P
+>Wallclock driver.</P
+><P
+>A wallclock emulation based on the system timer is provided
+with the standard <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> distribution.
+For those hardware platforms where a battery backed-up clock device
+or other means of determining actual wallclock time exists, a wallclock
+driver may be implemented more fully.</P
+></LI
+></OL
+><P
+>If the architecture in question is a microcontroller (as opposed
+to a microprocessor), the job of porting may be as simple as adding
+configuration information and defining a new memory layout (items
+one and two). Currently <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> supports
+the following microcontrollers: MN10300, MPC8xx, and TX39. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4036"
+>Architectural support</A
+></H3
+><P
+>Adding support for a new architecture requires: </P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>Adding <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> configuration
+information. </P
+></LI
+><LI
+><P
+>Writing a HAL for the CPU core's register
+model, interrupt and exception model, cache model, and possibly
+simple handling for the MMU model. </P
+></LI
+><LI
+><P
+>For microcontrollers the HAL should also support
+the memory controller, interrupt controller and a possible on-MCP
+serial controller for <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> interaction and
+simple diagnostics output, system timer initialization and control,
+and a wallclock driver. </P
+></LI
+></OL
+><P
+>If there is already support for a member of the same architecture
+family, the porting job may just consist of adding extra feature
+support to the existing HAL. Or if the new target architecture only
+defines a subset of the architecture family, the HAL may need additional
+configuration control, allowing parts of the existing HAL code to
+be disabled. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4053"
+>Adding configuration information</A
+></H2
+><P
+>Architecture and platform configuration information resides
+in two top-level files <TT
+CLASS="FILENAME"
+>targets</TT
+> and <TT
+CLASS="FILENAME"
+>packages</TT
+> as
+well as in architecture and platform specific configuration files
+(<TT
+CLASS="FILENAME"
+>hal/&#60;arch&#62;/arch/current/include/pkgconf/hal_&#60;arch&#62;.h</TT
+> and <TT
+CLASS="FILENAME"
+>hal/&#60;arch&#62;/&#60;platform&#62;/current/include/pkgconf/hal_&#60;arch&#62;_&#60;platform&#62;.h.</TT
+> Furthermore,
+each platform must define memory layouts for each startup type. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4064"
+><TT
+CLASS="FILENAME"
+>targets</TT
+></A
+></H3
+><P
+>Architecture and platform information must be added to the <TT
+CLASS="FILENAME"
+>targets</TT
+> file. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>target powerpc {
+    alias               { PowerPC powerpc-eabi }
+    command_prefix      powerpc-eabi
+    packages            { CYGPKG_HAL_POWERPC }
+    hal                 hal/powerpc/arch
+
+    cflags {
+        ARCHFLAGS       "-mcpu=860 -D_SOFT_FLOAT"
+        ERRFLAGS        "-Wall -Wpointer-arith -Wstrict-prototypes -Winline -Wundef"
+        CXXERRFLAGS     "-Woverloaded-virtual"
+        LANGFLAGS       "-ffunction-sections -fdata-sections"
+        DBGFLAGS        "-g -O2"
+        CXXLANGFLAGS    "-fno-rtti -fno-exceptions -fvtable-gc -finit-priority"
+        LDLANGFLAGS     "-Wl,--gc-sections -Wl,-static"
+    }
+
+    platform cogent {
+        alias           { "Cogent board" }
+        startup         { ram rom stubs }
+        packages        {
+            CYGPKG_HAL_POWERPC_COGENT
+            CYGPKG_DEVICES_WALLCLOCK
+            CYGPKG_DEVICES_WATCHDOG
+        }
+    }
+}           </PRE
+></TD
+></TR
+></TABLE
+><P
+><SPAN
+CLASS="APPLICATION"
+>pkgconf</SPAN
+> uses
+the entries in <TT
+CLASS="FILENAME"
+>targets</TT
+> to create a build tree.
+The <TT
+CLASS="OPTION"
+>--target</TT
+> option matches target name (<TT
+CLASS="LITERAL"
+>powerpc</TT
+>)
+or its aliases (<TT
+CLASS="LITERAL"
+>PowerPC</TT
+> <TT
+CLASS="LITERAL"
+>powerpc-eabi</TT
+>),
+just as the <TT
+CLASS="OPTION"
+>--platform</TT
+> option matches platform
+name (<TT
+CLASS="LITERAL"
+>cogent</TT
+>) or its aliases (<TT
+CLASS="LITERAL"
+>Cogent board</TT
+>).
+The same is true for the <TT
+CLASS="OPTION"
+>--startup</TT
+> option which
+matches on the list of valid startup types (<TT
+CLASS="LITERAL"
+>ram</TT
+>, <TT
+CLASS="LITERAL"
+>rom</TT
+> and <TT
+CLASS="LITERAL"
+>stubs</TT
+>). </P
+><P
+>The <TT
+CLASS="LITERAL"
+>command_prefix</TT
+> is the prefix
+on the cross compiler tools, usually the same target triplet used
+when configuring the tools (<TT
+CLASS="LITERAL"
+>powerpc-eabi</TT
+>). </P
+><P
+><TT
+CLASS="LITERAL"
+>packages</TT
+> lists the hardware-related packages
+that should be enabled if this target is selected. Typically this
+will just be the appropriate architectural HAL package provided
+for this architecture (<TT
+CLASS="LITERAL"
+>CYGPKG_HAL_POWERPC</TT
+>),
+while <TT
+CLASS="LITERAL"
+>hal</TT
+> specifies the relative path of the
+source files. </P
+><P
+><TT
+CLASS="LITERAL"
+>cflags</TT
+> specifies the compiler and linker
+flags. The <TT
+CLASS="OPTION"
+>-finit-priority</TT
+> flag is required for
+proper initialization of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, while <TT
+CLASS="OPTION"
+>-ffunction-sections</TT
+>, <TT
+CLASS="OPTION"
+>-fdata-sections</TT
+>,
+and <TT
+CLASS="OPTION"
+>-Wl,--gc-sections</TT
+> are required to provide linker garbage
+collection which removes functions and initialized data that are
+not going to be used. The other <TT
+CLASS="LITERAL"
+>FLAGS</TT
+> definitions
+can be set according to preference, taking care to ensure that <TT
+CLASS="LITERAL"
+>ARCHFLAGS</TT
+> contains
+all necessary flags for the particular architecture. </P
+><P
+>The <TT
+CLASS="LITERAL"
+>platform</TT
+> option is used to define a
+new target platform. There can be several of these for each architecture.
+The name and startup types are defined using <TT
+CLASS="LITERAL"
+>platform</TT
+>, <TT
+CLASS="LITERAL"
+>alias</TT
+>,
+and <TT
+CLASS="LITERAL"
+>startup</TT
+> as described above. <TT
+CLASS="LITERAL"
+>packages</TT
+> defines
+the set of packages supported by this particular platform. This
+set must include the platform HAL package (<TT
+CLASS="LITERAL"
+>CYGPKG_HAL_POWERPC_COGENT</TT
+>),
+but can name other packages (<TT
+CLASS="LITERAL"
+>CYGPKG_DEVICES_WALLCLOCK</TT
+> and <TT
+CLASS="LITERAL"
+>CYGPKG_DEVICES_WATCHDOG</TT
+>)
+which will be enabled per default when selecting this architecture/platform
+configuration. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4111"
+><TT
+CLASS="FILENAME"
+>packages</TT
+></A
+></H3
+><P
+>The individual packages must be defined in the <TT
+CLASS="FILENAME"
+>packages</TT
+> file. </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>package CYGPKG_HAL_POWERPC {
+        alias           { "PowerPC common HAL" hal_powerpc powerpc_hal powerpc_arch_hal }
+        directory       hal/powerpc/arch
+        include_dir     cyg/hal
+        hardware
+}
+
+package CYGPKG_HAL_POWERPC_COGENT {
+        alias           { "PowerPC Cogent board support" hal_powerpc_cogent powerpc_cogent_hal }
+        directory       hal/powerpc/cogent
+        include_dir     cyg/hal
+        hardware
+} </PRE
+></TD
+></TR
+></TABLE
+><P
+>These are the definitions of the two packages named in the <TT
+CLASS="FILENAME"
+>targets</TT
+> file.
+The aliases can be used with the <TT
+CLASS="OPTION"
+>--disable-</TT
+> and <TT
+CLASS="OPTION"
+>--enable-</TT
+> options
+of <SPAN
+CLASS="APPLICATION"
+>pkgconf</SPAN
+>. </P
+><P
+><TT
+CLASS="LITERAL"
+>directory</TT
+> specifies the relative path of
+the source files, <TT
+CLASS="LITERAL"
+>include_dir</TT
+> where header
+files provided by the package should be copied to in the install
+directory, and <TT
+CLASS="LITERAL"
+>hardware</TT
+> specifies that these
+packages is normally associated with specific hardware and should
+only be enabled for the appropriate hardware. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4126"
+>Package-specific configuration</A
+></H3
+><P
+>The package-specific configuration files provide presentation
+information used by the Configuration Tool, dependencies on other
+packages and of course additional fine-grained options that are
+architecture and/or target specific. See the two files <TT
+CLASS="FILENAME"
+>hal/powerpc/arch/current/include/pkgconf/hal_powerpc.h</TT
+> and <TT
+CLASS="FILENAME"
+>hal/powerpc/cogent/current/include/pkgconf/hal_powerpc_cogent.h</TT
+> for
+an example. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4135"
+>Memory layout information</A
+></H3
+><P
+>For each target platform must be defined the memory layout
+used for any given startup type. This information resides in two
+files <TT
+CLASS="FILENAME"
+>mlt_&#60;arch&#62;_&#60;platform&#62;_&#60;startup&#62;.ldi</TT
+> and <TT
+CLASS="FILENAME"
+>mlt_&#60;arch&#62;_&#60;platform&#62;_&#60;startup&#62;.mlt</TT
+> in
+the directory <TT
+CLASS="FILENAME"
+>hal/&#60;arch&#62;/&#60;platform&#62;/current/include/pkgconf/</TT
+>.
+The former is a linker script fragment, the latter a file describing
+the layout for the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>. </P
+><P
+>Redefining the memory layout can be done in the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+>, which will create the linker script (the <TT
+CLASS="FILENAME"
+>.ldi</TT
+> file).
+It is also possible to do by hand, in which case only the linker
+script should be created; when no <TT
+CLASS="FILENAME"
+>.mlt</TT
+> file
+exists, the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> will not
+overwrite the default linker script. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4152"
+>Platform
+porting</A
+></H2
+><P
+>Platform porting basically consists of making a copy of an
+existing platform directory and changing the code to match the new
+platform. The header and source files in the platform directory
+and their contents are described in <A
+HREF="architectural-hal-files.html"
+>the section called <I
+>Architectural HAL files</I
+></A
+>. </P
+><P
+>In particular the configuration information and memory layout
+need changing, as may the board initialization code and the minimal
+serial drivers used by <TT
+CLASS="FILENAME"
+>hal_diag.c</TT
+> and <TT
+CLASS="FILENAME"
+>plf_stub.c</TT
+>. </P
+><P
+>Another useful reference for porting to a new platform is
+the GNUPro documentation on <B
+CLASS="COMMAND"
+>gdb</B
+> stubs, which
+can be found at <A
+HREF="http://www.cygnus.com/pubs/gnupro/3_GNUPro_Debugging_Tools/b_Debugging_with_GDB/gdbThe_GDB_remote_serial_protocol.html"
+TARGET="_top"
+>http://www.cygnus.com/pubs/gnupro/3_GNUPro_Debugging_Tools/b_Debugging_with_GDB/gdbThe_GDB_remote_serial_protocol.html</A
+></P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4167"
+>Architectural
+porting</A
+></H2
+><P
+>The easiest way to make a new architectural port of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+to make a copy of an existing HAL and change the code to suit the
+new CPU. This guide will use the <SPAN
+CLASS="HARDWARE"
+>PowerPC</SPAN
+> Cogent
+board as an example. Wherever <I
+CLASS="EMPHASIS"
+>powerpc</I
+>, <I
+CLASS="EMPHASIS"
+>ppc</I
+>,
+or <I
+CLASS="EMPHASIS"
+>cogent</I
+> is mentioned in this guide or in
+the source files, you should replace the strings with appropriate
+architecture and platform names. There are also a few files that
+need renaming. </P
+><P
+>If there is simulator support for the new CPU it is possible
+to test big parts of the HAL and the rest of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel
+before a port to a specific platform is attempted. This is an advantage
+as doing a platform port can cause problems of it own, making it difficult
+to determine whether the architectural or platform parts of the
+port in progress are to blame when something is not working properly. </P
+><P
+>When no simulator support exists, the starting point of a
+port is to produce a minimal GDB stub for the target platform, which
+will allow code to be downloaded, executed and/or debugged
+on the board. This guide is based on a situation where no simulator exists
+as it would be the most likely scenario. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4183"
+>Writing an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub</A
+></H3
+><P
+>A <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub has both a architectural
+part (description of the CPUs registers, exception decoding, breakpoint
+and stepping model, etc.) and a platform part (board initialization
+and simple serial driver). </P
+><P
+>Writing a stub is a subset of the work required to a full
+architectural and platform port of the HAL (and thus <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>).
+The below sections will be a rough list of minimal requirements
+for a stub; remaining elements of the files can be fleshed out when extending
+the port to include full <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> functionality.
+The files and their contents are described in <A
+HREF="architectural-hal-files.html"
+>the section called <I
+>Architectural HAL files</I
+></A
+>. </P
+><DIV
+CLASS="TIP"
+><BLOCKQUOTE
+CLASS="TIP"
+><P
+><B
+>Tip: </B
+>If the target board has an existing download stub (not necessarily <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> compliant),
+the <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub can be tested by changing
+it to run from RAM rather than ROM (using <TT
+CLASS="LITERAL"
+>ram</TT
+> startup
+instead of <TT
+CLASS="LITERAL"
+>stubs</TT
+> startup). </P
+><P
+>After downloading the stub and starting it, it should be possible
+to connect <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to the target. Note that
+trying to download another application may cause the memory of the
+stub to be overwritten, so some consideration is required when defining
+the memory layout. </P
+><P
+>If the target board does not have an existing download stub
+and requires a new EPROM to be burned for each testing cycle, you
+may want to start with writing a <I
+CLASS="EMPHASIS"
+>minimal</I
+> stub
+which can only be used for downloading data to the target board. </P
+><P
+>For this purpose you can skip the exception support code in <TT
+CLASS="FILENAME"
+>vectors.S</TT
+> and hack <TT
+CLASS="FILENAME"
+>hal/common/current/src/stubrom/stubrom.c</TT
+> to
+jump directly to the stub code without using a breakpoint. </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="TIP"
+><BLOCKQUOTE
+CLASS="TIP"
+><P
+><B
+>Tip: </B
+>While working on improving the stub code or other parts of
+the HAL you can use the simple diagnostics output functions (by
+way of diag_printf) as a crude way of providing debugging
+feedback until you get full <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub functionality
+in place. </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="TIP"
+><BLOCKQUOTE
+CLASS="TIP"
+><P
+><B
+>Tip: </B
+>A good way of debugging the stub itself is to enable remote
+debugging in <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> (<B
+CLASS="COMMAND"
+>set remotedebug
+1</B
+>). This makes <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> display
+any communication between itself and the stub on the target. Consult
+the <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> file <TT
+CLASS="FILENAME"
+>remote.c</TT
+> for
+details on the protocol. </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN4219"
+>Architecture files</A
+></H4
+><P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="FILENAME"
+>include/basetype.h</TT
+></DT
+><DD
+><P
+>Implement in full. Little effort. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/hal_arch.h</TT
+></DT
+><DD
+><P
+>The following macros are required for the stub: <TT
+CLASS="LITERAL"
+>HAL_SavedRegisters</TT
+>, <TT
+CLASS="LITERAL"
+>HAL_BREAKPOINT</TT
+>, <TT
+CLASS="LITERAL"
+>HAL_BREAKINST</TT
+>, <TT
+CLASS="LITERAL"
+>HAL_BREAKINST_SIZE</TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>HAL_GET_GDB_REGISTERS</B
+></TT
+>,
+and <TT
+CLASS="FUNCTION"
+><B
+>HAL_SET_GDB_REGISTERS</B
+></TT
+>. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/hal_cache.h</TT
+></DT
+><DD
+><P
+>The macros in this file can be left as empty if
+caches are kept disabled. This is definitely the best way to start
+porting, avoiding cache problems entirely. The cache is not of much
+use until <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> can be used with applications
+anyway. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/hal_intr.h</TT
+></DT
+><DD
+><P
+>It is necessary to implement enough exception handling
+code to properly handle breakpoints. </P
+><P
+>As the porting job progresses, asynchronous break points (CYGDBG_HAL_DEBUG_GDB_BREAK_SUPPORT)
+may come in handy. These require a minimal interrupt system to be
+in place. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/hal_io.h</TT
+></DT
+><DD
+><P
+>Should be fully implemented. Usually zero effort. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/&#60;arch&#62;_regs.h</TT
+></DT
+><DD
+><P
+>Can be filled in piecemeal as the porting job progresses. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/&#60;arch&#62;_stub.h</TT
+></DT
+><DD
+><P
+>Redefine <TT
+CLASS="LITERAL"
+>NUMREGS</TT
+>, <TT
+CLASS="LITERAL"
+>REGSIZE</TT
+>,
+and <TT
+CLASS="LITERAL"
+>regnames</TT
+> using the same register layout as <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>.
+The register definitions can be found in the <TT
+CLASS="FILENAME"
+>config/&#60;arch&#62;/tm-&#60;arch&#62;.h</TT
+> file
+in the <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> sources. The definitions for
+the PowerPC were found in <TT
+CLASS="FILENAME"
+>config/rs6000/tm-rs6000.h</TT
+>. </P
+><P
+>Discrepancies between what <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> expects
+and what is defined in the stub will show up when you use the <B
+CLASS="COMMAND"
+>info
+reg</B
+> command in <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> (and know
+what the register contents on the target should be). Be careful
+to get the <TT
+CLASS="LITERAL"
+>REGSIZE</TT
+> macro defined correctly. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/context.c</TT
+></DT
+><DD
+><P
+>Nothing here required by the stub. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/hal_misc.c</TT
+></DT
+><DD
+><P
+>The two functions <TT
+CLASS="FUNCTION"
+><B
+>cyg_hal_invoke_constructors</B
+></TT
+> and <TT
+CLASS="FUNCTION"
+><B
+>cyg_hal_exception_handler</B
+></TT
+> must
+be implemented. The former is the same on most architectures and
+the latter just needs to call <TT
+CLASS="FUNCTION"
+><B
+>__handle_exception</B
+></TT
+>. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/&#60;arch&#62;.ld</TT
+></DT
+><DD
+><P
+>The linker script must be properly defined. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/&#60;arch&#62;_stub.c</TT
+></DT
+><DD
+><P
+>This file must be fully implemented. </P
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>__computeSignal</B
+></TT
+> can be defined to just
+return SIGTRAP as a minimal implementation. Proper signal decoding
+may help debugging though. </P
+><P
+>Single-stepping can be implemented in one of two ways. Some
+architectures (such as the PowerPC) have hardware support to control
+single-stepping making it simple to implement. Other architectures
+require use of breakpoints to implement the functionality, which
+requires instruction decoding. Examples of the latter approach can
+be found in the ARM, MIPS, and MN10300 stubs. Implementing instruction
+decoding obviously requires more effort. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/vectors.S</TT
+></DT
+><DD
+><P
+>This is the core file of the architecture HAL. It
+is hard to define what the minimal implementation requirements are
+for stubs to work. It may be worth and/or necessary to
+do a full implementation of this file to start with, but here are some
+pointers anyway. </P
+><P
+><TT
+CLASS="LITERAL"
+>_start</TT
+> as defined for the PowerPC
+is about the minimum requirement, but you can ignore MMU and cache
+setup while working on the stub. </P
+><P
+><TT
+CLASS="LITERAL"
+>__default_exception_vsr</TT
+> and <TT
+CLASS="LITERAL"
+>restore_state</TT
+> must
+preserve enough state to allow breakpoints without trashing CPU
+state for the application code. If you need asynchronous <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> breakpoints <TT
+CLASS="LITERAL"
+>__default_interrupt_vsr</TT
+> must
+also be defined well enough to allow interrupts without trashing
+the CPU state of the interrupted application code. </P
+><P
+>Assorted tables also need to be defined, depending on how
+much of the exception and interrupt handlers is implemented. </P
+></DD
+></DL
+> </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN4317"
+>Platform files</A
+></H4
+><P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="FILENAME"
+>include/hal_diag.h</TT
+></DT
+><DD
+><P
+>Shouldn't require any changes. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>include/plf_stub.h</TT
+></DT
+><DD
+><P
+>This file provides the interface to the platform
+stub functions for the <TT
+CLASS="FILENAME"
+>generic-stub.c</TT
+> code. </P
+><P
+>The minimal stub (no asynchronous <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> breakpoints)
+only requires <TT
+CLASS="LITERAL"
+>HAL_STUB_PLATFORM_INIT_SERIAL</TT
+>, <TT
+CLASS="LITERAL"
+>HAL_STUB_PLATFORM_GET_CHAR</TT
+>,
+and <TT
+CLASS="LITERAL"
+>HAL_STUB_PLATFORM_PUT_CHAR</TT
+> and
+the matching functions in <TT
+CLASS="FILENAME"
+>plf_stub.c</TT
+> to be
+defined. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/&#60;platform&#62;.c</TT
+></DT
+><DD
+><P
+>This file defines <TT
+CLASS="LITERAL"
+>hal_hardware_init</TT
+> which
+takes care of initializing the board. For the Cogent board this
+includes watchdog initialization and memory controller setup. Other
+boards may have different requirements. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/hal_diag.c</TT
+></DT
+><DD
+><P
+>This file defines three functions that provide simple
+diagnostics output; <TT
+CLASS="LITERAL"
+>hal_diag_init</TT
+>, <TT
+CLASS="LITERAL"
+>hal_diag_write_char</TT
+>,
+and <TT
+CLASS="LITERAL"
+>hal_diag_read_char</TT
+>. Normally
+these would implement a very simple serial driver. They could also address
+an LCD or just some LEDs. </P
+><P
+>The simple serial driver for the Cogent board is implemented
+in a separate file, <TT
+CLASS="FILENAME"
+>cma_ser.c</TT
+>, which
+is shared with the <TT
+CLASS="FILENAME"
+>plf_stub.c</TT
+> file. </P
+></DD
+><DT
+><TT
+CLASS="FILENAME"
+>src/plf_stub.c</TT
+></DT
+><DD
+><P
+>This file implements the serial driver needed by
+the <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub. The minimal stub only requires <TT
+CLASS="FUNCTION"
+><B
+>init</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>putc</B
+></TT
+>,
+and <TT
+CLASS="FUNCTION"
+><B
+>getc</B
+></TT
+> functions. A stub which supports asynchronous
+breakpoints also requires functions to handle serial interrupts.
+For example implementations see <TT
+CLASS="FILENAME"
+>cma_ser.c</TT
+> or
+the <TT
+CLASS="FILENAME"
+>plf_stub.c</TT
+> file for the MN10300
+stdeval1 board. </P
+></DD
+></DL
+> </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4366"
+>Building
+the stub</A
+></H3
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Prepare a build directory, configuring <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> for <TT
+CLASS="LITERAL"
+>stubs</TT
+> startup. </P
+></LI
+><LI
+><P
+>Disable all packages except <I
+CLASS="EMPHASIS"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> common
+HAL</I
+>, <I
+CLASS="EMPHASIS"
+>infrastructure</I
+>, <I
+CLASS="EMPHASIS"
+>&#60;arch&#62; common
+HAL</I
+>, and <I
+CLASS="EMPHASIS"
+>&#60;arch&#62; &#60;platform&#62; board
+support</I
+>. </P
+></LI
+><LI
+><P
+>Disable the HAL common options <TT
+CLASS="OPTION"
+>CYGFUN_HAL_COMMON_KERNEL_SUPPORT</TT
+> and <TT
+CLASS="OPTION"
+>CYGDBG_HAL_DEBUG_GDB_THREAD_SUPPORT</TT
+>. </P
+><P
+>Enable the HAL common option <TT
+CLASS="OPTION"
+>CYGDBG_HAL_DEBUG_GDB_INCLUDE_STUBS</TT
+>. </P
+></LI
+><LI
+><P
+>Build libtarget. </P
+></LI
+><LI
+><P
+>Change to the directory <TT
+CLASS="FILENAME"
+>hal/common/current/src/stubrom</TT
+> and
+type <B
+CLASS="COMMAND"
+>make</B
+>. This should result in an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub
+image file called <TT
+CLASS="FILENAME"
+>stubrom</TT
+>. This can be converted
+to SRECord or binary format (using <B
+CLASS="COMMAND"
+>objcopy</B
+>) which
+can be used by EPROM burner or PROM emulator software. </P
+></LI
+></OL
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN4399"
+>Filling in the blanks</A
+></H3
+><P
+>When a <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub has been written
+and is working, finishing the HAL port is pretty much a question
+of completing the header files and writing the functions that were
+not needed for the stub. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="future-developments.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c4403.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Future developments</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Interrupt
+Model</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

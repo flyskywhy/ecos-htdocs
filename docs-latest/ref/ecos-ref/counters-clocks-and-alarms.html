@@ -1,0 +1,813 @@
+<HTML
+><HEAD
+><TITLE
+>Counters, clocks
+and alarms</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Interrupt
+handling"
+HREF="interrupt-handling.html"><LINK
+REL="NEXT"
+TITLE="Synchronization"
+HREF="synchronization.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interrupt-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="synchronization.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="COUNTERS-CLOCKS-AND-ALARMS"
+>Counters, clocks
+and alarms</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1575"
+>Counters</A
+></H2
+><P
+>The counter objects provided by the kernel provide an abstraction
+of the clock facility that is generally provided. Application code
+can associate alarms with counters, where an alarm is identified
+by the number of ticks until it triggers, the action to be taken
+on triggering, and whether or not the alarm should be repeated. </P
+><P
+>There are two different implementations of the counter objects.
+The first stores all alarms in a single linked list. The alternative
+implementation uses a table of linked lists, with the size of the
+table being a separate configurable option. A single list is more
+efficient in terms of memory usage and is generally adequate when
+the application only makes use of a small number of alarms. For
+more complicated operations it is better to have a table of lists
+since this reduces the amount of computation whenever the timer
+goes off. Assuming a table size of 8 (the default value) on average
+the timer code will only need to check 1/8 of the pending
+alarms instead of all of them.</P
+><P
+>The configuration options which select the counter implementation
+are <TT
+CLASS="PARAMETER"
+><I
+>CYGIMP_KERNEL_COUNTERS_MULTI_LIST</I
+></TT
+> (&#8220;Option:
+Implement counters using a table of lists&#8221; in Section V)
+and <TT
+CLASS="PARAMETER"
+><I
+>CYGIMP_KERNEL_COUNTERS_SINGLE_LIST</I
+></TT
+> (&#8220;Option:
+Implement counters using a single list&#8221;, in Section V). </P
+><P
+>The following functions can be used to create and manipulate
+counters:</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_counter_create</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>, cyg_counter *<VAR
+CLASS="PDPARAM"
+>counter</VAR
+>);<P
+></P
+></DIV
+><P
+>Creates a new counter and places it in the space pointed to
+by <TT
+CLASS="PARAMETER"
+><I
+>counter</I
+></TT
+>. A counter stores a value that
+is incremented by <TT
+CLASS="FUNCTION"
+><B
+>cyg_counter_tick()</B
+></TT
+>. Alarms
+may be attached to counters, and the alarms will trigger when the
+counter reaches a specified value.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_counter_delete</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>);<P
+></P
+></DIV
+><P
+>Deletes the given counter and frees the corresponding memory.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_tick_count_t <B
+CLASS="FSFUNC"
+>cyg_counter_current_value</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns the current value of the given counter.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_counter_set_value</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>new_value</VAR
+>);<P
+></P
+></DIV
+><P
+>Sets the counter's value to <TT
+CLASS="PARAMETER"
+><I
+>new_value</I
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_counter_tick</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>);<P
+></P
+></DIV
+><P
+>Advances the counter by one tick.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1622"
+>Clocks</A
+></H2
+><P
+>Clocks are counters which are associated with a stream of
+ticks that represent time periods. Clocks have a resolution associated
+with them, whereas counters do not. </P
+><P
+>The most frequently used clock is the <I
+CLASS="FIRSTTERM"
+>real-time
+clock</I
+> which serves two special purposes. First, it is
+necessary to support clock and alarm related functions such as <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_delay()</B
+></TT
+>.
+Second, it is needed to implement timeslicing in the mlqueue and
+lottery schedulers. If the application does not require either of
+these facilities, then it is possible to disable the real-time clock
+support completely. It is also possible to disable just timeslicing
+with the configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_KERNEL_SCHED_TIMESLICE</I
+></TT
+>,
+or just the clock and alarm functions, using the option <TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_TIMER</I
+></TT
+>.
+See <A
+HREF="c-cygpkg-kernel-sched.html"
+>the section called <I
+>Component: Kernel schedulers</I
+> in Chapter 18</A
+> for
+more information.</P
+><P
+>The real-time clock is available if the configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGVAR_KERNEL_COUNTERS_CLOCK</I
+></TT
+> (see <A
+HREF="c-cygpkg-kernel-counters.html#O-CYGVAR-KERNEL-COUNTERS-CLOCK"
+>the section called <I
+>Option: Provide real-time clock</I
+> in Chapter 18</A
+>)
+is defined. </P
+><P
+>Clock resolution is stored in variables of type <SPAN
+CLASS="TYPE"
+>cyg_resolution_t</SPAN
+> (see <A
+HREF="native-kernel-c-language-api.html#CYG-RESOLUTION-T"
+>the section called <I
+><SPAN
+CLASS="TYPE"
+>cyg_resolution_t</SPAN
+></I
+></A
+>).</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_clock_create</B
+></CODE
+>(cyg_resolution_t <VAR
+CLASS="PDPARAM"
+>resolution</VAR
+>, cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_clock *<VAR
+CLASS="PDPARAM"
+>clock</VAR
+>);<P
+></P
+></DIV
+><P
+>Creates a clock object with the given <TT
+CLASS="PARAMETER"
+><I
+>resolution</I
+></TT
+> and
+places it in the space pointed to by <TT
+CLASS="PARAMETER"
+><I
+>clock</I
+></TT
+>.
+A clock is a counter driven by a regular source of ticks. For example
+the system real-time clock is driven by a clock interrupt.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_clock_delete</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>clock</VAR
+>);<P
+></P
+></DIV
+><P
+>Deletes a clock object and frees the associated memory.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_clock_to_counter</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>clock</VAR
+>, cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>counter</VAR
+>);<P
+></P
+></DIV
+><P
+>Converts a clock handle to a counter handle. The counter functions
+can then be used with the counter handle.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_clock_set_resolution</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>clock</VAR
+>, cyg_resolution_t <VAR
+CLASS="PDPARAM"
+>resolution</VAR
+>);<P
+></P
+></DIV
+><P
+>Changes the resolution of a given clock object.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_resolution_t <B
+CLASS="FSFUNC"
+>cyg_clock_get_resolution</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>clock</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns the resolution of <TT
+CLASS="PARAMETER"
+><I
+>clock</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_handle <B
+CLASS="FSFUNC"
+>cyg_real_time_clock</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Returns a handle to the system-supplied real-time clock.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_tick_count_t <B
+CLASS="FSFUNC"
+>cyg_current_time</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Returns the real-time clock's counter. This is equivalent
+to executing the code:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13; cyg_clock_to_counter(cyg_real_time_clock(), &#38;h),
+ cyg_counter_current_value(h); </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1691"
+>Alarms</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_alarm_t(cyg_handle_t alarm,
+ void *data);</PRE
+></TD
+></TR
+></TABLE
+><P
+><SPAN
+CLASS="TYPE"
+>cyg_alarm_t</SPAN
+> is the type used
+for functions which are used to handle alarm events. It is used
+in the function <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_create()</B
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_alarm_create</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>counter</VAR
+>, cyg_alarm_t *<VAR
+CLASS="PDPARAM"
+>alarmfn</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>data</VAR
+>, cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_alarm *<VAR
+CLASS="PDPARAM"
+>alarm</VAR
+>);<P
+></P
+></DIV
+><P
+>Creates an alarm object. The alarm is attached to the <TT
+CLASS="PARAMETER"
+><I
+>counter</I
+></TT
+> and
+is created in the memory pointed to by <TT
+CLASS="PARAMETER"
+><I
+>alarm</I
+></TT
+>.
+When the alarm triggers, the handler function <TT
+CLASS="PARAMETER"
+><I
+>alarmfn</I
+></TT
+> is
+called and is passed <TT
+CLASS="PARAMETER"
+><I
+>data</I
+></TT
+> as a parameter.
+The alarm handler executes in the context of the function that incremented
+the counter and thus triggered the alarm.</P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>If the alarm is associated with the real-time clock, the alarm
+handler <TT
+CLASS="PARAMETER"
+><I
+>alarmfn</I
+></TT
+> will be invoked by the delayed
+service routine (DSR) that services the real-time clock. This means
+that real-time clock alarm handlers (which are possibly the most
+frequently used) must follow the rules of behavior for DSRs. These
+rules are outlined in <A
+HREF="interrupt-and-exception-handlers.html"
+>the section called <I
+>Interrupt
+and exception handlers</I
+> in Chapter 3</A
+>. </P
+></BLOCKQUOTE
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_alarm_delete</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>alarm</VAR
+>);<P
+></P
+></DIV
+><P
+>Disables the alarm, detaches from the counter, invalidates
+handles, and frees memory if it was dynamically allocated by <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_create()</B
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_alarm_initialize</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>alarm</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>trigger</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>interval</VAR
+>);<P
+></P
+></DIV
+><P
+>Initialize an alarm. This sets it to trigger at the tick with
+value <TT
+CLASS="PARAMETER"
+><I
+>trigger</I
+></TT
+>. When an alarm triggers, this
+event is dealt with by calling the <TT
+CLASS="PARAMETER"
+><I
+>alarmfn</I
+></TT
+> parameter
+which was passed when the alarm was created using <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_create()</B
+></TT
+>.
+If <TT
+CLASS="PARAMETER"
+><I
+>interval</I
+></TT
+> is non-zero, then after the alarm
+has triggered it will set itself to trigger again after <TT
+CLASS="PARAMETER"
+><I
+>interval</I
+></TT
+> ticks.
+Otherwise, if <TT
+CLASS="PARAMETER"
+><I
+>interval</I
+></TT
+> is zero, the alarm
+is will be disabled automatically once it has triggered. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_alarm_enable</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>alarm</VAR
+>);<P
+></P
+></DIV
+><P
+>Enables an alarm that has been disabled by calling <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_disable()</B
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_alarm_disable</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>alarm</VAR
+>);<P
+></P
+></DIV
+><P
+>Disables an alarm. After an alarm is disabled it will not
+be triggered unless it is subsequently re-enabled by calling <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_enable()</B
+></TT
+> or
+is reinitialized by calling <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_initialize()</B
+></TT
+>.</P
+><P
+>Note, though, that if a periodic alarm that has been disabled
+is re-enabled without reinitializing it will be in phase with the <I
+CLASS="EMPHASIS"
+>original</I
+> sequence
+of alarms. If it is <I
+CLASS="EMPHASIS"
+>reinitialized</I
+>, the new
+sequence of alarms will be in phase with the moment in which <TT
+CLASS="FUNCTION"
+><B
+>cyg_alarm_initialize()</B
+></TT
+> was
+called. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interrupt-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="synchronization.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Interrupt
+handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Synchronization</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

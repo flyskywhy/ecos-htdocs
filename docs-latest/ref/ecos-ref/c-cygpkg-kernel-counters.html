@@ -1,0 +1,496 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Counters and clocks</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="p-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Kernel schedulers"
+HREF="c-cygpkg-kernel-sched.html"><LINK
+REL="NEXT"
+TITLE="Component: Thread-related options"
+HREF="c-cygpkg-kernel-threads.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-sched.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-threads.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-KERNEL-COUNTERS"
+>Component: Counters and clocks</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_COUNTERS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The counter objects provided by the kernel provide an abstraction
+of the clock facility that is generally provided. Application code
+can associate alarms with counters, where an alarm is identified by
+the number of ticks until it triggers, the action to be taken on triggering,
+and whether or not the alarm should be repeated.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-COUNTERS-CLOCK"
+>Option: Provide real-time clock</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_COUNTERS_CLOCK</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>On all current target systems the kernel can provide a real-time clock.
+This clock serves two purposes. First it is necessary to support clock
+and alarm related functions. Second it is needed to implement timeslicing
+in some of the schedulers including the mlqueue scheduler. If the
+application does not require any of these facilities then it is possible
+to disable the real time clock support completely.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-KERNEL-COUNTERS-CLOCK-OVERRIDE"
+>Component: Override default clock settings</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_COUNTERS_CLOCK_OVERRIDE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The kernel has default settings for the clock interrupt frequency.
+These settings will vary from platform to platform, but typically
+there will be a 100 clock interrupts every second. It is possible
+to change this frequency, but it requires some knowledge of the target
+hardware. 
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-KERNEL-COUNTERS-CLOCK-OVERRIDE-PERIOD"
+>Option: Clock hardware initialization value</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_COUNTERS_CLOCK_OVERRIDE_PERIOD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>During system initialization this value is used to initialize the
+clock hardware. The exact meaning of the value and the range of legal
+values therefore depends on the target hardware, and the hardware
+documentation should be consulted for further details. In addition
+the clock resolution numerator and denominator values should be updated.
+Typical values for this option would be 150000 on the MN10300 stdeval1
+board, 15625 on the tx39 jmr3904 board, and 20833 on the powerpc cogent
+board.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-KERNEL-COUNTERS-CLOCK-OVERRIDE-NUMERATOR"
+>Option: Clock resolution numerator</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_COUNTERS_CLOCK_OVERRIDE_NUMERATOR</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>If a non-default clock interrupt frequency is used then it is necessary
+to specify the clock resolution explicitly. This resolution involves
+two separate values, the numerator and the denominator. The result
+of dividing the numerator by the denominator should correspond to
+the number of nanoseconds between clock interrupts. For example a
+numerator of 1000000000 and a denominator of 100 means that there
+are 10000000 nanoseconds (or 10 milliseconds) between clock interrupts.
+Expressing the resolution as a fraction should minimize clock drift
+even for frequencies that cannot be expressed as a simple integer.
+For example a frequency of 60Hz corresponds to a clock resolution
+of 16666666.66... nanoseconds. This can be expressed accurately as
+1000000000 over 60.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-KERNEL-COUNTERS-CLOCK-OVERRIDE-DENOMINATOR"
+>Option: Clock resolution denominator</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_COUNTERS_CLOCK_OVERRIDE_DENOMINATOR</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>If a non-default clock interrupt frequency is used then it is necessary
+to specify the clock resolution explicitly. This resolution involves
+two separate values, the numerator and the denominator. The result
+of dividing the numerator by the denominator should correspond to
+the number of nanoseconds between clock interrupts. For example a
+numerator of 1000000000 and a denominator of 100 means that there
+are 10000000 nanoseconds (or 10 milliseconds) between clock interrupts.
+Expressing the resolution as a fraction should minimize clock drift
+even for frequencies that cannot be expressed as a simple integer.
+For example a frequency of 60Hz corresponds to a clock resolution
+of 16666666.66... nanoseconds. This can be expressed accurately as
+1000000000 over 60.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGIMP-KERNEL-COUNTERS-SINGLE-LIST"
+>Option: Implement counters using a single list</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_COUNTERS_SINGLE_LIST</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>There are two different implementations of the counter objects. The
+first implementation stores all alarms in a single linked list. The
+alternative implementation uses a table of linked lists. A single
+list is more efficient in terms of memory usage and is generally adequate
+when the application only makes use of a small number of alarms.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGIMP-KERNEL-COUNTERS-MULTI-LIST"
+>Option: Implement counters using a table of lists</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_COUNTERS_MULTI_LIST</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>There are two different implementations of the counter objects. The
+first implementation stores all alarms in a single linked list. The
+alternative implementation uses a table of linked lists, with the
+size of the table being a separate configurable option. For more complicated
+operations it is better to have a table of lists since this reduces
+the amount of computation whenever the timer goes off. Assuming a
+table size of 8 (the default value) on average the timer code will
+only need to check 1/8 of the pending alarms instead of all of them.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-COUNTERS-MULTI-LIST-SIZE"
+>Option: Size of counter list table</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_COUNTERS_MULTI_LIST_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>If counters are implemented using an array of linked lists then this
+option controls the size of the array. A larger size reduces the amount
+of computation that needs to take place whenever the timer goes off,
+but requires extra memory.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGIMP-KERNEL-COUNTERS-SORT-LIST"
+>Option: Sort the counter list</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_COUNTERS_SORT_LIST</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Sorting the counter lists reduces the amount of work that has to be
+done when a counter tick is processed, since the next alarm to expire
+is always at the front of the list. However, it makes adding an alarm
+to the list more expensive since a search must be done for the correct
+place to put it. Many alarms are used to implement timeouts, which
+seldom trigger, so it is worthwhile optimizing this case. For this
+reason sorted list are disabled by default.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-COUNTERS-CLOCK-LATENCY"
+>Option: Measure real-time [clock] interrupt latency</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_COUNTERS_CLOCK_LATENCY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Measure the interrupt latency as seen by the real-time clock timer
+interrupt. This requires hardware support, defined by the HAL_CLOCK_LATENCY()
+macro.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-COUNTERS-CLOCK-DSR-LATENCY"
+>Option: Measure real-time [clock] DSR latency</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_COUNTERS_CLOCK_DSR_LATENCY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Measure the DSR latency as seen by the real-time clock timer interrupt.
+This requires hardware support, defined by the HAL_CLOCK_LATENCY()
+macro.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-sched.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-threads.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Kernel schedulers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Thread-related options</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,534 @@
+<HTML
+><HEAD
+><TITLE
+>Getting Started with eCos</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="NEXT"
+TITLE="Foreword (from the 1.2.1 release)"
+HREF="foreword.html"></HEAD
+><BODY
+><DIV
+CLASS="BOOK"
+><A
+NAME="ECOS-TUTORIAL"
+></A
+><DIV
+CLASS="TITLEPAGE"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+><BR></SPAN
+></A
+></H1
+><P
+CLASS="COPYRIGHT"
+><A
+HREF="ln10.html"
+>Copyright</A
+> © 1998, 1999 by <SPAN
+CLASS="HOLDER"
+>Cygnus Solutions</SPAN
+></P
+><HR></DIV
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="foreword.html"
+>Foreword (from the 1.2.1 release)</A
+></DT
+><DT
+><A
+HREF="documentation-roadmap.html"
+>Documentation Roadmap</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="documentation-roadmap.html#GETTING-STARTED-WITH-ECOS"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></A
+></DT
+><DT
+><A
+HREF="ecos-user-guide.html"
+>eCos User&#8217;s Guide</A
+></DT
+><DT
+><A
+HREF="ecos-reference-manual.html"
+>eCos Reference Manual</A
+></DT
+></DL
+></DD
+><DT
+>I. <A
+HREF="release-notes.html"
+>Release
+Notes</A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="notation-and-conventions-in-this-manual.html"
+>Notation and conventions</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="notation-and-conventions-in-this-manual.html#GDB-AND-GCC-COMMAND-NOTATION"
+>GDB and GCC
+command notation</A
+></DT
+><DT
+><A
+HREF="directory-and-file-system-conventions.html"
+>Directory
+and file system conventions</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="overview-of-the-release.html"
+>Overview of the release</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="overview-of-the-release.html#HARDWARE-ABSTRACTION"
+>Hardware abstraction</A
+></DT
+><DT
+><A
+HREF="real-time-kernel.html"
+>Real-time kernel</A
+></DT
+><DT
+><A
+HREF="configurability.html"
+>Configurability</A
+></DT
+><DT
+><A
+HREF="other-operating-systems.html"
+>µITRON and
+other operating systems</A
+></DT
+><DT
+><A
+HREF="iso-c-library-1.html"
+>ISO C library</A
+></DT
+><DT
+><A
+HREF="serial-device-drivers.html"
+>Serial device drivers</A
+></DT
+><DT
+><A
+HREF="architectural-simulators.html"
+>Architectural simulators</A
+></DT
+><DT
+><A
+HREF="using-the-simulator.html"
+>Using the simulator</A
+></DT
+><DT
+><A
+HREF="rom-monitor-image.html"
+>ROM
+monitor image</A
+></DT
+><DT
+><A
+HREF="tests-and-examples.html"
+>Tests and examples</A
+></DT
+><DT
+><A
+HREF="x758.html"
+>GNU tools and their documentation</A
+></DT
+><DT
+><A
+HREF="ecos-documentation.html"
+>eCos documentation</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="package-contents.html"
+>Package contents</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-contents.html#ECOS-SOURCEWARE-RELEASE"
+>eCos Sourceware
+release</A
+></DT
+><DT
+><A
+HREF="ecos-developers-kit.html"
+>eCos 
+Developers&#8217; Kit</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="system-requirements.html"
+>System
+Requirements</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="system-requirements.html#REQUIRED"
+>Required</A
+></DT
+><DT
+><A
+HREF="recommended.html"
+>Recommended</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="reporting-problems.html"
+>Reporting Problems</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="reporting-problems.html#AEN1144"
+>How to report problems</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="a-note-on-testing.html"
+>Test Suites</A
+></DT
+><DT
+>7. <A
+HREF="a-note-on-using-the-simulator.html"
+>eCos start-up configurations</A
+></DT
+><DT
+>8. <A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Known limitations in the eCos version 1.2.9 release</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html#KNOWN-BUGS-IN-ECOS"
+>Known bugs in eCos</A
+></DT
+><DT
+><A
+HREF="x1538.html"
+>Known bugs in GNUPro</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>II. <A
+HREF="installation-guide.html"
+>Installation Guide</A
+></DT
+><DD
+><DL
+><DT
+>9. <A
+HREF="software-installation.html"
+>Software installation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="software-installation.html#SOFTWARE-INSTALLATION-ON-WINDOWS-NT"
+>Software 
+installation
+on Windows</A
+></DT
+><DT
+><A
+HREF="software-installation-on-unix.html"
+>Software 
+installation
+on UNIX</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="hardware-setup.html"
+>Hardware
+setup</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="hardware-setup.html#MN10300-HARDWARE-SETUP"
+>MN10300 stdeval1 hardware setup</A
+></DT
+><DT
+><A
+HREF="am33-hardware-setup.html"
+>AM33 STB hardware setup</A
+></DT
+><DT
+><A
+HREF="tx39-hardware-setup.html"
+>TX39 hardware setup</A
+></DT
+><DT
+><A
+HREF="powerpc-cogent-hardware-setup.html"
+>PowerPC Cogent hardware setup</A
+></DT
+><DT
+><A
+HREF="powerpc-mbx860-hardware-setup.html"
+>PowerPC MBX860 hardware setup</A
+></DT
+><DT
+><A
+HREF="sparclite-hardware-setup.html"
+>SPARClite hardware setup</A
+></DT
+><DT
+><A
+HREF="arm-pid-hardware-setup.html"
+>ARM PID
+hardware setup</A
+></DT
+><DT
+><A
+HREF="arm-aeb-hardware-setup.html"
+>ARM
+AEB-1 Hardware Setup</A
+></DT
+><DT
+><A
+HREF="x2126.html"
+>ARM
+Cogent CMA230 Hardware Setup</A
+></DT
+><DT
+><A
+HREF="babcfadd.html"
+>Cirrus
+Logic ARM EDB7211 Evaluation Board Hardware Setup</A
+></DT
+><DT
+><A
+HREF="x2253.html"
+>Cirrus
+Logic ARM CL-PS7111 Evaluation Board Hardware Setup</A
+></DT
+><DT
+><A
+HREF="x2275.html"
+>VR4300 hardware setup</A
+></DT
+><DT
+><A
+HREF="x2289.html"
+>StrongARM EBSA-285 hardware setup</A
+></DT
+><DT
+><A
+HREF="x2364.html"
+>SH3/EDK7708 hardware setup</A
+></DT
+><DT
+><A
+HREF="x2379.html"
+>i386/Linux
+synthetic target setup</A
+></DT
+><DT
+><A
+HREF="verification.html"
+>Verifying by running on hardware</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>III. <A
+HREF="programming-tutorial.html"
+>Programming Tutorial</A
+></DT
+><DD
+><DL
+><DT
+>11. <A
+HREF="introduction-the-quickest-way.html"
+>Programming with eCos</A
+></DT
+><DT
+>12. <A
+HREF="configure-and-build-ecos-from-source.html"
+>Configuring and building eCos from source</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="configure-and-build-ecos-from-source.html#USING-THE-CONFIGURATION-TOOL-ON-WINDOWS"
+>Using
+the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> on Windows</A
+></DT
+><DT
+><A
+HREF="using-pkgconf-tcl-on-unix.html"
+>Using 
+<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</A
+></DT
+></DL
+></DD
+><DT
+>13. <A
+HREF="run-an-ecos-test-case.html"
+>Running an eCos test case</A
+></DT
+><DT
+>14. <A
+HREF="build-and-run-simple-applications.html"
+>Building and running sample applications</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="build-and-run-simple-applications.html#ECOS-HELLO-WORLD"
+>eCos hello world</A
+></DT
+><DT
+><A
+HREF="a-simple-program-with-two-threads.html"
+>A sample
+program with two threads</A
+></DT
+></DL
+></DD
+><DT
+>15. <A
+HREF="more-features-clocks-and-alarm-handlers.html"
+>More features &#8212; clocks
+and alarm handlers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="more-features-clocks-and-alarm-handlers.html#AEN3143"
+>A sample program with alarms</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="foreword.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Foreword (from the 1.2.1 release)</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

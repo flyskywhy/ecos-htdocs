@@ -1,0 +1,237 @@
+<HTML
+><HEAD
+><TITLE
+>Device Driver Interface to the Kernel</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="IO Package (Device Drivers)"
+HREF="ecos-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="How to write a driver"
+HREF="how-to-write-a-driver.html"><LINK
+REL="NEXT"
+TITLE="Synchronization"
+HREF="syncrhronization.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="how-to-write-a-driver.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="syncrhronization.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="DEVICE-DRIVER-INTERFACE-TO-KERNEL"
+>Chapter 14. Device Driver Interface to the Kernel</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="device-driver-interface-to-kernel.html#INTERRUPT-MODEL"
+>Interrupt Model</A
+></DT
+><DT
+><A
+HREF="syncrhronization.html"
+>Synchronization</A
+></DT
+><DT
+><A
+HREF="device-driver-models.html"
+>Device Driver Models</A
+></DT
+><DT
+><A
+HREF="synchronization-levels.html"
+>Synchronization Levels</A
+></DT
+><DT
+><A
+HREF="the-api.html"
+>The API</A
+></DT
+></DL
+></DIV
+><P
+>This chapter describes the API that device drivers may use
+to interact with the kernel and HAL. It is primarily concerned with
+the control and management of interrupts. </P
+><P
+>The same API will be present in configurations where the kernel
+is not present. In this case the functions will be supplied by code
+acting directly on the HAL. </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTERRUPT-MODEL"
+>Interrupt Model</A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> presents a three level interrupt
+model to device drivers. This consists of 
+Interrupt
+Service Routines (ISRs) that are invoked in response to a hardware
+interrupt; Deferred
+Service Routines (DSRs) that are invoked in response to a request
+by an ISR; and threads that are the clients of the driver. </P
+><P
+>Hardware interrupts are delivered with minimal intervention
+to an ISR. The HAL decodes the hardware source of the interrupt
+and calls the ISR of the attached interrupt object. This ISR may
+manipulate the hardware but is only allowed to make a restricted set
+of calls on the driver API. When it returns, an ISR may request
+that its DSR should be scheduled to run. </P
+><P
+>A DSR will be run when it is safe to do so without interfering
+with the scheduler. Most of the time the DSR will run immediately
+after the ISR, but if the current thread is in the scheduler, it
+will be delayed until the thread is finished. A DSR is allowed to make
+a larger set of driver API calls, in particular it is able to call <TT
+CLASS="FUNCTION"
+><B
+>cyg_drv_cond_signal()</B
+></TT
+> to
+wake up waiting threads. </P
+><P
+>Finally, threads are able to make all API calls and in particular
+are allowed to wait on mutexes and condition variables. </P
+><P
+>For a device driver to receive interrupts it must first define
+ISR and DSR routines as shown below, and then call <TT
+CLASS="FUNCTION"
+><B
+>cyg_drv_interrupt_create()</B
+></TT
+>.
+Using the handle returned, the driver must then call <TT
+CLASS="FUNCTION"
+><B
+>cyg_drv_interrupt_attach()</B
+></TT
+> to actually
+attach the interrupt to the hardware vector. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="how-to-write-a-driver.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="syncrhronization.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>How to write a driver</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Synchronization</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,488 @@
+<HTML
+><HEAD
+><TITLE
+>C and math library overview</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The ISO
+Standard C and Math Libraries"
+HREF="the-iso-standard-c-and-math-libraries.html"><LINK
+REL="PREVIOUS"
+TITLE="The ISO
+Standard C and Math Libraries"
+HREF="the-iso-standard-c-and-math-libraries.html"><LINK
+REL="NEXT"
+TITLE="Included non-ISO
+functions"
+HREF="included-non-iso-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="included-non-iso-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="C-AND-MATH-LIBRARY-OVERVIEW"
+>Chapter 15. C and math library overview</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="c-and-math-library-overview.html#OMITTED-FUNCTIONALITY"
+>Omitted functionality</A
+></DT
+><DT
+><A
+HREF="included-non-iso-functions.html"
+>Included non-ISO
+functions</A
+></DT
+><DT
+><A
+HREF="math-library-compatibility-modes.html"
+>Math library
+compatibility modes</A
+></DT
+><DT
+><A
+HREF="some-implementation-details.html"
+>Some implementation
+details</A
+></DT
+><DT
+><A
+HREF="c-and-math-library-overview-thread-safety.html"
+>Thread
+safety</A
+></DT
+><DT
+><A
+HREF="c-library-startup.html"
+>C
+library startup</A
+></DT
+></DL
+></DIV
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> provides compatibility with
+the <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+> 9899:1990 specification for the standard
+C library, which is essentially the same as the better-known <SPAN
+CLASS="ACRONYM"
+>ANSI</SPAN
+> C3.159-1989
+specification (C-89).</P
+><P
+>There are three aspects of this compatibility supplied by <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.
+First there is a <I
+CLASS="FIRSTTERM"
+>C library</I
+> which implements
+the functions defined by the ISO standard, except for the mathematical
+functions. This is provided by the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> C
+library package. </P
+><P
+>Then <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> provides a <I
+CLASS="FIRSTTERM"
+>math
+library</I
+>, which implements the mathematical functions from
+the ISO C library. This distinction between C and math libraries
+is frequently drawn &#8212; most standard C library implementations
+provide separate linkable files for the two, and the math library
+contains all the functions from the <TT
+CLASS="FILENAME"
+>math.h</TT
+> header
+file.</P
+><P
+>There is a third element to the ISO C library, which is the
+environment in which applications run when they use the standard
+C library. This environment is set up by the C library startup procedure
+(see <A
+HREF="c-library-startup.html"
+>the section called <I
+>C
+library startup</I
+></A
+>)
+and it provides (among other things) a <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> entry
+point function, an <TT
+CLASS="FUNCTION"
+><B
+>exit()</B
+></TT
+> function that does
+the cleanup required by the standard (including handlers registered
+using the <TT
+CLASS="FUNCTION"
+><B
+>atexit()</B
+></TT
+> function), and an environment
+that can be read with <TT
+CLASS="FUNCTION"
+><B
+>getenv()</B
+></TT
+>. </P
+><P
+>The description in this manual focuses on the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>-specific
+aspects of the C library (mostly related to <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s
+configurability) as well as mentioning the omissions from the standard
+in this release. We do not attempt to define the semantics of each function,
+since that information can be found in the <SPAN
+CLASS="ACRONYM"
+>ISO</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>ANSI</SPAN
+>, <SPAN
+CLASS="ACRONYM"
+>POSIX</SPAN
+> and <SPAN
+CLASS="ACRONYM"
+>IEEE</SPAN
+> standards,
+and the many good books that have been written about the standard C
+library, that cover usage of these functions in a more general and
+useful way.</P
+><DIV
+CLASS="FORMALPARA"
+><P
+><B
+>copyright notice. </B
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> C library includes software
+developed by the University of California at Berkeley and its contributors.
+The University of California at Berkeley licensing terms request
+that we place this notice in the product. Full details can be found
+in the affected source files.</P
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="OMITTED-FUNCTIONALITY"
+>Omitted functionality</A
+></H1
+><P
+>The ISO C functionality
+that is currently omitted in the C library can be grouped by the
+header files in which they are declared: </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5792"
+>stdio.h</A
+></H2
+><P
+></P
+><TABLE
+BORDER="0"
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>remove()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>ftell()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>rename()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>rewind()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>tmpfile()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>fgetpos()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>tmpnam()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>fsetpos()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>fseek()</B
+></TT
+></TD
+><TD
+>&nbsp;</TD
+></TR
+></TABLE
+><P
+></P
+><P
+>Most of these functions are omitted because they only apply
+to disk-based file systems. These will be supported in a future
+version of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN5815"
+>stdlib.h</A
+></H2
+><P
+></P
+><TABLE
+BORDER="0"
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>mblen()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>mbstowcs()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>mbtowc()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>wcstombs()</B
+></TT
+></TD
+></TR
+><TR
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>wctomb()</B
+></TT
+></TD
+><TD
+><TT
+CLASS="FUNCTION"
+><B
+>MB_CUR_MAX</B
+></TT
+></TD
+></TR
+></TABLE
+><P
+></P
+><P
+>All of these functions are related to multibyte and wide character
+support. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="included-non-iso-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The ISO
+Standard C and Math Libraries</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Included non-ISO
+functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

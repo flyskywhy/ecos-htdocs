@@ -1,0 +1,301 @@
+<HTML
+><HEAD
+><TITLE
+>Editing the sources</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="PREVIOUS"
+TITLE="Make flags"
+HREF="make-flags.html"><LINK
+REL="NEXT"
+TITLE="Modifying the memory
+layout"
+HREF="modifying-memory-layout.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="make-flags.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Manual configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="modifying-memory-layout.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="EDITING-THE-SOURCES"
+>Editing the sources</A
+></H1
+><P
+>For many users, controlling the packages and manipulating
+the available configuration options will be sufficient to create
+an embedded operating system that meets the application"s
+requirements. However, since <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+shipped entirely in source form, it is possible to go further when
+necessary: you can edit the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> sources themselves. This requires
+some understanding of the way the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> build
+system works. </P
+><P
+>The most obvious place to edit the source code is directly
+in the component repository.
+For example, you could edit the file <TT
+CLASS="FILENAME"
+>kernel/v1_2_9/src/sync/mutex.cxx</TT
+> to
+change the way kernel mutexes work, or possibly just to add some
+extra diagnostics or assertions. Once the file has been edited,
+it is possible to invoke <B
+CLASS="COMMAND"
+>make</B
+> at the top level
+of the build tree and the target library will be rebuilt as required.
+A small optimization is possible: the build tree is largely a mirror
+of the component repository, so it too will contain a subdirectory 
+<TT
+CLASS="FILENAME"
+>kernel/v1_2_9/src</TT
+>; if 
+<B
+CLASS="COMMAND"
+>make</B
+> is invoked in this directory then it will
+only check for changes to the kernel sources, which is a bit more efficient
+than checking for changes throughout the component repository. </P
+><P
+>Editing a file in the component repository is fine if this
+tree is used for only one <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> configuration.
+If the repository is used for several different configurations,
+however, and especially if it is shared by multiple users, then
+making what may be experimental changes to the master sources would
+be a bad idea. The build system provides an alternative. It is possible
+to make a copy of the file in the build tree, in other words copy <TT
+CLASS="FILENAME"
+>mutex.cxx</TT
+> from
+the <TT
+CLASS="FILENAME"
+>kernel/v1_2_9/src/sync</TT
+> directory
+in the component repository to <TT
+CLASS="FILENAME"
+>kernel/v1_2_9/src/sync</TT
+> in
+the build tree, and edit the file in the build tree. When <B
+CLASS="COMMAND"
+>make</B
+> is
+invoked it will pick up local copies of any of the sources in preference
+to the master versions in the component repository. Once you have finished
+modifying the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> sources you can install
+the final version back in the component repository. If the changes
+were temporary in nature and only served to aid the debugging process,
+then you can discard the modified version of the sources. </P
+><P
+>The situation is slightly more complicated for the header
+files that a package may export, such as the C library&#8217;s <TT
+CLASS="FILENAME"
+>stdio.h</TT
+> header
+file, which can be found in the directory <TT
+CLASS="FILENAME"
+>language/c/libc/v1_2_9/include</TT
+>.
+If such a header file is changed, either directly in the component
+repository or after copying it to the build tree, then <B
+CLASS="COMMAND"
+>make</B
+> must
+be invoked at the top level of the build tree. In cases like this
+it is not safe to rebuild just the C library because other packages
+may depend on the contents of <TT
+CLASS="FILENAME"
+>stdio.h</TT
+>. </P
+><P
+>Configuration header
+files, for example <TT
+CLASS="FILENAME"
+>kernel/v1_2_9/include/pkgconf/kernel.h</TT
+>, are
+a bit more complicated still. These files are intended to be edited
+by users so generally it is not possible for the build system to
+just copy across the modified version in the component repository.
+For a temporary change to such a header file there is no need to
+edit the master version in the component repository: there is already
+a copy of the header file in the build tree"s <TT
+CLASS="FILENAME"
+>pkgconf</TT
+> directory,
+and this copy exists specifically so that you can edit it. If you
+want to make permanent changes to such a header file you are responsible
+for manually updating the version in the build tree"s 
+<TT
+CLASS="FILENAME"
+>pkgconf</TT
+> directory. The update will not happen
+automatically because any such update runs the risk of discarding
+your edits. </P
+><P
+>The final files located in the component repository are package
+makefiles that define the files which make up that package. In the
+component repository, these files have the name <TT
+CLASS="FILENAME"
+>PKGconf.mak</TT
+>.
+When a build tree is generated <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will
+copy these files from the component repository to the build tree
+and rename them to <TT
+CLASS="FILENAME"
+>makefile</TT
+>. Since some users
+may edit the makefiles in the build tree, it is not possible for
+the build system to update these files automatically if the master
+version in the component repository changes. Instead, any such changes
+will have to be manually propagated into the build tree. </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>Future releases of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> are likely
+to involve major changes to the way that configuration header files
+and package makefiles are handled. Therefore, any changes made to
+these files may not carry across to the next release of the system.</P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="make-flags.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="modifying-memory-layout.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Make flags</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Modifying the memory
+layout</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,182 @@
+<HTML
+><HEAD
+><TITLE
+>Assertions
+and bad parameter handling</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Requirements for programs"
+HREF="requirements-for-programs.html"><LINK
+REL="PREVIOUS"
+TITLE="Memory allocation"
+HREF="memory-allocation.html"><LINK
+REL="NEXT"
+TITLE="System start-up"
+HREF="system-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="memory-allocation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Requirements for programs</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="system-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ASSERTIONS-AND-BAD-PARAMETER-HANDLING"
+>Assertions
+and bad parameter handling</A
+></H1
+><P
+>This section describes how the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel
+and basic packages behave when system calls are invoked with bad
+parameters.</P
+><P
+>In <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, the basic kernel assertion
+behavior is configuration-dependent, and you should consult <A
+HREF="p-cygpkg-infra.html"
+>Chapter 17</A
+> for more details.</P
+><P
+>By default, assertions
+are turned off in the kernel. If the kernel is configured to turn them 
+<I
+CLASS="EMPHASIS"
+>on</I
+>, the kernel will make basic assertions,
+such as checking for invalid parameters when system calls are invoked.
+If an assertion fails, the kernel will print a message to the diagnostic
+output channel and stop executing (see <A
+HREF="c-cygpkg-infra-debug.html"
+>the section called <I
+>Component: Asserts &#38; Tracing</I
+> in Chapter 17</A
+>).</P
+><P
+>If the kernel is configured with assertions disabled (usually
+when the application has been thoroughly debugged), it will not
+do any checking. </P
+><P
+>The configuration sections referenced above also describe
+the use of preconditions, postconditions and loop invariants. These
+are no different from ordinary assertions, but they are used in
+specialized circumstances, and the programmer would wish to select
+their presence individually. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="memory-allocation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="system-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Memory allocation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="requirements-for-programs.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>System start-up</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

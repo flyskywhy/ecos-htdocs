@@ -1,0 +1,1200 @@
+<HTML
+><HEAD
+><TITLE
+>Sample numbers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Real-time
+characterization"
+HREF="real-time-characterization.html"><LINK
+REL="PREVIOUS"
+TITLE="Measured items"
+HREF="measured-items.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="measured-items.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 9. Real-time
+characterization</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SAMPLE-NUMBERS"
+>Sample numbers</A
+></H1
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;Board: ARM AEB-1 Evaluation Board
+CPU  : Sharp LH77790A 24MHz
+---------------------------
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 13 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took  148.91 microseconds (223 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+  125.56  102.67  148.00   11.89   50%  25% Create thread
+   33.58   33.33   34.00    0.31   62%  62% Yield thread [all suspended]
+   24.67   24.67   24.67    0.00  100% 100% Suspend [suspended] thread
+   24.33   24.00   24.67    0.33  100%  50% Resume thread
+   36.75   36.67   37.33    0.15   87%  87% Set priority
+    3.47    3.33    4.00    0.22   79%  79% Get priority
+   78.75   78.67   79.33    0.15   87%  87% Kill [suspended] thread
+   33.58   33.33   34.00    0.31   62%  62% Yield [no other] thread
+   45.69   44.00   46.00    0.38   95%   4% Resume [suspended low prio] thread
+   24.33   24.00   24.67    0.33  100%  50% Resume [runnable low prio] thread
+   42.58   36.67   43.33    0.49   70%   4% Suspend [runnable] thread
+   33.67   33.33   34.00    0.33  100%  50% Yield [only low prio] thread
+   24.00   24.00   24.00    0.00  100% 100% Suspend [runnable-&#62;not runnable]
+   78.78   78.67   79.33    0.18   83%  83% Kill [runnable] thread
+  136.53  135.33  160.00    1.96   95%  95% Resume [high priority] thread
+   75.16   74.00  211.33    2.13   99%  99% Thread switch
+
+    4.50    4.00    4.67    0.25   75%  25% Scheduler lock
+   16.17   16.00   16.67    0.25   75%  75% Scheduler unlock [0 threads]
+   16.00   16.00   16.00    0.00  100% 100% Scheduler unlock [1 suspended]
+   16.17   16.00   16.67    0.25   75%  75% Scheduler unlock [many suspended]
+   16.00   16.00   16.00    0.00  100% 100% Scheduler unlock [many low prio]
+
+   10.50   10.00   10.67    0.25   75%  25% Init mutex
+   28.08   28.00   28.67    0.15   87%  87% Lock [unlocked] mutex
+   29.60   29.33   30.67    0.34   62%  62% Unlock [locked] mutex
+   25.25   24.67   25.33    0.15   87%  12% Trylock [unlocked] mutex
+   22.33   22.00   22.67    0.33  100%  50% Trylock [locked] mutex
+    2.33    2.00    2.67    0.33  100%  50% Destroy mutex
+  170.42  170.00  170.67    0.31   62%  37% Unlock/Lock mutex
+
+   20.00   20.00   20.00    0.00  100% 100% Create mbox
+    2.58    2.00    2.67    0.15   87%  12% Peek [empty] mbox
+   32.08   32.00   32.67    0.15   87%  87% Put [first] mbox
+    2.67    2.67    2.67    0.00  100% 100% Peek [1 msg] mbox
+   32.17   32.00   32.67    0.25   75%  75% Put [second] mbox
+    2.67    2.67    2.67    0.00  100% 100% Peek [2 msgs] mbox
+   32.33   32.00   32.67    0.33  100%  50% Get [first] mbox
+   32.50   32.00   32.67    0.25   75%  25% Get [second] mbox
+   30.67   30.67   30.67    0.00  100% 100% Tryput [first] mbox
+   27.25   26.67   27.33    0.15   87%  12% Peek item [non-empty] mbox
+   32.42   32.00   32.67    0.31   62%  37% Tryget [non-empty] mbox
+   26.17   26.00   26.67    0.25   75%  75% Peek item [empty] mbox
+   28.00   28.00   28.00    0.00  100% 100% Tryget [empty] mbox
+    2.92    2.67    3.33    0.31   62%  62% Waiting to get mbox
+    2.92    2.67    3.33    0.31   62%  62% Waiting to put mbox
+   30.33   30.00   30.67    0.33  100%  50% Delete mbox
+   98.19   98.00   98.67    0.27   71%  71% Put/Get mbox
+
+   10.83   10.67   11.33    0.25   75%  75% Init semaphore
+   24.00   24.00   24.00    0.00  100% 100% Post [0] semaphore
+   26.92   26.67   27.33    0.31   62%  62% Wait [1] semaphore
+   22.58   22.00   22.67    0.15   87%  12% Trywait [0] semaphore
+   22.21   22.00   22.67    0.29   68%  68% Trywait [1] semaphore
+    7.00    6.67    7.33    0.33  100%  50% Peek semaphore
+    5.75    5.33    6.00    0.31   62%  37% Destroy semaphore
+  107.27  106.67  107.33    0.11   90%   9% Post/Wait semaphore
+
+    9.54    9.33   10.00    0.29   68%  68% Create counter
+    3.58    3.33    4.00    0.31   62%  62% Get counter value
+    4.00    4.00    4.00    0.00  100% 100% Set counter value
+   30.67   30.67   30.67    0.00  100% 100% Tick counter
+    5.42    5.33    6.00    0.15   87%  87% Delete counter
+
+   14.12   14.00   14.67    0.20   81%  81% Create alarm
+   45.00   44.67   45.33    0.33  100%  50% Initialize alarm
+    3.33    3.33    3.33    0.00  100% 100% Disable alarm
+   44.17   44.00   44.67    0.25   75%  75% Enable alarm
+    7.96    7.33    8.00    0.08   93%   6% Delete alarm
+   35.62   35.33   36.00    0.33   56%  56% Tick counter [1 alarm]
+  194.50  194.00  194.67    0.25   75%  25% Tick counter [many alarms]
+   60.71   60.67   61.33    0.08   93%  93% Tick &#38; fire counter [1 alarm]
+ 1033.15 1020.67 1168.00   22.62   90%  90% Tick &#38; fire counters [&#62;1 together]
+  219.50  219.33  220.00    0.25   75%  75% Tick &#38; fire counters [&#62;1 separately]
+  130.60  129.33  212.67    1.30   99%  87% Alarm latency [0 threads]
+  147.04  130.00  193.33    7.58   61%  19% Alarm latency [2 threads]
+  147.80  129.33  192.00    8.22   60%  19% Alarm latency [many threads]
+
+   36.67   36.00   38.67    0.00            Clock/interrupt latency
+
+Timing complete - 23680 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+
+
+Board: ARM PID Evaluation Board
+CPU  : ARM 7TDMI 20 MHz
+-----------------------
+
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 6 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   94.30 microseconds (117 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   81.27   67.20   96.00    7.53   50%  29% Create thread
+   21.60   21.60   21.60    0.00  100% 100% Yield thread [all suspended]
+   15.57   15.20   16.00    0.40   54%  54% Suspend [suspended] thread
+   15.60   15.20   16.00    0.40  100%  50% Resume thread
+   23.53   23.20   24.00    0.39   58%  58% Set priority
+    2.20    1.60    2.40    0.30   75%  25% Get priority
+   50.80   50.40   51.20    0.40  100%  50% Kill [suspended] thread
+   21.60   21.60   21.60    0.00  100% 100% Yield [no other] thread
+   29.33   28.00   29.60    0.38   70%   4% Resume [suspended low prio] thread
+   15.60   15.20   16.00    0.40  100%  50% Resume [runnable low prio] thread
+   27.43   23.20   28.00    0.57   45%   4% Suspend [runnable] thread
+   21.60   21.60   21.60    0.00  100% 100% Yield [only low prio] thread
+   15.57   15.20   16.00    0.40   54%  54% Suspend [runnable-&#62;not runnable]
+   50.80   50.40   51.20    0.40  100%  50% Kill [runnable] thread
+   87.93   87.20  102.40    1.22   95%  95% Resume [high priority] thread
+   48.04   47.20  133.60    1.34   99%  99% Thread switch
+
+    2.80    2.40    3.20    0.40  100%  50% Scheduler lock
+   10.40   10.40   10.40    0.00  100% 100% Scheduler unlock [0 threads]
+   10.00    9.60   10.40    0.40  100%  50% Scheduler unlock [1 suspended]
+   10.40   10.40   10.40    0.00  100% 100% Scheduler unlock [many suspended]
+   10.00    9.60   10.40    0.40  100%  50% Scheduler unlock [many low prio]
+
+    6.75    6.40    7.20    0.39   56%  56% Init mutex
+   18.05   17.60   18.40    0.39   56%  43% Lock [unlocked] mutex
+   19.05   18.40   19.20    0.24   81%  18% Unlock [locked] mutex
+   16.35   16.00   16.80    0.39   56%  56% Trylock [unlocked] mutex
+   14.35   13.60   14.40    0.09   93%   6% Trylock [locked] mutex
+    1.35    0.80    1.60    0.34   68%  31% Destroy mutex
+  110.40  110.40  110.40    0.00  100% 100% Unlock/Lock mutex
+
+   12.85   12.80   13.60    0.09   93%  93% Create mbox
+    1.55    0.80    1.60    0.09   93%   6% Peek [empty] mbox
+   20.60   20.00   20.80    0.30   75%  25% Put [first] mbox
+    1.55    0.80    1.60    0.09   93%   6% Peek [1 msg] mbox
+   20.60   20.00   20.80    0.30   75%  25% Put [second] mbox
+    1.55    0.80    1.60    0.09   93%   6% Peek [2 msgs] mbox
+   20.75   20.00   20.80    0.09   93%   6% Get [first] mbox
+   20.75   20.00   20.80    0.09   93%   6% Get [second] mbox
+   19.80   19.20   20.00    0.30   75%  25% Tryput [first] mbox
+   17.60   17.60   17.60    0.00  100% 100% Peek item [non-empty] mbox
+   20.75   20.00   20.80    0.09   93%   6% Tryget [non-empty] mbox
+   16.80   16.80   16.80    0.00  100% 100% Peek item [empty] mbox
+   17.55   16.80   17.60    0.09   93%   6% Tryget [empty] mbox
+    1.75    1.60    2.40    0.24   81%  81% Waiting to get mbox
+    1.75    1.60    2.40    0.24   81%  81% Waiting to put mbox
+   19.40   19.20   20.00    0.30   75%  75% Delete mbox
+   63.17   62.40   63.20    0.05   96%   3% Put/Get mbox
+
+    6.85    6.40    7.20    0.39   56%  43% Init semaphore
+   15.35   15.20   16.00    0.24   81%  81% Post [0] semaphore
+   17.15   16.80   17.60    0.39   56%  56% Wait [1] semaphore
+   14.40   14.40   14.40    0.00  100% 100% Trywait [0] semaphore
+   14.20   13.60   14.40    0.30   75%  25% Trywait [1] semaphore
+    4.35    4.00    4.80    0.39   56%  56% Peek semaphore
+    3.55    3.20    4.00    0.39   56%  56% Destroy semaphore
+   69.02   68.80   69.60    0.32   71%  71% Post/Wait semaphore
+
+    6.05    5.60    6.40    0.39   56%  43% Create counter
+    2.15    1.60    2.40    0.34   68%  31% Get counter value
+    2.15    1.60    2.40    0.34   68%  31% Set counter value
+   19.60   19.20   20.00    0.40  100%  50% Tick counter
+    3.35    3.20    4.00    0.24   81%  81% Delete counter
+
+    9.05    8.80    9.60    0.34   68%  68% Create alarm
+   29.10   28.80   29.60    0.37   62%  62% Initialize alarm
+    2.05    1.60    2.40    0.39   56%  43% Disable alarm
+   28.55   28.00   28.80    0.34   68%  31% Enable alarm
+    5.00    4.80    5.60    0.30   75%  75% Delete alarm
+   23.20   23.20   23.20    0.00  100% 100% Tick counter [1 alarm]
+  125.10  124.80  125.60    0.37   62%  62% Tick counter [many alarms]
+   39.10   38.40   39.20    0.17   87%  12% Tick &#38; fire counter [1 alarm]
+  667.10  661.60  740.80    9.21   93%  93% Tick &#38; fire counters [&#62;1 together]
+  141.40  140.80  141.60    0.30   75%  25% Tick &#38; fire counters [&#62;1 separately]
+   82.72   82.40  122.40    0.63   99%  97% Alarm latency [0 threads]
+   96.51   82.40  122.40    7.07   57%  21% Alarm latency [2 threads]
+   95.61   81.60  124.00    9.33   41%  32% Alarm latency [many threads]
+
+   22.32   21.60   24.00    0.00            Clock/interrupt latency
+
+Timing complete - 23580 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+
+Board: Toshiba JMR3904 Evaluation Board
+CPU  : TMPR3904F 50MHz
+----------------------
+
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 0 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   29.68 microseconds (45 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   13.62   11.72   27.99    1.51   79%  54% Create thread
+    2.77    2.60    3.91    0.26   79%  79% Yield thread [all suspended]
+    3.31    2.60    6.51    0.27   83%  12% Suspend [suspended] thread
+    2.58    1.95    7.81    0.47   58%  37% Resume thread
+    4.94    4.56   11.07    0.60   95%  79% Set priority
+    0.71    0.65    1.95    0.10   95%  95% Get priority
+   14.97   14.32   25.39    0.87   95%  95% Kill [suspended] thread
+    2.25    1.95    9.11    0.57   95%  95% Yield [no other] thread
+    7.27    6.51   12.37    0.42   79%  16% Resume [suspended low prio] thread
+    2.28    1.95    7.16    0.51   95%  79% Resume [runnable low prio] thread
+    4.31    3.26   12.37    0.75   87%  79% Suspend [runnable] thread
+    2.17    1.95    7.16    0.42   95%  95% Yield [only low prio] thread
+    2.39    1.95    6.51    0.51   95%  58% Suspend [runnable-&#62;not runnable]
+   13.43   12.37   22.79    0.80   91%  91% Kill [runnable] thread
+   22.30   20.83   37.76    1.76   91%  91% Resume [high priority] thread
+    4.62    4.56   11.07    0.13   98%  98% Thread switch
+
+    1.51    1.30    2.60    0.29   68%  68% Scheduler lock
+    2.36    1.95    3.26    0.31   61%  37% Scheduler unlock [0 threads]
+    2.39    1.95    5.21    0.32   62%  36% Scheduler unlock [1 suspended]
+    2.38    1.95    4.56    0.32   61%  37% Scheduler unlock [many suspended]
+    2.38    1.95    5.21    0.32   61%  37% Scheduler unlock [many low prio]
+
+    0.90    0.65    3.26    0.35   71%  71% Init mutex
+    2.48    1.95    8.46    0.50   50%  46% Lock [unlocked] mutex
+    2.83    2.60    9.11    0.42   93%  93% Unlock [locked] mutex
+    2.30    1.95    6.51    0.45   96%  65% Trylock [unlocked] mutex
+    1.99    1.30    5.86    0.24   84%  12% Trylock [locked] mutex
+    0.04    0.00    1.30    0.08   96%  96% Destroy mutex
+   42.40   42.32   44.92    0.16   96%  96% Unlock/Lock mutex
+
+    1.44    1.30    5.86    0.28   96%  96% Create mbox
+    0.51    0.00    1.30    0.25   71%  25% Peek [empty] mbox
+    2.93    2.60    9.11    0.51   96%  78% Put [first] mbox
+    0.51    0.00    1.30    0.25   71%  25% Peek [1 msg] mbox
+    4.19    3.91    5.21    0.34   59%  59% Put [second] mbox
+    0.45    0.00    0.65    0.28   68%  31% Peek [2 msgs] mbox
+    3.28    2.60   10.42    0.45   65%  31% Get [first] mbox
+    3.34    2.60    9.77    0.40   78%  18% Get [second] mbox
+    2.69    1.95    9.11    0.40   78%  18% Tryput [first] mbox
+    2.75    1.95    7.81    0.32   93%   3% Peek item [non-empty] mbox
+    3.15    2.60    9.11    0.48   53%  43% Tryget [non-empty] mbox
+    2.22    1.95    6.51    0.41   96%  78% Peek item [empty] mbox
+    2.40    1.95    5.86    0.42   50%  46% Tryget [empty] mbox
+    0.47    0.00    0.65    0.26   71%  28% Waiting to get mbox
+    0.59    0.00    1.30    0.15   84%  12% Waiting to put mbox
+    4.01    3.26   10.42    0.40   81%  15% Delete mbox
+   26.18   26.04   30.60    0.28   96%  96% Put/Get mbox
+
+    0.92    0.65    3.91    0.38   71%  71% Init semaphore
+    2.24    1.95    6.51    0.43   96%  75% Post [0] semaphore
+    2.32    1.95    7.16    0.48   96%  65% Wait [1] semaphore
+    2.03    1.30    5.86    0.24   90%   6% Trywait [0] semaphore
+    1.91    1.30    4.56    0.23   78%  18% Trywait [1] semaphore
+    0.77    0.00    1.95    0.30   65%   9% Peek semaphore
+    0.61    0.00    1.95    0.15   84%  12% Destroy semaphore
+   22.62   22.14   30.60    0.61   96%  62% Post/Wait semaphore
+
+    0.92    0.65    3.91    0.38   71%  71% Create counter
+    0.69    0.65    1.95    0.08   96%  96% Get counter value
+    0.41    0.00    1.30    0.33   56%  40% Set counter value
+    3.21    2.60    5.86    0.27   71%  21% Tick counter
+    0.65    0.00    3.26    0.16   84%  12% Delete counter
+
+    1.57    1.30    4.56    0.38   71%  71% Create alarm
+    4.52    3.91   13.02    0.57   50%  46% Initialize alarm
+    0.61    0.00    1.95    0.15   84%  12% Disable alarm
+    4.43    3.91    9.11    0.43   56%  40% Enable alarm
+    0.87    0.65    2.60    0.32   71%  71% Delete alarm
+    2.93    2.60    6.51    0.43   96%  65% Tick counter [1 alarm]
+   14.83   14.32   22.79    0.60   96%  59% Tick counter [many alarms]
+    4.88    4.56   11.07    0.51   96%  78% Tick &#38; fire counter [1 alarm]
+   83.25   82.03  102.86    1.23   96%  93% Tick &#38; fire counters [&#62;1 together]
+   17.58   16.93   27.34    0.61   50%  46% Tick &#38; fire counters [&#62;1 separately]
+   26.18   24.74   40.36    0.30   97%   0% Alarm latency [0 threads]
+   33.88   29.30   56.64    1.70   85%   6% Alarm latency [2 threads]
+   36.37   29.30   61.20    3.25   53%  24% Alarm latency [many threads]
+
+    7.85    6.51   14.97    0.00            Clock/interrupt latency
+
+Timing complete - 23540 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+Board: Matsushita STDEVAL1 Board
+CPU  : MN103002A  60MHz
+-----------------------
+
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 18 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   13.73 microseconds (205 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   14.36   11.53   23.53    1.81   54%  33% Create thread
+    2.64    2.53    5.07    0.20   95%  95% Yield thread [all suspended]
+    2.25    1.93    4.80    0.31   45%  83% Suspend [suspended] thread
+    2.19    2.00    4.93    0.28   91%  91% Resume thread
+    3.42    3.00    8.40    0.47   95%  87% Set priority
+    0.31    0.13    1.20    0.19   79%  58% Get priority
+    8.26    7.40   18.80    0.93   95%  87% Kill [suspended] thread
+    2.58    2.47    5.13    0.21   95%  95% Yield [no other] thread
+    5.07    4.53    8.67    0.44   62%  50% Resume [suspended low prio] thread
+    2.27    2.07    4.53    0.23   87%  87% Resume [runnable low prio] thread
+    4.76    4.07    9.40    0.65   66%  75% Suspend [runnable] thread
+    2.63    2.53    4.73    0.18   95%  95% Yield [only low prio] thread
+    2.09    1.87    4.27    0.27   91%  79% Suspend [runnable-&#62;not runnable]
+   10.79   10.00   18.20    0.81   95%  79% Kill [runnable] thread
+   20.30   18.40   28.80    1.42   79%  54% Resume [high priority] thread
+    5.53    5.47   12.13    0.11   98%  97% Thread switch
+
+    0.28    0.27    2.20    0.03   97%  97% Scheduler lock
+    1.14    1.13    2.00    0.01   99%  99% Scheduler unlock [0 threads]
+    1.14    1.13    2.40    0.02   99%  99% Scheduler unlock [1 suspended]
+    1.16    1.13    3.33    0.06   95%  95% Scheduler unlock [many suspended]
+    1.23    1.20    3.13    0.05   95%  95% Scheduler unlock [many low prio]
+
+    1.29    1.00    4.20    0.25   65%  50% Init mutex
+    2.65    2.47    5.27    0.23   93%  87% Lock [unlocked] mutex
+    3.26    3.07    6.80    0.28   93%  87% Unlock [locked] mutex
+    2.48    2.33    5.07    0.21   90%  87% Trylock [unlocked] mutex
+    2.20    2.07    4.67    0.21   93%  87% Trylock [locked] mutex
+    0.23    0.20    1.00    0.05   96%  93% Destroy mutex
+   25.11   24.73   27.53    0.21   65%  31% Unlock/Lock mutex
+
+    2.49    2.00    5.73    0.32   81%  37% Create mbox
+    0.11    0.00    1.60    0.15   84%  81% Peek [empty] mbox
+    3.01    2.60    9.47    0.52   96%  78% Put [first] mbox
+    0.10    0.00    1.67    0.15   87%  81% Peek [1 msg] mbox
+    3.09    2.60    8.33    0.50   93%  75% Put [second] mbox
+    0.06    0.00    1.13    0.08   96%  87% Peek [2 msgs] mbox
+    3.10    2.80    7.93    0.40   93%  84% Get [first] mbox
+    3.13    2.80    7.53    0.43   90%  78% Get [second] mbox
+    2.99    2.60    8.53    0.52   93%  75% Tryput [first] mbox
+    2.65    2.33    6.80    0.42   90%  78% Peek item [non-empty] mbox
+    3.05    2.73    7.60    0.42   93%  78% Tryget [non-empty] mbox
+    3.16    2.93    6.27    0.31   84%  84% Peek item [empty] mbox
+    2.48    2.27    5.73    0.30   84%  84% Tryget [empty] mbox
+    0.23    0.13    2.07    0.14   96%  87% Waiting to get mbox
+    0.22    0.13    1.93    0.13   96%  75% Waiting to put mbox
+    3.08    2.80    7.93    0.42   84%  84% Delete mbox
+   16.01   15.53   19.00    0.52   78%  59% Put/Get mbox
+
+    0.85    0.67    3.27    0.19   96%  50% Init semaphore
+    2.00    1.93    3.87    0.12   96%  90% Post [0] semaphore
+    2.05    2.00    3.47    0.09   96%  96% Wait [1] semaphore
+    1.85    1.80    3.47    0.10   96%  96% Trywait [0] semaphore
+    1.82    1.80    2.53    0.04   96%  96% Trywait [1] semaphore
+    0.36    0.33    1.33    0.06   96%  96% Peek semaphore
+    0.38    0.33    1.87    0.09   96%  96% Destroy semaphore
+   12.38   12.20   16.27    0.30   93%  87% Post/Wait semaphore
+
+    1.18    0.73    4.07    0.24   78%  18% Create counter
+    0.20    0.13    1.40    0.11   87%  87% Get counter value
+    0.24    0.20    1.40    0.08   93%  93% Set counter value
+    3.17    3.13    4.20    0.07   93%  93% Tick counter
+    0.44    0.40    1.73    0.08   96%  96% Delete counter
+
+    2.24    1.67    5.13    0.47   68%  65% Create alarm
+    3.86    3.40    9.67    0.51   90%  78% Initialize alarm
+    0.15    0.07    1.60    0.12   96%  68% Disable alarm
+    3.76    3.47    7.67    0.35   93%  75% Enable alarm
+    0.57    0.47    2.73    0.16   96%  84% Delete alarm
+    3.64    3.60    4.73    0.07   96%  96% Tick counter [1 alarm]
+   21.72   21.67   23.27    0.10   96%  96% Tick counter [many alarms]
+    6.13    6.07    8.07    0.12   96%  96% Tick &#38; fire counter [1 alarm]
+  101.40   99.53  132.73    2.75   93%  93% Tick &#38; fire counters [&#62;1 together]
+   24.21   24.13   26.40    0.14   96%  96% Tick &#38; fire counters [&#62;1 separately]
+   11.74   11.60   22.67    0.26   98%  98% Alarm latency [0 threads]
+   14.58   11.73   24.93    1.59   54%  28% Alarm latency [2 threads]
+   18.18   15.20   41.07    1.96   60%  43% Alarm latency [many threads]
+
+    3.06    2.13   10.33    0.00            Clock/interrupt latency
+
+Timing complete - 23480 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+
+
+
+Board: Fujitsu SPARClite Evaluation Board
+CPU  : Fujitsu SPARClite MB8683X 100MHz
+---------------------------------------
+
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 0 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   17.19 microseconds (17 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   48.59   47.00   63.01    1.41   66%  70% Create thread
+    2.13    2.00    5.00    0.24   95%  95% Yield thread [all suspended]
+    2.92    2.00   10.00    0.69   58%  37% Suspend [suspended] thread
+    2.13    1.00   10.00    0.66   75%  20% Resume thread
+    2.79    2.00   11.00    0.86   95%  54% Set priority
+    1.00    0.00    5.00    0.33   79%  16% Get priority
+    7.17    5.00   34.00    2.24   95%  95% Kill [suspended] thread
+    2.42    2.00   12.00    0.80   95%  95% Yield [no other] thread
+    3.46    2.00   14.00    1.10   75%  83% Resume [suspended low prio] thread
+    2.00    1.00    9.00    0.58   66%  29% Resume [runnable low prio] thread
+    4.21    3.00   20.00    1.38   95%  91% Suspend [runnable] thread
+    2.33    2.00   10.00    0.64   95%  95% Yield [only low prio] thread
+    2.00    1.00    9.00    0.67   58%  33% Suspend [runnable-&#62;not runnable]
+    5.79    4.00   30.00    2.07   95%  95% Kill [runnable] thread
+   39.34   37.00   75.01    3.36   91%  91% Resume [high priority] thread
+   15.20   15.00   31.00    0.40   97%  97% Thread switch
+
+    1.04    1.00    4.00    0.08   97%  97% Scheduler lock
+    1.42    1.00    5.00    0.51   60%  60% Scheduler unlock [0 threads]
+    1.41    1.00    5.00    0.50   61%  61% Scheduler unlock [1 suspended]
+    1.41    1.00    5.00    0.50   60%  60% Scheduler unlock [many suspended]
+    1.40    1.00    5.00    0.50   62%  62% Scheduler unlock [many low prio]
+
+    1.19    1.00    6.00    0.35   93%  93% Init mutex
+    2.34    2.00   12.00    0.64   93%  93% Lock [unlocked] mutex
+    3.41    3.00   13.00    0.71   96%  87% Unlock [locked] mutex
+    2.16    1.00   10.00    0.49   87%   9% Trylock [unlocked] mutex
+    1.78    1.00    7.00    0.59   59%  37% Trylock [locked] mutex
+    0.72    0.00    2.00    0.45   65%  31% Destroy mutex
+   25.25   24.00   41.00    0.98   71%  25% Unlock/Lock mutex
+
+    1.44    1.00    9.00    0.68   96%  78% Create mbox
+    0.94    0.00    3.00    0.23   84%  12% Peek [empty] mbox
+    3.06    2.00   13.00    0.62   71%  25% Put [first] mbox
+    0.69    0.00    3.00    0.52   59%  37% Peek [1 msg] mbox
+    2.44    2.00   10.00    0.68   96%  78% Put [second] mbox
+    0.78    0.00    3.00    0.44   68%  28% Peek [2 msgs] mbox
+    3.78    3.00   14.00    0.83   96%  53% Get [first] mbox
+    2.97    2.00    9.00    0.61   56%  31% Get [second] mbox
+    2.53    2.00   12.00    0.80   96%  75% Tryput [first] mbox
+    2.72    2.00   12.00    0.81   96%  56% Peek item [non-empty] mbox
+    2.63    2.00   13.00    0.94   90%  75% Tryget [non-empty] mbox
+    1.97    1.00    6.00    0.42   68%  21% Peek item [empty] mbox
+    2.09    1.00    9.00    0.49   78%  15% Tryget [empty] mbox
+    0.84    0.00    4.00    0.42   71%  25% Waiting to get mbox
+    0.81    0.00    4.00    0.46   68%  28% Waiting to put mbox
+    2.38    2.00   11.00    0.66   96%  87% Delete mbox
+   23.41   22.00   47.00    1.47   96%  96% Put/Get mbox
+
+    1.03    0.00    6.00    0.31   84%  12% Init semaphore
+    2.66    2.00    8.00    0.66   96%  50% Post [0] semaphore
+    1.97    1.00   10.00    0.55   68%  28% Wait [1] semaphore
+    1.78    1.00    8.00    0.63   56%  40% Trywait [0] semaphore
+    1.84    1.00    8.00    0.58   62%  34% Trywait [1] semaphore
+    1.00    0.00    5.00    0.25   84%  12% Peek semaphore
+    0.81    0.00    4.00    0.46   68%  28% Destroy semaphore
+   19.03   18.00   41.00    1.37   96%  96% Post/Wait semaphore
+
+    1.38    1.00    6.00    0.56   75%  75% Create counter
+    1.09    1.00    3.00    0.18   93%  93% Get counter value
+    1.00    0.00    5.00    0.31   78%  15% Set counter value
+    3.09    2.00    6.00    0.35   78%   9% Tick counter
+    0.91    0.00    5.00    0.40   75%  21% Delete counter
+
+    2.53    2.00    9.00    0.70   96%  65% Create alarm
+    6.03    5.00   22.00    1.00   50%  46% Initialize alarm
+    0.78    0.00    4.00    0.49   65%  31% Disable alarm
+    2.91    2.00   13.00    0.91   87%  50% Enable alarm
+    0.97    0.00    5.00    0.30   81%  15% Delete alarm
+    2.69    2.00    9.00    0.69   96%  50% Tick counter [1 alarm]
+   12.00   11.00   23.00    0.69   62%  34% Tick counter [many alarms]
+    4.16    3.00   13.00    0.55   84%  12% Tick &#38; fire counter [1 alarm]
+   72.69   72.01   87.01    1.03   96%  96% Tick &#38; fire counters [&#62;1 together]
+   13.66   13.00   23.00    0.82   96%  62% Tick &#38; fire counters [&#62;1 separately]
+   13.26   13.00   42.00    0.51   98%  98% Alarm latency [0 threads]
+   16.75   11.00   53.01    2.78   64%  16% Alarm latency [2 threads]
+   24.06   18.00   58.01    3.55   67%  25% Alarm latency [many threads]
+
+    3.61    2.00   13.00    0.00            Clock/interrupt latency
+
+Timing complete - 23590 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+
+
+Board: Cogent CMA MPC860 (PowerPC) Evaluation Board
+CPU  : MPC860, revision A3 33MHz
+--------------------------------
+
+
+eCOS Kernel Timings
+Note: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 0 "ticks" overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   14.46 microseconds (30 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                24
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   26.78   23.52   41.76    1.97   66%  37% Create thread
+    4.00    3.84    4.80    0.23   70%  70% Yield thread [all suspended]
+    3.78    3.36    7.68    0.38   50%  45% Suspend [suspended] thread
+    3.56    3.36    7.68    0.37   95%  91% Resume thread
+    5.28    4.32   12.96    0.76   83%  66% Set priority
+    0.84    0.48    3.84    0.39   91%  54% Get priority
+   11.76   10.08   32.16    1.70   95%  95% Kill [suspended] thread
+    4.14    3.84    8.64    0.45   95%  75% Yield [no other] thread
+    7.14    5.76   17.76    1.07   79%  70% Resume [suspended low prio] thread
+    3.60    3.36    8.16    0.42   95%  87% Resume [runnable low prio] thread
+    6.10    5.28   14.88    0.80   62%  70% Suspend [runnable] thread
+    4.00    3.84    5.76    0.25   79%  79% Yield [only low prio] thread
+    3.66    3.36    8.64    0.47   95%  79% Suspend [runnable-&#62;not runnable]
+   11.66   10.08   30.24    1.58   79%  91% Kill [runnable] thread
+   31.12   27.84   53.28    2.35   87%  50% Resume [high priority] thread
+    7.52    7.20   15.84    0.30   50%  48% Thread switch
+
+    1.00    0.48    2.88    0.21   63%  14% Scheduler lock
+    2.57    2.40    3.84    0.23   65%  65% Scheduler unlock [0 threads]
+    2.58    2.40    4.32    0.23   64%  64% Scheduler unlock [1 suspended]
+    2.59    2.40    4.32    0.24   62%  62% Scheduler unlock [many suspended]
+    2.59    2.40    4.32    0.24   61%  61% Scheduler unlock [many low prio]
+
+    1.69    1.44    5.76    0.37   96%  71% Init mutex
+    4.15    3.84   10.56    0.47   96%  75% Lock [unlocked] mutex
+    5.82    5.28   10.56    0.38   62%  28% Unlock [locked] mutex
+    3.70    3.36    8.64    0.41   96%  59% Trylock [unlocked] mutex
+    3.42    2.88    6.72    0.26   75%  15% Trylock [locked] mutex
+    0.36    0.00    1.92    0.25   62%  34% Destroy mutex
+   43.41   42.72   45.12    0.34   81%   3% Unlock/Lock mutex
+
+    3.27    2.88    8.16    0.39   96%  50% Create mbox
+    0.57    0.00    2.40    0.34   50%  21% Peek [empty] mbox
+    6.16    5.76   11.04    0.48   87%  87% Put [first] mbox
+    0.48    0.00    1.92    0.27   50%  28% Peek [1 msg] mbox
+    5.92    5.28   10.56    0.35   90%   6% Put [second] mbox
+    0.60    0.00    2.40    0.30   62%  12% Peek [2 msgs] mbox
+    4.69    4.32   12.00    0.54   93%  93% Get [first] mbox
+    4.68    4.32   11.52    0.52   93%  93% Get [second] mbox
+    5.86    5.28   11.04    0.47   62%  31% Tryput [first] mbox
+    4.00    3.36    9.12    0.38   87%   9% Peek item [non-empty] mbox
+    4.59    3.84   12.48    0.61   71%  75% Tryget [non-empty] mbox
+    3.75    3.36    7.68    0.34   53%  43% Peek item [empty] mbox
+    3.93    3.36    9.60    0.45   65%  31% Tryget [empty] mbox
+    0.63    0.00    2.40    0.28   68%   6% Waiting to get mbox
+    0.54    0.00    1.92    0.19   75%   9% Waiting to put mbox
+    4.84    4.32   12.00    0.47   56%  40% Delete mbox
+   24.18   23.52   29.76    0.66   81%  75% Put/Get mbox
+
+    1.72    0.96    3.84    0.33   90%   6% Init semaphore
+    3.15    2.88    6.24    0.34   96%  62% Post [0] semaphore
+    3.85    3.36    8.64    0.30   68%  28% Wait [1] semaphore
+    3.24    2.88    6.24    0.34   46%  46% Trywait [0] semaphore
+    3.22    2.88    6.24    0.32   50%  46% Trywait [1] semaphore
+    0.96    0.48    2.88    0.12   84%  12% Peek semaphore
+    0.99    0.96    1.92    0.06   96%  96% Destroy semaphore
+   24.71   24.00   28.80    0.40   87%   6% Post/Wait semaphore
+
+    2.31    1.44    6.24    0.77   46%  56% Create counter
+    0.45    0.00    0.96    0.08   87%   9% Get counter value
+    0.42    0.00    0.96    0.16   75%  18% Set counter value
+    4.14    3.84    4.80    0.26   50%  43% Tick counter
+    0.91    0.48    2.40    0.19   71%  21% Delete counter
+
+    5.23    4.32    7.68    0.61   65%  53% Create alarm
+    5.58    4.80   12.96    0.72   68%  84% Initialize alarm
+    0.75    0.48    1.92    0.30   90%  56% Disable alarm
+    8.02    7.20   14.40    0.53   84%  68% Enable alarm
+    1.32    0.96    3.84    0.29   56%  40% Delete alarm
+    4.63    4.32    6.24    0.28   53%  43% Tick counter [1 alarm]
+   23.67   23.52   25.44    0.23   78%  78% Tick counter [many alarms]
+    7.24    6.72   10.56    0.21   84%  12% Tick &#38; fire counter [1 alarm]
+  106.83  106.56  110.40    0.35   96%  65% Tick &#38; fire counters [&#62;1 together]
+   26.18   25.44   29.76    0.46   81%   9% Tick &#38; fire counters [&#62;1 separately]
+   10.79   10.08   29.28    0.66   53%  55% Alarm latency [0 threads]
+   17.20   13.92   35.52    1.48   67%  21% Alarm latency [2 threads]
+   29.69   22.56   47.04    3.58   57%  17% Alarm latency [many threads]
+
+    7.66    3.84   19.20    0.00            Clock/interrupt latency
+
+Timing complete - 23530 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+Board: NEC VR4373
+CPU  : NEC VR4300 133MHz
+------------------------
+
+Startup, main stack             : stack used  1304 size  3576
+Startup              :  Interrupt stack used   980 size  4096
+Startup              : Idlethread stack used   494 size  2552
+
+eCos Kernel Timings
+Notes: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 3 'ticks' overhead
+... this value will be factored out of all other measurements
+Clock interrupt took    6.49 microseconds (431 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                16
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   17.21   16.18   22.14    0.88   75%  68% Create thread
+    0.84    0.78    1.29    0.10   81%  81% Yield thread [all suspended]
+    0.90    0.62    3.20    0.35   87%  87% Suspend [suspended] thread
+    0.74    0.65    1.16    0.12   81%  68% Resume thread
+    1.11    0.90    1.70    0.25   75%  68% Set priority
+    0.11    0.05    0.35    0.09   75%  75% Get priority
+    2.93    2.24    8.27    0.78   93%  75% Kill [suspended] thread
+    0.88    0.78    1.92    0.16   93%  81% Yield [no other] thread
+    1.82    1.20    4.71    0.62   87%  62% Resume [suspended low prio] thread
+    0.70    0.63    0.86    0.09   68%  68% Resume [runnable low prio] thread
+    1.21    1.07    1.61    0.13   81%  68% Suspend [runnable] thread
+    0.86    0.78    1.58    0.13   81%  81% Yield [only low prio] thread
+    0.69    0.62    0.84    0.09   68%  68% Suspend [runnable-&#62;not runnable]
+    2.64    2.24    4.35    0.43   81%  62% Kill [runnable] thread
+    1.50    1.07    5.82    0.56   93%  87% Destroy [dead] thread
+    3.66    2.75    7.74    0.82   50%  56% Destroy [runnable] thread
+   13.65    8.33   27.88    3.70   50%  43% Resume [high priority] thread
+    2.04    1.89    3.32    0.15   46%  49% Thread switch
+
+    0.19    0.05    0.83    0.13   48%  44% Scheduler lock
+    0.50    0.41    1.59    0.13   89%  73% Scheduler unlock [0 threads]
+    0.52    0.41    1.29    0.14   89%  64% Scheduler unlock [1 suspended]
+    0.56    0.41    1.49    0.15   42%  47% Scheduler unlock [many suspended]
+    0.56    0.41    1.41    0.15   43%  47% Scheduler unlock [many low prio]
+
+    0.57    0.20    2.33    0.27   65%  50% Init mutex
+    0.89    0.75    3.35    0.20   96%  75% Lock [unlocked] mutex
+    0.90    0.74    4.38    0.25   96%  93% Unlock [locked] mutex
+    0.77    0.65    2.63    0.17   96%  75% Trylock [unlocked] mutex
+    0.66    0.59    1.16    0.10   75%  75% Trylock [locked] mutex
+    0.07    0.00    0.45    0.09   75%  75% Destroy mutex
+    7.95    7.71    9.49    0.19   50%  46% Unlock/Lock mutex
+
+    1.04    0.81    3.44    0.27   93%  68% Create mbox
+    0.10    0.02    0.57    0.11   71%  68% Peek [empty] mbox
+    1.15    0.83    4.71    0.31   53%  71% Put [first] mbox
+    0.10    0.02    0.57    0.12   68%  68% Peek [1 msg] mbox
+    1.01    0.83    3.83    0.22   93%  75% Put [second] mbox
+    0.09    0.02    0.57    0.10   71%  71% Peek [2 msgs] mbox
+    1.03    0.81    5.02    0.27   96%  87% Get [first] mbox
+    0.93    0.81    1.61    0.14   84%  62% Get [second] mbox
+    1.07    0.77    4.18    0.23   68%  50% Tryput [first] mbox
+    0.89    0.72    3.49    0.21   93%  71% Peek item [non-empty] mbox
+    1.04    0.83    4.09    0.26   90%  81% Tryget [non-empty] mbox
+    0.79    0.68    1.97    0.15   87%  68% Peek item [empty] mbox
+    0.84    0.72    2.36    0.17   93%  68% Tryget [empty] mbox
+    0.13    0.02    0.59    0.13   87%  62% Waiting to get mbox
+    0.13    0.02    0.90    0.13   90%  62% Waiting to put mbox
+    0.93    0.77    3.23    0.21   90%  71% Delete mbox
+    4.74    4.51    8.80    0.32   93%  78% Put/Get mbox
+
+    0.50    0.21    1.95    0.29   90%  50% Init semaphore
+    0.86    0.57    2.87    0.29   93%  56% Post [0] semaphore
+    1.01    0.74    3.62    0.28   93%  56% Wait [1] semaphore
+    0.87    0.60    3.17    0.28   90%  59% Trywait [0] semaphore
+    0.74    0.62    1.70    0.14   93%  56% Trywait [1] semaphore
+    0.36    0.11    1.11    0.26   65%  56% Peek semaphore
+    0.25    0.12    1.19    0.14   93%  56% Destroy semaphore
+    7.85    7.52    8.93    0.21   62%  43% Post/Wait semaphore
+
+    0.90    0.44    3.08    0.29   65%  28% Create counter
+    0.07    0.05    0.89    0.05   96%  96% Get counter value
+    0.06    0.05    0.33    0.02   96%  96% Set counter value
+    0.88    0.86    1.62    0.05   96%  96% Tick counter
+    0.13    0.12    0.41    0.02   96%  96% Delete counter
+
+    1.37    0.81    2.95    0.27   62%  25% Create alarm
+    1.35    1.17    6.03    0.31   96%  93% Initialize alarm
+    0.11    0.08    0.65    0.05   90%  90% Disable alarm
+    1.23    1.14    3.05    0.15   93%  87% Enable alarm
+    0.21    0.18    0.47    0.04   90%  90% Delete alarm
+    1.03    0.99    2.11    0.07   96%  96% Tick counter [1 alarm]
+    4.96    4.96    4.96    0.00  100% 100% Tick counter [many alarms]
+    1.70    1.67    2.51    0.05   96%  96% Tick &#38; fire counter [1 alarm]
+   26.39   26.38   26.71    0.02   96%  96% Tick &#38; fire counters [&#62;1 together]
+    5.65    5.64    5.91    0.02   96%  96% Tick &#38; fire counters [&#62;1 separately]
+    2.55    2.38    9.86    0.19   96%  54% Alarm latency [0 threads]
+    5.37    3.80    9.73    0.95   50%  34% Alarm latency [2 threads]
+    8.79    5.83   16.12    1.29   57%  14% Alarm latency [many threads]
+
+    5.85    2.26   16.24    0.00            Clock/interrupt latency
+
+ 1540    1536    1544  (main stack:  1664)  Thread stack used (2552 total)
+All done, main stack            : stack used  1664 size  3576
+All done             :  Interrupt stack used   312 size  4096
+All done             : Idlethread stack used  1440 size  2552
+
+Timing complete - 23810 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+
+
+Board: Motorola MBX
+CPU  : Motorola MPC860 66MHZ
+----------------------------
+Startup, main stack             : stack used   643 size  5664
+Startup              :  Interrupt stack used   427 size  4096
+Startup              : Idlethread stack used   236 size  2048
+
+eCos Kernel Timings
+Notes: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 0 'ticks' overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   25.36 microseconds (79 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                16
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   27.58   25.60   44.16    2.07   93%  93% Create thread
+    5.94    5.76    7.04    0.22   93%  62% Yield thread [all suspended]
+    6.06    5.44   10.56    0.57   75%  75% Suspend [suspended] thread
+    5.42    4.80    9.60    0.53   87%  81% Resume thread
+    7.10    6.40   14.08    0.90   93%  87% Set priority
+    0.86    0.64    1.92    0.22   93%  50% Get priority
+   16.74   15.04   36.48    2.47   93%  93% Kill [suspended] thread
+    6.14    5.76   10.56    0.55   93%  93% Yield [no other] thread
+    9.74    8.96   18.56    1.10   93%  93% Resume [suspended low prio] thread
+    5.28    4.80    9.28    0.54   93%  81% Resume [runnable low prio] thread
+    9.40    8.32   18.56    1.14   93%  93% Suspend [runnable] thread
+    6.04    5.76    8.96    0.38   93%  93% Yield [only low prio] thread
+    5.68    5.12    9.60    0.52   68%  75% Suspend [runnable-&#62;not runnable]
+   16.10   14.40   35.20    2.39   93%  93% Kill [runnable] thread
+    8.54    7.68   16.00    0.94   93%  87% Destroy [dead] thread
+   20.20   18.56   40.64    2.55   93%  93% Destroy [runnable] thread
+   39.02   36.48   57.28    3.28   87%  87% Resume [high priority] thread
+   13.13   12.80   22.08    0.15   78%  20% Thread switch
+
+    0.59    0.32    1.60    0.09   82%  16% Scheduler lock
+    3.67    3.52    5.12    0.17   99%  54% Scheduler unlock [0 threads]
+    3.67    3.52    4.80    0.17   99%  53% Scheduler unlock [1 suspended]
+    3.67    3.52    4.80    0.17   54%  54% Scheduler unlock [many suspended]
+    3.69    3.52    5.12    0.17   99%  50% Scheduler unlock [many low prio]
+
+    2.41    2.24    5.44    0.25   96%  75% Init mutex
+    6.83    6.40   11.84    0.34   75%  90% Lock [unlocked] mutex
+    6.74    6.40   13.12    0.40   96%  96% Unlock [locked] mutex
+    5.53    5.12    9.60    0.25   84%  12% Trylock [unlocked] mutex
+    4.84    4.48    7.36    0.17   78%  15% Trylock [locked] mutex
+    0.34    0.00    0.96    0.06   90%   3% Destroy mutex
+   56.10   55.68   59.52    0.21   93%   3% Unlock/Lock mutex
+
+    4.72    4.48   10.24    0.37   96%  96% Create mbox
+    0.75    0.64    1.92    0.16   75%  75% Peek [empty] mbox
+    6.79    6.40   12.80    0.41   96%  90% Put [first] mbox
+    0.46    0.32    1.60    0.19   93%  68% Peek [1 msg] mbox
+    6.68    6.40   12.16    0.37   96%  96% Put [second] mbox
+    0.50    0.32    1.60    0.20   93%  56% Peek [2 msgs] mbox
+    7.13    6.40   14.08    0.49   90%  46% Get [first] mbox
+    6.97    6.40   13.44    0.47   84%  78% Get [second] mbox
+    6.24    5.76   11.52    0.38   78%  81% Tryput [first] mbox
+    5.98    5.44   11.20    0.39   78%  62% Peek item [non-empty] mbox
+    6.52    6.08   13.12    0.49   93%  81% Tryget [non-empty] mbox
+    5.50    5.12   10.24    0.30   68%  28% Peek item [empty] mbox
+    5.76    5.44   10.88    0.32   96%  96% Tryget [empty] mbox
+    0.50    0.32    1.60    0.19   96%  53% Waiting to get mbox
+    0.50    0.32    1.60    0.19   96%  53% Waiting to put mbox
+    7.45    7.04   15.04    0.49   96%  93% Delete mbox
+   37.47   36.80   48.64    0.70   96%  96% Put/Get mbox
+
+    2.49    2.24    6.08    0.28   96%  56% Init semaphore
+    5.09    4.80    8.64    0.27   46%  46% Post [0] semaphore
+    6.25    5.76   10.88    0.32   93%   3% Wait [1] semaphore
+    4.84    4.48    8.32    0.23   68%  25% Trywait [0] semaphore
+    4.98    4.80    8.00    0.26   96%  71% Trywait [1] semaphore
+    1.66    1.28    3.84    0.20   68%  15% Peek semaphore
+    1.24    0.96    3.20    0.17   65%  31% Destroy semaphore
+   40.74   40.32   49.28    0.53   96%  96% Post/Wait semaphore
+
+    2.65    2.24    6.08    0.23   84%   9% Create counter
+    0.85    0.64    2.24    0.22   90%  53% Get counter value
+    0.68    0.64    1.92    0.08   96%  96% Set counter value
+    7.13    6.72    8.64    0.24   78%  18% Tick counter
+    1.30    0.96    3.20    0.12   84%  12% Delete counter
+
+    3.69    3.52    7.68    0.29   96%  84% Create alarm
+    8.98    8.32   17.60    0.61   68%  62% Initialize alarm
+    0.96    0.64    2.88    0.14   71%  21% Disable alarm
+    8.76    8.32   17.60    0.59   96%  87% Enable alarm
+    1.99    1.60    5.12    0.21   81%  12% Delete alarm
+    7.44    7.36    9.92    0.15   96%  96% Tick counter [1 alarm]
+   21.68   21.44   24.64    0.25   96%  53% Tick counter [many alarms]
+   10.95   10.56   15.04    0.26   78%  18% Tick &#38; fire counter [1 alarm]
+  132.79  132.48  136.32    0.23   59%  37% Tick &#38; fire counters [&#62;1 together]
+   25.18   24.96   28.80    0.29   96%  65% Tick &#38; fire counters [&#62;1 separately]
+   23.06   22.72   47.36    0.40   98%  98% Alarm latency [0 threads]
+   31.53   27.20   56.00    0.63   96%   0% Alarm latency [2 threads]
+   36.86   30.40   58.88    4.15   50%  28% Alarm latency [many threads]
+
+   11.41    8.96   16.32    0.00            Clock/interrupt latency
+
+  609     603     651  (main stack:  1059)  Thread stack used (1704 total)
+All done, main stack            : stack used  1059 size  5664
+All done             :  Interrupt stack used   251 size  4096
+All done             : Idlethread stack used   587 size  2048
+
+Timing complete - 23690 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;
+
+
+Board: Hitachi EDK7708
+CPU  : Hitachi SH3/7708 60MHz
+-----------------------------
+Startup, main stack             : stack used   444 size  4112
+Startup              :  Interrupt stack used    76 size  4096
+Startup              : Idlethread stack used    96 size  2048
+
+eCos Kernel Timings
+Notes: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 2 'ticks' overhead
+... this value will be factored out of all other measurements
+Clock interrupt took   14.75 microseconds (55 raw clock ticks)
+
+Testing parameters:
+   Clock samples:          32
+   Threads:                16
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   15.43   13.60   24.00    1.29   62%  50% Create thread
+    3.33    3.20    4.27    0.18   93%  68% Yield thread [all suspended]
+    2.90    2.40    5.33    0.36   81%  62% Suspend [suspended] thread
+    2.93    2.67    4.80    0.27   93%  87% Resume thread
+    4.30    3.73   10.13    0.73   93%  93% Set priority
+    0.65    0.27    2.13    0.28   68%  62% Get priority
+    9.72    8.53   21.33    1.45   93%  93% Kill [suspended] thread
+    3.33    3.20    4.53    0.20   93%  75% Yield [no other] thread
+    5.30    4.80   10.13    0.65   93%  87% Resume [suspended low prio] thread
+    2.80    2.40    4.53    0.27   81%  75% Resume [runnable low prio] thread
+    4.82    4.00    8.27    0.49   68%  25% Suspend [runnable] thread
+    3.32    3.20    4.00    0.16   93%  68% Yield [only low prio] thread
+    2.82    2.40    4.27    0.25   81%  12% Suspend [runnable-&#62;not runnable]
+    9.45    8.53   19.47    1.25   93%  93% Kill [runnable] thread
+    5.30    4.53   11.20    0.74   87%  93% Destroy [dead] thread
+   11.83   10.67   25.07    1.65   93%  93% Destroy [runnable] thread
+   19.53   17.33   31.20    1.88   75%  75% Resume [high priority] thread
+    6.70    6.67   11.47    0.07   99%  99% Thread switch
+
+    0.33    0.27    0.80    0.10   75%  75% Scheduler lock
+    1.74    1.60    2.67    0.14   99%  50% Scheduler unlock [0 threads]
+    1.72    1.60    3.20    0.14   99%  57% Scheduler unlock [1 suspended]
+    1.81    1.60    3.20    0.10   75%  23% Scheduler unlock [many suspended]
+    1.86    1.60    3.20    0.02   94%   4% Scheduler unlock [many low prio]
+
+    1.22    1.07    3.20    0.20   96%  65% Init mutex
+    3.21    2.93    5.87    0.17   68%  28% Lock [unlocked] mutex
+    3.36    2.93    7.47    0.30   84%  75% Unlock [locked] mutex
+    2.83    2.67    5.33    0.22   96%  65% Trylock [unlocked] mutex
+    2.53    2.40    2.93    0.14   96%  53% Trylock [locked] mutex
+    0.28    0.27    0.80    0.03   96%  96% Destroy mutex
+   20.09   19.73   23.20    0.23   84%  12% Unlock/Lock mutex
+
+    2.38    2.13    4.53    0.17   59%  34% Create mbox
+    0.45    0.27    1.33    0.15   56%  40% Peek [empty] mbox
+    3.70    3.20    7.20    0.29   84%  59% Put [first] mbox
+    0.45    0.27    0.80    0.13   62%  34% Peek [1 msg] mbox
+    3.67    3.20    5.60    0.23   81%   6% Put [second] mbox
+    0.42    0.27    0.53    0.13   59%  40% Peek [2 msgs] mbox
+    3.98    3.47    7.47    0.24   59%   9% Get [first] mbox
+    3.97    3.47    4.80    0.24   59%  12% Get [second] mbox
+    3.51    3.20    6.67    0.28   56%  78% Tryput [first] mbox
+    3.29    2.93    5.60    0.29   59%  65% Peek item [non-empty] mbox
+    4.06    3.47    7.20    0.26   68%   3% Tryget [non-empty] mbox
+    3.03    2.67    5.33    0.19   93%   3% Peek item [empty] mbox
+    3.36    3.20    4.80    0.18   96%  56% Tryget [empty] mbox
+    0.57    0.27    1.33    0.09   84%   3% Waiting to get mbox
+    0.52    0.27    1.07    0.11   62%  21% Waiting to put mbox
+    3.88    3.47    7.47    0.30   78%  65% Delete mbox
+   12.04   11.73   17.33    0.33   96%  96% Put/Get mbox
+
+    1.17    1.07    2.40    0.16   71%  71% Init semaphore
+    2.67    2.40    4.27    0.15   62%  25% Post [0] semaphore
+    3.00    2.67    4.53    0.17   65%  12% Wait [1] semaphore
+    2.54    2.40    4.80    0.20   96%  71% Trywait [0] semaphore
+    2.42    2.40    2.93    0.03   96%  96% Trywait [1] semaphore
+    0.79    0.53    2.13    0.15   59%  28% Peek semaphore
+    0.77    0.53    1.87    0.12   71%  25% Destroy semaphore
+   12.64   12.27   17.07    0.28   84%  96% Post/Wait semaphore
+
+    1.27    1.07    2.93    0.17   53%  43% Create counter
+    0.54    0.27    1.33    0.13   59%  21% Get counter value
+    0.47    0.27    1.60    0.17   46%  43% Set counter value
+    3.47    3.20    4.80    0.16   53%  28% Tick counter
+    0.80    0.53    2.13    0.13   62%  25% Delete counter
+
+    1.86    1.60    4.00    0.21   43%  40% Create alarm
+    5.12    4.80    9.07    0.36   93%  75% Initialize alarm
+    0.44    0.27    1.33    0.19   87%  53% Disable alarm
+    4.77    4.27    9.60    0.35   87%  62% Enable alarm
+    1.02    0.80    2.67    0.18   53%  40% Delete alarm
+    3.56    3.47    5.33    0.15   84%  84% Tick counter [1 alarm]
+   15.04   14.93   16.27    0.16   71%  71% Tick counter [many alarms]
+    5.75    5.60    8.00    0.21   96%  68% Tick &#38; fire counter [1 alarm]
+   79.60   79.47   81.07    0.17   96%  65% Tick &#38; fire counters [&#62;1 together]
+   17.04   16.80   18.93    0.15   65%  31% Tick &#38; fire counters [&#62;1 separately]
+   12.44   12.27   29.60    0.31   96%  96% Alarm latency [0 threads]
+   14.06   12.27   27.20    0.53   82%   4% Alarm latency [2 threads]
+   19.62   17.07   38.40    1.44   57%  34% Alarm latency [many threads]
+
+    2.79    2.40    6.13    0.00            Clock/interrupt latency
+
+  376     376     376  (main stack:   764)  Thread stack used (992 total)
+All done, main stack            : stack used   764 size  4112
+All done             :  Interrupt stack used   176 size  4096
+All done             : Idlethread stack used   352 size  2048
+
+Timing complete - 23860 ms total
+
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62; </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="measured-items.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Measured items</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="real-time-characterization.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

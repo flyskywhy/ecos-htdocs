@@ -1,0 +1,503 @@
+<HTML
+><HEAD
+><TITLE
+>Interrupt
+handling</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Exception handling"
+HREF="exception-handling.html"><LINK
+REL="NEXT"
+TITLE="Counters, clocks
+and alarms"
+HREF="counters-clocks-and-alarms.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="exception-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTERRUPT-HANDLING"
+>Interrupt
+handling</A
+></H1
+><P
+>Interrupt handling is by nature machine-specific. The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel
+aims to provide efficiency and flexibility in this area, while maintaining
+a very low interrupt latency. To allow the programmer direct access
+to hardware, the semantics and the interface can vary from one architecture
+to another.</P
+><P
+>The interrupt vectors for a given architecture are defined
+in <TT
+CLASS="FILENAME"
+>hal/ARCH/arch/v1_2_9/include/hal_intr.h</TT
+> where
+also special semantics and caveats of the interrupt capabilities
+would be described.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_VSR_t();
+typedef cyg_uint32 cyg_ISR_t(cyg_vector_t vector,
+ cyg_addrword_t data);
+typedef void cyg_DSR_t(cyg_vector_t vector,
+ cyg_ucount32 count,
+ cyg_addrword_t data);
+
+enum cyg_ISR_results
+{
+ CYG_ISR_HANDLED = 1, /* Interrupt was handled */
+ CYG_ISR_CALL_DSR = 2 /* Schedule DSR */
+}; </PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_create</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_priority_t <VAR
+CLASS="PDPARAM"
+>priority</VAR
+>, cyg_addrword_t <VAR
+CLASS="PDPARAM"
+>data</VAR
+>, cyg_ISR_t *<VAR
+CLASS="PDPARAM"
+>isr</VAR
+>, cyg_DSR_t *<VAR
+CLASS="PDPARAM"
+>dsr</VAR
+>, cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_interrupt *<VAR
+CLASS="PDPARAM"
+>intr</VAR
+>);<P
+></P
+></DIV
+><P
+>Creates an interrupt object and returns a handle to it. The
+object contains information about which interrupt <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+> to
+use and the ISR and DSR that will be called after the interrupt
+object is attached. The interrupt object will be allocated in the
+memory passed in the <TT
+CLASS="PARAMETER"
+><I
+>intr</I
+></TT
+> parameter. The
+interrupt object is not immediately attached; it must be attached
+with the <TT
+CLASS="FUNCTION"
+><B
+>cyg_interrupt_attach()</B
+></TT
+> call.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_delete</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>Detaches the <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+> from the vector
+and frees the corresponding memory.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_attach</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>Attaches <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_detach</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>Detaches <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_get_vsr</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_VSR_t **<VAR
+CLASS="PDPARAM"
+>vsr</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns a pointer to the VSR currently installed on <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_set_vsr</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_VSR_t *<VAR
+CLASS="PDPARAM"
+>vsr</VAR
+>);<P
+></P
+></DIV
+><P
+>Sets the current VSR on <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>. A VSR
+directly attaches to the hardware interrupt vector and needs to
+be written in assembler.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_disable</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Disables all interrupts.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_enable</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Enables all interrupts.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_mask</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>Programs the interrupt controller to stop delivery of interrupts
+on <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>. On some architectures this will
+also disable all lower priority interrupts while on others they
+remain enabled. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_unmask</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>Programs the interrupt controller to allow delivery of interrupts
+on the given interrupt <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_acknowledge</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>Should be used from inside an ISR to acknowledge receipt of
+the interrupt. The interrupt must be acknowledged. If an interrupt
+is not acknowledged, the interrupt may trigger immediately after
+the ISR returns, causing the ISR to be called again in a loop. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_interrupt_configure</B
+></CODE
+>(cyg_vector_t <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_bool_t <VAR
+CLASS="PDPARAM"
+>level</VAR
+>, cyg_bool_t <VAR
+CLASS="PDPARAM"
+>up</VAR
+>);<P
+></P
+></DIV
+><P
+>On some interrupt controllers the way an interrupt is detected
+may be configured. The <TT
+CLASS="PARAMETER"
+><I
+>level</I
+></TT
+> parameter chooses
+between level- or edge-triggered interrupts. The <TT
+CLASS="PARAMETER"
+><I
+>up</I
+></TT
+> parameter
+chooses between high and low level for level triggered interrupts
+or rising and falling edges for edge triggered interrupts. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="exception-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Exception handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Counters, clocks
+and alarms</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

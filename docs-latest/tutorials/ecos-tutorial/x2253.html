@@ -1,0 +1,199 @@
+<HTML
+><HEAD
+><TITLE
+>Cirrus
+Logic ARM CL-PS7111 Evaluation Board Hardware Setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="Cirrus
+Logic ARM EDB7211 Evaluation Board Hardware Setup"
+HREF="babcfadd.html"><LINK
+REL="NEXT"
+TITLE="VR4300 hardware setup"
+HREF="x2275.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="babcfadd.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x2275.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN2253"
+>Cirrus
+Logic ARM CL-PS7111 Evaluation Board Hardware Setup</A
+></H1
+><P
+>The implementation of the port of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> to
+the Cirrus Logic ARM CL-PS7111 Evaluation Board (also known as EB7111)
+is based on the EDB7211 port.</P
+><P
+>For that reason, the setup required is identical to the EDB7211
+as described above, with the following exceptions:</P
+><P
+></P
+><UL
+><LI
+><P
+>The Cygmon ROM monitor is not supported</P
+></LI
+><LI
+><P
+>The ARM Multi-ICE is not supported</P
+></LI
+><LI
+><P
+>Prebuilt GDB stubs are provided in the directory
+loaders\arm-eb7111 relative to the root of your <SPAN
+CLASS="PRODUCTNAME"
+>GDB</SPAN
+> installation</P
+></LI
+><LI
+><P
+>If rebuilding the GDB stub ROM, in step 3 the STUBS_config
+script should be invoked as (all on one line):
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>sh &#60;BASE_DIR&#62;/packages/hal/arm/cl7211/v1_2_9/misc/STUBS_config &#60;BASEDIR&#62;</PRE
+></TD
+></TR
+></TABLE
+></P
+></LI
+><LI
+><P
+>All remote serial communication is done with the
+serial I/O connector labelled "Serial Port 1"</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="babcfadd.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x2275.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Cirrus
+Logic ARM EDB7211 Evaluation Board Hardware Setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>VR4300 hardware setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

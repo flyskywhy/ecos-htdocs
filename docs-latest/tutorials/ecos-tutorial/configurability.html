@@ -1,0 +1,226 @@
+<HTML
+><HEAD
+><TITLE
+>Configurability</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Overview of the release"
+HREF="overview-of-the-release.html"><LINK
+REL="PREVIOUS"
+TITLE="Real-time kernel"
+HREF="real-time-kernel.html"><LINK
+REL="NEXT"
+TITLE="ITRON and
+other operating systems"
+HREF="other-operating-systems.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="real-time-kernel.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Overview of the release</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="other-operating-systems.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CONFIGURABILITY"
+>Configurability</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel and other components
+can be configured in great detail at <I
+CLASS="EMPHASIS"
+>compile time</I
+>,
+which means that no unwanted code makes its way into the library
+to be linked with the user&#8217;s application code, and there
+is no performance penalty for configuration. </P
+><P
+>Configuration is <I
+CLASS="FIRSTTERM"
+>fine-grained</I
+>, meaning
+that very small details of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>&#8217;s
+behavior can be tuned by selecting configuration options. </P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is organized into a component
+architecture, with a language to describe the constraints between
+components and individual configuration options. These constraints
+are necessary to resolve inconsistent configurations, such as a
+user disabling the code which handles the real-time clock, while
+enabling per-thread timers.</P
+><P
+>The designer of a component or general-purpose library should
+write configurable code using a <I
+CLASS="FIRSTTERM"
+>component definition
+language</I
+> (<SPAN
+CLASS="ACRONYM"
+>CDL</SPAN
+>), but once that is
+done there is no burden on the end user (an embedded systems programmer)
+who can use <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>&#8217;s graphical 
+<SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> to configure the kernel
+and basic libraries, and does not need to understand how the configuration
+infrastructure works.</P
+><P
+>A tutorial on how to configure <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+located in <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 12</A
+>. The <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> User&#8217;s
+Guide</I
+> has complete information on running the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+>. The <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Reference Manual</I
+> documents
+every package, component, and configuration option that is part
+of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="real-time-kernel.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="other-operating-systems.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Real-time kernel</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="overview-of-the-release.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>µITRON and
+other operating systems</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,183 @@
+<HTML
+><HEAD
+><TITLE
+>General principles</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The eCos Hardware Abstraction
+Layer (HAL)"
+HREF="the-ecos-hardware-abstraction-layer-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="The eCos Hardware Abstraction
+Layer (HAL)"
+HREF="the-ecos-hardware-abstraction-layer-hal.html"><LINK
+REL="NEXT"
+TITLE="Architectural HAL files"
+HREF="architectural-hal-files.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Hardware Abstraction
+Layer (HAL)</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="architectural-hal-files.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="GENERAL-PRINCIPLES"
+>General principles</A
+></H1
+><P
+>The HAL has been implemented according to the following general
+principles:</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>The HAL is implemented in C and assembler,
+although the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel is largely implemented
+in C++. This is to permit the HAL the widest possible applicability.</P
+></LI
+><LI
+><P
+>All interfaces to the HAL are implemented by CPP
+macros. This allows them to be implemented as inline C code, inline
+assembler or function calls to external C or assembler code. This
+allows the most efficient implementation to be selected without
+affecting the interface. It also allows them to be redefined if
+the platform HAL needs to replace or enhance a definition from the
+architecture HAL.</P
+></LI
+><LI
+><P
+>The HAL provides simple, portable mechanisms for
+dealing with the hardware of a wide range of architectures and platforms.
+It is always possible to bypass the HAL and program the hardware
+directly, but this may lead to a loss of portability. </P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="architectural-hal-files.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Hardware Abstraction
+Layer (HAL)</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Architectural HAL files</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

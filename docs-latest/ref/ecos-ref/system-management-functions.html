@@ -1,0 +1,254 @@
+<HTML
+><HEAD
+><TITLE
+>System Management Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="ITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Time Management Functions"
+HREF="time-management-functions.html"><LINK
+REL="NEXT"
+TITLE="Network Support Functions"
+HREF="network-support-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="time-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="network-support-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SYSTEM-MANAGEMENT-FUNCTIONS"
+>System Management Functions</A
+></H1
+><P
+>These functions are fully supported in this release: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_ver</B
+></CODE
+>(T_VER *<VAR
+CLASS="PDPARAM"
+>pk_ver</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_sys</B
+></CODE
+>(T_RSYS *<VAR
+CLASS="PDPARAM"
+>pk_rsys</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_cfg</B
+></CODE
+>(T_RCFG *<VAR
+CLASS="PDPARAM"
+>pk_rcfg</VAR
+>);<P
+></P
+></DIV
+><P
+>Note that the information returned by each of these calls
+may be configured to match the user's own versioning system,
+and the values supplied by the default configuration may be inappropriate. </P
+><P
+>These functions are not supported in this release: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>def_svc</B
+></CODE
+>(FN <VAR
+CLASS="PDPARAM"
+>s_fncd</VAR
+>, T_DSVC *<VAR
+CLASS="PDPARAM"
+>pk_dsvc</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>def_exc</B
+></CODE
+>(UINT <VAR
+CLASS="PDPARAM"
+>exckind</VAR
+>, T_DEXC *<VAR
+CLASS="PDPARAM"
+>pk_dexc</VAR
+>);<P
+></P
+></DIV
+><H2
+CLASS="BRIDGEHEAD"
+>Error checking</H2
+><P
+>The following conditions are only checked for, and only return
+errors if <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_UITRON_BAD_PARAMS_RETURN_ERRORS</I
+></TT
+> is
+enabled: </P
+><P
+></P
+><UL
+><LI
+><P
+>return value pointer in all calls
+is a valid pointer, or E_PAR</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="time-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="network-support-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Time Management Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Network Support Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

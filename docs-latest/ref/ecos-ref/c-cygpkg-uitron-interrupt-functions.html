@@ -1,0 +1,216 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Interrupt-safe functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos uITRON compatibility layer"
+HREF="p-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Cyclic handlers"
+HREF="c-cygpkg-uitron-cyclics.html"><LINK
+REL="NEXT"
+TITLE="Component: Version information"
+HREF="c-cygpkg-uitron-version.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-uitron-cyclics.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 19. Package: eCos uITRON compatibility layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-uitron-version.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-UITRON-INTERRUPT-FUNCTIONS"
+>Component: Interrupt-safe functions</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_INTERRUPT_FUNCTIONS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The uITRON system provides some functions which may safely be used
+within interrupt handlers. In eCos, this means within ISRs, providing
+that the corresponding DSR is associated with that interrupt. These
+functions are typically named ixxx_yyy(), according to the uITRON
+specification, for example isig_sem() corresponds to normal function
+sig_sem().
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-UITRON-ISRFUNCS-TRY-IMMEDIATE-EXECUTION"
+>Option: Execute in ISR if safe</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_UITRON_ISRFUNCS_TRY_IMMEDIATE_EXECUTION</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>These functions of necessity maintain a queue of operations requested
+for deferred execution. However, during an interrupt, it may be safe
+to perform scheduling operations. If this option is set, the interrupt-safe
+functions will have effect there and then if it is indeed safe, rather
+than queueing a request to perform the operation in the DSR.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-UITRON-ISR-ACTION-QUEUESIZE"
+>Option: Deferred operation queue size</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_ISR_ACTION_QUEUESIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>These functions of necessity maintain a queue of operations requested
+for deferred execution. This option controls the queue size. It must
+be a power of two for implementation reasons.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-uitron-cyclics.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-uitron-version.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Cyclic handlers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Version information</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

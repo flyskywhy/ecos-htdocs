@@ -1,0 +1,538 @@
+<HTML
+><HEAD
+><TITLE
+>Package: SPARClite architecture</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos HAL"
+HREF="p-cygpkg-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: PowerPC architecture"
+HREF="p-cygpkg-hal-powerpc.html"><LINK
+REL="NEXT"
+TITLE="Package: Infrastructure"
+HREF="p-cygpkg-infra.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-hal-powerpc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Package: eCos HAL</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-infra.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE"
+>Package: SPARClite architecture</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The SPARClite architecture HAL package provides generic support for
+this processor architecture. It is also necessary to select a specific
+target platform HAL package.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE-SLEB"
+>Package: SPARClite MB8683x evaluation board</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE_SLEB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The SPARClite evaluation board HAL package is provided for use with
+the Fujitsu MB8683x boards.
+      </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGHWR-HAL-SPARCLITE-SLEB-STARTUP"
+>Option: Startup type</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGHWR_HAL_SPARCLITE_SLEB_STARTUP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When targetting the SPARClite Evaluation Board it is possible to build
+the system for either RAM bootstrap or ROM bootstrap. The former generally
+requires that the board is equipped with ROMs containing the Cygmon
+ROM monitor or equivalent software that allows gdb to download the
+eCos application on to the board. The latter typically requires that
+the eCos application be blown into EPROMs or equivalent technology.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGHWR-HAL-SPARCLITE-MULTIPLE-VECTOR-TRAPPING"
+>Option: Multiple Vector Trapping (MVT)</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGHWR_HAL_SPARCLITE_MULTIPLE_VECTOR_TRAPPING</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Use Multiple Vector Trapping (MVT) rather than Single Vector Trapping
+(SVT); SVT is a feature of SPARClite CPUs which saves code RAM at
+a cost of perhaps slower interrupt and trap dispatch time, depending
+on cache behavior. This includes speed of handling register window
+underflow and overflow, a feature of deep function call stacks on
+SPARC. MVT requires 4kB of code space for trap vectors; in contrast
+SVT uses fewer than 20 instructions for trap decoding.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-HAL-SPARCLITE-COPY-VECTORS-TO-RAM"
+>Option: Copy vectors to RAM</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_HAL_SPARCLITE_COPY_VECTORS_TO_RAM</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Copy the vectors and trap code out of the executable image to separate
+RAM. With ROM startup, performance might be gained by copying the
+vectors into RAM; this includes the code for handling register window
+under/overflow. Enable this with RAM startup to simulate the code
+and data sizes of an eventual ROM image. Note: if MVT is not selected
+with ROM start, the trap code (including register window handling)
+is copied to RAM regardless; that code is small.
+      </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB"
+>Component: SPARClite SLEB serial device drivers</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the SPARClite SLEB.
+      </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB-CON1"
+>Component: SPARClite SLEB serial CON1 port driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB_CON1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the SPARClite SLEB
+CON1 port.
+      </P
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGDAT-IO-SERIAL-SPARCLITE-SLEB-CON1-NAME"
+>Option: Device name for SPARClite SLEB serial CON1 port</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_SPARCLITE_SLEB_CON1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the SPARClite SLEB CON1
+port.
+      </P
+></DIV
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON1-BAUD"
+>Option: Baud rate for the SPARClite SLEB serial CON1 driver</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the SPARClite
+SLEB CON1.
+      </P
+></DIV
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON1-BUFSIZE"
+>Option: Buffer size for the SPARClite SLEB serial CON1 driver</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used for the
+SPARClite SLEB CON1.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB-CON2"
+>Component: SPARClite SLEB serial CON2 port driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB_CON2</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the SPARClite SLEB
+CON2 port.
+      </P
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGDAT-IO-SERIAL-SPARCLITE-SLEB-CON2-NAME"
+>Option: Device name for SPARClite SLEB serial CON2 port</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_SPARCLITE_SLEB_CON2_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the SPARClite SLEB CON2
+port.
+      </P
+></DIV
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON2-BAUD"
+>Option: Baud rate for the SPARClite SLEB serial CON2 driver</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON2_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the SPARClite
+SLEB CON2.
+      </P
+></DIV
+><DIV
+CLASS="SECT5"
+><H5
+CLASS="SECT5"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON2-BUFSIZE"
+>Option: Buffer size for the SPARClite SLEB serial CON2 driver</A
+></H5
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON2_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used for the
+SPARClite SLEB CON2.
+      </P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE-SIM"
+>Package: Minimal simulator</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE_SIM</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The minimal simulator HAL package is provided for when only a simple
+simulation of the processor architecture is desired, as opposed to
+detailed simulation of any specific board. To use this minimal simulator
+the command `target sim -nfp -sparclite -dumbio' should be used from
+inside gdb. It is not possible to use any of the eCos device drivers
+when the simulator is running in this mode
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal-powerpc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-infra.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: PowerPC architecture</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: Infrastructure</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

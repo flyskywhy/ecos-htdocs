@@ -1,0 +1,358 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Thread-related options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="p-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Counters and clocks"
+HREF="c-cygpkg-kernel-counters.html"><LINK
+REL="NEXT"
+TITLE="Component: Synchronization primitives"
+HREF="c-cygpkg-kernel-synch.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-counters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-synch.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-KERNEL-THREADS"
+>Component: Thread-related options</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_THREADS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>There are a number of configuration options related to the implementation
+of threads, for example whether or not the eCos kernel supports per-thread
+data.
+      </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGFUN-KERNEL-THREADS-TIMER"
+>Option: Allow per-thread timers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGFUN_KERNEL_THREADS_TIMER</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether or not the kernel should support per-thread
+clock and alarm related functions. Also some of the synchronization
+primitives such as semaphore and condition variable timed wait operations
+require per-thread timer support. If none of these facilities are
+required then the option can be disabled.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-THREADS-NAME"
+>Option: Support optional name for each thread</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_THREADS_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Threads may optionally be supplied with a name string that is used
+to identify them during debugging. This name is only present if `this
+option is defined. Disabling it reduces both code and data size.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-THREADS-LIST"
+>Option: Keep track of all threads using a linked list</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_THREADS_LIST</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Threads may optionally be placed on a housekeeping list so that all
+threads may be located easily. This is useful mainly in conjunction
+with source-level debugging.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGFUN-KERNEL-THREADS-STACK-LIMIT"
+>Option: Keep track of the base of each thread's stack</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGFUN_KERNEL_THREADS_STACK_LIMIT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option makes the kernel keep track of the lower limit on each
+thread's stack. It allows the kernel to adjust the lower limit, thus
+making space for per-thread data. Note that it does not imply any
+form of run-time stack overflow checking.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGVAR-KERNEL-THREADS-DATA"
+>Option: Support for per-thread data</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_THREADS_DATA</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>It is possible for the kernel to support per-thread data, in other
+words an area of memory specific to each thread which can be used
+to store data for that thread. This per-thread data can be used by
+applications or by other packages such as the ISO C library.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-THREADS-DATA-MAX"
+>Option: Number of words of per-thread data</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_THREADS_DATA_MAX</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>It is possible for the kernel to support per-thread data, in other
+words an area of memory specific to each thread which can be used
+to store data for that thread. This per-thread data can be used by
+applications or by other packages such as the ISO C library. This
+configuration option controls the number of words of per-thread data
+that the kernel will allow.
+      </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-THREADS-IDLE-STACK-SIZE"
+>Option: Stack size for the idle thread</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_THREADS_IDLE_STACK_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This configuration option specifies the stack size in bytes for the
+idle thread. Unless the HAL is configured to use a separate interrupt
+stack this size must be sufficient to meet the requirements of all
+interrupt handlers - these requirements are cumulative if nested interrupted
+are enabled. Depending on the target architecture, the stack size
+typically has to be a multiple of eight or sixteen bytes. This will
+be overridden where it is used if the architectural HAL requires a
+minimum stack size to handle interrupts correctly.
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-counters.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-synch.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Counters and clocks</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Synchronization primitives</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

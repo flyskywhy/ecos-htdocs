@@ -1,0 +1,318 @@
+<HTML
+><HEAD
+><TITLE
+>Overview of the release</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release
+Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="Directory
+and file system conventions"
+HREF="directory-and-file-system-conventions.html"><LINK
+REL="NEXT"
+TITLE="Real-time kernel"
+HREF="real-time-kernel.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="directory-and-file-system-conventions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="real-time-kernel.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="OVERVIEW-OF-THE-RELEASE"
+>Chapter 2. Overview of the release</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="overview-of-the-release.html#HARDWARE-ABSTRACTION"
+>Hardware abstraction</A
+></DT
+><DT
+><A
+HREF="real-time-kernel.html"
+>Real-time kernel</A
+></DT
+><DT
+><A
+HREF="configurability.html"
+>Configurability</A
+></DT
+><DT
+><A
+HREF="other-operating-systems.html"
+>µITRON and
+other operating systems</A
+></DT
+><DT
+><A
+HREF="iso-c-library-1.html"
+>ISO C library</A
+></DT
+><DT
+><A
+HREF="serial-device-drivers.html"
+>Serial device drivers</A
+></DT
+><DT
+><A
+HREF="architectural-simulators.html"
+>Architectural simulators</A
+></DT
+><DT
+><A
+HREF="using-the-simulator.html"
+>Using the simulator</A
+></DT
+><DT
+><A
+HREF="rom-monitor-image.html"
+>ROM
+monitor image</A
+></DT
+><DT
+><A
+HREF="tests-and-examples.html"
+>Tests and examples</A
+></DT
+><DT
+><A
+HREF="x758.html"
+>GNU tools and their documentation</A
+></DT
+><DT
+><A
+HREF="ecos-documentation.html"
+>eCos documentation</A
+></DT
+></DL
+></DIV
+><P
+>The Embedded Cygnus Operating System (<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>)
+software is a set of tools and a run-time environment for developing
+embedded real-time applications. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+a configurable, open source system that allows developers to build
+a run-time system that closely matches the needs of their application. </P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is aimed at embedded software
+developers with tight memory requirements who want a portable framework
+for developing their applications.</P
+><P
+>This chapter outlines the features of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> version 1.2.9.
+If you want to start programming <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> immediately,
+see <A
+HREF="installation-guide.html"
+>Part II in <I
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></I
+></A
+> and <A
+HREF="programming-tutorial.html"
+>Part III in <I
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></I
+></A
+>. </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="HARDWARE-ABSTRACTION"
+>Hardware abstraction</A
+></H1
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> includes a <I
+CLASS="FIRSTTERM"
+>Hardware
+Abstraction Layer</I
+> (<SPAN
+CLASS="ACRONYM"
+>HAL</SPAN
+>) that hides
+the specific features of each CPU and platform so that the kernel
+and other run-time components can be implemented in a portable fashion. </P
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> HAL has now been ported
+to numerous architectures, and to one synthetic target, Linux i386.
+Notes on porting the HAL to new platforms are provided in the <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Reference
+Manual</I
+>, part <I
+CLASS="CITETITLE"
+>The eCos Hardware Abstraction
+Layer</I
+>, section <I
+CLASS="CITETITLE"
+>Kernel porting notes</I
+>. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="directory-and-file-system-conventions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="real-time-kernel.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Directory
+and file system conventions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Real-time kernel</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

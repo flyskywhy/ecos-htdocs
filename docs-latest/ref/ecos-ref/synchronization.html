@@ -1,0 +1,784 @@
+<HTML
+><HEAD
+><TITLE
+>Synchronization</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Counters, clocks
+and alarms"
+HREF="counters-clocks-and-alarms.html"><LINK
+REL="NEXT"
+TITLE="Memory pools"
+HREF="memory-pools.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="memory-pools.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SYNCHRONIZATION"
+>Synchronization</A
+></H1
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="SEMAPHORES"
+>Semaphores</A
+></H2
+><P
+>The semaphores
+defined by the type <SPAN
+CLASS="TYPE"
+>cyg_sem_t</SPAN
+> are
+counting semaphores. These objects are not referred to by handles,
+but rather by the pointer to the variable in which the semaphore
+is created.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_semaphore_init</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>, cyg_ucount32 <VAR
+CLASS="PDPARAM"
+>val</VAR
+>);<P
+></P
+></DIV
+><P
+>Initializes a semaphore. The initial semaphore count is set
+to <TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_semaphore_destroy</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>);<P
+></P
+></DIV
+><P
+>Destroys a semaphore. This must not be done while there are
+any threads waiting on it. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_semaphore_wait</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>);<P
+></P
+></DIV
+><P
+>If the semaphore count is zero, the current thread will wait
+on the semaphore. If the count is non-zero, it will be decremented
+and the thread will continue running. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_semaphore_trywait</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>);<P
+></P
+></DIV
+><P
+>A non-blocking version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_semaphore_wait()</B
+></TT
+>.
+This attempts to decrement the semaphore count. If the count is
+positive, then the semaphore is decremented and <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+> is
+returned. If the count is zero then the semaphore remains unchanged,
+and <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+> is returned, but the current thread
+continues to run. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_semaphore_timed_wait</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>abstime</VAR
+>);<P
+></P
+></DIV
+><P
+>A time-out version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_semaphore_wait()</B
+></TT
+>.
+This attempts to decrement the semaphore count. If the count is
+positive, then the semaphore is decremented and <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+> is
+returned. If the count is zero, it will wait for the semaphore to
+increment. If however the <TT
+CLASS="PARAMETER"
+><I
+>abstime</I
+></TT
+> time-out
+is reached first, it will return <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+> without changing
+state, and the current thread will continue to run.</P
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>cyg_semaphore_timed_wait()</B
+></TT
+> is only available
+if the configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_TIMER</I
+></TT
+> (<A
+HREF="c-cygpkg-kernel-threads.html#O-CYGFUN-KERNEL-THREADS-TIMER"
+>the section called <I
+>Option: Allow per-thread timers</I
+> in Chapter 18</A
+>)
+is set. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_semaphore_post</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>);<P
+></P
+></DIV
+><P
+>If there are threads waiting on this semaphore this will wake
+exactly one of them. Otherwise it simply increments the semaphore
+count.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_semaphore_peek</B
+></CODE
+>(cyg_sem_t *<VAR
+CLASS="PDPARAM"
+>sem</VAR
+>, cyg_ucount32 *<VAR
+CLASS="PDPARAM"
+>val</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns the current semaphore count in the variable pointed
+to by <TT
+CLASS="PARAMETER"
+><I
+>val</I
+></TT
+>. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="MUTEXES"
+>Mutexes</A
+></H2
+><P
+>Mutexes
+(mutual exclusion locks) are used in a similar way to semaphores.
+A mutex only has two states, locked and unlocked. Mutexes are used
+to protect accesses to shared data or resources. When a thread locks
+a mutex it becomes the owner. Only the mutex's owner may
+unlock it. While a mutex remains locked, the owner <I
+CLASS="EMPHASIS"
+>should
+not lock it again</I
+>, as the behavior is undefined and probably
+dangerous. </P
+><P
+>If non-owners try to lock the mutex, they will be suspended
+until the mutex is available again, at which point they will own
+the mutex. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mutex_init</B
+></CODE
+>(cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Initializes a mutex. It is initialized in the unlocked state. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mutex_destroy</B
+></CODE
+>(cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Destroys a mutex. A mutex should not be destroyed in the locked
+state, as the behavior is undefined. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mutex_lock</B
+></CODE
+>(cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Changes the nutex from the unlocked state to the locked state.
+When this happens the mutex becomes owned by the current thread.
+If the mutex is locked, the current thread will wait until the mutex
+becomes unlocked before performing this operation. The result of
+this function will be TRUE if the mutex has been locked, or FALSE
+if it has not. A FALSE result can result if the thread has been
+released from its wait by a call to <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_release()</B
+></TT
+> or <TT
+CLASS="FUNCTION"
+><B
+>cyg_mutex_release()</B
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mutex_unlock</B
+></CODE
+>(cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Changes the mutex from the locked state to the unlocked state.
+This function may only be called by the thread which locked the
+mutex, and should not be called on an unlocked mutex. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mutex_release</B
+></CODE
+>(cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Release all threads waiting on the mutex pointed to by the
+mutex argument. These threads will return from cyg_mutex_lock()
+with a FALSE result and will not have claimed the mutex. This function
+has no effect on any thread that may haev the mutex claimed.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CONDITION-VARIABLES"
+>Condition Variables</A
+></H2
+><P
+>Condition variables are a synchronization
+mechanism which (used with a mutex) grants several threads mutually
+exclusive access to shared data and to broadcast availability of
+that data to all the other threads.</P
+><P
+>A typical example of the use of condition variables is when
+one thread (the producer) is producing data and several other (consumer)
+threads are waiting for that data to be ready. The consumers will
+wait by invoking <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_wait()</B
+></TT
+>. The producer will
+lock access to the data with a mutex, and when it has generated
+enough data for the other processes to consume, it will invoke <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_broadcast()</B
+></TT
+> to
+wake up the consumers. The <I
+CLASS="CITETITLE"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></I
+> book
+has example programs which use condition variables to implement
+a simple message passing system between threads. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_cond_init</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>, cyg_mutex_t *<VAR
+CLASS="PDPARAM"
+>mutex</VAR
+>);<P
+></P
+></DIV
+><P
+>Initializes the condition variable. A condition variable is
+attached to a specific mutex. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_cond_destroy</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>);<P
+></P
+></DIV
+><P
+>Destroys the condition variable <TT
+CLASS="PARAMETER"
+><I
+>cond</I
+></TT
+>.
+This must not be done on a condition variable which is in use. After
+it has been destroyed, it may be subsequently reinitialized. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_cond_wait</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>);<P
+></P
+></DIV
+><P
+>Causes the current thread to wait on the condition variable,
+while simultaneously unlocking the corresponding mutex. <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_wait()</B
+></TT
+> may
+be called by a thread which has the corresponding mutex locked.</P
+><P
+>The thread can only be awakened by a call to <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_signal()</B
+></TT
+> or <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_broadcast()</B
+></TT
+> on
+the same condition variable. When the thread is awakened, the mutex
+will be reclaimed before this function proceeds. Since it may have
+to wait for this, <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_wait()</B
+></TT
+> should only
+be used in a loop since the condition may become false in the meantime.
+This is shown in the following example: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;extern cyg_mutex_t mutex;
+extern cyg_cond_t cond;
+
+cyg_mutex_lock( &#38;mutex );
+...
+
+while( condition_not_true )
+{
+ cyg_cond_wait( &#38;cond );
+}
+
+...
+
+cyg_mutex_unlock( &#38;mutex );</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_cond_timed_wait</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>abstime</VAR
+>);<P
+></P
+></DIV
+><P
+>A time-out version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_wait()</B
+></TT
+> which
+waits for a signal or broadcast. If a signal or broadcast is received
+it returns <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+>, but if one is not received
+by <TT
+CLASS="PARAMETER"
+><I
+>abstime</I
+></TT
+>, it returns <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+>.</P
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_timed_wait()</B
+></TT
+> is only available
+if the configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGMFN_KERNEL_SYNCH_CONDVAR_TIMED_WAIT</I
+></TT
+> (<A
+HREF="c-cygpkg-kernel-synch.html#O-CYGMFN-KERNEL-SYNCH-CONDVAR-TIMED-WAIT"
+>the section called <I
+>Option: Condition variable timed-wait support</I
+> in Chapter 18</A
+>) is set. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_cond_signal</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>);<P
+></P
+></DIV
+><P
+>Wakes up at least one thread which is waiting on the condition
+variable. When a thread is awakened it will become the owner of
+the mutex. <TT
+CLASS="FUNCTION"
+><B
+>cyg_cond_signal()</B
+></TT
+> may be called
+by the thread which currently owns the mutex to which the condition variable
+is attached. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_cond_broadcast</B
+></CODE
+>(cyg_cond_t *<VAR
+CLASS="PDPARAM"
+>cond</VAR
+>);<P
+></P
+></DIV
+><P
+>Wakes <I
+CLASS="EMPHASIS"
+>all</I
+> the threads waiting on the
+condition variable. Each time a thread is awakened it will become
+the current owner of the mutex. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="memory-pools.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Counters, clocks
+and alarms</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Memory pools</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

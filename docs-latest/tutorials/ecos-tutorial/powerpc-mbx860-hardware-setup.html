@@ -1,0 +1,178 @@
+<HTML
+><HEAD
+><TITLE
+>PowerPC MBX860 hardware setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="Getting Started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware
+setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="PowerPC Cogent hardware setup"
+HREF="powerpc-cogent-hardware-setup.html"><LINK
+REL="NEXT"
+TITLE="SPARClite hardware setup"
+HREF="sparclite-hardware-setup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="powerpc-cogent-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Hardware
+setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="sparclite-hardware-setup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="POWERPC-MBX860-HARDWARE-SETUP"
+>PowerPC MBX860 hardware setup</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer&#8217;s Kit
+package comes with an EPROM which provides <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> support
+for the Motorola PowerPC MBX860 evaluation board. An image of this EPROM
+is also provided at <TT
+CLASS="FILENAME"
+>loaders/powerpc-mbx/gdbload.bin</TT
+> under
+the root of your <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> installation.</P
+><P
+>The EPROM is installed to socket XU1 on the board. Attention
+should be paid to the correct orientation of the EPROM during installation.
+Only replace the board"s existing ROM using a proper PLCC
+extraction tool, as the socket would otherwise risk getting damaged.</P
+><P
+>The GDB stub in the EPROM allows communication with GDB using
+the serial port at connector SMC1/COM1. The communication
+parameters are fixed at 38400 baud, 8 data bits, no parity bit and
+1 stop bit (8-N-1). No flow control is employed. Connection to the
+host computer should be made using a suitable serial cable.</P
+><P
+>In order to make the board execute the EPROM that you just
+installed (rather than the on-board FLASH memory), it may be necessary
+move some links on the board. Specifically, ensure that link J4
+is in position 1-2. If in doubt, refer to the MBX documentation
+from Motorola, ensuring that Boot Port Size=8 Bits/ROM
+for BOOT (CS#7), in their terminology.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="powerpc-cogent-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="sparclite-hardware-setup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>PowerPC Cogent hardware setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>SPARClite hardware setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
