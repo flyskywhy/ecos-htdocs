@@ -36,7 +36,7 @@ This page details the steps required to download and build these development too
 <h4>GNU Binary Utilities</h4>
 
 <p>It is recommended that eCos is used with the most recent official
-release of the GNU Binary Utilities (binutils), currently version 2.10.
+release of the GNU Binary Utilities (binutils), currently version 2.10.1.
 This is available from the binutils area of the
 <a href="http://www.gnu.org/order/ftp.html">main GNU software download site</a>
 or any of its mirror sites. It is also available at any of the
@@ -112,6 +112,11 @@ distributions are required (prefix <tt>egcs-core-</tt> and <tt>egcs-g++-</tt>).<
 
 }
 
+Note that the instructions for building GCC here are only intended for use
+with eCos. In any other environment, the tools may not function correctly.
+Refer to the <a href="http://www.objsw.com/CrossGCC/">CrossGCC FAQ</a>
+for details about building a standalone version of GCC.<p>
+
 It is strongly recommended you use a <a href="http://gcc.gnu.org/mirrors.html">mirror site</a>
 close to you, which will result in a faster download, reduced internet congestion, and
 reduced load on the central server.<p>
@@ -175,7 +180,7 @@ build system:
 <li>Extract the sources for each tool directory in turn. For <i>bzip2</i> archives:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-2.10.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-2.10.1.tar.bz2 | tar xvf -<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; gcc-core-2.95.2.tar.bz2 | tar xvf -<br>
@@ -193,7 +198,7 @@ ${GZIP+
 <p>For <i>gzip</i> archives:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; binutils-2.10.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; binutils-2.10.1.tar.gz | tar xvf -<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; gcc-core-2.95.2.tar.gz | tar xvf -<br>
@@ -210,7 +215,7 @@ ${GCCSNAP+
 <p>
 The following directories should be generated and populated during the extraction process:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10.1<br>
 ${GCCSNAP-
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2<br>
 }
@@ -370,7 +375,7 @@ installed to <tt>/tools</tt>. Other locations may be substituted throughout:
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/binutils<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/binutils<br>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10/configure --target=$TOOLPREFIX \\<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-2.10.1/configure --target=$TOOLPREFIX \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-$HOSTPREFIX \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
@@ -672,7 +677,7 @@ EXTRAPATCH='
 Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-2.10<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-2.10.1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-binutils-tx39name.pat | patch -p0
 </tt></nobr><p>
 '
@@ -700,7 +705,7 @@ EXTRAPATCH='
 Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-2.10</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-2.10.1</i><br>
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-binutils-tx39name.pat
 </tt></nobr><p>
 '
