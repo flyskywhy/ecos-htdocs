@@ -1,19 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <title>RedBoot</title>
-    <meta content="">
     <META NAME="description" CONTENT="Information concerning the RedBoot embedded system boot monitor and debug firmware.">
     <META NAME="keywords" CONTENT="RedBoot, bootstrap, firmware, debug, linux, eCos, operating system, Red Hat, RedHat, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time, RTOS">
-    <style></style>
   </head>
-  <frameset cols="20%,*">
-    <frame name="Sidebar" src="/ecos/sidebar.html">
-    <frameset rows="100,*">
-      <frame name="Topbar" src="/ecos/topbar.html" scrolling=no>
-      <frame name="MainText" src="home.html">
-    </frameset>
-  </frameset>
-  <noframes>
-    <!--#include virtual=home.html -->
-  </noframes>
-</html>
+
+<!--#include virtual="/ecos/include/header.html"-->
+
+    <h1><img src="title_redboot.gif" alt="RedBoot"></h1>
+    
+    <hr noshade size=3>
+    <h2>News</h2>
+    <table width=100% cellpadding=5>
+    <tr>
+      <td width=15% valign=top><i>April 6, 2001</i></td>
+      <td>Try out RedBoot, eCos and Embedded Linux on the Compaq iPAQ PocketPC! Click <a href="ipaq/">here</a> for more...</td>
+    </tr>
+    <tr>
+      <td width=15% valign=top><i>November 14, 2000</i></td>
+      <td>RedBoot <a href="http://noframes.linuxjournal.com/advertising/Press/2000ec_winners.html" target="_top">
+      wins the "Best Real-Time Tool" category</a> in the 
+      <a href="http://www.linuxjournal.com/" target="_top">Linux Journal</a>
+      Magazine Third Annual Editors' Choice Awards.</td>
+    </tr>
+  </table>
+    <h2>Overview</h2>
+    
+    <p>
+      RedBoot, the <b>R</b>ed Hat <b>E</b>mbedded <b>D</b>ebug
+      and <b>Boot</b>strap firmware, is a complete bootstrap environment
+      for embedded systems. Based on Red Hat's <a href="/ecos/">eCos RTOS</a>
+      Hardware Abstraction Layer, RedBoot inherits eCos' qualities of
+      reliability, compactness, configurability, and portability. 
+    </p>
+    <p>
+      RedBoot allows download and execution of embedded applications
+      via serial or ethernet, including embedded Linux and eCos applications.
+      It can be used for both product development (debug support) and
+      in deplayed products in the field (Flash update and network
+      booting).
+    </p>
+    <p>
+      Ethernet download and debug support is included, allowing
+      RedBoot to retrieve its IP parameters via BOOTP or DHCP, and
+      program images to be downloaded using TFTP. Images can also be
+      downloaded over serial, using X- or Y-modem.
+    </p>
+    <p>
+      RedBoot can be used to communicate with GDB (the GNU Debugger)
+      to debug applications via serial or ethernet, including the
+      ability to interrupt a running application started by GDB.
+    </p>
+    <p>
+      An interactive command-line interface is provided to allow management
+      of the Flash images, image download, RedBoot configuration, etc.,
+      accessible via serial or ethernet. For unattended or automated
+      startup, boot scripts can be stored in Flash allowing for example
+      loading of images from Flash or a TFTP server.
+    </p>
+    <p>
+      As an open source company, Red Hat has made all sources and
+      documentation for RedBoot, and the eCos operating system on which it
+      is based, freely available without license or royalties.
+    </p>
+    <p>
+      For more details about the RedBoot product, please visit the
+      <a href="http://www.redhat.com/embedded/technologies/redboot/"
+         target="_top"> RedBoot product site</a>.
+    </p>
+    <h2>Hardware support and RedBoot binaries</h2>
+    <p>
+      As RedBoot is based on the <a href="/ecos/" target="_top">eCos
+      operating system</a>, it is easy to port RedBoot to any system
+      to which eCos has been ported.
+    </p>
+    <p>
+      Full details of <a href="/ecos/hardware.html">supported hardware are
+      available</a>, including whether RedBoot is supported. Red Hat has
+      also made available RedBoot binaries for all publically supported
+      platforms and these can be found in the detailed information page
+      for each board.
+    </p>
+    <h2>Documentation</h2>
+    <p>
+      The RedBoot User's Guide is available on-line in both
+      <a href="/ecos/docs-latest/redboot/redboot.html">HTML</a>
+      and <a href="/ecos/docs-latest/redboot/redboot.pdf">PDF</a>
+      formats. Installation instructions for each board are provided
+      in the User's Guide.
+    </p>
+    <h2>Getting the source</h2>
+    <p>
+      Red Hat is a passionate advocate of open source and has made all
+      sources to RedBoot available under the
+      <a href="/ecos/license.html">Red Hat eCos Public License</a>. As
+      a result, all users have already been able to benefit from the
+      developer community's efforts to enhance and maintain RedBoot.
+    </p>
+    <p>
+      All sources are available from the <a href="/ecos/anoncvs.html">
+      eCos anonymous CVS repository</a>. Windows users should ensure
+      they have a recent version of the
+      <a href="http://www.cygwin.com/" target="_top">Cygwin tools</a>.
+    </p>
+    <h2>Contacting Red Hat</h2>
+    <p>
+      <a href="/ecos/intouch.html">Mailing lists for RedBoot and eCos</a>
+      are available if you wish to receive announcements about RedBoot or
+      eCos, or to participate with the developer's community in technical
+      discussion.
+    </p>
+    <p>
+      Red Hat are also pleased to offer a range of engineering services
+      including porting, enhancements, consultancy and world-class
+      commercial grade support in all areas to do with RedBoot and eCos.
+    </p>
+    <p>
+      Contact <a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>
+      for more details. Note: technical queries will not be answered at this
+      address.
+    </p>
+    <hr noshade size=3>
+<!--#include virtual="/ecos/include/footer.html"-->
+

@@ -13,7 +13,7 @@ for i in `find . -name CVS -prune -o -type d -print` ; do
 <TITLE>RedBoot binaries and support files for platform `echo $i | sed 's#.*/##g'`</TITLE>
 </HEAD>
 
-<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
+<!--#include virtual="/ecos/include/header.html"-->
 
 <h1>RedBoot binaries and support files for `cat $i/platformname`</h1>
 <HR noshade SIZE=3>
@@ -39,8 +39,7 @@ EOF
     cat >> $i/index.html <<EOF
 </ul>
 <HR noshade SIZE=3>
-</body>
-</html>
+<!--#include virtual="/ecos/include/footer.html"-->
 EOF
 
 done

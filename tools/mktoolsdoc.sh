@@ -17,7 +17,7 @@ WARNING - this is a generated file - do not edit directly
 <TITLE>Building the $TARGETNAME development tools for $HOST</TITLE>
 </HEAD>
 
-<body bgcolor="#FFFFFF" text="#000000" link="#CC0000" alink="#FF0000" vlink="#880000">
+<!--#include virtual="/ecos/include/header.html"-->
 
 <h1>Building the $TARGETNAME development tools for $HOST</h1>
 <HR noshade SIZE=3>
@@ -517,7 +517,7 @@ any relevant documentation or FAQs:
 It is also worth noting that all these mailing lists have searchable archives.
 
 <HR noshade SIZE=3>
-</body></html>
+<!--#include virtual="/ecos/include/footer.html"-->
 EOF
 
 }
