@@ -98,7 +98,7 @@ use), only 'fconfig' is supported, along with the simple flash write command,
 ><LI
 ><P
 >RedBoot running from RAM, but contained in the board's flash
-boot sector (RAMROM mode).</P
+boot sector (ROMRAM mode).</P
 ></LI
 ><LI
 ><P
@@ -128,7 +128,7 @@ mem" for RedBoot once it has been installed.</P
 of RedBoot to the board.  Once this is started, the Angel session must be
 interrupted (on Linux this can be done using ^Z).  Follow this by connecting
 to the board using minicom at 38400-8N1.  At this point, RedBoot will be running
-on the board in RAM.  Now, download the RAMROM version and program it to flash.
+on the board in RAM.  Now, download the ROMRAM version and program it to flash.
  Be sure and first set SW1 to "upper mem". <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -180,7 +180,7 @@ RedBoot&#62; load -b 0x02040000</PRE
 ></TR
 ></TABLE
 > Use minicom to send the file
-redboot_RAMROM.srec. <TABLE
+redboot_ROMRAM.srec. <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
