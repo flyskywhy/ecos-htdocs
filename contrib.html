@@ -5,7 +5,7 @@
 
 <!--#include virtual="include/header.html"-->
 
-<h1>Contributions</h1>
+<h1>Contributions and Third Party Projects</h1>
 
 <HR noshade SIZE=3>
 
@@ -16,7 +16,7 @@ a new package, enhancements to an existing package or bug fixes. A contribution
 may be from a individual or part of a collaborative project. Information
 on how to contribute is contained within the eCos <a href="faq.html">FAQ</a>.</p>
 
-<h2>External projects</h2>
+<h2>Third Party Projects</h2>
 
 <p>The following external projects are known to the eCos maintainers. If you are
 working on an eCos-based project that others could benefit from or contribute
@@ -24,65 +24,93 @@ to, please let the <a href="mailto:ecos-maintainers@redhat.com">eCos maintainers
 know and it will be added to this page. Sources are provided <i>as is</i> and are
 not supported by Red Hat at this time.</p>
 
-<h3>TCP/IP stack</h3>
+<h4>Port to Sega Dreamcast</h4>
 
-<p>Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
-FreeBSD-derived TCP/IP stack. The sources are available for download at:</p>
+<p><a href="mailto:t@keshi.org">Yaegashi Takeshi</a> has ported eCos and
+RedBoot to the Sega Dreamcast, based on the Hitachi SuperH. Information
+including diffs again the eCos <a href="anoncvs.html">anonymous CVS tree</a>,
+are available at <a href="http://www.m17n.org/linux-sh/ecos/">
+http://www.m17n.org/linux-sh/ecos/</a>.</p>
 
-<p><a href="ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/">
-ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/</a></p>
+<h4>eSoap for eCos</h4>
 
-<p>Note that this contribution is not related to the <a href="tcpip/">eCos
-TCP/IP stack</a>.</p>
+<p><a href="mailto:rdasilva@connecttel.com">Rosimildo daSilva</a> has
+developed an embedded SOAP toolkit named eSoap that runs under eCos.
+More details are available at <a href="http://www.embedding.net/eSOAP">
+http://www.embedding.net/eSOAP</a>. eSoap is free for non-commercial
+applications.</p>
 
-<h3>PC platform HAL</h3>
+<h4>x86 NE2000 ethernet driver</h4>
 
-<p>Patrick O'Grady has developed an eCos HAL for the PC platform. A GDB stub
-is provided, allowing the developer to download applications to the target PC
-via a serial port. The sources are included in the eCos net distribution as
-of release 1.3.1.</p>
+<p>Christian Plessl and Thomas Meyer have ported an Ne2000 driver from
+<a href="http://www.openblt.org/" target="_top">OpenBLT</a> to eCos.
+It is restricted to the x86 PC port only. The
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/readme.txt">
+README</a> contains details and instructions from Christian's
+announcement to the ecos-discuss list. The
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/ne2000.tgz">
+driver package tarball</a> and 
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/addto.ecos.db">
+addto.ecos.db file</a> can be downloaded
+<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/">
+here</a>.
 
-<h3>Synthetic Linux platform HAL</h3>
-
-<p>Chris Provenzano has developed the eCos i386/Linux synthetic target. This
-is essentially a port of the eCos HAL to a Linux process and allows the
-developer to run eCos applications under Linux as if they were native Linux
-applications. The sources are included in the eCos net distribution as of
-release 1.2.1.</p>
-
-<h3>Kaffe Java VM</h3>
+<h4>Kaffe Java VM</h4>
 
 <p>Ryouzaburou Suzuki has ported the Kaffe Java VM to eCos 1.3.1 on SH4. It is
 available for download <a href="http://www.sinby.com/"> here</a>. Note that
 it is covered by the GNU General Public License.</p>
 
-<h3>Floating point hardware support</h3>
+<h4>CarbonKernel RTOS simulator support</h4>
+
+<p><a href="http://www.realiant.com/" target="_top">Realiant Systems</a> has
+made available an eCos personality for the
+<a href="http://www.carbonkernel.org/" target="_top">
+CarbonKernel RTOS simulator</a>. CarbonKernel is an event-driven simulator
+which mimics RTOS behaviour, allowing development and testing of embedded
+software on a workstation. More details can be found at the
+<a href="http://sourceforge.net/projects/carbonkernel/" target="_top">
+CarbonKernel development site</a>.</p>
+
+<h4>Bluetooth and WAP stack</h4>
+
+<p><a href="mailto:andreas_k_se@yahoo.com">Andreas Karlsson </a> at
+<a href="http://www.combitechsystems.com/" target="_top">Combitech Systems AB
+</a> has made available a port of the <a href="http://www.axis.com/"
+target="_top">Axis</a> Bluetooth stack. This was ported to develop an
+embedded WAP server running on top of Bluetooth.</p>
+
+<p>The source code is available AS-IS from
+<a href="http://www.combitechsystems.com/" target="_top">Combitech's web site
+</a>.</p>
+
+<p>Note that this stack is covered by the GNU General Public License.</p>
+
+<h4>TCP/IP stack</h4>
+
+<p>Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
+FreeBSD-derived TCP/IP stack. The sources are available for download
+from ftp://sources.redhat.com/pub/ecos/contrib/io/tcpip/rtems/</p>
+
+<p>Note that this contribution is not related to the eCos
+TCP/IP stack and may not be usable in the current release of eCos.</p>
+
+<hr noshade size=3>
+<h2>Work in progress</h2>
+
+<h4>Floating point hardware support</h4>
 
 <p>Sergei Organov is working on support for floating point hardware within
 eCos. He is targeting the PowerPC processors initially. Sources are not yet
 available.</p>
 
-<h3>NEC V850 architecture HAL</h3>
-
-<p>Takayuki Wakabayashi has developed an eCos HAL for the NEC V850
-architecture. The port was developed using the NEC V850 simulator and has not
-as yet been targeted at a specific hardware platform. The port is completely
-unsupported  and has not been tested at Red Hat. The sources will be
-available shortly.</p>
-
-<h3>Motorola MPC8xxFADS platform HAL</h3>
-
-<p>Kevin Hester has developed an eCos HAL for the Motorola MPC8xx Family
-Application Development System platform. The sources are included in the eCos
-net distribution as of release 1.2.1.</p>
-
-<h3>Samsung SNDS platform HAL</h3>
+<h4>Samsung SNDS platform HAL</h4>
 
 <p>Grant Edwards is working on a port to the Samsung KS32C5000
 microcontroller (ARM7TDMI core) and SNDS development hardware. Sources are
 not yet available (estimated availability - January 2000).</p>
 
-<h3>ARM Integrator HAL and drivers</h3>
+<h4>ARM Integrator HAL and drivers</h4>
 
 <p>Philippe Robin at <a href="http://www.arm.com/" target="_top">ARM</a>
  has contributed a
@@ -99,46 +127,30 @@ on the status as contributed in
 <p>When the port is finished, it will be integrated into the anonymous CVS
 repository in due course.</p>
 
-<h3>CarbonKernel RTOS simulator support</h3>
+<hr noshade size=3>
+<h2>Thanks to our contributors</h2>
 
-<p><a href="http://www.realiant.com/" target="_top">Realiant Systems</a> has
-made available an eCos personality for the
-<a href="http://www.carbonkernel.org/" target="_top">
-CarbonKernel RTOS simulator</a>. CarbonKernel is an event-driven simulator
-which mimics RTOS behaviour, allowing development and testing of embedded
-software on a workstation. More details can be found at the
-<a href="http://sourceforge.net/projects/carbonkernel/" target="_top">
-CarbonKernel development site</a>.</p>
+<h4>PC platform HAL</h4>
 
-<h3>Bluetooth and WAP stack</h3>
+<p>Patrick O'Grady developed the initial port of eCos for the PC platform. 
+The sources are included in the eCos net distribution as
+of release 1.3.1.</p>
 
-<p><a href="mailto:andreas_k_se@yahoo.com">Andreas Karlsson </a> at
-<a href="http://www.combitechsystems.com/" target="_top">Combitech Systems AB
-</a> has made available a port of the <a href="http://www.axis.com/"
-target="_top">Axis</a> Bluetooth stack. This was ported to develop an
-embedded WAP server running on top of Bluetooth.</p>
+<h4>Synthetic Linux platform HAL</h4>
 
-<p>The source code is available AS-IS from
-<a href="http://www.combitechsystems.com/" target="_top">Combitech's web site
-</a>.</p>
+<p>Chris Provenzano developed the eCos i386/Linux synthetic target. This
+is essentially a port of the eCos HAL to a Linux process and allows the
+developer to run eCos applications under Linux as if they were native Linux
+applications. The sources are included in the eCos net distribution as of
+release 1.2.1.</p>
 
-<p>Note that this stack is covered by the GNU General Public License.</p>
+<h4>Motorola MPC8xxFADS platform HAL</h4>
 
-<h3>x86 NE2000 ethernet driver</h3>
+<p>Kevin Hester developed an eCos HAL for the Motorola MPC8xx Family
+Application Development System platform. The sources are included in the eCos
+net distribution as of release 1.2.1.</p>
 
-<p>Christian Plessl and Thomas Meyer have ported an Ne2000 driver from
-<a href="http://www.openblt.org/" target="_top">OpenBLT</a> to eCos.
-It is restricted to the x86 PC port only. The
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/readme.txt">
-README</a> contains details and instructions from Christian's
-announcement to the ecos-discuss list. The
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/ne2000.tgz">
-driver package tarball</a> and 
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/addto.ecos.db">
-addto.ecos.db file</a> can be downloaded
-<a href="ftp://sources.redhat.com/pub/ecos/contrib/devs/eth/ne2000/">
-here</a>.
-
+<hr noshade size=3>
 <h2>Individual contributors</h2>
 
 <p>In addition, the eCos team recognizes the following individuals who have
@@ -159,4 +171,5 @@ If we have left anyone off the list, please accept our apologies
 and inform the <a href="mailto:ecos-maintainers@redhat.com">eCos maintainers</a> of 
 the omission.</p>
 
+<hr noshade size=3>
 <!--#include virtual="include/footer.html"-->
