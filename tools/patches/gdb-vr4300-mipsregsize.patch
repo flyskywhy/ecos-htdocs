@@ -1,0 +1,75 @@
+Index: gdb/mips-tdep.c
+===================================================================
+RCS file: /cvs/src/src/gdb/mips-tdep.c,v
+retrieving revision 1.2
+diff -u -5 -p -r1.2 mips-tdep.c
+--- gdb/mips-tdep.c	2000/02/22 19:17:27	1.2
++++ gdb/mips-tdep.c	2000/03/24 09:02:01
+@@ -61,13 +61,16 @@ enum mips_fpu_type
+ #endif
+ static int mips_fpu_type_auto = 1;
+ static enum mips_fpu_type mips_fpu_type = MIPS_DEFAULT_FPU_TYPE;
+ #define MIPS_FPU_TYPE mips_fpu_type
+ 
+-#ifndef MIPS_SAVED_REGSIZE
+-#define MIPS_SAVED_REGSIZE MIPS_REGSIZE
++#ifndef MIPS_DEFAULT_SAVED_REGSIZE
++#define MIPS_DEFAULT_SAVED_REGSIZE MIPS_REGSIZE
+ #endif
++static int mips_force_32bit_saved_regsize;
++#define MIPS_SAVED_REGSIZE (mips_force_32bit_saved_regsize != 0 ? 4 : \
++			    MIPS_DEFAULT_SAVED_REGSIZE)
+ 
+ /* Do not use "TARGET_IS_MIPS64" to test the size of floating point registers */
+ #ifndef FP_REGISTER_DOUBLE
+ #define FP_REGISTER_DOUBLE (REGISTER_VIRTUAL_SIZE(FP0_REGNUM) == 8)
+ #endif
+@@ -107,11 +110,12 @@ struct gdbarch_tdep
+ #define MIPS_FPU_TYPE (gdbarch_tdep (current_gdbarch)->mips_fpu_type)
+ #endif
+ 
+ #if GDB_MULTI_ARCH
+ #undef MIPS_SAVED_REGSIZE
+-#define MIPS_SAVED_REGSIZE (gdbarch_tdep (current_gdbarch)->mips_saved_regsize)
++#define MIPS_SAVED_REGSIZE (mips_force_32bit_saved_regsize != 0 ? 4 : \
++			    gdbarch_tdep (current_gdbarch)->mips_saved_regsize)
+ #endif
+ 
+ /* Indicate that the ABI makes use of double-precision registers
+    provided by the FPU (rather than combining pairs of registers to
+    form double-precision values).  Do not use "TARGET_IS_MIPS64" to
+@@ -3742,11 +3746,11 @@ mips_gdbarch_init (info, arches)
+       set_gdbarch_long_long_bit (gdbarch, 64);
+       break;
+     default:
+       ef_mips_abi = "default";
+       tdep->mips_eabi = 0;
+-      tdep->mips_saved_regsize = MIPS_REGSIZE;
++      tdep->mips_saved_regsize = MIPS_DEFAULT_SAVED_REGSIZE;
+       tdep->mips_fp_register_double = (REGISTER_VIRTUAL_SIZE (FP0_REGNUM) == 8);
+       set_gdbarch_long_bit (gdbarch, 32);
+       set_gdbarch_ptr_bit (gdbarch, 32);
+       set_gdbarch_long_long_bit (gdbarch, 64);
+       break;
+@@ -3989,8 +3993,21 @@ Without an argument, zeroing of upper ad
+ 				  (char *)&mips64_transfers_32bit_regs_p, "\
+ Set compatibility with MIPS targets that transfers 32 and 64 bit quantities.\n\
+ Use \"on\" to enable backward compatibility with older MIPS 64 GDB+target\n\
+ that would transfer 32 bits for some registers (e.g. SR, FSR) and\n\
+ 64 bits for others.  Use \"off\" to disable compatibility mode",
++				  &setlist),
++		     &showlist);
++
++  /* Allow the user to override the saved register size. */
++  add_show_from_set (add_set_cmd ("mips-force-32bit-saved-gpregs",
++				  class_obscure,
++				  var_boolean,
++				  (char *)&mips_force_32bit_saved_regsize, "\
++Set whether the size of general purpose registers saved on the stack is 32bits.\n\
++This option would be set to \"on\" on a 64bit MIPS target when using a program\n\
++compiled for 32bit general purpose registers, such as when using\n\
++\"-mgp32\" with gcc.  Use \"off\" to use the default saved register size for\n\
++this target.",
+ 				  &setlist),
+ 		     &showlist);
+ }
