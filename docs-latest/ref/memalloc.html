@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->eCos Power Management Support</TITLE
+>eCos Memory Pools</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -18,14 +18,17 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Memory Allocation"
+HREF="services-memalloc-common.html"><LINK
 REL="PREVIOUS"
-TITLE="Profiling"
-HREF="gprof.html"><LINK
+TITLE="Memory Allocation"
+HREF="services-memalloc-common.html"><LINK
 REL="NEXT"
-TITLE="Introduction"
-HREF="power-intro.html"></HEAD
+TITLE="Variable Size Allocation Pools"
+HREF="variable-pools.html"></HEAD
 ><BODY
-CLASS="PART"
+CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -51,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="gprof.html"
+HREF="services-memalloc-common.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -65,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="power-intro.html"
+HREF="variable-pools.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -75,15 +78,20 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="PART"
-><A
-NAME="SERVICES-POWER"
-></A
-><DIV
-CLASS="TITLEPAGE"
+CLASS="CHAPTER"
 ><H1
-CLASS="TITLE"
->XXVII. eCos Power Management Support</H1
+><A
+NAME="MEMALLOC"
+></A
+>Chapter 57. eCos Memory Pools</H1
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ECOS-MEMORY-POOLS"
+>eCos Memory pools</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -93,37 +101,28 @@ CLASS="TOC"
 ></DT
 ><DT
 ><A
-HREF="power-intro.html"
->Introduction</A
->&nbsp;--&nbsp;eCos support for Power Management</DT
+HREF="variable-pools.html"
+>Variable Size Allocation Pools</A
+>&nbsp;--&nbsp;Variable Size Allocation Pools</DT
 ><DT
 ><A
-HREF="power-info.html"
->Power Management Information</A
->&nbsp;--&nbsp;finding out about the various power controllers in the system</DT
+HREF="fixed-pools.html"
+>Fixed Size Allocation Pools</A
+>&nbsp;--&nbsp;Fixed Size Allocation Pools</DT
 ><DT
 ><A
-HREF="power-change.html"
->Changing Power Modes</A
->&nbsp;--&nbsp;reducing or increasing power consumption as needed</DT
-><DT
-><A
-HREF="power-policy.html"
->Support for Policy Modules</A
->&nbsp;--&nbsp;closer integration with higher-level code</DT
-><DT
-><A
-HREF="power-attached.html"
->Attached and Detached Controllers</A
->&nbsp;--&nbsp;control which power controllers are affected by global changes</DT
-><DT
-><A
-HREF="power-controller.html"
->Implementing a Power Controller</A
->&nbsp;--&nbsp;adding power management support to device drivers and
-other packages</DT
+HREF="malloc-pools.html"
+>stdlib malloc Pools</A
+>&nbsp;--&nbsp;stdlib malloc pool</DT
 ></DL
 ></DIV
+><P
+>  There are three sorts of memory pools. A variable size memory pool
+  is for allocating blocks of any size. A fixed size memory pool, has
+  the block size specified when the pool is created and only provides
+  blocks of that size. Both of these pools must be explicitly created.
+  The third type is the traditional heap which can be accessed using
+  malloc and friends.</P
 ></DIV
 ></DIV
 ><DIV
@@ -142,7 +141,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="gprof.html"
+HREF="services-memalloc-common.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -160,7 +159,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="power-intro.html"
+HREF="variable-pools.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -170,17 +169,21 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Profiling</TD
+>Memory Allocation</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="services-memalloc-common.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Introduction</TD
+>Variable Size Allocation Pools</TD
 ></TR
 ></TABLE
 ></DIV

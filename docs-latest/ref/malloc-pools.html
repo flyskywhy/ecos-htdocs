@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Attached and Detached Controllers</TITLE
+>stdlib malloc Pools</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -19,14 +19,14 @@ REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="eCos Power Management Support"
-HREF="services-power.html"><LINK
+TITLE="eCos Memory pools"
+HREF="memalloc.html#ECOS-MEMORY-POOLS"><LINK
 REL="PREVIOUS"
-TITLE="Support for Policy Modules"
-HREF="power-policy.html"><LINK
+TITLE="Fixed Size Allocation Pools"
+HREF="fixed-pools.html"><LINK
 REL="NEXT"
-TITLE="Implementing a Power Controller"
-HREF="power-controller.html"></HEAD
+TITLE="CRC Algorithms"
+HREF="services-crc.html"></HEAD
 ><BODY
 CLASS="REFENTRY"
 BGCOLOR="#FFFFFF"
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="power-policy.html"
+HREF="fixed-pools.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -68,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="power-controller.html"
+HREF="services-crc.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -79,21 +79,21 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="POWER-ATTACHED"
+NAME="MALLOC-POOLS"
 ></A
->Attached and Detached Controllers</H1
+>stdlib malloc Pools</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12438"
+NAME="AEN11791"
 ></A
 ><H2
 >Name</H2
->Attached and Detached Controllers&nbsp;--&nbsp;control which power controllers are affected by global changes</DIV
+>malloc, calloc, free, realloc, mallinfo&nbsp;--&nbsp;stdlib malloc pool</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN12441"
+NAME="AEN11798"
 ></A
 ><H2
 >Synopsis</H2
@@ -102,7 +102,7 @@ CLASS="FUNCSYNOPSIS"
 ><P
 ></P
 ><A
-NAME="AEN12442"
+NAME="AEN11799"
 ></A
 ><TABLE
 BORDER="5"
@@ -112,7 +112,8 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="FUNCSYNOPSISINFO"
->#include &lt;cyg/power/power.h&gt;</PRE
+>#include &lt;stdlib.h&gt;
+        </PRE
 ></TD
 ></TR
 ></TABLE
@@ -120,20 +121,36 @@ CLASS="FUNCSYNOPSISINFO"
 ><CODE
 ><CODE
 CLASS="FUNCDEF"
->    cyg_bool power_get_controller_attached
-  </CODE
->(    PowerController* controller
-  );</CODE
+>void *malloc</CODE
+>(size_t size);</CODE
 ></P
 ><P
 ><CODE
 ><CODE
 CLASS="FUNCDEF"
->    void power_set_controller_attached
-  </CODE
->(    PowerController* controller
-  ,     cyg_bool new_state
-  );</CODE
+>void *calloc</CODE
+>(size_t size);</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void free</CODE
+>(void *ptr);</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>void *realloc</CODE
+>(void *ptr, size_t size);</CODE
+></P
+><P
+><CODE
+><CODE
+CLASS="FUNCDEF"
+>struct mallinfo mallinfo</CODE
+>(void);</CODE
 ></P
 ><P
 ></P
@@ -142,60 +159,70 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12456"
+NAME="MEMALLOC-STDLIB-DESCRIPTION"
 ></A
 ><H2
->Detaching Power Controllers</H2
+>Description</H2
 ><P
->By default the global operation <CODE
+>      eCos provides the standard library functions used for allocating
+      memory from the heap. <CODE
 CLASS="FUNCTION"
->power_set_mode</CODE
+>malloc()</CODE
+> allocates a
+      block of memory of
+      <CODE
+CLASS="PARAMETER"
+>size</CODE
+>bytes. <CODE
+CLASS="FUNCTION"
+>calloc()</CODE
 >
-affects all power controllers. There may be circumstances when this is
-not desirable. For example if a particular device is not currently
-being used then it can be left switched off: the rest of the system
-could be moving between <SPAN
-CLASS="TYPE"
->active</SPAN
->, <SPAN
-CLASS="TYPE"
->idle</SPAN
-> and
-<SPAN
-CLASS="TYPE"
->sleep</SPAN
-> modes, but there is no point in invoking the power
-controller for the unused device. To support this the power management
-package supports the concept of attached and detached controllers. By
-default all controllers are attached, and hence will be affected by
-global mode changes. A specific controller can be detached using the
-function <CODE
+      performs the same, but also sets the memory to zero. The
+      function <CODE
 CLASS="FUNCTION"
->power_set_controller_attached</CODE
->. This
-function takes two arguments, one to specify a particular controller
-and another to specify the desired new state.
-<CODE
+>free()</CODE
+> returns a block to the
+      pool. <CODE
 CLASS="FUNCTION"
->power_get_controller_attached</CODE
-> can be used to
-determine whether or not a specific controller is currently attached.</P
-><P
->The attached or detached state of a controller only affects what
-happens during a global mode change, in other words following a call
-to <CODE
+>realloc</CODE
+> resizes a block of
+      memory. Lastly, <CODE
 CLASS="FUNCTION"
->power_set_mode</CODE
->. It is still possible to
-manipulate a detached controller using
-<CODE
-CLASS="FUNCTION"
->power_set_controller_mode</CODE
-> or
-<CODE
-CLASS="FUNCTION"
->power_set_controller_mode_now</CODE
->.</P
+>mallinfo()</CODE
+> returns
+      information about the heap, as described by the structure
+      <CODE
+CLASS="STRUCTNAME"
+>mallinfo</CODE
+>:
+
+      <TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>struct mallinfo {
+    int arena;    /* total size of memory arena */
+    int ordblks;  /* number of ordinary memory blocks */
+    int smblks;   /* number of small memory blocks */
+    int hblks;    /* number of mmapped regions */
+    int hblkhd;   /* total space in mmapped regions */
+    int usmblks;  /* space used by small memory blocks */
+    int fsmblks;  /* space available for small memory blocks */
+    int uordblks; /* space used by ordinary memory blocks */
+    int fordblks; /* space free for ordinary blocks */
+    int keepcost; /* top-most, releasable (via malloc_trim) space */
+    int maxfree;  /* (NON-STANDARD EXTENSION) size of largest free block */
+};
+      </PRE
+></TD
+></TR
+></TABLE
+>
+     </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -213,7 +240,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="power-policy.html"
+HREF="fixed-pools.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -231,7 +258,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="power-controller.html"
+HREF="services-crc.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -241,13 +268,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Support for Policy Modules</TD
+>Fixed Size Allocation Pools</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="services-power.html"
+HREF="memalloc.html#ECOS-MEMORY-POOLS"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -255,7 +282,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Implementing a Power Controller</TD
+>CRC Algorithms</TD
 ></TR
 ></TABLE
 ></DIV
