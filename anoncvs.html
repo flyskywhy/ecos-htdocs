@@ -115,10 +115,17 @@ an already checked out tree by executing the following command:
      cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P net
 </PRE>
 <P>
-Note that the networking package records will be present in the package
-database (<tt>ecos.db</tt>) regardless of whether networking support
+A port of the University of California at Davis (UCD) SNMP stack is also
+available as a separate optional package, and may be checked out by
+additionally executing the following command:
+<PRE>
+     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P snmp
+</PRE>
+<P>
+Note that the networking and SNMP package records will be present in the package
+database (<tt>ecos.db</tt>) regardless of whether networking or SNMP support
 is checked out. Updated configuration tools (see below) are
-required when the networking support is not present. The
+required when the networking/SNMP support is not present. The
 eCos 1.3.1 tools will report errors.
 
 <h3>Release tags</h3>
