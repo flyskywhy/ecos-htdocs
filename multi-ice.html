@@ -19,13 +19,12 @@ Multi-ICE</a> JTAG emulator. </p>
 <p>However a legal issue prevented the software being released. Recently though,
 <a href="http://www.arm.com/">ARM</a> were kind enough to release a GPL
 friendly version of the ARM RDI headers. This has allowed Red Hat to
-release the sources to the <tt>multi-ice-gdb-server</tt>. The only
-supported host is Windows.</p>
+release the sources to the <tt>multi-ice-gdb-server</tt>. </p>
 
 <p><b>Note:</b> we believe that these sources will <i>not</i> work with the
 ARM Multi-ICE v2. Only v1 models have been used. If anyone has any success
 with v2 models, please <a href="mailto:ecos-maintainers@redhat.com">let
-us know</a>.</p>
+us know</a>. The only supported host is Windows.</p>
 
 <h2>Legal status</h2>
 
@@ -33,8 +32,7 @@ us know</a>.</p>
 software is supplied without warranty or guarantee of any kind. This
 software makes use of Dynamically Linked Libraries on Windows, to which
 the source code is not available. This is a known grey area of the GPL.
-Neither Red Hat Inc. nor ARM Ltd. may be held responsible for the uses to
-which this software is put.</p>
+</p>
 
 <p><b>Neither Red Hat Inc. nor ARM Ltd. may be held responsible for the
 obligations that the use of this software puts on you, under the terms
@@ -51,8 +49,8 @@ provided here on an as-is basis in source form only.</p>
 install several pieces of software. Most obviously you must obtain a copy
 of <a href="http://sources.redhat.com/gdb/">GDB</a>, and
 <a href="http://www.cygwin.com/">Cygwin</a> on which it depends. At this
-point you should download and install Cygwin. But for now, only download
-the sources to GDB.</p>
+point you should download and install Cygwin, and download GDB, but not try
+to install it.</p>
 
 <p>You must also have installed the ARM Multi-ICE server software that came
 supplied with the Multi-ICE unit.</a></p>
@@ -68,8 +66,8 @@ Downloads</a> link to take you to the RDI 1.5.1 download page. You should
 download and install the package in an appropriate location.</p>
 
 <p>Finally, you should download the
-<a href="ftp://sources.redhat.com/pub/ecos/multi-ice-gdb.tar.gz"><
-tt>multi-ice-gdb-server</tt> sources</a>.</p>
+<a href="ftp://sources.redhat.com/pub/ecos/multi-ice-gdb.tar.gz">
+<tt>multi-ice-gdb-server</tt> sources</a>.</p>
 
 <h2>Preparing to build the <tt>multi-ice-gdb-server</tt></h2>
 
@@ -124,17 +122,19 @@ how to do this.</p>
 to the multi-ice build directory and type make, supplying the make
 variables MULTI_ICE_INCLUDES which should point to the location of the ARM
 RDI 1.5 headers, and MULTI_ICE_LIBS which should point to the location of
-the Multi-ICE server. For example:
+the ARM Multi-ICE server directory, as well as the location of the GDB
+multi-ice directory. For example:
 <pre>
   bash-2.04$ cd gdb/multi-ice
   bash-2.04$ make -w MULTI_ICE_INCLUDES="-I/cygdrive/c/Rdi/Headers" \
-    MULTI_ICE_LIBS="-L/cygdrive/c/Multi-ICE -L. -ltoolconf" 2>&1 | tee make.out
+    MULTI_ICE_LIBS="-L/cygdrive/c/Multi-ICE -L/tmp/migdb/gdb-5.1.1/gdb/multi-ice -ltoolconf" 2>&1 | tee make.out
 </pre></p>
 <p>At this point the build of the multi-ice-gdb-server should be complete.
 As it needs access to the Multi-ICE.dll file, it is probably easiest to
 copy it straight alongside the ARM Multi-ICE server software:
 <pre>
-  bash-2.04$ cp -i multi-ice-gdb-server.exe *.dll /cygdrive/c/Multi-ICE
+  bash-2.04$ cp -i multi-ice-gdb-server.exe /cygdrive/c/Multi-ICE
+  bash-2.04$ cp -i /tmp/migdb/gdb-5.1.1/gdb/multi-ice/*.dll /cygdrive/c/Multi-ICE
 </pre></p>
 
 <h2>Running the <tt>multi-ice-gdb-server</tt></h2>
