@@ -168,6 +168,18 @@ Reversed (or previously applied) patch detected!  Assume -R? [n]
 then type <i>n</i> because this indicates that the patch has already been applied
 in the master sources.</li><br>
 
+<li>If you are using an ARM target in big-endian mode, such as the IXP425, then you
+will also need to download the following patch to enable big-endian support in the
+compiler:<br><br>
+<ul>
+<li><a href="gcc-3.2.1-arm-be.patch">gcc-3.2.1-arm-be.patch</a></li>
+</ul><br>
+
+And apply it:<br><br>
+<ul><tt>
+patch -p0 &lt; gcc-3.2.1-arm-be.patch<br>
+</tt></ul><br>
+
 <li>Finally, since Newlib is compiled as part of the GCC build, it is necessary to move
 the required source code into the GCC directory hierarchy:<br><br>
 
