@@ -1,40 +1,38 @@
 <HTML>
+
+<!-- eCos template HTML start-->
 <HEAD>
 <TITLE>Installing eCos under Windows</TITLE>
 </HEAD>
-
-<!--#include virtual="include/header.html"-->
-
-<H2>Installing eCos under Windows</H2>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#CC0000" ALINK="#CC0000" VLINK="#666666">
+<IMG SRC="ecos.gif" ALT="eCos Sourceware"><P>
+<BR><H2>Installing eCos under Windows</H2>
 <HR SIZE=3>
+<!-- eCos template HTML end-->
 
 <h3>Downloading</h3>
 
-The eCos 1.1 distribution for Windows is provided as a self-extracting
-executable file. Click on the following link to download:
+The eCos 1.1 distrubution for Windows is provided as a self-extracting executable file. Click on the following link to download:
 
 <ul>
 <li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/eCos11.exe">eCos 1.1 sourceware for Windows</A> (10MB self-extracting exe file)
 </ul>
 
-In order to build the eCos sources, you will require a cross-compiler
-and related development tools. The necessary tools are designated
-<i>ecosSWtools-981021</i> and are available in source form only. Note
-that, although eCos may be configured and built under Windows 95 and
-Windows 98, it is not possible to build the eCos development tools on
-these platforms. If you wish to develop eCos applications using Windows
-95 or Windows 98, you must build the development tools under Windows
-NT. Click on the following link to download:
+In order to build the eCos sources, you will require the a
+cross-compiler and related development tools. The necessary tools are
+designated <i>ecosSWtools-981021</i> and are available in source form
+only. Note that, although eCos may be configured and built under
+Windows 95 and Windows 98, it is not possible to build the eCos
+development tools on these platforms. If you wish to
+develop eCos applications using Windows 95 or Windows 98, you must
+build the development tools under Windows NT. Click on the following
+link to download:
 
 <ul>
 <li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.zip">eCos development tools</a> (33MB zip file)
 </ul>
 
-eCos also requires the GNU native tools for the building
-of eCos packages. Windows users should obtain the <a
-href="http://sourceware.cygnus.com/cygwin/">Cygwin Beta 20 version of
-these native tools</a>. The full binary release is required. Click on
-the following link to download:
+eCos also requires the GNU native tools for the building of eCos packages. Windows users should obtain the Cygwin Beta 20 version of these native tools. The full binary release is required. Click on the following link to download:
 
 <ul>
 <li><a href="ftp://sourceware.cygnus.com/pub/cygwin/cygwin-b20/full.exe">Cygwin Beta 20 development tools</a> (12MB self-extracting exe file)
@@ -42,7 +40,8 @@ the following link to download:
 
 <h3>Installing</h3>
 
-<p>1.  Install the Cygwin native tools by running the downloaded
+<ol>
+<li>Install the Cygwin native tools by running the downloaded
     distribution file and following the on-screen instructions. The
     remaining instructions assume that the Cygwin tools are installed
     to the default location. If you wish to install to a different
@@ -51,8 +50,7 @@ the following link to download:
     menu hierarchy to launch the <i>bash</i> command-line
     environment.<p>
 
-<p>2.  Build the eCos development tools (ecosSWtools-981021) by following
-these steps at the <i>bash</i> prompt:<p>
+<li>Build the eCos development tools (ecosSWtools-981021) by following these steps at the <i>bash</i> prompt:<p>
 
   <ul>
   <li>Mount the logical drive(s) you will use to build the eCos development tools:<p>
@@ -70,7 +68,7 @@ these steps at the <i>bash</i> prompt:<p>
   <li>Extract the eCos development tool sources from the
       downloaded distribution file to <nobr><tt>C:\cygnus</tt></nobr>
       using a utility such as <a
-      href="http://www.winzip.com/" target="_top"><i>WinZip</i></a>. You should
+      href="http://www.winzip.com/"><i>WinZip</i></a>. You should
       ensure that the utility is configured to preserve the directory
       structure within the zip file during extraction. The directory
       <nobr><tt>C:\cygnus\ecosSWtools-981021\src</tt></nobr> should be
@@ -86,20 +84,22 @@ these steps at the <i>bash</i> prompt:<p>
        <nobr>&nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-981021/H-i586-cygwin32 \</nobr><br>
        <nobr>&nbsp;&nbsp;--host=i586-cygwin32 --target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr><p>
 
-   You should replace <i><tt>target-triplet</tt></i> in the
-   above command with one of the supported target triplets:
-   <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr>
-   or <nobr><tt>powerpc-eabi</tt></nobr>.<p>
+   You should replace <i><tt>target-triplet</tt></i> in the above command with one of the supported target triplets: <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr> or <nobr><tt>powerpc-eabi</tt></nobr>.<p>
 
   <li>Build and install the tools, saving the output to make.out:<p>
   <nobr><tt>make -w all install &gt; make.out 2&gt;&amp;1</tt></nobr><p>
   </ul>
 
-  When the build is complete, the executable files of the eCos
+When the build is complete, the executable files of the eCos
   development tools may be found in the directory
   <nobr><tt>C:\cygnus\ecosSWtools-981021\H-i586-cygwin32\bin</tt></nobr>.<p>
 
-<p>3.  Install eCos by running the downloaded distribution file and
-following the on-screen instructions.
+<li>Install eCos by running the downloaded distribution file and following the on-screen instructions.
+</ol>
 
-<!--#include virtual="include/footer.html"-->
+<!-- eCos template HTML start -->
+<H3><A HREF="index.html" TARGET="_top">Home</A></H3>
+</BODY>
+<!-- eCos template HTML end -->
+
+</HTML>

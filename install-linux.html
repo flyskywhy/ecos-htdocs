@@ -1,26 +1,28 @@
 <HTML>
+
+<!-- eCos template HTML start-->
 <HEAD>
 <TITLE>Installing eCos under Linux</TITLE>
 </HEAD>
-
-<!--#include virtual="include/header.html"-->
-
-<H2>Installing eCos under Linux</H2>
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000" LINK="#CC0000" ALINK="#CC0000" VLINK="#666666">
+<IMG SRC="ecos.gif" ALT="eCos Sourceware"><P>
+<BR><H2>Installing eCos under Linux</H2>
 <HR SIZE=3>
+<!-- eCos template HTML end-->
 
 <h3>Downloading</h3>
 
-The eCos 1.1 distribution for Linux is provided as a tar.bz2 archive
-file. Click on the following link to download:
+The eCos 1.1 distrubution for Linux is provided as a tar.bz2 archive file. Click on the following link to download:
 
 <ul>
 <li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.bz2">eCos 1.1 sourceware for Linux</A> (4MB tar.bz2 file)
 </ul>
 
-In order to build the eCos sources, you will require the a cross-compiler
-and related development tools. The necessary tools are designated
-<i>ecosSWtools-981021</i> and are available in source form only. Click
-on the following link to download:
+In order to build the eCos sources, you will require the a
+cross-compiler and related development tools. The necessary tools are
+designated <i>ecosSWtools-981021</i> and are available in source form
+only. Click on the following
+link to download:
 
 <ul>
 <li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.zip">eCos development tools</a> (33MB zip file)
@@ -28,7 +30,8 @@ on the following link to download:
 
 <h3>Installing</h3>
 
-<p>1.  Build the eCos development tools (ecosSWtools-981021)
+<ol>
+<li>Build the eCos development tools (ecosSWtools-981021)
     by following these steps at a <i>sh</i>, <i>ksh</i> or <i>bash</i>
     prompt. Users of the <i>csh</i> and <i>tcsh</i> shells should
     replace <nobr>"<tt>&gt; <i>filename</i>.out
@@ -55,33 +58,26 @@ on the following link to download:
        <nobr>&nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i> \</nobr><br>
        <nobr>&nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr><p>
 
-   You should replace <i><tt>target-triplet</tt></i> in the
-   above command with one of the supported target triplets:
-   <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr>
-   or <nobr><tt>powerpc-eabi</tt></nobr>. You should replace
-   <i><tt>host-triplet</tt></i> with the host triplet for your
-   build system. You can determine the host triplet by running
-   <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/config.guess</tt></nobr>.<p>
+   You should replace <i><tt>target-triplet</tt></i> in the above command with one of the supported target triplets: <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr> or <nobr><tt>powerpc-eabi</tt></nobr>. You should replace <i><tt>host-triplet</tt></i> with the host triplet for your build system. You can determine the host triplet by running <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/config.guess</tt></nobr>.<p>
 
   <li>Build and install the tools, saving the output to make.out:<p>
   <nobr><tt>make -w all install &gt; make.out 2&gt;&amp;1</tt></nobr><p>
   </ul>
 
-When the build is complete, the executable files of
-the eCos development tools may be found in the directory
-<nobr><tt>/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i>/bin</tt></nobr>.
-You should add this directory to your path.<p>
+When the build is complete, the executable files of the eCos development tools may be found in the directory <nobr><tt>/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i>/bin</tt></nobr>. You should add this directory to your path.<p>
 
-<p>2.  Extract the eCos repository using the following commands:<p>
+<li>Extract the eCos repository using the following commands:<p>
 
    <nobr><tt>cd /usr/local</nobr><br>
    <nobr>bunzip2 < ecos-1.1.tar.bz2 | tar xvf -</tt></nobr><p>
 
-You may need to download and install the bzip2 compression program.
-You can get it from the <a href="http://www.muraroa.demon.co.uk"
-target="_top">bzip2 home page</a>.
+On completion, the eCos repository may be found in the directory <nobr><tt>/usr/local/ecos-1.1</tt></nobr>.
 
-<p>On completion, the eCos repository may be found in the directory
-<nobr><tt>/usr/local/ecos-1.1</tt></nobr>.
+</ol>
 
-<!--#include virtual="include/footer.html"-->
+<!-- eCos template HTML start -->
+<H3><A HREF="index.html" TARGET="_top">Home</A></H3>
+</BODY>
+<!-- eCos template HTML end -->
+
+</HTML>
