@@ -79,6 +79,12 @@ working with the sources from the anonymous CVS repository.</p>
 above) and direct TCP/IP access. If you are behind a firewall, you should
 discuss access with your local systems administrator.</p>
 
+<p>If you are using CVS v1.10 or earlier (use '<kbd>cvs -v</kbd>' to determine),
+you will first need to run the following command before you can access the
+repository the very first time:</p>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos login</kbd>
+<p>Any password is accepted.</p>
+
 <p>It is recommended that you use different directory trees for the
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
