@@ -67,11 +67,11 @@ chapter in the eCos documentation set provides further detail.
         <nobr><tt>
         mkdir /usr/cygnus<br>
         cd /usr/cygnus<br>
-        bunzip2 &lt; ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 bzip2 archive)<br>
-        <tt>gunzip &lt; ecosSWtools-arm-990321-src.tar.gz | tar xvf -&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 gzip archive)<br>
-        <tt>bunzip2 &lt; ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 bzip2 archive)<br>
-        <tt>gunzip &lt; ecosSWtools-990319-src.tar.gz | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 gzip archive)
-        </nobr><p>
+        bunzip2 &lt; ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-arm-990321&nbsp;bzip2&nbsp;archive</i>)<br>
+        <nobr><tt>gunzip &lt; ecosSWtools-arm-990321-src.tar.gz | tar xvf -&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-arm-990321&nbsp;gzip&nbsp;archive</i>)<br>
+        <nobr><tt>bunzip2 &lt; ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-990319&nbsp;bzip2&nbsp;archive</i>)<br>
+        <nobr><tt>gunzip &lt; ecosSWtools-990319-src.tar.gz | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-990319&nbsp;gzip&nbsp;archive</i>)
+        <p>
 
         The directory <nobr><tt>/usr/cygnus/ecosSWtools-arm-990321/src</tt></nobr> or 
         <nobr><tt>/usr/cygnus/ecosSWtools-990319/src</tt></nobr> should
@@ -83,17 +83,15 @@ chapter in the eCos documentation set provides further detail.
 
      <li>Configure the tools, saving the output to <tt>configure.out</tt>:<p>
 
-     <nobr>
-     <tt>/usr/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
+     <nobr><tt>/usr/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
      &nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-arm-990321 \<br>
      &nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-arm-990321/H-<i>host-triplet</i> \<br>
-     &nbsp;&nbsp;--target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+     &nbsp;&nbsp;--target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-arm-990321</i>)<p>
 
-     <tt>/usr/cygnus/ecosSWtools-990319/src/configure -v \<br>
+     <nobr><tt>/usr/cygnus/ecosSWtools-990319/src/configure -v \<br>
      &nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-990319 \<br>
      &nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-990319/H-<i>host-triplet</i> \<br>
-     &nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)<p>
-     </nobr>
+     &nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-990319</i>)<p>
 
      You should replace <i><tt>target-triplet</tt></i> in the
      above command with one of the following target triplets:
@@ -106,8 +104,8 @@ chapter in the eCos documentation set provides further detail.
      <nobr><tt>/usr/cygnus/ecosSWtools-990319/src/config.guess</tt></nobr>.<p>
 
     <li>Build and install the tools, saving the output to <tt>make.out</tt>:<p>
-    <tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
-    <tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)
+    <nobr><tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-arm-990321</i>)<p>
+    <nobr><tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-990319</i>)
   </ul>
    <p>
    When the build is complete, the executable files of
@@ -119,8 +117,8 @@ chapter in the eCos documentation set provides further detail.
   <li>Extract the eCos repository using the following commands:<p>
 
     <nobr><tt>cd /usr/local</nobr><br>
-    <nobr>bunzip2 &lt; ecos-1.2.1.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
-    <tt>gunzip &lt; ecos-1.2.1.tar.gz | tar xvf -&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)</nobr><p>
+    <nobr>bunzip2 &lt; ecos-1.2.1.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for the bzip2 archive</i>)<br>
+    <tt>gunzip &lt; ecos-1.2.1.tar.gz | tar xvf -&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for the gzip archive</i>)</nobr><p>
 
     On completion, the eCos repository may be found in the directory
     <nobr><tt>/usr/local/ecos-1.2.1</tt></nobr>.

@@ -89,9 +89,9 @@ these steps at the <i>bash</i> prompt:<p>
       downloaded distribution file:<p>
       <nobr><tt>
           cd /c/cygnus<br>
-          bunzip2 -c ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 archive)<br>
-          <tt>bunzip2 -c ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 archive)
-      </nobr><p>
+          bunzip2 -c ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-arm-990321&nbsp;archive</i>)<br>
+      <nobr><tt>bunzip2 -c ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;the&nbsp;ecosSWtools-990319&nbsp;archive</i>)
+      <p>
 
    The directory <nobr><tt>C:\cygnus\ecosSWtools-arm-990321\src</tt></nobr> or <nobr><tt>C:\cygnus\ecosSWtools-990319\src</tt></nobr> should be generated and populated during the extraction process.<p>
 
@@ -102,17 +102,15 @@ these steps at the <i>bash</i> prompt:<p>
 
    <li>Configure the tools, saving the output to <tt>configure.out</tt>:<p>
 
-   <nobr>
-   <tt>/c/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
+   <nobr><tt>/c/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
        &nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-arm-990321 \<br>
        &nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-arm-990321/H-i586-cygwin32 \<br>
-       &nbsp;&nbsp;--host=i586-cygwin32 --target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+       &nbsp;&nbsp;--host=i586-cygwin32 --target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-arm-990321</i>)<p>
 
-   <tt>/c/cygnus/ecosSWtools-990319/src/configure -v \<br>
+   <nobr><tt>/c/cygnus/ecosSWtools-990319/src/configure -v \<br>
        &nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-990319 \<br>
        &nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-990319/H-i586-cygwin32 \<br>
-       &nbsp;&nbsp;--host=i586-cygwin32 --target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)<p>
-   </nobr>
+       &nbsp;&nbsp;--host=i586-cygwin32 --target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-990319</i>)<p>
 
    You should replace <i><tt>target-triplet</tt></i> in the
    above command with one of the following target triplets:
@@ -124,10 +122,8 @@ these steps at the <i>bash</i> prompt:<p>
   newly-created build tree. Note that the file is renamed during copying.<p>
 
   <li>Build and install the tools, saving the output to <tt>make.out</tt>:<p>
-  <nobr>
-  <tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
-  <tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)
-  </nobr>
+  <nobr><tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-arm-990321</i>)<p>
+  <nobr><tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt></nobr> &nbsp;&nbsp;&nbsp;&nbsp;(<i>for&nbsp;ecosSWtools-990319</i>)
   </ul>
 
   <p>
