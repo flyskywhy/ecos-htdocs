@@ -1,0 +1,271 @@
+<!-- Copyright (C) 2000 Red Hat, Inc. --> <HTML>
+<HEAD>
+<TITLE>
+description</TITLE>
+<META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="The eCos Component Writer's Guide"
+HREF="cdl-guide.html"><LINK
+REL="UP"
+TITLE="CDL Language Specification"
+HREF="reference.html"><LINK
+REL="PREVIOUS"
+TITLE="define_proc"
+HREF="ref.define-proc.html"><LINK
+REL="NEXT"
+TITLE="display"
+HREF="ref.display.html"></HEAD>
+<BODY
+BGCOLOR="#FFFFFF"
+TEXT="#000000">
+<DIV
+CLASS="NAVHEADER">
+<TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0">
+<TR>
+<TH
+COLSPAN="3"
+ALIGN="center">
+The <SPAN
+CLASS="APPLICATION">
+eCos</SPAN>
+ Component Writer's Guide</TH>
+</TR>
+<TR>
+<TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom">
+<A
+HREF="ref.define-proc.html">
+Prev</A>
+</TD>
+<TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom">
+</TD>
+<TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom">
+<A
+HREF="ref.display.html">
+Next</A>
+</TD>
+</TR>
+</TABLE>
+<HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV>
+<H1>
+<SPAN
+CLASS="PROPERTY">
+description</SPAN>
+</H1>
+<DIV
+CLASS="REFNAMEDIV">
+<A
+NAME="AEN4062">
+</A>
+<H2>
+Name</H2>
+Property <SPAN
+CLASS="PROPERTY">
+description</SPAN>
+ &#8212; Provide a textual description for an option.</DIV>
+<DIV
+CLASS="REFSYNOPSISDIV">
+<A
+NAME="AEN4066">
+</A>
+<H2>
+Synopsis</H2>
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%">
+<TR>
+<TD>
+<PRE
+CLASS="SYNOPSIS">
+cdl_option &lt;name&gt; {
+    description &lt;text&gt;
+    &#8230;
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV
+CLASS="REFSECT1">
+<A
+NAME="AEN4068">
+</A>
+<H2>
+Description</H2>
+<P>
+Users can only be expected to manipulate configuration options
+sensibly if they are given sufficient information about these options.
+There are three properties which serve to explain an option in plain
+text: the <SPAN
+CLASS="PROPERTY">
+display</SPAN>
+ property gives a textual alias for an option,
+which is usually more comprehensible than something like
+<TT
+CLASS="LITERAL">
+CYGPKG_LIBC_TIME_ZONES</TT>
+; the <SPAN
+CLASS="PROPERTY">
+description</SPAN>
+ property
+gives a longer description, typically a paragraph or so; the <SPAN
+CLASS="PROPERTY">
+doc</SPAN>
+
+property specifies the location of additional on-line documentation
+related to a configuration option. In the context of a graphical tool
+the <SPAN
+CLASS="PROPERTY">
+display</SPAN>
+ string will be the primary way for users to identify
+configuration options; the <SPAN
+CLASS="PROPERTY">
+description</SPAN>
+ paragraph will be visible
+whenever the option is selected; the on-line documentation will only
+be accessed when the user explicitly requests it.</P>
+<P>
+At present there is no way of providing any sort of formatting mark-up
+in a description. It is possible that future versions of the
+configuration tools will provide some control over the way the
+description text gets rendered.</P>
+</DIV>
+<DIV
+CLASS="REFSECT1">
+<A
+NAME="AEN4078">
+</A>
+<H2>
+Example</H2>
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%">
+<TR>
+<TD>
+<PRE
+CLASS="PROGRAMLISTING">
+cdl_option CYGDBG_INFRA_DEBUG_TRACE_MESSAGE {
+    display       "Use trace text"
+    default_value 1
+    description   "
+        All trace calls within eCos contain a text message
+        which should give some information about the circumstances.
+        These text messages will end up being embedded in the
+        application image and hence there is a significant penalty
+        in terms of image size.
+        It is possible to suppress the use of these messages by
+        disabling this option.
+        This results in smaller code size, but there is less
+        human-readable information available in the trace output,
+        possibly only filenames and line numbers."
+}</PRE>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV
+CLASS="REFSECT1">
+<A
+NAME="AEN4081">
+</A>
+<H2>
+See Also</H2>
+<P>
+Properties <A
+HREF="ref.display.html">
+<SPAN
+CLASS="PROPERTY">
+display</SPAN>
+</A>
+ and
+<A
+HREF="ref.doc.html">
+<SPAN
+CLASS="PROPERTY">
+doc</SPAN>
+</A>
+.</P>
+</DIV>
+<DIV
+CLASS="NAVFOOTER">
+<HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0">
+<TR>
+<TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top">
+<A
+HREF="ref.define-proc.html">
+Prev</A>
+</TD>
+<TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top">
+<A
+HREF="cdl-guide.html">
+Home</A>
+</TD>
+<TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top">
+<A
+HREF="ref.display.html">
+Next</A>
+</TD>
+</TR>
+<TR>
+<TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top">
+<SPAN
+CLASS="PROPERTY">
+define_proc</SPAN>
+</TD>
+<TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top">
+<A
+HREF="reference.html">
+Up</A>
+</TD>
+<TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top">
+<SPAN
+CLASS="PROPERTY">
+display</SPAN>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

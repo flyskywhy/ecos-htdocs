@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> User API</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">User API</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.html">To&nbsp;main&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1078865">
+ </A>
+<A NAME="marker=1078862">
+ </A>
+User API<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1078876">
+ </A>
+All functions, except <CODE CLASS="CodeOutput">
+cyg_io_lookup()</CODE>
+ require an I/O &quot;<A NAME="marker=1078873">
+ </A>
+handle&quot;. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078884">
+ </A>
+All functions return a value of the type <CODE CLASS="Code">
+Cyg_ErrNo</CODE>
+. If an error condition is detected, this value will be negative and the absolute value indicates the actual error, as specified in <CODE CLASS="Code">
+cyg/error/codes.h</CODE>
+. The only other legal return value will be <CODE CLASS="Code">
+ENOERR</CODE>
+. All other function arguments are pointers (references). This allows the drivers to pass information efficiently, both into and out of the driver. The most striking example of this is the &quot;length&quot; value passed to the read and write functions. This parameter contains the desired length of data on input to the function and the actual transferred length on return. </P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1078901"> </A>
+// Lookup a device and return its handle <A NAME="pgfId=1452876"> </A>
+Cyg_ErrNo <CODE CLASS="CodeOutput">cyg_io_lookup</CODE>( 
+&nbsp;&nbsp;&nbsp;&nbsp;const char *<EM CLASS="Emphasis">name,
+</EM>    cyg_io_handle_t *<EM CLASS="Emphasis">handle )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1452878">
+ </A>
+This function maps a device name onto an appropriate handle. If the named device is not in the system, then the error <CODE CLASS="Code">
+-ENOENT</CODE>
+ is returned. If the device is found, then the handle for the device is returned by way of the handle pointer <CODE CLASS="Code">
+*handle</CODE>
+. </P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1078961"> </A>
+ // Write data to a device 
+Cyg_ErrNo <CODE CLASS="CodeOutput">cyg_io_write</CODE>
+<A NAME="marker=1078968"> </A>
+( <EM CLASS="Emphasis">
+</EM>
+    cyg_io_handle_t <EM CLASS="Emphasis">handle,
+</EM>
+    const void *<EM CLASS="Emphasis">buf,
+</EM>
+    cyg_uint32 *<EM CLASS="Emphasis">len )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1079020">
+ </A>
+This function sends data to a device. The size of data to send is contained in <EM CLASS="parameter">
+*len</EM>
+ and the actual size sent will be returned in the same place. </P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1079029"> </A>
+ // Read data from a device 
+Cyg_ErrNo <A NAME="marker=1079033"> </A>
+<CODE CLASS="CodeOutput">cyg_io_read</CODE>
+( <EM CLASS="Emphasis">
+</EM>
+    cyg_io_handle_t <EM CLASS="Emphasis">handle,
+</EM>
+    void *<EM CLASS="Emphasis">buf,
+</EM>
+    cyg_uint32 *<EM CLASS="Emphasis">len )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1079084">
+ </A>
+This function receives data from a device. The desired size of data to receive is contained in <EM CLASS="parameter">
+*len</EM>
+ and the actual size obtained will be returned in the same place. </P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1079097"> </A>
+ // Get the configuration of a device 
+Cyg_ErrNo <CODE CLASS="CodeOutput">cyg_io_get_config</CODE>
+<A NAME="marker=1079104"> </A>( <EM CLASS="Emphasis">
+</EM>    cyg_io_handle_t <EM CLASS="Emphasis">handle,
+</EM>    cyg_uint32 <EM CLASS="Emphasis">key,
+</EM>    void *<EM CLASS="Emphasis">buf,
+</EM>    cyg_uint32 *<EM CLASS="Emphasis">len )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1079164">
+ </A>
+This function is used to obtain run-time configuration about a device. The type of information retrieved is specified by the key. The data will be returned in the given buffer. The value of <EM CLASS="parameter">
+*len</EM>
+ should contain the amount of data requested, which must be at least as large as the size appropriate to the selected key. The actual size of data retrieved is placed in <EM CLASS="parameter">
+*len.</EM>
+ The appropriate key values differ for each driver and are all listed in the file <CODE CLASS="Code">
+cyg/io/config_keys.h</CODE>
+.</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1079185"> </A>
+ // Change the configuration of a device 
+Cyg_ErrNo <A NAME="marker=1079189"> </A>
+<CODE CLASS="CodeOutput">cyg_io_set_config</CODE>
+( <EM CLASS="Emphasis">
+</EM>
+    cyg_io_handle_t <EM CLASS="Emphasis">handle,
+</EM>
+    cyg_uint32 <EM CLASS="Emphasis">key,
+</EM>
+    const void *<EM CLASS="Emphasis">buf,
+</EM>
+    cyg_uint32 *<EM CLASS="Emphasis">len )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1079252">
+ </A>
+This function is used to manipulate or change the run-time configuration of a device. The type of information is specified by the key. The data will be obtained from the given buffer. The value of <EM CLASS="parameter">
+*len</EM>
+ should contain the amount of data provided, which must match the size appropriate to the selected key. The appropriate key values differ for each driver and are all listed in the file <CODE CLASS="Code">
+cyg/io/config_keys.h</CODE>
+.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">User API</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.html">To&nbsp;main&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

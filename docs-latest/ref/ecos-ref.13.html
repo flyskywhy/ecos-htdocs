@@ -1,0 +1,1490 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> Device Driver Interface to the Kernel</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1080346">
+ </A>
+Device Driver Interface to the Kernel<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1080351">
+ </A>
+This chapter describes the API that device drivers may use to interact with the kernel and HAL. It is primarily concerned with the control and management of interrupts. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080356">
+ </A>
+The same API will be present in configurations where the kernel is not present. In this case the functions will be supplied by code acting directly on the HAL. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080365">
+ </A>
+Interrupt Model</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1080373">
+ </A>
+<SPAN CLASS="Bold">
+eCos</SPAN>
+ presents a three level interrupt model to <A NAME="marker=1080369">
+ </A>
+device drivers. This consists of <A NAME="marker=1080371">
+ </A>
+Interrupt Service Routines (ISRs) that are invoked in response to a hardware interrupt; <A NAME="marker=1080374">
+ </A>
+Deferred Service Routines (DSRs) that are invoked in response to a request by an ISR; and threads that are the clients of the driver. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080380">
+ </A>
+Hardware interrupts are delivered with minimal intervention to an ISR. The HAL decodes the hardware source of the interrupt and calls the ISR of the attached interrupt object. This ISR may manipulate the hardware but is only allowed to make a restricted set of calls on the driver API. When it returns, an ISR may request that its DSR should be scheduled to run. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080385">
+ </A>
+A DSR will be run when it is safe to do so without interfering with the scheduler. Most of the time the DSR will run immediately after the ISR, but if the current thread is in the scheduler, it will be delayed until the thread is finished. A DSR is allowed to make a larger set of driver API calls, including, in particular, being able to call <CODE CLASS="CodeOutput">
+cyg_drv_cond_signal()</CODE>
+ to wake up waiting threads. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080394">
+ </A>
+Finally, threads are able to make all API calls and in particular are allowed to wait on mutexes and condition variables. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080399">
+ </A>
+For a device driver to receive interrupts it must first define ISR and DSR routines as shown below, and then call <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_create()</CODE>
+. Using the handle returned, the driver must then call <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_attach()</CODE>
+ to actually attach the interrupt to the hardware vector. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080419">
+ </A>
+<A NAME="marker=1080416">
+ </A>
+Synchronization</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1080424">
+ </A>
+There are three levels of synchronization supported:</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=1080434">
+ </A>
+Synchronization with ISRs. This normally means disabling interrupts to prevent the ISR running during a critical section. On a multiprocessor this will also require a spinlock. This is implemented by the <CODE CLASS="CodeOutput">
+cyg_drv_isr_lock()</CODE>
+ and <CODE CLASS="CodeOutput">
+cyg_drv_isr_unlock()</CODE>
+ functions. This mechanism should be used sparingly and for short periods only. </LI>
+<P><LI>
+<A NAME="pgfId=1080451">
+ </A>
+Synchronization with DSRs. This will be implemented in the kernel by taking the scheduler lock to prevent DSRs running during critical sections. In non-kernel configurations it will be implemented by non-kernel code. This is implemented by the <CODE CLASS="CodeOutput">
+cyg_drv_dsr_lock()</CODE>
+ and <CODE CLASS="CodeOutput">
+cyg_drv_dsr_unlock()</CODE>
+ functions. As with ISR synchronization, this mechanism should be used sparingly. </LI>
+<P><LI>
+<A NAME="pgfId=1080468">
+ </A>
+Synchronization with threads. This is implemented with mutexes and condition variables. Only threads may lock the mutexes and wait on the condition variables, although DSRs may signal condition variables. </LI>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=1080475">
+ </A>
+ISRs are run with interrupts disabled, so it is not necessary to call <CODE CLASS="CodeOutput">
+cyg_drv_isr_lock()</CODE>
+ in an ISR. Similarly DSRs are run with the scheduler lock taken, so it is not necessary to call <CODE CLASS="CodeOutput">
+cyg_drv_dsr_lock()</CODE>
+ in DSRs. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080493">
+ </A>
+Device Driver Models</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1080499">
+ </A>
+There are several ways in which <A NAME="marker=1080497">
+ </A>
+device drivers may be built. The exact model chosen will depend on the properties of the device and the behavior desired. There are three basic models that may be adopted. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080504">
+ </A>
+The first model is to do all device processing in the ISR. When it is invoked the ISR programs the device hardware directly and accesses data to be transferred directly in memory. The ISR should also call <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_acknowledge()</CODE>
+. When it is finished it may optionally request that its DSR be invoked. The DSR calls <CODE CLASS="CodeOutput">
+cyg_drv_cond_signal()</CODE>
+ to cause a thread to be woken up. Thread level code must call <CODE CLASS="CodeOutput">
+cyg_drv_isr_lock()</CODE>
+, or <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_mask()</CODE>
+ to prevent ISRs running while it manipulates shared memory. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080525">
+ </A>
+The second model is to defer device processing to the DSR. The ISR simply prevents further delivery of interrupts by either programming the device, or by calling <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_mask()</CODE>
+. It may then call <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_acknowledge()</CODE>
+ to allow other interrupts to be delivered and request that its DSR be called. When the DSR runs it does the majority of the device handling, optionally signals a condition variable to wake a thread, and finishes by calling <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_unmask()</CODE>
+ to re-allow device interrupts. Thread level code uses <CODE CLASS="CodeOutput">
+cyg_drv_dsr_lock()</CODE>
+ to prevent DSRs running while it manipulates shared memory. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080546">
+ </A>
+The third model is to defer device processing even further to a thread. The ISR behaves exactly as in the previous model and simply blocks and acknowledges the interrupt before request that the DSR run. The DSR calls <CODE CLASS="CodeOutput">
+cyg_drv_cond_signal()</CODE>
+ to wake the thread. When the thread awakens it performs all device processing, and has full access to all kernel facilities while it does so. It should finish by calling <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_unmask()</CODE>
+ to re-allow device interrupts. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080559">
+ </A>
+The first model is good for devices that need immediate processing and interact infrequently with thread level. The second model trades a little latency in dealing with the device for a less intrusive synchronization mechanism. The last model allows device processing to be scheduled with other threads and permits more complex device handling. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080569">
+ </A>
+Synchronization Levels</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1080573">
+ </A>
+Since it would be dangerous for an ISR or DSR to make a call that might reschedule the current thread (by trying to lock a mutex for example) all functions in this API have an associated synchronization level. These levels are:</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080588">
+ </A>
+Thread 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080595">
+ </A>
+This function may only be called from within threads. This is usually the client code that makes calls into the device driver. In a non-kernel configuration, this will be code running at the default non-interrupt level. </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080609">
+ </A>
+DSR 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080619">
+ </A>
+This function may be called by either DSR or thread code.</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080630">
+ </A>
+ISR 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080641">
+ </A>
+This function may be called from ISR, DSR or thread code.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1080645">
+ </A>
+The following table shows, for each API function, the levels at which is may be called:</P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1080650"> </A>
+ Callable from:
+Function			ISR	DSR	Thread
+----------------------------------------------------------------------
+
+cyg_drv_isr_lock			X	X
+cyg_drv_isr_unlock			X	X
+cyg_drv_dsr_lock				X
+cyg_drv_dsr_unlock				X
+cyg_drv_mutex_init				X
+cyg_drv_mutex_destroy				X
+cyg_drv_mutex_lock				X
+cyg_drv_mutex_trylock				X
+cyg_drv_mutex_unlock				X
+cyg_drv_mutex_release				X
+cyg_drv_cond_init				X
+cyg_drv_cond_destroy				X
+cyg_drv_cond_wait				X
+cyg_drv_cond_signal			X	X
+cyg_drv_cond_broadcast			X	X
+cyg_drv_interrupt_create			X
+cyg_drv_interrupt_delete			X
+cyg_drv_interrupt_attach	X	X	X
+cyg_drv_interrupt_detach 	X	X	X
+cyg_drv_interrupt_mask 		X	X	X
+cyg_drv_interrupt_unmask 	X	X	X
+cyg_drv_interrupt_acknowledge 	X	X	X
+cyg_drv_interrupt_configure 	X	X	X
+cyg_drv_interrupt_level 	X	X	X
+ </PRE>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080660">
+ </A>
+The API</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1080666">
+ </A>
+This section details the <A NAME="marker=1080664">
+ </A>
+Driver Kernel Interface. Note that most of these functions are identical to Kernel C API calls, and will in most configurations be wrappers for them. In non-kernel configurations they will be supported directly by the HAL, or by code to emulate the required behavior. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080676">
+ </A>
+This API is defined in the header file <CODE CLASS="Code">
+cyg/hal/drv_api.h</CODE>
+.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1080686">
+ </A>
+<A NAME="marker=1080683">
+ </A>
+cyg_drv_isr_lock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080700">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1080707"> </A>
+	void cyg_drv_isr_lock()
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080721">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080731">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080742">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080752">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080763">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080773">
+ </A>
+DSR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080784">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080791">
+ </A>
+Disables delivery of interrupts, preventing all ISRs running. This function maintains a counter of the number of times it is called. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1080806">
+ </A>
+<A NAME="marker=1080803">
+ </A>
+cyg_drv_isr_unlock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080820">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1080827"> </A>
+	void cyg_drv_isr_unlock()
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080841">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080851">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080862">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080872">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080883">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080893">
+ </A>
+DSR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080904">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080911">
+ </A>
+Re-enables delivery of interrupts, allowing ISRs to run. This function decrements the counter maintained by <CODE CLASS="CodeOutput">
+cyg_drv_isr_lock()</CODE>
+, and only re-allows interrupts when it goes to zero. </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080933">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1080943"> </A>
+void cyg_drv_dsr_lock()</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080954">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080964">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080975">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1080985">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1080996">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081006">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081017">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081024">
+ </A>
+Disables scheduling of DSRs. This function maintains a counter of the number of times it has been called. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081039">
+ </A>
+<A NAME="marker=1081036">
+ </A>
+cyg_drv_dsr_unlock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081053">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081063"> </A>
+void cyg_drv_dsr_unlock()</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081074">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081084">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081095">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081105">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081116">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081126">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081137">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081144">
+ </A>
+Re-enables scheduling of DSRs. This function decrements the counter incremented by <CODE CLASS="CodeOutput">
+cyg_drv_dsr_lock()</CODE>
+. DSRs are only allowed to be delivered when the counter goes to zero. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081163">
+ </A>
+<A NAME="marker=1081160">
+ </A>
+cyg_drv_mutex_init</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081177">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081187"> </A>
+void cyg_drv_mutex_init(cyg_drv_mutex *mutex)</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081198">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081208">
+ </A>
+mutex - pointer to mutex to initialize</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081219">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081229">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081240">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081250">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081261">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081273">
+ </A>
+Initialize the mutex pointer to by the mutex argument. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081283">
+ </A>
+<A NAME="marker=1081280">
+ </A>
+cyg_drv_mutex_destroy</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081297">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081307"> </A>
+void cyg_drv_mutex_destroy( cyg_drv_mutex *mutex )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081318">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081328">
+ </A>
+mutex - pointer to mutex to destroy</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081339">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081349">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081360">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081370">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081381">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081393">
+ </A>
+Destroy the mutex pointed to by the mutex argument. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081403">
+ </A>
+<A NAME="marker=1081400">
+ </A>
+cyg_drv_mutex_lock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081417">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081427"> </A>
+cyg_bool cyg_drv_mutex_lock( cyg_drv_mutex *mutex )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081438">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081448">
+ </A>
+mutex - pointer to mutex to lock</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081459">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081469">
+ </A>
+TRUE it the thread has claimed the lock, FALSE otherwise.</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081480">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081490">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081501">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081508">
+ </A>
+Attempt to lock the mutex pointed to by the mutex argument. If the mutex is already locked by another thread then this thread will wait until that thread is finished. If the result from this function is FALSE then the thread was broken out of its wait by some other thread. In this case the mutex will not have been locked. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081523">
+ </A>
+<A NAME="marker=1081520">
+ </A>
+cyg_drv_mutex_trylock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081537">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081547"> </A>
+cyg_bool cyg_drv_mutex_trylock( cyg_drv_mutex *mutex )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081558">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081568">
+ </A>
+mutex - pointer to mutex to lock</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081579">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081589">
+ </A>
+TRUE if the mutex has been locked, FALSE otherwise. </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081600">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081610">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081621">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081628">
+ </A>
+Attempt to lock the mutex pointed to by the mutex argument without waiting. If the mutex is already locked by some other thread then this function returns FALSE. If the function can lock the mutex without waiting, then TRUE is returned. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081643">
+ </A>
+<A NAME="marker=1081640">
+ </A>
+cyg_drv_mutex_unlock</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081657">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081667"> </A>
+void cyg_drv_mutex_unlock( cyg_drv_mutex *mutex )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081678">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081688">
+ </A>
+mutex - pointer to mutex to unlock</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081699">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081709">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081720">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081730">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081741">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081748">
+ </A>
+Unlock the mutex pointed to by the mutex argument. If there are any threads waiting to claim the lock, one of them is woken up to try and claim it. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081763">
+ </A>
+<A NAME="marker=1081760">
+ </A>
+cyg_drv_mutex_release</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081777">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081787"> </A>
+void cyg_drv_mutex_release( cyg_drv_mutex *mutex )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081798">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081808">
+ </A>
+mutex - pointer to mutex to release</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081819">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081829">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081840">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081850">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081861">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081868">
+ </A>
+Release all threads waiting on the mutex pointed to by the mutex argument. These threads will return from <CODE CLASS="CodeOutput">
+cyg_drv_mutex_lock()</CODE>
+ with a FALSE result and will not have claimed the mutex. This function has no effect on any thread that may have the mutex claimed. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1081887">
+ </A>
+<A NAME="marker=1081884">
+ </A>
+cyg_drv_cond_init</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081901">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1081908"> </A>
+ void cyg_drv_cond_init( cyg_drv_cond *cond,
+ cyg_drv_mutex *mutex )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081922">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081937">
+ </A>
+cond--condition variable to initialize</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081949">
+ </A>
+mutex--mutex to associate with this condition variable </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081960">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081970">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1081981">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1081991">
+ </A>
+Thread </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082002">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082009">
+ </A>
+Initialize the condition variable pointed to by the cond argument. The mutex argument must point to a mutex with which this condition variable is associated. A thread may only wait on this condition variable when it has already locked the associated mutex. Waiting will cause the mutex to be unlocked, and when the thread is reawakened, it will automatically claim the mutex before continuing. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082024">
+ </A>
+<A NAME="marker=1082021">
+ </A>
+cyg_drv_cond_destroy</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082038">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082048"> </A>
+ void cyg_drv_cond_destroy( cyg_drv_cond *cond )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082059">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082069">
+ </A>
+cond - condition variable to destroy</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082080">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082090">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082101">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082111">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082122">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082134">
+ </A>
+Destroy the condition variable pointed to by the cond argument. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082144">
+ </A>
+<A NAME="marker=1082141">
+ </A>
+cyg_drv_cond_wait</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082158">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082168"> </A>
+void cyg_drv_cond_wait( cyg_drv_cond *cond )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082179">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082189">
+ </A>
+cond - condition variable to wait on</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082200">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082210">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082221">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082231">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082242">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082249">
+ </A>
+Wait for a signal on the condition variable pointed to by the cond argument. The thread must have locked the associated mutex before waiting on this condition variable. While the thread waits, the mutex will be unlocked, and will be re-locked before this function returns. It is possible for threads waiting on a condition variable to occasionally wake up spuriously. For this reason it is necessary to use this function in a loop that re-tests the condition each time it returns. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082264">
+ </A>
+<A NAME="marker=1082261">
+ </A>
+cyg_drv_cond_signal</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082278">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082288"> </A>
+void cyg_drv_cond_signal( cyg_drv_cond *cond )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082299">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082309">
+ </A>
+cond - condition variable to signal</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082320">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082330">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082341">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082351">
+ </A>
+DSR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082362">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082369">
+ </A>
+Signal the condition variable pointed to by the cond argument. If there are any threads waiting on this variable at least one of them will be awakened. Note that in some configurations there may not be any difference between this function and <CODE CLASS="CodeOutput">
+cyg_drv_cond_broadcast()</CODE>
+. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082388">
+ </A>
+<A NAME="marker=1082385">
+ </A>
+cyg_drv_cond_broadcast</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082402">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082412"> </A>
+void cyg_drv_cond_broadcast( cyg_drv_cond *cond )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082423">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082433">
+ </A>
+cond - condition variable to broadcast to</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082444">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082454">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082465">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082475">
+ </A>
+DSR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082486">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082493">
+ </A>
+Signal the condition variable pointed to by the cond argument. If there are any threads waiting on this variable they will all be awakened. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082508">
+ </A>
+<A NAME="marker=1082505">
+ </A>
+cyg_drv_interrupt_create</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082522">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082529"> </A>
+ void cyg_drv_interrupt_create(
+ cyg_vector_t vector,
+ cyg_priority_t priority,
+ cyg_addrword_t data,
+ cyg_ISR_t *isr,
+ cyg_DSR_t *dsr,
+ cyg_handle_t *handle,
+ cyg_interrupt *intr
+ )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082543">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082558">
+ </A>
+vector--vector to attach to</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082567">
+ </A>
+priority--queueing priority</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082576">
+ </A>
+data--data pointer</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082585">
+ </A>
+isr--interrupt service routine</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082594">
+ </A>
+dsr--deferred service routine</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082603">
+ </A>
+handle--returned handle</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082615">
+ </A>
+intr--put interrupt object here</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082626">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082636">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082647">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082657">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082668">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082675">
+ </A>
+Create an interrupt object and returns a handle to it. The object contains information about which interrupt vector to use and the ISR and DSR that will be called after the interrupt object is attached. The interrupt object will be allocated in the memory passed in the intr parameter. The interrupt object is not immediately attached; it must be attached with the <CODE CLASS="CodeOutput">
+cyg_interrupt_attach()</CODE>
+ call. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082694">
+ </A>
+<A NAME="marker=1082691">
+ </A>
+cyg_drv_interrupt_delete</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082708">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082718"> </A>
+ void cyg_drv_interrupt_delete( cyg_handle_t interrupt )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082729">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082739">
+ </A>
+interrupt--interrupt to delete</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082750">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082760">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082771">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082781">
+ </A>
+Thread</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082792">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082799">
+ </A>
+Detach the interrupt from the vector and free the memory passed in the intr argument to <CODE CLASS="CodeOutput">
+cyg_drv_interrupt_create()</CODE>
+ for reuse. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082818">
+ </A>
+<A NAME="marker=1082815">
+ </A>
+cyg_drv_interrupt_attach</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082832">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082839"> </A>
+	void cyg_drv_interrupt_attach( cyg_handle_t interrupt )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082853">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082863">
+ </A>
+interrupt--interrupt to attach</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082874">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082884">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082895">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082905">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082916">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082923">
+ </A>
+Attach the interrupt to the vector so that interrupts will be delivered to the ISR when the interrupt occurs. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1082938">
+ </A>
+<A NAME="marker=1082935">
+ </A>
+cyg_drv_interrupt_detach</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082952">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1082962"> </A>
+void cyg_drv_interrupt_detach( cyg_handle_t interrupt )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082973">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1082983">
+ </A>
+interrupt--interrupt to detach</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1082994">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083004">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083015">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083025">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083036">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083043">
+ </A>
+Detach the interrupt from the vector so that interrupts will no longer be delivered to the ISR. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083058">
+ </A>
+<A NAME="marker=1083055">
+ </A>
+cyg_drv_interrupt_mask</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083072">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083082"> </A>
+void cyg_drv_interrupt_mask(cyg_vector_t vector )</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083093">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083103">
+ </A>
+vector--vector to mask</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083114">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083124">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083135">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083145">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083156">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083163">
+ </A>
+Program the interrupt controller to stop delivery of interrupts on the given vector. On architectures which implement interrupt priority levels this may also disable all lower priority interrupts. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083178">
+ </A>
+<A NAME="marker=1083175">
+ </A>
+cyg_drv_interrupt_unmask</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083192">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083199"> </A>
+	void cyg_drv_interrupt_unmask(cyg_vector_t vector )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083213">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083223">
+ </A>
+vector--vector to unmask</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083234">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083244">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083255">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083265">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083276">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083283">
+ </A>
+Program the interrupt controller to re-allow delivery of interrupts on the given vector. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083298">
+ </A>
+<A NAME="marker=1083295">
+ </A>
+cyg_drv_interrupt_acknowledge</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083312">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083319"> </A>
+	void cyg_drv_interrupt_acknowledge( cyg_vector_t vector )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083333">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083343">
+ </A>
+vector--vector to acknowledge</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083354">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083364">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083375">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083385">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083396">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083403">
+ </A>
+Perform any processing required at the interrupt controller and in the CPU to cancel the interrupt request. An ISR may also need to program the hardware of the device to prevent an immediate re-triggering of the interrupt. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083418">
+ </A>
+<A NAME="marker=1083415">
+ </A>
+cyg_drv_interrupt_configure</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083432">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083439"> </A>
+	void cyg_drv_interrupt_configure(
+ cyg_vector_t vector,
+ cyg_bool_t level, 
+ cyg_bool_t up 
+ )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083453">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083468">
+ </A>
+vector--vector to configure</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083477">
+ </A>
+level--level or edge triggered</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083489">
+ </A>
+up--rising/falling edge, high/low level</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083500">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083510">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083521">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083531">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083542">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083549">
+ </A>
+Program the interrupt controller with the characteristics of the interrupt source. The level argument chooses between level- or edge-triggered interrupts. The up argument chooses between high and low level for level triggered interrupts or rising and falling edges for edge triggered interrupts. This function only works with interrupt controllers that can control these parameters. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083564">
+ </A>
+<A NAME="marker=1083561">
+ </A>
+cyg_drv_interrupt_level</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083578">
+ </A>
+Function: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083585"> </A>
+	void cyg_drv_interrupt_level(
+ cyg_vector_t vector,
+ cyg_priority_t level
+ )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083599">
+ </A>
+Arguments: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083614">
+ </A>
+vector--vector to configure</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083626">
+ </A>
+level--level to set</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083637">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083647">
+ </A>
+None </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083658">
+ </A>
+Level: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083668">
+ </A>
+ISR</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083679">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083686">
+ </A>
+Program the interrupt controller to deliver the given interrupt at the supplied priority level. This function only works with interrupt controllers that can control this parameter.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083701">
+ </A>
+<A NAME="marker=1083698">
+ </A>
+cyg_ISR_t</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083715">
+ </A>
+Type: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083722"> </A>
+	typedef cyg_uint32 cyg_ISR_t(
+ cyg_vector_t vector,
+ cyg_addrword_t data
+ )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083736">
+ </A>
+Fields: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083751">
+ </A>
+vector--vector being delivered</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083763">
+ </A>
+data--data value supplied by client</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083774">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083781">
+ </A>
+Bit mask indicating whether interrupt was handled and whether the DSR should be called. </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083795">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083802">
+ </A>
+Interrupt Service Routines definition. A pointer to a function with this prototype is passed to <CODE CLASS="CodeOutput">
+cyg_interrupt_create()</CODE>
+ when an interrupt object is created. When an interrupt is delivered the function will be called with the vector number and the data value that was passed to <CODE CLASS="CodeOutput">
+cyg_interrupt_create()</CODE>
+. </P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083816">
+ </A>
+The return value is a bit mask containing one or both of the following bits: </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083830">
+ </A>
+CYG_ISR_HANDLED 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083837">
+ </A>
+indicates that the interrupt was handled by this ISR. It is a configuration option whether this will prevent further ISR being run. </P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083851">
+ </A>
+CYG_ISR_CALL_DSR 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083862">
+ </A>
+causes the DSR that was passed to <CODE CLASS="CodeOutput">
+cyg_interrupt_create()</CODE>
+ to be scheduled to be called.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1083880">
+ </A>
+<A NAME="marker=1083877">
+ </A>
+cyg_DSR_t</H3>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083894">
+ </A>
+Type: 	</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1083901"> </A>
+ typedef void cyg_DSR_t(
+ cyg_vector_t vector,
+ cyg_ucount32 count,
+ cyg_addrword_t data
+ )
+	</PRE>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083915">
+ </A>
+Fields: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083930">
+ </A>
+vector--vector being delivered</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083939">
+ </A>
+count--number of times DSR has been scheduled</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083951">
+ </A>
+data--data value supplied by client</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083962">
+ </A>
+Result: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083972">
+ </A>
+None</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1083983">
+ </A>
+Description: 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1083990">
+ </A>
+Deferred Service Routine definition. A pointer to a function with this prototype is passed to <CODE CLASS="CodeOutput">
+cyg_interrupt_create()</CODE>
+ when an interrupt object is created. When the ISR request the scheduling of its DSR, this function will be called at some later point. In addition to the vector and data arguments, which will be the same as those passed to the ISR, this routine is also passed a count of the number of times the ISR has requested that this DSR be scheduled. This counter is zeroed each time the DSR actually runs, so it indicates how many interrupts have occurred since it last ran.</P>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Device Driver Interface to the Kernel</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

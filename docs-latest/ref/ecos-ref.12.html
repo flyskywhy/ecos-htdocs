@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> How to write a driver</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">How to write a driver</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.11.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1080075">
+ </A>
+How to write a driver<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1080081">
+ </A>
+A <A NAME="marker=1080079">
+ </A>
+device driver is nothing more than a named entity that supports the basic I/O functions - read, write, get config, and set config. Typically a device driver also uses and manages interrupts from the device as well. While the interface is generic and device driver independent, the actual driver implementation is completely up to the device driver designer. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080086">
+ </A>
+That said, the reason for using a device driver is to provide access to a device from application code in as general purpose a fashion as reasonable. Most driver writers are also concerned with making this access as simple as possible while being as efficient as possible. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080091">
+ </A>
+Most device drivers are concerned with the movement of information, for example data bytes along a serial interface, or packets in a network. In order to make the most efficient use of system resources, interrupts are used. This can allow for other application processing to take place while the data transfers are underway, with interrupts used to indicate when various events have occurred. For example, a serial port typically generates an interrupt after a character has been sent &quot;down the wire&quot; and the interface is ready for another. It makes sense to allow further application processing while the data is being sent since this can take quite a long time. The interrupt can be used to allow the driver to send a character as soon as the current one is complete, without any active participation by the application code. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080096">
+ </A>
+The main building blocks for device drivers are found in the include file: <CODE CLASS="Code">
+cyg/io/devtab.h</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1080105">
+ </A>
+All device drivers in <SPAN CLASS="Bold">
+eCos</SPAN>
+ are described by a device table entry, using the &quot;cyg_devtab_entry_t&quot; type. The entry should be created using the <CODE CLASS="CodeOutput">
+DEVTAB_ENTRY</CODE>
+ macro, like this:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1080114"> </A>
+ DEVTAB_ENTRY(l,name,dep_name,handlers,init,lookup,priv)
+<font face="Times New Roman, Times, serif" size="4">Arguments:
+<i> l</i> - The &quot;C&quot; label for this device table entry.
+ <i>name</i> - The &quot;C&quot; string name for the device.
+ <i>dep_name</i> - For a layered device, the &quot;C&quot; string name of the device this device is built upon.
+ <i>handlers</i> - A pointer to the I/O function &quot;handlers&quot; (see below).
+ <i>init</i> - A function called when <b>eCos</b> is initialized. This function can query the device, setup hardware, etc.
+ <i>lookup</i> - A function called when &quot;cyg_io_lookup()&quot; is called for this device.
+ <i>priv</i> - A placeholder for any device specific data required by the driver.</font>
+ </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1080121">
+ </A>
+The interface to the driver is through the &quot;<A NAME="marker=1080119">
+ </A>
+handlers&quot; field. This is a pointer to a set of functions which implement the various <CODE CLASS="CodeOutput">
+cyg_io_XXX()</CODE>
+ routines. This table is defined by the macro:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1080130"> </A>
+ DEVIO_TABLE(l,write,read,get_config,set_config)
+<font size="4" face="Times New Roman, Times, serif">Arguments:
+<i> l</i> - The &quot;C&quot; label for this table of handlers.
+ <i>write</i> - The function called as a result of &quot;cyg_io_write()&quot;.
+ <i>read</i> - The function called as a result of &quot;cyg_io_read()&quot;.
+ <i>get_config</i> - The function called as a result of &quot;cyg_io_get_config()&quot;.
+ <i>set_config</i> - The function called as a result of &quot;cyg_io_set_config()&quot;.
+</font> </PRE>
+<P CLASS="Body"> <A NAME="pgfId=1080135"> </A> When <SPAN CLASS="Bold"> <b>eCos</b></SPAN> 
+  is initialized (sometimes called &quot;boot&quot; time), the &quot;init&quot; 
+  function is called for all devices in the system. The &quot;init&quot; function 
+  is allowed to return an error in which case the device will be placed &quot;off 
+  line&quot; and all I/O requests to that device will be considered in error. 
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1080144">
+ </A>
+The &quot;lookup&quot; function is called whenever the <CODE CLASS="CodeOutput">
+cyg_io_lookup()</CODE>
+ function is called with this device name. The lookup function may cause the device to come &quot;on line&quot; which would then allow I/O operations to proceed. Future versions of the I/O system will allow for other states, including power saving modes, etc. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1080152">
+ </A>
+How to write a serial hardware interface module</H3>
+  <P CLASS="Body"> <A NAME="pgfId=1080157"> </A> The standard serial driver supplied 
+    with <SPAN CLASS="Bold"> <b>eCos</b></SPAN> is structured as a hardware independent 
+    portion and a hardware dependent interface module. To add support for a new 
+    serial port, the user should be able to use the existing hardware independent 
+    portion and just add their own <A NAME="marker=1080158"> </A> interface module 
+    which handles the details of the actual device. The user should have no need 
+    to change the hardware independent portion. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1080164">
+ </A>
+The interfaces used by the serial driver and serial implementation modules are contained in the file <CODE CLASS="Code">
+cyg/io/serial.h</CODE>
+</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1080176">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1080180">
+ </A>
+In the text below we use the notation &lt;&lt;xx&gt;&gt; to mean a module specific value, referred to as &quot;xx&quot; below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1080186">
+ </A>
+The interface module contains the devtab entry (or entries if a single module supports more than one interface). This entry should have the form: </P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1080191"> </A>
+ DEVTAB_ENTRY(&lt;&lt;module_name&gt;&gt;, 
+ &lt;&lt;device_name&gt;&gt;,
+ 0,
+ &amp;serial_devio, 
+ &lt;&lt;module_init&gt;&gt;, 
+ &lt;&lt;module_lookup&gt;&gt;,
+ &amp;&lt;&lt;serial_channel&gt;&gt;
+ );
+
+<font face="Times New Roman, Times, serif" size="4">Where:
+<i> module_name</i> - The &quot;C&quot; label for this devtab entry
+ <i>device_name</i> - The &quot;C&quot; string for the device. E.g. &quot;/dev/serial0&quot;.
+ <i>serial_devio</i> - The table of I/O functions. This set is defined in the hardware independent serial driver and should be used.
+ <i>module_init</i> - The module initialization function.
+ <i>module_lookup</i> - The device lookup function. This function typically sets up the device for actual use, turning on interrupts, configuring the port, etc.
+ <i>serial_channel</i> - This table (defined below) contains the interface between the interface module and the serial driver proper.</font>
+ </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1080196">
+ </A>
+Each serial device must have a &quot;serial channel&quot;. This is a set of data which describes all operations on the device. It also contains buffers, etc., if the device is to be buffered. The serial channel is created by the macro: </P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1080201"> </A>
+ SERIAL_CHANNEL_USING_INTERRUPTS(l,funs,dev_priv,baud,stop,parity,word_length,
+ flags,out_buf,out_buflen,in_buf,in_buflen)
+<font face="Times New Roman, Times, serif" size="4">Arguments:
+<i> l </i>- The &quot;C&quot; label for this structure.
+ <i>funs</i> - The set of interface functions (see below).
+ <i>dev_priv</i> - A placeholder for any device specific data for this channel.
+ <i>baud</i> - The initial baud rate value (cyg_serial_baud_t).
+ <i>stop</i> - The initial stop bits value (cyg_serial_stop_bits_t)
+ <i>parity</i> - The initial parity mode value (cyg_serial_parity_t)
+ <i>word_length</i> - The initial word length value (cyg_serial_word_length_t)
+ <i>flags</i> - The initial driver flags value
+ <i>out_buf</i> - Pointer to the output buffer. NULL if none required.
+ <i>out_buflen</i> - The length of the output buffer.
+ <i>in_buf</i> - Pointer to the input buffer. NULL if none required.
+<i> in_buflen</i> - The length of the input buffer.
+</font> </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1080206">
+ </A>
+If either buffer length is zero, no buffering will take place in that direction and only polled mode functions will be used.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1080211">
+ </A>
+The interface from the hardware independent driver into the hardware interface module is contained in the "funs" table above. This is defined by the macro: </P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1080216"> </A>
+ SERIAL_FUNS(l,putc,getc,set_config,start_xmit,stop_xmit)</PRE>
+  <div align="right">
+    <div align="left">
+      <PRE CLASS="CodeExample">
+<font face="Times New Roman, Times, serif" size="4">Arguments:
+<i>l</i>  - The &quot;C&quot; label for this structure.
+ <i>putc</i> - bool (*putc)(serial_channel *priv, unsigned char c)
+ This function sends one character to the interface. It should return "true" if the character is actually consumed. It should return "false"
+ if there is no space in the interface
+ <i>getc</i> - unsigned char (*getc)(serial_channel *priv)
+ This function fetches one character from the interface. It will be only called in a non-interrupt driven mode, thus it should wait for a 
+character by polling the device until ready.
+<i> set_config</i> - bool (*set_config)(serial_channel *priv, cyg_serial_info_t *config)
+ This function is used to configure the port. It should return "true" if the hardware is updated to match the desired configuration. It 
+ should return "false" if the port cannot support some parameter specified by the given configuration. E.g. selecting 1.5 stop
+ bits and 8 data bits is invalid for most serial devices and should not be allowed.
+ <i>start_xmit</i> - void (*start_xmit)(serial_channel *priv)
+ In interrupt mode, turn on the transmitter and allow for transmit interrupts.
+<i> stop_xmit</i> - void (*stop_xmit)(serial_channel *priv)
+ In interrupt mode, turn off the transmitter.
+</font> </PRE>
+    </div>
+  </div>
+  <P CLASS="Body">
+<A NAME="pgfId=1080221">
+ </A>
+The device interface module can execute functions in the hardware independent driver via &quot;chan<IMG SRC="pix/arrow.gif">callbacks&quot;. These functions are available: </P>
+  <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1080237"> </A>
+void <CODE CLASS="CodeOutput">(*serial_init)</CODE>
+     (serial_channel *<EM CLASS="Emphasis">chan )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1080254">
+ </A>
+This function is used to initialize the serial channel. It is only required if the channel is being used in interrupt mode.</P>
+  <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1080270"> </A>
+void <CODE CLASS="CodeOutput">(*xmt_char)</CODE>
+     (serial_channel *<EM CLASS="Emphasis">chan )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1080287">
+ </A>
+This function would be called from an interrupt handler after a transmit interrupt indicating that additional characters may be sent. The upper driver will call the "putc" function as appropriate to send more data to the device.</P>
+  <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1080303"> </A>
+void <CODE CLASS="CodeOutput">(*rcv_char)</CODE>
+     (serial_channel *<EM CLASS="Emphasis">chan,</EM>
+      unsigned char <EM CLASS="Emphasis">c )</EM>
+</PRE>
+  <P CLASS="Body"> <A NAME="pgfId=1080332"> </A> This function is used to tell 
+    the driver that a character has arrived at the interface. This function is 
+    typically called from the interrupt handler. </P>
+  <P CLASS="Body">Furthermore, if the device has a FIFO it should require the 
+    hardware independent driver to provide block transfer functionality (driver 
+    CDL should include 'implements CYGINT_IO_SERIAL_BLOCK_TRANSFER). In that case, 
+    the following functions are available as well: </P>
+  <pre CLASS="Body">bool (*data_xmt_req)(serial_channel *chan, int space, 
+                     int* chars_avail, unsigned char** chars)
+     void (*data_xmt_done)(serial_channel *chan) </pre>
+  <P CLASS="Body">Instead of calling <font face="Courier New, Courier, mono">xmt_char</font> 
+    to get a single character for transmission at a time, the driver should call 
+    <font face="Courier New, Courier, mono" size="3">data_xmt_req</font> in a 
+    loop, requesting character blocks for transfer. Call with 'space' argument 
+    of how much space there is available in the FIFO. </P>
+  <P CLASS="Body">If the call returns true, the driver can read 'chars_avail' 
+    characters from 'chars' and copy them into the FIFO. </P>
+  <P CLASS="Body">If the call returns false, there are no more buffered characters 
+    and the driver should continue without filling up the FIFO. </P>
+  <P CLASS="Body">When all data has been unloaded, the driver must call data_rcv_done. 
+  </P>
+  <pre CLASS="Body">bool (*data_rcv_req)(serial_channel *chan, int avail, <br>		     int* space_avail,      unsigned char** space)<br>void (*data_rcv_done)(serial_channel *chan) </pre>
+  <P CLASS="Body">Instead of calling <font face="Courier New, Courier, mono" size="3">rcv_char</font> 
+    with a single character at a time, the driver should call <font face="Courier New, Courier, mono" size="3">data_rcv_req</font> 
+    in a loop, requesting space to unload the FIFO to. 'avail' is the number of 
+    characters the driver wishes to unload. </P>
+  <P CLASS="Body">If the call returns true, the driver can copy 'space_avail' 
+    characters to 'space'. </P>
+  <P CLASS="Body">If the call returns false, the input buffer is full. It is up 
+    to the driver to decide what to do in that case (callback functions for registering 
+    overflow are being planned for later versions of the serial driver). </P>
+  <P CLASS="Body">When all data has been unloaded, the driver must call <font face="Courier New, Courier, mono" size="3">data_rcv_done</font>. 
+  </P>
+  <TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">How to write a driver</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.11.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

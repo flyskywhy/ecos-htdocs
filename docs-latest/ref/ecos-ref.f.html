@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> Introduction</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Introduction</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.e.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.10.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1078797">
+ </A>
+Introduction<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1078801">
+ </A>
+The I/O package is designed as a general purpose framework for supporting device drivers. This includes all classes of drivers from simple serial to networking stacks and beyond. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078806">
+ </A>
+Components of the I/O package, such as device drivers, are configured into the system just like all other components. Additionally, end users may add their own drivers to this set. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078811">
+ </A>
+While the set of drivers (and the devices they represent) may be considered static, they must be accessed via an opaque &quot;handle&quot;. Each device in the system has a unique name and the <CODE CLASS="CodeOutput">
+cyg_io_lookup()</CODE>
+ function is used to map that name onto the handle for the device. This &quot;hiding&quot; of the device implementation allows for generic, named devices, as well as more flexibility. Also, the <CODE CLASS="CodeOutput">
+cyg_io_lookup()</CODE>
+ function provides drivers the opportunity to initialize the device when usage actually starts. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078824">
+ </A>
+All devices have a name. The standard provided devices use names such as &quot;/dev/console&quot; and &quot;/dev/serial0&quot;, where the &quot;/dev/&quot; prefix indicates that this is the name of a device. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078829">
+ </A>
+The entire I/O package API, as well as the standard set of provided drivers, is written in C. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078834">
+ </A>
+Basic functions are provided to send data to and receive data from a device. The details of how this is done is left to the device [class] itself. For example, writing data to a block device like a disk drive may have different semantics than writing to a serial port. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078839">
+ </A>
+Additional functions are provided to manipulate the state of the driver and/or the actual device. These functions are, by design, quite specific to the actual driver. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078844">
+ </A>
+This driver model supports layering; in other words, a device may actually be created &quot;on top of&quot; another device. For example, the &quot;tty&quot; (terminal-like) devices are built on top of simple serial devices. The upper layer then has the flexibility to add features and functions not found at the lower layers. In this case the &quot;tty&quot; device provides for line buffering and editing not available from the simple serial drivers. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1078849">
+ </A>
+Some drivers will support visibility of the layers they depend upon. The &quot;tty&quot; driver allows information about the actual serial device to be manipulated by passing get/set config calls that use a serial driver &quot;key&quot; down to the serial driver itself. </P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Introduction</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.e.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.10.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

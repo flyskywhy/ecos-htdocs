@@ -1,0 +1,1065 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> C and math library overview</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">C and math library overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.16.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1076182">
+ </A>
+<A NAME="41658">
+ </A>
+C and math library overview<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1051802">
+ </A>
+<SPAN CLASS="Bold">
+eCos</SPAN>
+ provides compatibility with the <EM CLASS="Acronym">
+ISO</EM>
+ 9899:1990 specification for the standard C library, which is essentially the same as the better-known <EM CLASS="Acronym">
+ANSI</EM>
+ C3.159-1989 specification (C-89).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1051850">
+ </A>
+There are three aspects of this compatibility supplied by <SPAN CLASS="BOLD">
+eCos.</SPAN>
+ First there is a <EM CLASS="Emphasis">
+C library</EM>
+<A NAME="marker=1085281">
+ </A>
+ which implements the functions defined by the ISO standard, except for the mathematical functions. This is provided by the <SPAN CLASS="Bold">
+eCos</SPAN>
+ C library package. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1051899">
+ </A>
+Then <SPAN CLASS="Bold">
+eCos</SPAN>
+ provides a <EM CLASS="Emphasis">
+math library</EM>
+<A NAME="marker=1085284">
+ </A>
+, which implements the mathematical functions from the ISO C library. This distinction between C and math libraries is frequently drawn -- most standard C library implementations provide separate linkable files for the two, and the math library contains all the functions from the <CODE CLASS="Code">
+math.h</CODE>
+ header file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1452060">
+ </A>
+There is a third element to the ISO C library, which is the environment in which applications run when they use the standard C library. This environment is set up by the C library startup procedure (see <A HREF="ecos-ref.15.html#34431" CLASS="XRef">
+ C library startup</A>
+) and it provides (among other things) a <CODE CLASS="CodeOutput">
+main()</CODE>
+ entry point function, an <CODE CLASS="CodeOutput">
+exit()</CODE>
+ function that does the cleanup required by the standard (including handlers registered using the <CODE CLASS="CodeOutput">
+atexit()</CODE>
+ function), and an environment that can be read with <CODE CLASS="CodeOutput">
+getenv()</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1241456">
+ </A>
+The description in this manual focuses on the <SPAN CLASS="Bold">
+eCos</SPAN>
+-specific aspects of the C library (mostly related to <SPAN CLASS="Bold">
+eCos</SPAN>
+'s configurability) as well as mentioning the omissions from the standard in this release. We do not attempt to define the semantics of each function, since that information can be found in the <EM CLASS="Acronym">
+ISO,</EM>
+ <EM CLASS="Acronym">
+ANSI,</EM>
+ <EM CLASS="Acronym">
+POSIX</EM>
+ and <EM CLASS="Acronym">
+IEEE</EM>
+ standards, and the many good books that have been written about the standard C library, that cover usage of these functions in a more general and useful way.</P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1241503">
+ </A>
+Omitted functionality</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1241509">
+ </A>
+The ISO C <A NAME="marker=1241507">
+ </A>
+functionality that is currently omitted in the C library can be grouped by the header files in which they are declared: </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1241518">
+ </A>
+stdio.h</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1241530">
+ </A>
+<CODE CLASS="CodeOutput">
+remove()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241539">
+ </A>
+<CODE CLASS="CodeOutput">
+rename()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241548">
+ </A>
+<CODE CLASS="CodeOutput">
+tmpfile()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241557">
+ </A>
+<CODE CLASS="CodeOutput">
+tmpnam()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241566">
+ </A>
+<CODE CLASS="CodeOutput">
+fseek()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241575">
+ </A>
+<CODE CLASS="CodeOutput">
+ftell()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241584">
+ </A>
+<CODE CLASS="CodeOutput">
+rewind()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241593">
+ </A>
+<CODE CLASS="CodeOutput">
+fgetpos()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241603">
+ </A>
+<CODE CLASS="CodeOutput">
+fsetpos()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241607">
+ </A>
+Most of these functions are omitted because they only apply to disk-based file systems. These will be supported in a future version of <SPAN CLASS="BOLD">
+eCos.</SPAN>
+ </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1241621">
+ </A>
+stdlib.h</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1241633">
+ </A>
+<CODE CLASS="CodeOutput">
+mblen()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241642">
+ </A>
+<CODE CLASS="CodeOutput">
+mbtowc()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241651">
+ </A>
+<CODE CLASS="CodeOutput">
+wctomb()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241660">
+ </A>
+<CODE CLASS="CodeOutput">
+mbstowcs()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241669">
+ </A>
+<CODE CLASS="CodeOutput">
+wcstombs()</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241679">
+ </A>
+<CODE CLASS="CodeOutput">
+MB_CUR_MAX</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1241686">
+ </A>
+All of these functions are related to multibyte and wide character support. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1241692">
+ </A>
+Included non-ISO functions</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1089728">
+ </A>
+The following functions from the <A NAME="marker=1089725">
+ </A>
+POSIX specification are included for convenience: </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089747">
+ </A>
+	<CODE CLASS="Code">
+extern char **</CODE>
+<EM CLASS="Emphasis">
+environ</EM>
+ variable (for setting up the environment for use with <CODE CLASS="CodeOutput">
+getenv()</CODE>
+)</P>
+<P CLASS="Body">
+<A NAME="pgfId=1089761">
+ </A>
+	<CODE CLASS="CodeOutput">
+_exit()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089770">
+ </A>
+	<CODE CLASS="CodeOutput">
+strtok_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089779">
+ </A>
+	<CODE CLASS="CodeOutput">
+rand_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089788">
+ </A>
+	<CODE CLASS="CodeOutput">
+asctime_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089799">
+ </A>
+	<CODE CLASS="CodeOutput">
+ctime_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089837">
+ </A>
+	<CODE CLASS="CodeOutput">
+localtime_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089852">
+ </A>
+	<CODE CLASS="CodeOutput">
+gmtime_r()</CODE>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1089863">
+ </A>
+<SPAN CLASS="Bold">
+eCos</SPAN>
+ provides the following additional implementation-specific functions within the standard C library to adjust the date and time settings:</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090044"> </A>
+void <CODE CLASS="CodeOutput">cyg_libc_time_setdst</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1090057"> </A>
+cyg_libc_time_dst state );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090010">
+ </A>
+This function sets the state of Daylight Savings Time. The values for <EM CLASS="parameter">
+state</EM>
+ are:</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090127"> </A>
+CYG_LIBC_TIME_DSTNA   unknown</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090136"> </A>
+CYG_LIBC_TIME_DSTOFF  off</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090148"> </A>
+CYG_LIBC_TIME_DSTON   on</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090208">
+ </A>
+</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090309"> </A>
+void <CODE CLASS="CodeOutput">cyg_libc_time_setzoneoffsets</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1090315"> </A>
+time_t stdoffset, time_t dstoffset);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090324">
+ </A>
+This function sets the offsets from UTC used when Daylight Savings Time is enabled or disabled. The offsets are in time_t's, which are seconds in the current inplementation.</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090328"> </A>
+<CODE CLASS="CodeOutput">Cyg_libc_time_dst cyg_libc_time_getzoneoffsets</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1090192"> </A>
+time_t *stdoffset, time_t *dstoffset);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090242">
+ </A>
+This function retrieves the current setting for Daylight Savings Time along with the offsets used for both STD and DST. The offsets are both in time_t's, which are seconds in the current implementation.</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1090348"> </A>
+<CODE CLASS="CodeOutput">cyg_bool cyg_libc_time_settime</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1090354"> </A>
+time_t utctime);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090368">
+ </A>
+This function sets the current time for the system The time is specified as a <CODE CLASS="CodeOutput">
+time_t</CODE>
+ in UTC. It returns non-zero on error.</P>
+</DIV>
+<DIV>
+<A NAME="COMPATIBILITY-MODES">
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1052602">
+ </A>
+Math library compatibility modes</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1052612">
+ </A>
+This math library is capable of being operated in several different compatibility modes. These options deal solely with how errors are handled. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052623">
+ </A>
+There are 4 compatibility modes: ANSI/POSIX 1003.1; IEEE-754; X/Open Portability Guide issue 3 (XPG3); and System V Interface Definition Edition 3. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052635">
+ </A>
+In <A NAME="marker=1085303">
+ </A>
+IEEE mode, the <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ function (see below) is never called, no warning messages are printed on the stderr output stream, and errno is never set. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052655">
+ </A>
+In <A NAME="marker=1085309">
+ </A>
+ANSI/POSIX mode, errno is set correctly, but <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ is never called and no warning messages are printed on the stderr output stream. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052674">
+ </A>
+In <A NAME="marker=1085313">
+ </A>
+X/Open mode, errno is set correctly, <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ is called, but no warning messages are printed on the stderr output stream. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052748">
+ </A>
+In <A NAME="marker=1085317">
+ </A>
+SVID mode, functions which overflow return a value <EM CLASS="parameter">
+HUGE</EM>
+ (defined in <CODE CLASS="Code">
+math.h</CODE>
+), which is the maximum single precision floating point value (as opposed to <EM CLASS="parameter">
+HUGE_VAL</EM>
+ which is meant to stand for infinity). errno is set correctly and <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ is called. If <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ returns 0, warning messages are printed on the stderr output stream for some errors. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1052760">
+ </A>
+The mode can be compiled-in as IEEE-only, or any one of the above methods settable at run-time. </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1052783">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1076183">
+ </A>
+This math library assumes that the hardware (or software floating point emulation) supports IEEE-754 style arithmetic, 32-bit 2's complement integer arithmetic, doubles are in 64-bit IEEE-754 format.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1052803">
+ </A>
+<A NAME="marker=1085321">
+ </A>
+matherr()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1052813">
+ </A>
+As mentioned above, in X/Open or SVID modes, the user can supply a function <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ of the form:</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1052832"> </A>
+int <CODE CLASS="CodeOutput">matherr</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1052848"> </A>
+struct exception *<EM CLASS="Emphasis">e )</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1052862">
+ </A>
+where struct exception is defined as:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1052877"> </A>
+
+struct exception {
+ int type;
+ char *name;
+ double arg1, arg2, retval;
+}; </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1052895">
+ </A>
+<EM CLASS="parameter">
+type</EM>
+ is the exception type and is one of:</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1052910">
+ </A>
+DOMAIN 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1052924">
+ </A>
+argument domain exception</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1052934">
+ </A>
+SING 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1052944">
+ </A>
+argument singularity</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1052954">
+ </A>
+OVERFLOW 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1052964">
+ </A>
+overflow range exception</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1052974">
+ </A>
+UNDERFLOW 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1052984">
+ </A>
+underflow range exception</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1052994">
+ </A>
+TLOSS 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1053004">
+ </A>
+total loss of significance</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1053014">
+ </A>
+PLOSS 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1053024">
+ </A>
+partial loss of significance</P>
+<P CLASS="Body">
+<A NAME="pgfId=1053034">
+ </A>
+<EM CLASS="parameter">
+name</EM>
+ is a string containing the name of the function</P>
+<P CLASS="Body">
+<A NAME="pgfId=1053063">
+ </A>
+<EM CLASS="parameter">
+arg1</EM>
+ and <EM CLASS="parameter">
+arg2</EM>
+ are the arguments passed to the function</P>
+<P CLASS="Body">
+<A NAME="pgfId=1127012">
+ </A>
+<EM CLASS="parameter">
+retval</EM>
+ is the default value that will be returned by the function, and can be changed by <CODE CLASS="CodeOutput">
+matherr()</CODE>
+</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1127024">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1127030">
+ </A>
+matherr must have &quot;C&quot; linkage, not &quot;C++&quot; linkage.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1127034">
+ </A>
+If matherr returns zero, or the user doesn't supply their own matherr, then the following <EM CLASS="Emphasis">
+usually</EM>
+ happens in SVID mode:</P>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1129924">
+ </A>
+Behavior of math exception handling</P>
+<TABLE>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1127051">
+ </A>
+Type</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1127054">
+ </A>
+Behavior</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127058">
+ </A>
+DOMAIN</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127061">
+ </A>
+0.0 returned, errno=EDOM, and a message printed on stderr</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127065">
+ </A>
+SING</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127068">
+ </A>
+HUGE of appropriate sign is returned, errno=EDOM, and a message is printed on stderr</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127072">
+ </A>
+OVERFLOW</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127075">
+ </A>
+HUGE of appropriate sign is returned, and errno=ERANGE</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127079">
+ </A>
+UNDERFLOW</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127082">
+ </A>
+0.0 is returned and errno=ERANGE</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127086">
+ </A>
+TLOSS</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127089">
+ </A>
+0.0 is returned, errno=ERANGE, and a message is printed on stderr</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127093">
+ </A>
+PLOSS</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1127096">
+ </A>
+The current implementation doesn't return this type</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1126978">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1129949">
+ </A>
+X/Open mode is similar except that the message is not printed on stderr and HUGE_VAL is used in place of HUGE</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1053282">
+ </A>
+Thread-safety and re-entrancy</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1053294">
+ </A>
+With the appropriate configuration options set below, the math library is fully thread-safe if:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1053303">
+ </A>
+Depending on the compatibility mode, the setting of the errno variable from the C library is thread-safe</LI>
+<P><LI>
+<A NAME="pgfId=1053322">
+ </A>
+Depending on the compatibility mode, sending error messages to the stderr output stream using the C library <CODE CLASS="CodeOutput">
+fputs()</CODE>
+ function is thread-safe </LI>
+<P><LI>
+<A NAME="pgfId=1053346">
+ </A>
+Depending on the compatibility mode, the user-supplied <CODE CLASS="CodeOutput">
+matherr()</CODE>
+ function and anything it depends on are thread-safe </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1053390">
+ </A>
+In addition, with the exception of the <CODE CLASS="CodeOutput">
+gamma*()</CODE>
+ and <CODE CLASS="CodeOutput">
+lgamma*()</CODE>
+ functions, the math library is reentrant (and thus safe to use from interrupt handlers) if the Math library is always in IEEE mode.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1053403">
+ </A>
+Some implementation details</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1053413">
+ </A>
+Here are some details about the <A NAME="marker=1085329">
+ </A>
+implementation which might be interesting, although they do not affect the ISO-defined semantics of the library. </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1053425">
+ </A>
+It is possible to configure <SPAN CLASS="Bold">
+eCos</SPAN>
+ to have the standard C library without the kernel. You might want to do this to use less memory. But if you disable the kernel, you will be unable to use memory allocation, thread-safety and certain stdio functions such as input. Other C library functionality is unaffected.</LI>
+<P><LI>
+<A NAME="pgfId=1053563">
+ </A>
+The opaque type returned by <CODE CLASS="CodeOutput">
+clock()</CODE>
+ is called clock_t, and is implemented as a 64 bit integer. The value returned by <CODE CLASS="CodeOutput">
+clock()</CODE>
+ is only correct if the kernel is configured with real-time clock support, as determined by the <EM CLASS="parameter">
+CYGVAR_KERNEL_COUNTERS_CLOCK</EM>
+ configuration option in <CODE CLASS="Code">
+kernel.h</CODE>
+. </LI>
+<P><LI>
+<A NAME="pgfId=1053594">
+ </A>
+The FILE type is not implemented as a structure, but rather as a CYG_ADDRESS. </LI>
+<P><LI>
+<A NAME="pgfId=1053752">
+ </A>
+The GNU C compiler will place its own <EM CLASS="Emphasis">
+built-in</EM>
+ implementations instead of some C library functions. This can be turned off with the <EM CLASS="Emphasis">
+-fno-builtin</EM>
+ option. The functions affected by this are <CODE CLASS="CodeOutput">
+abs()</CODE>
+, <CODE CLASS="CodeOutput">
+cos()</CODE>
+, <CODE CLASS="CodeOutput">
+fabs()</CODE>
+, <CODE CLASS="CodeOutput">
+labs()</CODE>
+, <CODE CLASS="CodeOutput">
+memcmp()</CODE>
+, <CODE CLASS="CodeOutput">
+memcpy()</CODE>
+, <CODE CLASS="CodeOutput">
+sin()</CODE>
+, <CODE CLASS="CodeOutput">
+sqrt()</CODE>
+, <CODE CLASS="CodeOutput">
+strcmp()</CODE>
+, <CODE CLASS="CodeOutput">
+strcpy()</CODE>
+, and <CODE CLASS="CodeOutput">
+strlen()</CODE>
+.</LI>
+<P><LI>
+<A NAME="pgfId=1053784">
+ </A>
+For faster execution speed you should avoid this option and let the compiler use its built-ins. This can be turned off by invoking <SPAN CLASS="Bold">
+GCC</SPAN>
+ with the <EM CLASS="Emphasis">
+-fno-builtin</EM>
+ option. </LI>
+<P><LI>
+<A NAME="pgfId=1053814">
+ </A>
+<CODE CLASS="CodeOutput">
+memcpy()</CODE>
+ and <CODE CLASS="CodeOutput">
+memset()</CODE>
+ are located in the infrastructure package, not in the C library package. This is because the compiler calls these functions, and the kernel needs to resolve them even if the C library is not configured. </LI>
+<P><LI>
+<A NAME="pgfId=1053891">
+ </A>
+Error codes such as <EM CLASS="parameter">
+EDOM</EM>
+ and <EM CLASS="parameter">
+ERANGE,</EM>
+ as well as <CODE CLASS="CodeOutput">
+strerror()</CODE>
+, are implemented in the <EM CLASS="Emphasis">
+error</EM>
+ package. The error package is separate from the rest of the C and math libraries so that the rest of <SPAN CLASS="Bold">
+eCos</SPAN>
+ can use these error handling facilities even if the C library is not configured. </LI>
+<P><LI>
+<A NAME="pgfId=1053964">
+ </A>
+When <CODE CLASS="CodeOutput">
+free()</CODE>
+ is invoked, heap memory will normally be coalesced. If the <EM CLASS="parameter">
+CYGSEM_KERNEL_MEMORY_COALESCE</EM>
+ configuration parameter is not set, memory will not be coalesced, which might cause programs to fail. </LI>
+<P><LI>
+<A NAME="pgfId=1054046">
+ </A>
+Signals, as implemented by <CODE CLASS="Code">
+&lt;signal.h&gt;</CODE>
+, are guaranteed to work correctly if raised using the <CODE CLASS="CodeOutput">
+raise()</CODE>
+ function from a normal working program context. Using signals from within an ISR or DSR context is not expected to work. Also, it is not guaranteed that if <EM CLASS="parameter">
+CYGSEM_LIBC_SIGNALS_HWEXCEPTIONS</EM>
+ is set, that handling a signal using <CODE CLASS="CodeOutput">
+signal()</CODE>
+ will necessarily catch that form of exception. For example, it may be expected that a divide-by-zero error would be caught by handling <CODE CLASS="Code">
+SIGFPE</CODE>
+. However it depends on the underlying HAL implementation to implement the required hardware exception. And indeed the hardware itself may not be capable of detecting these exceptions so it may not be possible for the HAL implementer to do this in any case. Despite this lack of guarantees in this respect, the signals implementation is still ISO C compliant since ISO C does not offer any such guarantees either. </LI>
+<P><LI>
+<A NAME="pgfId=1054128">
+ </A>
+The <CODE CLASS="CodeOutput">
+getenv()</CODE>
+ function is implemented (unless the <EM CLASS="parameter">
+CYGPKG_LIBC_ENVIRONMENT</EM>
+ configuration option is turned off), but there is no shell or <CODE CLASS="CodeOutput">
+putenv()</CODE>
+ function to set the environment dynamically. The environment is set in a global variable <EM CLASS="parameter">
+environ,</EM>
+ declared as: </LI>
+</UL>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054140"> </A>
+extern char **environ; // Standard environment definition</PRE>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1054149">
+ </A>
+The environment can be statically initialized at startup time using the <EM CLASS="parameter">
+CYGDAT_LIBC_DEFAULT_ENVIRONMENT</EM>
+ option. If so, remember that the final entry of the array initializer must be NULL. </P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1054189">
+ </A>
+Here is a minimal <SPAN CLASS="Bold">
+eCos</SPAN>
+ program which demonstrates the use of environments (see also the test case in <CODE CLASS="Code">
+language/c/libc/current/tests/stdlib/getenv.c</CODE>
+): </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054199"> </A>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; // Main header for stdlib functions
+
+extern char **environ; // Standard environment definition
+
+int
+main( int argc, char *argv[] )
+{
+ char *str;
+ char *env[] = { &quot;PATH=/usr/local/bin:/usr/bin&quot;,
+ &quot;HOME=/home/fred&quot;,
+ &quot;TEST=1234=5678&quot;,
+ &quot;home=hatstand&quot;,
+ NULL };
+
+ printf(&quot;Display the current PATH environment variable\n&quot;);
+
+ environ = (char **)&amp;env;
+
+ str = getenv(&quot;PATH&quot;);
+
+ if (str==NULL) {
+ printf(&quot;The current PATH is unset\n&quot;);
+ } else {
+ printf(&quot;The current PATH is \&quot;%s\&quot;\n&quot;, str);
+ }
+ return 0;
+} </PRE>
+</DIV>
+<DIV>
+<A NAME="THREAD-SAFETY">
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1054298">
+ </A>
+<A NAME="marker=1085342">
+ </A>
+Thread safety</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1054398">
+ </A>
+The ISO C library has configuration options that control thread safety, i.e. working behavior if multiple threads call the same function at the same time.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1090537">
+ </A>
+The following functionality has to be configured correctly, or used carefully in a multi-threaded environment:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1090550">
+ </A>
+<CODE CLASS="CodeOutput">
+printf()</CODE>
+ (and all standard I/O functions except for <CODE CLASS="CodeOutput">
+sprintf()</CODE>
+ and <CODE CLASS="CodeOutput">
+sscanf()</CODE>
+</LI>
+<P><LI>
+<A NAME="pgfId=1090559">
+ </A>
+<CODE CLASS="CodeOutput">
+strtok()</CODE>
+</LI>
+<P><LI>
+<A NAME="pgfId=1090568">
+ </A>
+<CODE CLASS="CodeOutput">
+rand()</CODE>
+ and <CODE CLASS="CodeOutput">
+srand()</CODE>
+</LI>
+<P><LI>
+<A NAME="pgfId=1090579">
+ </A>
+<CODE CLASS="CodeOutput">
+signal()</CODE>
+ and <CODE CLASS="CodeOutput">
+raise()</CODE>
+</LI>
+<P><LI>
+<A NAME="pgfId=1090636">
+ </A>
+<CODE CLASS="CodeOutput">
+asctime()</CODE>
+, <CODE CLASS="CodeOutput">
+ctime()</CODE>
+, <CODE CLASS="CodeOutput">
+gmtime()</CODE>
+, and <CODE CLASS="CodeOutput">
+localtime()</CODE>
+</LI>
+<P><LI>
+<A NAME="pgfId=1090648">
+ </A>
+the <CODE CLASS="CodeOutput">
+errno</CODE>
+ variable</LI>
+<P><LI>
+<A NAME="pgfId=1090660">
+ </A>
+the <CODE CLASS="CodeOutput">
+environ</CODE>
+ variable</LI>
+<P><LI>
+<A NAME="pgfId=1090672">
+ </A>
+date and time settings</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1090680">
+ </A>
+In some cases, to make <SPAN CLASS="Bold">
+eCos</SPAN>
+ development easier, functions are provided (as specified by POSIX 1003.1) that define re-entrant alternatives, i.e. <CODE CLASS="CodeOutput">
+rand_r()</CODE>
+, <CODE CLASS="CodeOutput">
+strtok_r()</CODE>
+, <CODE CLASS="CodeOutput">
+asctime_r()</CODE>
+, <CODE CLASS="CodeOutput">
+ctime_r()</CODE>
+, <CODE CLASS="CodeOutput">
+gmtime_r()</CODE>
+, and <CODE CLASS="CodeOutput">
+localtime_r()</CODE>
+. In other cases, configuration options are provided that control either locking of functions or their shared data, such as with standard I/O streams, or by using per-thread data, such as with the <CODE CLASS="CodeOutput">
+errno</CODE>
+ variable.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1090689">
+ </A>
+In some other cases, like the setting of date and time, no re-entrant or thread-safe alternative or configuration is provided as it is simply not a worthwhile addition (date and time should rarely need to be set.)</P>
+</DIV>
+<DIV>
+<A NAME="LIBRARY-STARTUP">
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1090587">
+ </A>
+<A NAME="marker=1090584">
+ </A>
+<A NAME="34431">
+ </A>
+C library startup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1054505">
+ </A>
+The C library includes a function declared as:</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1054511"> </A>
+void <CODE CLASS="CodeOutput">cyg_iso_c_start</CODE>
+( void )</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1054532">
+ </A>
+This function is used to start an environment in which an ISO C style program can run in the most compatible way.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1054625">
+ </A>
+What this function does is to create a thread which will invoke <CODE CLASS="CodeOutput">
+main()</CODE>
+ -- normally considered a program's entry point. In particular, it can supply arguments to <CODE CLASS="CodeOutput">
+main()</CODE>
+ using the <EM CLASS="parameter">
+CYGDAT_LIBC_ARGUMENTS</EM>
+ configuration option (see &quot;Option: Arguments to main()&quot;, in Section V), and when returning from <CODE CLASS="CodeOutput">
+main()</CODE>
+, or calling <CODE CLASS="CodeOutput">
+exit()</CODE>
+, pending stdio file output is flushed and any functions registered with <CODE CLASS="CodeOutput">
+atexit()</CODE>
+ are invoked. This is all compliant with the ISO C standard in this respect. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1054691">
+ </A>
+This thread starts execution when the <SPAN CLASS="Bold">
+eCos</SPAN>
+ scheduler is started. If the <SPAN CLASS="Bold">
+eCos</SPAN>
+ kernel package is not available (and hence there is no scheduler), then <CODE CLASS="CodeOutput">
+cyg_iso_c_start()</CODE>
+ will invoke the <CODE CLASS="CodeOutput">
+main()</CODE>
+ function directly, i.e. it will not return until the <CODE CLASS="CodeOutput">
+main()</CODE>
+ function returns. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1054703">
+ </A>
+The <CODE CLASS="CodeOutput">
+main()</CODE>
+ function should be defined as the following, and if defined in a C++ file, should have &quot;C&quot; linkage: </P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1054724"> </A>
+extern int <CODE CLASS="CodeOutput">main</CODE>
+( </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054740"> </A>
+int <EM CLASS="Emphasis">argc,</EM>
+</PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054752"> </A>
+char *<EM CLASS="Emphasis">argv )</EM>
+[]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1054768">
+ </A>
+The thread that is started by <CODE CLASS="CodeOutput">
+cyg_iso_c_start()</CODE>
+ can be manipulated directly, if you wish. For example you can suspend it. The kernel C API needs a handle to do this, which is available by including the following in your source code.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054790"> </A>
+extern cyg_handle_t cyg_libc_main_thread;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1054797">
+ </A>
+Then for example, you can suspend the thread with the line:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054805"> </A>
+cyg_thread_suspend( cyg_libc_main_thread );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1054842">
+ </A>
+If you call <CODE CLASS="CodeOutput">
+cyg_iso_c_start()</CODE>
+ and do not provide your own <CODE CLASS="CodeOutput">
+main()</CODE>
+ function, the system will provide a <CODE CLASS="CodeOutput">
+main()</CODE>
+ for you which will simply return immediately.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1054873">
+ </A>
+In the default configuration, <CODE CLASS="CodeOutput">
+cyg_iso_c_start()</CODE>
+ is invoked automatically by the <CODE CLASS="CodeOutput">
+cyg_package_start()</CODE>
+ function in the infrastructure configuration. This means that in the simplest case, your program can indeed consist of simply:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1054888"> </A>
+int main( int argc, char *argv[] )
+{
+ printf(&quot;Hello eCos\n&quot;);
+}</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1054962">
+ </A>
+If you override <CODE CLASS="CodeOutput">
+cyg_package_start()</CODE>
+ or <CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+, or disable the infrastructure configuration option <EM CLASS="parameter">
+CYGSEM_START_ISO_C_COMPATIBILITY</EM>
+ then you must ensure that you call <CODE CLASS="CodeOutput">
+cyg_iso_c_start()</CODE>
+ yourself if you want to be able to have your program start at the entry point of <CODE CLASS="CodeOutput">
+main()</CODE>
+ automatically.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1231834">
+ </A>
+</P>
+<P CLASS="Index">
+<A NAME="pgfId=2439">
+ </A>
+</P>
+<H4 CLASS="IndexTitleTOC">
+<A HREF="ecos-ref.16.html#pgfId=2442" CLASS="Hypertext">
+<BR>
+Index</A>
+</H4>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">C and math library overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.14.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.16.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

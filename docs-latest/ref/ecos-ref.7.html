@@ -1,0 +1,337 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> Requirements for programs</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Requirements for programs</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1076154">
+ </A>
+Requirements for programs<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1018434">
+ </A>
+<SPAN CLASS="Bold">
+eCos</SPAN>
+ <A NAME="marker=1084620">
+ </A>
+programs do not have to satisfy any unusual requirements, but there are always some differences between a program written for a real-time operating system as opposed to one written for a time sharing, virtual memory system like UNIX or Windows NT.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1018456">
+ </A>
+This chapter contains checklist of things to remember when writing <SPAN CLASS="Bold">
+eCos</SPAN>
+ programs. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1018502">
+ </A>
+<A NAME="marker=1084615">
+ </A>
+cyg_user_start()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1018574">
+ </A>
+The entry point for <SPAN CLASS="Bold">
+eCos</SPAN>
+ user programs is usually <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+ instead of <CODE CLASS="CodeOutput">
+main()</CODE>
+, although <CODE CLASS="CodeOutput">
+main()</CODE>
+ <EM CLASS="Emphasis">
+can</EM>
+ be used if the ISO C library package is selected. Complete detail on the start-up sequence is given in <A HREF="ecos-ref.8.html#35580" CLASS="XRef">
+ System start-up</A>
+. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1018583">
+ </A>
+Necessary headers</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1018593">
+ </A>
+Any program which uses <SPAN CLASS="Bold">
+eCos</SPAN>
+ system calls must have the following line at the top of the file:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1018610"> </A>
+#include &lt;cyg/kernel/<A NAME="marker=1084624"></A>kapi.h&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1018653">
+ </A>
+and the programmer must make sure that <CODE CLASS="Code">
+cyg/kernel/kapi.h</CODE>
+ is available in the compiler include path. This can be done by setting the <EM CLASS="Emphasis">
+C_INCLUDE_PATH</EM>
+ environment variable or by including the <EM CLASS="Emphasis">
+-I </EM>
+flag on the compiler command line. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1018665">
+ </A>
+Necessary link instructions</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1018764">
+ </A>
+The <SPAN CLASS="Bold">
+eCos</SPAN>
+ configuration and building process (described in <EM CLASS="Emphasis">
+Getting Started with </EM>
+<EM CLASS="ProductName">
+eCos</EM>
+ and <EM CLASS="ProductName">
+eCos</EM>
+<EM CLASS="Emphasis">
+ User's Guide</EM>
+) builds a single library, <CODE CLASS="Code">
+libtarget.a</CODE>
+, which contains the selected <SPAN CLASS="Bold">
+eCos</SPAN>
+ components. The <CODE CLASS="Code">
+libtarget.a</CODE>
+ library does <EM CLASS="Emphasis">
+not</EM>
+ contain any user libraries: If you put some of your source in libraries, you will have to explicitly include those libraries in the linking instruction. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1018800">
+ </A>
+You also need to link to the <SPAN CLASS="Bold">
+GNU C Compiler</SPAN>
+ runtime support library (<CODE CLASS="Code">
+libgcc.a</CODE>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1018830">
+ </A>
+You should <EM CLASS="Emphasis">
+not</EM>
+ link to the standard C++ library. This can be achieved with the <EM CLASS="Emphasis">
+-nostdlib</EM>
+ option.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1018878">
+ </A>
+You should only link to <CODE CLASS="Code">
+libtarget.a</CODE>
+ and <CODE CLASS="Code">
+libgcc.a</CODE>
+ using the linker script <CODE CLASS="Code">
+target.ld</CODE>
+ provided with <SPAN CLASS="BOLD">
+eCos.</SPAN>
+ The command line for linking should look like </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1449903"> </A>
+gcc [options] [object files] -Ttarget.ld -nostdlib </PRE>
+</DIV>
+<DIV>
+<A NAME="EXCEPTION-HANDLERS">
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1449905">
+ </A>
+<A NAME="33307">
+ </A>
+Interrupt and exception handlers</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1018973">
+ </A>
+In <SPAN CLASS="Bold">
+eCos</SPAN>
+ a distinction is made between <EM CLASS="Emphasis">
+exceptions</EM>
+ and <EM CLASS="Emphasis">
+interrupts.</EM>
+</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1018982">
+ </A>
+<EM CLASS="parameter">
+exceptions</EM>
+<A NAME="marker=1084628">
+ </A>
+ 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1019000">
+ </A>
+are the result of some action by the currently executing code. Examples of exceptions are divide by zero, illegal instruction, bad memory access, etc.</P>
+<P CLASS="BodyHang1">
+<A NAME="pgfId=1019018">
+ </A>
+<EM CLASS="parameter">
+interrupts</EM>
+<A NAME="marker=1084631">
+ </A>
+ 	</P>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1019032">
+ </A>
+are the result of a signal source which is conceptually asynchronous with the currently executing code. Examples of interrupts sources are the real-time clock, external and on chip peripherals and so forth. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019050">
+ </A>
+This distinction is made in the <SPAN CLASS="Bold">
+eCos</SPAN>
+ hardware abstraction layer (HAL) to provide a cleaner and more portable mechanism for installing interrupt handlers and exception handlers. Individual hardware platforms can have different ways of naming and handling interrupts, which is why this abstraction layer was chosen. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019113">
+ </A>
+Interrupts and exceptions are both associated with <EM CLASS="Emphasis">
+vectors</EM>
+<A NAME="marker=1084634">
+ </A>
+, which are labeled by <EM CLASS="Emphasis">
+vector numbers</EM>
+ (see <A HREF="ecos-ref.9.html#27837" CLASS="XRef">
+ Exception handling</A>
+ and <A HREF="ecos-ref.9.html#37728" CLASS="XRef">
+ Interrupt handling</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019121">
+ </A>
+There are distinct spaces for exception and interrupt vectors. These are called &quot;exception vector numbers&quot; and &quot;interrupt vector numbers&quot;. System calls which install exception handlers use the exception vector number, and the system calls which install interrupt handlers use the interrupt vector number to specify which interrupt or exception should be handled by the handler.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019144">
+ </A>
+The details of the vector layout depend on the microprocessor and interrupt controller, and are documented in the relevant API sections.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019184">
+ </A>
+Interrupt handlers are actually a <EM CLASS="Emphasis">
+pair</EM>
+ of functions, one of which (the <EM CLASS="Emphasis">
+interrupt service routine,</EM>
+ or <EM CLASS="Acronym">
+ISR</EM>
+) is executed immediately and runs with that interrupt disabled. Since interrupts are disabled for the duration of the ISR, the ISR should be very brief and should not use any system services.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019268">
+ </A>
+After the ISR exits, but before the kernel scheduler is invoked again, a <EM CLASS="Emphasis">
+delayed service routine</EM>
+ (<EM CLASS="Acronym">
+DSR</EM>
+) will be invoked. It executes with scheduling disabled, but with interrupts enabled, so that further invocations of the same DSR can be queued. The DSR can use some producer-side system calls, but it should be carefully crafted to avoid using any call that might put its thread to sleep. One of the few examples of safe calls is <A NAME="marker=1084637">
+ </A>
+<CODE CLASS="CodeOutput">
+cyg_semaphore_post()</CODE>
+; the non-blocking versions of some system calls are also safe. A call that is unsafe is <CODE CLASS="CodeOutput">
+cyg_mutex_lock()</CODE>
+<A NAME="marker=1084640">
+ </A>
+, since it will block if the mutex is already locked by another thread.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019323">
+ </A>
+Finally, <SPAN CLASS="Bold">
+eCos</SPAN>
+ has a formalism for installing <EM CLASS="Emphasis">
+low level handlers</EM>
+ which bypass the kernel mechanisms described above. A program can install a <A NAME="marker=1084643">
+ </A>
+<EM CLASS="Emphasis">
+vector service routine</EM>
+ (<EM CLASS="Acronym">
+VSR</EM>
+) which will be invoked instead of the kernel's usual exception or interrupt handling. The VSR will typically be written in assembly language. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019341">
+ </A>
+VSRs are associated with vector numbers in the exception space, just like exception handlers (although there are some variations -- architectures in which there are no exceptions in the <SPAN CLASS="Bold">
+eCos</SPAN>
+ sense). The main difference between VSRs and exception handlers is that VSRs bypass the kernel's usual mechanisms. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1019371">
+ </A>
+<A NAME="marker=1084646">
+ </A>
+Memory allocation</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1019381">
+ </A>
+Most <SPAN CLASS="Bold">
+eCos</SPAN>
+ system calls expect you to pass the address of pre-allocated memory for the objects created in that system call. This is frequently the preferred way of doing things for embedded applications, where programmers want to allocate all memory statically and have fine control over that resource.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019446">
+ </A>
+In contrast, some <SPAN CLASS="Bold">
+eCos</SPAN>
+ system calls also allow a <EM CLASS="parameter">
+NULL</EM>
+ pointer to be passed. In such a case the kernel will allocate the memory or select default size. This feature is not supported in the current release, and a warning flag is placed in the documentation for those routines (like <CODE CLASS="CodeOutput">
+cyg_thread_create()</CODE>
+). </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019493">
+ </A>
+<SPAN CLASS="Bold">
+eCos</SPAN>
+ provides dynamic memory allocation, based on <EM CLASS="Emphasis">
+memory pools,</EM>
+ a useful and flexible approach to memory management inspired by the <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON compatibility layer. These are described in <A HREF="ecos-ref.9.html#36601" CLASS="XRef">
+ Memory pools</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019501">
+ </A>
+If you configure your system to use the Standard C Library you can also use the standard <CODE CLASS="CodeOutput">
+malloc()</CODE>
+ library call. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1019520">
+ </A>
+Assertions and bad parameter handling</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1019530">
+ </A>
+This section describes how the <SPAN CLASS="Bold">
+eCos</SPAN>
+ kernel and basic packages behave when system calls are invoked with bad parameters.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019569">
+ </A>
+In <SPAN CLASS="BOLD">
+eCos,</SPAN>
+ the basic kernel assertion behavior is configuration-dependent.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019607">
+ </A>
+By default, <A NAME="marker=1084649">
+ </A>
+assertions are turned off in the kernel. If the kernel is configured to turn them <EM CLASS="Emphasis">
+on,</EM>
+ the kernel will make basic assertions, such as checking for invalid parameters when system calls are invoked. If an assertion fails, the kernel will print a message to the diagnostic output channel and stop executing.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019615">
+ </A>
+If the kernel is configured with assertions disabled (usually when the application has been thoroughly debugged), it will not do any checking. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019626">
+ </A>
+The configuration sections referenced above also describe the use of preconditions, postconditions and loop invariants. These are no different from ordinary assertions, but they are used in specialized circumstances, and the programmer would wish to select their presence individually. </P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Requirements for programs</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

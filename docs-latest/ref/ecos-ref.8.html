@@ -1,0 +1,295 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> System start-up</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System start-up</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.7.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.9.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1076155">
+ </A>
+<A NAME="35580">
+ </A>
+System start-up<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1019655">
+ </A>
+We describe here the steps performed by <SPAN CLASS="Bold">
+eCos</SPAN>
+ upon start-up, mentioning how a programmer can introduce custom start-up routines. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1019674">
+ </A>
+System start-up -- the HAL</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1019719">
+ </A>
+The HAL (Hardware Abstraction Layer, see <A HREF="ecos-ref.b.html#11148" CLASS="XRef">
+ The eCos Hardware Abstraction Layer (HAL)</A>
+) is the <SPAN CLASS="Bold">
+eCos</SPAN>
+ package which contains all <A NAME="marker=1084653">
+ </A>
+start-up code. Its start-up procedure is outlined in detail in <A HREF="ecos-ref.b.html#10648" CLASS="XRef">
+ HAL startup</A>
+, but the main steps can be summarized here:</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=1019729">
+ </A>
+The <EM CLASS="Acronym1">
+HAL</EM>
+ initializes the hardware, coordinates with the ROM monitor, and performs diagnostics.</LI>
+<P><LI>
+<A NAME="pgfId=1019755">
+ </A>
+The HAL invokes all static and global C++ constructors. </LI>
+<P><LI>
+<A NAME="pgfId=1019767">
+ </A>
+The HAL jumps to <CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+, which has the following prototype:</LI>
+</OL>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1019789"> </A>
+void <CODE CLASS="CodeOutput">cyg_start</CODE>( void )</PRE>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1019810">
+ </A>
+System start-up -- cyg_start()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1019841">
+ </A>
+<CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+<A NAME="marker=1084657">
+ </A>
+ is the core of the <A NAME="marker=1084660">
+ </A>
+start-up mechanism. The default definition is in <CODE CLASS="Code">
+infra/current/src/startup.cxx</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019847">
+ </A>
+It calls, in turn, </P>
+  <PRE CLASS="CodeExample"><A NAME="pgfId=1019882"> </A>
+	    <CODE CLASS="CodeOutput">cyg_prestart()
+</CODE>	    <CODE CLASS="CodeOutput">cyg_package_start()
+</CODE>	    <CODE CLASS="CodeOutput">cyg_user_start()</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1019896">
+ </A>
+and then starts the <SPAN CLASS="Bold">
+eCos</SPAN>
+ scheduler if the system has been configured to have a kernel and scheduler.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1019908">
+ </A>
+You can override the default <CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+ routine by providing your own function by the same name with the following prototype: </P>
+  <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1019927"> </A>
+void <CODE CLASS="CodeOutput">cyg_start</CODE>( void )</PRE>
+<H3 CLASS="Label">
+<A NAME="pgfId=1019948">
+ </A>
+WARNING</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1019984">
+ </A>
+Overriding <CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+ should rarely, if ever, be done. The functions <CODE CLASS="CodeOutput">
+cyg_prestart()</CODE>
+ and <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+ described just below allow enough flexibility for installing user initialization code safely for almost all applications. </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1019998">
+ </A>
+<SPAN CLASS="Bold">
+NOTE</SPAN>
+</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1076158">
+ </A>
+If you are supplying your own definition of this function from a C++ file, make sure it has &quot;C&quot; linkage.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1020014">
+ </A>
+System startup -- cyg_prestart()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1020047">
+ </A>
+The default <A NAME="marker=1084668">
+ </A>
+<CODE CLASS="CodeOutput">
+cyg_prestart()</CODE>
+ function does not do anything; it is meant to be overwritten if the programmer needs to do any initialization <EM CLASS="Emphasis">
+before</EM>
+ other system level initialization.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1020058">
+ </A>
+You can override the default <CODE CLASS="CodeOutput">
+cyg_prestart()</CODE>
+ routine by providing your own function by the same name with the following prototype: </P>
+  <PRE CLASS="CodeExampleWide"><A NAME="pgfId=1020077"> </A>
+void <CODE CLASS="CodeOutput">cyg_prestart</CODE>( void )</PRE>
+<H3 CLASS="Label">
+<A NAME="pgfId=1020098">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1076159">
+ </A>
+If you are supplying your own definition of this function from a C++ file, make sure it has &quot;C&quot; linkage.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1020114">
+ </A>
+System startup -- cyg_package_start()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1020126">
+ </A>
+The <CODE CLASS="CodeOutput">
+cyg_package_start()</CODE>
+<A NAME="marker=1084676">
+ </A>
+ allows individual packages to do their initialization before the main user program is invoked.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1020187">
+ </A>
+Two of the packages shipped with this release of <SPAN CLASS="Bold">
+eCos</SPAN>
+ have code in the default <CODE CLASS="CodeOutput">
+cyg_package_start()</CODE>
+: the <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON and the ISO standard C library compatibility packages (see <A HREF="ecos-ref.a.html#13029" CLASS="XRef">
+ <EM CLASS="FmSymbol">
+&#181</EM>ITRON API</A>
+ and <A HREF="ecos-ref.15.html#41658" CLASS="XRef">
+ C and math library overview</A>
+). </P>
+<P CLASS="Body">
+<A NAME="pgfId=1020218">
+ </A>
+The infrastructure package has configuration options <EM CLASS="parameter">
+CYGSEM_START_UITRON_COMPATIBILITY</EM>
+ and <EM CLASS="parameter">
+CYGSEM_START_ISO_C_COMPATIBILITY</EM>
+ which control specialized initialization.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1020228">
+ </A>
+You can override the default <CODE CLASS="CodeOutput">
+cyg_package_start()</CODE>
+ routine by providing your own function by the same name with the following prototype: </P>
+  <PRE CLASS="CodeExampleWide">void <CODE CLASS="CodeOutput">cyg_package_start</CODE>( void )</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1020270">
+ </A>
+but you should be careful to initialize the default packages (if you are using them). An example user-supplied function might look like:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=1020283"> </A>
+	void cyg_package_start(void)
+	{
+ #ifdef CYGSEM_START_UITRON_COMPATABILITY
+	cyg_uitron_start(); /* keep the <EM CLASS="FmSymbol">m</EM>
+ITRON initialization */
+ #endif
+	my_package_start(); /* make sure I initialize my package */
+	}</PRE>
+<H3 CLASS="Label">
+<A NAME="pgfId=1020316">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1076160">
+ </A>
+If you are supplying your own definition of this function from a C++ file, make sure it has &quot;C&quot; linkage.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1020332">
+ </A>
+System startup -- cyg_user_start()</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1020367">
+ </A>
+This is the normal entry point for your code. Although a default empty version is provided by <SPAN CLASS="BOLD">
+eCos,</SPAN>
+ this is a good place to set up your threads (see <A HREF="ecos-ref.9.html#38132" CLASS="XRef">
+ Thread operations</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1020396">
+ </A>
+If you are not including the ISO standard C library package then there will not be a <CODE CLASS="CodeOutput">
+main()</CODE>
+ function, so it becomes mandatory to provide this function (see <A HREF="ecos-ref.15.html#34431" CLASS="XRef">
+ C library startup</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1020404">
+ </A>
+To set up your own <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+<A NAME="marker=1084679">
+ </A>
+ function, create a function by that name with the following prototype: </P>
+  <PRE CLASS="CodeExampleWide">void <CODE CLASS="CodeOutput">cyg_user_start</CODE>( void )</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1020493">
+ </A>
+When you return control from <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+, <CODE CLASS="CodeOutput">
+cyg_start()</CODE>
+ will then invoke the scheduler, and any threads you created and resumed in <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+ will be executed. The preferred approach is to allow the scheduler to be started automatically, rather than to start it explicitly in <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+. </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1020503">
+ </A>
+CAUTION</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1020528">
+ </A>
+Remember that <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+ is invoked before the scheduler (and frequently the scheduler is invoked as the last step in <CODE CLASS="CodeOutput">
+cyg_user_start()</CODE>
+), so it should not use any kernel services that require the scheduler. </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1020540">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=1076162">
+ </A>
+If you are supplying your own definition of this function from a C++ file, make sure it has &quot;C&quot; linkage.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System start-up</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.7.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.9.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

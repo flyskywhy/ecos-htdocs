@@ -1,0 +1,574 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> Screen Layout</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Screen Layout</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1123052">
+ </A>
+<A NAME="_Toc445367116">
+ </A>
+<A NAME="marker=1150553">
+ </A>
+Screen Layout<DIV>
+<IMG SRC="botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1117776">
+ </A>
+The following windows are available within the eCos<SPAN CLASS="Bold">
+ </SPAN>
+Configuration Tool:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117778">
+ </A>
+		Configuration Window</LI>
+<P><P><LI>
+<A NAME="pgfId=1117779">
+ </A>
+		Properties Window</LI>
+<P><P><LI>
+<A NAME="pgfId=1117780">
+ </A>
+		Short Description</LI>
+<P><P><LI>
+<A NAME="pgfId=1117781">
+ </A>
+		Memory Layout</LI>
+<P><P><LI>
+<A NAME="pgfId=1117782">
+ </A>
+		Conflicts</LI>
+<P><P><LI>
+<A NAME="pgfId=1144365">
+ </A>
+		Output</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1144366">
+ </A>
+The layout of the windows my be adjusted to suit your preferences: see <A HREF="user-guides.6.html#VIEW-SETTINGS" CLASS="XRef">
+ Settings</A>
+.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1117788">
+ </A>
+<A NAME="CONFIGURATION-PANE">
+ </A>
+<A NAME="_Toc445367117">
+ </A>
+<A NAME="marker=1150554">
+ </A>
+Configuration Window</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1117792">
+ </A>
+This is the principal window used to configure eCos. It takes the form of a tree-based representation of the configuration items within the currently loaded eCos packages.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117794">
+ </A>
+In the case of items whose values may be changed, controls are available to set the item values. These either take the form of check boxes or radio buttons within the tree itself or cells to the right of the thin vertical splitter bar. Controls in the tree may be used in the usual way; cells, however, must first be activated.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1154619">
+ </A>
+To activate a cell, simply click on it: it will assume a sunken appearance and data can then be edited in the cell. To terminate in-cell editing, click elsewhere in the configuration window or press <SPAN CLASS="BOLD">
+ENTER.</SPAN>
+ To discard the partial results of in-cell editing and revert to the previous value, press <SPAN CLASS="BOLD">
+ESCAPE.</SPAN>
+ Note that an asterisk appears</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117796">
+ </A>
+against configuration items which have changed since the configuration was last saved.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1146323">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/configwin.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117798">
+ </A>
+Cells come in three varieties, according to the type of data they accept:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117821">
+ </A>
+</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1117802">
+ </A>
+</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117806">
+ </A>
+<SPAN CLASS="Bold">
+Cell Type</SPAN>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117808">
+ </A>
+<SPAN CLASS="Bold">
+Data Accepted</SPAN>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117810">
+ </A>
+Integer</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117812">
+ </A>
+Decimal or hexadecimal values</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117814">
+ </A>
+Floating Point</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117816">
+ </A>
+Floating point values</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117818">
+ </A>
+String</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Normal">
+<A NAME="pgfId=1117820">
+ </A>
+Any</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1117823">
+ </A>
+In the case of string cells, you can double-click the cell to display a dialog box containing a larger region in which to edit the string value. This is useful in the case of long strings, or those spanning multiple lines.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1117826">
+ </A>
+<A NAME="_Toc445367118">
+ </A>
+Disabled items</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1117828">
+ </A>
+Some items will appear disabled. In this case the item label and any associated controls and cells will be grayed. It is not be possible to change the values of disabled items.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=1117831">
+ </A>
+<A NAME="_Toc445367119">
+ </A>
+Right-Clicking</H5>
+<P CLASS="Body">
+<A NAME="pgfId=1117833">
+ </A>
+You can right-click on an item in the configuration window item to display a pop-up menu which (depending on the type of the item selected) allows you to:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117835">
+ </A>
+	<SPAN CLASS="Bold">
+Properties</SPAN>
+ - information relating to the currently selected item is displayed. The information is equivalent to that displayed in the Properties Window.</LI>
+<P><P><LI>
+<A NAME="pgfId=1117836">
+ </A>
+	<SPAN CLASS="Bold">
+Restore Defaults</SPAN>
+  - the default value of the currently selected item is restored.</LI>
+<P><P><LI>
+<A NAME="pgfId=1117837">
+ </A>
+	<SPAN CLASS="Bold">
+Visit Documentation</SPAN>
+ - causes the HTML page most closely relating to the currently selected item to be displayed. This has the same effect as double-clicking the URL property in the Properties Window.</LI>
+<P><P><LI>
+<A NAME="pgfId=1117839">
+ </A>
+	<SPAN CLASS="Bold">
+View Header File</SPAN>
+ - this causes the file containing the items to be displayed. This is equivalent to double-clicking on the File property in the Properties Window. The viewer used for this purpose may be changed using the <SPAN CLASS="Bold">
+View<IMG SRC="pix/arrow.gif">Settings</SPAN>
+ menu item (see <A HREF="user-guides.6.html#VIEW-SETTINGS" CLASS="XRef">
+ Settings</A>
+). Note that this operation is only possible when the current configuration is saved, in order to avoid the possibility of changing the source repository.</LI>
+<P><P><LI>
+<A NAME="pgfId=1117840">
+ </A>
+<SPAN CLASS="Bold">
+	Unload Package</SPAN>
+ - this is equivalent to using the <SPAN CLASS="Bold">
+Build<IMG SRC="pix/arrow.gif">Packages</SPAN>
+ menu item to select and unload the package in question.</LI>
+</UL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1117843">
+ </A>
+<A NAME="_Toc445367120">
+ </A>
+<A NAME="marker=1150555">
+ </A>
+Conflicts Window</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1117845">
+ </A>
+This window exists to display any configuration item conflicts. Conflicts are the result of failures to meet the requirements between configuration items expressed in the CDL. See  &quot;Conflicts&quot; in <A HREF="user-guides.e.html#40966" CLASS="XRef">
+ CDL Concepts</A>
+.</P>
+<DIV>
+<IMG SRC="pix/conflictwin.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117848">
+ </A>
+The window comprises three columns:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117850">
+ </A>
+			<SPAN CLASS="Bold">
+Item</SPAN>
+</LI>
+</UL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1117852">
+ </A>
+This is the macro name of the first item involved in the conflict.</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117854">
+ </A>
+			<SPAN CLASS="Bold">
+Conflict</SPAN>
+</LI>
+</UL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1117856">
+ </A>
+This is a description of the conflict type. The currently supported types are &quot;unresolved&quot;, &quot;illegal value&quot;, &quot;evaluation exception&quot;, &quot;goal unsatisfied&quot; and &quot;bad data&quot;.</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117858">
+ </A>
+			<SPAN CLASS="Bold">
+Property</SPAN>
+</LI>
+</UL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=1117860">
+ </A>
+This contains a description of the configuration item's property that caused the conflict.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117862">
+ </A>
+Within the conflicts window you can right-click on any item to display a context menu which allows you to choose from one of the following options:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117865">
+ </A>
+			<SPAN CLASS="Bold">
+Locate the item involved in the conflict</SPAN>
+ - this will cause the configuration window to display the item relating most closely to the selected conflict.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1117868">
+ </A>
+You can use the <SPAN CLASS="Bold">
+Tools<IMG SRC="pix/arrow.gif">Resolve Conflicts</SPAN>
+ menu item to resolve conflicts - see <A HREF="user-guides.8.html#RULES-HELP" CLASS="XRef">
+ Resolving conflicts</A>
+.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1144387">
+ </A>
+<A NAME="_Toc445367121">
+ </A>
+<A NAME="marker=1150556">
+ </A>
+<A NAME="OUTPUT-PANE">
+ </A>
+Output Window</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1144388">
+ </A>
+This window displays any output generated by execution of external tools and any error messages that are not suitable for display in other forms (for example, as message boxes).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1144389">
+ </A>
+Within the output window you can right-click to display a context menu which allows you to:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1144390">
+ </A>
+			Save the contents of the window to a file</LI>
+<P><P><LI>
+<A NAME="pgfId=1144391">
+ </A>
+			Clear the contents of the window</LI>
+</UL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1117883">
+ </A>
+<A NAME="PROPERTIES-TABLE">
+ </A>
+<A NAME="_Toc445367122">
+ </A>
+<A NAME="marker=1150557">
+ </A>
+Properties Window</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1117885">
+ </A>
+This window displays the CDL properties of the item currently selected in the configuration window. The same information may be displayed by right-clicking the item and selecting &quot;properties&quot;.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1146324">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/propwin.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117887">
+ </A>
+Two properties may be double-clicked as follows:</P>
+<UL>
+<P><P><LI>
+<A NAME="pgfId=1117889">
+ </A>
+			<SPAN CLASS="Bold">
+URL</SPAN>
+ - double-clicking on a URL property causes the referenced HTML page to be displayed. This has the same effect as right-clicking on the item and choosing &quot;Visit Documentation&quot;.</LI>
+<P><P><LI>
+<A NAME="pgfId=1117890">
+ </A>
+			<SPAN CLASS="Bold">
+File</SPAN>
+ - double-clicking on a File property in a saved configuration causes the File to be displayed. The viewer used for this purpose may be changed using the <SPAN CLASS="Bold">
+View<IMG SRC="pix/arrow.gif">Settings</SPAN>
+ menu item. Note that this operation is only possible when the current configuration is saved, in order to avoid the possibility of changing the source repository.</LI>
+</UL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1117894">
+ </A>
+<A NAME="_Toc445367123">
+ </A>
+<A NAME="marker=1150558">
+ </A>
+<A NAME="SHORT-DESCRIPTION-WINDOW">
+ </A>
+Short Description Window</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1117896">
+ </A>
+This window displays a short description of the item currently selected in the configuration window. More extensive documentation may be available by right-clicking on the item and choosing &quot;Visit Documentation&quot;.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=1117902">
+ </A>
+<A NAME="MEMORY-LAYOUT">
+ </A>
+<A NAME="_Toc445367124">
+ </A>
+<A NAME="marker=1150559">
+ </A>
+Memory Layout Window</H4>
+<P CLASS="Body">
+<A NAME="pgfId=1117904">
+ </A>
+The memory layout window presents a graphical view of the memory layout of the currently selected combination of target architecture, platform and start-up type. Each memory region is represented by a horizontal bar within the window. Each bar is further divided into a number of blocks representing memory sections. Unused parts of a memory section are represented using hatching. All numeric information is presented in hexadecimal format:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117906">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/memorywin.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117908">
+ </A>
+Default memory layouts are provided for all supported platforms; you do not need to edit these layouts in order to begin development on standard, supported, eCos platforms. However, you may need to modify the memory layouts at certain times, for example when additional memory is installed on an evaluation board. When the memory layout is modified, a new linker script fragment is generated to allow the linker to make use of the new memory. </P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=1117911">
+ </A>
+<A NAME="_Toc445367125">
+ </A>
+Layout Manipulation</H5>
+<P CLASS="Body">
+<A NAME="pgfId=1117913">
+ </A>
+The memory layout window includes controls to create, delete and modify the properties of both memory regions and memory sections (collectively referred to as memory items). These manipulation functions are accessible from both memory items and from the memory layout toolbar, which may be shown or hidden by the <SPAN CLASS="Bold">
+View<IMG SRC="pix/arrow.gif">Toolbars<IMG SRC="pix/arrow.gif">Memory Layout</SPAN>
+ menu item. When modifying or deleting an item, it is necessary to first select it with your mouse. The currently selected item is displayed with a focus rectangle (as section rodata above). Creation and modification of a memory item is achieved using a property sheet. The property sheet for a memory item may also be accessed by double-clicking on the item in the memory window.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=1117916">
+ </A>
+<A NAME="MEMORY-REGIONS">
+ </A>
+<A NAME="_Toc445367126">
+ </A>
+<A NAME="marker=1150560">
+ </A>
+Memory Regions</H5>
+<P CLASS="Body">
+<A NAME="pgfId=1117918">
+ </A>
+Details of a memory region may be specified using the region properties sheet, displayed by double-clicking on the name of the memory region in the memory layout display. The general settings page of this sheet allows editing of the region parameters:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117920">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/regprops.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117922">
+ </A>
+The name of each memory region is arbitrary, but should not contain spaces or punctuation characters. The start address and size of each memory region is specified in bytes and entered as hexadecimal numbers. The <SPAN CLASS="Bold">
+Read Only</SPAN>
+ check box should be checked where the memory region represents a block of read-only memory. This information is used to verify that the initial and final locations of any relocating memory sections are within appropriate memory regions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117924">
+ </A>
+The <SPAN CLASS="Bold">
+Note</SPAN>
+ page of the region properties sheet may be used to keep notes concerning the memory regions. These notes are saved with the memory layout in the build tree.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=1117926">
+ </A>
+<A NAME="MEMORY-SECTIONS">
+ </A>
+<A NAME="_Toc445367127">
+ </A>
+<A NAME="marker=1150561">
+ </A>
+Memory sections</H5>
+<P CLASS="Body">
+<A NAME="pgfId=1117928">
+ </A>
+Details of a memory section may be specified or modified using the section properties sheet. The general settings page of this sheet allows editing of the parameters which are common to all sections:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117930">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/memregions.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1117932">
+ </A>
+Each memory section is either linker-defined or user-defined. The name of a linker-defined section is selected from a drop-down list appropriate for the currently selected target architecture. Only those names which are not currently in use are presented. The name of a user-defined section must not contain spaces or punctuation characters. The size of a user-defined section may also be specified by checking the <SPAN CLASS="Bold">
+Known Size</SPAN>
+ check box. The size should then be entered as a hexadecimal number. User-defined sections of unknown size are assumed to occupy all available space up to the next section or the end of the memory region.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117934">
+ </A>
+The final memory location after relocation (also known as VMA) of a memory section may be defined using an absolute start address or by specifying another section which it follows in the memory map. Where an absolute address is required, this should be entered as a hexadecimal number.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117936">
+ </A>
+Alternatively, the preceding section may be selected from a drop-down list of appropriate existing sections. In this case, the alignment of the section in terms of an n-byte boundary should also be selected.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117938">
+ </A>
+The relocation settings page allows editing of the parameters which are specific to relocating sections:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117940">
+ </A>
+</P>
+<DIV>
+<IMG SRC="pix/memreloc.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1152253">
+ </A>
+The relocation of a memory section at system start-up is enabled by checking the <SPAN CLASS="Bold">
+Relocate Section</SPAN>
+ check box. The initial size to which the memory section is loaded (also known as the LMA) may be defined using an absolute start address or by specifying another section which it follows in the memory map. Where an absolute address is required, this should be entered as a hexadecimal number. The address must lie within a read-only memory region. Alternatively, the preceding section may be selected from a drop-down list of appropriate existing sections. The initial location of the preceding section must be a location in a read-only memory region.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117944">
+ </A>
+The note page of the section properties sheet may be used to keep notes concerning the memory section. These notes are saved with the memory layout in the build tree.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=1117946">
+ </A>
+<A NAME="_Toc445367128">
+ </A>
+<A NAME="marker=1150562">
+ </A>
+Memory access</H5>
+<P CLASS="Body">
+<A NAME="pgfId=1117948">
+ </A>
+User-defined memory sections may be accessed using C preprocessor macros defined in a memory layout header file exported by the eCos<SPAN CLASS="Bold">
+ </SPAN>
+Configuration Tool. The name of the memory layout header file appropriate for the current configuration is defined by the <EM CLASS="Emphasis">
+CYGHWR_MEMORY_LAYOUT</EM>
+ configuration item.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117949">
+ </A>
+Macros specifying the start address and size are defined for each user-defined memory section and may be accessed as demonstrated in the following example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1146700">
+ </A>
+</P>
+<P CLASS="ExampleTitle">
+<A NAME="pgfId=1146688">
+ </A>
+<A NAME="marker=1146687">
+ </A>
+Accessing a user-defined memory section named example</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1146689"> </A>
+#include &lt;pkgconf/system.h&gt;
+#include CYGHWR_MEMORY_LAYOUT_H
+
+int main ()
+{
+ // use the memory section as an integer array
+ int * array = (int *) CYGMEM_SECTION_example;
+ unsigned int array_size = CYGMEM_SECTION_example_SIZE / sizeof (int);
+
+ // initialize each array element
+ unsigned int count;
+ for (count = 0; count &lt; array_size; ++count)
+ array [count] = 0;
+
+ return 0;
+}</PRE>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Screen Layout</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="user-guides.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
