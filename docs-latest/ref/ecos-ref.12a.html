@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Thur May 4 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="cygnus.css">
+<TITLE> How to write a driver</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center">
+        <P CLASS="Gotos">Serial testing with ser_filter</P>
+      </TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center">
+        <P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P>
+      </TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle"> <A NAME="pgfId=1080075"> </A> Serial testing wth ser_filter</H2>
+<h3 CLASS="Body">Rationale</h3>
+<P CLASS="Body">Since some targets only have one serial connection, a serial testing 
+  harness needs to be able to share the connection with GDB (however, the test 
+  and GDB can also run on separate lines). </P>
+<P CLASS="Body">The serial filter (ser_filter) sits between the serial port and 
+  GDB and monitors the exchange of data between GDB and the target. Normally, 
+  no changes are made to the data. </P>
+<P CLASS="Body">When a test request packet is sent from the test on the target, 
+  it is intercepted by the filter. </P>
+<P CLASS="Body">The filter and target then enter a loop, exchanging protocol data 
+  between them which GDB never sees. </P>
+<P CLASS="Body">In the event of a timeout, or a crash on the target, the filter 
+  falls back into its pass-through mode. If this happens due to a crash it should 
+  be possible to start regular debugging with GDB. The filter will stay in the 
+  pass-though mode until GDB disconnects. </P>
+<h3 CLASS="Body">The Protocol</h3>
+<P CLASS="Body">The protocol commands are prefixed with an @-character which the 
+  serial filter is looking for. The protocol commands include: </P>
+<p CLASS="Body">PING<br>
+  Allows the test on the target to probe for the filter. The filter responds with 
+  OK, while GDB would just ignore the command. This allows the tests to do nothing 
+  if they require the filter and it is not present.</p>
+<p CLASS="Body">CONFIG<br>
+  Requests a change of serial line configuration. Arguments of the command specify 
+  baud rate, data bits, stop bits, and parity. [This command is not fully implemented 
+  yet - there is no attempt made to recover if the new configuration turns out 
+  to cause loss of data.]</p>
+<p CLASS="Body">BINARY<br>
+  Requests data to be sent from the filter to the target. The data is checksummed, 
+  allowing errors in the transfer to be detected. Sub-options of this command 
+  control how the data transfer is made: </p>
+<blockquote>
+  <p>NO_ECHO<br>
+    (serial driver receive test) Just send data from the filter to the target. 
+    The test verifies the checksum and PASS/FAIL depending on the result. </p>
+  <p>EOP_ECHO <br>
+    (serial driver half-duplex receive and send test) As NO_ECHO but the test 
+    echoes back the data to the filter. The filter does a checksum on the received 
+    data and sends the result to the target. The test PASS/FAIL depending on the 
+    result of both checksum verifications. </p>
+  <p>DUPLEX_ECHO <br>
+    (serial driver duplex receive and send test) Smaller packets of data are sent 
+    back and forth in a pattern that ensures that the serial driver will be both 
+    sending and receiving at the same time. Again, checksums are computed and 
+    verified resulting in PASS/FAIL. </p>
+</blockquote>
+<p CLASS="Body">TEXT <br>
+  This is a test of the text translations in the TTY layer. Requests a transfer 
+  of text data from the target to the filter and possibly back again. The filter 
+  treats this as a binary transfer, while the target may be doing translations 
+  on the data. The target provides the filter with checksums for what it should 
+  expect to see. This test is not implemented yet. </p>
+<p CLASS="Body">The above commands may be extended, and new commands added, as 
+  required to test (new) parts of the serial drivers in eCos. </p>
+<h3 CLASS="Body">The Serial Tests</h3>
+<p CLASS="Body">The serial tests are built as any other eCos test. After running 
+  the 'make tests' command, the tests can be found in: </p>
+<pre CLASS="Body">install/tests/io_serial/ </pre>
+<p CLASS="Body">serial1 <br>
+  A simple API test.<br>
+  <br>
+  serial2 A simple serial send test. It writes out two strings, one raw and one 
+  encoded as a GDB O-packet.<br>
+  <br>
+  serial3 [requires the serial filter] <br>
+  This tests the half-duplex send and receive capabilities of the serial driver. 
+</p>
+<p CLASS="Body"> serial4 [requires the serial filter] <br>
+  This test attempts to use a few different serial configurations, testing the 
+  driver's configuration/setup functionality. </p>
+<p CLASS="Body">serial5 [requires the serial filter] <br>
+  This tests the duplex send and receive capabilities of the serial driver. </p>
+<p CLASS="Body">All tests should complete in less than 30 seconds. </p>
+<h3 CLASS="Body">Serial Filter Usage</h3>
+<p CLASS="Body">Running the ser_filter program with no (or wrong) arguments results 
+  in the below output: </p>
+<p CLASS="Body">Usage: ser_filter [-t -S] TcpIPport SerialPort BaudRate <br>
+  or: ser_filter -n [-t -S] SerialPort BaudRate <br>
+  -t: Enable tracing. <br>
+  -S: Output data read from serial line. <br>
+  -c: Output data on console instead of via GDB. <br>
+  -n: No GDB. </p>
+<p CLASS="Body">The normal way to use it with GDB is to start the filter: </p>
+<pre CLASS="Body">ser_filter -t 9000 com1 38400</pre>
+<p CLASS="Body">In this case, the filter will be listening on port 9000 and connect 
+  to the target via the serial port COM1 at 38400 baud. On a UNIX host, replace 
+  "com1" with a device such as "/dev/ttyS0". </p>
+<p CLASS="Body">The '-t' option enables tracing which will cause the filter to 
+  describe its actions on the console. </p>
+<p CLASS="Body">Now start GDB with one of the tests as an argument: </p>
+<pre CLASS="Body">$ mips-tx39-elf-gdb -nw install/tests/io_serial/serial3 </pre>
+<p CLASS="Body">Then connect to the filter: </p>
+<pre CLASS="Body">(gdb) target remote localhost:9000 </pre>
+<p CLASS="Body">This should result in a connection in exactly the same way as 
+  if you had connected directly to the target on the serial line. </p>
+<pre CLASS="Body">(gdb) c </pre>
+<p CLASS="Body">Which should result in output similar to the below: </p>
+<pre CLASS="Body">Continuing. 
+   INFO: &lt;BINARY:16:1!&gt; 
+   PASS: &lt;Binary test completed&gt;
+   INFO: &lt;BINARY:128:1!&gt; 
+   PASS: &lt;Binary test completed&gt;
+   INFO: &lt;BINARY:256:1!&gt; 
+   PASS: &lt;Binary test completed&gt;
+   INFO: &lt;BINARY:1024:1!&gt; 
+   PASS: &lt;Binary test completed&gt;
+   INFO: &lt;BINARY:512:0!&gt;
+   PASS: &lt;Binary test completed&gt;
+   ... <binary test completed><br>   PASS: &lt;Binary test completed&gt;
+   INFO: &lt;BINARY:16384:0!&gt;
+   PASS: &lt;Binary test completed&gt;
+   PASS: &lt;serial13 test OK&gt;
+   EXIT:<done> &lt;done&gt;</pre>
+<p CLASS="Body">If any of the individual tests fail the testing will terminate 
+  with a FAIL. </p>
+<p CLASS="Body">With tracing enabled, you would also see the filter's status output: 
+</p>
+<p CLASS="Body">The PING command sent from the target to determine the presence 
+  of the filter: </p>
+<pre CLASS="Body">[400 11:35:16] Dispatching command PING 
+[400 11:35:16] Responding with status OK</pre>
+<p CLASS="Body">Each of the binary commands result in output similar to: </p>
+<pre CLASS="Body">[400 11:35:16] Dispatching command BINARY 
+[400 11:35:16] Binary data (Size:16, Flags:1). 
+[400 11:35:16] Sending CRC: '170231!', len: 7. 
+[400 11:35:16] Reading 16 bytes from target. 
+[400 11:35:16] Done. in_crc 170231, out_crc 170231. 
+[400 11:35:16] Responding with status OK 
+[400 11:35:16] Received DONE from target. </pre>
+<p CLASS="Body">This tracing output is normally sent as O-packets to GDB which 
+  will display the tracing text. By using the -c option, the tracing text can 
+  be redirected to the console from which ser_filter was started. </p>
+<h3 CLASS="Body">A Note on Failures</h3>
+<p CLASS="Body">A serial connection (especially when driven at a high baud rate) 
+  can garble the transmitted data because of noise from the environment. It is 
+  not the job of the serial driver to ensure data integrity - that is the job 
+  of protocols layering on top of the serial driver. </p>
+<p CLASS="Body">In the current implementation the serial tests and the serial 
+  filter are not resilient to such data errors. This means that the test may crash 
+  or hang (possibly without reporting a FAIL). It also means that you should be 
+  aware of random errors - a FAIL is not necessarily caused by a bug in the serial 
+  driver. </p>
+<p CLASS="Body">Ideally, the serial testing infrastructure should be able to distinguish 
+  random errors from consistent errors - the former are most likely due to noise 
+  in the transfer medium, while the latter are more likely to be caused by faulty 
+  drivers. The current implementation of the infrastructure does not have this 
+  capability. </p>
+<h3 CLASS="Body">Debugging</h3>
+<p CLASS="Body">If a test fails, the serial filter's output may provide some hints 
+  about what the problem is. If the option '-S' is used when starting the filter, 
+  data received from the target is printed out: </p>
+<pre CLASS="Body">[400 11:35:16] 0000 50 41 53 53 3a 3c 42 69 'PASS:&lt;Bi'<br>[400 11:35:16] 0008 6e 61 72 79 20 74 65 73 'nary.tes' 
+[400 11:35:16] 0010 74 20 63 6f 6d 70 6c 65 't.comple' 
+[400 11:35:16] 0018 74 65 64 3e 0d 0a 49 4e 'ted&gt;..IN' <br>[400 11:35:16] 0020 46 4f 3a 3c 42 49 4e 41 'FO:&lt;BINA'
+[400 11:35:16] 0028 52 59 3a 31 32 38 3a 31 'RY:128:1' 
+[400 11:35:16] 0030 21 3e 0d 0a 40 42 49 4e '!..@BIN' 
+[400 11:35:16] 0038 41 52 59 3a 31 32 38 3a 'ARY:128:' 
+[400 11:35:16] 0040 31 21 .. .. .. .. .. .. '1!' 
+</pre>
+<p CLASS="Body">In the case of an error during a testing command the data received 
+  by the filter will be printed out, as will the data that was expected. This 
+  allows the two data sets to be compared which may give some idea of what the 
+  problem is. </p>
+<p CLASS="Body">&nbsp;</p>
+<DIV>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center">
+      <P CLASS="Gotos">Serial testing with ser_filter</P>
+    </TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.2.html">To Contents</A></P></TD><TD  ALIGN="center">
+      <P CLASS="Gotos"><A HREF="ecos-ref.12.html">To&nbsp;previous&nbsp;page</A></P>
+    </TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-ref.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE>
