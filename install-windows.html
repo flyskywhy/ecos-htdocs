@@ -52,6 +52,13 @@ Note that the Cygwin tools also include the <i>bzip2</i> utility required to ext
     menu hierarchy to launch the <i>bash</i> command-line
     environment.<p>
 
+    If you receive the warning "<tt>bash.exe: warning: could not find
+    /tmp, please create!</tt>" then you should create <tt>/tmp</tt>
+    before proceeding by entering the following command at the
+    <i>bash</i> prompt:<p>
+
+    <nobr><tt>mkdir /tmp</tt></nobr><p>
+
 <li>Build the eCos development tools (ecosSWtools-981021) by following
 these steps at the <i>bash</i> prompt:<p>
 
@@ -59,7 +66,8 @@ these steps at the <i>bash</i> prompt:<p>
   <li>Mount the logical drive(s) you will use to build the eCos development tools:<p>
   <nobr><tt>mount C: /c</tt></nobr><p>
 
-  Note that binary mode mounts cannot be used for this purpose.<p>
+  Note that binary mode mounts cannot be used for this purpose. Warnings
+  of the form "<tt>Warning: /c does not exist!</tt>" are normal and can be ignored.<p>
 
   <li>Mount the Cygwin tools as <nobr><tt>/bin</tt></nobr> such that <nobr><tt>/bin/sh</tt></nobr> exists:<p>
   <nobr><tt>mount C:/cygnus/cygwin-b20/H-i586-cygwin32/bin /bin</tt></nobr><p>
