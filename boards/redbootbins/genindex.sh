@@ -24,11 +24,17 @@ EOF
         if [ $SHORTNAME == "CVS" -o $SHORTNAME == index.html -o $SHORTNAME == platformname ]; then
             continue
         fi
-        SIZE=`ls -l $j | awk '{print $5}'`
-        SIZEK=`echo "$SIZE/1024" | bc`
-        cat >> $i/index.html <<EOF
+        if [ -d $j ]; then
+            cat >> $i/index.html <<EOF
+<li><a href="$SHORTNAME">$SHORTNAME</a></li>
+EOF
+        else
+            SIZE=`ls -l $j | awk '{print $5}'`
+            SIZEK=`echo "$SIZE/1024" | bc`
+            cat >> $i/index.html <<EOF
 <li><a href="$SHORTNAME">$SHORTNAME</a> ($SIZEK Kbytes)</li>
 EOF
+        fi
     done
     cat >> $i/index.html <<EOF
 </ul>
