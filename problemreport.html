@@ -21,197 +21,23 @@ the eCos net distribution. Red Hat can provide support via the
 <A HREF="http://www.redhat.com/embedded/technologies/ecos/ecos_support.html"
 target="_top">
 eCos Developer Support Program</a> for those who require it. Note, also,
-that the form below should be used for eCos-related problems <i>only</i>.
-Problems related to Red Hat Linux should be submitted using
-<a href="http://bugzilla.redhat.com/bugzilla/" target="_top">Bugzilla</a>.</p>
+that the form below should be used for eCos-related problems <i>only</i>.</p>
 
 <h2>Submitting a problem report</h2>
 
 <p>If you have been unable to find reference to the problem you are
 experiencing in the known problems list, please submit a problem report to
-Red Hat using the following form. By providing a problem report, you will
+Red Hat using the <a href="http://bugzilla.redhat.com/bugzilla/">Bugzilla
+bug tracking system</a>. You will need to provide an e-mail address to register
+with the bug system. By providing a problem report, you will
 assist us in improving the software for the benefit of all users. It is
 important to provide as much information as possible to enable our engineers
 to reproduce and analyse the problem.</p>
-
-<form method="POST" action="/cgi-bin/mailform.pl">
-   <input type=hidden name="recipient" value="bugs@cygnus.com">
-   <input type=hidden name="page" value="sourceware.cygnus.com/ecos/problemreport.html">
-   <input type=hidden name="subject" value="Bug report form">
-   <input type=hidden name="required" value="&#62;Originator,email,&#62;Organization">
-   <input type=hidden name="redirect" value="http://sourceware.cygnus.com/ecos/thanks.html">
-   <input type=hidden name="Send_PR_form" value="Sent_from_sourceware.cygnus.com">
-   <input type=hidden name="&#62;Category" value="ecos">
-
-<p>* Required</p>
-
-<TABLE border=0 cellpadding=4 cellspacing=0>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT nowrap>* Name:</TD> 	
-  <TD ALIGN=LEFT>
-    <input text size=40 VALUE="First Name  Last Name" name="&#62;Originator" align=top>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT nowrap>* E-mail:</TD>
-  <TD ALIGN=LEFT><input text size=40 name="email" align=top></TD>
-</TR>
-
-<!--
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>*&nbsp;Customer-ID:</TD> 	
-  <TD ALIGN=LEFT><input text size=40 name="&#62;Customer-Id" align=top value="ecos-contrib"></TD>
-</TR>
-all eCos sourceware PRs have customer ID of "ecos-contrib" -->
-<input type=hidden name="&#62;Customer-Id" value="ecos-contrib">
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT nowrap>* Organization:</TD> 
-  <TD ALIGN=LEFT><input text size=40 name="&#62;Organization" align=top></TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Confidential:</TD> 
-  <TD ALIGN=LEFT>
-    <SELECT NAME="&#62;Confidential">
-      <OPTION SELECTED>No
-      <OPTION>Yes
-    </SELECT>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Synopsis:</TD>	
-  <TD ALIGN=LEFT>
-    <TEXTAREA ROWS="2" cols=50 NAME="&#62;Synopsis" WRAP=SOFT></TEXTAREA>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Severity:</TD>
-  <TD ALIGH=LEFT>
-     <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Non-critical" checked>
-         <B>Non-critical</B> - Graphical issue or miscellaneous problem<BR>
-     <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Serious">
-         <B>Serious</B> - Feature misbehaves<BR>
-     <INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Critical">
-         <B>Critical</B> - Crash or data loss
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Class:</TD>
-  <TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked>       <B>Target software bug</B><BR>
-    <INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug">
-       <B>Host tool bug</B><BR>
-    <INPUT TYPE="radio" NAME="&#62;Class" VALUE="doc-bug">
-       <B>Documentation bug</B><BR>
-    <INPUT TYPE="radio" NAME="&#62;Class" VALUE="change-request">
-       <B>Enhancement request</B><BR>
-    <INPUT TYPE="radio" NAME="&#62;Class" VALUE="support">
-      <B>Support</B>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Release:</TD> 
-  <TD ALIGN=LEFT>
-    <SELECT NAME="&#62;Release">
-      <OPTION selected>Select a Release
-      <OPTION>eCos v1.3.1
-      <OPTION>eCos v1.2.1
-      <OPTION>eCos v1.1
-  <!--
-      <OPTION>eCos v1.0
-      <OPTION>ECC March 1998 v0.2
-      <OPTION>ECC June 1998 v0.3
-  -->
-    </SELECT>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Host Environment: </TD>
-  <TD ALIGN=LEFT>
-    <SELECT NAME="&#62;Environment">
-      <OPTION selected>Select an Environment 
-      <OPTION>Windows NT 4.0
-      <OPTION>Windows NT 4.0 Japanese
-      <OPTION>Windows 95
-      <OPTION>Windows 98
-      <OPTION>Windows 2000
-      <OPTION>Red Hat Linux 6.1
-      <OPTION>Red Hat Linux 6.2
-      <OPTION>Red Hat Linux 7
-      <OPTION>Other Linux
-      <OPTION>(all hosts)
-    </SELECT>
-  </TD>
-</TR>
-
-<TR VALIGN=TOP>
-  <TD ALIGN=RIGHT>Target Platform:</TD> 
-  <TD ALIGN=LEFT>
-    <SELECT NAME="Target">
-      <OPTION selected>Select a Target
-      <OPTION >ARM development board (PID)
-      <OPTION >ARM evaluation board (AEB-1)
-      <OPTION >Cirrus Logic development board
-      <OPTION >Cogent CMA230/222 board
-      <OPTION >Cogent CMA286/287 board
-      <OPTION >Cosmo CEB-V850/SA1 board
-      <OPTION >CqREEK SH7708 board
-      <OPTION >CqREEK SH7750 board
-      <OPTION >Fujitsu MB86800-MA01 board
-      <OPTION >Hitachi EDK/SH7708 board
-      <OPTION >i386 PC target
-      <OPTION >Intel EBSA285 StrongARM board
-      <OPTION >Intel StrongARM SA1100 board
-      <OPTION >Intel StrongARM SA1100 Multimedia board
-      <OPTION >Intel StrongARM SA1110 board
-      <OPTION >Linux synthetic target
-      <OPTION >Matsushita STB board
-      <OPTION >Matsushita stdeval1 board
-      <OPTION >MN10300 AM31 minimal simulator
-      <OPTION >Motorola MBX860/821 board
-      <OPTION >Motorola MPC8xxFADS board
-      <OPTION >NEC VRC4373 board
-      <OPTION >PowerPC simulator
-      <OPTION >SPARClite simulator
-      <OPTION >Toshiba JMR-TX3904 board
-      <OPTION >Toshiba TX4955 reference platform
-      <OPTION >TX39 minimal simulator
-      <OPTION >(any target)
-    </SELECT>
-  </TD>
-</TR>
-</TABLE>
-
-<p><B>Description</B></p>
-
-<p>Please take time to describe the problem completely and accurately so
-that we can respond to this Problem Report most effectively.<br>
-<textarea rows=5 cols=65 name="&#62;Description" WRAP=HARD></textarea>
-</p>
-
-<p><B>How to repeat</B></p>
-
-<p>Please take time to describe in detail how to reproduce the bug.<br>
-<textarea rows=5 cols=65 name="&#62;How-To-Repeat" WRAP=HARD></textarea>
-</p>
-
-<p><B>Fix or workaround</B></p>
-
-<p>Please describe fixes or workarounds you have discovered.<br>
-<textarea rows=5 cols=65 name="&#62;Fix" WRAP=HARD></textarea>
-</p>
-
-<p>
-<INPUT TYPE="submit" VALUE="Submit">
-<INPUT TYPE="reset" VALUE="Reset">
-</p>
-</form>
+<p>Quick links:
+<ul>
+<li> <a href="http://bugzilla.redhat.com/bugzilla/enter_bug.cgi?product=Red%20Hat%20eCos">Enter a new eCos bug</a> (bugzilla login required)
+<li> <a href="http://bugzilla.redhat.com/bugzilla/query.cgi?product=Red%20Hat%20eCos">
+Query the eCos bug database</a> (no login required)
+</ul>
 
 <!--#include virtual="include/footer.html"-->
