@@ -86,20 +86,16 @@ files are required for eCos. Alternatively, click on the appropriate
 following links to download the files directly:
 
 <ul>
-${WINDOWS-
 <li>
 <a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-core-2.95.2.tar.gz">
   GCC 2.95.2 core compiler distribution</a> (gcc-core-2.95.2.tar.gz - 8.7MB)
-}
 <li>
 <a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-core-2.95.2.tar.bz2">
   GCC 2.95.2 core compiler distribution</a> (gcc-core-2.95.2.tar.bz2 - 6.6MB)
 
-${WINDOWS-
 <li>
 <a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-g++-2.95.2.tar.gz">
   GCC 2.95.2 C++ distribution</a> (gcc-g++-2.95.2.tar.gz - 1.6MB)
-}
 <li>
 <a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-g++-2.95.2.tar.bz2">
   GCC 2.95.2 C++ distribution</a> (gcc-g++-2.95.2.tar.bz2 - 1.2MB)
@@ -478,7 +474,9 @@ ${GCCSNAP+
 <li>Build and install Insight:<p>
 
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
+${WINDOWS+
+&nbsp;&nbsp;&nbsp;&nbsp;CC='gcc -mwin32' make -w all install 2&gt;&1 | tee make.out }${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out }
 </tt></nobr>
 <p>
 </ol>

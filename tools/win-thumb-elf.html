@@ -363,7 +363,8 @@ If there are any problems building the tools, you can use the file
 <li>Build and install Insight:<p>
 
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
+
+&nbsp;&nbsp;&nbsp;&nbsp;CC='gcc -mwin32' make -w all install 2&gt;&1 | tee make.out 
 </tt></nobr>
 <p>
 </ol>
