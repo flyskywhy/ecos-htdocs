@@ -8,254 +8,245 @@
 <H2>eCos/ROM Monitor Calling Interface</H2>
 <HR SIZE=3>
 
-
-<pre>
-
-The ROM/RAM calling interface (aka virtual vector table)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Some eCos platforms have supported full debugging capabilities via
+<p>Some eCos platforms have supported full debugging capabilities via
 CygMon since day one. Platforms of the architectures PowerPC, ARM, and
 SH do not provide those features unless a GDB stub is included in the
 application.
 
-This is going to change. All platforms will (eventually) support all
-the debugging features by relying on a ROM/RAM calling interface
-provided by the ROM monitor. This calling interface is based on the
-tables used by libbsp and is thus backwards compatible with the
-existing CygMon supported platforms.
+<p>This is going to change. All platforms will (eventually) support
+all the debugging features by relying on a ROM/RAM calling interface
+(also refered to as virtual vector table) provided by the ROM
+monitor. This calling interface is based on the tables used by libbsp
+and is thus backwards compatible with the existing CygMon supported
+platforms.
 
-The calling interface API
--------------------------
-The calling interface API is defined by hal_if.h and hal_if.c in
-hal/common. 
+<h3>The calling interface API</h3>
 
-The API provide a set of services. Different platforms, or different
-versions of the ROM monitor for a single platform, may implement fewer
-or extra service. The table has room for growth, and any entries which
-are not supported map to a NOP-service (when called it returns 0
-(false)).
+<p>The calling interface API is defined by hal_if.h and hal_if.c in
+hal/common.
 
-A client of a service should either be selected by configuration, or
-have suitable fallback alternatives in case the feature is not
+<p>The API provide a set of services. Different platforms, or
+different versions of the ROM monitor for a single platform, may
+implement fewer or extra service. The table has room for growth, and
+any entries which are not supported map to a NOP-service (when called
+it returns 0 (false)).
+
+<p>A client of a service should either be selected by configuration,
+or have suitable fallback alternatives in case the feature is not
 implemented by the ROM monitor.
 
-[ NOTE:
+<p>[ NOTE:
 Checking for unimplemented service when this may be a data
 field/pointer instead of a function: suggest reserving the last entry
 in the table as the NOP-service pointer. Then clients can compare a
 service entry with this pointer to determine whether it's initialized
 or not]
 
-hal_if.h: defines the table layout and accessor macros (allowing
+<p>hal_if.h: defines the table layout and accessor macros (allowing
  primitive type checking and alternative implementations should it
  become necessary).
 
-hal_if.c: defines the table initialization function (which all HALs
+<p>hal_if.c: defines the table initialization function (which all HALs
  should call during platform initialization - the table will get
  initialized according to configuration).
  Here is also defined wrapper functions which map between the calling
  interface API and the API of the used eCos functions.
 
 
-Noteworthy services
--------------------
-See hal_if.h for a full list of services defined by the API. In eCos
-the following services should always be available:
+<h4>Noteworthy services</h4>
 
-Console Comm calling table:  Allow diag via ROM monitor
-Install breakpoint function: Allow asynchronous GDB interrupts
-Kill function:               Allow board reset on GDB-kill
+<p>See hal_if.h for a full list of services defined by the API. In
+eCos the following services should always be available:
+
+<p>Console Comm calling table:  Allow diag via ROM monitor
+<p>Install breakpoint function: Allow asynchronous GDB interrupts
+<p>Kill function:               Allow board reset on GDB-kill
 
 
-Compatibility
--------------
-When a platform is changed to support the calling interface,
+<h4>Compatibility</h4>
+
+<p>When a platform is changed to support the calling interface,
 applications will use it if so configured. That means that if an
 application is run on a platform with an older ROM monitor, the
 service is almost guaranteed to fail.
 
-For this reason, applications should only use Console Comm for HAL
+<p>For this reason, applications should only use Console Comm for HAL
 diagnostics output if explicitly configured to do so
 (CYGSEM_HAL_VIRTUAL_VECTOR_DIAG).
 
-As for asynchronous GDB interrupts, the service will always be
+<p>As for asynchronous GDB interrupts, the service will always be
 used. This is likely to cause a crash under older ROM monitors, but
 this crash may be caught by the debugger. The old workaround still
 applies: if you need asynchronous breakpoints or thread debugging
 under older ROM monitors, you may have to include the debugging
 support when configuring eCos.
 
-Implementation details
-----------------------
-During the startup of a ROM monitor, the calling table will be
+<h4>Implementation details</h4>
+
+<p>During the startup of a ROM monitor, the calling table will be
 initialized. This also happens if eCos is configured _not_ to rely on
 a ROM monitor.
 
-If thread debugging features are enabled, the function for accessing
+<p>If thread debugging features are enabled, the function for accessing
 the thread information gets registered in the table during startup of
 a RAM startup configuration.
 
-Further implementation details are described where the service itself
+<p>Further implementation details are described where the service itself
 is described [ref: console comm and async breakpoints].
 
-New platform ports
-------------------
-The hal_platform_init() function must call hal_if_init().
+<h4>New platform ports</h4>
 
-The reset() function defined in hal_if.c will attempt to do a hardware
+<p>The hal_platform_init() function must call hal_if_init().
+
+<p>The reset() function defined in hal_if.c will attempt to do a hardware
 reset, but if this fails it will fallback to simply jumping to the
 reset entry-point. On most platforms the startup initialization will
 go a long way to reset the target to a sane state (there will be
 exceptions, of course). For this reason, make sure to define
 HAL_STUB_PLATFORM_RESET_ENTRY in plf_stub.h.
 
-All debugging features must be in place. See general platform porting
+<p>All debugging features must be in place. See general platform porting
 notes.
 
 
-New architecture ports
-----------------------
-There are no specific requirements for a new architecture port in
+<h4>New architecture ports</h4>
+
+<p>There are no specific requirements for a new architecture port in
 order to support the calling interface, but the basic debugging
 features must be in place. See general architecture porting notes.
 
 
-IO channels
-~~~~~~~~~~~
+<h3>IO channels</h3>
 
-The calling interface provides procedure tables for all IO channels on
+
+<p>The calling interface provides procedure tables for all IO channels on
 the platform. These are used for console (diagnostic) and debugger IO,
 allowing the ROM monitor to provided all the needed IO routines. At
 the same time, this makes it easy to switch console/debugger channels
 at run-tim (the old implementation had hardwired drivers for console
 and debugger IO, preventing these to change at run-time).
 
-The hal_if provides wrappers which interface these services to the
+<p>The hal_if provides wrappers which interface these services to the
 eCos infrastructure diagnostics routines. This is done in a way which
 ensures proper string mangling of the diagnostics output when required
 (e.g. O-packetization when using a GDB compatible ROM monitor).
 
-Compatibility
--------------
-The use of this service is controlled by the option
+<h4>Compatibility</h4>
+
+<p>The use of this service is controlled by the option
 CYGSEM_HAL_VIRTUAL_VECTOR_DIAG which is disabled per default on most
 older platforms (thus preserving backwards compatibility with older
 stubs).
 
-Implementation details
-----------------------
-There is an array of procedure tables (raw chanels) for each IO device
+<h4>Implementation details</h4>
+
+<p>There is an array of procedure tables (raw chanels) for each IO device
 of the platform which get initialized by the ROM monitor, or
 optionally by a RAM startup configuration (allowing the RAM
 configuration to take full control of the target).  In addition to
 this, there's a special table which is used to hold mangler
 procedures.
 
-The vector table defines which of these channels are selected for
+<p>The vector table defines which of these channels are selected for
 console and debugging IO respectively: console entry can be empty,
 points to mangler channel, or point to a raw channel. The debugger
 entry should always point to a raw channel.
 
-During normal console output (i.e., diagnostic output) the console
+<p>During normal console output (i.e., diagnostic output) the console
 table will be used to handle IO if defined. If not defined, the debug
 table will be used.
 
-This means that debuggers (such as GDB) which require text streams to
+<p>This means that debuggers (such as GDB) which require text streams to
 be mangled (O-packetized in the case of GDB), can install mangling IO
 routines in the special mangler table which passes the mangled data on
 to the selected debuggin channel.
 
-If the eCos configuration specifies a different console channel from
+<p>If the eCos configuration specifies a different console channel from
 that used by the debugger, the console entry will point to the
 selected raw channel, thus overriding any mangler provided by the ROM
 monitor.
 
-See hal_if_diag_* routines in hal_if.c for more details of the stream
+<p>See hal_if_diag_* routines in hal_if.c for more details of the stream
 path of diagnostic output. See cyg_hal_gdb_diag_* routines in
 hal_stub.c for the mangler used for GDB communication.
 
 
-New platform ports
-------------------
-Define CDL options CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS,
+<h4>New platform ports</h4>
+
+<p>Define CDL options CYGNUM_HAL_VIRTUAL_VECTOR_COMM_CHANNELS,
 CYGNUM_HAL_VIRTUAL_VECTOR_DEBUG_CHANNEL, and
 CYGNUM_HAL_VIRTUAL_VECTOR_CONSOLE_CHANNEL.
 
-If CYGSEM_HAL_VIRTUAL_VECTOR_DIAG is set, make sure the infra diag
+<p>If CYGSEM_HAL_VIRTUAL_VECTOR_DIAG is set, make sure the infra diag
 code uses the hal_if diag functions:
 
+<pre>
  #define HAL_DIAG_INIT() hal_if_diag_init()
  #define HAL_DIAG_WRITE_CHAR(_c_) hal_if_diag_write_char(_c_)
  #define HAL_DIAG_READ_CHAR(_c_) hal_if_diag_read_char(&_c_)
+</pre>
 
-When vector table console code is _not_ used, the platform HAL must
+<p>When vector table console code is _not_ used, the platform HAL must
 map the HAL_DIAG_INIT, HAL_DIAG_WRITE_CHAR and HAL_DIAG_READ_CHAR
 macros directly to the low-level IO functions.
 
-
-The platform HAL must also provide a function cyg_hal_plf_comms_init
+<p>The platform HAL must also provide a function cyg_hal_plf_comms_init
 which initializes the drivers and (when necessary) initializes the
 channel procedure tables.
 
+<p>See PowerPC/Cogent platform HAL for an example implementation.
 
 
+<h3>Asynchronous GDB breakpoints</h3>
 
-See [MBX] platform HAL for an example implementation.
 
-
-Asynchronous GDB breakpoints
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-[FIXME: This needs to be updated to handle dynamically changing the
-debug channel]
-
-GDB allows to asynchronously break execution of a running
+<p>GDB allows to asynchronously break execution of a running
 application. This is done by sending a 0x03 character to the
-target. If the serial device has interrupts enabled (*) the interupt
-execution path will eventually pass through hal_default_isr which will
-check for the 0x03 character and issue a breakpoint. This will cause
-the ROM monitor to be entered, and GDB resumes control of the target.
+target. If the serial device has interrupts enabled the interrupt
+execution path will eventually pass through hal_default_isr (see the
+Note below) which will check for the 0x03 character and issue a
+breakpoint. This will cause the ROM monitor to be entered, and GDB
+resumes control of the target.
 
-* caveat: If a serial device driver is configured in, and is using the
-          serial receive character interrupt vector, the character
-          will never reach the asynchronous breakpoint handling code,
-          and thus GDB will _not_ be able to break the execution.
-          If possible (not available on all platforms), use different
-          serial devices for debugging and serial communication.
+<p><b>Note:</b> if a serial device driver is configured in, and is
+using the serial receive character interrupt vector, the character
+will never reach the asynchronous breakpoint handling code, and thus
+GDB will <em>not</em> be able to break the application execution.  If
+possible (not available on all platforms), use different serial
+devices for debugging and serial communication.
 
 
-Implementation details
-----------------------
+<h4>Implementation details</h4>
 
-The implementation consists of two parts:
+<p>The implementation consists of two parts:
 
-Part I: The platform serial init and ISR code:
- hal_ctrlc_isr_init: This function will enable interrupts in the
+<pre>
+<p>Part I: The platform serial init and ISR code:
+<p> hal_ctrlc_isr_init: This function will enable interrupts in the
                      serial device (which has already been initialized
                      for use by the stub), and configure/unmask the
                      interrupt levels on the CPU/interrupt controller
                      as required.
- hal_ctrlc_isr:      This ISR will acknowledge the interrupt, check
+<p> hal_ctrlc_isr:      This ISR will acknowledge the interrupt, check
                      for received characters in the device and check
                      if any of these are ctrl-c characters from GDB
                      (using cyg_hal_is_break). If this is the case,
                      call cyg_hal_user_break and return
                      CYG_ISR_HANDLED. Othewise return 0.
 
- Note that the ISR is not attached to any vector. Instead it will be
+<p> Note that the ISR is not attached to any vector. Instead it will be
  called from the default_isr_handler.
 
-Part II: The common code:
- hal_default_isr:    Will check if the vector matches
+<p>Part II: The common code:
+<p> hal_default_isr:    Will check if the vector matches
                      CYGHWR_HAL_GDB_PORT_VECTOR and if so call
                      HAL_CTRLC_ISR.
 
- _start:             The architecture initialization code will call
+<p> _start:             The architecture initialization code will call
                      hal_ctrlc_isr_init during startup to enable the
                      serial interrupt.
 
- cyg_hal_user_break: Will use the ROM/RAM calling interface to
+<p> cyg_hal_user_break: Will use the ROM/RAM calling interface to
                      place a breakpoint at the specified address
                      (which will cause it to be hit when the interrupt
                      handler returns to execute application code*).
@@ -264,38 +255,31 @@ Part II: The common code:
                      BREAKPOINT. That becomes a dead end since GDB
                      will not know how to continue from there.
 
-           * caveat: If the breakpoint is set in some code which will
+           <p> caveat: If the breakpoint is set in some code which will
                      never be reached again (e.g., in a thread which
                      gets scheduled out and killed during
                      interrupt_exit) the breakpoint may never get
                      hit. But it should not happen so often that it is
-                     an problem.
+                     a problem.
+</pre>
+
+<h4>New platform ports</h4>
+
+<p>Implement IO procedure functions to enable/disable the receive
+interrupt for a given channel. Also implement the ISR function.
 
 
-New platform ports
-------------------
-Implement hal_ctrlc_isr_init and hal_ctrlc_isr according to the above
-details.
 
-Define CYGHWR_HAL_GDB_PORT_VECTOR and HAL_CTRLC_ISR in plf_intr.h
+<h4>New architeture ports</h4>
 
-
-New architeture ports
----------------------
-If the architecture uses a "Global Pointer" register for accessing
+<p>If the architecture uses a "Global Pointer" register for accessing
 data, CYGARC_HAL_SAVE_GP and CYGARC_HAL_RESTORE_GP macros must be
 implemented. 
 
-hal_ctrlc_isr_init must be called from vectors.S after the call to
+<p>hal_ctrlc_isr_init must be called from vectors.S after the call to
 initialize_stub.
 
-Regular GDB stub support must be in place.
-
-
-
-</pre>
-
-
+<p>Regular GDB stub support must be in place.
 
 
 <!--#include virtual="../../include/footer.html"-->
