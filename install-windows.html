@@ -27,7 +27,7 @@ these platforms. If you wish to develop eCos applications using Windows
 NT. Click on the following link to download:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.zip">eCos development tools</a> (33MB zip file)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.bz2">eCos development tools</a> (21MB tar.bz2 file)
 </ul>
 
 eCos also requires the GNU native tools for the building
@@ -42,7 +42,7 @@ the following link to download:
 
 <h3>Installing</h3>
 
-<p>1.  Install the Cygwin native tools by running the downloaded
+<ol><li>Install the Cygwin native tools by running the downloaded
     distribution file and following the on-screen instructions. The
     remaining instructions assume that the Cygwin tools are installed
     to the default location. If you wish to install to a different
@@ -51,7 +51,7 @@ the following link to download:
     menu hierarchy to launch the <i>bash</i> command-line
     environment.<p>
 
-<p>2.  Build the eCos development tools (ecosSWtools-981021) by following
+<li>Build the eCos development tools (ecosSWtools-981021) by following
 these steps at the <i>bash</i> prompt:<p>
 
   <ul>
@@ -68,13 +68,14 @@ these steps at the <i>bash</i> prompt:<p>
   <nobr><tt>export MAKE_MODE=unix</tt></nobr><p>
 
   <li>Extract the eCos development tool sources from the
-      downloaded distribution file to <nobr><tt>C:\cygnus</tt></nobr>
-      using a utility such as <a
-      href="http://www.winzip.com/" target="_top"><i>WinZip</i></a>. You should
-      ensure that the utility is configured to preserve the directory
-      structure within the zip file during extraction. The directory
-      <nobr><tt>C:\cygnus\ecosSWtools-981021\src</tt></nobr> should be
-      generated and populated during the extraction process.<p>
+      downloaded distribution file:<p>
+      <nobr><tt>
+          cd /c/cygnus<br>
+          bunzip2 -c ecosSWtools-981021-src.tar.bz2 | tar xvf -
+      </tt></nobr><p>
+
+   The directory C:\cygnus\ecosSWtools-981021\src should be generated and populated during the extraction process.<p>
+
 
   <li>Create an object directory for your builds:<p>
   <nobr><tt>mkdir /c/build</nobr><br>
@@ -99,7 +100,8 @@ these steps at the <i>bash</i> prompt:<p>
   development tools may be found in the directory
   <nobr><tt>C:\cygnus\ecosSWtools-981021\H-i586-cygwin32\bin</tt></nobr>.<p>
 
-<p>3.  Install eCos by running the downloaded distribution file and
+<li>Install eCos by running the downloaded distribution file and
 following the on-screen instructions.
+</ol>
 
 <!--#include virtual="include/footer.html"-->
