@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>TX39 Hardware Setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Installation Guide"
+HREF="part-iii.html"><LINK
+REL="PREVIOUS"
+TITLE="Software installation"
+HREF="software-installation.html"><LINK
+REL="NEXT"
+TITLE="Verification"
+HREF="verification.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="software-installation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="TX39-HARDWARE-SETUP"
+>Chapter 12. TX39 Hardware Setup</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="tx39-hardware-setup.html#TX39-INTALLATION"
+>TX39 installation</A
+></DT
+><DT
+><A
+HREF="verification.html"
+>Verification</A
+></DT
+></DL
+></DIV
+><P
+>	This section describes the configuration of target hardware
+	necessary for the downloading and execution of
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> applications.</P
+><H1
+><A
+NAME="TX39-INTALLATION"
+>TX39 installation</A
+></H1
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> package comes with a
+	  pair of ROMs which provide gdb support for the Toshiba
+	  JMR-TX3904 RISC processor reference board via
+	  <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>, the Cygnus ROM monitor.
+	  Images of these ROMs are also provided at
+	  <TT
+CLASS="FILENAME"
+>loaders\tx39-jmr3904\cygmon.bin</TT
+> under
+	  the root of your <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  installation. The ROMs are installed to sockets IC6 and IC7
+	  on the memory daughterboard according to their labels.
+	  Attention should be paid to the correct orientation of these
+	  ROMs during installation.</P
+><P
+>The gdb stub allows communication with gdb via the
+	  serial port (channel C) at connector PJ1. The communication
+	  parameters are fixed at 38400 baud, 8 data bits, no parity
+	  bit and 1 stop bit (8-N-1). No handshaking is employed.
+	  Connection to the host computer should be made via an RS232C
+	  null modem cable.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="software-installation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Software installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Verification</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

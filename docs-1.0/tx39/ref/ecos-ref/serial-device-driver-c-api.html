@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Serial device driver C API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Device Drivers"
+HREF="part-iii.html"><LINK
+REL="PREVIOUS"
+TITLE="Integrating a device driver with the Standard C
+	Library"
+HREF="writing-a-device-driver3082.html"><LINK
+REL="NEXT"
+TITLE="The system calls"
+HREF="serial-device-driver-c-api3171.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="writing-a-device-driver3082.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="serial-device-driver-c-api3171.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SERIAL-DEVICE-DRIVER-C-API"
+>Chapter 9. Serial device driver C API</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="serial-device-driver-c-api.html#PRELIMINARIES-AND-CONFIGURATION"
+>Preliminaries and configuration</A
+></DT
+><DT
+><A
+HREF="serial-device-driver-c-api3171.html"
+>The system calls</A
+></DT
+></DL
+></DIV
+><P
+>      This release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> ships with an
+      implementation of serial device drivers for the evaluation
+      board.</P
+><P
+>      A C API is provided to allow programs to access the devices,
+      although not all details of the API are firm in this release,
+      and they might change significantly in the future.</P
+><H1
+><A
+NAME="PRELIMINARIES-AND-CONFIGURATION"
+>Preliminaries and configuration</A
+></H1
+><P
+>	C programs which want to access the serial device driver
+	should include the file
+	<TT
+CLASS="FILENAME"
+>cyg/devs/common/table.h</TT
+>
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;cyg/devs/common/table.h&#62;</PRE
+></TD
+></TR
+></TABLE
+><P
+>	Most serial port system calls use a
+	<I
+CLASS="FIRSTTERM"
+>cookie</I
+>, which is a handle for the
+	particular serial device, and an I/O Request Block (IORB).
+      </P
+><P
+>	An IORB contains several fields.  The following are of
+	interest to the C API:
+      </P
+><P
+></P
+><DL
+><DT
+>buffer</DT
+><DD
+><P
+>	      The address of the data to be read or written.</P
+></DD
+><DT
+>buffer_length</DT
+><DD
+><P
+>	      The length (in bytes) of the data block.</P
+></DD
+><DT
+>xferred_length</DT
+><DD
+><P
+>	      The amount of data (measured in bytes) which was
+	      actually read or written.
+	    </P
+></DD
+><DT
+>opcode</DT
+><DD
+><P
+>	      Flags which modify the behavior of the read and write
+	      operations, for example specifying that a block of
+	      linked IORBs should be written atomically.  These flags
+	      are not yet implemented.</P
+></DD
+><DT
+>status</DT
+><DD
+><P
+>	      A code describing the status of the I/O operation is
+	      placed here.  This is currently always set to 0, which
+	      means OK.
+	    </P
+></DD
+><DT
+>callback_data</DT
+><DD
+><P
+>	      Data which can be used by the callback routine.
+	    </P
+></DD
+><DT
+>callback</DT
+><DD
+><P
+>	      This is a function which the user can install and will
+	      be invoked by the <I
+CLASS="EMPHASIS"
+>asynchronous</I
+>
+	      versions of the read and write calls, as soon as the
+	      operation is complete. pcallback() will be invoked with
+	      the very same IORB as an argument.  For the
+	      <I
+CLASS="EMPHASIS"
+>blocking</I
+> versions of read and
+	      write, this field is used internally.
+	    </P
+></DD
+><DT
+>next</DT
+><DD
+><P
+>	      A pointer to the next IORB when a linked chain of
+	      requests is used.  This is currently only used
+	      internally.
+	    </P
+></DD
+></DL
+><P
+>	Programs which use the device driver calls will want to
+	examine (and maybe change) the following configuration
+	options, which are not available with the Configuration Tool.
+      </P
+><P
+>	In the file <TT
+CLASS="FILENAME"
+>serial_tx39.h</TT
+> you will find
+	the option
+	<TT
+CLASS="PARAMETER"
+><I
+>CYG_DEVICE_SERIAL_RS232_TX39_KMODE_POLLED</I
+></TT
+>
+	which is enabled by default.  This option affects the basic
+	mode of operation by allowing polled reads and writes.</P
+><P
+>	You will also find
+	<TT
+CLASS="PARAMETER"
+><I
+>CYG_DEVICE_SERIAL_RS232_TX39_KMODE_INTERRUPT</I
+></TT
+>
+	which allows the serial ports to be accessed in interrupt
+	driven mode.  If DSRs are configured in the kernel (see
+	<A
+HREF="package-cygpkg-kernel.html#COMPONENT-CYGIMP-KERNEL-INTERRUPTS-DSRS"
+>the section called <I
+>Component: Use delayed service routines (DSRs)</I
+> in Chapter 13</A
+>), this
+	option will be enabled by default .
+      </P
+><P
+>	The serial port default baud rate is also defined in this
+	file.  The default setting is:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#define CYG_DEVICE_SERIAL_RS232_TX39_DEFAULT_BAUD_RATE	38400</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="writing-a-device-driver3082.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="serial-device-driver-c-api3171.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Integrating a device driver with the Standard C
+	Library</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The system calls</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

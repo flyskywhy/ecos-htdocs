@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Writing a device driver</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Device Drivers"
+HREF="part-iii.html"><LINK
+REL="PREVIOUS"
+TITLE="Language choice"
+HREF="philosophy-of-device-drivers3052.html"><LINK
+REL="NEXT"
+TITLE="Input Output Request Blocks
+	  (IORBs)"
+HREF="writing-a-device-driver3083.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="philosophy-of-device-drivers3052.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="writing-a-device-driver3083.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="WRITING-A-DEVICE-DRIVER"
+>Chapter 8. Writing a device driver</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="writing-a-device-driver.html#AEN3065"
+>Interrupt handling</A
+></DT
+><DT
+><A
+HREF="writing-a-device-driver3083.html"
+>Input Output Request Blocks
+	  (<SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+>s)</A
+></DT
+><DT
+><A
+HREF="writing-a-device-driver3101.html"
+>Integrating a device driver with the Standard C
+	Library</A
+></DT
+></DL
+></DIV
+><P
+>      We now present procedures for writing device drivers, as well as
+      some simple code samples.
+    </P
+><H1
+><A
+NAME="AEN3065"
+>Interrupt handling</A
+></H1
+><P
+>	The simplest device drivers install an interrupt handler using
+	the facilities described in <A
+HREF="interrupt-handling.html"
+>the section called <I
+>Interrupt handling</I
+> in Chapter 5</A
+>.  This involves defining two
+	functions: an <I
+CLASS="EMPHASIS"
+>interrupt service routine</I
+>
+	and a <I
+CLASS="EMPHASIS"
+>delayed service routine</I
+> and then
+	using <TT
+CLASS="FUNCTION"
+><B
+>cyg_interrupt_create()</B
+></TT
+> and
+	<TT
+CLASS="FUNCTION"
+><B
+>cyg_interrupt_attach()</B
+></TT
+> to install the
+	handlers.</P
+><P
+>	A very simple <I
+CLASS="EMPHASIS"
+>real time clock</I
+> driver
+	which only keeps a system clock updated could be implemented
+	by installing an interrupt handler for one of the timers.</P
+><P
+>	Here is a small program with a driver for one of the timers.
+	This program is really no more than a demonstration of how to
+	install an interrupt handler that does something visible in
+	response to hardware interrupts.
+      </P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>CAUTION</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>This example program will only work if you enable
+	  the configuration options
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGIMP_KERNEL_INTERRUPTS_CHAIN</I
+></TT
+> and
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGIMP_HAL_COMMON_INTERRUPTS_CHAIN</I
+></TT
+>.
+	  It will hang otherwise.</P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+><A
+NAME="SIMPLE-CLOCK-DRIVER"
+>Example 8-1. Simple clock driver</A
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;cyg/kernel/kapi.h&#62;
+#include &#60;stdio.h&#62;
+
+static volatile unsigned long n_timer_0_interrupts = 0;
+
+/* this is the ISR for timer interrupts */
+cyg_uint32 timer_0_handler(cyg_vector_t vector, cyg_addrword_t data)
+{
+  /* keep track of how many times that timer has interrupted us; this
+     is basically all we do in this "driver" */
+  ++n_timer_0_interrupts;
+  /* ISRs must acknowledge the interrupt, or they might be invoked
+     again */
+  cyg_interrupt_acknowledge(vector);
+  return CYG_ISR_HANDLED;
+}
+
+/* the main program here sits in an infinite loop seeing if
+   n_timer_0_interrupts has changed, and printing the new values if it
+   has changed */
+int main( int argc, char *argv[] )
+{
+  cyg_handle_t timer_0_ISR_H;
+  cyg_interrupt intr;
+  unsigned long  previous_timer_0_count = 0;
+
+   /* create an interrupt handler with timer_0_handler() as the ISR and
+     no DSR.  A DSR is not needed here because the ISR simply
+     increments a global variable and does not take much time or use
+     any operating system services */
+
+  cyg_interrupt_create(CYG_VECTOR_RTC, 0, 0, &#38;timer_0_handler, NULL,
+                       &#38;timer_0_ISR_H, &#38;intr);
+
+  cyg_interrupt_attach(timer_0_ISR_H);
+
+
+  for (;;) {
+    if (n_timer_0_interrupts != previous_timer_0_count) {
+      printf("new value of n_timer_0_interrupts: %lu\n",
+             n_timer_0_interrupts);
+      previous_timer_0_count = n_timer_0_interrupts;
+    }
+  }
+} </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="philosophy-of-device-drivers3052.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="writing-a-device-driver3083.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Language choice</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Input Output Request Blocks
+	  (<SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+>s)</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

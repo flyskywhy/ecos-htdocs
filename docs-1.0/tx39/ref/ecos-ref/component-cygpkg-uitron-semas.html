@@ -1,0 +1,200 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Semaphores</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos uITRON Compatibility Layer"
+HREF="package-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Option: NULL is a good pointer"
+HREF="option-cygsem-uitron-params-null-is-good-ptr.html"><LINK
+REL="NEXT"
+TITLE="Component: Mailboxes"
+HREF="component-cygpkg-uitron-mboxes.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="option-cygsem-uitron-params-null-is-good-ptr.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. Package: eCos uITRON Compatibility Layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPONENT-CYGPKG-UITRON-SEMAS"
+>Component: Semaphores</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_UITRON_SEMAS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>uITRON Semaphore objects are used with functions named xxx_sem();
+they support traditional semaphore semantics.
+      </P
+><H2
+><A
+NAME="OPTION-CYGNUM-UITRON-SEMAS"
+>Option: Number of semaphores</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGNUM_UITRON_SEMAS</P
+><H4
+>Type</H4
+><P
+>Count</P
+><H4
+>Description</H4
+><P
+>The number of uITRON semaphores present in the system. Valid semaphore
+object IDs will range from 1 to this value.
+      </P
+><H2
+><A
+NAME="COMPONENT-CYGPKG-UITRON-SEMAS-ARE-INITIALIZED"
+>Component: Initialize semaphore counts</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGPKG_UITRON_SEMAS_ARE_INITIALIZED</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>Initialize semaphores to specific count values. Otherwise semaphores
+are initialized with the count set to zero.
+      </P
+><H3
+><A
+NAME="OPTION-CYGDAT-UITRON-SEMA-INITIALIZERS"
+>Option: Static initializers</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDAT_UITRON_SEMA_INITIALIZERS</P
+><H4
+>Type</H4
+><P
+>Multiline</P
+><H4
+>Description</H4
+><P
+>A list of initializers separated by commas, one per line. An initializer
+is 'CYG_UIT_SEMA(INITIAL-COUNT)' Note: this option is invoked in
+the context of a C++ array initializer, between curly brackets. Ensure
+that the number of initializers here exactly matches the 'Number'
+of semaphores specified.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="option-cygsem-uitron-params-null-is-good-ptr.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option: NULL is a good pointer</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Mailboxes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

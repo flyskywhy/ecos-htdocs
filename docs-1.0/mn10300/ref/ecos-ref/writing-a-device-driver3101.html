@@ -1,0 +1,380 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Integrating a device driver with the Standard C
+	Library</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Writing a device driver"
+HREF="writing-a-device-driver.html"><LINK
+REL="PREVIOUS"
+TITLE="Input Output Request Blocks
+	  (IORBs)"
+HREF="writing-a-device-driver3083.html"><LINK
+REL="NEXT"
+TITLE="Serial device driver C API"
+HREF="serial-device-driver-c-api.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="writing-a-device-driver3083.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Writing a device driver</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="serial-device-driver-c-api.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="AEN3101"
+>Integrating a device driver with the Standard C
+	Library</A
+></H1
+><P
+>	  The eCos C library uses a table mechanism provided in
+	  <TT
+CLASS="FILENAME"
+>cyg/devs/common/table.h</TT
+> to provide
+	  standard I/O functions. Each device is abstracted in this
+	  table, and each entry is of type <SPAN
+CLASS="TYPE"
+>struct
+	    Cyg_Device_Table_t</SPAN
+> as shown in <A
+HREF="writing-a-device-driver3101.html#DEVICE-TABLE-FOR-SERIAL-DEVICE-DRIVER"
+>Example 8-5</A
+>:</P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+><A
+NAME="DEVICE-TABLE-FOR-SERIAL-DEVICE-DRIVER"
+>Example 8-5. Device table for serial device driver</A
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;/*
+ * Device table.
+ */
+struct Cyg_Device_Table_t
+{
+    char *              name;
+    CYG_ADDRWORD        cookie;
+//    cyg_off_t         seek_position;  // Not implemented yet
+
+    /*
+     * Note: The cookie is necessary for the function to differentiate 
+     * between various instantiations of the same device type.
+     *
+     * Also note that open() will be called before the kernel scheduler
+     * (and hence the interrupt system) starts, so it must be safe for this
+     */
+    Cyg_ErrNo           (*open) (CYG_ADDRWORD cookie, Cyg_DeviceOpenMode);
+    Cyg_ErrNo           (*read_cancel) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo           (*write_cancel) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo           (*read_blocking) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo           (*write_blocking) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo           (*read_asynchronous) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo           (*write_asynchronous) (CYG_ADDRWORD cookie, Cyg_IORB *);
+    Cyg_ErrNo		(*close) (CYG_ADDRWORD cookie);
+
+    CYG_ADDRWORD	ioctl;
+};
+externC struct Cyg_Device_Table_t Cyg_Device_Table[]; </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>	  To integrate a new device for use by the C library you need
+	  to modify the file in your source repository in
+	  <TT
+CLASS="FILENAME"
+>devs/common/v1_0/src/table.cxx</TT
+>, and
+	  extend the table that is imlpemented there. Indeed this file
+	  provides the most obvious documentation to the methods to do
+	  this. The C library only uses the functions
+	  <TT
+CLASS="FUNCTION"
+><B
+>open()</B
+></TT
+>,
+	  <TT
+CLASS="FUNCTION"
+><B
+>read_blocking()</B
+></TT
+>,
+	  <TT
+CLASS="FUNCTION"
+><B
+>write_blocking()</B
+></TT
+> and
+	  <TT
+CLASS="FUNCTION"
+><B
+>close()</B
+></TT
+> from this table. If you do not
+	  wish to implement these, or other functions, simply fill in
+	  their entries in the table as <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+>.
+	  For example, if you wanted to use a simple serial device for
+	  output only, you could have a table entry with all the
+	  function pointers <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+> with the
+	  exception of <TT
+CLASS="FUNCTION"
+><B
+>write_blocking()</B
+></TT
+>.
+	</P
+><P
+>	  The best and simplest example from
+	  <TT
+CLASS="FILENAME"
+>table.cxx</TT
+> is the implementation of a
+	  mock-up "haldiag" device. This provides an interface that
+	  the C library can use to the simple I/O routines provided by
+	  the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> HAL. This is a slightly
+	  simplified version of the real version in
+	  <TT
+CLASS="FILENAME"
+>table.cxx</TT
+>:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;externC Cyg_ErrNo
+Cyg_Device_Pseudo_Hal_Diag_open( CYG_ADDRWORD cookie,
+                                 Cyg_DeviceOpenMode )
+{
+  HAL_DIAG_INIT();
+  return ENOERR;
+} 
+
+externC Cyg_ErrNo
+Cyg_Device_Pseudo_Hal_Diag_write_blocking( CYG_ADDRWORD cookie,
+                                           Cyg_IORB *iorb )
+{
+  cyg_ucount32 i;
+
+  for (i=0; i &#60; iorb-&#62;buffer_length; i++) {
+    HAL_DIAG_WRITE_CHAR(*((char *)iorb-&#62;buffer + i));
+  } // for
+
+  iorb-&#62;xferred_length = iorb-&#62;buffer_length;
+  return ENOERR;
+}
+
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  and its table entry would read:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{  "haldiag", (CYG_ADDRWORD) 0,
+   &#38;Cyg_Device_Pseudo_Hal_Diag_open,
+   NULL,
+   NULL,
+   NULL,
+   &#38;Cyg_Device_Pseudo_Hal_Diag_write_blocking,
+   NULL,
+   NULL }, // no close
+	</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  Note that the final entry in the table must be empty,
+	  i.e.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;{ NULL, (CYG_ADDRWORD) 0, NULL, NULL, NULL, NULL } </PRE
+></TD
+></TR
+></TABLE
+><P
+>The device driver C API is implemented using the same "struct
+Cyg_Device_Table_t" types that are used in the table. The result is that the
+C API is just a set of macros:
+  </P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 8-6. Implementation of C API with the table above</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;/*
+ * C API is just a set of macros
+ */
+#define cyg_read_blocking(cookie, iorb) \
+    ((struct Cyg_Device_Table_t *)cookie)-&#62;read_blocking( \
+                      ((struct Cyg_Device_Table_t *)cookie)-&#62;cookie, iorb)
+
+#define cyg_write_blocking(cookie, iorb) \
+    ((struct Cyg_Device_Table_t *)cookie)-&#62;write_blocking( \
+                      ((struct Cyg_Device_Table_t *)cookie)-&#62;cookie, iorb)</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>The "cookie"s in these macros are defined in table.cxx, and are simply the
+address of the table entries. They are exported to the user in table.h as
+constants. See table.h for a list of the available constants.
+  </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="writing-a-device-driver3083.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="serial-device-driver-c-api.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Input Output Request Blocks
+	  (<SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+>s)</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="writing-a-device-driver.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Serial device driver C API</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

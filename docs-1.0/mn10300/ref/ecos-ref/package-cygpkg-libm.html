@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: Math Library</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="part-v.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Tracing output levels in C library"
+HREF="component-cygpkg-libc-trace.html"><LINK
+REL="NEXT"
+TITLE="Component: Thread safety"
+HREF="component-cygpkg-libm-thread-safety.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libc-trace.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libm-thread-safety.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-LIBM"
+>Chapter 16. Package: Math Library</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-libm.html#COMPONENT-CYGPKG-LIBM-COMPATIBILITY"
+>Component: Compatibility mode</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libm-thread-safety.html"
+>Component: Thread safety</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libm-trace.html"
+>Component: Tracing output levels in Math library</A
+></DT
+><DT
+><A
+HREF="option-x-tloss.html"
+>Option: Bessel function limit of significance</A
+></DT
+></DL
+></DIV
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBM</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>ISO standard floating point mathematical library containing many useful
+functions for mathematical calculations.
+      </P
+><H1
+><A
+NAME="COMPONENT-CYGPKG-LIBM-COMPATIBILITY"
+>Component: Compatibility mode</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBM_COMPATIBILITY</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>These options deal with behaviour related to the various compatibility
+modes - POSIX, IEEE, X/OPEN and SVID.
+      </P
+><H2
+><A
+NAME="OPTION-CYGSEM-LIBM-COMPAT-IEEE-ONLY"
+>Option: IEEE-only</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGSEM_LIBM_COMPAT_IEEE_ONLY</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>The math library can be hard-coded to only behave in one compatibility
+mode - IEEE. This cannot be changed at run-time. IEEE mode is the
+most minimal of the compatibility modes, and so this will best help
+code size and speed, as well as omitting the code for other compatibility
+modes. If not defined, the math library can be set at run-time to
+any of the supported compatibility modes.
+      </P
+><H2
+><A
+NAME="COMPONENT-CYGPKG-LIBM-COMPATIBILITY-DEFAULT"
+>Component: Default mode</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBM_COMPATIBILITY_DEFAULT</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>If you want to have support for more than one compatibility mode settable
+at run-time, rather than hard-coded IEEE mode, this component lets
+you choose which mode should be the default.
+      </P
+><H3
+><A
+NAME="OPTION-CYGNUM-LIBM-COMPATIBILITY-POSIX"
+>Option: POSIX</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGNUM_LIBM_COMPATIBILITY_POSIX</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This sets the default compatibility mode to POSIX
+      </P
+><H3
+><A
+NAME="OPTION-CYGNUM-LIBM-COMPATIBILITY-IEEE"
+>Option: IEEE</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGNUM_LIBM_COMPATIBILITY_IEEE</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This sets the default compatibility mode to IEEE
+      </P
+><H3
+><A
+NAME="OPTION-CYGNUM-LIBM-COMPATIBILITY-XOPEN"
+>Option: X/OPEN</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGNUM_LIBM_COMPATIBILITY_XOPEN</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This sets the default compatibility mode to X/OPEN
+      </P
+><H3
+><A
+NAME="OPTION-CYGNUM-LIBM-COMPATIBILITY-SVID"
+>Option: SVID</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGNUM_LIBM_COMPATIBILITY_SVID</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This sets the default compatibility mode to SVID
+      </P
+><H2
+><A
+NAME="OPTION-CYGFUN-LIBM-SVID3-SCALB"
+>Option: SVID3-style scalb()</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGFUN_LIBM_SVID3_scalb</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>SVID3 defined the scalb() function as double scalb(double, double)
+rather than double scalb(double, int) which is used by IBM, DEC, and
+probably others. Enabling this option chooses the (double, double)
+version. Note there is a function double scalbn(double, int) which
+is unaffected by this choice.
+      </P
+><H2
+><A
+NAME="OPTION-CYGSYM-LIBM-NO-XOPEN-SVID-NAMESPACE-POLLUTION"
+>Option: Reduce namespace pollution</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGSYM_LIBM_NO_XOPEN_SVID_NAMESPACE_POLLUTION</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>If you do not want to use either the X/Open or SVID3 compatibility
+modes, you may want to define this option to reduce the chance of
+namespace pollution. This is particularly likely to occur here as
+these standards define symbols with names that often appear in applications,
+such as exception, DOMAIN, OVERFLOW, etc. If your application also
+used these names, it may cause problems.
+      </P
+><H2
+><A
+NAME="OPTION-CYGSEM-LIBM-USE-STDERR"
+>Option: Output to stderr for math errors</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGSEM_LIBM_USE_STDERR</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>The SVID3 standard says that error messages should be output on the
+stderr console output stream. This option allows this ability to be
+explicitly controlled. However, this still only has an effect in SVID3
+compatibility mode.
+      </P
+><H2
+><A
+NAME="OPTION-CYGFUN-LIBM-MATHERR"
+>Option: Provide default matherr()</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGFUN_LIBM_matherr</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>Enable this option if you want a default matherr() function to be
+included, assuming the compatibility mode selected is SVID3 or X/OPEN.
+When disabled, this provides reassurance that if the user supplies
+their own matherr() function, then that is what is used.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libc-trace.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libm-thread-safety.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Tracing output levels in C library</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-v.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Thread safety</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

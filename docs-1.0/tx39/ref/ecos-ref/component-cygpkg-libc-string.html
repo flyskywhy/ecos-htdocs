@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: String functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C Library"
+HREF="package-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: C Library"
+HREF="package-cygpkg-libc.html"><LINK
+REL="NEXT"
+TITLE="Option: Inline version of the longjmp() function"
+HREF="option-cygimp-libc-setjmp-inlines.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="package-cygpkg-libc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: C Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPONENT-CYGPKG-LIBC-STRING"
+>Component: String functions</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBC_STRING</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>Options associated with the standard string functions
+      </P
+><H2
+><A
+NAME="OPTION-CYGIMP-LIBC-STRING-INLINES"
+>Option: Inline versions of &#60;string.h&#62; functions</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGIMP_LIBC_STRING_INLINES</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option chooses whether some of the particularly simple string
+functions from &#60;string.h&#62; are available as inline functions. This
+may improve performance, and as the functions are small, may even
+improve code size.
+      </P
+><H2
+><A
+NAME="OPTION-CYGFUN-LIBC-STRTOK"
+>Option: Provides strtok()</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGFUN_LIBC_strtok</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option chooses whether the strtok() function is to be available.
+Some space may be saved if not.
+      </P
+><H2
+><A
+NAME="COMPONENT-CYGPKG-LIBC-STRING-OPTIMISATIONS"
+>Component: Options for string function optimization</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBC_STRING_OPTIMISATIONS</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>This component lets you choose between different implementations of
+the string functions with different tradeoffs. Most of the string
+functions can be implemented in two ways. One approach is geared towards
+smaller code size, while the other tries to improve execution speed
+at the expense of code size. 
+      </P
+><H3
+><A
+NAME="OPTION-CYGIMP-LIBC-STRING-PREFER-FAST"
+>Option: Fast</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGIMP_LIBC_STRING_PREFER_FAST</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This option improves string function execution speed at the expense
+of code size. This option is overriden if the code is compiled with
+the -Os option to the compiler.
+      </P
+><H3
+><A
+NAME="OPTION-CYGIMP-LIBC-STRING-PREFER-SMALL"
+>Option: Small</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGIMP_LIBC_STRING_PREFER_SMALL</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>This option tries to reduce string function code size at the expense
+of execution speed. The same effect can be produced if the code is
+compiled with the -Os option to the compiler.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: C Library</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Option: Inline version of the longjmp() function</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

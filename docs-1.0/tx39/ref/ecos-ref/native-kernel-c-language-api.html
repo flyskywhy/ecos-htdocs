@@ -1,0 +1,625 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Native kernel C language API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Kernel APIs"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="System startup &#8212; cyg_user_start()"
+HREF="system-startup-cyg-user-start.html"><LINK
+REL="NEXT"
+TITLE="Thread operations"
+HREF="thread-operations.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-user-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="thread-operations.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="NATIVE-KERNEL-C-LANGUAGE-API"
+>Chapter 5. Native kernel C language API</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="native-kernel-c-language-api.html#TYPES-USED-IN-PROGRAMMING-ECOS"
+>Types used in programming eCos</A
+></DT
+><DT
+><A
+HREF="thread-operations.html"
+>Thread operations</A
+></DT
+><DT
+><A
+HREF="priority-manipulation.html"
+>Priority manipulation</A
+></DT
+><DT
+><A
+HREF="exception-handling.html"
+>Exception handling</A
+></DT
+><DT
+><A
+HREF="interrupt-handling.html"
+>Interrupt handling</A
+></DT
+><DT
+><A
+HREF="counters-clocks-and-alarms.html"
+>Counters, clocks and alarms</A
+></DT
+><DT
+><A
+HREF="synchronization.html"
+>Synchronization</A
+></DT
+><DT
+><A
+HREF="memory-pools.html"
+>Memory pools</A
+></DT
+><DT
+><A
+HREF="message-boxes.html"
+>Message boxes</A
+></DT
+></DL
+></DIV
+><P
+>      The eCos kernel, like many other real time kernels, is a
+      library to which the programmer links an application.  System
+      calls resemble library API calls, and there is no trap mechanism
+      to switch from user to system mode.
+    </P
+><P
+>      We present here the eCos kernel API and the APIs for other
+      kernels provided as compatibility layers on top of eCos.
+    </P
+><P
+>	Since this API sits on top of a configurable system, the
+	semantics are only weakly defined.  The exact semantics and
+	even the API itself depend on the configuration. For example
+	if returned error codes were supported this would change the
+	prototype of the functions.  The semantics given in this
+	chapter describe the default configuration.</P
+><P
+>	As mentioned above, all source files which use the kernel C
+	API should have the following <TT
+CLASS="LITERAL"
+>#include</TT
+>
+	statement:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;cyg/kernel/kapi.h&#62;</PRE
+></TD
+></TR
+></TABLE
+><P
+>	at the head of the file.
+      </P
+><H1
+><A
+NAME="TYPES-USED-IN-PROGRAMMING-ECOS"
+>Types used in programming eCos</A
+></H1
+><P
+>	  We now describe the types defined for use with
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.  These are available to
+	  programs which include <TT
+CLASS="FILENAME"
+>kapi.h</TT
+>.
+	</P
+><P
+>	  Most of these types are meant to be
+	  <I
+CLASS="EMPHASIS"
+>opaque</I
+> &#8212; in other words,
+	  programmers do not need to know (and probably should not
+	  know) how they are defined. But we will mark which types are
+	  numeric, since it can be useful to use comparison
+	  operators.</P
+><P
+>	  The definitions for these types can be found in the
+	  installed tree, in the file
+	  <TT
+CLASS="FILENAME"
+>include/cyg/kernel/kapi.h</TT
+>.
+	</P
+><P
+>	  The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel uses the
+	  following naming convention for types:
+	</P
+><P
+></P
+><UL
+><LI
+><P
+>	      Types which can be treated as completely opaque usually
+	      have <SPAN
+CLASS="TYPE"
+>_t</SPAN
+> suffix.</P
+></LI
+><LI
+><P
+>	      Types for which it is necessary to know the
+	      implementation do not have a <SPAN
+CLASS="TYPE"
+>_t</SPAN
+>
+	      suffix.</P
+></LI
+></UL
+><H2
+><A
+NAME="AEN767"
+><SPAN
+CLASS="TYPE"
+>cyg_addrword_t</SPAN
+></A
+></H2
+><P
+>	    A type which is large enough to store the larger of an
+	    address and a machine word.  This is used for convenience
+	    when a function is passed data which could be either a
+	    pointer to a block of data or a single word.
+	  </P
+><H2
+><A
+NAME="AEN771"
+><SPAN
+CLASS="TYPE"
+>cyg_handle_t</SPAN
+></A
+></H2
+><P
+>A <I
+CLASS="FIRSTTERM"
+>handle</I
+> is a variable used to
+	    refer to eCos system objects (such as a thread or an
+	    alarm). Most eCos system calls that create system objects
+	    will return a handle that is used to access that object
+	    from then on.</P
+><H2
+><A
+NAME="AEN776"
+><SPAN
+CLASS="TYPE"
+>cyg_priority_t</SPAN
+></A
+></H2
+><P
+>A numeric type used to represent the priority of a
+	    thread, or the priority of an interrupt level. A lower
+	    number means a higher (i.e. more important) priority
+	    thread.
+	  </P
+><H2
+><A
+NAME="AEN780"
+><SPAN
+CLASS="TYPE"
+>cyg_code_t</SPAN
+></A
+></H2
+><P
+>A numeric type used for various error or status codes,
+	    such as exception numbers.</P
+><H2
+><A
+NAME="AEN784"
+><SPAN
+CLASS="TYPE"
+>cyg_vector_t</SPAN
+></A
+></H2
+><P
+>A numeric type used to identify an interrupt vector.
+	    Its value is called the interrupt vector
+	    <I
+CLASS="EMPHASIS"
+>id</I
+>.  This type is used for both ISR
+	    vector ids and VSR vector ids.</P
+><H2
+><A
+NAME="AEN789"
+><SPAN
+CLASS="TYPE"
+>cyg_tick_count_t</SPAN
+></A
+></H2
+><P
+>A numeric type used to count counter ticks.  The
+	    resolution and other details regarding tick quantities
+	    depend on the configuration, but this is a 64 bit type,
+	    and no matter what configuration is chosen it should still
+	    last for centuries before it overflows.</P
+><H2
+><A
+NAME="AEN793"
+><SPAN
+CLASS="TYPE"
+>cyg_bool_t</SPAN
+></A
+></H2
+><P
+>A boolean type whose values can be false (0) or true
+	    (1).</P
+><H2
+><A
+NAME="AEN797"
+><SPAN
+CLASS="TYPE"
+>cyg_thread_entry_t</SPAN
+></A
+></H2
+><P
+>	    A function type for functions that are entry points for
+	    threads.  It is used in the thread creation call
+	    <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_create()</B
+></TT
+>.</P
+><P
+>	    To help write thread entry point functions, here is how
+	    <SPAN
+CLASS="TYPE"
+>cyg_thread_entry_t</SPAN
+> is defined:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_thread_entry_t(void *);</PRE
+></TD
+></TR
+></TABLE
+><P
+>	    Examples of thread functions can be found in in the
+	    programming tutorial in <I
+CLASS="CITETITLE"
+>Getting Started with
+	      eCos</I
+>.
+	  </P
+><H2
+><A
+NAME="AEN807"
+><SPAN
+CLASS="TYPE"
+>cyg_exception_handler_t</SPAN
+></A
+></H2
+><P
+>	    A function type used for installing exception handlers.
+	    It is defined as:
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_exception_handler_t(
+    cyg_addrword_t data,
+    cyg_code_t   exception_number,
+    cyg_addrword_t info
+);</PRE
+></TD
+></TR
+></TABLE
+><H2
+><A
+NAME="AEN812"
+><SPAN
+CLASS="TYPE"
+>cyg_thread</SPAN
+>, <SPAN
+CLASS="TYPE"
+>cyg_interrupt</SPAN
+>,
+	    <SPAN
+CLASS="TYPE"
+>cyg_counter</SPAN
+>, <SPAN
+CLASS="TYPE"
+>cyg_clock</SPAN
+>,
+	    <SPAN
+CLASS="TYPE"
+>cyg_alarm</SPAN
+>, <SPAN
+CLASS="TYPE"
+>cyg_mbox</SPAN
+>,
+	    <SPAN
+CLASS="TYPE"
+>cyg_mempool_var</SPAN
+> and
+	    <SPAN
+CLASS="TYPE"
+>cyg_mempool_fix</SPAN
+></A
+></H2
+><P
+>These types are of the appropriate size to contain the
+	    memory used by various objects.  These types are only used
+	    in the corresponding create call where the programmer
+	    allocates the memory for the object and passes the address
+	    to the kernel.  After creation the provided handle is used
+	    to reference the object.</P
+><H2
+><A
+NAME="AEN823"
+><SPAN
+CLASS="TYPE"
+>cyg_mempool_info</SPAN
+></A
+></H2
+><P
+>	    Contains information about a memory pool.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef struct {
+    cyg_int32 totalmem;
+    cyg_int32 freemem;
+    void      *base;
+    cyg_int32 size;
+    cyg_int32 blocksize;
+    cyg_int32 maxfree;                  // The largest free block
+} cyg_mempool_info;</PRE
+></TD
+></TR
+></TABLE
+><H2
+><A
+NAME="AEN828"
+><SPAN
+CLASS="TYPE"
+>cyg_sem_t</SPAN
+>, <SPAN
+CLASS="TYPE"
+>cyg_mutex_t</SPAN
+> and
+	    <SPAN
+CLASS="TYPE"
+>cyg_cond_t</SPAN
+></A
+></H2
+><P
+>These types are of the appropriate size to contain the
+	    memory used by their respective kernel objects.  These
+	    objects are always referred to by a pointer to an object
+	    of this type.</P
+><H2
+><A
+NAME="AEN834"
+><SPAN
+CLASS="TYPE"
+>cyg_VSR_t</SPAN
+>, <SPAN
+CLASS="TYPE"
+>cyg_ISR_t</SPAN
+> and
+	    <SPAN
+CLASS="TYPE"
+>cyg_DSR_t</SPAN
+></A
+></H2
+><P
+>	    These are function types used when vector, interrupt and
+	    delayed service routines are installed.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void            cyg_VSR_t();
+typedef cyg_uint32      cyg_ISR_t(cyg_vector_t vector,
+                                  cyg_addrword_t data);
+typedef void            cyg_DSR_t(cyg_uint32 vector,
+                                  cyg_ucount32 count,
+                                  cyg_addrword_t data);</PRE
+></TD
+></TR
+></TABLE
+><H2
+><A
+NAME="CYG-RESOLUTION-T"
+><SPAN
+CLASS="TYPE"
+>cyg_resolution_t</SPAN
+></A
+></H2
+><P
+>	    Stores the resolution of a clock.  The resolution is
+	    defined to be (dividend/divisor) nanoseconds per tick.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;	typedef struct  { cyg_uint32  dividend;
+                          cyg_uint32  divisor; }
+	cyg_resolution_t;</PRE
+></TD
+></TR
+></TABLE
+><H2
+><A
+NAME="AEN846"
+><SPAN
+CLASS="TYPE"
+>cyg_alarm_t</SPAN
+></A
+></H2
+><P
+>	    The function type used for alarm handlers.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_alarm_t(cyg_handle_t alarm,
+                         cyg_addrword_t data);</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-user-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="thread-operations.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>System startup &#8212; cyg_user_start()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Thread operations</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,393 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Using <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos User Guides"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Configuration and the Package Repository"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="Configuration and the Package Repository"
+HREF="part-ii.html"><LINK
+REL="NEXT"
+TITLE="Reference for pkgconf.tcl"
+HREF="reference-for-pkgconf-tcl.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos User Guides</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part-ii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="reference-for-pkgconf-tcl.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="USING-PKGCONF-TCL"
+>Chapter 4. Using <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></A
+></H1
+><P
+>	We have already demonstrated how to configure and construct a
+	build-tree using the graphical Configuration Tool.  The
+	configuration tool uses an underlying engine, the
+	<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> program, to do the actual
+	construction of the build-tree and its makefiles.</P
+><P
+>	The <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> command can also be used
+	independently from the configuration tool.  You will probably
+	find this feature useful if you are editing the configuration
+	files by hand instead of using the Configuration Tool.
+      </P
+><P
+>	Here is a worked example of how to configure and build the
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel using
+	<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> from the command line.
+      </P
+><H1
+><A
+NAME="INVOKING-PKGCONF-TCL-FROM-THE-COMMAND-LINE"
+>Invoking <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></A
+></H1
+><P
+>	  First of all you must have the <B
+CLASS="COMMAND"
+>bash</B
+>
+	  command line interpreter running with some environment
+	  variables which are useful for
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> work.  We have set things up
+	  so that you can select this by clicking on the
+	  <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> menu button, and the
+	  <SPAN
+CLASS="GUISUBMENU"
+>Programs</SPAN
+> submenu, and the
+	  <SPAN
+CLASS="GUISUBMENU"
+>Cygnus eCos</SPAN
+> submenu, followed by
+	  the <SPAN
+CLASS="GUIMENUITEM"
+>eCos Development Environment</SPAN
+>.
+	</P
+><P
+>	  Before invoking <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> you need to
+	  choose a directory in which to work.  For the purposes of
+	  this tutorial we will assume that you will do your work in
+	  the directory <TT
+CLASS="FILENAME"
+>C:\ecos-work</TT
+>, or
+	  <TT
+CLASS="FILENAME"
+>//c/ecos-work</TT
+>.  You can make that
+	  directory and change to it by typing:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mkdir //c/ecos-work</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd //c/ecos-work</B
+></TT
+></P
+><P
+>	  Now you need to choose which targets to enable, which packages
+	  to set, and a few other configuration options for your
+	  kernel.  You can type
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cygtclsh80 //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --help</B
+></TT
+></P
+>
+	  to see what options can be used with
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>.  You will see that a couple of
+	  useful commands to begin with are:
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cygtclsh80 //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --packages</B
+></TT
+></P
+>
+	  to get a list of available packages, and
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cygtclsh80 //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --targets</B
+></TT
+></P
+>
+	  to list available targets.
+	</P
+><P
+>	  These commands invoke the Tcl interpreter on
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>, a program (written in Tcl)
+	  which configures and builds the
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel.
+	</P
+><P
+>	  Here is sample output from <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>
+	  showing you which options are available and enabled by
+	  default.</P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 4-1. Getting information from
+	    <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;bash-2.02$ cygtclsh80.exe //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --help
+Usage: pkgconf [options]
+Available options are:
+  --help               : display this text.
+  --packages           : list all packages.
+  --targets            : list all possible targets.
+  --target=&#60;arch&#62;      : target the specified architecture.
+  --platform=sim       : target the simulator rather than hardware.
+  --startup=rom        : generate code suitable for ROMming.
+  --disable-&#60;pkg&#62;      : disable a given package.
+  --enable-&#60;pkg&#62;       : enable a given package.
+  --&#60;pkg&#62;-version=v0.3 : use a specific version of a package.
+  --defaults           : use default settings instead of the save file.
+  --srcdir=&#60;dir&#62;       : specify location of the component repository.
+  --builddir=&#60;dir&#62;     : specify location of the build directory.
+  --prefix=&#60;dir&#62;       : specify location of the install directory.
+bash-2.02$ cygtclsh80.exe //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --targets
+Known targets:
+  mn10300 : HAL versions v1_0
+    Aliases  MN10300 mn10300-elf am30 am30-elf am32 am32-elf
+    Platform stdeval1, supported startups  ram rom , HAL versions v0_3
+    Platform sim, supported startups  ram , HAL versions v0_3
+bash-2.02$ </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>	  Let us say you select the
+	  <SPAN
+CLASS="HARDWARE"
+>mn10300</SPAN
+>
+	  target, the simulation platform, and RAM startup.  You can now type:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cygtclsh80 //c/Program\ Files/Cygnus\ Solutions/eCos/packages/pkgconf.tcl --target=mn10300 --platform=sim --startup=ram</B
+></TT
+></P
+><P
+>	  You can now run <B
+CLASS="COMMAND"
+>make</B
+> or <B
+CLASS="COMMAND"
+>make
+	    tests</B
+>, after which you will be at the same point
+	  the graphical Configuration Tool leaves you &#8212; you can
+	  start developing your own applications, for example
+	  following the steps in the <I
+CLASS="CITETITLE"
+>Build and run simple
+	    applications</I
+> chapter of <I
+CLASS="CITETITLE"
+>Getting
+	    Started with eCos</I
+>.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="reference-for-pkgconf-tcl.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configuration and the Package Repository</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Reference for <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Thread safety</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="C and math library overview"
+HREF="c-and-math-library-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Some implementation details"
+HREF="some-implementation-details.html"><LINK
+REL="NEXT"
+TITLE="C library startup"
+HREF="c-library-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="some-implementation-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. C and math library overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-library-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="C-AND-MATH-LIBRARY-OVERVIEW-THREAD-SAFETY"
+>Thread safety</A
+></H1
+><P
+>	  The standard C library is configured by default to
+	  <I
+CLASS="EMPHASIS"
+>not</I
+> be thread safe, meaning that
+	  concurrent threads might overwrite each other's C library
+	  static data when they invoke the following functions:
+	  <TT
+CLASS="FUNCTION"
+><B
+>printf()</B
+></TT
+> (and all standard I/O
+	  functions except for <TT
+CLASS="FUNCTION"
+><B
+>sprintf()</B
+></TT
+> and
+	  <TT
+CLASS="FUNCTION"
+><B
+>sscanf()</B
+></TT
+>),
+	  <TT
+CLASS="FUNCTION"
+><B
+>strtok()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>rand()</B
+></TT
+>
+	  and <TT
+CLASS="FUNCTION"
+><B
+>srand()</B
+></TT
+>.  The
+	  <TT
+CLASS="PARAMETER"
+><I
+>errno</I
+></TT
+> variable is also not thread
+	  safe.</P
+><P
+>	  There are options to enable overall thread safety
+	  (<TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_LIBC_THREAD_SAFETY</I
+></TT
+>), as well
+	  as more fine-grained thread safety options.  These are
+	  described in <A
+HREF="package-cygpkg-libc.html"
+>Chapter 15</A
+> and <A
+HREF="package-cygpkg-libm.html"
+>Chapter 16</A
+>.</P
+><P
+>	  Note that for thread safety to work at all you must enable
+	  kernel support for <I
+CLASS="EMPHASIS"
+>per-thread data</I
+>
+	  (<TT
+CLASS="PARAMETER"
+><I
+>CYGVAR_KERNEL_THREADS_DATA</I
+></TT
+>) and
+	  stack limits
+	  (<TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_STACK_LIMIT</I
+></TT
+>).
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="some-implementation-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-library-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Some implementation details</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c-and-math-library-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>C library startup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

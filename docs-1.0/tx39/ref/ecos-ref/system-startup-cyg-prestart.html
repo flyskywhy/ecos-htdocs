@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>System startup &#8212; cyg_prestart()</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="System startup"
+HREF="system-startup.html"><LINK
+REL="PREVIOUS"
+TITLE="System startup &#8212; cyg_start()"
+HREF="system-startup-cyg-start.html"><LINK
+REL="NEXT"
+TITLE="System startup &#8212; cyg_package_start()"
+HREF="system-startup-cyg-package-start.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. System startup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-package-start.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SYSTEM-STARTUP-CYG-PRESTART"
+>System startup &#8212; cyg_prestart()</A
+></H1
+><P
+>	  The default <TT
+CLASS="FUNCTION"
+><B
+>cyg_prestart()</B
+></TT
+> function
+	  does not do anything; it is meant to be overwritten if the
+	  programmer needs to do any initialization
+	  <I
+CLASS="EMPHASIS"
+>before</I
+> other system level
+	  initialization.</P
+><P
+>	  You can override the default
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_prestart()</B
+></TT
+> routine by providing your
+	  own function by the same name with the following prototype:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_prestart</B
+></CODE
+>(void);<P
+></P
+></DIV
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>If you are supplying your own definition of this
+	    function from a C++ file, make sure it has "C"
+	    linkage.</P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-package-start.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>System startup &#8212; cyg_start()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="system-startup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>System startup &#8212; cyg_package_start()</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

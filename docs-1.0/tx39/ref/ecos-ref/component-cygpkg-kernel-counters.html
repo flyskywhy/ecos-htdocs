@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Counters and clocks</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="package-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Kernel schedulers"
+HREF="component-cygpkg-kernel-sched.html"><LINK
+REL="NEXT"
+TITLE="Component: Thread-related options"
+HREF="component-cygpkg-kernel-threads.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-sched.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-threads.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPONENT-CYGPKG-KERNEL-COUNTERS"
+>Component: Counters and clocks</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_COUNTERS</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>The counter objects provided by the kernel provide an abstraction
+of the clock facility that is generally provided. Application code
+can associate alarms with counters, where an alarm is identified by
+the number of ticks until it triggers, the action to be taken on triggering,
+and whether or not the alarm should be repeated.
+      </P
+><H2
+><A
+NAME="OPTION-CYGVAR-KERNEL-COUNTERS-CLOCK"
+>Option: Provide real-time clock</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_COUNTERS_CLOCK</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>On all current target systems the kernel can provide a real-time clock.
+This clock serves two purposes. First it is necessary to support clock
+and alarm related functions. Second it is needed to implement timeslicing
+in some of the schedulers including the mlqueue scheduler. If the
+application does not require any of these facilities then it is possible
+to disable the real time clock support completely.
+      </P
+><H2
+><A
+NAME="OPTION-CYGIMP-KERNEL-COUNTERS-SINGLE-LIST"
+>Option: Implement counters using a single list</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_COUNTERS_SINGLE_LIST</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>There are two different implementations of the counter objects. The
+first implementation stores all alarms in a single linked list. The
+alternative implementation uses a table of linked lists. A single
+list is more efficient in terms of memory usage and is generally adequate
+when the application only makes use of a small number of alarms.
+      </P
+><H2
+><A
+NAME="OPTION-CYGIMP-KERNEL-COUNTERS-MULTI-LIST"
+>Option: Implement counters using a table of lists</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_COUNTERS_MULTI_LIST</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>There are two different implementations of the counter objects. The
+first implementation stores all alarms in a single linked list. The
+alternative implementation uses a table of linked lists, with the
+size of the table being a separate configurable option. For more complicated
+operations it is better to have a table of lists since this reduces
+the amount of computation whenever the timer goes off. Assuming a
+table size of 8 (the default value) on average the timer code will
+only need to check 1/8 of the pending alarms instead of all of them.
+      </P
+><H2
+><A
+NAME="OPTION-CYGNUM-KERNEL-COUNTERS-MULTI-LIST-SIZE"
+>Option: Size of counter list table</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_COUNTERS_MULTI_LIST_SIZE</P
+><H4
+>Type</H4
+><P
+>Count</P
+><H4
+>Description</H4
+><P
+>If counters are implemented using an array of linked lists then this
+option controls the size of the array. A larger size reduces the amount
+of computation that needs to take place whenever the timer goes off,
+but requires extra memory.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-sched.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-threads.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Kernel schedulers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Thread-related options</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,526 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>µITRON API</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Kernel APIs"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="Message boxes"
+HREF="message-boxes.html"><LINK
+REL="NEXT"
+TITLE="Task-Dependent Synchronization Functions"
+HREF="task-dependent-synchronization-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="message-boxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MICRO-ITRON-API"
+>Chapter 6. µITRON API</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="micro-itron-api.html#TASK-MANAGEMENT-FUNCTIONS"
+>Task Management Functions</A
+></DT
+><DT
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Task-Dependent Synchronization Functions</A
+></DT
+><DT
+><A
+HREF="synchronization-and-communication-functions.html"
+>Synchronization and Communication Functions</A
+></DT
+><DT
+><A
+HREF="extended-synchronization-and-communication-functions.html"
+>Extended Synchronization and Communication
+             Functions</A
+></DT
+><DT
+><A
+HREF="interrupt-management-functions.html"
+>Interrupt Management Functions</A
+></DT
+><DT
+><A
+HREF="memory-pool-management-functions.html"
+>Memory pool Management Functions</A
+></DT
+><DT
+><A
+HREF="time-management-functions.html"
+>Time Management Functions</A
+></DT
+><DT
+><A
+HREF="system-management-functions.html"
+>System Management Functions</A
+></DT
+><DT
+><A
+HREF="network-support-functions.html"
+>Network Support Functions</A
+></DT
+></DL
+></DIV
+><P
+>	The µITRON specification defines a highly flexible operating
+	system architecture designed specifically for application in
+	embedded systems. The specification addresses features which
+	are common to the majority of processor architectures and
+	deliberately avoids virtualization which would adversely
+	impact real time performance. The µITRON specification may be
+	implemented on many hardware platforms and provides
+	significant advantages by reducing the effort involved in
+	understanding and porting application software to new
+	processor architectures.
+      </P
+><P
+>	Several revisions of the µITRON specification exist. In this
+	release, <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> supports the µITRON
+	version 3.02 specification, with complete &#8220;Standard
+	functionality&#8221; (level S), plus many
+	&#8220;Extended&#8221; (level E) functions. A copy of Dr.
+	Sakamura's µITRON book has been shipped with
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, and the specification is also
+	available for download at <A
+HREF="http://tron.um.u-tokyo.ac.jp/TRON/ITRON/"
+TARGET="_top"
+>	  http://tron.um.u-tokyo.ac.jp/TRON/ITRON/ </A
+>.
+      </P
+><P
+>	The eCos kernel implements the functionality used by the µITRON
+	compatibility subsystem.  The configuration of the kernel
+	influences the behavior of µITRON programs. In particular, the
+	default configuration has time slicing (also known as
+	round-robin scheduling) switched on; this means that a task
+	can be moved from <TT
+CLASS="LITERAL"
+>RUN</TT
+> state to
+	<TT
+CLASS="LITERAL"
+>READY</TT
+> state at any time, in order that one
+	of its peers may run.  This is not strictly conformant to the
+	µITRON specification, which states that timeslicing may be
+	implemented by periodically issuing a
+	<TT
+CLASS="LITERAL"
+>rot_rdq(0)</TT
+> call from within a periodic task
+	or cyclic handler; otherwise it is expected that a task runs
+	until it is pre-empted in consequence of synchronization or
+	communications calls it makes, or the effects of an interrupt
+	or other external event on a higher priority task cause that
+	task to become <TT
+CLASS="LITERAL"
+>READY</TT
+>.  To disable
+	timeslicing functionality in the kernel and µITRON compatibility
+	environment, please disable the
+	<TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_KERNEL_SCHED_TIMESLICE</I
+></TT
+>
+	configuration option in the kernel package.  A
+	description of kernel scheduling is in
+	<A
+HREF="thread-operations.html"
+>the section called <I
+>Thread operations</I
+> in Chapter 5</A
+>, and the configuration
+	options for scheduling are detailed in <A
+HREF="component-cygpkg-kernel-sched.html"
+>the section called <I
+>Component: Kernel schedulers</I
+> in Chapter 13</A
+>.
+      </P
+><P
+>	Like all parts of the eCos system, the detailed semantics of
+	the µITRON layer are dependent on its configuration. The µITRON
+	configuration options are all defined in the file
+	<TT
+CLASS="FILENAME"
+>pkgconf/uitron.h</TT
+>, and can be set using
+	the configuration tool or editing this file by hand.
+      </P
+><P
+>	We now give a brief description of the µITRON functions which
+	are implemented in this release.  Note that all C and C++
+	source files should have the following
+	<TT
+CLASS="LITERAL"
+>#include</TT
+> statement:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;cyg/compat/uit_func.h&#62;</PRE
+></TD
+></TR
+></TABLE
+><H1
+><A
+NAME="TASK-MANAGEMENT-FUNCTIONS"
+>Task Management Functions</A
+></H1
+><P
+>      The following functions are fully supported in this release:
+    </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>sta_tsk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>stacd</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>ext_tsk</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>exd_tsk</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>dis_dsp</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ena_dsp</B
+></CODE
+>(void);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>chg_pri</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>,  PRI <VAR
+CLASS="PDPARAM"
+>tskpri</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rot_rdq</B
+></CODE
+>(PRI <VAR
+CLASS="PDPARAM"
+>tskpri</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_tid</B
+></CODE
+>(ID *<VAR
+CLASS="PDPARAM"
+>p_tskid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_tsk</B
+></CODE
+>(T_RTSK *<VAR
+CLASS="PDPARAM"
+>pk_rtsk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ter_tsk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rel_wai</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  The following two functions are not supported in this release:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_tsk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>, T_CTSK *<VAR
+CLASS="PDPARAM"
+>pk_ctsk</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_tsk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>tskid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  These functions are not supported because
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> offers useful facilities for
+	  static initialization of system objects, and so creation and
+	  deletion of tasks are not applicable; the same is true of
+	  the create and delete operations for all system objects
+	  below.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="message-boxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Message boxes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Task-Dependent Synchronization Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Memory pool Management Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="µITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Interrupt Management Functions"
+HREF="interrupt-management-functions.html"><LINK
+REL="NEXT"
+TITLE="Time Management Functions"
+HREF="time-management-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interrupt-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="time-management-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MEMORY-POOL-MANAGEMENT-FUNCTIONS"
+>Memory pool Management Functions</A
+></H1
+><P
+>	These functions are fully supported in this release:
+      </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pget_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>tget_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rel_blf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, VP <VAR
+CLASS="PDPARAM"
+>blf</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mpf</B
+></CODE
+>(T_RMPF *<VAR
+CLASS="PDPARAM"
+>pk_rmpf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pget_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>tget_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rel_blk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, VP <VAR
+CLASS="PDPARAM"
+>blk</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mpl</B
+></CODE
+>(T_RMPL *<VAR
+CLASS="PDPARAM"
+>pk_rmpl</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Note that of the memory provided for a particular pool to
+	  manage in the static initialization of the memory pool
+	  objects, some memory will be used to manage the pool itself.
+	  Therefore the number of blocks * the blocksize will be less
+	  than the total memory size.
+	</P
+><P
+>	  The following functions are not supported in this release:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mpl</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, T_CMPL *<VAR
+CLASS="PDPARAM"
+>pk_cmpl</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mpl</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mpf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, T_CMPF *<VAR
+CLASS="PDPARAM"
+>pk_cmpf</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mpf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interrupt-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="time-management-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Interrupt Management Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Time Management Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

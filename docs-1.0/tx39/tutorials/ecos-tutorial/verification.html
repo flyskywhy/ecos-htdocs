@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Verification</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="TX39 Hardware Setup"
+HREF="tx39-hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="TX39 Hardware Setup"
+HREF="tx39-hardware-setup.html"><LINK
+REL="NEXT"
+TITLE="Programming Tutorial"
+HREF="part-iv.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tx39-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. TX39 Hardware Setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="part-iv.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="VERIFICATION"
+>Verification</A
+></H1
+><P
+>To verify that your board has been set up correctly you
+	  need to download and execute an application. The following
+	  example demonstrates how to use <B
+CLASS="COMMAND"
+>gdb</B
+> to
+	  download an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> testcase,
+	  execute it, and display its test output. For the purposes of
+	  this example we will run a simple kernel testcase. You will
+	  first need to change directory to the pre-built tests that
+	  are provided in the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  installation.</P
+><P
+>	  First of all you must have the <B
+CLASS="COMMAND"
+>bash</B
+>
+	  command line interpreter running with some environment
+	  variables which are useful for
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> work.  We have set things up
+	  so that you can select this by clicking on the
+	  <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> menu button, and the
+	  <SPAN
+CLASS="GUISUBMENU"
+>Programs</SPAN
+> submenu, and the
+	  <SPAN
+CLASS="GUISUBMENU"
+>Cygnus eCos</SPAN
+> submenu, followed by
+	  the <SPAN
+CLASS="GUIMENUITEM"
+>eCos Development Environment</SPAN
+>.
+	</P
+><P
+>	  Assuming that you installed <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  to the default location, change directory as follows:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd //c/Program\ Files/Cygnus\ Solutions/eCos/prebuilt/v1_0/tx39-jmr3904-rom/tests/kernel</B
+></TT
+></P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>	    The prebuilt tests have been compiled for both RAM and ROM
+	    startup so that they can be run in the simulator and on
+	    the evaluation board.
+	    </P
+></BLOCKQUOTE
+><P
+>To execute the mbox1 testcase on the target hardware,
+	  run <B
+CLASS="COMMAND"
+>gdb</B
+> in command line mode using the
+	  following command:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mips-tx39-elf-gdb -nw mbox1.exe</B
+></TT
+></P
+><P
+>The <B
+CLASS="COMMAND"
+>gdb</B
+> program will display a
+	  copyright banner and then display a prompt
+	  <TT
+CLASS="PROMPT"
+>(gdb)</TT
+>. To run the testcase it is necessary
+	  to type the following commands at the prompt:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>set remotebaud 38400</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote com1</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>continue</B
+></TT
+></P
+><P
+>The first two commands set up the serial connection. The
+	target expects to communicate with the host at 38400 baud. The
+	second command is correct if the com1 serial port on the host
+	is connected to the target, and should be adjusted if a
+	different port is used. The third command will load the
+	testcase executable into the memory of the target board, and
+	the last command will start the testcase running. You should
+	now see a number of text messages appear as below:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>INFO:&#60;Testing put() and tryput() without wakeup&#62;
+INFO:&#60;Testing get(), tryget()&#62;
+INFO:&#60;Testing get(), blocking&#62;
+INFO:&#60;Testing timed functions&#62;
+PASS:&#60;Mbox 1 OK&#62;
+EXIT:&#60;done&#62;
+      </PRE
+></TD
+></TR
+></TABLE
+><P
+>Note that <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> has no concept
+	of the application exiting. All
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> testcases complete and then
+	run in a continuous tight loop. To return control to
+	<B
+CLASS="COMMAND"
+>gdb</B
+>, you must type
+	<B
+CLASS="KEYCAP"
+>Control</B
+>+<B
+CLASS="KEYCAP"
+>C</B
+>.
+	The full functionality of <B
+CLASS="COMMAND"
+>gdb</B
+> is available
+	to the user, including breakpoints and watchpoints. The GNUPro
+	<B
+CLASS="COMMAND"
+>gdb</B
+> documentation should be consulted for
+	further information.</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>	    An idiosyncrasy in gdb's handling of target boards versus
+	    simulators means that we use <TT
+CLASS="LITERAL"
+>continue</TT
+>
+	    to start executing on hardware and <TT
+CLASS="LITERAL"
+>run</TT
+>
+	    to start executing in the simulator.
+	  </P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tx39-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-iv.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>TX39 Hardware Setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="tx39-hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Programming Tutorial</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>The eCos
+    Hardware Abstraction Layer (HAL)</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Kernel APIs"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="Network Support Functions"
+HREF="network-support-functions.html"><LINK
+REL="NEXT"
+TITLE="General Principles"
+HREF="general-principles.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="network-support-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="general-principles.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="THE-ECOS-HARDWARE-ABSTRACTION-LAYER-HAL"
+>Appendix A. The eCos
+    Hardware Abstraction Layer (HAL)</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html#ARCHITECTURE-IMPLEMENTATION-AND-PLATFORM"
+>Architecture, Implementation and Platform</A
+></DT
+><DT
+><A
+HREF="general-principles.html"
+>General Principles</A
+></DT
+><DT
+><A
+HREF="architectural-hal-files.html"
+>Architectural HAL Files</A
+></DT
+><DT
+><A
+HREF="future-developments.html"
+>Future Developments</A
+></DT
+><DT
+><A
+HREF="kernel-porting-notes.html"
+>Kernel Porting Notes</A
+></DT
+></DL
+></DIV
+><BLOCKQUOTE
+CLASS="ABSTRACT"
+><P
+>	This is an initial specification of the
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Hardware Abstraction Layer
+	(HAL). The HAL abstracts the underlying hardware of a
+	processor architecture and/or the platform to a level
+	sufficient for the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel to
+	be ported onto that platform.
+      </P
+><P
+>	<I
+CLASS="EMPHASIS"
+>Caveat</I
+> This document is an informal
+	description of the HAL capabilities and is not intended to be
+	full documentation, although it may be used as a source for
+	such. It also describes the HAL as it is currently implemented
+	for three architectures.  Further work (described in
+	<A
+HREF="future-developments.html"
+>the section called <I
+>Future Developments</I
+></A
+> section), is needed to
+	complete it.
+      </P
+></BLOCKQUOTE
+><H1
+><A
+NAME="ARCHITECTURE-IMPLEMENTATION-AND-PLATFORM"
+>Architecture, Implementation and Platform</A
+></H1
+><P
+>	We have identified three levels at which the HAL must operate.
+	The architecture HAL abstracts the basic CPU architecture and
+	includes things like interrupt delivery, context switching,
+	CPU startup etc. The platform HAL abstracts the properties of
+	the current platform and includes things like platform
+	startup, timer devices, I/O register access and interrupt
+	controllers. The implementation HAL abstracts properties that
+	lie between these two, such as architecture variants and
+	on-chip devices. The boundaries between these three HAL levels
+	are necessarily blurred.</P
+><P
+>	In the current HAL structure, there are separate directory
+	trees for the architectural and platform HALs. The
+	implementation HAL is currently supported in one or other of
+	these by means of conditional compilation depending on how
+	generic a particular feature is expected to be. Thus processor
+	variants are handled in the architectural HAL since they are
+	likely to be generic to several implementations. On-chip
+	devices are handled in the platform HAL, if they impact the
+	kernel, or as proper device drivers (and are thus outside the
+	HAL).
+      </P
+><P
+>	The one area where there is significant interaction between
+	these HAL layers is in the interrupt delivery VSR. Here the
+	VSR, which is in the architectural HAL, may need to
+	interrogate an interrupt controller to dispatch the correct
+	ISR. The interrupt controller may be defined by the platform
+	or implementation HAL. This is normally only a few
+	instructions so is currently handled by conditional
+	compilation. If this proves to become unwieldy, a mechanism
+	for including platform code in the architectural HAL may be
+	needed.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="network-support-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="general-principles.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Network Support Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>General Principles</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

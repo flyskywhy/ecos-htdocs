@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Getting started with eCos</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="NEXT"
+TITLE="Release Notes"
+HREF="part-i.html"></HEAD
+><BODY
+><DIV
+CLASS="BOOK"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+>Getting started with eCos</A
+></H1
+><H2
+CLASS="SUBTITLE"
+>Toshiba <SPAN
+CLASS="HARDWARE"
+>TX39</SPAN
+> version 1.0</H2
+><H3
+CLASS="AUTHOR"
+>The eCos Team</H3
+><H4
+CLASS="AFFILIATION"
+>Cygnus Solutions</H4
+><P
+CLASS="COPYRIGHT"
+><A
+HREF="ln16.html"
+>Copyright</A
+> © 1998 by <SPAN
+CLASS="HOLDER"
+>Cygnus Solutions</SPAN
+></P
+><HR><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>I. <A
+HREF="part-i.html"
+>Release Notes</A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="welcome.html"
+>Welcome</A
+></DT
+><DT
+>2. <A
+HREF="package-contents.html"
+>Package Contents</A
+></DT
+><DT
+>3. <A
+HREF="system-requirements.html"
+>System Requirements</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="system-requirements.html#REQUIRED"
+>Required</A
+></DT
+><DT
+><A
+HREF="recommended.html"
+>Recommended</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="reporting-problems.html"
+>Reporting Problems</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="reporting-problems.html#THE-WEB-INTERFACE-FOR-SUBMITTING-PRS"
+>The web interface for submitting PRs</A
+></DT
+><DT
+><A
+HREF="the-email-interface-for-submitting-prs.html"
+>The email interface for submitting PRs</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="overview-of-the-release.html"
+>Overview of the release</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="overview-of-the-release.html#READY-TO-GO-SYSTEM"
+>`Ready to go' system</A
+></DT
+><DT
+><A
+HREF="re-build-and-configure-capability.html"
+>Re-build and configure capability</A
+></DT
+><DT
+><A
+HREF="ecos-hal.html"
+>The eCos HAL</A
+></DT
+><DT
+><A
+HREF="ecos-kernel.html"
+>eCos Kernel</A
+></DT
+><DT
+><A
+HREF="uitron.html"
+>µITRON</A
+></DT
+><DT
+><A
+HREF="iso-c-library.html"
+>ISO C library</A
+></DT
+><DT
+><A
+HREF="serial-device-drivers.html"
+>Serial device drivers</A
+></DT
+><DT
+><A
+HREF="tx39-architectural-simulator.html"
+>TX39 architectural simulator</A
+></DT
+><DT
+><A
+HREF="rom-monitor-image.html"
+>ROM monitor image</A
+></DT
+><DT
+><A
+HREF="tests-and-examples.html"
+>Tests and examples</A
+></DT
+><DT
+><A
+HREF="overview-of-the-release220.html"
+>GNU tools and their documentation</A
+></DT
+><DT
+><A
+HREF="overview-of-the-release233.html"
+>eCos documentation</A
+></DT
+><DT
+><A
+HREF="small-changes-in-the-api.html"
+>Small changes in the API</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="a-note-on-testing.html"
+>A note on testing</A
+></DT
+><DT
+>7. <A
+HREF="a-note-on-using-the-simulator.html"
+>A note on using the simulator</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a-note-on-using-the-simulator.html#CYGMON-THE-SIMULATOR-AND-THREAD-AWARE-DEBUGGING"
+>CygMon, the simulator, and thread-aware debugging</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="known-limitations-in-the-ecos-v-1-0-release.html"
+>Known limitations in the eCos version 1.0 release</A
+></DT
+><DT
+>A. <A
+HREF="cygnus-ecos-public-license.html"
+>CYGNUS ECOS PUBLIC LICENSE</A
+></DT
+><DT
+>B. <A
+HREF="the-send-pr-form-template.html"
+>Using send-pr to report problems for Windows NT</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="the-send-pr-form-template.html#AEN434"
+>The full problem report screen</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>II. <A
+HREF="part-ii.html"
+>Documentation Roadmap</A
+></DT
+><DD
+><DL
+><DT
+>9. <A
+HREF="top-down-view-of-the-documentation.html"
+>Top down view of the documentation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="top-down-view-of-the-documentation.html#ECOS-TUTORIALS"
+>eCos Tutorials</A
+></DT
+><DT
+><A
+HREF="ecos-user-guide.html"
+>eCos User Guide</A
+></DT
+><DT
+><A
+HREF="ecos-reference-manual.html"
+>eCos Reference Manual</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="where-to-look-if.html"
+>Where to look if&#8230;</A
+></DT
+></DL
+></DD
+><DT
+>III. <A
+HREF="part-iii.html"
+>Installation Guide</A
+></DT
+><DD
+><DL
+><DT
+>11. <A
+HREF="software-installation.html"
+>Software installation</A
+></DT
+><DT
+>12. <A
+HREF="tx39-hardware-setup.html"
+>TX39 Hardware Setup</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="tx39-hardware-setup.html#TX39-INTALLATION"
+>TX39 installation</A
+></DT
+><DT
+><A
+HREF="verification.html"
+>Verification</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>IV. <A
+HREF="part-iv.html"
+>Programming Tutorial</A
+></DT
+><DD
+><DL
+><DT
+>13. <A
+HREF="programming-tutorial.html"
+>Introduction: the quickest way to start programming eCos</A
+></DT
+><DT
+>14. <A
+HREF="configure-and-build-ecos-from-source.html"
+>Configure and build eCos from source</A
+></DT
+><DT
+>15. <A
+HREF="run-an-ecos-test-case.html"
+>Run an eCos test case</A
+></DT
+><DT
+>16. <A
+HREF="c926.html"
+>Build and run
+	simple applications</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c926.html#ECOS-HELLO-WORLD"
+>eCos hello world</A
+></DT
+><DT
+><A
+HREF="a-simple-program-with-two-threads.html"
+>A simple program with two threads</A
+></DT
+></DL
+></DD
+><DT
+>17. <A
+HREF="more-features-clocks-and-alarm-handlers.html"
+>More features &#8212; clocks and alarm handlers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="more-features-clocks-and-alarm-handlers.html#AEN1022"
+>A simple program with alarms</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-i.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Release Notes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

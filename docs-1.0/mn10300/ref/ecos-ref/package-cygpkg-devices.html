@@ -1,0 +1,193 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: Device drivers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="part-v.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: Common error code support"
+HREF="package-cygpkg-error.html"><LINK
+REL="NEXT"
+TITLE="Package: Serial RS232 devices"
+HREF="package-cygpkg-devices-serial-rs232-common.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="package-cygpkg-error.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="package-cygpkg-devices-serial-rs232-common.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-DEVICES"
+>Chapter 18. Package: Device drivers</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices.html#PACKAGE-CYGPKG-DEVICES-GDB"
+>Package: GDB pseudo device</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-serial-rs232-common.html"
+>Package: Serial RS232 devices</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-wallclock.html"
+>Package: Wallclock device</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-watchdog.html"
+>Package: Watchdog device</A
+></DT
+></DL
+></DIV
+><H4
+>Macro name</H4
+><P
+>CYGPKG_DEVICES</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>The eCos system is supplied with a number of different device drivers.
+      </P
+><H1
+><A
+NAME="PACKAGE-CYGPKG-DEVICES-GDB"
+>Package: GDB pseudo device</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_DEVICES_GDB</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>If the gdb source level debugger is going to be used to debug the
+application then on some target systems this will involve the exclusive
+use of some hardware, for example a serial line. Hence this device
+cannot be used for other purposes, for example C library standard
+I/O. If the gdb pseudo device is enabled then this provides a means
+of performing I/O operations encapsulated within the gdb protocol,
+thus allowing a single serial line or similar device to be used for
+both debugging and for I/O.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="package-cygpkg-error.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="package-cygpkg-devices-serial-rs232-common.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: Common error code support</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-v.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: Serial RS232 devices</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

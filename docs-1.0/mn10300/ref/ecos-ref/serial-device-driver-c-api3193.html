@@ -1,0 +1,551 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>The system calls</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Serial device driver C API"
+HREF="serial-device-driver-c-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Serial device driver C API"
+HREF="serial-device-driver-c-api.html"><LINK
+REL="NEXT"
+TITLE="The ISO Standard C and Math Libraries"
+HREF="part-iv.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="serial-device-driver-c-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 9. Serial device driver C API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="part-iv.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="AEN3193"
+>The system calls</A
+></H1
+><P
+>	We now present the  system calls used to access the serial
+	port, and we will give an example at the end.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_read_blocking</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, Cyg_IORB *iorb);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_write_blocking</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, Cyg_IORB *iorb);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_read_asynchronous</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, Cyg_IORB *iorb);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_write_asynchronous</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, Cyg_IORB *iorb);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_serial_rs232_set_kmode</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, cyg_uint32
+	  <VAR
+CLASS="PDPARAM"
+>kmode</VAR
+>);<P
+></P
+></DIV
+><P
+>	This sets the kernel mode for the RS232 driver.  The kernel
+	mode is <TT
+CLASS="PARAMETER"
+><I
+>0</I
+></TT
+> for polled and
+	<TT
+CLASS="PARAMETER"
+><I
+>1</I
+></TT
+> for interrupt driven.
+      </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_serial_rs232_get_baud_rate</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, cyg_uint32
+	  *<VAR
+CLASS="PDPARAM"
+>baud</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_serial_rs232_set_baud_rate</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, cyg_uint32
+	  <VAR
+CLASS="PDPARAM"
+>new_baud</VAR
+>, cyg_uint32
+	  *<VAR
+CLASS="PDPARAM"
+>old_baud</VAR
+>);<P
+></P
+></DIV
+><P
+>	<TT
+CLASS="FUNCTION"
+><B
+>cyg_serial_rs232_get_baud_rate()</B
+></TT
+> gets the
+	current baud rate on the serial port denoted by
+	<TT
+CLASS="PARAMETER"
+><I
+>cookie</I
+></TT
+> and places it in
+	<TT
+CLASS="PARAMETER"
+><I
+>*baud</I
+></TT
+>.
+	<TT
+CLASS="FUNCTION"
+><B
+>cyg_serial_rs232_set_baud_rate()</B
+></TT
+> sets the
+	baud rate to <TT
+CLASS="PARAMETER"
+><I
+>new_baud</I
+></TT
+>, while storing
+	the previous one in <TT
+CLASS="PARAMETER"
+><I
+>*old_baud</I
+></TT
+>.</P
+><P
+>	The baud rates are denoted by the standard POSIX codes for
+	baud rates, which can be found in
+	<TT
+CLASS="FILENAME"
+>cyg/devs/serial/rs232/common/rs232.h</TT
+>
+	and are listed here:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>// Various baud rates
+#define B0 	 0
+#define B50 	 1
+#define B75 	 2
+#define B110 	 3
+#define B134 	 4
+#define B150 	 5
+#define B200 	 6
+#define B300 	 7
+#define B600 	 8
+#define B1200 	 9
+#define B1800 	10
+#define B2400 	11
+#define B4800 	12
+#define B9600 	13
+#define B19200 	14
+#define B38400 	15 </PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_serial_rs232_get_line_mode</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, cyg_uint32
+	  *<VAR
+CLASS="PDPARAM"
+>mode</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>Cyg_ErrNo
+	  <B
+CLASS="FSFUNC"
+>cyg_serial_rs232_set_line_mode</B
+></CODE
+>(cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>cookie</VAR
+>, cyg_uint32
+	  <VAR
+CLASS="PDPARAM"
+>new_mode</VAR
+>, cyg_uint32
+	  *<VAR
+CLASS="PDPARAM"
+>old_mode</VAR
+>);<P
+></P
+></DIV
+><P
+>	<TT
+CLASS="FUNCTION"
+><B
+>cyg_serial_rs232_get_line_mode()</B
+></TT
+> gets the
+	current line mode on the serial port denoted by
+	<TT
+CLASS="PARAMETER"
+><I
+>cookie</I
+></TT
+> and places it in
+	<TT
+CLASS="PARAMETER"
+><I
+>*mode</I
+></TT
+>.
+	<TT
+CLASS="FUNCTION"
+><B
+>cyg_serial_rs232_set_baud_rate()</B
+></TT
+> sets the
+	line mode to <TT
+CLASS="PARAMETER"
+><I
+>new_mode</I
+></TT
+>, while storing
+	the previous one in <TT
+CLASS="PARAMETER"
+><I
+>*old_mode</I
+></TT
+>.</P
+><P
+>	The line modes are denoted by the standard POSIX codes for
+	line modes, which can be found in
+	<TT
+CLASS="FILENAME"
+>cyg/devs/serial/rs232/common/rs232.h</TT
+>.
+      </P
+><P
+>	The following program, which is based on the test case for the
+	serial driver C API, sets up a single thread, prepares an IORB
+	(simply by putting data in it and setting its length) and then
+	writes the data out with
+	<TT
+CLASS="FUNCTION"
+><B
+>cyg_write_blocking()</B
+></TT
+>.
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;stdio.h&#62;
+
+#include &#60;cyg/kernel/kapi.h&#62;        	// All the kernel specific stuff
+#include &#60;cyg/devs/common/table.h&#62;	
+
+#define NTHREADS 1
+#define STACKSIZE 4096
+
+static cyg_handle_t thread[NTHREADS];
+static cyg_thread thread_obj[NTHREADS];
+static char stack[NTHREADS][STACKSIZE];
+
+static void simple_prog(CYG_ADDRESS data)
+{
+    Cyg_IORB iorb;
+    cyg_addrword_t my_io_cookie;
+
+    /* set the I/O cookie to point to our favorite serial device */
+    my_io_cookie = stdeval1_serial1;
+
+    iorb.buffer = "This is test 1\n";
+    iorb.buffer_length = 15; // strlen(iorb.data);
+    cyg_write_blocking(my_io_cookie, &#38;iorb);
+    printf("Done with my non-blocking serial write\n");
+}
+
+void cyg_user_start(void)
+{
+    cyg_thread_create(4, simple_prog, (cyg_addrword_t) 0, "serial1",
+      (void *)stack[0], STACKSIZE, &#38;thread[0], &#38;thread_obj[0]);
+    cyg_thread_resume(thread[0]);
+}   </PRE
+></TD
+></TR
+></TABLE
+><P
+>      Please note that for the <SPAN
+CLASS="HARDWARE"
+>MN10300</SPAN
+> stdeval1
+      board, the serial uses serial port 1 when the
+      <TT
+CLASS="PARAMETER"
+><I
+>cookie</I
+></TT
+> is set to stdeval1_serial1.</P
+><P
+>      If you wish to use a cookie value of stdeval1_serial2, you cannot
+      use CygMon, since CygMon uses serial port 2.
+    </P
+><P
+>	  And finally, if the
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGDBG_INFRA_DIAG_USE_DEVICE</I
+></TT
+> option
+	  in infra.h
+	  is configured (in this release it can only be configured by
+	  hand), all diagnostic and tracing output will go the default
+	  serial device for the evaluation board, rather than going to
+	  the gdb console.  Note that assertions (which are meant to
+	  work even without kernel support) will bypass the interrupt
+	  mechanism and be output to the RS232 port directly.
+      </P
+><P
+>	To configure the device drivers, the configuration
+	<TT
+CLASS="FILENAME"
+>devs.h</TT
+> allows you to specify the default
+	diagnostics device.  It can also reference device-specific
+	files that have further configuration options.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="serial-device-driver-c-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-iv.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Serial device driver C API</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="serial-device-driver-c-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The ISO Standard C and Math Libraries</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

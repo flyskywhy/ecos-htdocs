@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>A note on using the simulator</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release Notes"
+HREF="part-i.html"><LINK
+REL="PREVIOUS"
+TITLE="A note on testing"
+HREF="a-note-on-testing.html"><LINK
+REL="NEXT"
+TITLE="Known limitations in the eCos version 1.0 release"
+HREF="known-limitations-in-the-ecos-v-1-0-release.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="a-note-on-testing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="known-limitations-in-the-ecos-v-1-0-release.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="A-NOTE-ON-USING-THE-SIMULATOR"
+>Chapter 7. A note on using the simulator</A
+></H1
+><P
+>	There are various ways of downloading an executable image to a
+	target board, and these involve different ways of preparing
+	the executable image.  There are configuration options in
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s Hardware Abstraction Layer
+	(HAL package) to support the different download methods.  The
+	following table summarizes the ways in which an
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> image can be prepared for
+	different types of download.
+      </P
+><DIV
+CLASS="TABLE"
+><P
+><B
+><A
+NAME="CONFIGURATION-FOR-VARIOUS-DOWNLOAD-METHODS"
+>Table 7-1. Configuration for various download methods</A
+></B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download method</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>HAL configuration</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Burn hardware ROM</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to ROM emulator</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to board with CygMon</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>RAM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator without CygMon</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator with CygMon</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>RAM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator ignoring devices</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>SIM configuration</TD
+></TR
+></TABLE
+></DIV
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>CAUTION</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>	  You cannot run an application configured for RAM startup on the
+	  simulator directly: it will fail during startup. You can
+	  only download it to the simulator if you are already running
+	  CygMon in the simulator, as described below.
+	  </P
+></TD
+></TR
+></TABLE
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>	  Configuring <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s HAL package
+	  for simulation should rarely be needed: binaries built with
+	  such a kernel will not run on target boards at all, and the
+	  simulators can run binaries built for target boards.  The
+	  main use for a &#8220;simulation&#8221; configuration is if
+	  one is trying to work around problems with the device
+	  drivers or with the simulator.  When using a system
+	  configured for simulator startup you should then invoke the
+	  simulator with the <SPAN
+CLASS="OPTION"
+>--board=jmr3904pal</SPAN
+>
+	  option instead of <SPAN
+CLASS="OPTION"
+>--board=jmr3904</SPAN
+>.
+	</P
+></BLOCKQUOTE
+><P
+>	The debugging environment for most developers will be either a
+	hardware board or the simulator, in which case they will be
+	able to select a single HAL configuration (RAM startup for the
+	board, ROM startup for the simulator).</P
+><H1
+><A
+NAME="CYGMON-THE-SIMULATOR-AND-THREAD-AWARE-DEBUGGING"
+>CygMon, the simulator, and thread-aware debugging</A
+></H1
+><P
+>	  Another issue related to using the simulator and the startup
+	  code is that of thread-aware debugging.  The simulator does
+	  not support thread-aware debugging, but CygMon does have
+	  support for thread aware debugging.  A simple way of
+	  obtaining this functionality in the simulator is to run
+	  Cygmon under the simulator, and then interact with it as if
+	  it were actually running on the real hardware.
+	</P
+><P
+>	  While this approach gives us the functionality we want, it
+	  is not without its disadvantages. The simulator is not only
+	  slow to execute code compared with real hardware, but
+	  simulation of the ROM monitor also slows the downloading of
+	  code down to approximately the speed of a serial port. In
+	  addition, since the simulator must run continuously to
+	  execute Cygmon, it can interfere with the performance of
+	  GDB. If there is insufficient memory for both programs to be
+	  in memory together, there may also be delays due to memory
+	  paging.
+	</P
+><P
+>	  This technique uses TCP/IP for communication between the
+	  simulator and GDB, so you must ensure that the TCP/IP
+	  protocol stack is installed on your machine.
+	</P
+><P
+>	  To run Cygmon in the simulator, type the following command at
+	  the command line:
+	</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mips-tx39-elf-run --board=jmr3904 --sockser-addr=localhost:XXXX loaders\tx39-jmr3904\cygmon.exe</B
+></TT
+></P
+><P
+>	  Where XXXX is an unused TCP port number on your computer. A
+	  value of 1234 usually works, but any number between 1024 and
+	  65375 which does not result in an error will do.
+	</P
+><P
+>	  This has started the simulator running Cygmon. To make use
+	  of it you must run a separate GDB session and connect to it.
+	</P
+><P
+>	  If you run GDB in command line mode, you can attach it to
+	  the simulated Cygmon with the following command:
+	</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote localhost:XXXX</B
+></TT
+></P
+><P
+>	  Where XXXX is the port number given in the call to the
+	  simulator. GDB should connect to the simulator and talk to
+	  the version of Cygmon running in it in exactly the same way
+	  as if it were talking to Cygmon running on the real
+	  hardware.
+	</P
+><P
+>	  If you are running GDBTK then in the "Target Settings"
+	  dialog, select "Remote/TCP" in the "Target" entry, type
+	  "localhost" into the "Host" entry and put the value chosen
+	  for the port number in the "Port" entry.
+	</P
+><P
+>	  You should use executables configured to run on the target
+	  board with RAM startup, and not executables configured for
+	  the simulator.
+	</P
+><P
+>	  If the performance of the two programs on a single machine
+	  is too slow, it is possible to use two machines: one to run
+	  the simulator and one to run GDB. These machines must be
+	  connected together on an Ethernet or some other TCP/IP
+	  network. Run the simulator on one machine, but supply the
+	  name of the machine in place of "localhost" in the
+	  "--sockser-addr" option. When running GDB on the other
+	  machine similarly replace "localhost" with the name of the
+	  machine running the simulator.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="a-note-on-testing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="known-limitations-in-the-ecos-v-1-0-release.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>A note on testing</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-i.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Known limitations in the eCos version 1.0 release</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,558 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Synchronization and Communication Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="µITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Task-Dependent Synchronization Functions"
+HREF="task-dependent-synchronization-functions.html"><LINK
+REL="NEXT"
+TITLE="Extended Synchronization and Communication
+             Functions"
+HREF="extended-synchronization-and-communication-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="extended-synchronization-and-communication-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SYNCHRONIZATION-AND-COMMUNICATION-FUNCTIONS"
+>Synchronization and Communication Functions</A
+></H1
+><P
+>	These functions are fully supported in this release:
+  </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>sig_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>wai_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>preq_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>twai_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_sem</B
+></CODE
+>(T_RSEM *<VAR
+CLASS="PDPARAM"
+>pk_rsem </VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>set_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>setptn</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>clr_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>clrptn</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>wai_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pol_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>twai_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_flg</B
+></CODE
+>(T_RFLG *<VAR
+CLASS="PDPARAM"
+>pk_rflg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>snd_msg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>, T_MSG <VAR
+CLASS="PDPARAM"
+>*pk_msg</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>prcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>trcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid </VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mbx</B
+></CODE
+>(T_RMBX *<VAR
+CLASS="PDPARAM"
+>pk_rmbx</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  The following functions are not supported in this release:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>, T_CSEM *<VAR
+CLASS="PDPARAM"
+>pk_csem</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, T_CFLG *<VAR
+CLASS="PDPARAM"
+>pk_cflg</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mbx</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>, T_CMBX *<VAR
+CLASS="PDPARAM"
+>pk_cmbx</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mbx</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="extended-synchronization-and-communication-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Task-Dependent Synchronization Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Extended Synchronization and Communication
+             Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

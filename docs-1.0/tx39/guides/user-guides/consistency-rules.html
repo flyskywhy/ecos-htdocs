@@ -1,0 +1,189 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Consistency Rules</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos User Guides"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="Persistence"
+HREF="persistence.html"><LINK
+REL="NEXT"
+TITLE="View Settings"
+HREF="view-settings.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos User Guides</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CONSISTENCY-RULES"
+>Consistency Rules</A
+></H1
+><P
+>Consistency rules exist to verify that any configuration
+	  that may be generated is legal &#8212; for example that it
+	  will build successfully and generate code that will behave
+	  in a reasonable manner. </P
+><P
+>Consistency rules may be checked as configurable items are
+	changed.  In this case it is possible for the Configuration
+	Tool to suggest fixes for the consistency check failure(s)
+	about to be introduced by suggesting a change to a
+	<I
+CLASS="EMPHASIS"
+>related item</I
+>:</P
+><P
+><IMG
+SRC="pix/Image53.gif"
+ALT=""></P
+><P
+>If you accept the fix (by clicking the "Yes" or "Yes to
+	All" buttons) an appropriate change will be made to the
+	related configuration item.  If you click "No" or "No to All"
+	no such change will be made, but the setting of the original
+	item will still be possible.  If you click Cancel at any stage
+	the setting will be aborted and you will be alerted to the set
+	of failing rules:</P
+><P
+><IMG
+SRC="pix/Image54.gif"
+ALT=""></P
+><P
+>Note that the Configuration Tool will only be capable of
+	suggesting fixes in limited circumstances.  The conditions
+	are:</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>The failing rules are "requires" or
+	"precludes" rules.</P
+></LI
+><LI
+><P
+>The related item is a Boolean item
+	</P
+></LI
+><LI
+><P
+>The item being changed does not cause child
+	items to be enabled which themselves cause consistency checks
+	to fail.</P
+></LI
+></OL
+><P
+>The process of suggesting fixes may be disabled by means
+	of the Build-&#62;Options dialog.</P
+><P
+>For any item, you can identify currently failing
+	consistency rules in the Properties Table; failing rules are
+	marked with an exclamation point.  A complete list may be
+	obtained by using the Build-&#62;Options dialog.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Persistence</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>View Settings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>C library startup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="C and math library overview"
+HREF="c-and-math-library-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Thread safety"
+HREF="c-and-math-library-overview-thread-safety.html"><LINK
+REL="NEXT"
+TITLE="Configuration Option Reference"
+HREF="part-v.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-and-math-library-overview-thread-safety.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. C and math library overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="part-v.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="C-LIBRARY-STARTUP"
+>C library startup</A
+></H1
+><P
+>The C library includes a function declared as:</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_iso_c_start</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  This function is used to start an environment in which an
+	  ISO C style program can run in the most compatible
+	  way.</P
+><P
+>	  What this function does is to create a thread which will
+	  invoke <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> &#8212; normally
+	  considered a program's entry point. In particular, it can
+	  supply arguments to <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> using the
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGDAT_LIBC_ARGUMENTS</I
+></TT
+> configuration
+	  option (see <A
+HREF="component-cygpkg-libc-startup.html#OPTION-CYGDAT-LIBC-ARGUMENTS"
+>the section called <I
+>Option: Arguments to main()</I
+> in Chapter 15</A
+>),
+	  and when returning from <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+>, or
+	  calling <TT
+CLASS="FUNCTION"
+><B
+>exit()</B
+></TT
+>, pending stdio file
+	  output is flushed and any functions registered with
+	  <TT
+CLASS="FUNCTION"
+><B
+>atexit()</B
+></TT
+> are invoked. This is all
+	  compliant with the ISO C standard in this respect.
+	</P
+><P
+>	  This thread starts execution when the eCos scheduler is
+	  started. If the eCos kernel package is not available (and
+	  hence there is no scheduler), then
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_iso_c_start()</B
+></TT
+> will invoke the
+	  <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> function directly, i.e. it will
+	  not return until the <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> function
+	  returns.
+	</P
+><P
+>	  The <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> function should be defined
+	  as the following, and if defined in a C++ file, should have
+	  "C" linkage:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>extern int <B
+CLASS="FSFUNC"
+>main</B
+></CODE
+>(int <VAR
+CLASS="PDPARAM"
+>argc</VAR
+>, char *<VAR
+CLASS="PDPARAM"
+>argv</VAR
+>[]);<P
+></P
+></DIV
+><P
+>	  The thread that is started by
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_iso_c_start()</B
+></TT
+> can be manipulated
+	  directly, if you wish. For example you can suspend it. The
+	  kernel C API needs a handle to do this, which is available
+	  by including the following in your source code.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;extern cyg_handle_t cyg_libc_main_thread;</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  Then for example, you can suspend the thread with the
+	  line:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;cyg_thread_suspend( cyg_libc_main_thread );</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  If you call <TT
+CLASS="FUNCTION"
+><B
+>cyg_iso_c_start()</B
+></TT
+> and do
+	  not provide your own <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> function,
+	  the system will provide a <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> for
+	  you which will simply return immediately.</P
+><P
+>	  In the default configuration,
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_iso_c_start()</B
+></TT
+> is invoked
+	  automatically by the
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_package_start()</B
+></TT
+> function in the
+	  infrastructure configuration. This means that in the
+	  simplest case, your program can indeed consist of
+	  simply:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;int main( int argc, char *argv[] )
+{
+  printf("Hello eCos\n");
+}</PRE
+></TD
+></TR
+></TABLE
+><P
+>If you override <TT
+CLASS="FUNCTION"
+><B
+>cyg_package_start()</B
+></TT
+>
+	  or <TT
+CLASS="FUNCTION"
+><B
+>cyg_start()</B
+></TT
+>, or disable the
+	  infrastructure configuration option
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_START_ISO_C_COMPATIBILITY</I
+></TT
+> then
+	  you must ensure that you call
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_iso_c_start()</B
+></TT
+> yourself if you want
+	  to be able to have your program start at the entry point of
+	  <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+> automatically.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-and-math-library-overview-thread-safety.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-v.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Thread safety</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c-and-math-library-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuration Option Reference</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

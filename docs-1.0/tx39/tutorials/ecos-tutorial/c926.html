@@ -1,0 +1,367 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Build and run
+	simple applications</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Programming Tutorial"
+HREF="part-iv.html"><LINK
+REL="PREVIOUS"
+TITLE="Run an eCos test case"
+HREF="run-an-ecos-test-case.html"><LINK
+REL="NEXT"
+TITLE="A simple program with two threads"
+HREF="a-simple-program-with-two-threads.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="run-an-ecos-test-case.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="a-simple-program-with-two-threads.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="AEN926"
+>Chapter 16. Build and run
+	simple applications</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="c926.html#ECOS-HELLO-WORLD"
+>eCos hello world</A
+></DT
+><DT
+><A
+HREF="a-simple-program-with-two-threads.html"
+>A simple program with two threads</A
+></DT
+></DL
+></DIV
+><P
+>	It is time to write your first <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	application.  We will split this process into two stages: a
+	<I
+CLASS="EMPHASIS"
+>hello world</I
+> style application and a more
+	illustrative one which demonstrates the creation of threads
+	and the use of <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_delay()</B
+></TT
+>.</P
+><P
+>	All the example programs in this tutorial are included in the
+	distribution, in the directory <TT
+CLASS="FILENAME"
+>examples</TT
+>
+	in the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> distribution. They even
+	have a convenient Makefile, and you should make sure that the
+	<TT
+CLASS="REPLACEABLE"
+><I
+>PKG_INSTALL_DIR</I
+></TT
+> variable is
+	correctly set to the install tree previously created by
+	<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> before you run
+	<B
+CLASS="COMMAND"
+>make</B
+>.</P
+><H1
+><A
+NAME="ECOS-HELLO-WORLD"
+>eCos hello world</A
+></H1
+><P
+>	  Try typing the following into a file called
+	  <TT
+CLASS="FILENAME"
+>hello.c</TT
+>:
+	</P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 16-1. eCos hello world program listing</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;/* this is a simple hello world program */
+#include &#60;stdio.h&#62;
+
+int main(void)
+{
+  printf("Hello, eCos world!\n");
+  return 0;
+}</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>	How do we compile this program?  Earlier on, when we ran the
+	test case, it had been compiled for us automatically by the
+	<B
+CLASS="COMMAND"
+>make</B
+> sequence, when the kernel and
+	other libraries were built.
+	</P
+><P
+>	  Now to compile a user program which is not part of the
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> distribution, assuming your
+	  current working directory is also where the
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel was built, you can type
+	  this explicit compilation instruction:</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mips-tx39-elf-gcc -g -I//c/ecos-work/install/include -o hello hello.c -L//c/ecos-work/install/lib -Ttarget.ld -nostdlib</B
+></TT
+></P
+><P
+>	  The compilation instruction above contains some standard
+	  <B
+CLASS="COMMAND"
+>gcc</B
+> options (<SPAN
+CLASS="OPTION"
+>-g</SPAN
+> enables
+	  debugging, <SPAN
+CLASS="OPTION"
+>-o hello</SPAN
+> specifies that the
+	  linked program will be called <TT
+CLASS="FILENAME"
+>hello</TT
+>),
+	  as well as some mention of paths
+	  (<SPAN
+CLASS="OPTION"
+>-I//c/ecos-work/install/include</SPAN
+> allows
+	  files like <TT
+CLASS="FILENAME"
+>cyg/kernel/kapi.h</TT
+> to be
+	  found, and <SPAN
+CLASS="OPTION"
+>-L//c/ecos-work/install/lib</SPAN
+>
+	  allows the linker to find <SPAN
+CLASS="OPTION"
+>-Ttarget.ld</SPAN
+>).
+	</P
+><P
+>You can now run the resulting program in the simulator
+	  in gdb, just the way you ran the test case.  The sequence of
+	  steps will be the same:</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Run <B
+CLASS="COMMAND"
+>gdb</B
+> specifying
+	      <SPAN
+CLASS="OPTION"
+>-nw hello.exe</SPAN
+> on the command
+	      line:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mips-tx39-elf-gdb -nw hello.exe</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+></LI
+><LI
+><P
+>Type <B
+CLASS="COMMAND"
+>target sim --board=jmr3904</B
+></P
+></LI
+><LI
+><P
+>Type <B
+CLASS="COMMAND"
+>load</B
+></P
+></LI
+></OL
+></DIV
+><P
+>	  After which you are ready to run the usual gdb commands.
+	  For example, in this case you can simply type
+	  <B
+CLASS="COMMAND"
+>run</B
+> at the <TT
+CLASS="PROMPT"
+>(gdb) </TT
+> prompt
+	  and the program will execute and print the string
+	  <TT
+CLASS="COMPUTEROUTPUT"
+>Hello, eCos world!</TT
+> on your
+	  screen.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="run-an-ecos-test-case.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="a-simple-program-with-two-threads.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Run an eCos test case</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iv.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>A simple program with two threads</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

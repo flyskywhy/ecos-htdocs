@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Managing the package repository</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos User Guides"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Configuration and the Package Repository"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="Reference for pkgconf.tcl"
+HREF="reference-for-pkgconf-tcl.html"><LINK
+REL="NEXT"
+TITLE="Detailed information"
+HREF="detailed-information.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos User Guides</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="reference-for-pkgconf-tcl.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="detailed-information.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MANAGING-THE-PACKAGE-REPOSITORY"
+>Chapter 6. Managing the package repository</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="managing-the-package-repository.html#OVERVIEW"
+>Overview</A
+></DT
+><DT
+><A
+HREF="detailed-information.html"
+>Detailed information</A
+></DT
+></DL
+></DIV
+><H1
+><A
+NAME="OVERVIEW"
+>Overview</A
+></H1
+><P
+>	  A source distribution of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  consists of a number of packages, such as the kernel, the C
+	  library and the µITRON subsystems.  These are individually
+	  versioned in the tree structure of the source code.  This is
+	  to support future distribution on a per-package basis and of
+	  third party packages whose versioning system might be
+	  different.  Future tools will help manage building an
+	  application from a selection of different versions of
+	  different packages.
+	</P
+><P
+>	  The presence of the version information in the source tree
+	  structure might be a hindrance to the use of a separate
+	  source control system such as cvs or SourceSafe(R).  To work
+	  in this way, you can rename all the version components to
+	  some common name thus unifying the structure of source trees
+	  from distinct <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> releases.  "current" is suggested for
+	  this name.
+	</P
+><P
+>	  The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> build system will treat any such name as just
+	  another version of the package(s), and support building in
+	  exactly the same way.  However, performing this rename
+	  invalidates any existing build-trees which referred to the
+	  versioned source tree, so do the rename first, before doing
+	  any other work, and do a complete rebuild afterwards.
+	</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>	    This chapter should only be relevant to people interested
+	    in modifying <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> sources or
+	    using their own source control on
+	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> sources over multiple
+	    releases.</P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="reference-for-pkgconf-tcl.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="detailed-information.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reference for <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Detailed information</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

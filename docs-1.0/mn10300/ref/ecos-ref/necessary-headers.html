@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Necessary headers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Requirements for programs"
+HREF="requirements-for-programs.html"><LINK
+REL="PREVIOUS"
+TITLE="Requirements for programs"
+HREF="requirements-for-programs.html"><LINK
+REL="NEXT"
+TITLE="Necessary link instructions"
+HREF="necessary-link-instructions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="requirements-for-programs.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Requirements for programs</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="necessary-link-instructions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="NECESSARY-HEADERS"
+>Necessary headers</A
+></H1
+><P
+>	  Any program which uses eCos system calls must have
+	  the following line at the top of the file:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#include &#60;cyg/kernel/kapi.h&#62;</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  and the programmer must make sure that
+	  <TT
+CLASS="FILENAME"
+>cyg/kernel/kapi.h</TT
+> is available in the
+	  compiler include path.  This can be done by setting the
+	  <TT
+CLASS="ENVAR"
+>C_INCLUDE_PATH</TT
+> environment variable or by
+	  including the <SPAN
+CLASS="OPTION"
+>-I</SPAN
+> flag on the compiler
+	  command line.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="requirements-for-programs.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="necessary-link-instructions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Requirements for programs</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="requirements-for-programs.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Necessary link instructions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

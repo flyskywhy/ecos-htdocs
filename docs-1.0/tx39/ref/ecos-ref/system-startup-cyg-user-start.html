@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>System startup &#8212; cyg_user_start()</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="System startup"
+HREF="system-startup.html"><LINK
+REL="PREVIOUS"
+TITLE="System startup &#8212; cyg_package_start()"
+HREF="system-startup-cyg-package-start.html"><LINK
+REL="NEXT"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-package-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. System startup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="native-kernel-c-language-api.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SYSTEM-STARTUP-CYG-USER-START"
+>System startup &#8212; cyg_user_start()</A
+></H1
+><P
+>	  This is the normal entry point for your code.  Although a
+	  default empty version is provided by
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, this is a good place to set
+	  up your threads (see <A
+HREF="thread-operations.html"
+>the section called <I
+>Thread operations</I
+> in Chapter 5</A
+>).</P
+><P
+>	  If you are not including the ISO standard C library package
+	  then there will not be a <TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+>
+	  function, so it becomes mandatory to provide this function
+	  (see <A
+HREF="c-library-startup.html"
+>the section called <I
+>C library startup</I
+> in Chapter 10</A
+>).</P
+><P
+>	  To set up your own <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+>
+	  function, create a function by that name with the following
+	  prototype:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_user_start</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  When you return control from
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+>,
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_start()</B
+></TT
+> will then invoke the
+	  scheduler, and any threads you created and resumed in
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+> will be executed.
+	</P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>CAUTION</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>	    Remember that <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+> is
+	    invoked before the scheduler (and frequently the scheduler
+	    is invoked as the last step in
+	    <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+>), so it should not
+	    use any kernel services that require the scheduler.
+	  </P
+></TD
+></TR
+></TABLE
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>If you are supplying your own definition of this
+	    function from a C++ file, make sure it has "C"
+	    linkage.</P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-package-start.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>System startup &#8212; cyg_package_start()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="system-startup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Native kernel C language API</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

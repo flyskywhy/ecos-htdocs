@@ -1,0 +1,454 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Kernel instrumentation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="package-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Synchronization primitives"
+HREF="component-cygpkg-kernel-synch.html"><LINK
+REL="NEXT"
+TITLE="Component: Memory allocators"
+HREF="component-cygpkg-kernel-memory.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-synch.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPONENT-CYGPKG-KERNEL-INSTRUMENT"
+>Component: Kernel instrumentation</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_INSTRUMENT</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>The current release of the kernel contains an initial version of instrumentation
+support. The various parts of the kernel will invoke instrumentation
+routines whenever appropriate events occur, and these will be stored
+in a circular buffer for later reference.
+      </P
+><H2
+><A
+NAME="OPTION-CYGVAR-KERNEL-INSTRUMENT-EXTERNAL-BUFFER"
+>Option: Use buffer provided by the application</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>In most circumstances the kernel should provide the instrumentation
+circular buffer itself. Occasionally application code may wish to
+provide the buffer instead, giving the application code more convenient
+access to the buffer. This also makes it possible to put the circular
+buffer in special areas of memory, for example a region that is shared
+with the host.
+      </P
+><H2
+><A
+NAME="OPTION-CYGNUM-KERNEL-INSTRUMENT-BUFFER-SIZE"
+>Option: Size of instrumentation buffer size</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_INSTRUMENT_BUFFER_SIZE</P
+><H4
+>Type</H4
+><P
+>Count</P
+><H4
+>Description</H4
+><P
+>If kernel instrumentation is enabled then the instrumentation data
+goes into a circular buffer. A larger buffer allows more data to be
+stored, but at a significant cost in memory. The value of this option
+corresponds to the number of entries in the table, and typically each
+entry will require 16 bytes of memory.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-FLAGS"
+>Option: Perform selective instrumentation</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_FLAGS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>The kernel can either collect all instrumentation events, or it can
+filter out events at runtime based on a set of flags. For example
+it would be possible to decide at runtime that only scheduler and
+interrupt instrumentation flags are of interest and that all other
+flags should be ignored. This flag mechanism involves extra code and
+processor cycle overhead in the instrumentation code, so it can be
+disabled if the application developer is interested in all instrumentation
+events.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-SCHED"
+>Option: Instrument the scheduler</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_SCHED</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+scheduling code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-THREAD"
+>Option: Instrument thread operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_THREAD</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+code that manipulates threads.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-INTR"
+>Option: Instrument interrupts</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_INTR</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+interrupt handling code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-MUTEX"
+>Option: Instrument mutex operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_MUTEX</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+mutex code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-CONDVAR"
+>Option: Instrument condition variable operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_CONDVAR</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+condition variable code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-BINSEM"
+>Option: Instrument binary semaphore operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_BINSEM</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+binary semaphore code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-CNTSEM"
+>Option: Instrument counting semaphore operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_CNTSEM</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+counting semaphore code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-MBOXT"
+>Option: Instrument message box operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_MBOXT</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+message box code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-CLOCK"
+>Option: Instrument clock operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_CLOCK</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+real-time clock code.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-ALARM"
+>Option: Instrument alarm-related operations</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_ALARM</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not instrumentation support is compiled into the
+code related to alarm operations.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-INSTRUMENT-USER"
+>Option: Support application-level instrumentation</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_INSTRUMENT_USER</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>It is possible to perform selective instrumentation at run-time. It
+is also possible to disable instrumentation in various kernel components
+at compile-time, thus reducing the code size overheads. This option
+controls whether or not application-level instrumentation gets compiled
+in.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-synch.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Synchronization primitives</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Memory allocators</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

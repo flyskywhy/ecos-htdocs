@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Run an eCos test case</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Programming Tutorial"
+HREF="part-iv.html"><LINK
+REL="PREVIOUS"
+TITLE="Configure and build eCos from source"
+HREF="configure-and-build-ecos-from-source.html"><LINK
+REL="NEXT"
+TITLE="Build and run
+	simple applications"
+HREF="c927.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c927.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="RUN-AN-ECOS-TEST-CASE"
+>Chapter 15. Run an eCos test case</A
+></H1
+><P
+>	Now you are ready to run one of the test programs in the
+	simulated environment (in <A
+HREF="verification.html"
+>the section called <I
+>Verification</I
+> in Chapter 12</A
+> we
+	already demonstrated how to run a prebuilt test on real
+	hardware). To do this you should bring up a command window,
+	either a <B
+CLASS="COMMAND"
+>bash</B
+> shell or an MS-DOS command
+	prompt. Then change to the directory in which you set up your
+	build-tree, and invoke gdb on the test program. To run the
+	<B
+CLASS="COMMAND"
+>bin_sem0.exe</B
+> test (which will test the
+	kernel for the correct creation and destruction of binary
+	semaphores) you can type:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mn10300-elf-gdb <SPAN
+CLASS="OPTION"
+>-nw</SPAN
+>  install/tests/kernel/bin_sem0.exe</B
+></TT
+></P
+><P
+>You should see the following on your screen:</P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 15-1. Starting up <B
+CLASS="COMMAND"
+>gdb</B
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>GNU gdb 4.17-ecos-98r1p1
+Copyright 1998 Free Software Foundation, Inc.
+GDB is free software, covered by the GNU General Public License, and you are
+welcome to change it and/or distribute copies of it under certain conditions.
+Type "show copying" to see the conditions.  This version of GDB is supported
+for customers of Cygnus Solutions.  Type "show warranty" for details.
+This GDB was configured as "--host=i386-cygwin32 --target=mn10300-elf"...
+(gdb)
+
+	</PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>To specify that you are using the simulator target (rather
+	than real hardware) you can type:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target sim --board=stdeval1</B
+></TT
+></P
+><P
+>	You will see the following lines on your screen:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>Connected to the simulator.
+(gdb)
+      </PRE
+></TD
+></TR
+></TABLE
+><P
+>	Now download the program to the (simulator) target with</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+></P
+><P
+>	You should see the following on your screen:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>Loading section .rom_vectors, size 0xc0 lma 0x40000000
+Loading section .text, size 0x1b3b lma 0x400000c0
+Loading section .rodata, size 0x2f4 lma 0x40001bfc
+Loading section .data, size 0x7c lma 0x40001ef0
+Start address 0x40000000
+Transfer rate: 64344 bits in &#60;1 sec.
+(gdb)
+      </PRE
+></TD
+></TR
+></TABLE
+><P
+>You are now ready to run your program as if this were an
+	ordinary debugging session with <B
+CLASS="COMMAND"
+>gdb</B
+>.  If
+	you simply type
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>run</B
+></TT
+></P
+><P
+>	You will see the something like following output:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>Starting program: /ecos-work/./install/tests/kernel/bin_sem0.exe
+PASS:&#60;Binary Semaphore 0 OK&#62;
+EXIT:&#60;done&#62;
+      </PRE
+></TD
+></TR
+></TABLE
+><P
+>	You should kill your <B
+CLASS="COMMAND"
+>gdb</B
+> session with
+	<B
+CLASS="KEYCAP"
+>Control</B
+>+<B
+CLASS="KEYCAP"
+>C</B
+> (since otherwise it will sit in the "idle" thread
+	and use up CPU time).  Then you can type
+	<B
+CLASS="COMMAND"
+>quit</B
+> and you are done.
+      </P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>NOTE: </B
+>	  The release of the GNUPro tools which accompanies
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> comes with the graphical
+	  front end to <B
+CLASS="COMMAND"
+>gdb</B
+>, which will be invoked
+	  if you do not specify the <SPAN
+CLASS="OPTION"
+>-nw</SPAN
+> option to
+	  <B
+CLASS="COMMAND"
+>gdb</B
+>.  For simplicity we have used the
+	  command line version in this tutorial.
+	</P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c927.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configure and build eCos from source</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iv.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Build and run
+	simple applications</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

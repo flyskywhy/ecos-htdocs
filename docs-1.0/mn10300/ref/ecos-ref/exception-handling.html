@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Exception handling</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Priority manipulation"
+HREF="priority-manipulation.html"><LINK
+REL="NEXT"
+TITLE="Interrupt handling"
+HREF="interrupt-handling.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="priority-manipulation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="interrupt-handling.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="EXCEPTION-HANDLING"
+>Exception handling</A
+></H1
+><P
+>	Exception handlers can be installed to deal with various
+	system-level interrupts, such as alignment errors, resets,
+	timers and so forth.  Exception handling is a configurable
+	feature of eCos and is enabled by default.</P
+><P
+>	The range of values for the
+	<TT
+CLASS="PARAMETER"
+><I
+>exception_number</I
+></TT
+> parameter in the
+	functions below is hardware-dependent, as are the individual
+	exceptions.
+      </P
+><P
+>	  The exception handler is a function of the following type:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void cyg_exception_handler_t(
+    cyg_addrword_t    data,
+    cyg_code_t        exception_number,
+    cyg_addrword_t    info
+);</PRE
+></TD
+></TR
+></TABLE
+><P
+><SPAN
+CLASS="TYPE"
+>cyg_exception_handler_t</SPAN
+> is the type used
+	  for functions which are called as a result of an exception.
+	  It is used in the function
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_exception_set_handler()</B
+></TT
+>.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_exception_set_handler</B
+></CODE
+>(cyg_code_t
+	    <VAR
+CLASS="PDPARAM"
+>exception_number</VAR
+>, cyg_exception_handler_t
+	    *<VAR
+CLASS="PDPARAM"
+>new_handler</VAR
+>, cyg_addrword_t
+	    <VAR
+CLASS="PDPARAM"
+>new_data</VAR
+>, cyg_exception_handler_t
+	    **<VAR
+CLASS="PDPARAM"
+>old_handler</VAR
+>, void **<VAR
+CLASS="PDPARAM"
+>old_data</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Replace current exception handler.  This may apply to either
+	  the thread, or to a global exception handler, according to
+	  how exception handling was configured (global or
+	  per-thread). The exception may be ignored, or used to
+	  specify a particular handler.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_exception_call_handler</B
+></CODE
+>(cyg_handle_t
+	  <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>, cyg_code_t
+	  <VAR
+CLASS="PDPARAM"
+>exception_number</VAR
+>, cyg_addrword_t
+	  <VAR
+CLASS="PDPARAM"
+>exception_info</VAR
+>);<P
+></P
+></DIV
+><P
+>Invoke exception handler.</P
+><P
+>	Here are the exception vectors for the MN10300 architecture.
+	Notice that the MN10300 architecture does not really have
+	exceptions, so CYG_EXCEPTION_MIN is 0 and CYG_EXCEPTION_MAX is
+	1.  The lone exception vector has been placed there for
+	possible future high-level exceptions.
+      </P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 5-1. MN10300 exception vectors</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;// The level-specific hardware vectors
+#define CYG_VECTOR_0                    0
+#define CYG_VECTOR_1                    1
+#define CYG_VECTOR_2                    2
+#define CYG_VECTOR_3                    3
+#define CYG_VECTOR_4                    4
+#define CYG_VECTOR_5                    5
+#define CYG_VECTOR_6                    6
+#define CYG_VECTOR_NMI                  7
+
+#define CYG_VSR_MIN                     0
+#define CYG_VSR_MAX                     7
+
+#define CYG_EXCEPTION_MIN               0
+#define CYG_EXCEPTION_MAX               1  </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="priority-manipulation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="interrupt-handling.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Priority manipulation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Interrupt handling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,414 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Where to look if&#8230;</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Documentation Roadmap"
+HREF="part-ii.html"><LINK
+REL="PREVIOUS"
+TITLE="eCos Reference Manual"
+HREF="ecos-reference-manual.html"><LINK
+REL="NEXT"
+TITLE="Installation Guide"
+HREF="part-iii.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="ecos-reference-manual.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="part-iii.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="WHERE-TO-LOOK-IF"
+>Chapter 10. Where to look if&#8230;</A
+></H1
+><P
+>	Now we will step through a list of needs you might have when
+	programming <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, and we will point
+	you to the various parts of the documentation that might help
+	you find answers.
+      </P
+><P
+></P
+><DL
+><P
+><B
+>If you want to</B
+></P
+><DT
+>install <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></DT
+><DD
+><P
+>See <A
+HREF="part-i.html#PART-I-TITLE"
+><I
+>Release Notes</I
+></A
+> and <A
+HREF="part-iii.html#PART-III-TITLE"
+><I
+>Installation Guide</I
+></A
+>.
+	    </P
+></DD
+><DT
+>program with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></DT
+><DD
+><P
+>Use the programming tutorial (see <A
+HREF="part-iv.html#PART-IV-TITLE"
+><I
+>Programming Tutorial</I
+></A
+>) to learn to write and run simple
+	      <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> programs.  After that,
+	      most of the reference manual is appropriate reading.
+	    </P
+></DD
+><DT
+>configure <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> for your
+	    purposes</DT
+><DD
+><P
+></P
+><UL
+><LI
+><P
+>You can learn about the graphical front end to
+		  configuration by reading <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 14</A
+>,
+		  and the part
+		  <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> User
+		    Guides</I
+> called <I
+CLASS="CITETITLE"
+>The
+		    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Configuration
+		    Tool</I
+>.</P
+></LI
+><LI
+><P
+>		  You can also learn about the underlying engine,
+		  called <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>, in the
+		  chapter <I
+CLASS="CITETITLE"
+>Invoking
+		    <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> from the command
+		    line</I
+>, as well as the
+		  <I
+CLASS="CITETITLE"
+>Reference for
+		    <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></I
+>,  in the <I
+CLASS="CITETITLE"
+>eCos User
+		    Guides</I
+>.
+		</P
+></LI
+></UL
+></DD
+><DT
+>see what has changed in the kernel API
+	    (other than the addition of new functionality)</DT
+><DD
+><P
+>Read <A
+HREF="small-changes-in-the-api.html"
+>the section called <I
+>Small changes in the API</I
+> in Chapter 5</A
+></P
+></DD
+><DT
+>find details about the configuration tool</DT
+><DD
+><P
+>	      Read the part of the
+	      <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> User
+		Guides</I
+> called <I
+CLASS="CITETITLE"
+>The
+	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Configuration
+	    Tool</I
+>.
+	    </P
+></DD
+><DT
+>get the whole scoop on any configuration option</DT
+><DD
+><P
+>	      Read the part of the
+	      <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> User
+		Guides</I
+> called <I
+CLASS="CITETITLE"
+>Configuration
+		Option Reference</I
+>.
+	    </P
+></DD
+><DT
+>write or port a µITRON application</DT
+><DD
+><P
+>	      For now, the only information is in the µITRON API chapter
+	      in the <I
+CLASS="CITETITLE"
+>eCos Reference Manual</I
+>, as
+	      well as Dr. Sakamura's book on µITRON which we ship with
+	      this release.  The next release of eCos will include a
+	      tutorial on writing and porting µITRON programs.
+	    </P
+></DD
+><DT
+>run an existing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	    test</DT
+><DD
+><P
+>	      See <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 14</A
+>.
+	    </P
+></DD
+><DT
+>reduce code size</DT
+><DD
+><P
+>	      Code size is already greatly reduced using
+	      <B
+CLASS="COMMAND"
+>gcc</B
+>'s selective linking, but you can
+	      reduce it further by configuring the kernel and the C
+	      library to use different implementations of certain
+	      features and to eliminate unneeded functionality.
+	      
+	    </P
+></DD
+><DT
+>import a new <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> release
+	    into your own source control system</DT
+><DD
+><P
+>	      Read the chapter <I
+CLASS="CITETITLE"
+>Managing the package
+	      repository</I
+> in the
+	      <I
+CLASS="CITETITLE"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> User
+	      Guides</I
+>.
+	    </P
+></DD
+><DT
+>port <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> to a new
+	    platform</DT
+><DD
+><P
+>	      Read the discussion of <I
+CLASS="FIRSTTERM"
+>platform
+		porting</I
+> in the section <I
+CLASS="CITETITLE"
+>Kernel
+		porting notes</I
+> in the appendix
+	      <I
+CLASS="CITETITLE"
+>The eCos Hardware Abstraction Layer
+		(HAL)</I
+> in the <I
+CLASS="CITETITLE"
+>eCos Reference
+		Manual</I
+>.
+	    </P
+></DD
+><DT
+>write a new device driver</DT
+><DD
+><P
+>	      The device driver infrastructure will be changing in the
+	      next release, but some information can be found in
+	      the <I
+CLASS="CITETITLE"
+>eCos Device Drivers</I
+> part of
+	      the <I
+CLASS="CITETITLE"
+>eCos Reference Manual</I
+>.
+	    </P
+></DD
+></DL
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="ecos-reference-manual.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>eCos Reference Manual</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-ii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Installation Guide</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

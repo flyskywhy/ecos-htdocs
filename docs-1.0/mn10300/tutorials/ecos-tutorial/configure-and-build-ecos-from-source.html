@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Configure and build eCos from source</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Programming Tutorial"
+HREF="part-iv.html"><LINK
+REL="PREVIOUS"
+TITLE="Introduction: the quickest way to start programming eCos"
+HREF="programming-tutorial.html"><LINK
+REL="NEXT"
+TITLE="Run an eCos test case"
+HREF="run-an-ecos-test-case.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="programming-tutorial.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="CONFIGURE-AND-BUILD-ECOS-FROM-SOURCE"
+>Chapter 14. Configure and build eCos from source</A
+></H1
+><P
+>	Here is a simple sequence which runs the configuration tool
+	and uses it to build a simple configuration of the kernel
+	library and its tests.</P
+><P
+>	First invoke <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> from the
+	<SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> menu, as was shown earlier in <A
+HREF="software-installation.html#INVOKING-ECOS-FROM-THE-PROGRAM-MENU"
+>Figure 11-1</A
+>.</P
+><P
+>	You are now looking at the configuration tool (see <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-INITIAL"
+>Figure 14-1</A
+>), which has four main
+	elements: the <I
+CLASS="FIRSTTERM"
+>configuration pane</I
+> (top
+	left), the <I
+CLASS="FIRSTTERM"
+>documentation pane</I
+> (top
+	right), the <I
+CLASS="FIRSTTERM"
+>properties table</I
+>
+	(middle-right) and the <I
+CLASS="FIRSTTERM"
+>output pane</I
+>
+	(bottom).  These are described in detail in the
+	<I
+CLASS="CITETITLE"
+>eCos User Guide</I
+>, and this session will
+	only demonstrate one simple run of the program.</P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-INITIAL"
+>Figure 14-1. Configuration tool &#8212; initial screen</A
+></B
+></P
+><P
+><IMG
+SRC="pix/initial.gif"
+ALT=""></P
+></DIV
+><P
+>	In this example you will be making a small modification to the
+	default configuration: we will select ROM startup instead of
+	RAM startup, which makes it easier to run with the
+	simulator (see <A
+HREF="a-note-on-using-the-simulator.html"
+>Chapter 7</A
+>).  Select the
+	<SPAN
+CLASS="GUIBUTTON"
+>eCos HAL</SPAN
+> package, then select your
+	architecture component, followed by your board, and for the
+	<SPAN
+CLASS="GUIBUTTON"
+>Startup type</SPAN
+>	option select
+	<SPAN
+CLASS="GUIMENUITEM"
+>rom</SPAN
+>.  This is shown in
+	<A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-SELECTING-MN10300-ROM-STARTUP"
+>Figure 14-2</A
+>.
+      </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-SELECTING-MN10300-ROM-STARTUP"
+>Figure 14-2. Configuration tool &#8212; selecting MN10300 ROM startup</A
+></B
+></P
+><P
+><IMG
+SRC="pix/MNstart.gif"
+ALT=""></P
+></DIV
+><P
+>Now select the <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> menu and the
+	<SPAN
+CLASS="GUIMENUITEM"
+>Library</SPAN
+> menu item, as shown in
+	<A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-MENU-BUILD-LIBRARY"
+>Figure 14-3</A
+>.
+      </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-MENU-BUILD-LIBRARY"
+>Figure 14-3. Configuration tool &#8212; selecting the build library
+	  menu item</A
+></B
+></P
+><P
+><IMG
+SRC="pix/menu-build-library.gif"
+ALT=""></P
+></DIV
+><P
+>	The configuration tool then prompts you with a dialog box
+	allowing you to specify a directory in which to place your
+	build tree.  You can use the default (which should be the
+	desktop), but it is a good idea to make a subdirectory, for
+	example called <TT
+CLASS="FILENAME"
+>ecos-work</TT
+>.
+      </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-BUILD-DIALOG"
+>Figure 14-4. Configuration tool &#8212; build dialog</A
+></B
+></P
+><P
+><IMG
+SRC="pix/build-dialog.gif"
+ALT=""></P
+></DIV
+><P
+>After you select a folder fold the build tree, the
+	configuration tool will configure the sources, prepare a build
+	tree, and start building the <TT
+CLASS="FILENAME"
+>libtarget.a</TT
+>
+	library, which contains the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	kernel and other packages.</P
+><P
+>	The output from the configuration process and the building of
+	<TT
+CLASS="FILENAME"
+>libtarget.a</TT
+> will be shown in the output
+	pane.  You can see a mid-build screen shot of the output pane
+	in <A
+HREF="configure-and-build-ecos-from-source.html#CONFIG-TOOL-DURING-BUILD"
+>Figure 14-5</A
+>.
+      </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-DURING-BUILD"
+>Figure 14-5. Configuration tool &#8212; during the build</A
+></B
+></P
+><P
+><IMG
+SRC="pix/during-build.gif"
+ALT=""></P
+></DIV
+><P
+>	You now have a kernel with other packages in
+	<TT
+CLASS="FILENAME"
+>libtarget.a</TT
+>, and could already start
+	building your own application, but it is useful to take one
+	last step and build the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> tests
+	for your particular configuration.
+      </P
+><P
+>	You can do this by going to the <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> menu
+	and selecting the <SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+> item.
+	Notice that you could have selected
+	<SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+> instead of
+	<SPAN
+CLASS="GUIMENUITEM"
+>Library</SPAN
+> in the earlier step and
+	it would have built <I
+CLASS="EMPHASIS"
+>both</I
+> the library and
+	the tests.
+      </P
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="CONFIG-TOOL-MENU-BUILD-TESTS"
+>Figure 14-6. Configuration tool &#8212; selecting the build tests
+	  menu item</A
+></B
+></P
+><P
+><IMG
+SRC="pix/menu-build-tests.gif"
+ALT=""></P
+></DIV
+><P
+>	The next chapter will guide you through running one of the
+	test cases we just built using <B
+CLASS="COMMAND"
+>gdb</B
+> and the
+	simulator for your architecture.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="programming-tutorial.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Introduction: the quickest way to start programming eCos</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iv.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Run an eCos test case</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

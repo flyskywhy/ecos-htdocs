@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Philosophy of device drivers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Device Drivers"
+HREF="part-iii.html"><LINK
+REL="PREVIOUS"
+TITLE="eCos Device Drivers"
+HREF="part-iii.html"><LINK
+REL="NEXT"
+TITLE="Managing request queues"
+HREF="managing-request-queues.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part-iii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="managing-request-queues.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PHILOSOPHY-OF-DEVICE-DRIVERS"
+>Chapter 7. Philosophy of device drivers</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="philosophy-of-device-drivers.html#SIMPLE-DEVICE-DRIVERS"
+>Simple device drivers</A
+></DT
+><DT
+><A
+HREF="managing-request-queues.html"
+>Managing request queues</A
+></DT
+><DT
+><A
+HREF="connecting-to-standard-i-o.html"
+>Connecting to standard I/O</A
+></DT
+><DT
+><A
+HREF="philosophy-of-device-drivers3029.html"
+>Device drivers shipped with eCos</A
+></DT
+><DT
+><A
+HREF="philosophy-of-device-drivers3033.html"
+>Language choice</A
+></DT
+></DL
+></DIV
+><P
+>	We start with some general comments on programming device
+	drivers for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.  These comments
+	express ideas on how device drivers for
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> <I
+CLASS="EMPHASIS"
+>should</I
+> be
+	written, but some of these ideas are likely to evolve in
+	future releases.
+      </P
+><H1
+><A
+NAME="SIMPLE-DEVICE-DRIVERS"
+>Simple device drivers</A
+></H1
+><P
+>	  Most programmers who use real time operating systems craft
+	  their own device drivers for very particular tasks, and the
+	  support they need from the kernel is a convenient way of
+	  installing interrupt handlers for the interrupts generated
+	  by their devices.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="managing-request-queues.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>eCos Device Drivers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Managing request queues</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

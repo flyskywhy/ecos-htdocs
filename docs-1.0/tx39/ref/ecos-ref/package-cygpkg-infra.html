@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: Infrastructure</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="part-v.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: TX39 architecture"
+HREF="package-cygpkg-hal-tx39.html"><LINK
+REL="NEXT"
+TITLE="Component: Startup options"
+HREF="component-cygpkg-infra-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="package-cygpkg-hal-tx39.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-infra-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-INFRA"
+>Chapter 12. Package: Infrastructure</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-infra.html#COMPONENT-CYGPKG-INFRA-DEBUG"
+>Component: Asserts &#38; Tracing</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-infra-startup.html"
+>Component: Startup options</A
+></DT
+></DL
+></DIV
+><H4
+>Macro name</H4
+><P
+>CYGPKG_INFRA</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>Common types and useful macros. Tracing and assertion facilities.
+Package startup options.
+      </P
+><H1
+><A
+NAME="COMPONENT-CYGPKG-INFRA-DEBUG"
+>Component: Asserts &#38; Tracing</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_INFRA_DEBUG</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>The eCos source code contains a significant amount of internal debugging
+support, in the form of assertions and tracing. Assertions check at
+runtime that various conditions are as expected; if not, execution
+is halted. Tracing takes the form of text messages that are output
+whenever certain events occur, or whenever functions are called or
+return. The most important property of these checks and messages is
+that they are not required for the program to run. It is prudent to
+develop software with assertions enabled, but disable them when making
+a product release, thus removing the overhead of that checking. It
+is possible to enable assertions and tracing independently. There
+are also options controlling the exact behaviour of the assertion
+and tracing facilities, thus giving users finer control over the code
+and data size requirements.
+      </P
+><H2
+><A
+NAME="COMPONENT-CYGDBG-USE-ASSERTS"
+>Component: Use asserts</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_USE_ASSERTS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>If this option is defined, asserts in the code are tested. Assert
+functions (CYG_ASSERT()) are defined in 'include/cyg/infra/cyg_ass.h'
+within the 'install' tree. If it is not defined, these result in no
+additional object code and no checking of the asserted conditions.
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-PRECONDITIONS"
+>Option: Preconditions</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_PRECONDITIONS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option allows individual control of preconditions. A precondition
+is one type of assert, which it is useful to control separately from
+more general asserts. The function is CYG_PRECONDITION(condition,msg).
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-POSTCONDITIONS"
+>Option: Postconditions</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_POSTCONDITIONS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option allows individual control of postconditions. A postcondition
+is one type of assert, which it is useful to control separately from
+more general asserts. The function is CYG_POSTCONDITION(condition,msg).
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-LOOP-INVARIANTS"
+>Option: Loop invariants</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_LOOP_INVARIANTS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option allows individual control of loop invariants. A loop invariant
+is one type of assert, which it is useful to control separately from
+more general asserts, particularly since a loop invariant is typically
+evaluated a great many times when used correctly. The function is
+CYG_LOOP_INVARIANT(condition,msg).
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-ASSERT-MESSAGE"
+>Option: Use assert text</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_ASSERT_MESSAGE</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>All assertions within eCos contain a text message which should give
+some information about the condition being tested. These text messages
+will end up being embedded in the application image and hence there
+is a significant penalty in terms of image size. It is possible to
+suppress the use of these messages by disabling this option. This
+results in smaller code size, but there is less human-readable information
+if an assertion actually gets triggered.
+      </P
+><H2
+><A
+NAME="COMPONENT-CYGDBG-USE-TRACING"
+>Component: Use tracing</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_USE_TRACING</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>If this option is defined, tracing operations result in output or
+logging, depending on other options. This may have adverse effects
+on performance, if the time taken to output message overwhelms the
+available CPU power or output bandwidth. Trace functions (CYG_TRACE())are
+defined in 'include/cyg/infra/cyg_trac.h' within the 'install' tree.
+If it is not defined, these result in no additional object code and
+no trace information.
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-FUNCTION-REPORTS"
+>Option: Trace function reports</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_FUNCTION_REPORTS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option allows individual control of function entry/exit tracing,
+independent of more general tracing output. This may be useful to
+remove clutter from a trace log.
+      </P
+><H3
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-TRACE-MESSAGE"
+>Option: Use trace text</A
+></H3
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_TRACE_MESSAGE</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>All trace calls within eCos contain a text message which should give
+some information about the circumstances. These text messages will
+end up being embedded in the application image and hence there is
+a significant penalty in terms of image size. It is possible to suppress
+the use of these messages by disabling this option. This results in
+smaller code size, but there is less human-readable information available
+in the trace output, possibly only filenames and line numbers.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-TRACE-ASSERT-NULL"
+>Option: Null output</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_TRACE_ASSERT_NULL</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>A null output module which is useful when debugging interactively;
+the output routines can be breakpointed rather than have them actually
+'print' something.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-TRACE-ASSERT-SIMPLE"
+>Option: Simple output</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_TRACE_ASSERT_SIMPLE</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>An output module which produces simple output from tracing and assertion
+events.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-TRACE-ASSERT-FANCY"
+>Option: Fancy output</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_TRACE_ASSERT_FANCY</P
+><H4
+>Type</H4
+><P
+>Radio</P
+><H4
+>Description</H4
+><P
+>An output module which produces fancy output from tracing and assertion
+events.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-INFRA-DEBUG-FUNCTION-PSEUDOMACRO"
+>Option: Use function names</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_INFRA_DEBUG_FUNCTION_PSEUDOMACRO</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>All trace and assert calls within eCos contain a reference to the
+builtin macro '__PRETTY_FUNCTION__', which evaluates to a string containing
+the name of the current function. This is useful when reading a trace
+log. It is possible to suppress the use of the function name by disabling
+this option. This results in smaller code size, but there is less
+human-readable information available in the trace output, possibly
+only filenames and line numbers.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="package-cygpkg-hal-tx39.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-infra-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: TX39 architecture</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-v.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Startup options</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

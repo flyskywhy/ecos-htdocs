@@ -1,0 +1,218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: C Library</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="part-v.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Version information"
+HREF="component-cygpkg-uitron-version.html"><LINK
+REL="NEXT"
+TITLE="Component: String functions"
+HREF="component-cygpkg-libc-string.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-version.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libc-string.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-LIBC"
+>Chapter 15. Package: C Library</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-libc.html#OPTION-CYGIMP-LIBC-CTYPE-INLINES"
+>Option: Inline versions of &#60;ctype.h&#62; functions</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-string.html"
+>Component: String functions</A
+></DT
+><DT
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Option: Inline version of the longjmp() function</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-stdlib.html"
+>Component: Standard utility functions</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Component: Standard Input/Output functions</A
+></DT
+><DT
+><A
+HREF="component-cygsem-libc-thread-safety.html"
+>Component: Thread safety</A
+></DT
+><DT
+><A
+HREF="option-cygnum-libc-max-locale-name-size.html"
+>Option: Size of locale name strings</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-startup.html"
+>Component: ISO C startup/termination</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-trace.html"
+>Component: Tracing output levels in C library</A
+></DT
+></DL
+></DIV
+><H4
+>Macro name</H4
+><P
+>CYGPKG_LIBC</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This package enables compatibility with the ISO C standard - ISO/IEC
+9899:1990. This allows the user application to use well known standard
+C library functions, and in eCos starts a thread to invoke the user
+function main()
+      </P
+><H1
+><A
+NAME="OPTION-CYGIMP-LIBC-CTYPE-INLINES"
+>Option: Inline versions of &#60;ctype.h&#62; functions</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGIMP_LIBC_CTYPE_INLINES</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option chooses whether the simple character classification and
+conversion functions (e.g. isupper(), isalpha(), toupper(), etc.)
+from &#60;ctype.h&#62; are available as inline functions. This may improve
+performance and as the functions are small, may even improve code
+size.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-version.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libc-string.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Version information</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-v.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: String functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

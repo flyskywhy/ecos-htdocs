@@ -1,0 +1,664 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Interrupt handling</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Exception handling"
+HREF="exception-handling.html"><LINK
+REL="NEXT"
+TITLE="Counters, clocks and alarms"
+HREF="counters-clocks-and-alarms.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="exception-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="INTERRUPT-HANDLING"
+>Interrupt handling</A
+></H1
+><P
+>Interrupt handling is by nature machine-specific.  The
+	  eCos kernel aims to provide efficiency and flexibility in
+	  this area, while maintaining a very low interrupt latency.
+	  To allow the programmer direct access to hardware, the
+	  semantics and the interface can vary from one architecture
+	  to another.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;typedef void        cyg_VSR_t();
+typedef cyg_uint32  cyg_ISR_t(cyg_vector_t vector,
+                              cyg_addrword_t data);
+typedef void        cyg_DSR_t(cyg_vector_t vector,
+                              cyg_ucount32 count,
+                              cyg_addrword_t data);
+
+enum cyg_ISR_results
+{
+    CYG_ISR_HANDLED  = 1,     /* Interrupt was handled */
+    CYG_ISR_CALL_DSR = 2      /* Schedule DSR          */
+}; </PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_interrupt_create</B
+></CODE
+>(cyg_vector_t
+	    <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_priority_t
+	    <VAR
+CLASS="PDPARAM"
+>priority</VAR
+>, cyg_addrword_t
+	    <VAR
+CLASS="PDPARAM"
+>data</VAR
+>, cyg_ISR_t *<VAR
+CLASS="PDPARAM"
+>isr</VAR
+>, cyg_DSR_t *<VAR
+CLASS="PDPARAM"
+>dsr</VAR
+>, cyg_handle_t
+	    *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_interrupt
+	    *<VAR
+CLASS="PDPARAM"
+>intr</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Creates an interrupt object and returns a handle to it. The
+	  object contains information about which interrupt
+	  <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+> to use and the ISR and DSR
+	  that will be called after the interrupt object is attached.
+	  The interrupt object will be allocated in the memory passed
+	  in the <TT
+CLASS="PARAMETER"
+><I
+>intr</I
+></TT
+> parameter.  The interrupt
+	  object is not immediately attached; it must be attached with
+	  the <TT
+CLASS="FUNCTION"
+><B
+>cyg_interrupt_attach()</B
+></TT
+> call.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_interrupt_delete</B
+></CODE
+>(cyg_handle_t
+	    <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>Detaches the <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+> from the
+	  vector and frees the corresponding memory.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_interrupt_attach</B
+></CODE
+>(cyg_handle_t
+	    <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Attaches <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+>.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_interrupt_detach</B
+></CODE
+>(cyg_handle_t
+	    <VAR
+CLASS="PDPARAM"
+>interrupt</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Detaches <TT
+CLASS="PARAMETER"
+><I
+>interrupt</I
+></TT
+>.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>cyg_interrupt_get_vsr</B
+></CODE
+>(cyg_vector_t
+	    <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_VSR_t **<VAR
+CLASS="PDPARAM"
+>vsr</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Returns a pointer to the VSR currently installed on
+	  <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_set_vsr</B
+></CODE
+>(cyg_vector_t
+	  <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_VSR_t *<VAR
+CLASS="PDPARAM"
+>vsr</VAR
+>);<P
+></P
+></DIV
+><P
+>        Sets the current VSR on <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>.  A VSR
+	directly attaches to the hardware interrupt vector and needs
+	to be written in assembler.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_disable</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>        Disables all interrupts.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_enable</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>        Enables all interrupts.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_mask</B
+></CODE
+>(cyg_vector_t
+	  <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Programs the interrupt controller to stop delivery of
+	  interrupts on <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>.  On some
+	  architectures this will also disable all lower priority
+	  interrupts while on others they remain enabled.
+        </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_unmask</B
+></CODE
+>(cyg_vector_t
+	  <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Programs the interrupt controller to allow delivery of
+	  interrupts on the given interrupt
+	  <TT
+CLASS="PARAMETER"
+><I
+>vector</I
+></TT
+>.
+        </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_acknowledge</B
+></CODE
+>(cyg_vector_t
+	  <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Should be used from inside an ISR to acknowledge receipt of
+	  the interrupt. The interrupt must be acknowledged.  If an
+	  interrupt is not acknowledged, the interrupt may trigger
+	  immediately after the ISR returns, causing the ISR to be
+	  called again in a loop.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_interrupt_configure</B
+></CODE
+>(cyg_vector_t
+	  <VAR
+CLASS="PDPARAM"
+>vector</VAR
+>, cyg_bool_t <VAR
+CLASS="PDPARAM"
+>level</VAR
+>, cyg_bool_t <VAR
+CLASS="PDPARAM"
+>up</VAR
+>);<P
+></P
+></DIV
+><P
+>        On some interrupt controllers the way an interrupt is detected
+        may be configured. The <TT
+CLASS="PARAMETER"
+><I
+>level</I
+></TT
+> parameter
+        chooses between level- or edge-triggered interrupts. The
+	<TT
+CLASS="PARAMETER"
+><I
+>up</I
+></TT
+> parameter chooses between high and
+        low level for level triggered interrupts or rising and falling
+        edges for edge triggered interrupts.
+        </P
+><P
+>	Here are the interrupt vectors for the MN10300 architecture.
+      </P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 5-2. MN10300 interrupt vectors</B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;// The decoded interrupts
+
+#define CYG_VECTOR_NMIRQ                0
+#define CYG_VECTOR_WATCHDOG             1
+#define CYG_VECTOR_SYSTEM_ERROR         2
+#define CYG_VECTOR_RESERVED_3           3
+
+#define CYG_VECTOR_RESERVED_4           4
+#define CYG_VECTOR_RESERVED_5           5
+#define CYG_VECTOR_RESERVED_6           6
+#define CYG_VECTOR_RESERVED_7           7
+
+#define CYG_VECTOR_TIMER_0              8
+#define CYG_VECTOR_TIMER_1              9
+#define CYG_VECTOR_TIMER_2              10
+#define CYG_VECTOR_TIMER_3              11
+
+#define CYG_VECTOR_TIMER_4              12
+#define CYG_VECTOR_TIMER_5              13
+#define CYG_VECTOR_TIMER_6              14
+#define CYG_VECTOR_TIMER_7              15
+
+#define CYG_VECTOR_TIMER_8              16
+#define CYG_VECTOR_TIMER_8_COMPARE_A    17
+#define CYG_VECTOR_TIMER_8_COMPARE_B    18
+#define CYG_VECTOR_RESERVED_19          19
+
+#define CYG_VECTOR_TIMER_9              20
+#define CYG_VECTOR_TIMER_9_COMPARE_A    21
+#define CYG_VECTOR_TIMER_9_COMPARE_B    22
+#define CYG_VECTOR_RESERVED_23          23
+
+#define CYG_VECTOR_TIMER_10             24
+#define CYG_VECTOR_TIMER_10_COMPARE_A   25
+#define CYG_VECTOR_TIMER_10_COMPARE_B   26
+#define CYG_VECTOR_TIMER_10_COMPARE_C   27
+
+#define CYG_VECTOR_TIMER_11             28
+#define CYG_VECTOR_TIMER_11_COMPARE_A   29
+#define CYG_VECTOR_TIMER_11_COMPARE_B   30
+#define CYG_VECTOR_TIMER_11_COMPARE_C   31
+
+#define CYG_VECTOR_TIMER_12             32
+#define CYG_VECTOR_TIMER_12_COMPARE_A   33
+#define CYG_VECTOR_TIMER_12_COMPARE_B   34
+#define CYG_VECTOR_TIMER_12_COMPARE_C   35
+
+#define CYG_VECTOR_TIMER_11_COMPARE_D   36
+#define CYG_VECTOR_TIMER_12_COMPARE_D   37
+#define CYG_VECTOR_RESERVED_38          38
+#define CYG_VECTOR_RESERVED_39          39
+
+#define CYG_VECTOR_DMA0                 40
+#define CYG_VECTOR_RESERVED_41          41
+#define CYG_VECTOR_RESERVED_42          42
+#define CYG_VECTOR_RESERVED_43          43
+
+#define CYG_VECTOR_DMA1                 44
+#define CYG_VECTOR_RESERVED_45          45
+#define CYG_VECTOR_RESERVED_46          46
+#define CYG_VECTOR_RESERVED_47          47
+
+#define CYG_VECTOR_DMA2                 48
+#define CYG_VECTOR_RESERVED_49          49
+#define CYG_VECTOR_RESERVED_50          50
+#define CYG_VECTOR_RESERVED_51          51
+
+#define CYG_VECTOR_DMA3                 52
+#define CYG_VECTOR_RESERVED_53          53
+#define CYG_VECTOR_RESERVED_54          54
+#define CYG_VECTOR_RESERVED_55          55
+
+#define CYG_VECTOR_SERIAL_0_RX          56
+#define CYG_VECTOR_SERIAL_0_TX          57
+#define CYG_VECTOR_RESERVED_58          58
+#define CYG_VECTOR_RESERVED_59          59
+
+#define CYG_VECTOR_SERIAL_1_RX          60
+#define CYG_VECTOR_SERIAL_1_TX          61
+#define CYG_VECTOR_RESERVED_62          62
+#define CYG_VECTOR_RESERVED_63          63
+
+#define CYG_VECTOR_EXTERNAL_0           64
+#define CYG_VECTOR_RESERVED_65          65
+#define CYG_VECTOR_RESERVED_66          66
+#define CYG_VECTOR_RESERVED_67          67
+
+#define CYG_VECTOR_EXTERNAL_1           68
+#define CYG_VECTOR_RESERVED_69          69
+#define CYG_VECTOR_RESERVED_70          70
+#define CYG_VECTOR_RESERVED_71          71
+
+#define CYG_VECTOR_EXTERNAL_2           72
+#define CYG_VECTOR_RESERVED_73          73
+#define CYG_VECTOR_RESERVED_74          74
+#define CYG_VECTOR_RESERVED_75          75
+
+#define CYG_VECTOR_EXTERNAL_3           76
+#define CYG_VECTOR_RESERVED_77          77
+#define CYG_VECTOR_RESERVED_78          78
+#define CYG_VECTOR_RESERVED_79          79
+
+#define CYG_VECTOR_EXTERNAL_4           80
+#define CYG_VECTOR_RESERVED_81          81
+#define CYG_VECTOR_RESERVED_82          82
+#define CYG_VECTOR_RESERVED_83          83
+
+#define CYG_VECTOR_EXTERNAL_5           84
+#define CYG_VECTOR_RESERVED_85          85
+#define CYG_VECTOR_RESERVED_86          86
+#define CYG_VECTOR_RESERVED_87          87
+
+#define CYG_VECTOR_EXTERNAL_6           88
+#define CYG_VECTOR_RESERVED_89          89
+#define CYG_VECTOR_RESERVED_90          90
+#define CYG_VECTOR_RESERVED_91          91
+
+#define CYG_VECTOR_EXTERNAL_7           92
+#define CYG_VECTOR_RESERVED_93          93
+#define CYG_VECTOR_RESERVED_94          94
+#define CYG_VECTOR_RESERVED_95          95
+
+#define CYG_VECTOR_AD_CONVERSION        96
+#define CYG_VECTOR_RESERVED_97          97
+#define CYG_VECTOR_RESERVED_98          98
+#define CYG_VECTOR_RESERVED_99          99
+
+#define CYG_ISR_MIN                     0
+#define CYG_ISR_MAX                     99 </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="exception-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="counters-clocks-and-alarms.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Exception handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Counters, clocks and alarms</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

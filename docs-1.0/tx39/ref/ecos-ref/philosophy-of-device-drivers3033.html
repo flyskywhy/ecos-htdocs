@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Language choice</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Philosophy of device drivers"
+HREF="philosophy-of-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="Device drivers shipped with eCos"
+HREF="philosophy-of-device-drivers3029.html"><LINK
+REL="NEXT"
+TITLE="Writing a device driver"
+HREF="writing-a-device-driver.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="philosophy-of-device-drivers3029.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Philosophy of device drivers</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="writing-a-device-driver.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="AEN3033"
+>Language choice</A
+></H1
+><P
+>	The device drivers shipped with
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> are written in C++, as is the
+	eCos kernel.  An <SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+> base class (along
+	with derived classes for use with serial drivers) is provided,
+	and users can derive their own classes for I/O request
+	management from this class.</P
+><P
+>	  The mechanism for generating function tables from the C++
+	  I/O classes is also only available for C++ programmers.
+	  Note, though, that these mechanisms are only needed by
+	  somewhat more complex device drivers that need request queue
+	  management or integration to standard I/O. Simpler device
+	  drivers can be written in C with no loss.
+	</P
+><P
+>	  There is a drawback to writing device drivers in C++: the
+	  first is that in this version of
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, the C++ kernl API is not
+	  yet standardized, and is subject to change.  In contrast the
+	  C system call interface (<A
+HREF="native-kernel-c-language-api.html"
+>Chapter 5</A
+>) is standardized
+	  and documented.  In addition, many embedded system
+	  programmers are accustomed to writing device drivers in
+	  C.</P
+><P
+>	  Future versions of eCos will present a stable kernel C++
+	  API, as well as mechanisms for C device drivers to use IORBs
+	  and connect with standard I/O.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="philosophy-of-device-drivers3029.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="writing-a-device-driver.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Device drivers shipped with eCos</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="philosophy-of-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Writing a device driver</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

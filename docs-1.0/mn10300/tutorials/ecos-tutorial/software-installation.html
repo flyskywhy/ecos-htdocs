@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Software installation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="Getting started with eCos"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Installation Guide"
+HREF="part-iii.html"><LINK
+REL="PREVIOUS"
+TITLE="Installation Guide"
+HREF="part-iii.html"><LINK
+REL="NEXT"
+TITLE="MN10300 Hardware
+	Setup"
+HREF="mn10300-hardware-setup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting started with eCos</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="part-iii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="mn10300-hardware-setup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SOFTWARE-INSTALLATION"
+>Chapter 11. Software installation</A
+></H1
+><P
+>	The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> software and its
+	supporting utilities are supplied on a single CDROM for
+	installation on a PC-compatible computer running Microsoft
+	Windows NT 4.0. The application of NT 4.0 Service Pack 3 is
+	recommended prior to installation of
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. The following components are
+	provided:
+	<P
+></P
+><UL
+><LI
+><P
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> source
+	      code.</P
+></LI
+><LI
+><P
+>Pre-built <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> libraries
+	      and tests.</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	      documentation.</P
+></LI
+><LI
+><P
+>The Cygnus GNUPro compiler toolchain for
+	      <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> source code
+	      compilation.</P
+></LI
+><LI
+><P
+>The Cygnus Cygwin32 environment: this product
+	      provides a POSIX compatibility layer on to of Windows
+	      NT, and supports the GNUPro tools on Windows
+	      NT.</P
+></LI
+><LI
+><P
+>The &#8220;unsupported GNU utilities&#8221;.  These
+	      are a collection of utilities that developers,
+	      particularly those with a UNIX background, will find
+	      useful. However they are not officially supported by
+	      Cygnus.</P
+></LI
+><LI
+><P
+>	      Documentation for the GNUPro tools, including a user
+	      guide for the particular evaluation board being used to
+	      run <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.</P
+></LI
+></UL
+>
+      </P
+><P
+>The software installation process involves a number of
+	installation utilities. Some familiarity with Windows NT is
+	assumed.</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>	    Start installing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> by
+	    invoking the file <B
+CLASS="COMMAND"
+>Setup.exe</B
+> on the
+	    CDROM. This will start the installation procedure.  Note
+	    that if you have the autorun feature enabled, Windows NT
+	    will run <B
+CLASS="COMMAND"
+>Setup.exe</B
+> automatically.
+	  </P
+></LI
+><LI
+><P
+>	    The setup program will start by offering to install the
+	    GNUPro Toolkit for your target architecture (if it is not
+	    already installed).  You should click the
+	    <SPAN
+CLASS="GUIBUTTON"
+>Ok</SPAN
+> button to let this happen.
+	  </P
+></LI
+><LI
+><P
+>	    You will be prompted for a path in which to install the
+	    GNUPro tools.  The default will be in the
+	    <TT
+CLASS="FILENAME"
+>\Program Files\Cygnus Solutions</TT
+>
+	    hierarchy (usually on drive <TT
+CLASS="FILENAME"
+>C:</TT
+>), but
+	    you should make sure that you have at least
+	    171
+	    megabytes available on that partition (if you do not
+	    install source).  It will also  offer to install the
+	    source code and documentation for the compiler tools.  If
+	    you need the source to some run-time components, like
+	    <TT
+CLASS="FILENAME"
+>libgcc.a</TT
+>, you might want to install
+	    the source code.  This will double the disk space
+	    requirement for the GNUPro toolkit.
+	  </P
+></LI
+><LI
+><P
+>	    Then the setup program will offer to install the GNU
+	    unsupported tools.  You should click the
+	    <SPAN
+CLASS="GUIBUTTON"
+>Ok</SPAN
+> button to let this happen.
+	  </P
+></LI
+><LI
+><P
+>	    You will be prompted for a path in which to install the
+	    unsupported tools.  The default will be in the
+	    <TT
+CLASS="FILENAME"
+>C:\Program Files\Cygnus Solutions</TT
+>
+	    hierarchy, but you should make sure that you have at least
+	    45 megabytes available on the chosen partition.  It will
+	    then offer to install the source code and documentation
+	    for the unsupported tools.  We recommend that you install
+	    the documentation, but not the source code, unless you are
+	    interested in modifying or recompiling the GNU unsupported
+	    tools.
+	  </P
+></LI
+><LI
+><P
+>	    Finally the actual <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	    installation procedure will begin.  You should click
+	    <SPAN
+CLASS="GUIBUTTON"
+>Ok</SPAN
+> button to let this
+	    happen.</P
+></LI
+><LI
+><P
+>	    The default path offered for
+	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> installation will be
+	    <TT
+CLASS="FILENAME"
+>C:\Program Files\Cygnus Solutions\eCos</TT
+>.  
+	    You may change this path, and indeed you will need to
+	    change it if you do not have at least
+	    65
+	    megabytes available on that partition.  
+	  </P
+></LI
+><LI
+><P
+>	    The installation should exit normally, offering to show
+	    you the <TT
+CLASS="FILENAME"
+>README</TT
+> file, which will
+	    contain any last minute information and a list of known
+	    problems detected after this document was printed. Once
+	    you exit, you can start <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> or
+	    view the online documentation by clicking the
+	    <SPAN
+CLASS="GUIMENU"
+>Start</SPAN
+> button and selecting
+	    <SPAN
+CLASS="GUISUBMENU"
+>Programs</SPAN
+> and then
+	    <SPAN
+CLASS="GUISUBMENU"
+>Cygnus eCos</SPAN
+>, and then choosing an
+	    option within this folder, as illustrated in
+	    <A
+HREF="software-installation.html#INVOKING-ECOS-FROM-THE-PROGRAM-MENU"
+>Figure 11-1</A
+>.
+	  </P
+></LI
+></OL
+></DIV
+><DIV
+CLASS="FIGURE"
+><P
+><B
+><A
+NAME="INVOKING-ECOS-FROM-THE-PROGRAM-MENU"
+>Figure 11-1. Invoking eCos from the Program menu</A
+></B
+></P
+><P
+><IMG
+SRC="pix/program-menu-shot.gif"
+ALT=""></P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="mn10300-hardware-setup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Installation Guide</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>MN10300 Hardware
+	Setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

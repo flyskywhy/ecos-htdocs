@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Option: Size of locale name strings</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C Library"
+HREF="package-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Thread safety"
+HREF="component-cygsem-libc-thread-safety.html"><LINK
+REL="NEXT"
+TITLE="Component: ISO C startup/termination"
+HREF="component-cygpkg-libc-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygsem-libc-thread-safety.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: C Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libc-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="OPTION-CYGNUM-LIBC-MAX-LOCALE-NAME-SIZE"
+>Option: Size of locale name strings</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGNUM_LIBC_MAX_LOCALE_NAME_SIZE</P
+><H4
+>Type</H4
+><P
+>Count</P
+><H4
+>Description</H4
+><P
+>This option controls the maximum size of locale names and is used,
+among other things to instantiate a static string used as a return
+value from the setlocale() function. When requesting the current locale
+settings with LC_ALL, a string must be constructed to contain this
+data, rather than just returning a constant string. This string data
+is stored in the static string. This depends on the length of locale
+names, hence this option. If just the C locale is present, this option
+can be set as low as 2.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygsem-libc-thread-safety.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libc-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Thread safety</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: ISO C startup/termination</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

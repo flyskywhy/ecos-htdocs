@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Build Options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos User Guides"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="View Settings"
+HREF="view-settings.html"><LINK
+REL="NEXT"
+TITLE="Building"
+HREF="building.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos User Guides</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="view-settings.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="building.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="BUILD-OPTIONS"
+>Build Options</A
+></H1
+><P
+>You can use the Build-&#62;Options menu item to change the
+	way the Configuration Tool operates on the data and the
+	settings applied to builds. </P
+><H2
+><A
+NAME="PROCESSING-TAB"
+>Processing Tab</A
+></H2
+><P
+>The <I
+CLASS="FIRSTTERM"
+>processing tab</I
+> controls
+	      the way in which header file output is generated.</P
+><P
+><IMG
+SRC="pix/Image46.gif"
+ALT=""></P
+><P
+>The first group of controls affects the output in
+	      the header files:</P
+><P
+></P
+><UL
+><LI
+><P
+>Brief Description</P
+><P
+>Check this item if you wish a brief description
+		  of each item to be included as a comment in the
+		  header file. The brief description will be that
+		  displayed in the floating help window.</P
+></LI
+><LI
+><P
+>URL</P
+><P
+>Check this item if you wish the documentation
+		  URL for each item to be included as a comment in the
+		  header file.</P
+><P
+>The second group of controls affects the way in
+		  which consistency checking is carried out:</P
+></LI
+><LI
+><P
+>After any item changed</P
+><P
+>Select this option if you wish consistency rules
+		  checking to be applied at the point of changing the
+		  value of any configurable item. Note that only rules
+		  relating to the item changed are checked.</P
+></LI
+><LI
+><P
+>Before saving configuration</P
+><P
+>Select this option if you wish to defer rule
+		  checking until the point of saving the
+		  configuration.</P
+></LI
+><LI
+><P
+>Never</P
+><P
+>Select this option if you wish to suppress rule
+	      checking entirely. Note that this option is unsafe as it
+	      may lead to be generation of inconsistent
+	      configurations, which may fail to build or lead to
+	      unexpected results at run-time.</P
+></LI
+><LI
+><P
+>Suggest fixes for consistency check failures</P
+><P
+>Select this option if you wish the Configuration
+	    Tool to suggest ways in which a consistency check failure
+	    may be resolved. Only relatively simple consistency check
+	    failures may be resolved in this way.</P
+></LI
+></UL
+><P
+>Finally, there is a record of any failing consistency
+	    rules (this list is only present if configuration failures
+	    exist).</P
+><H2
+><A
+NAME="BUILD-TAB"
+>Build Tab</A
+></H2
+><P
+><IMG
+SRC="pix/Image47.gif"
+ALT=""></P
+><P
+>The Build-&#62;Options build tab controls the options
+	  used for building the sources.</P
+><P
+>The first control selects a package to which the build
+	  options will apply. If the package selected is the parent of
+	  other packages, the controls in the "child package
+	  treatment" group will be enabled.</P
+><P
+>The Option Category control determines the category of
+	  flag being set.  </P
+><P
+>The Child Package Treatment group determines how options
+	  should be propagated to descendants of the current
+	  package:</P
+><P
+></P
+><UL
+><LI
+><P
+>Overwrite: changes will overwrite
+	      corresponding options in child packages.  New options
+	      will be added to child packages and deleted options will
+	      be removed.</P
+></LI
+><LI
+><P
+>Ignore: changes will not affect child
+	      packages</P
+></LI
+><LI
+><P
+>Prompt: you will be prompted for the action
+	      to take for each
+	      option.</P
+></LI
+></UL
+><P
+>The dialog toolbar buttons allow you to add, remove and
+	  move options.</P
+><P
+>To delete an option:
+	  <IMG
+SRC="pix/Image55.gif"
+ALT=""></P
+><P
+>To add an option:
+	  <IMG
+SRC="pix/Image56.gif"
+ALT=""></P
+><P
+>To move an option up:
+	  <IMG
+SRC="pix/Image57.gif"
+ALT=""></P
+><P
+>To move an option down:
+	  <IMG
+SRC="pix/Image58.gif"
+ALT=""></P
+><P
+>To modify an option, double-click it.  The option may
+	  then be edited in place:</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="view-settings.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="building.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>View Settings</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Building</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Memory allocation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Requirements for programs"
+HREF="requirements-for-programs.html"><LINK
+REL="PREVIOUS"
+TITLE="Interrupt and exception handlers"
+HREF="interrupt-and-exception-handlers.html"><LINK
+REL="NEXT"
+TITLE="Assertions and bad parameter handling"
+HREF="assertions-and-bad-parameter-handling.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interrupt-and-exception-handlers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Requirements for programs</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="assertions-and-bad-parameter-handling.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="MEMORY-ALLOCATION"
+>Memory allocation</A
+></H1
+><P
+>	  Most eCos system calls expect you to pass the address of
+	  pre-allocated memory for the objects created in that system
+	  call.  This is frequently the preferred way of doing things
+	  for embedded applications, where programmers want to
+	  allocate all memory statically and have fine control over
+	  that space.</P
+><P
+>	  In contrast, some eCos system calls also allow a
+	  <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+> pointer to be passed.  In such a
+	  case the kernel will allocate the memory or select default
+	  size. This feature is not supported in the current release,
+	  and a warning flag is placed in the documentation for those
+	  routines (like <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_create()</B
+></TT
+>).
+	</P
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> does provide dynamic memory
+	  allocation, based on <I
+CLASS="FIRSTTERM"
+>memory pools</I
+>, a
+	  useful and flexible approach to memory management inspired
+	  by the µITRON compatibility layer.  These are
+	  described in <A
+HREF="memory-pools.html"
+>the section called <I
+>Memory pools</I
+> in Chapter 5</A
+>.</P
+><P
+>	  If you configure your system to use the Standard C Library
+	  you can also use the standard <TT
+CLASS="FUNCTION"
+><B
+>malloc()</B
+></TT
+>
+	  library call.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interrupt-and-exception-handlers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="assertions-and-bad-parameter-handling.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Interrupt and exception handlers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="requirements-for-programs.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Assertions and bad parameter handling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Source-level debugging support</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="package-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Memory allocators"
+HREF="component-cygpkg-kernel-memory.html"><LINK
+REL="NEXT"
+TITLE="Component: Kernel APIs"
+HREF="component-cygpkg-kernel-api.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPONENT-CYGPKG-KERNEL-DEBUG"
+>Component: Source-level debugging support</A
+></H1
+><H4
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_DEBUG</P
+><H4
+>Type</H4
+><P
+>Dummy</P
+><H4
+>Description</H4
+><P
+>If the source level debugger gdb is to be used for debugging application
+code then it may be necessary to configure in support for this in
+the kernel.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-DEBUG-GDB-INCLUDE-STUBS"
+>Option: Include GDB stubs in kernel</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_DEBUG_GDB_INCLUDE_STUBS</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option causes a set of GDB stubs to be included into the system.
+On some target systems the GDB support will be provided by other means,
+for example by a ROM monitor. On other targets, especially when building
+a ROM-booting system, the necessary support has to go into the target
+library itself.
+      </P
+><H2
+><A
+NAME="OPTION-CYGDBG-KERNEL-DEBUG-GDB-THREAD-SUPPORT"
+>Option: Include GDB multi-threading debug support</A
+></H2
+><H4
+>Macro name</H4
+><P
+>CYGDBG_KERNEL_DEBUG_GDB_THREAD_SUPPORT</P
+><H4
+>Type</H4
+><P
+>Boolean</P
+><H4
+>Description</H4
+><P
+>This option enables some extra kernel code which is needed to support
+multi-threaded source level debugging.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Memory allocators</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Kernel APIs</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Kernel Porting Notes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.13"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The eCos
+    Hardware Abstraction Layer (HAL)"
+HREF="the-ecos-hardware-abstraction-layer-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="Future Developments"
+HREF="future-developments.html"><LINK
+REL="NEXT"
+TITLE="eCos Device Drivers"
+HREF="part-iii.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="future-developments.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Appendix A. The eCos
+    Hardware Abstraction Layer (HAL)</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="part-iii.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="KERNEL-PORTING-NOTES"
+>Kernel Porting Notes</A
+></H1
+><P
+>	There are two aspects of porting
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>: porting to a new CPU
+	(architectural porting) and porting to a new board with a CPU
+	that is already supported (platform porting).</P
+><P
+>&#13;	In this release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> we provide
+	these brief notes on <I
+CLASS="EMPHASIS"
+>platform</I
+>
+	porting.</P
+><P
+>	Another useful reference for porting to a new platform is the
+	GNUPro documentation on <B
+CLASS="COMMAND"
+>gdb</B
+> stubs, which
+	can be found at	<A
+HREF="http://www.cygnus.com/pubs/gnupro/3_GNUPro_Debugging_Tools/b_Debugging_with_GDB/gdbThe_GDB_remote_serial_protocol.html"
+TARGET="_top"
+>http://www.cygnus.com/pubs/gnupro/3_GNUPro_Debugging_Tools/b_Debugging_with_GDB/gdbThe_GDB_remote_serial_protocol.html</A
+></P
+><P
+>	For the purposes of this presentation, we will call the new
+	target board
+	<SPAN
+CLASS="HARDWARE"
+><TT
+CLASS="REPLACEABLE"
+><I
+>myboard</I
+></TT
+></SPAN
+>, and
+	we will assume that it is closely related to the
+	<SPAN
+CLASS="HARDWARE"
+>jmr3904</SPAN
+> board, with a
+	<SPAN
+CLASS="HARDWARE"
+>TX39</SPAN
+> CPU.
+      </P
+><P
+>	Now follow this sequence of steps, noting that all pathnames
+	are relative to the directory in which
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> has been installed.
+      </P
+><H2
+><A
+NAME="AEN2958"
+>Prepare a new directory in the HAL package</A
+></H2
+><P
+>	  You should start by copying the entire directory
+	  <TT
+CLASS="FILENAME"
+>packages/hal/mips/hal/v1_0/jmr3904</TT
+>
+	  to
+	  <TT
+CLASS="FILENAME"
+>packages/hal/mips/v1_0/myboard</TT
+>
+	</P
+><P
+>	  In the new directory change the names
+	  <TT
+CLASS="FILENAME"
+>jmr3904.ld</TT
+> and
+	  <TT
+CLASS="FILENAME"
+>jmr3904.S</TT
+>
+	  to <TT
+CLASS="FILENAME"
+>myboard.ld</TT
+> and
+	<TT
+CLASS="FILENAME"
+>myboard.S</TT
+>
+	</P
+><H2
+><A
+NAME="AEN2968"
+>Modifying <TT
+CLASS="FILENAME"
+>vectors.S</TT
+></A
+></H2
+><P
+>The file
+	  <TT
+CLASS="FILENAME"
+>packages/hal/mips/arch/v1_0/src/vectors.S</TT
+>
+	  contains initialization code which is placed in the
+	  interrupt vectors for the particular CPU.  It also contains
+	  the first level default vector service routines that save
+	  and restore state for both exceptions and interrupts.</P
+><P
+>Copy the area in which memory regions are set up; this
+	  is enclosed in the preprocessor statements</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#ifdef CYG_HAL_MIPS_JMR3904
+    (set up controller according to where the memory is installed)
+#endif </PRE
+></TD
+></TR
+></TABLE
+><P
+>	  and change it to
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#ifdef CYG_HAL_MIPS_MYBOARD
+    (set up controller according to where the memory is installed)
+#endif </PRE
+></TD
+></TR
+></TABLE
+><H2
+><A
+NAME="AEN2977"
+>Modifying <TT
+CLASS="FILENAME"
+>hal_diag.c</TT
+></A
+></H2
+><P
+>The file
+	<TT
+CLASS="FILENAME"
+>packages/hal/mips/myboard/v1_0/src/hal_diag.c</TT
+>
+	  implements support for HAL diagnostic output.  You should
+	  provide an implementation of diagnostic routines if you are
+	  not using on-chip devices for diagnostics, since the
+	  HAL already supports the on-chip devices.</P
+><H2
+><A
+NAME="AEN2982"
+>Modifying PKGconf.mak</A
+></H2
+><P
+>The file
+	  <TT
+CLASS="FILENAME"
+>packages/hal/mips/myboard/v1_0/src/PKGconf.mak</TT
+>
+	  contains makefile targets for the given board.  You should
+	  change occurrences of
+	  jmr3904
+	  to say myboard.</P
+><H2
+><A
+NAME="AEN2986"
+>Modifying <TT
+CLASS="FILENAME"
+>myboard.ld</TT
+></A
+></H2
+><P
+>	  The file
+	  <TT
+CLASS="FILENAME"
+>packages/hal/mips/myboard/v1_0/src/myboard.ld</TT
+>
+	  is the linker script for
+	  <SPAN
+CLASS="HARDWARE"
+><TT
+CLASS="REPLACEABLE"
+><I
+>myboard</I
+></TT
+></SPAN
+>.
+	  You should:
+	</P
+><P
+></P
+><UL
+><LI
+><P
+>Optionally change the LOAD_BASE and
+	      DATA_BASE <TT
+CLASS="LITERAL"
+>#define</TT
+>s at start of the ld
+	      script.</P
+></LI
+><LI
+><P
+>Place <TT
+CLASS="LITERAL"
+>hal_vsr_table</TT
+> at an
+	      appropriate location.</P
+></LI
+></UL
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="future-developments.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="part-iii.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Future Developments</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>eCos Device Drivers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
