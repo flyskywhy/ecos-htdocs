@@ -5,7 +5,7 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>HAL Coding Conventions</H2>
+<H2>HAL Coding Conventions [TBD]</H2>
 <HR SIZE=3>
 
 <h5>Coding Conventions</h5>
@@ -19,5 +19,54 @@ override architecture definitions.
 
 <p>MMU if used, provides 1-1 mapping, rw, no protection - possibly use to
 mark IO regions non-cachable.
+
+<p>Source formatting rules in emacs lingo:
+
+<pre>
+;;=================================================================
+;; eCos C/C++ mode Setup.
+;;
+;; bsd mode: indent = 4, &c &c
+;; tail comments are at col 40.
+;; uses tabs not spaces in C
+
+(defun ecos-c-mode ()
+  "C mode with adjusted defaults for use with the eCos sources."
+  (interactive)
+  (c++-mode)
+  (c-set-style "bsd")
+  (setq comment-column 40)
+  (setq indent-tabs-mode nil)
+  (show-paren-mode 1)
+  (setq c-basic-offset 4)
+
+  (set-variable 'change-log-default-name "ChangeLog")
+  (set-variable 'add-log-full-name "Jesper Skov")
+  (set-variable 'add-log-mailing-address "jskov@redhat.com"))
+
+(defun ecos-asm-mode ()
+  "ASM mode with adjusted defaults for use with the eCos sources."
+  (interactive)
+  (setq comment-column 40)
+  (setq indent-tabs-mode nil)
+  (asm-mode)
+  (setq c-basic-offset 4)
+
+  (set-variable 'change-log-default-name "ChangeLog")
+  (set-variable 'add-log-full-name "Jesper Skov")
+  (set-variable 'add-log-mailing-address "jskov@redhat.com"))
+
+(setq auto-mode-alist
+      (append '(("/local/ecc/.*\\.C$"   . ecos-c-mode)
+                ("/local/ecc/.*\\.cc$"  . ecos-c-mode)
+                ("/local/ecc/.*\\.cpp$" . ecos-c-mode)
+                ("/local/ecc/.*\\.inl$" . ecos-c-mode)
+                ("/local/ecc/.*\\.c$"   . ecos-c-mode)
+                ("/local/ecc/.*\\.h$"   . ecos-c-mode)
+		("/local/ecc/.*\\.S$"   . ecos-asm-mode) 
+		("/local/ecc/.*\\.inc$" . ecos-asm-mode)
+		("/local/ecc/.*\\.cdl$" . tcl-mode)
+                ) auto-mode-alist))
+</pre>
 
 <!--#include virtual="../../include/footer.html"-->
