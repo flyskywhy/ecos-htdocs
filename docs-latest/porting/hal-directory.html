@@ -81,49 +81,236 @@ tree (specifically to the sub-HALs used by the PowerPC MBX target).
 description of what the file contains. When looking in existing HALs,
 beware that they do not necessarily follow the below naming scheme -
 but if you are writing a new HAL, please try to follow the below as
-closely as possible.</p>
+closely as possible. Still, no two targets are the same, so sometimes
+it makes sense to use additional files.</p>
 
 <h4>Common HAL</h4>
 
-<ld>
-<dt><tt>include/dbg-thread-syscall.h</tt></dt>
-  <dd>Defines the debugging thread syscall function. This is used by
-  the ROM monitor to access the debugging thread API in the RAM
-  application.  [FIXME: link thread debug description].</dd>
-<dt><tt>include/dbg-threads-api.h</tt></dt>
-  <dd>Defines the debugging thread API. [FIXME: link thread
-  debug description].</dd>
-<dt><tt>include/drv_api.h</tt></dt>
-  <dd>Defines the driver API.</dd>
-<dt><tt>include/generic-stub.h</tt></dt>
-  <dd>Defines the generic stub features.</dd>
-<dt><tt>include/hal_if.h</tt></dt>
-  <dd>Defines the ROM/RAM calling interface API.</dd>
-<dt><tt>include/hal_misc.h</tt></dt>
-  <dd>Defines miscellaneous helper functions shared by all HALs.</dd>
-<dt><tt>include/hal_stub.h</tt></dt>
-  <dd>Defines eCos mappings of GDB stub features.</dd>
-<dt><tt>src/dbg-threads-syscall.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/drv_api.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/dummy.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/generic-stub.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/hal_if.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/hal_misc.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/hal_stub.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/stubrom/</tt></dt>
-  <dd></dd>
-<dt><tt>src/thread-packets.c</tt></dt>
-  <dd></dd>
-<dt><tt>src/thread-pkts.h</tt></dt>
-  <dd></dd>
-</dl>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>File</b></td>
+  <td><b>Description</b></td>
+</tr>
+
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/dbg-thread-syscall.h</tt></td>
+  <td>Defines the thread debugging syscall function. This is used by
+  the ROM monitor to access the thread debugging API in the RAM
+  application.  [FIXME: link thread debug description].</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/dbg-threads-api.h</tt></td>
+  <td>Defines the thread debugging API. [FIXME: link thread
+  debug description].</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/drv_api.h</tt></td>
+  <td>Defines the driver API.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/generic-stub.h</tt></td>
+  <td>Defines the generic stub features.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_if.h</tt></td>
+  <td>Defines the ROM/RAM calling interface API.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_misc.h</tt></td>
+  <td>Defines miscellaneous helper functions shared by all HALs.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_stub.h</tt></td>
+  <td>Defines eCos mappings of GDB stub features.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/dbg-threads-syscall.c</tt></td>
+  <td>Thread debugging implementation.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/drv_api.c</tt></td>
+  <td>Driver API implementation. Depending on configuration this
+  provides either wrappers for kernel features, or a minimal
+  implementation of these features. This allows drivers to be written
+  relying only on HAL features.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/dummy.c</tt></td>
+  <td>Empty dummy file ensuring creation of libtarget.a.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/generic-stub.c</tt></td>
+  <td>Generic GDB stub implementation. [this will likely be replaced
+  by the bsp stub in the future]</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_if.c</tt></td>
+  <td>ROM/RAM calling interface implementation. Provides wrappers from
+  the calling interface API to the eCos features used for the
+  implementation.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_misc.c</tt></td>
+  <td>Various helper functions shared by all platforms and
+  architectures.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_stub.c</tt></td>
+  <td>Wrappers from eCos HAL features to the features required by the
+  generic GDB stub.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/stubrom/stubrom.c</tt></td>
+  <td>The file used to build eCos GDB stub images. Basically a
+  cyg_start function with a hardcoded breakpoint.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/thread-packets.c</tt></td>
+  <td>More thread debugging related functions.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/thread-pkts.h</tt></td>
+  <td>Defines more thread debugging related function.</td>
+</tr>
+</table>
+
+
+<h4>Architecture HAL</h4>
+
+<p>Extras files for architecture specific serial drivers. Extra files
+for handling interrupts/exceptions if it makes sense.
+
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>File</b></td>
+  <td><b>Description</b></td>
+</tr>
+
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/arch.inc</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/basetype.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_arch.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_cache.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_intr.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_io.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/&lt;arch&gt;_regs.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/&lt;arch&gt;_stub.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/&lt;arch&gt;.inc</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/&lt;arch&gt;.ld</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/context.S</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_misc.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_mk_defs.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_intr.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/&lt;arch&gt;stub.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/vectors.S</tt></td>
+  <td></td>
+</tr>
+</table>
+
+
+<h4>Variant HAL</h4>
+
+<p>Extras files for variant specific serial drivers. Extra files
+for handling interrupts/exceptions if it makes sense.
+
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>File</b></td>
+  <td><b>Description</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/var_arch.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/var_cache.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/var_intr.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/var_regs.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/variant.inc</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/var_intr.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/var_misc.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/variant.S</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/&lt;arch&gt;_&lt;variant&gt;.ld</tt></td>
+  <td></td>
+</tr>
+</table>
+
+<h4>Platform HAL</h4>
+
+<p>Extras files for platform specific serial drivers. Extra files
+for handling interrupts/exceptions if it makes sense.
+
+<h4>Auxiliary HAL</h4>
+
+<p>Extras files for platform specific serial drivers. Extra files
+for handling interrupts/exceptions if it makes sense.
+
 
 
 <!--#include virtual="../../include/footer.html"-->
