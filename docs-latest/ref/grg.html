@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -25,8 +25,8 @@ REL="PREVIOUS"
 TITLE="ARM/Intel XScale IXDP425 Network Processor Evaluation Board"
 HREF="ixdp425.html"><LINK
 REL="NEXT"
-TITLE="CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board "
-HREF="calmrisc16.html"></HEAD
+TITLE="Motorola PrPMC1100 CPU card"
+HREF="prpmc1100.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="ixdp425.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -66,7 +68,8 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="calmrisc16.html"
+HREF="prpmc1100.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,17 +82,13 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="GRG"
->ARM/Intel XScale Generic Residential Gateway</A
-></H1
+NAME="GRG">ARM/Intel XScale Generic Residential Gateway</H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6589"
->Overview</A
-></H2
+NAME="AEN6589">Overview</H2
 ><P
 >RedBoot supports
 the console UART and a PCI based i82559 ethernet card for communication
@@ -101,9 +100,7 @@ also supports flash management for the 16MB onboard flash.</P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6599"
-></A
-><P
+NAME="AEN6599"><P
 ></P
 ><TABLE
 BORDER="1"
@@ -179,9 +176,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6618"
->Initial Installation Method</A
-></H2
+NAME="AEN6618">Initial Installation Method</H2
 ><P
 >The GRG flash is socketed, so initial installation may be done using
 an appropriate device programmer. JTAG based initial may also be used. In either
@@ -203,7 +198,7 @@ CLASS="SCREEN"
 >This is normal, and indicates that the flash should be configured
 for use by RedBoot. See <A
 HREF="persistent-state-flash.html"
->the section called <I
+>the Section called <I
 >Persistent State Flash-based Configuration and Control</I
 > in Chapter 2</A
 > for more
@@ -214,9 +209,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6624"
->Rebuilding RedBoot</A
-></H2
+NAME="AEN6624">Rebuilding RedBoot</H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -248,9 +241,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6630"
->Interrupts</A
-></H2
+NAME="AEN6630">Interrupts</H2
 ><P
 >RedBoot uses an interrupt vector table which is located at address 0x8004.
 Entries in this table are pointers to functions with this protoype::      <TABLE
@@ -329,9 +320,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6638"
->Memory Maps</A
-></H2
+NAME="AEN6638">Memory Maps</H2
 ><P
 >The RAM based page table is located at RAM start + 0x4000.
 <DIV
@@ -389,9 +378,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6646"
->Platform Resource Usage</A
-></H2
+NAME="AEN6646">Platform Resource Usage</H2
 ><P
 >The IXP425 programmable OStimer0 is used for timeout support
 for networking and XModem file transfers.</P
@@ -402,6 +389,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -413,6 +401,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="ixdp425.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -421,6 +410,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -428,7 +418,8 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="calmrisc16.html"
+HREF="prpmc1100.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -444,13 +435,14 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="installation-and-testing.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board</TD
+>Motorola PrPMC1100 CPU card</TD
 ></TR
 ></TABLE
 ></DIV

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-interrupt-management-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-time-mgmt-functions.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="COMPAT-UITRON-MEMORY-POOL-MGMT-FUNCTIONS"
->Memory pool Management Functions</A
-></H1
+NAME="COMPAT-UITRON-MEMORY-POOL-MGMT-FUNCTIONS">Memory pool Management Functions</H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -96,12 +97,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_blf</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blf,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -118,12 +125,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >pget_blf</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blf,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -140,15 +153,24 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >tget_blf</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blf,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid,</I
->    TMO <I
+></SPAN
+>    TMO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >tmout</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -165,12 +187,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rel_blf</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid,</I
->    VP <I
+></SPAN
+>    VP <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >blf</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -187,12 +215,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_mpf</TT
 >( 
-    T_RMPF *<I
+    T_RMPF *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_rmpf,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -209,15 +243,24 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_blk</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blk,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid,</I
->    INT <I
+></SPAN
+>    INT <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >blksz</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -234,15 +277,24 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >pget_blk</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blk,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid,</I
->    INT <I
+></SPAN
+>    INT <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >blksz</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -259,18 +311,30 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >tget_blk</TT
 >( 
-    VP *<I
+    VP *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >p_blk,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid,</I
->    INT <I
+></SPAN
+>    INT <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >blksz,</I
->    TMO <I
+></SPAN
+>    TMO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >tmout</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -287,12 +351,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >rel_blk</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid,</I
->    VP <I
+></SPAN
+>    VP <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >blk</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -309,12 +379,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_mpl</TT
 >( 
-    T_RMPL *<I
+    T_RMPL *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_rmpl,</I
->    ID <I
+></SPAN
+>    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid )</I
+></SPAN
 ></PRE
 ></TD
 ></TR
@@ -350,12 +426,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_mpl</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid,</I
->    T_CMPL *<I
+></SPAN
+>    T_CMPL *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_cmpl</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -372,9 +454,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_mpl</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mplid</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -391,12 +476,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >cre_mpf</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid,</I
->    T_CMPF *<I
+></SPAN
+>    T_CMPF *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_cmpf</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -413,9 +504,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >del_mpf</TT
 >( 
-    ID <I
+    ID <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mpfid</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -458,9 +552,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN14117"
->Error checking</A
-></H2
+NAME="AEN14180">Error checking</H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -674,6 +766,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -685,6 +778,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-interrupt-management-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -693,6 +787,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -701,6 +796,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-time-mgmt-functions.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -716,6 +812,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

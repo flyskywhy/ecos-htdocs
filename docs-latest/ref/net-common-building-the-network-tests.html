@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-standalone-tests.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-COMMON-BUILDING-THE-NETWORK-TESTS"
->Building the Network Tests</A
-></H1
+NAME="NET-COMMON-BUILDING-THE-NETWORK-TESTS">Building the Network Tests</H1
 ><P
 >To build further network tests, ensure that the configuration
 option CYGPKG_NET_BUILD_TESTS is set in your build
@@ -106,9 +107,12 @@ CLASS="REPLACEABLE"
 ></TABLE
 >
 after building the eCos library, if you wish to build
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >only</I
+></SPAN
 >
 the network tests.</P
 ><P
@@ -132,74 +136,125 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >socket_test</I
+></SPAN
 > - trivial test of socket creation API 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mbuf_test</I
+></SPAN
 > - trivial test of mbuf allocation API 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >ftp_test</I
+></SPAN
 > - simple FTP test, connects to &#8220;server&#8221; 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >ping_test</I
+></SPAN
 > - pings &#8220;server&#8221; and non-existent host to test timeout 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >dhcp_test</I
+></SPAN
 > - ping test, but also relinquishes and
             reacquires DHCP leases periodically 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >flood</I
+></SPAN
 > - a flood ping test; use with care 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >tcp_echo</I
+></SPAN
 > - data forwarding program for performance test
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >nc_test_master </I
+></SPAN
 >- network characterization master
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >nc_test_slave </I
+></SPAN
 >- network characterization slave
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >server_test</I
+></SPAN
 > - a very simple server example
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >tftp_client_test</I
+></SPAN
 > - performs a tftp get and put from/to &#8220;server&#8221; 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >tftp_server_test</I
+></SPAN
 > - runs a tftp server for a short while 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >set_mac_address </I
+></SPAN
 >- set MAC address(es) of interfaces in NVRAM
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >bridge</I
+></SPAN
 > - contributed network bridge code
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >nc6_test_master </I
+></SPAN
 >- IPv4/IPv6 network characterization master
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >nc6_test_slave </I
+></SPAN
 >- IPv4/IPv6 network characterization slave
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >ga_server_test</I
+></SPAN
 > - a very simple IPv4/IPv6 server example</PRE
 ></TD
 ></TR
@@ -210,6 +265,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -221,6 +277,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -229,6 +286,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -237,6 +295,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-standalone-tests.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -252,6 +311,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-common-tests-and-demonstrations.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

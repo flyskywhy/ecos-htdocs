@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="io-tty-driver.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="io-serial-testing-with-serfilter.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -78,9 +81,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="IO-HOW-TO-WRITE-A-DRIVER"
->Chapter 17. How to Write a Driver</A
-></H1
+NAME="IO-HOW-TO-WRITE-A-DRIVER">Chapter 17. How to Write a Driver</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -134,9 +135,12 @@ CLASS="FILENAME"
 >&lt;cyg/io/devtab.h&gt;</TT
 ></P
 ><P
->All device drivers in <I
+>All device drivers in <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > are described
 by a device table entry, using the <SPAN
 CLASS="TYPE"
@@ -344,9 +348,12 @@ CLASS="FUNCTION"
 ></DL
 ></DIV
 ><P
->When <I
+>When <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > is initialized (sometimes called
 &#8220;boot&#8221; time), the <TT
 CLASS="FUNCTION"
@@ -378,14 +385,15 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="IO-HOW-TO-WRITE-SERIAL-INTERFACE-DRIVER"
->How to Write a Serial Hardware Interface Driver</A
-></H1
+NAME="IO-HOW-TO-WRITE-SERIAL-INTERFACE-DRIVER">How to Write a Serial Hardware Interface Driver</H1
 ><P
 >The standard serial driver supplied with
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > is structured as a hardware independent
 portion and a hardware dependent interface module. To add support for
 a new serial port, the user should be able to use the existing
@@ -414,9 +422,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11085"
->DevTab Entry</A
-></H2
+NAME="AEN11148">DevTab Entry</H2
 ><P
 >The interface module contains the devtab entry (or entries
 if a single module supports more than one interface). This entry
@@ -531,9 +537,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11122"
->Serial Channel Structure</A
-></H2
+NAME="AEN11185">Serial Channel Structure</H2
 ><P
 >Each serial device must have a &#8220;serial channel&#8221;.
 This is a set of data which describes all operations on the device.
@@ -738,9 +742,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11197"
->Serial Functions Structure</A
-></H2
+NAME="AEN11260">Serial Functions Structure</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -889,9 +891,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11246"
->Callbacks</A
-></H2
+NAME="AEN11309">Callbacks</H2
 ><P
 >The device interface module can execute functions in the
 hardware independent driver via <TT
@@ -1092,6 +1092,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1103,6 +1104,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="io-tty-driver.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1111,6 +1113,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1119,6 +1122,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="io-serial-testing-with-serfilter.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1134,6 +1138,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-system-mgmt-functions.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="COMPAT-UITRON-TIME-MGMT-FUNCTIONS"
->Time Management Functions</A
-></H1
+NAME="COMPAT-UITRON-TIME-MGMT-FUNCTIONS">Time Management Functions</H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -96,9 +97,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >set_tim</TT
 >( 
-    SYSTIME *<I
+    SYSTIME *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_tim</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -141,9 +145,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >get_tim</TT
 >( 
-    SYSTIME *<I
+    SYSTIME *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_tim</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -160,9 +167,12 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >dly_tsk</TT
 >( 
-    DLYTIME <I
+    DLYTIME <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >dlytim</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -179,12 +189,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >def_cyc</TT
 >( 
-    HNO <I
+    HNO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >cycno,</I
->    T_DCYC *<I
+></SPAN
+>    T_DCYC *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_dcyc</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -201,12 +217,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >act_cyc</TT
 >( 
-    HNO <I
+    HNO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >cycno,</I
->    UINT <I
+></SPAN
+>    UINT <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >cycact</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -223,12 +245,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_cyc</TT
 >( 
-    T_RCYC *<I
+    T_RCYC *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_rcyc,</I
->    HNO <I
+></SPAN
+>    HNO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >cycno</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -245,12 +273,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >def_alm</TT
 >( 
-    HNO <I
+    HNO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >almno,</I
->    T_DALM *<I
+></SPAN
+>    T_DALM *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_dalm</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -267,12 +301,18 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >ref_alm</TT
 >( 
-    T_RALM *<I
+    T_RALM *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pk_ralm,</I
->    HNO <I
+></SPAN
+>    HNO <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >almno</I
+></SPAN
 > )</PRE
 ></TD
 ></TR
@@ -297,9 +337,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN14214"
->Error checking</A
-></H2
+NAME="AEN14277">Error checking</H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -413,6 +451,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -424,6 +463,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-memory-pool-mgmt-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -432,6 +472,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -440,6 +481,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compat-uitron-system-mgmt-functions.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -455,6 +497,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

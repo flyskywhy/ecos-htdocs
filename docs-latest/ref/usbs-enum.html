@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="usbs-intro.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="usbs-start.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -76,13 +79,11 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="USBS-ENUM"
->USB Enumeration Data</A
-></H1
+NAME="USBS-ENUM">USB Enumeration Data</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16390"
+NAME="AEN16456"
 ></A
 ><H2
 >Name</H2
@@ -90,9 +91,7 @@ NAME="AEN16390"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN16393"
-></A
-><H2
+NAME="AEN16459"><H2
 >Synopsis</H2
 ><TABLE
 BORDER="5"
@@ -138,7 +137,7 @@ typedef struct usbs_enumeration_data {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16395"
+NAME="AEN16461"
 ></A
 ><H2
 >USB Enumeration Data</H2
@@ -212,7 +211,7 @@ extension.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16406"
+NAME="AEN16472"
 ></A
 ><H3
 ><SPAN
@@ -339,7 +338,7 @@ binary-coded decimal.</P
 ><P
 >The above fields are all numerical in nature. A USB peripheral can
 also provide a number of strings as described <A
-HREF="usbs-enum.html#AEN16481"
+HREF="usbs-enum.html#AEN16547"
 >below</A
 >, for example the name of the
 vendor can be provided. The various <TT
@@ -357,7 +356,7 @@ one configuration will be active at any one time, and the host will
 switch between them as appropriate. If a peripheral does involve
 multiple configurations then typically it will be the responsibility
 of application code to <A
-HREF="usbs-control.html#AEN16867"
+HREF="usbs-control.html#AEN16933"
 >handle</A
 > the standard
 set-configuration control message.</P
@@ -365,7 +364,7 @@ set-configuration control message.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16431"
+NAME="AEN16497"
 ></A
 ><H3
 ><SPAN
@@ -483,7 +482,7 @@ requirements in units of 2mA.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16449"
+NAME="AEN16515"
 ></A
 ><H3
 ><SPAN
@@ -552,7 +551,7 @@ another setting that only needs 50K/s. The host can use the standard
 set-interface control message to choose the most appropriate setting.
 The handling of this request is the responsibility of higher-level
 code, so the application may have to <A
-HREF="usbs-control.html#AEN16867"
+HREF="usbs-control.html#AEN16933"
 >install</A
 > its own handler.</P
 ><P
@@ -586,7 +585,7 @@ the interfaces for the second configuration, and so on.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16464"
+NAME="AEN16530"
 ></A
 ><H3
 ><SPAN
@@ -707,7 +706,7 @@ configuration; etc.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16481"
+NAME="AEN16547"
 ></A
 ><H3
 >Strings</H3
@@ -751,7 +750,7 @@ control messages when a string descriptor is requested.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16486"
+NAME="AEN16552"
 ></A
 ><H3
 ><SPAN
@@ -780,6 +779,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -791,6 +791,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="usbs-intro.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -799,6 +800,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -807,6 +809,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="usbs-start.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -822,6 +825,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-usb-slave.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

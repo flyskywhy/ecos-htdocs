@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="posix-data-interchange-format.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="posix-memory-management.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,17 +82,13 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="POSIX-SYNCHRONIZATION"
->Synchronization &#0091;POSIX Section 11&#0093;</A
-></H1
+NAME="POSIX-SYNCHRONIZATION">Synchronization &#0091;POSIX Section 11&#0093;</H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13354"
->Functions Implemented</A
-></H2
+NAME="AEN13417">Functions Implemented</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -133,9 +132,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13357"
->Functions Omitted</A
-></H2
+NAME="AEN13420">Functions Omitted</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -164,9 +161,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13360"
->Notes</A
-></H2
+NAME="AEN13423">Notes</H2
 ><P
 ></P
 ><UL
@@ -181,30 +176,45 @@ NAME="AEN13360"
 ></LI
 ><LI
 ><P
->	    The <I
+>	    The <SPAN
+CLASS="strong"
+><B
 CLASS="EMPHASIS"
->pshared</I
+>pshared</B
+></SPAN
 > argument to
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >sem&#0095;init()</I
+></SPAN
 > is not implemented,
 	    its value is ignored.
 	    </P
 ></LI
 ><LI
 ><P
->	    Functions <I
+>	    Functions <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >sem&#0095;open()</I
+></SPAN
 >, 
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >sem&#0095;close()</I
+></SPAN
 > and
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >sem&#0095;unlink()</I
+></SPAN
 > are present but
 	    always return an error (ENOSYS).
 	    </P
@@ -222,27 +232,42 @@ CLASS="EMPHASIS"
 ><P
 >	    &#0123;&#0095;POSIX&#0095;THREAD&#0095;PROCESS&#0095;SHARED&#0125; is
 	    not defined, so the 
-	    <I
+	    <SPAN
+CLASS="strong"
+><B
 CLASS="EMPHASIS"
->process-shared</I
+>process-shared</B
+></SPAN
 > mutex
 	    and condition variable attributes are not supported, and
 	    neither are the functions
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pthread&#0095;mutexattr&#0095;getpshared()</I
+></SPAN
 >,
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pthread&#0095;mutexattr&#0095;setpshared()</I
+></SPAN
 >, 
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pthread&#0095;condattr&#0095;getpshared()</I
+></SPAN
 > and 
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pthread&#0095;condattr&#0095;setpshared()</I
+></SPAN
 >. 
 	    </P
 ></LI
@@ -250,9 +275,12 @@ CLASS="EMPHASIS"
 ><P
 >	    Condition variables do not become bound to a particular
 	    mutex when
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >pthread&#0095;cond&#0095;wait()</I
+></SPAN
 > is
 	    called. Hence different threads may wait on a condition
 	    variable with different mutexes. This is at variance with
@@ -271,6 +299,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -282,6 +311,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="posix-data-interchange-format.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -290,6 +320,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -298,6 +329,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="posix-memory-management.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -313,6 +345,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="posix-standard-support.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

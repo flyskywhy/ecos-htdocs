@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,15 +55,19 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-ecos-changes.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 47. SNMP for <I
+>Chapter 47. SNMP for <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 ></TD
 ><TD
 WIDTH="10%"
@@ -70,6 +75,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-configuring-ecos.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,9 +88,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-SNMP-STARTING-THE-SNMP-AGENT"
->Starting the SNMP Agent</A
-></H1
+NAME="NET-SNMP-STARTING-THE-SNMP-AGENT">Starting the SNMP Agent</H1
 ><P
 >A routine to instantiate and start the SNMP agent thread in the default
 configuration is provided in
@@ -134,9 +138,12 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->externC void (*<I
+>externC void (*<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >snmpd_reinit_function</I
+></SPAN
 >)( void );</PRE
 ></TD
 ></TR
@@ -156,9 +163,12 @@ CLASS="PROGRAMLISTING"
 >externC void <TT
 CLASS="FUNCTION"
 >snmpd</TT
->( void (*<I
+>( void (*<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >initfunc</I
+></SPAN
 >)( void ) );</PRE
 ></TD
 ></TR
@@ -178,9 +188,12 @@ obviously means no callback is registered.</P
 CLASS="LITERAL"
 >snmpd();</TT
 > yourself and do
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >not</I
+></SPAN
 > call <TT
 CLASS="LITERAL"
 >cyg_net_snmp_init();</TT
@@ -206,9 +219,12 @@ CLASS="PROGRAMLISTING"
 >void <TT
 CLASS="FUNCTION"
 >SnmpdShutDown</TT
->(int <I
+>(int <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >a</I
+></SPAN
 >);</PRE
 ></TD
 ></TR
@@ -220,9 +236,12 @@ CLASS="LITERAL"
 > to restart itself &#8212;
 including the callback to your init function &#8212; as soon as possible.</P
 ><P
->The parameter <I
+>The parameter <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >a</I
+></SPAN
 > is ignored.  It is there because in
 <TT
 CLASS="LITERAL"
@@ -250,6 +269,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -261,6 +281,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-snmp-ecos-changes.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -269,6 +290,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -277,6 +299,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-snmp-configuring-ecos.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -292,6 +315,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-snmp-ecos-port.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

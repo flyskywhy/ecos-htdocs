@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="usbs-halt.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="usbs-data.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -76,13 +79,11 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="USBS-CONTROL"
->Control Endpoints</A
-></H1
+NAME="USBS-CONTROL">Control Endpoints</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16811"
+NAME="AEN16877"
 ></A
 ><H2
 >Name</H2
@@ -90,9 +91,7 @@ NAME="AEN16811"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN16814"
-></A
-><H2
+NAME="AEN16880"><H2
 >Synopsis</H2
 ><TABLE
 BORDER="5"
@@ -114,7 +113,7 @@ typedef struct usbs_control_endpoint {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16816"
+NAME="AEN16882"
 ></A
 ><H2
 ><TT
@@ -181,7 +180,7 @@ should be consulted for more details of DSR handling.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16826"
+NAME="AEN16892"
 ></A
 ><H3
 >Initialization</H3
@@ -248,7 +247,7 @@ data.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16837"
+NAME="AEN16903"
 ></A
 ><H3
 >State</H3
@@ -301,49 +300,76 @@ typedef enum {
 ></TABLE
 ><P
 >The USB standard defines a number of states for a given USB
-peripheral. The initial state is <I
+peripheral. The initial state is <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >detached</I
+></SPAN
 >, where
 the peripheral is either not connected to a host at all or, from the
 host's perspective, the peripheral has not started up yet because the
 relevant pins are tristated. The peripheral then moves via
-intermediate <I
+intermediate <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >attached</I
+></SPAN
 > and
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >powered</I
+></SPAN
 > states to its default or
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >reset</I
+></SPAN
 > state, at which point the host and
 peripheral can actually start exchanging data. The first message is
 from host to peripheral and provides a unique 7-bit address within the
 local USB network, resulting in a state change to
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >addressed</I
+></SPAN
 >. The host then requests enumeration
 data and performs other initialization. If everything succeeds the
 host sends a standard set-configuration control message, after which
-the peripheral is <I
+the peripheral is <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >configured</I
+></SPAN
 > and expected to be
 up and running. Note that some USB device drivers may be unable to
-distinguish between the <I
+distinguish between the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >detached</I
+></SPAN
 >,
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >attached</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >powered</I
+></SPAN
 > states
 but generally this is not important to higher-level code.</P
 ><P
@@ -351,30 +377,48 @@ but generally this is not important to higher-level code.</P
 peripheral fails to detect any USB traffic for a period of time then
 typically this indicates that the host has entered a power-saving
 mode, and the peripheral should do the same if possible. This
-corresponds to the <I
+corresponds to the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >suspended</I
+></SPAN
 > bit. The actual
-state is a combination of <I
+state is a combination of <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >suspended</I
+></SPAN
 > and the
-previous state, for example <I
+previous state, for example <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >configured</I
+></SPAN
 > and
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >suspended</I
+></SPAN
 > rather than just
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >suspended</I
+></SPAN
 >. When the peripheral subsequently
 detects USB traffic it would switch back to the
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >configured</I
+></SPAN
 > state.</P
 ><P
 >The USB device driver and the common USB slave package will maintain
@@ -435,7 +479,7 @@ at the cost of increased code and cpu overheads.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16867"
+NAME="AEN16933"
 ></A
 ><H3
 >Standard Control Messages</H3
@@ -472,7 +516,7 @@ consist of an initial eight-byte header, containing fields such as a
 request type. This may be followed by a further data transfer, either
 from host to peripheral or from peripheral to host. The way this is
 handled is described in the <A
-HREF="usbs-control.html#AEN16900"
+HREF="usbs-control.html#AEN16966"
 >Buffer Management</A
 > section below.</P
 ><P
@@ -486,25 +530,37 @@ CLASS="STRUCTFIELD"
 field. Then it determines the request type: standard, class, vendor,
 or reserved. The way in which the last three of these are processed is
 described in the section <A
-HREF="usbs-control.html#AEN16892"
+HREF="usbs-control.html#AEN16958"
 >Other
 Control Messages</A
 >. Some
 standard control messages will be handled by the device driver itself;
-typically the <I
+typically the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >set-address</I
+></SPAN
 > request and the
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >get-status</I
->, <I
+></SPAN
+>, <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >set-feature</I
+></SPAN
 > and
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >clear-feature</I
+></SPAN
 > requests when applied to endpoints.</P
 ><P
 >If a standard control message cannot be handled by the device driver
@@ -526,23 +582,35 @@ CLASS="STRUCTFIELD"
 > field. The latter
 allows the higher level code to associate arbitrary data with the
 control endpoint. The callback function can return one of three
-values: <I
+values: <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >HANDLED</I
+></SPAN
 > to indicate that the request has
-been processed; <I
+been processed; <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >UNKNOWN</I
+></SPAN
 > if the message should be
-handled by the default code; or <I
+handled by the default code; or <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >STALL</I
+></SPAN
 > to indicate
 an error condition. If higher level code has not installed a callback
 function or if the callback function has returned
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >UNKNOWN</I
+></SPAN
 > then the device driver will invoke a
 default handler, <TT
 CLASS="FUNCTION"
@@ -565,9 +633,12 @@ and process appropriate messages, rather than leaving these to the
 default handler.</P
 ><P
 >The default handler will take care of the
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >get-descriptor</I
+></SPAN
 > request used to obtain the
 enumeration data. It has support for string descriptors but ignores
 language encoding issues. If language encoding is important for the
@@ -586,7 +657,7 @@ since the information is also relevant to USB hosts.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16892"
+NAME="AEN16958"
 ></A
 ><H3
 >Other Control Messages</H3
@@ -643,7 +714,7 @@ install an appropriate handler and process the requests appropriately. </P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16900"
+NAME="AEN16966"
 ></A
 ><H3
 >Buffer Management</H3
@@ -826,9 +897,12 @@ CLASS="STRUCTFIELD"
 ></TT
 > and some or all of the other
 fields, as required. An example of this is the handling of the
-standard <I
+standard <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >get-descriptor</I
+></SPAN
 > control message by
 <TT
 CLASS="FUNCTION"
@@ -838,7 +912,7 @@ CLASS="FUNCTION"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16937"
+NAME="AEN17003"
 ></A
 ><H3
 >Polling Support</H3
@@ -880,6 +954,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -891,6 +966,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="usbs-halt.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -899,6 +975,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -907,6 +984,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="usbs-data.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -922,6 +1000,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-usb-slave.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="hal-porting-variant.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="hal-future-developments.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-ARCHITECTURE"
->Architecture HAL Porting</A
-></H1
+NAME="HAL-PORTING-ARCHITECTURE">Architecture HAL Porting</H1
 ><P
 >A new architecture HAL is the most complex HAL to write, and it the
 least easily described. Hence this section is presently nothing more
@@ -91,9 +92,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9997"
->HAL Architecture Porting Process</A
-></H2
+NAME="AEN10060">HAL Architecture Porting Process</H2
 ><P
 >The easiest way to make a new architecture HAL is simply to copy an
 existing architecture HAL of an, if possible, closely matching
@@ -148,7 +147,7 @@ any options that are specific to the original HAL, and and any new
 options that are necessary for the new architecture. This is likely to
 be a continuing process during the development of the HAL. See <A
 HREF="hal-porting-architecture.html#HAL-PORTING-ARCHITECTURE-CDL"
->the section called <I
+>the Section called <I
 >CDL Requirements</I
 ></A
 > for more details.</P
@@ -623,7 +622,7 @@ CLASS="FUNCTION"
 >cyg_start()</TT
 >. See <A
 HREF="hal-exception-handling.html#HAL-STARTUP"
->the section called <I
+>the Section called <I
 >HAL Startup</I
 > in Chapter 10</A
 > for details.</P
@@ -633,7 +632,7 @@ HREF="hal-exception-handling.html#HAL-STARTUP"
 >Write the default exception VSR. This VSR is installed in the VSR
 table for all synchronous exception vectors. See <A
 HREF="hal-default-synchronous-exception-handling.html"
->the section called <I
+>the Section called <I
 >Default Synchronous Exception Handling</I
 > in Chapter 10</A
 > for details of
@@ -644,7 +643,7 @@ what this VSR does.</P
 >Write the default interrupt VSR. This is installed in all VSR table
 entries that correspond to external interrupts. See <A
 HREF="hal-default-synchronous-exception-handling.html"
->the section called <I
+>the Section called <I
 >Default Synchronous Exception Handling</I
 > in Chapter 10</A
 > for details of
@@ -732,7 +731,7 @@ CLASS="FILENAME"
 >. This file contains the context
 switch code. See <A
 HREF="hal-architecture-characterization.html#HAL-CONTEXT-SWITCH"
->the section called <I
+>the Section called <I
 >Thread Context Switching</I
 > in Chapter 9</A
 > for details of
@@ -980,9 +979,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-ARCHITECTURE-CDL"
->CDL Requirements</A
-></H2
+NAME="HAL-PORTING-ARCHITECTURE-CDL">CDL Requirements</H2
 ><P
 >The CDL needed for any particular architecture HAL depends to a large
 extent on the needs of that architecture. This includes issues such as
@@ -1278,6 +1275,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1289,6 +1287,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="hal-porting-variant.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1297,6 +1296,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1305,6 +1305,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="hal-future-developments.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1320,6 +1321,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="hal-porting-guide.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

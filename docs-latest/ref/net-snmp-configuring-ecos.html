@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,15 +55,19 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-starting-the-snmp-agent.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 47. SNMP for <I
+>Chapter 47. SNMP for <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 ></TD
 ><TD
 WIDTH="10%"
@@ -70,6 +75,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-snmp-test-cases.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,9 +88,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-SNMP-CONFIGURING-ECOS"
->Configuring eCos</A
-></H1
+NAME="NET-SNMP-CONFIGURING-ECOS">Configuring eCos</H1
 ><P
 >To use the SNMP agent, the SNMP library and agent packages must be
 included in your configuration. To incorporate the stack into your
@@ -128,9 +132,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="NET-SNMP-VERSION-USAGE"
->Version usage (v1, v2 or v3)</A
-></H2
+NAME="NET-SNMP-VERSION-USAGE">Version usage (v1, v2 or v3)</H2
 ><P
 >The default build supports all three versions of the SNMP protocol, but without
 any dispatcher functionality (rfc 2571, section 3.1.1.2). This has the
@@ -162,9 +164,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="TRAPS"
->Traps</A
-></H2
+NAME="TRAPS">Traps</H2
 ><P
 >The support of the <TT
 CLASS="LITERAL"
@@ -221,12 +221,10 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="NET-SNMP-SNMPD-CONF"
-><TT
+NAME="NET-SNMP-SNMPD-CONF"><TT
 CLASS="LITERAL"
 >snmpd.conf</TT
-> file</A
-></H2
+> file</H2
 ><P
 >Using snmpd.conf requires the inclusion of one of the file-system packages
 (eg. CYGPKG_RAMFS) and CYGPKG_FILEIO. With these two packages included, the
@@ -301,6 +299,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -312,6 +311,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-snmp-starting-the-snmp-agent.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -320,6 +320,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -328,6 +329,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-snmp-test-cases.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -343,6 +345,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-snmp-ecos-port.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

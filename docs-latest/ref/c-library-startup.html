@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="libc-thread-safety.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="io.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="C-LIBRARY-STARTUP"
->C library startup</A
-></H1
+NAME="C-LIBRARY-STARTUP">C library startup</H1
 ><P
 >The C library includes a function declared as:</P
 ><TABLE
@@ -126,13 +127,19 @@ CLASS="FUNCTION"
 > are
 invoked. This is all compliant with the ISO C standard in this respect. </P
 ><P
->This thread starts execution when the <I
+>This thread starts execution when the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > scheduler
-is started. If the <I
+is started. If the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > kernel package is not
 available (and hence there is no scheduler), then <TT
 CLASS="FUNCTION"
@@ -166,13 +173,19 @@ CLASS="PROGRAMLISTING"
 CLASS="FUNCTION"
 >main</TT
 >( 
-  int <I
+  int <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >argc,</I
+></SPAN
 >
-  char *<I
+  char *<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >argv[] </I
+></SPAN
 >)</PRE
 ></TD
 ></TR
@@ -275,6 +288,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -286,6 +300,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="libc-thread-safety.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -294,6 +309,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -302,6 +318,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="io.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -317,6 +334,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="c-and-math-library-overview.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="posix-compatibility.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="posix-process-environment.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -78,9 +81,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="POSIX-STANDARD-SUPPORT"
->Chapter 31. POSIX Standard Support</A
-></H1
+NAME="POSIX-STANDARD-SUPPORT">Chapter 31. POSIX Standard Support</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -226,17 +227,13 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="POSIX-PROCESS-PRIMITIVES"
->Process Primitives &#0091;POSIX Section 3&#0093;</A
-></H1
+NAME="POSIX-PROCESS-PRIMITIVES">Process Primitives &#0091;POSIX Section 3&#0093;</H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13183"
->Functions Implemented</A
-></H2
+NAME="AEN13246">Functions Implemented</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -277,9 +274,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13186"
->Functions Omitted</A
-></H2
+NAME="AEN13249">Functions Omitted</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -312,9 +307,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN13189"
->Notes</A
-></H2
+NAME="AEN13252">Notes</H2
 ><P
 ></P
 ><UL
@@ -328,26 +321,38 @@ NAME="AEN13189"
 ></LI
 ><LI
 ><P
->    <I
+>    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >kill()</I
+></SPAN
 > and
-    <I
+    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >sigqueue()</I
+></SPAN
 > may only take a 
-    <I
+    <SPAN
+CLASS="strong"
+><B
 CLASS="EMPHASIS"
->pid</I
+>pid</B
+></SPAN
 > argument of zero,
     which maps to the current process.
     </P
 ></LI
 ><LI
 ><P
->    The <I
+>    The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >SIGEV&#0095;THREAD</I
+></SPAN
 > notification type is
 	    not currently implemented.
     </P
@@ -361,13 +366,19 @@ CLASS="EMPHASIS"
 ><LI
 ><P
 >    An extra implementation defined
-    <I
+    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >si&#0095;code</I
+></SPAN
 > value,
-    <I
+    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >SI&#0095;EXCEPT</I
+></SPAN
 >, is defined to
     distinguish hardware generated exceptions from
     others.
@@ -385,9 +396,12 @@ CLASS="EMPHASIS"
 ><LI
 ><P
 >    Signal delivery may currently occur at unexpected places in some
-    API functions. Using <I
+    API functions. Using <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >longjmp()</I
+></SPAN
 > to transfer
     control out of a signal handler may result in the interrupted
     function not being able to complete properly. This may result in
@@ -403,6 +417,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -414,6 +429,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="posix-compatibility.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -422,6 +438,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -430,6 +447,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="posix-process-environment.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -445,6 +463,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="posix-compatibility.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

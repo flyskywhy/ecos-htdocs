@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="nano.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="cerfcube.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,17 +82,13 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="IPAQ"
->ARM/StrongARM(SA11X0) Compaq iPAQ PocketPC</A
-></H1
+NAME="IPAQ">ARM/StrongARM(SA11X0) Compaq iPAQ PocketPC</H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6003"
->Overview</A
-></H2
+NAME="AEN6003">Overview</H2
 ><P
 >RedBoot supports the serial port via cradle or cable, and Compact Flash
 ethernet cards if fitted for communication and downloads. The LCD touchscreen
@@ -104,9 +103,7 @@ and supports flash management for the system flash region. </P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN6008"
-></A
-><P
+NAME="AEN6008"><P
 ></P
 ><TABLE
 BORDER="1"
@@ -204,9 +201,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6033"
->Initial Installation</A
-></H2
+NAME="AEN6033">Initial Installation</H2
 ><P
 >RedBoot ROM and WinCE mode images are needed by the installation process.</P
 ><DIV
@@ -214,9 +209,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6036"
->Installing RedBoot on the iPAQ using Windows/CE</A
-></H3
+NAME="AEN6036">Installing RedBoot on the iPAQ using Windows/CE</H3
 ><P
 >The Windows/CE environment originally shipped with the iPAQ contains a hidden
 mini-loader, sometimes referred to as the "Parrot" loader.  This loader can
@@ -287,9 +280,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6055"
->Installing RedBoot on the iPAQ - using the Compaq boot loader</A
-></H3
+NAME="AEN6055">Installing RedBoot on the iPAQ - using the Compaq boot loader</H3
 ><P
 >This method of installation is no longer supported.
 If you have previously installed either the Compaq boot loader or older
@@ -301,9 +292,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="SETTING-UP-AND-TESTING-REDBOOT"
->Setting up and testing RedBoot</A
-></H3
+NAME="SETTING-UP-AND-TESTING-REDBOOT">Setting up and testing RedBoot</H3
 ><P
 >When RedBoot first comes up, it will want to initialize its LCD touch
 screen parameters. It does this by displaying a keyboard graphic and asks
@@ -374,9 +363,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="IPAQ-INSTALL-RB-PERMANENTLY"
->Installing RedBoot permanently</A
-></H3
+NAME="IPAQ-INSTALL-RB-PERMANENTLY">Installing RedBoot permanently</H3
 ><P
 >Once you are satisfied with the setup and that RedBoot is operating
 properly in your environment, you can set up your iPAQ unit to have RedBoot
@@ -522,13 +509,11 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN6093"
->Restoring Windows/CE</A
-></H3
+NAME="AEN6093">Restoring Windows/CE</H3
 ><P
 >To restore Windows/CE from the backup taken in <A
 HREF="ipaq.html#IPAQ-INSTALL-RB-PERMANENTLY"
->the section called <I
+>the Section called <I
 >Installing RedBoot permanently</I
 ></A
 >,
@@ -545,9 +530,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6098"
->Additional commands</A
-></H2
+NAME="AEN6098">Additional commands</H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -556,7 +539,7 @@ CLASS="COMMAND"
 and execution of Linux kernels,
 is supported for this board (see <A
 HREF="executing-programs.html"
->the section called <I
+>the Section called <I
 >Executing Programs from RedBoot</I
 > in Chapter 2</A
 >). The <B
@@ -661,9 +644,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6137"
->Memory Maps</A
-></H2
+NAME="AEN6137">Memory Maps</H2
 ><P
 >RedBoot sets up the following memory map on the iPAQ:   The first level
 page table is located at physical address 0xC0004000.  No second level tables
@@ -719,9 +700,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN6144"
->Rebuilding RedBoot</A
-></H2
+NAME="AEN6144">Rebuilding RedBoot</H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -754,6 +733,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -765,6 +745,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="nano.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -773,6 +754,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -781,6 +763,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="cerfcube.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -796,6 +779,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="installation-and-testing.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

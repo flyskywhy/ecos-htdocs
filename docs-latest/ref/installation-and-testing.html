@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="updating-redboot.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="e7t.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -78,9 +81,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="INSTALLATION-AND-TESTING"
->Chapter 5. Installation and Testing</A
-></H1
+NAME="INSTALLATION-AND-TESTING">Chapter 5. Installation and Testing</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -185,6 +186,11 @@ HREF="grg.html"
 ></DT
 ><DT
 ><A
+HREF="prpmc1100.html"
+>Motorola PrPMC1100 CPU card</A
+></DT
+><DT
+><A
 HREF="calmrisc16.html"
 >CalmRISC/CalmRISC16 Samsung CalmRISC16 Core Evaluation Board</A
 ></DT
@@ -265,17 +271,13 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="ASB2305"
->AM3x/MN103E010 Matsushita MN103E010 (AM33/2.0) ASB2305 Board</A
-></H1
+NAME="ASB2305">AM3x/MN103E010 Matsushita MN103E010 (AM33/2.0) ASB2305 Board</H1
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4877"
->Overview</A
-></H2
+NAME="AEN4877">Overview</H2
 ><P
 >&#13;
 RedBoot supports the debug serial port and the built in ethernet port for communication and
@@ -288,9 +290,7 @@ flash regions.</P
       <DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN4887"
-></A
-><P
+NAME="AEN4887"><P
 ></P
 ><TABLE
 BORDER="1"
@@ -385,15 +385,16 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4911"
->Initial Installation</A
-></H2
+NAME="AEN4911">Initial Installation</H2
 ><P
 >Unless a pre-programmed system flash module is available to be plugged into a new board,
 RedBoot must be installed with the aid of a JTAG interface unit. To achieve this, the RAM mode
-RedBoot must be loaded directly into RAM by JTAG and started, and then <I
+RedBoot must be loaded directly into RAM by JTAG and started, and then <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >that</I
+></SPAN
 >
 must be used to store the ROM mode RedBoot into the boot PROM.</P
 ><P
@@ -404,9 +405,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4916"
->Preparing to program the board</A
-></H3
+NAME="AEN4916">Preparing to program the board</H3
 ><P
 >If the board is to be programmed, whether via JTAG or RedBoot, some hardware settings need to
 be changed:</P
@@ -424,9 +423,12 @@ be changed:</P
 ><LI
 ><P
 >Set the switch S5 (on the front of the board) to boot from whichever flash is
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >not</I
+></SPAN
 > being programmed. Note that the RedBoot image cannot access the flash from
 which it is currently executing (it can only access the other flash).</P
 ></LI
@@ -441,9 +443,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4928"
->Preparing to use the JTAG debugger</A
-></H3
+NAME="AEN4928">Preparing to use the JTAG debugger</H3
 ><P
 >The JTAG debugger will also need setting up:</P
 ><P
@@ -503,9 +503,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4952"
->Loading the RAM-based RedBoot via JTAG</A
-></H3
+NAME="AEN4952">Loading the RAM-based RedBoot via JTAG</H3
 ><P
 >To perform the first half of the operation, the following steps should be followed:</P
 ><P
@@ -833,9 +831,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN5011"
->Loading the boot PROM-based RedBoot via the RAM mode RedBoot</A
-></H3
+NAME="AEN5011">Loading the boot PROM-based RedBoot via the RAM mode RedBoot</H3
 ><P
 >Once the RAM mode RedBoot is up and running, it can be communicated with by way of the serial
 port. Commands can now be entered directly to RedBoot for flashing the boot PROM.</P
@@ -1012,13 +1008,13 @@ CLASS="USERINPUT"
 ><P
 >See <A
 HREF="persistent-state-flash.html"
->the section called <I
+>the Section called <I
 >Persistent State Flash-based Configuration and Control</I
 > in Chapter 2</A
 > for details on configuring the RedBoot in
 general, and also <A
 HREF="flash-image-system.html"
->the section called <I
+>the Section called <I
 >Flash Image System (FIS)</I
 > in Chapter 2</A
 > for more details on programming the system
@@ -1032,9 +1028,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5052"
->Additional Commands</A
-></H2
+NAME="AEN5052">Additional Commands</H2
 ><P
 >The <B
 CLASS="COMMAND"
@@ -1042,7 +1036,7 @@ CLASS="COMMAND"
 > command which allows the loading and execution of
 Linux kernels, is supported for this architecture (see <A
 HREF="executing-programs.html"
->the section called <I
+>the Section called <I
 >Executing Programs from RedBoot</I
 > in Chapter 2</A
 >). The
@@ -1100,9 +1094,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5075"
->Memory Maps</A
-></H2
+NAME="AEN5075">Memory Maps</H2
 ><P
 >RedBoot sets up the following memory map on the ASB2305 board.</P
 ><DIV
@@ -1172,9 +1164,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5085"
->Rebuilding RedBoot</A
-></H2
+NAME="AEN5085">Rebuilding RedBoot</H2
 ><P
 >These shell variables provide the platform-specific information
 needed for building RedBoot according to the procedure described in
@@ -1208,6 +1198,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1219,6 +1210,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="updating-redboot.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1227,6 +1219,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1235,6 +1228,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="e7t.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -1250,6 +1244,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="redboot.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="services-profile-gprof.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="services-power.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -78,25 +81,24 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="PROFILE-FUNCTIONS"
->Chapter 53. Profiling functions</A
-></H1
+NAME="PROFILE-FUNCTIONS">Chapter 53. Profiling functions</H1
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="SERVICES-PROFILE-API"
->API</A
-></H1
+NAME="SERVICES-PROFILE-API">API</H1
 ><P
 >In order for profile data to be gathered for an application, the
 program has to initiate the process.
 Once started, execution histogram data will be collected in a
 dynamic memory buffer.
-This data can be uploaded to a host using <I
+This data can be uploaded to a host using <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >TFTP</I
+></SPAN
 >.
 A side effect of the upload of the data is that the histogram
 is reset.
@@ -117,9 +119,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="SERVICES-PROFILE-API-PROFILE-ON"
->profile_on</A
-></H2
+NAME="SERVICES-PROFILE-API-PROFILE-ON">profile_on</H2
 ><P
 >This function is used to initiate the gathering of the
 runtime execution histogram data.</P
@@ -224,6 +224,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -235,6 +236,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="services-profile-gprof.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -243,6 +245,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -251,6 +254,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="services-power.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -266,6 +270,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="services-profile-gprof.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

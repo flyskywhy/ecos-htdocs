@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="compat-uitron-network-support-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-common-tcpip.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,13 +82,14 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="COMPAT-UITRON-CONFIGURATION-FAQ"
->&micro;ITRON Configuration FAQ</A
-></H1
+NAME="COMPAT-UITRON-CONFIGURATION-FAQ">&micro;ITRON Configuration FAQ</H1
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Q: How are &micro;ITRON objects created?</I
+></SPAN
 ></P
 ><P
 >For each type of uITRON object (tasks, semaphores, flags, mboxes, mpf, mpl)
@@ -95,27 +99,39 @@ these two quantities are controlled by configuration:</P
 ><UL
 ><LI
 ><P
->The <I
+>The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >maximum</I
+></SPAN
 > number of this type of object.</P
 ></LI
 ><LI
 ><P
->The number of these objects which exist <I
+>The number of these objects which exist <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >initially</I
+></SPAN
 >.</P
 ></LI
 ></UL
 ><P
 >This is assuming that for the relevant object type,
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >create</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >delete</I
+></SPAN
 >
 operations are enabled; enabled is the default.  For example, the option
 <TT
@@ -192,9 +208,12 @@ CLASS="FUNCTION"
 >snd_msg(3,&amp;foo)</TT
 >, and all will be well.</P
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Q: How are &micro;ITRON objects initialized?</I
+></SPAN
 ></P
 ><P
 >Some object types have optional initialization.  Semaphores are an
@@ -315,9 +334,12 @@ CLASS="LITERAL"
 it is meaningless to initialize them, for they must be created and so
 initialized then, before use.</P
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Q: What about &micro;ITRON tasks?</I
+></SPAN
 ></P
 ><P
 >Some object types require initialization.  Tasks are an example of this.
@@ -386,9 +408,12 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Q: How can I create &micro;ITRON tasks in the program?</I
+></SPAN
 ></P
 ><P
 >You must provide free slots in the task table in which to create new tasks,
@@ -458,9 +483,12 @@ CLASS="SCREEN"
 >(you must have at least one task at startup in order that the system can
  actually run; this is not so for other uITRON object types)</P
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Q: Can I have different stack sizes for &micro;ITRON tasks?</I
+></SPAN
 ></P
 ><P
 >Simply set aside different amounts of memory for each task to use for its
@@ -594,6 +622,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -605,6 +634,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="compat-uitron-network-support-functions.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -613,6 +643,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -621,6 +652,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-common-tcpip.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -636,6 +668,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="compat-uitron-microitron-api.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

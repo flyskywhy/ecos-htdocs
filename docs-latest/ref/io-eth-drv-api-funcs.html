@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="io-eth-drv-generic1.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="io-eth-drv-upper-api.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="IO-ETH-DRV-API-FUNCS"
->Review of the functions</A
-></H1
+NAME="IO-ETH-DRV-API-FUNCS">Review of the functions</H1
 ><P
 >Now a brief review of the functions.  This discussion will use generic
 names for the functions &#8212; your driver should use hardware-specific
@@ -91,9 +92,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-INIT"
->Init function</A
-></H2
+NAME="IO-ETH-DRV-API-INIT">Init function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -216,9 +215,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-START"
->Start function</A
-></H2
+NAME="IO-ETH-DRV-API-START">Start function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -287,9 +284,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-STOP"
->Stop function</A
-></H2
+NAME="IO-ETH-DRV-API-STOP">Stop function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -318,9 +313,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-CONTROL"
->Control function</A
-></H2
+NAME="IO-ETH-DRV-API-CONTROL">Control function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -468,9 +461,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-CAN-SEND"
->Can-send function</A
-></H2
+NAME="IO-ETH-DRV-API-CAN-SEND">Can-send function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -503,9 +494,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-SEND"
->Send function</A
-></H2
+NAME="IO-ETH-DRV-API-SEND">Send function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -570,7 +559,7 @@ CLASS="FUNCTION"
 >
 (see <A
 HREF="io-eth-drv-upper-api.html#IO-ETH-DRV-TX-DONE"
->the section called <I
+>the Section called <I
 >Callback Tx-Done function</I
 ></A
 >)
@@ -601,9 +590,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-DELIVER"
->Deliver function</A
-></H2
+NAME="IO-ETH-DRV-API-DELIVER">Deliver function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -653,9 +640,12 @@ This <TT
 CLASS="FUNCTION"
 >eth_drv_dsr()</TT
 > call must occur from within the
-interrupt handler's DSR (not the ISR) or actually <I
+interrupt handler's DSR (not the ISR) or actually <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >be</I
+></SPAN
 >
 the DSR, whenever it is determined that
 the device needs attention from the foreground.  The third parameter
@@ -668,9 +658,12 @@ CLASS="PARAMETER"
 <TT
 CLASS="FUNCTION"
 >eth_drv_dsr()</TT
-> <I
+> <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >must</I
+></SPAN
 >
 be a valid <SPAN
 CLASS="TYPE"
@@ -703,7 +696,7 @@ CLASS="PROGRAMLISTING"
 which will in turn call the receive function, which we talk about next.
 See also <A
 HREF="io-eth-drv-upper-api.html#IO-ETH-DRV-UPPER-RECV"
->the section called <I
+>the Section called <I
 >Callback Receive function</I
 ></A
 > below.</P
@@ -713,9 +706,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-RECV"
->Receive function</A
-></H2
+NAME="IO-ETH-DRV-API-RECV">Receive function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -783,9 +774,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-POLL"
->Poll function</A
-></H2
+NAME="IO-ETH-DRV-API-POLL">Poll function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -856,9 +845,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="IO-ETH-DRV-API-INT-VECTOR"
->Interrupt-vector function</A
-></H2
+NAME="IO-ETH-DRV-API-INT-VECTOR">Interrupt-vector function</H2
 ><P
 ><TABLE
 BORDER="5"
@@ -893,6 +880,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -904,6 +892,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-generic1.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -912,6 +901,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -920,6 +910,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-upper-api.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -935,6 +926,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="io-eth-drv-generic1.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

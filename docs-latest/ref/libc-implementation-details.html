@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="math-library-compatibility-modes.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="libc-thread-safety.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,9 +82,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="LIBC-IMPLEMENTATION-DETAILS"
->Some implementation details</A
-></H1
+NAME="LIBC-IMPLEMENTATION-DETAILS">Some implementation details</H1
 ><P
 >Here are some details about the implementation
 which might be interesting, although they do not affect the ISO-defined
@@ -92,9 +93,12 @@ semantics of the library. </P
 ><LI
 ><P
 >It is possible to configure 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 >
  to have the standard C library without the kernel. You might want
 to do this to use less memory. But if you disable the kernel, you
@@ -131,14 +135,20 @@ as a CYG_ADDRESS. </P
 ></LI
 ><LI
 ><P
->The GNU C compiler will place its own <I
+>The GNU C compiler will place its own <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >built-in</I
+></SPAN
 > implementations
 instead of some C library functions. This can be turned off with
-the <I
+the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >-fno-builtin</I
+></SPAN
 > option. The functions affected
 by this are 
 <TT
@@ -202,13 +212,19 @@ CLASS="FUNCTION"
 >For faster execution speed you should avoid this option
 and let the compiler use its built-ins. This can be turned off by
 invoking 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >GCC</I
+></SPAN
 >
- with the <I
+ with the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >-fno-builtin</I
+></SPAN
 > option. </P
 ></LI
 ><LI
@@ -233,15 +249,21 @@ the kernel needs to resolve them even if the C library is not configured. </P
 CLASS="FUNCTION"
 >strerror()</TT
 >
-, are implemented in the <I
+, are implemented in the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >error</I
+></SPAN
 > package. The
 error package is separate from the rest of the C and math libraries
 so that the rest of 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 >
  can use these error handling facilities even if the C library is
 not configured. </P
@@ -325,9 +347,12 @@ must be NULL. </P
 ></LI
 ></UL
 ><P
->Here is a minimal <I
+>Here is a minimal <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos</I
+></SPAN
 > program which
 demonstrates the use of environments (see also the test case in <TT
 CLASS="FILENAME"
@@ -378,6 +403,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -389,6 +415,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="math-library-compatibility-modes.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -397,6 +424,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -405,6 +433,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="libc-thread-safety.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -420,6 +449,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="c-and-math-library-overview.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

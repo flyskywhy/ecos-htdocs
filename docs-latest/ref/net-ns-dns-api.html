@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
+CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
 "><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="net-ns-dns.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="net-ns-dns-testing.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -78,9 +81,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="NET-NS-DNS-API"
->Chapter 45. DNS</A
-></H1
+NAME="NET-NS-DNS-API">Chapter 45. DNS</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -105,9 +106,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-NS-DNS-API1"
->DNS API</A
-></H1
+NAME="NET-NS-DNS-API1">DNS API</H1
 ><P
 >The DNS client uses the normal BSD API for performing lookups:
 <TT
@@ -167,12 +166,13 @@ A call to one will destroy the results from the previous call
 to the other function. <TT
 CLASS="FUNCTION"
 >getaddrinfo()</TT
-> is thread
-safe and so is the preferred interface.</P
-></LI
-><LI
-><P
->The client only uses IPv4 to access the DNS server.</P
+> and
+<TT
+CLASS="FUNCTION"
+>getnameinfo()</TT
+> are thread
+safe and so these are the preferred interfaces. They are also address
+family independent so making it easier to port code to IPv6.</P
 ></LI
 ><LI
 ><P
@@ -193,13 +193,34 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >#include &lt;network.h&gt;
-int cyg_dns_res_init(struct in_addr *dns_server)</PRE
+int cyg_dns_res_start(char * dns_server)</PRE
+></TD
+></TR
+></TABLE
+><P
+>Where dns_server is the address of the DNS server. The address
+must be in numeric form and can be either an IPv4 or an IPv6 address.</P
+><P
+>There also exists a deprecated function to start the DNS
+client:</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>int cyg_dns_res_init(struct in_addr *dns_server)</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >where dns_server is the address of the DNS server
-the client should query. On Error this function returns -1, otherwise
+the client should query. The address should be in network order and
+can only be an IPv4 address.</P
+><P
+> On error both this function returns -1, otherwise
 0 for success. If lookups are attemped before this function has
 been called, they will fail and return NULL, unless numeric host addresses
 are passed. In this cause, the address will be converted and returned
@@ -232,9 +253,7 @@ and retrieved using the functions:
 <DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN14925"
-></A
-><P
+NAME="AEN14991"><P
 ></P
 ><P
 ><CODE
@@ -310,6 +329,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -321,6 +341,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="net-ns-dns.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -329,6 +350,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-ref.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -337,6 +359,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="net-ns-dns-testing.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -352,6 +375,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="net-ns-dns.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
