@@ -9,9 +9,9 @@
 <HR SIZE=3>
 
 
-<p>It's possible to add platform specific RedBoot commands. This is
-done using the macro RedBoot_cmd defined in &lt;redboot.h&gt;. Here's
-an example from the Assabet platform HAL:</p>
+<p>It's possible to add platform specific RedBoot commands using the
+macro RedBoot_cmd defined in &lt;redboot.h&gt;. This is an example
+from the Assabet platform HAL:</p>
 
 <pre>
  RedBoot_cmd("exec", 
@@ -27,7 +27,7 @@ an example from the Assabet platform HAL:</p>
  }
 </pre>
 
-<p>This adds the command 'exec', the associate help strings and a
+<p>This adds the command 'exec', the associated help strings and a
 pointer to the actual command implementation.</p>
 
 <p>RedBoot provides two commands, init_opts() and scan_opts(), which
