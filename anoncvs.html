@@ -79,36 +79,28 @@ working with the sources from the anonymous CVS repository.</p>
 above) and direct TCP/IP access. If you are behind a firewall, you should
 discuss access with your local systems administrator.</p>
 
-<p>Type the following command to login to the CVS server:</p>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos login</kbd>
-
-<p>You will be prompted for a password which is <i>anoncvs</i>. You only need to
-perform this login the first time you access the eCos CVS repository.
-The password is saved in the file <tt>.cvspass</tt> in your home
-directory for use in subsequent sessions.</p>
-
 <p>It is recommended that you use different directory trees for the
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -P ecos</kbd>
+<kbd>cvs -z3 -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -P ecos</kbd>
 
 <p>This command should initiate a connection to the CVS server and check out
 the latest version of eCos, including TCP/IP networking stack and SNMP. For
 those who want the last version of eCos to be released under the RHEPL,
 instead type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r last-rhepl -P ecos</kbd>
+<kbd>cvs -z3 -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r last-rhepl -P ecos</kbd>
 
 <p>In the future, when you want to update your
 repository to the latest version, go to the base of the repository tree and
 use the command:</p>
 
-<kbd>cvs update -d -P</kbd>
+<kbd>cvs -z3 update -d -P</kbd>
 
 <p>or to update to the older RHEPL'd version of eCos:</p>
 
-<kbd>cvs update -r last-rhepl -d -P</kbd>
+<kbd>cvs -z3 update -r last-rhepl -d -P</kbd>
 
 <h2>Using the repository</h2>
 
