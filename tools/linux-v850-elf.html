@@ -1,0 +1,364 @@
+<HTML>
+
+<!--
+*********************************************************
+
+WARNING - this is a generated file - do not edit directly
+
+*********************************************************
+-->
+
+<HEAD>
+<TITLE>Building the v850-elf development tools for Linux</TITLE>
+</HEAD>
+
+<!--#include virtual="../include/header.html"-->
+
+
+<H2>Building the NEC V850 development tools for Linux</H2>
+<HR SIZE=3>
+<h3>Introduction</h3>
+
+eCos requires v850-elf development tools to develop programs for NEC V850 targets.
+
+The development tools come in three parts: the GNU compiler collection
+(GCC), the GNU Debugger (GDB) and the GNU binary utilities,
+which include the GNU assembler and linker.
+
+This page details the steps required to download and build these development tools.
+
+<h3>Downloading the tool sources</h3>
+<h4>GNU Binary Utilities</h4>
+
+<p>Instructions for downloading the GNU Binary Utilities (binutils) are provided
+on the <a href="http://sourceware.cygnus.com/binutils/">
+binutils home page</a>. However, at the time of writing, the most recent official
+release of these utilities was version 2.9.1. This version does not contain certain
+functionality required by eCos.<p>
+
+Until binutils 2.10 is released, eCos users must download a
+<a href="ftp://sourceware.cygnus.com/pub/binutils/snapshots/">
+development snapshot</a>. Download sizes are
+in the region of 5.5MB.
+
+Both weekly and daily snapshots are available. There are no stability
+advantages of one over the other. The advantage of using the weekly
+snapshots lies in the convenience of applying the <nobr><tt>diffs-weekly-*</tt></nobr>
+files that are also present in the snapshots directory on the FTP site.
+The weekly diffs are preserved for longer than the daily diffs,
+providing a more prolonged opportunity to upgrade.<p>
+
+If you already have binutils sources available but are unsure
+of their version, you can search the file <tt>gas/configure</tt> for the string
+"VERSION" and examine its value.
+
+<h4>GNU Compiler Collection</h4>
+
+The <a href="http://gcc.gnu.org/">GNU Compiler Collection web site</a> contains plenty of
+information about installing and using GCC.
+
+
+
+
+
+Unfortunately the most recent official release (GCC 2.95.2) is not capable of
+supporting eCos for NEC V850. A <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/index.html>snapshot of the
+GCC development sources</a> should be used to obtain the most up-to-date compiler
+with new features and bug fixes.<p>
+
+eCos has been tested with the 2000-03-13 snapshot, but it is likely that later
+snapshots will fix bugs that have not yet been discovered. If you have compiler
+problems you may wish to consider updating to a more recent snapshot, or
+reverting to an older one.
+
+When downloading a snapshot from the <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/>
+GCC snapshot download area</a> note that only the core compiler and C++
+distributions are required (prefix <tt>egcs-core-</tt> and <tt>egcs-g++-</tt>).<p>
+
+
+
+It is strongly recommended you use a <a href="http://gcc.gnu.org/mirrors.html">mirror site</a>
+close to you, which will result in a faster download, reduced internet congestion, and
+reduced load on the central server.<p>
+
+<h4>GNU Debugger</h4>
+
+<p>Instructions for downloading the GNU Debugger (GDB) are provided
+on the <a href="http://sourceware.cygnus.com/gdb/">
+GDB home page</a>. 
+
+However, Red Hat has also released an open source graphical front-end to GDB based on
+Tcl/Tk called <i>Insight</i>, which has a separate <a href="http://sourceware.cygnus.com/insight/">
+home page</a>.<p>
+
+The Insight sources are a superset of the standard GDB sources. It is also
+still possible to run GDB in command-line mode by using the <tt>-nw</tt>
+command-line option when invoking GDB, so there is nothing to lose by using the Insight
+sources.<p>
+
+The latest release (version 5.0) is recommended and may be downloaded via the GDB home page.
+Alternatively, click on on one of following links to download the files directly:
+
+<ul>
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/insight-5.0.tar.bz2">
+  Insight 5.0 distribution</a> (insight-5.0.tar.bz2 - 14MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/gdb-5.0.tar.bz2">
+  GDB 5.0 distribution</a> (gdb-5.0.tar.bz2 - 9.1MB)
+</ul>
+
+<p>
+<h3>Preparing the sources for building</h3>
+
+Once the tools sources have been downloaded, they must be prepared before
+building. These instructions assume that the tool sources will be extracted in the <tt>/src</tt> directory hierarchy.
+Other locations may be substituted throughout. Similarly placeholders of the form <tt><i>YYYYMMDD</i></tt> and
+<tt><i>YYMMDD</i></tt> should be replaced with the actual date of the downloaded files. Ensure that the file system used 
+has sufficient free space available. The contents of each archive will expand
+to occupy approximately 6 times the space required by the compressed archive itself.
+
+
+To extract the downloaded sources, you will need to have either the
+<a href=../../bzip2/>bzip2</a> or <a href=http://www.gzip.org/>gzip</a>
+compression utilities, depending on your choice of download format.
+A <i>patch</i> utility (preferably <a href=http://www.gnu.org/software/patch/patch.html>GNU patch</a>) is also required.<p>
+The following steps should be followed at a <i>sh</i>, <i>ksh</i> or <i>bash</i> prompt. Users of
+the <i>csh</i> and <i>tcsh</i> shells should replace <tt>2&gt;&amp;1</tt> with <tt>|&amp;</tt> throughout:
+
+
+
+
+<ol>
+<li>Create a directory for each set of tool sources, avoiding directory names containing spaces as these can confuse the
+build system:
+
+<pre>
+    mkdir -p /src/binutils /src/gcc /src/gdb
+</pre>
+
+<li>Extract the sources for each tool directory in turn. For <i>bzip2</i> archives:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; binutils-<i>YYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-core-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight-5.0.tar.bz2 | tar xvf -
+</tt></nobr>
+
+
+<p>For <i>gzip</i> archives:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; binutils-<i>YYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc<br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-core-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; insight-5.0.tar.gz | tar xvf -
+</tt></nobr>
+
+<p>
+The following directories should be generated and populated during the extraction process:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i><br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
+</tt></nobr>
+<p>
+If the standard GDB source distribution was downloaded rather than Insight,
+then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-5.0</tt></nobr> rather than
+<nobr><tt>/src/gdb/insight-5.0</tt></nobr>.<p>
+
+<li>You may now need to apply a small number of source patches that are
+required to fix outstanding problems and add eCos support to the tools.
+Patches may be downloaded using most browsers by either shift-clicking
+or right-clicking on the link to the patch. You must not view the link
+and cut-and-paste because white space must be preserved exactly.<p>
+
+
+
+
+
+If you are using a GCC snapshot dated 2000-03-20 or earlier, download
+the <a href=patches/ecos-gcc-snap-cpp.pat>ecos-gcc-snap-cpp.pat</a>
+patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap-cpp.pat
+
+</tt></nobr>
+<p>
+
+
+
+You must then reset the source file timestamps to ensure that makefile dependencies
+are handled correctly:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;contrib/gcc_update --touch
+</tt></nobr>
+
+<p>
+
+
+
+If any of the patches fail to apply you should see if there is some
+obvious problem by attempting to apply the patch manually. If this is not
+possible, report the problem to the <a href="../intouch.html">
+ecos-discuss</a> mailing list.<p>
+
+If the <i>patch</i> utility reports the following message:<p>
+<nobr><tt>&nbsp;&nbsp;&nbsp;&nbsp;Reversed (or previously applied) patch detected!  Assume -R? [n]</tt></nobr><p>
+then type <i>n</i> because this indicates the patch has already been applied
+in the master sources.
+</ol>
+
+<h3>Building the tools</h3>
+
+Before attempting to build the tools, ensure that the GNU native compiler tools directory is on the
+PATH and precedes the current directory. The
+following build procedures will fail if <tt>.</tt> is ahead of the native tools in the PATH.<p>
+
+
+
+Approximate disk space requirements for building the development tools are as follows:<p>
+
+<center><table BORDER=0 CELLSPACING=2 CELLPADDING=7>
+<tr bgcolor=#999999>
+  <td><b>Tool</b></td><td align=right><b>Build</b></td><td align=right><b>Install</b></td>
+</tr>
+<tr bgcolor=#dddddd>
+  <td>Binary Utilities</td><td align=right>28MB</td><td align=right>21MB</td>
+</tr>
+<tr bgcolor=#dddddd>
+  <td>GCC</td><td align=right>33MB</td><td align=right>13MB</td>
+</tr>
+<tr bgcolor=#dddddd>
+  <td>Insight</td><td align=right>110MB</td><td align=right>63MB</td>
+</tr>
+<tr bgcolor=#dddddd>
+  <td>TOTAL</td><td align=right>171MB</td><td align=right>97MB</td>
+</tr>
+</table></center>
+
+<p>
+Following successful building and installation of each set of tools, the associated build
+tree may be deleted to save space if necessary. These instructions assume that the tools
+will be built in the <tt>/tmp/build</tt> directory hierarchy and
+installed to <tt>/tools</tt>. Other locations may be substituted throughout:
+
+<ol>
+<li>Configure the GNU Binary Utilities:<p>
+
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/binutils<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/binutils<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/binutils/binutils-<i>YYMMDD</i>/configure --target=v850-elf \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-linux-gnu \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
+</tt></nobr><p>
+
+If there are any problems configuring the tools, you can refer to the file
+<tt>configure.out</tt> as a permanent record of what happened.<p>
+
+<li>Build and install the GNU Binary Utilities:<p>
+
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
+</tt></nobr>
+<p>
+
+If there are any problems building the tools, you can use the file
+<tt>make.out</tt> as a permanent record of what happened.<p>
+
+<li>Configure GCC, ensuring that the GNU Binary Utilities are at the head of the PATH:<p>
+
+<nobr>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;PATH=/tools/H-i686-pc-linux-gnu/bin:$PATH ; export PATH&nbsp;&nbsp;&nbsp;&nbsp;</tt>(for <i>sh</i>, <i>ksh</i> and <i>bash</i> users)<br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;set path = ( /tools/H-i686-pc-linux-gnu/bin $path )&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>(for <i>csh</i> and <i>tcsh</i> users)<br><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/gcc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/gcc<br>
+
+
+<br>&nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i>/configure --target=v850-elf \<br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-linux-gnu \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--with-gnu-as --with-gnu-ld --with-newlib \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
+</tt></nobr>
+<p>
+
+<li>Build and install GCC:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all-gcc install-gcc \
+<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LANGUAGES="c c++" 2&gt;&1 | tee make.out
+</tt></nobr>
+<p>
+
+<li>Configure Insight:<p>
+
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/gdb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/gdb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0/configure --target=v850-elf \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-linux-gnu \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
+</tt></nobr>
+<p>
+
+<li>Build and install Insight:<p>
+
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
+</tt></nobr>
+<p>
+</ol>
+
+On completion, the NEC V850 development tool executable files will be located at <tt>/tools/H-i686-pc-linux-gnu/bin</tt>.
+This directory should be added to the head of your PATH.
+
+
+<h3>Troubleshooting</h3>
+
+If you encounter difficulties in building or using the development tools, first check
+the <a href="../faq.html#problems_toolchain">eCos FAQ</a> and the
+<a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
+if the topic has come up before. Initial queries
+may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
+there are other mailing lists which may be more appropriate if a problem is clearly
+related to a particular tool:
+<ul>
+<li><a href="http://sourceware.cygnus.com/ml/binutils/">Binutils mailing list</a>
+<li><a href="http://sourceware.cygnus.com/ml/gdb/">GDB mailing list</a>
+<li><a href="http://sourceware.cygnus.com/ml/crossgcc/">CrossGCC mailing list</a> (for problems specific to GCC cross-compilation)
+<li><a href="http://gcc.gnu.org/lists.html">GCC mailing list</a> (for more general GCC problems)
+</ul>
+
+Before sending messages to the mailing lists, you would also be advised to
+consult the various web sites associated with each list, to see if there is
+any relevant documentation or FAQs:
+<ul>
+<li><a href="http://sourceware.cygnus.com/binutils/">Binutils home page</a>
+<li><a href="http://sourceware.cygnus.com/gdb/">GDB home page</a>
+<li><a href="http://sourceware.cygnus.com/insight/">Insight home page</a>
+<li><a href="http://gcc.gnu.org/">GCC web site</a>
+<li><a href="http://www.objsw.com/CrossGCC/">CrossGCC FAQ</a>
+</ul>
+ 
+It is also worth noting that all these mailing lists have searchable archives.
+
+<!--#include virtual="../include/footer.html"-->
