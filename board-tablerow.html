@@ -21,33 +21,24 @@
   <td>&nbsp;</td>
   <!--#endif -->
 
-  <!--#if expr="$ethernetsupport = 1" -->
-  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
-  <!--#else -->
-  <td width=1>&nbsp;</td>
-  <!--#endif -->
-
-  <!--#if expr="$usbsupport = 1" -->
-  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
-  <!--#else -->
-  <td width=1>&nbsp;</td>
-  <!--#endif -->
-
-  <!--#if expr="$flashsupport = 1" -->
-  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <!--#if expr="$redbootonly = 0" -->
+  <td width=1><img alt="eCos supported" src="img/ecos-small.png" border=0></td>
   <!--#else -->
   <td width=1>&nbsp;</td>
   <!--#endif -->
 
   <!--#if expr="$redbootsupport = 1" -->
-  <td width=1><img alt="Y" src="img/tick.gif" border=0></td>
+  <td width=1><b><font face="Arial,Helvetica,sans-serif" size=-1><font color="#FF0000">Red</font>Boot</font></b></td>
   <!--#else -->
   <td width=1>&nbsp;</td>
   <!--#endif -->
 
   <td width=1>
   <!--#if expr="$quality" -->
+  <!-- Don't display R's any more - it clutters too much now -->
+  <!--#if expr="$quality != R" -->
   <!--#echo var="quality" -->
+  <!--#endif -->
   <!--#endif -->
   <!--#if expr="$xxxcontributed = 1" -->
   C
@@ -58,7 +49,7 @@
   </td>
 
   <!--#if expr="$infourl" -->
-  <td width=1><a href="<!--#echo var="infourl" -->">More info</a></td>
+  <td width=1><a href="<!--#echo var="infourl" -->"><img alt="Details..." src="img/details.png" border=0></a></td>
   <!--#else -->
   <td width=1>&nbsp;</td>
   <!--#endif -->

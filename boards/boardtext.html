@@ -39,11 +39,11 @@ have been tested.</p>
 
 <p>Device drivers are included for:
 <ul>
-<!--#if expr="$serialsupport = 1" -->
-<li>Interrupt-driven serial I/O
-<!--#endif -->
 <!--#if expr="$nodiagserialsupport != 1" -->
 <li>Diagnostic (polled) serial I/O
+<!--#endif -->
+<!--#if expr="$serialsupport = 1" -->
+<li>Interrupt-driven serial I/O
 <!--#endif -->
 <!--#if expr="$ethernetsupport = 1" -->
 <li>Ethernet
