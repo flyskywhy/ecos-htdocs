@@ -48,14 +48,144 @@
   </tr>
 
   <tr bgcolor="#999999">
-    <td colspan=3><b>GNU Tools for eCos 1.1 and CygMon</b></td>
+    <td colspan=3><b>GNU tools for eCos 1.1 and CygMon</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>16573</td>
+    <td valign=top>On the TX39 and MN10300, the CygMon command line "load"
+		command does not function correctly.</td>
+    <td valign=top>Use gdb to load binaries into the target system using the GDB
+		support built into CygMon. Optionally, on the TX39 we provide a
+		simple srecord downloader "loaders/tx39-jmr3904/sload.bin"
+		that can be used for this purpose.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17046</td>
+    <td valign=top>Only applicable to the MN103002 evaluation board hardware.
+		Breakpoints do not function after a watchdog exception fires.</td>
+    <td valign=top>No known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17614</td>
+    <td valign=top>Developer's Kit release only. Mixing some operations between
+		the GDBTk GUI and console window can cause problems. Operations
+		that should not be mixed include all download and execution
+		related commands.</td>
+    <td valign=top>Avoid the use the GDBTk console window where possible.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17831<BR>18000</td>
+    <td valign=top>The TX39 simulator does not support simulation of the external
+		interrupt configuration register (located at 0xffffe000). This
+		correctly leads to the "intr0" and "kintr0" eCos testcases
+		failing when run under the simulator.</td>
+    <td valign=top>Do not access this register in the simulator.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17974</td>
+    <td valign=top>The MN103002 simulator does not support simulation of the
+		on-chip watchdog timer. This correctly leads to the "watchdog"
+		eCos testcase failing.</td>
+    <td valign=top>Do not access the watchdog device in the simulator.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18007</td>
+    <td valign=top>GDB cannot cope with executables whose absolute pathnames are
+		longer than 128 characters. This is only a problem when gdb is
+		used with hardware. The built in simulators are OK. The failure
+		mode is that the application will download correctly, but then
+		GDB terminates with an error.</td>
+    <td valign=top>Only attempt to run applications located in a path consisting
+		of less than 128 characters.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18034</td>
+    <td valign=top>The Windows hosted compiler must be provided with file
+		extension when using the "-o" flag. If no extension is provided
+		the compilation fails with an unrelated and misleading error.</td>
+    <td valign=top>Always specify an extension when using "-o"</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18036</td>
+    <td valign=top>When using the PowerPC simulator built in to GDB, GDB only
+		displays the top stack frame, and it is not possible to select
+		any other stack frame.</td>
+    <td valign=top>None.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18055</td>
+    <td valign=top>TX39 GDBTk (Developer's Kit release only) does not allow you
+		to remove assembler level breakpoints in the assembly window.</td>
+    <td valign=top>Either use the breakpoint window to disable the breakpoint, or
+		use the console window to remove the breakpoints with the
+		delete command.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18056</td>
+    <td valign=top>GDB can occasionally run out of memory when repeatedly loading
+		applications into the simulator.</td>
+    <td valign=top>If you experience this problem, simply exit GDB and restart.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18085<BR>18001</td>
+    <td valign=top>TX39 (Sourceware release only) problem connecting to simulated
+		CygMon. Following the instructions in the documentation will
+		not result in successful connection to a standalone simulator
+		running a simulated CygMon.</td>
+    <td valign=top>To connect to a simulated CygMon it is necessary to run GDB
+		first, setting "target remote localhost:xxxx", and then
+		immediately start the standalone simulator from a different
+		shell.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18086</td>
+    <td valign=top>TX39 GDB deletion of assembler breakpoints within interrupt
+		handlers can cause problems. This problem does not occur in the
+		TX39 simulator.</td>
+    <td valign=top>Only ever disable interrupt handler assembler breakpoints, do
+		not delete them.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18110</td>
+    <td valign=top>TX39 "si" and "ni" commands can cause problems in a
+		multi-threaded environment. In certain circumstances GDB can
+		get confused by a thread context switch when single stepping.
+		This is a rare occurance, but results in control of the target
+		being lost.</td>
+    <td valign=top>If this occurs, hit ^C to regain control of the target.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18121</td>
+    <td valign=top>No on-line GDBTk manual present (Developer's Kit only). The
+		Developer's Kit comes with full printed documentation including
+		a GDBTk manual. As an added bonus we have included a HTML
+		version of this manual on the eCos 1.1 CD.</td>
+    <td valign=top>The HTML version of the GDBTk manual can be found on the CD ROM
+		in the following location: "gdbtk\gdbtk.htm".</td>
   </tr>
 
 
   <tr bgcolor="#DDDDDD">
-    <td valign=top></td>
-    <td valign=top></td>
-    <td valign=top></td>
+    <td valign=top>18122</td>
+    <td valign=top>PowerPC GDB stub BREAK support is only partial implemented in
+		this release. When a user interrupts execution, GDB doesn't
+		display the context of the running thread.</td>
+    <td valign=top>Use the "thread" command to select the context of any other
+		thread you wish to view.</td>
   </tr>
 
 
