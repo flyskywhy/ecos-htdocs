@@ -288,6 +288,20 @@ ${WINDOWS-
 </tt></nobr>
 <p>
 
+If you are using a GCC snapshot more recent than 2000-05-29, download
+the <a href="patches/tinfo2inhibitlibc.pat">tinfo2inhibitlibc.pat</a>
+patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+${WINDOWS+
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; tinfo2inhibitlibc.pat | patch -p0
+}
+${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; tinfo2inhibitlibc.pat
+}
+</tt></nobr>
+<p>
+
 $EXTRASNAPPATCH
 
 You must then reset the source file timestamps to ensure that makefile dependencies
