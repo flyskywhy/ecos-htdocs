@@ -9,70 +9,81 @@
 <BR><H2>Introduction</H2>
 <HR SIZE=3>
 <!-- eCos template HTML end-->
-
-<h3>What is it?</h3>
-
-<p>
-eCos is an infrastructure for developing embedded applications.  It
-consists of:
-
-<ul>
-  <li>A configuration system which presents eCos as a <i>component
-      architecture</i>, and allows fine-grained configuration of each
-      component.  Using the configuration system you can compose your
-      own operating system and fine-tune it to do what your
-      application needs.
-  <li>Host-side libraries and tools to support this configuration
-      infrastructure.
-  <li>A real time kernel.
-  <li>An ISO standard C and math library.
-  <li>An implementation of the &micro;ITRON operating system, running
-      on top of the eCos kernel.
-  <li>A collection of device drivers (not too many so far).
-  <li>GDB and simulator support for the target CPUs, so that you can
-      run and debug both in simulation and on real hardware.
-</ul>
-
-<p> eCos's kernel and runtime components are open source software, and
-we encourage you to participate in the development of eCos.
-
-<p> For a description of our goals, please read the <a
-href="ecos-docs/tutorials/ecos-tutorial/foreword.html">Foreword</a> in
-the <a href="ecos-docs/index.html">eCos online documentation</a>.
-
-<h3>What platforms are supported?</h3>
-
-<h4>Target architectures</h4>
-
-<p> At the time I write this, 1998-10-28, the following CPUs are
-supported:
-
-<ul>
-  <li>Matsushita MN10300
-  <li>Toshiba TX39
-  <li>PowerPC
-</ul>
-
-<h4>Host operating systems</h4>
-
-<p> At the time I write this, 1998-10-28, the following host operating
-systems are supported:
-
-<ul>
-  <li>Microsoft Windows NT 4.0, Windows 98, Windows 95
-  <li>UNIX (Linux in particular)
-</ul>
-
-<h3>Compilers, debuggers and simulators</h3>
-
-<p> ecos requires some new features from the GNU compiler toolchain,
-and we have made these new versions available here to accompany this
-release.
-
-<p> The version of GDB provided here has support for the MN10300, TX39
-and PowerPC simulators.
-
-
+<P>
+The embedded Cygnus operating system (eCos) is an open-source,
+configurable, portable, and royalty-free embedded RTOS. The system
+comes with everything necessary to develop eCos based applications,
+including tools, documentation and complete sources. All eCos runtime
+source code is distributed under the Cygnus eCos Public License
+(CEPL), a derivative of the Netscape Public License.
+<P>
+This release is a &quot;Technology Release&quot;. It provides all the
+functionality needed for a wide variety of embedded applications, and
+it has undergone very extensive testing. However at this stage it is
+only available for a limited number of target architectures, and there
+is lots of additional functionality that can and will be added. We
+have chosen to release the system at this stage because it can already
+be of great benefit to many embedded system developers, and to
+encourage the development of an eCos open source user community on the
+net which will help to move the system forwards.
+<P>
+<H3>eCos Functionality</H3>
+<UL>
+  <LI>Hardware Abstraction Layer (HAL)</LI>
+  <LI>Real-time kernel</LI>
+      <UL>
+	<LI>Interrupt handling</LI>
+	<LI>Exception handling</LI>
+	<LI>Choice of schedulers</LI>
+	<LI>Thread support</LI>
+	<LI>Rich set of synchronization primitives</LI>
+	<LI>Timers, counters and alarms</LI>
+	<LI>Choice of memory allocators</LI>
+	<LI>Debug and instrumentation support</LI>
+      </UL>
+  <LI>uITRON 3.0 compatible API layered on top of the basic kernel</LI>
+  <LI>ISO C library
+</UL>
+<P>
+<H3>Supported Targets</H3>
+<P>
+<UL>
+  <LI>Matsushita MN10300 processor, stdeval1 evaluation board and
+      simulator</LI>
+  <LI>Toshiba TX39 processor, jmr3904 evaluation board and
+      simulator</LI>
+  <LI>PowerPC MPC860 processor, <A
+      HREF="http://www.cogcomp.com">Cogent</A> evaluation board and <A
+      HREF="http://sourceware.cygnus.com/psim">psim</A>
+      simulator. This target should be considered a beta.</LI>
+</UL>
+<P>
+<H3>Supported Hosts</H3>
+<P>
+The main supported host is Windows NT on an ix86-based host. The
+system has also been tested on Red Hat 5.1 Linux using an ix86-based
+host, and on both Windows 95 and 98, but these hosts should also be
+considered a beta. The system has not been tested on any other host
+platform.
+<P>
+<H3>Host Software</H3>
+<P>
+The system comes with full support for manual configuration of the
+system on all host platforms. In addition Windows users get a
+graphical configuration tool which simplifies the process of
+configuring a system and validating the resulting system. This tool is
+not yet available for Linux users. The eCos configuration framework
+involves by far the greatest amount of innovation in the system and is
+still evolving very rapidly. Therefore at this stage we are not
+releasing the graphical configuration tool under the Cygnus eCos
+public license, and we are not making the sources publicly available.
+<P>
+In addition the system comes with a full set of tools needed for
+embedded systems development. This includes the compilers gcc and g++,
+the assembler and linker, the debugger gdb, and simulators for all the
+target architectures.
+<P>
+      
 <!-- eCos template HTML start -->
 <H3><A HREF="index.html" TARGET="_top">Home</A></H3>
 </BODY>
