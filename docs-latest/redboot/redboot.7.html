@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.0-generic/Tue Feb  6 14:34:09  2001--><!--version 1.0-generic/Tue Feb  6 14:33:34  2001-->
+<HEAD><!--version 1.1/Thu Feb 15 11:33:17  2001--><!--version 1.1/Thu Feb 15 11:32:44  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="cygnus.css">
 <TITLE> Installation and Testing</TITLE></HEAD>
@@ -815,111 +815,6 @@ The RAM based RedBoot image occupies RAM addresses 0x20000 - 0x5ffff. RAM addres
 <A NAME="pgfId=2684504">
  </A>
 The SA11x0 OS timer is used as a polled timer to provide timeout support for network and XModem file transfers.</P>
-</DIV>
-<DIV>
-<H3 CLASS="Heading1">
-<A NAME="pgfId=2685158">
- </A>
-MIPS Atlas Board with CoreLV 4Kc and CoreLV 5Kc</H3>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2685159">
- </A>
-Overview</H3>
-<P CLASS="Body">
-<A NAME="pgfId=2685160">
- </A>
-RedBoot supports the debug serial port and the built in ethernet port for communication and downloads. The default serial port settings are 115200,8,N,1. RedBoot runs from and supports FLASH management for the system flash region. These configurations are supported:</P>
-<UL>
-<P><P><LI>
-<A NAME="pgfId=2685161">
- </A>
-RedBoot running from the system FLASH boot sector.</LI>
-<P><P><LI>
-<A NAME="pgfId=2685162">
- </A>
-RedBoot running from RAM with RedBoot in the system FLASH boot sector.</LI>
-</UL>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2685163">
- </A>
- Initial Installation Method</H3>
-<P CLASS="Body">
-<A NAME="pgfId=2685164">
- </A>
-RedBoot is installed using the code download facility built into the Atlas board. See the Atlas User manual for details. Here are quick start instructions for downloading the prebuilt RedBoot image</P>
-<OL>
-<P><P><LI>
-<A NAME="pgfId=2685165">
- </A>
-Locate the prebuilt files in the bin directory: deleteall.dl and redboot.dl.</LI>
-<P><P><LI>
-<A NAME="pgfId=2685166">
- </A>
-Make sure switch S1-1 is OFF and switch S5-1 is ON. Reset the board and verify that the LED display reads <TT CLASS="Code">
-Flash DL</TT>
-.</LI>
-<P><P><LI>
-<A NAME="pgfId=2685167">
- </A>
-Make sure your parallel port is connected to the 1284 port Of the Atlas board.</LI>
-<P><P><LI>
-<A NAME="pgfId=2685168">
- </A>
-Send the deleteall.dl file to the parallel port to erase previous images:</LI>
-
-<PRE CLASS="CodeExample2"><A NAME="pgfId=2685169"> </A>
- % cat deleteall.dl &gt;/dev/lp0</PRE>
-<P CLASS="NumberedFollow">
-<A NAME="pgfId=2685170">
- </A>
- When this is complete, the LED display should read &quot;Deleted.&quot;</P>
-
-<P><P><LI>
-<A NAME="pgfId=2685171">
- </A>
- Send the RedBoot image to the board:</LI>
-
-<PRE CLASS="CodeExample2"><A NAME="pgfId=2685172"> </A>
- % cat redboot.dl &gt;/dev/lp0</PRE>
-<P CLASS="NumberedFollow">
-<A NAME="pgfId=2685173">
- </A>
-When this is complete, the LED display should show the last address programmed. This will be something like: <TT CLASS="Code">
-1fc17000</TT>
-.</P>
-
-<P><P><LI>
-<A NAME="pgfId=2685174">
- </A>
-Change switch S5-1 to OFF and reset the board. The LED display should read &quot;RedBoot&quot;.</LI>
-</OL>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2685175">
- </A>
-Memory Maps</H3>
-<P CLASS="Body">
-<A NAME="pgfId=2685176">
- </A>
-RedBoot sets up the following memory map on the Atlas board.</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2685177"> </A>
-Physical Address Range Description 
------------------------ ------------- 
-0x00000000 - 0x07ffffff SDRAM 
-0x08000000 - 0x17ffffff PCI Memory Space 
-0x18000000 - 0x1bdfffff PCI I/O Space 
-0x1be00000 - 0x1bffffff System Controller 
-0x1c000000 - 0x1dffffff System FLASH 
-0x1e000000 - 0x1e3fffff Monitor FLASH 
-0x1f000000 - 0x1fbfffff FPGA
-</PRE>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2685178">
- </A>
- Resource Usage</H3>
-<P CLASS="Body">
-<A NAME="pgfId=2685179">
- </A>
-The FLASH based RedBoot image occupies FLASH addresses 0x1fc00000 - 0x1fc1ffff. RedBoot also reserves RAM (0x00000000 - 0x0001ffff) for RedBoot runtime uses. RAM based RedBoot configurations are designed to run from RAM at physical addresses 0x00020000 - 0x0003ffff. RAM physical addresses from 0x00040000 to the end of RAM are available for general use, such as a temporary scratchpad for downloaded images, before they are written to FLASH.</P>
 <PRE CLASS="CodeExample"><A NAME="pgfId=2639988"> </A>
 </PRE>
 <P CLASS="Index">

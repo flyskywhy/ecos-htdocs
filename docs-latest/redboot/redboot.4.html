@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.0-generic/Tue Feb  6 14:34:00  2001--><!--version 1.0-generic/Tue Feb  6 14:32:56  2001-->
+<HEAD><!--version 1.1/Thu Feb 15 11:33:09  2001--><!--version 1.1/Thu Feb 15 11:32:07  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="cygnus.css">
 <TITLE> RedBoot Commands and Examples</TITLE></HEAD>
@@ -103,25 +103,37 @@ specifies executing the code starting at location 0x10044.</P>
 The list of available commands, and their syntax, can be obtained by typing <TT CLASS="Code">
 help</TT>
  at the command line:     </P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2639575"> </A>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2656578"> </A>
+</PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2656776"> </A>
 RedBoot&gt; <CODE CLASS="CodeOutput">help</CODE>
-    
-Display (hex dump) a range of memory
-    dump -b &lt;location&gt; [-l &lt;length&gt;]    
-Execute an image - with MMU off
-    exec [-w timeout] [&lt;entry-point&gt;]
-Execute an image - with MMU off
-    exec [-w timeout] [&lt;entry_point&gt;]     
-Manage FLASH images
-    fis {cmds}    
-Manage configuration kept in FLASH memory
-    fconfig [-l]     
-Execute code at a location
-    go [-w &lt;timeout&gt;] [entry]   
-Help about help?       
-    help &lt;topic&gt;   
-Load a file
-   load [-v] [-r] [-b &lt;mem_addr&gt;] &lt;file_name&gt;</PRE>
+ </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2656777"> </A>
+Manage machine caches
+&nbsp;&nbsp;&nbsp;&nbsp;cache [ON | OFF] 
+Display (hex dump) a range of memory 
+&nbsp;&nbsp;&nbsp;&nbsp;dump -b &lt;location&gt; [-l &lt;length&gt;]
+Manage FLASH images 
+&nbsp;&nbsp;&nbsp;&nbsp;fis {cmds} 
+Manage configuration kept in FLASH memory 
+&nbsp;&nbsp;&nbsp;&nbsp;fconfig [-l]
+Execute code at a location 
+&nbsp;&nbsp;&nbsp;&nbsp;go [-w &lt;timeout&gt;] [entry]
+Help about help?
+&nbsp;&nbsp;&nbsp;&nbsp;help [&lt;topic&gt;] 
+Load a file 
+&nbsp;&nbsp;&nbsp;&nbsp;load [-r] [-v] [-h &lt;host&gt;] [-m {TFTP | xyzMODEM}] 
+&nbsp;&nbsp;&nbsp;&nbsp;[-b &lt;base_address&gt;] &lt;file_name&gt; 
+Network connectivity test
+&nbsp;&nbsp;&nbsp;&nbsp;ping [-v] [-n &lt;count&gt;] [-t &lt;timeout&gt;] [-i &lt;IP_addr&gt;] 
+&nbsp;&nbsp;&nbsp;&nbsp;-h &lt;IP_addr&gt; </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2656793"> </A>
+Reset the system 
+&nbsp;&nbsp;&nbsp;&nbsp;reset
+Display RedBoot version information
+&nbsp;&nbsp;&nbsp;&nbsp;version</PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2656600"> </A>
+</PRE>
 <P CLASS="Body">
 <A NAME="pgfId=2656569">
  </A>
@@ -244,9 +256,226 @@ loa</TT>
  and <TT CLASS="Code">
 load</TT>
 .</P>
-</DIV>
-<DIV>
-<H3 CLASS="Heading1">
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2656892">
+ </A>
+Connectivity</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2656895">
+ </A>
+ping - Check network connectivity</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2656896"> </A>
+<CODE CLASS="CodeOutput">ping [-v] [-n &lt;count&gt;] [-l &lt;length&gt;] [-t &lt;timeout&gt;] [-r &lt;rate&gt;] [-i &lt;IP_addr&gt;] -h &lt;IP_addr&gt;</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2656898">
+ </A>
+The ping command checks the connectivity of the local network by sending special (ICMP) packets to a specific host. These packets should be automatically returned by that host. The command will indicate how many of these round-trips were successfully completed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2656902">
+ </A>
+Arguments:   </P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657042">
+ </A>
+-v</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657044">
+ </A>
+Be verbose, displaying information about each packet sent. </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657046">
+ </A>
+-n &lt;count&gt;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657048">
+ </A>
+Controls the number of packets to be sent. Default is 10 if -n is not specified. </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657050">
+ </A>
+-t &lt;timeout&gt;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657052">
+ </A>
+How long to wait for the round-trip to complete, specified in milliseconds. Default is 1000ms (1 second).</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657054">
+ </A>
+-r &lt;rate&gt; </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657171">
+ </A>
+How fast to deliver packets, i.e. time between successive sends. Default is 1000ms (1 second). Specifying &quot;-r 0&quot; will send packets as quickly as possible. </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657058">
+ </A>
+-l &lt;length&gt;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657063">
+ </A>
+Each packet contains some amount of payload data. This option specifies the length of that data. The default is 64 and the value is restricted to the range 64 .. 1400.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657212">
+ </A>
+-i &lt;local IP&gt;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657214">
+ </A>
+This allows the ping command to override its local network address. While this is not recommended procedure, it can help diagnose some situations, e.g. where BOOTP is not working properly.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657065">
+ </A>
+-h &lt;host IP&gt;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2657067">
+ </A>
+The address of the other device to contact. </P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=2657038">
+ </A>
+</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2657356">
+ </A>
+General</H3>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2657360"> </A>
+<CODE CLASS="CodeOutput">cache [ON | OFF]</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2657361">
+ </A>
+Manage machine caches.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657713">
+ </A>
+With no options, this command specifies the state of the system caches. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2657362">
+ </A>
+When an option is given, the caches are turned off or on appropriately.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657727">
+ </A>
+</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2657365"> </A>
+<CODE CLASS="CodeOutput">version </CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2657366">
+ </A>
+Display RedBoot version information.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657724">
+ </A>
+This command simply displays version information about RedBoot.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2657367"> </A>
+RedBoot&gt; version
+RedBoot(tm) debug environment - built 09:12:03, Feb 12 2001 </PRE>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2657369"> </A>
+Platform: XYZ (PowerPC 860) 
+Copyright (C) 2000, 2001, Red Hat, Inc.
+RAM: 0x00000000-0x00400000 
+RedBoot&gt; 
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2657376"> </A>
+<CODE CLASS="CodeOutput">reset </CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2657377">
+ </A>
+Reset the system.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657735">
+ </A>
+This command resets the platform. This should be equivalent to a power-on reset.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657747">
+ </A>
+</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2657381"> </A>
+<CODE CLASS="CodeOutput">dump -b &lt;location&gt; [-l &lt;length&gt;]</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2657382">
+ </A>
+Display (hex dump) a range of memory</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657744">
+ </A>
+This command displays the contents of memory in hexadecimal format. It is most useful for examining a segment of RAM or FLASH. Note that it could be detrimental if used on memory mapped hardware registers.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2657385">
+ </A>
+The memory is displayed at most sixteen bytes per line, first as the raw hex value, followed by an ASCII interpretation of the data.</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=2657387"> </A>
+RedBoot&gt; du -b 0x100 -l 0x80 
+0x00000100: 3C60 0004 6063 2000 7C68 03A6 4E80 0020 |&lt;`..`c .|h..N.. | 
+0x00000110: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000120: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000130: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000140: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000150: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000160: 0000 0000 0000 0000 0000 0000 0000 0000 |................| 
+0x00000170: 0000 0000 0000 0000 0000 0000 0000 0000 |................|
+RedBoot&gt; d -b 0xfe00b000 -l 0x80 
+0xFE00B000: 2025 700A 0000 0000 4174 7465 6D70 7420 | %p.....Attempt | 
+0xFE00B010: 746F 206C 6F61 6420 532D 7265 636F 7264 |to load S-record| 
+0xFE00B020: 2064 6174 6120 746F 2061 6464 7265 7373 | data to address| 
+0xFE00B030: 3A20 2570 205B 6E6F 7420 696E 2052 414D |: %p [not in RAM| 
+0xFE00B040: 5D0A 0000 2A2A 2A20 5761 726E 696E 6721 |]...*** Warning!| 
+0xFE00B050: 2043 6865 636B 7375 6D20 6661 696C 7572 | Checksum failur| 
+0xFE00B060: 6520 2D20 4164 6472 3A20 256C 782C 2025 |e - Addr: %lx, %| 
+0xFE00B070: 3032 6C58 203C 3E20 2530 326C 580A 0000 |02lX &lt;&gt; %02lX...| 
+0xFE00B080: 456E 7472 7920 706F 696E 743A 2025 702C |Entry point: %p,|
+
+
+</PRE>
+<H3 CLASS="Heading2">
 <A NAME="pgfId=2639586">
  </A>
 <A NAME="marker=2656466">
@@ -392,9 +621,7 @@ Used explicitly to name a host computer to contact for the download data. This w
 RedBoot&gt; lo redboot.ROM -b 0x8c400000       
 Address offset = 0x0c400000     
 Entry point: 0x80000000, address range: 0x80000000-0x8000fe80     =============================================================</PRE>
-</DIV>
-<DIV>
-<H3 CLASS="Heading1">
+<H3 CLASS="Heading2">
 <A NAME="pgfId=2639620">
  </A>
 <A NAME="marker=2656470">
