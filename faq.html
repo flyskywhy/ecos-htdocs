@@ -51,6 +51,7 @@
   <LI><A HREF="#problems_windows">Toolchain build problems under Windows</A></LI>      
   <LI><A HREF="#problems_linux">Toolchain build problems under Linux</A></LI>      
   <LI><A HREF="#problems_unix">Toolchain build problems on other Unix systems</A></LI>      
+  <LI><A HREF="#problems_alpha">Host tools build problems on Alpha systems</A></LI>      
   <LI><A HREF="#problems_building_ecos">Problems building eCos</A></LI>      
   <h4>Miscellaneous</h4>
   <LI><A HREF="#misc_printed">Where can I get hold of printed documentation?</A></LI>
@@ -1111,6 +1112,14 @@ this is believed to be fixed in recent tools sources.
 Solutions to these problems are available via the mailing list
 archives.
 <P>
+
+<h4><A NAME="problems_alpha">Host tools build problems on Alpha systems</A></H4>
+
+It has been reported that egcs-1.1.2 is not capable of building the eCos
+host-side tools (ecosconfig, etc.). Alpha users should use at least
+gcc 2.95.2 to compile these tools.
+
+<p>
 
 <h4><A NAME="problems_building_ecos">Problems building eCos</A></h4>
 
