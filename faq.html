@@ -16,8 +16,9 @@
   <LI><A HREF="#what_why">Why has Red Hat produced another embedded real-time operating system?</A></LI>
   <LI><A HREF="#what_source">Do you provide the source code?</A></LI>
   <LI><A HREF="#what_configurability">What do you mean by configurability?</A></LI>
-  <LI><A HREF="#what_size">What are the performance figures?</A></LI>
+  <LI><A HREF="#support_how">How do I get support?</A></LI>
   <LI><A HREF="#what_mail">Are there any mailing lists?</A></LI>
+  <LI><A HREF="#what_size">What are the performance figures?</A></LI>
   <h4>What are the licensing terms?</h4>
   <LI><A HREF="#license_terms">What are the licensing terms?</A></LI>
   <LI><A HREF="#license_meaning">OK, but what does this license actually mean?</A></LI>
@@ -186,26 +187,6 @@ from the configuration system is a library that gets linked with your
 application code in the usual manner.
 
 <P>
-<H4><A NAME="what_size">What are the performance figures?</A></H4>
-
-<P>
-A side effect of a fully configurable system is that it is just about
-impossible to answer questions like &quot;What is the memory footprint
-of the kernel?&quot or &quot;What is the interrupt latency?&quot;
-These figures depend in large part on the configuration options
-selected by the user. For example if a simple application does not
-require the kernel at all, directly or indirectly, then the kernel
-package can be disabled completely and its memory footprint is 0
-bytes. 
-
-<P>
-<A
-HREF="docs-1.2.1/guides/user-guides/real-time-characterization.html">Basic
-performance characterization data</A> is available as part of the
-documentation, together with a description of the tests that were used
-to obtain this data. The sources for these tests are included with the
-eCos distribution.
-<P>
 <H4><A NAME="what_mail">Are there any mailing lists?</A></H4>
 
 <P>
@@ -221,6 +202,12 @@ HREF="/ml/ecos-announce/">ecos-announce</A> and <A
 HREF="/ml/ecos-discuss/">ecos-discuss</A> are available.
 
 <P>
+We <b>strongly</b> recommend you read both the eCos documentation fully
+and searched the above mail archives before asking simple questions
+on the list, particularly if they are problems that people would already
+be likely to have encountered before.
+
+<P>
 If you have a question which you do not want to discuss in a public
 forum then there is a separate <A
 HREF="mailto:ecos-maintainers@redhat.com">ecos-maintainers</A> mail
@@ -230,6 +217,42 @@ list.  However note that general requests for help or information that
 would be more appropriate to the public
 <nobr><a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss</a></nobr>
 list may not be answered.
+
+<P>
+<H4><A NAME="support_how">How do I get support?</A></H4>
+
+The <a href="#what_mail">above mailing lists</a> are open to all to use
+for free and Red Hat developers read and post there. However the scope
+is limited as to what can be answered, and queries or problems, even simple
+ones, may be ignored.
+
+<p>
+Red Hat can provide a complete development support package including
+verified tested GNUPro development tools and a solid reliable eCos source
+base. More information can be obtained at the
+<a href="http://www.redhat.com/embedded/technologies/ecos/">eCos
+product web site</a>. Information can also be found there for
+custom engineering or contract porting services that Red Hat also provides.
+
+<P>
+<H4><A NAME="what_size">What are the performance figures?</A></H4>
+
+<P>
+A side effect of a fully configurable system is that it is just about
+impossible to answer questions like &quot;What is the memory footprint
+of the kernel?&quot or &quot;What is the interrupt latency?&quot;
+These figures depend in large part on the configuration options
+selected by the user. For example if a simple application does not
+require the kernel at all, directly or indirectly, then the kernel
+package can be disabled completely and its memory footprint is 0
+bytes. 
+
+<P>
+Basic performance characterization data is available as part of the
+<a href="docs.html">documentation</a> as part of the architecture specific
+Getting Started manual, together with a description of
+the tests that were used to obtain this data. The sources for these
+tests are included with the eCos distribution.
 
 <P>
 <A HREF="#top">Top</A>
