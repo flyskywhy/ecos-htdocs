@@ -13,34 +13,75 @@
 
 <h3>Downloading</h3>
 
-The eCos sourceware distribution is available in both Linux and Windows versions. The Linux version has been tested under <a href="http://www.redhat.com/">RedHat</a>/Linux 5.1 but should work under most Linux variants. The Windows version has been tested under Windows NT 4.0 and also works under Windows 95 and Windows 98. Click on one of the following links to download:
+The eCos sourceware distribution is available in both Linux and Windows versions. The Linux version has been tested under <a href="http://www.redhat.com/">RedHat</a> Linux 5.1 but should work under most Linux variants. The Windows version has been tested under Microsoft Windows NT 4.0 and also works under Windows 95 and Windows 98. Click on one of the following links to download:
 
 <ul>
 <li><A HREF="FIXME">eCos 1.1 sourceware for Linux</A> (4MB tar.bz2 file)
-<li><A HREF="FIXME">eCos 1.1 sourceware for Windows</A> (10MB self-extracting executable)
+<li><A HREF="FIXME">eCos 1.1 sourceware for Windows</A> (10MB self-extracting executable file)
 </ul>
 
-In order to build the eCos sources, you will require a cross-compiler and related development tools. The necessary tools are available in source form only. Click on the following link to download:
+In order to build the eCos sources, you will require the a cross-compiler and related development tools. The necessary tools are designated <i>ecosSWtools-981021</i> and are available in source form only. Note that, although eCos may be configured and built under Windows 95 and Windows 98, it is not possible to build the eCos sourceware development tools on these platforms. If you wish to develop eCos applications using Windows 95 or Windows 98, you must build the development tools under Windows NT. Click on the following link to download:
 
 <ul>
-<li><a href="FIXME">eCos sourceware development tools</a>
+<li><a href="FIXME">eCos sourceware development tools</a> (33MB zip file)
 </ul>
 
-The eCos sourceware development tools are designed to be built using GNU native tools on either Linux or Windows NT. Linux users will already have the necessary tools. Windows NT users should use pre-built GNU-Win32 native tools. Click on the following link to download from one the GNU-Win32 mirror sites:
+The eCos development tools make use of GNU native tools on both Linux and Windows. Linux users will already have the necessary tools. Windows NT users should use the GNU-Win32 Beta 20 native tools which are available in pre-built form. Click on the following link to download from one the GNU-Win32 mirror sites:
 
 <ul>
-<li><a href="http://sourceware.cygnus.com/cygwin/download.html">GNU-Win32 development tools</a>
+<li><a href="http://sourceware.cygnus.com/cygwin/download.html">GNU-Win32 Beta 20 development tools</a>
 </ul>
-
-Note that, although eCos may be configured and built on Windows 95 and Windows 98, it is not possible to build the eCos sourceware development tools on these platforms. If you wish to develop eCos applications using Windows 95 or Windows 98, you must build the development tools under Windows NT.
 
 <h3>Installing</h3>
 
-Text
+<h4>Installing under Windows</h4>
+
+<ol>
+<li>Install the GNU-Win32 native tools by running the downloaded distribution file and then following the on-screen instructions. The remaining instructions assume that the GNU-Win32 tools are installed to the default location. Once installed, select <i>Cygwin32 Beta 20</i> from the start menu hierarchy to launch the <i>bash</i> command-line environment.<p>
+
+<li>Build the eCos sourceware development tools (ecosSWtools-981021) by following these steps at the <i>bash</i> prompt:<p>
+
+  <ul>
+  <li>Mount the logical drive(s) you will use to build the eCos sourceware development tools:<p>
+  <tt>mount C: /c</tt><p>
+
+  <li>Mount the GNU-Win32 tools as /bin such that /bin/sh exists:<p>
+  <tt>mount C:/cygnus/b20/H-i586-cygwin32/bin /bin</tt><p>
+
+  <li>Mount the GNU-Win32 libraries as /lib:<p>
+  <tt>mount C:/cygnus/b20/H-i586-cygwin32/i586-cygwin32/lib /lib</tt><p>
+
+  <li>Set the MAKE_MODE environment variable to "unix":<p>
+  <tt>export MAKE_MODE=unix</tt><p>
+
+  <li>Extract the eCos sourceware development tool sources from the downloaded distribution file to <tt>C:\cygnus</tt> using a utility such as <a href="http://www.winzip.com/">WinZip</a>. You should ensure that the utility you use is configured to preserve the directory structure within the zip file during extraction. The directory <tt>C:\cygnus\ecosSWtools-981021\src</tt> should be generated and populated during the extraction process.<p>
+
+  <li>Create an object directory for your builds:<p>
+  <tt>mkdir /c/build<br>
+      cd /c/build</tt><p>
+
+   <li>Configure the tools, saving the output to configure.out:<p>
+   <tt>/c/cygnus/ecosSWtools-981021/src/configure -v \<br>
+       --prefix=/c/cygnus/ecosSWtools-981021 \<br>
+       --exec-prefix=/c/cygnus/ecosSWtools-981021/H-i586-cygwin32 \<br>
+       --host=i586-cygwin32 --target=&lt;target&gt; > configure.out 2&gt;&amp;1</tt><p>
+
+   You should replace <tt>&lt;target&gt;</tt> in the above command with one of the supported target triplets: <tt>mn10300-elf</tt>, <tt>mips-tx39-elf</tt> or <tt>powerpc-eabi</tt><p>
+
+   <li>Build and install the tools, saving the output to make.out:<p>
+   <tt>make -w all install > make.out 2&gt;&amp;1</tt><p>
+  </ul>
+
+<li>Install eCos by running the downloaded distribution file and then following the on-screen instructions.
+</ol>
+
+<h4>Installing under Linux</h4>
+
+Text here.
 
 <h3>Documentation</h3>
 
-<p> Online docs are <a href="ecos-docs/index.html">here</a>.
+Full documentation is included within the eCos sourceware distribution in HTML format. The documentation is also available <a href="ecos-docs/index.html">online</a>.
 
 <!-- eCos template HTML start -->
 <H3><A HREF="index.html" TARGET="_top">Home</A></H3>
