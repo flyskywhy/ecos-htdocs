@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>eCos Run-time Environment</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>eCos Run-time Environment [TBD]</H2>
+<HR SIZE=3>
+
+<ul>
+<li>when to include stubs in the RAM configuration
+<li>serial/ethernet debugging considerations
+<li>ROM vs RAM startup initialization code
+</ul>
+
+<dl>
+<dt><tt>CYGSEM_HAL_USE_ROM_MONITOR_X</tt>
+
+<dd>Describes what to expect from the run-time environment when
+    starting eCos configured for RAM startup. 
+
+    <!-- Jifl/Hugo --><p>The option name may be a bit of a
+    misnomer. Think of it as "there's a ROM monitor X on the
+    board... work with it." Which might only mean "so the serial is
+    already initialized; don't bother to do it a 2nd time" whilst
+    still taking over the world (ie. not working with it, just not
+    overwriting its prior good works).</p>
+
+
+    <p><tt>CYGSEM_HAL_USE_ROM_MONITOR_GDB_stubs</tt> and
+    <tt>CYGSEM_HAL_USE_ROM_MONITOR_CygMon</tt> are most
+    common. Depending on other options, these may allow eCos to use
+    services provided by the ROM monitor (see <a
+    href="hal-calling-if.html">eCos/ROM Monitor Calling
+    Interface</a>). Running under these environments also usually
+    imply full debugging features with GDB.</p>
+
+    <!-- Hugo --> <p>When working with older ROM monitors (which do
+    not support the calling interface), the options are used to infer
+    that we are likely to be connected to a GDB - and therefore $O
+    packets should be used by hal_diag rather than plain text by
+    default.  Which is more working with a likely other end of the
+    serial line than working with the ROM itself.</p>
+
+    <p>Other variants exist, such as CYGSEM_HAL_USE_ROM_MONITOR_PMON
+    (used by the VRC4374 HAL). These may or may not provide all of the
+    features provided by eCos GDB stubs/CygMon, but may still allow
+    eCos to run under third party ROM monitors, using their IO
+    routines for disagnostics output.</p>
+</dl>
+
+<!--#include virtual="../../include/footer.html"-->
