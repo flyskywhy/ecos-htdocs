@@ -181,8 +181,8 @@ configured by passing arguments to the Multi-ICE GDB server.</p>
 to this server. You can use any available port.</li>
 
 <li>"<tt>--byte-sex l</tt>" tells GDB what endian-ness to respond with. Some GDB
-responses are byte-order (endian-ness) sensitive. The default here is "Big
-Endian".</li>
+responses are byte-order (endian-ness) sensitive. The default is to attempt
+to determine the endianness from the target.</li>
 
 <li>"<tt>--config-dialog</tt>" forces the GDB server to bring up the Multi-ICE
 configuration dialog when starting. This is required in order to force the
