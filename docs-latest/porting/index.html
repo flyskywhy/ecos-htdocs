@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>eCos Porting Guide</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>eCos Porting Guide</H2>
+<HR SIZE=3>
+
+<h3>Introduction</h3>
+
+<p>eCos has been designed to be fairly easy to port to new targets. A
+target is a specific platform (board) using a given architecture (CPU
+type). The porting is facilitated by the hierarchical layering of the
+eCos sources - all architecture and platform specific code is
+implemented in a HAL (hardware abstraction layer).
+
+<p>By porting the eCos HAL to a new target the core functionality of
+eCos (infra, kernel, uitron, etc) will be able to run on the
+target. It may be necessary to add further platform specific code such
+as serial drivers, display drivers, DSP drivers, etc. to add to get a
+fully capable system.
+
+<p>This document is intended as a help to the porting process. Due to
+the nature of a porting job, it is impossible to give a complete
+description of what has to be done for each and every potential
+target. This should not be considered a clear-cut recipe - you will
+probably need to make some implementation decisions, tweak a few
+things, and just plain have to rely on common sense.
+
+<p>However, what is covered here should be a large part of the
+process. If you get stuck, you are advised to read the ecos-discuss
+archive where you may find discussions which apply to the problem at
+hand. You are also invited to ask questions on the list to help you
+resolve problems - but as is always the case with community lists, do
+not consider it an oracle for any and all questions. Use common sense
+- if you ask too many questions which could have been answered by
+reading the documentation, FAQ or source code, you are likely to be
+ignored.
+
+
+<p>This document will be continually improved by Red Hat engineers as
+time allows. Feedback and help with improving the document is sought,
+so if you have any comments at all, please do not hesitate to post
+them on ecos-discuss.
+
+<p>At the moment this document is mostly an outline. Many details to
+fill in before it becomes truly usable. Many places you'll find a list
+of keywords / concepts that should be described. Please post on
+ecos-discuss if there are areas you think are not covered.
+
+<p><HR SIZE=3>
+<h3>Writing a HAL</h3>
+
+<p>In order to write an eCos HAL it's a good idea to have at least a
+passing understanding of how the HAL interacts with the rest of the
+system.
+
+<h4>HAL Details</h4>
+
+<p><a href="hal-directory.html">Directory Layout</a>
+
+<p><a href="coding-conventions.html">Coding Conventions</a>
+
+<p><a href="hal-exceptions.html">Exceptions</a>
+
+<p><a href="hal-interrupts.html">Interrupts</a>
+
+<p><a href="hal-diag.html">Diagnostics IO</a>
+
+<p><a href="hal-calling-if.html">eCos/ROM Monitor Calling Interface</a>
+
+
+<p><HR SIZE=3>
+<h4>Platform HAL Porting</h4>
+
+<p>This is the type of port that takes less effort. It basically
+consists of describing the platform (board) for the HAL: memory
+layout, early platform initialization, interrupt controllers, and
+simple serial device driver.
+
+<p>Doing a platform port requires a preexisting architecture and
+possible variant HAL port.
+
+<p><a href="hal-plf-process.html">Porting process</a>
+<p><a href="hal-memory.html">Platform Memory Layout And Linker Scripts</a>
+<p><a href="hal-plf-cdl.html">CDL requirements</a>
+
+<p><HR SIZE=3>
+<h4>Variant HAL Porting</h4>
+
+<p>A variant port can both be a fairly limited job, but can also
+require quite a lot of work. A variant HAL describes how a specific
+CPU variant differs from the generic CPU architecture. The variant HAL
+can re-define cache, MMU, interrupt, and other features which override
+the default implementation provided by the architecture HAl.
+
+<p>Doing a variant port requires a preexisting architecture HAL port.
+
+<p><a href="hal-var-process.html">Porting process</a>
+<p><a href="hal-var-cdl.html">CDL requirements</a>
+
+
+<p><HR SIZE=3>
+<h4>Architecture HAL Porting</h4>
+<p><a href="hal-arch-process.html">Porting process</a>
+<p><a href="hal-cache.html">HAL Cache Controls</a>
+<p><a href="hal-arch-cdl.html">CDL requirements</a>
+
+
+</ul>
+
+<p><HR SIZE=3>
+<h3>Writing a Driver</h3>
+
+<em>TBD: link to existing driver porting help (or move it here)</em>
+
+
+<!--#include virtual="include/footer.html"-->

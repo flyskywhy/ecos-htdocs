@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>eCos Interrupts</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>eCos Interrupts</H2>
+<HR SIZE=3>
+
+<h5>Interrupt system</h5>
+<ul>
+<li> Path: (Vector decoding function) -&gt; Interrupt VSRs -&gt; Interrupt ISRs -&gt; Interrupt DSRs
+<li> Porting: kernel clock, using hal/intr.c test to ensure it's
+working
+<li> Arbitration:  Where to draw the line between HAL an application responsibilities.
+ See PPC mpc8xx HAL for examples of some simple interrupt arbiters.
+<li> Context switches &amp; interrupts:
+ <ul>
+ <li> context switch code saves/restores interrupt state
+ <li> initial thread context must enable interrupts.
+ </ul>
+</ul>
+
+ISR/DSR description (Gary Thomas):
+
+<pre>
+The idea of this code (why I changed it in the first place) was to be
+able to enable interrupts while processing DSRs, but insure that the
+processing took place on the interrupt stack.  The previous implementation
+had simply enabled interrupts in the VSR, after switching to the thread
+stack, but before calling "interrupt_end".  This was clearly wrong as
+it required all thread stacks to be large enough to handle any possible
+interrupt nesting.
+
+The way it is supposed to work is like this (pseudo-code to abstract
+machine details):
+
+VSR:
+  mask interrupts (if necessary)
+  save interrupt context on thread stack 
+  lock scheduler
+  switch to interrupt stack (if defined)
+  call ISR
+  switch back to thread stack
+  call interrupt_end
+  restore interrupt context from thread stack
+  exit VSR
+
+Note: interrupt_end called with interrupts disabled, scheduler locked
+
+interrupt_end:
+  possibly schedule a DSR, based on paramters from VSR
+  drop scheduler lock  
+  if scheduling enabled, run pending DSRs (actually just part of scheduling)
+  note: interrupts are still disabled when entered from VSR
+
+hal_interrupt_stack_call_pending_DSRs:
+  [disable interrupts (may be moot)]
+  switch to interrupt stack
+  enable interrupts
+  run DSRs
+  disable interrupts
+  switch back to thread stack
+  restore interrupts
+
+
+Remember the premise: run DSRs with interrupts enabled, using the separate
+interrupt stack.  However, this can't be done directly by the VSR since DSRs
+must be scheduled (i.e. they can't run until scheduling is allowed).  In
+order to keep the knowledge of how this works (proper layering) out of the
+VSRs, it has to be in 'interrupt_end', thus the additional complexity.
+</pre>
+
+<!--#include virtual="include/footer.html"-->

@@ -1,0 +1,181 @@
+<HTML>
+<HEAD>
+<TITLE>HAL Platform Porting Process</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>HAL Platform Porting Process</H2>
+<HR SIZE=3>
+
+<h4>Brief overview</h4>
+
+<p>The easiest way to make a new platform HAL is simply to copy an
+existing platform HAL of the same architecture and change all the
+files to match the new platform. In case this is the first platform
+for the architecture, a platform HAL from another architecture should
+be used as a template.
+
+<p>The first goal of a HAL port is the creation of a minimal GDB eCos
+stub which can be put in flash or ROM on the board to provide simple
+"load and go" functionality. This allows further development to happen
+using RAM startup configurations, which is desirable for the simple
+reason that downloading an image which you need to test is often many
+times faster than either updating a flash part, or indeed,
+reprogramming an EPROM.
+
+<p>There are two overall approaches to getting to this first goal:
+
+<ol>
+<li>The board is equipped with a ROM monitor which allows "load and
+go" of ELF, binary or some other image type which can be created using
+objcopy. This allows you to develop the "load and go" GDB stub by
+downloading and running the code (saving time).  
+
+<p>When the stub is running it is a good idea to examine the various
+hardware registers to help you write the platform initialization code.
+
+<p>Then you may have to fiddle a bit going through step two (getting
+it to run from ROM startup). If at all possible, preserve the original
+ROM monitor so you can revert to it if necessary.
+
+<p><li>The board has no ROM monitor (or you have the stub working for RAM
+startup). You need to get the platform initialization and stub working
+by updating flash or EPROM. If you are lucky, you have a JTAG or
+similar CPU debugger to help you. If not, you will probably learn to
+appreciate LEDs.
+
+</ol>
+
+<h4>Step-by-step</h4>
+
+<p>Given that no two platforms are exactly the same, you may have to
+deviate from the below. Also, you should expect a fair amount of
+fiddling - things almost never go right the first time. See the hints
+section below for some suggestions that might help debugging.
+
+<p>The below descriptions are based on the HAL layout used in the MIPS
+and MN10300 HALs. Eventually all HALs should be converted to look like
+these - but in a transition period there will be other HALs which look
+substantially different. Please try to adhere to the below as much is
+possible without causing yourself too much grief integrating with a
+HAL which does not follow this layout. [FIXME: ref layout]
+
+<h5>Minimal requirements</h5>
+
+These are the changes you must make before you attempt to build the
+eCos GDB stub. You are advised to read all the sources though.
+
+<ol>
+<li>Copy an existing platform HAL from the same or another
+    architecture. Rename the files as necessary to follow the
+    standard: CDL and MLT related files should contain the
+    &lt;arch&gt;_&lt;variant&gt;_&lt;platform&gt; tripple.
+
+<li>Adjust CDL options. Primarily option naming, real-time
+    clock/counter, and CYGHWR_MEMORY_LAYOUT variables, but also other
+    options may need editing. Look through the architecture/variant
+    CDL files to see if there are any requirements/features which
+    where not used on the platform you copied. If so, add appropriate
+    ones.
+
+<li>Add the necessary packages and target descriptions to the
+    top-level ecos.db file.
+
+<li>Adjust the MLT files in include/pkgconf to match the memory layout
+    on the platform. For initial testing it should be enough to just
+    hand edit .h and .ldi files, but eventually you should generate
+    all files using the memory layout editor in the configuration
+    tool.
+
+<li>If the default IO macros are not correct, override them in
+    plf_io.h. This may be necessary if the platform uses a different
+    endianess from what is default for the CPU.
+
+<li>Implement a simple serial driver (polled mode only) for the GDB
+    stub: plf_stub.h and plf_stub.c. If there is more than one serial
+    port on the board using the same controller (and thus driver) it
+    may make sense to put the driver in an .inl file which can be
+    included from plf_stub.c and later by hal_diag.c (allow #define
+    statements to control which port to use).
+
+<li>Adjust/implement necessary platform initialization. This can be
+    found in platform.inc and platform.S files (ARM:
+    hal_platform_setup.h and &lt;platform&gt;_misc.c, PowerPC:
+    &lt;platform&gt;.S, FIXME). This step can be postponed if you are
+    doing RAM startup stubs first.
+
+</ol>
+
+<p>You should now be able to build some simple stubs. For ROM startup:
+
+<pre>
+% ecosconfig new &lt;target_name&gt; stubs
+% ecosconfig remove CYGPKG_IO
+% ecosconfig remove CYGPKG_IO_SERIAL
+% ecosconfig remove CYGPKG_ERROR
+</pre>
+
+<p>Now edit ecos.ecc, disabling CYGDBG_HAL_DEBUG_GDB_CTRLC_SUPPORT,
+CYGDBG_HAL_DEBUG_GDB_BREAK_SUPPORT, and
+CYGDBG_HAL_DEBUG_GDB_THREAD_SUPPORT.
+
+<p>For RAM startup, also change the CYG_HAL_STARTUP option to ROM.
+
+<pre>
+% ecosconfig tree
+% make
+</pre>
+
+<p>You may have to make additional changes than suggested above to get
+the make command to succeed. But when it does, you should find a stub
+image in install/bin. To program this image into flash or EPROM, you
+may need to convert to some other file type, and possibly adjust the
+start address. When you have the correct objcopy command to do this,
+add it to the CYGBLD_BUILD_GDB_STUBS custom build rule in the platform
+CDL file.
+
+<p>Having updated the flash/EPROM on the board, you should see output
+on the serial port looking like the below when powering on the board:
+
+<pre>
+$T0540:fff05cd8;01:00004664;#92
+</pre>
+
+<p>If you do not see this output, you need to go through all your
+changes and figure out what's wrong. If there's a user programmable
+LED on the board it may help you figure out how far the stub gets
+before it hangs. Unfortunately there's no good way to describe what to
+do in this situation - other than that you have to play with the code
+and the board.
+
+
+<h5>Adding features</h5>
+
+<p>Now you should have a simple "load and go" eCos GDB stub running on
+the board. This means you have a the correct board initialization and
+a working serial driver. It's time to flesh out the remaining HAL and
+stub features.
+
+<ol>
+
+</ol>
+
+
+
+<h5>Hints (TBD)</h5>
+<ul>
+<li>LEDs are your friend.
+<li>Keeping interrupt path free to allow debugging.
+<li>Using assertions
+<li>Triggering clock from idle loop
+<li>hal_mk_defs
+<li>tracing using buffers
+</ul>
+
+<p>Stub minimal requirements (architecture support, platform support, 
+   asynchronous breakpoints, reset-on-kill).
+
+
+
+<!--#include virtual="include/footer.html"-->

@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE>HAL Coding Conventions</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>HAL Coding Conventions</H2>
+<HR SIZE=3>
+
+<h5>Coding Conventions</h5>
+<p>To be considered for inclusion in the main eCos source tree, these
+source code formatting rules and programming methods should be
+fulfilled: <em>TBD (highlights from design document?)</em>
+
+<p>Architecture header includes variant header includes platform
+header. Platform allowed to override variant definitions allowed to
+override architecture definitions.
+
+<p>MMU if used, provides 1-1 mapping, rw, no protection - possibly use to
+mark IO regions non-cachable.
+
+<!--#include virtual="include/footer.html"-->

@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<TITLE>HAL Layout</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>HAL Layout</H2>
+<HR SIZE=3>
+
+
+<h3>The HAL Directory Layout</h3>
+
+The eCos HAL consists of four sub-HAL classes. This table gives a
+brief description of each class. The links refer to the on-line CVS
+tree (specifically to the sub-HALs used by the PowerPC MBX target).
+
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>HAL type</b></td>
+  <td><b>Description</b></td>
+  <td><b>Functionality overview</b></td>
+</tr>
+
+<tr valign=top bgcolor=#dddddd>
+  <td>Common HAL <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/hal/common/current?cvsroot=ecos">(hal/common)</a></td>
+  <td>Configuration options and functionality shared by all HALs.</td>
+  <td>Generic debugging functionality, driver API, eCos/ROM monitor
+      calling interface, and tests.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>Architecture HAL <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/hal/powerpc/arch/current?cvsroot=ecos">(hal/&lt;architecture&gt;/arch)</a></td>
+  <td>Functionality specific to the given architecture. Also default
+  implementations of some functionality which can be overridden by
+  variant or platform HALs.</td>
+  <td>Architecture specific debugger functionality (handles single
+     stepping, exception-to-signal conversion, etc.),
+     exception/interrupt vector definitions and handlers, cache
+     definition and control macros, context switching code, assembler
+     functions for early system initialization, configuration options,
+     and possibly tests. </td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>Variant HAL <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/hal/powerpc/mpc8xx/current?cvsroot=ecos">(hal/&lt;architecture&gt;/&lt;variant&gt;)</a></td>
+  <td>Some CPU architectures consist of a number variants, for example
+     MIPS CPUs come in both 32 and 64 bit versions, and some variants
+     have embedded features additional to the CPU core.
+</td>
+  <td>Variant extensions to the architecture code (cache,
+     exception/interrupt), configuration options, possibly drivers for
+     variant on-core devices, and possibly tests.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>Platform HAL <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/hal/powerpc/mbx/current?cvsroot=ecos">(hal/&lt;architecture&gt;/&lt;platform&gt;)</a></td>
+  <td>Contains functionality and configuration options specific to the
+      platform.
+</td>
+  <td>Early platform initialization code, platform memory layout
+     specification, configuration options (processor speed, compiler
+     options), diagnostic IO functions, debugger IO functions,
+     platform specific extensions to architecture or variant code
+     (off-core interrupt controller), and possibly tests.</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td>Auxiliary HAL <a href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/hal/powerpc/quicc/current?cvsroot=ecos">(hal/&lt;architecture&gt;/&lt;module&gt;)</a></td>
+  <td>Some variants share common modules on the core. Motorola's PowerPC
+      QUICC is an example of such a module.
+</td>
+  <td>Module specific functionality (interrupt controller, simple
+      device drivers), possibly tests.
+</td>
+</tr>
+</table>
+
+
+
+<!--#include virtual="include/footer.html"-->
