@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<TITLE>Anonymous CVS access</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>Anonymous CVS access</H2>
+<HR SIZE=3>
+
+<h3>Introduction</h3>
+The most recent versions of eCos may be obtained using anonymous CVS access.
+This facility provides immediate access to the latest eCos features and the
+rapid deployment of any necessary bug fixes. 
+
+<P>
+For those unfamiliar with CVS, the following resources may be of use:
+<UL>
+<LI><A HREF="http://www.cyclic.com/">Cyclic Software</A> has CVS clients
+available for download. <A HREF="http://www.cyclic.com/cvs/info.html">Other
+information</A> and links to books on the subject can also be found at their site.
+<LI>Cyclic provides a fairly simple guide, the
+<A HREF="http://www.cyclic.com/cvs/doc-blandy.html">Introduction to CVS</A>
+by Jim Blandy.
+<LI>The CVS sources come with <i>texinfo</i> documentation which is also
+available in <A HREF="http://www.loria.fr/~molli/cvs/doc/cvs_toc.html">
+HTML format</A>.
+</UL>
+We also provide a simple but effective way to
+<A HREF="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/?cvsroot=ecos">view the eCos CVS repository</a>
+over the web using CVSweb. You can inspect the contents, history and
+differences between versions of all files in the repository in this way.
+<P>
+<h3>The eCos repository</h3>
+<P>
+The eCos anonymous CVS repository contains the latest version of our master
+internal repository and is generally updated on a weekly basis. However,
+users should note that these updates have not been rigorously tested and
+cannot be guaranteed to build or function correctly. It is therefore
+recommended that new developers work with the latest full release of eCos
+which has been put through extensive testing and QA. The repository should be
+used in situations where you need access to new features, bug fixes, or are
+working on a shared contributed project.
+<P>
+The snapshots include as much source code for the target side as we are able to
+publicise. They do <i>not</i> include our documentation sources, nor
+the source code to the host tools. There may also be new architectural ports,
+board ports, or areas of functionality which are not released for commercial
+or contractual reasons.
+<P>
+The relevant host side build tools may be obtained by FTP from this site and are not provided by anonymous CVS.
+Any patches or changes required to enable the use of these tools
+with the latest version of eCos in the repository will be publicised.
+If any updates to the eCos Configuration Tool are required, we
+will put up a new binary as soon as possible. You should ensure that you use the latest version of
+the Configuration Tool from the most recent Sourceware release of eCos when
+working with the sources from the anonymous CVS repository.
+
+<h3>Accessing the repository</h3>
+<P>
+Before you can access the CVS repository, you must have a CVS client (see
+above) and direct TCP/IP access. If you are behind a firewall, you should
+discuss access with your local systems administrator.
+<P>
+Type the following command to login to the CVS server:
+<PRE>
+      cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos login
+</PRE>
+<P>
+You will be prompted for a password which is <i>anoncvs</i>. You only need to
+perform this login the first time you access the eCos CVS repository.
+The password is saved in the file <tt>.cvspass</tt> in your home
+directory for use in subsequent sessions.
+<P>
+Change to the directory where you want to check out eCos and type:
+<PRE>
+     cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos -z 9 co -P ecos
+</PRE>
+<P>
+This command should initiate a connection to the sourceware server and check
+out the latest
+version of eCos. In the future, when you want to update your repository to
+the latest version, go to the base of the repository tree and use the command:
+<PRE>
+     cvs -z 9 update -d -P
+</PRE>
+
+<h3>Using the repository</h3>
+<P>
+Once the sources have been checked out, Unix users (or Windows users using
+the command line) can work as if the checked out repository was their normal eCos
+repository. Users of the eCos Configuration Tool should select the new repository using the <i>Build->Repository</i> menu item.
+<P>
+Use of a new repository with an old build tree is not recommended.
+Changes may have been made to the repository <i>pkgconf</I> files that will not be
+present in the working versions in your build tree.
+<P>
+<h3>Release tags</h3>
+<P>
+Our public releases have all been tagged in the repository so that you can
+check out the official release of any particular version. More usefully,
+these tags can be used to view the differences between e.g. the last officially
+released version and the latest version in the repository:
+<PRE>
+     cvs diff -r ecos-v1_1-release ecos/packages/targets
+</PRE>
+<P>
+The release tags all take the form <CODE>ecos-&lt;version&gt;-release</CODE> (eg <CODE>ecos-v1_2_1-release</CODE>). The repository
+is also tagged every time a new snapshot is generated. These tags are of the
+form <CODE>ecos-sw-&lt;date in ISO format&gt;</CODE> (eg <CODE>ecos-sw-1999-05-11</CODE>).
+<P>
+To check out a particular version from scratch, use a command such as:
+<PRE>
+     cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos co -r ecos-v1_2_1-release ecos
+</PRE>
+<P>
+As with all such <i>sticky</I> checkouts, a cvs
+update will <i>not</i> update your sources to the latest version.
+<P>
+<h3>Other notes</h3>
+<P>
+Anonymous CVS access to the repository is read-only. If
+you would like to contribute a change, bug fix or other improvement
+to eCos then you should start by discussing it on the 
+<A HREF="intouch.html">
+ecos-discuss</A> mailing list. If applicable, you may wish to post
+(or put up for FTP) the relevant diff or patch.
+<P>
+You can obtain e-mail notifications when changes are made to
+the eCos repository. Refer to our <A HREF="intouch.html">keeping in touch</a> page for further details.
+<p>
+Since the anonymous CVS repository is copied from the master
+repository, the author field and log entries are not accurate.
+Use the ChangeLog files at the top of each package
+hierarchy to obtain history on the sources in that package.
+<P>
+We are not generating any FTP snapshots currently - anonymous CVS access
+is superior. However, please tell us if you think FTP access would be useful.
+<P>
+Queries and problems regarding use of the anonymous CVS service should
+be directed to the <A HREF="intouch.html">
+ecos-discuss</A> mailing list. The eCos development team,
+including the anonymous CVS maintainer, read this list. Please clarify
+that the mail concerns an anonymous CVS problem in the subject field.
+
+<!--#include virtual="include/footer.html"-->

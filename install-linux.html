@@ -10,25 +10,34 @@
 
 <h3>Downloading</h3>
 
-The eCos 1.1 distribution for Linux is available as an archive file in
+The eCos 1.2.1 distribution for Linux is available as an archive file in
 both <a href="http://www.muraroa.demon.co.uk/">bzip2</a>
 (.tar.bz2) and <a href="http://www.gzip.org/">gzip</a>
 (.tar.gz) formats. Click on one of the following links to download:
 
 <ul>
-<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.bz2">eCos 1.1 sourceware for Linux</A> (ecos-1.1.tar.bz2 - 3MB)
-<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.gz">eCos 1.1 sourceware for Linux</A> (ecos-1.1.tar.gz - 4MB)
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.2.1.tar.bz2">eCos 1.2.1 sourceware for Linux</A> (ecos-1.2.1.tar.bz2 - 2MB)
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.2.1.tar.gz">eCos 1.2.1 sourceware for Linux</A> (ecos-1.2.1.tar.gz - 3MB)
 </ul>
 
 In order to build the eCos sources, you will require a cross-compiler
 and related development tools. The necessary tools are designated
-<i>ecosSWtools-981021</i> and are available in source form only. Click
+<i>ecosSWtools-arm-990321</i> for the ARM target and
+<i>ecosSWtools-990319</i> for the other supported targets.
+They are available in source form only. Click
 on one of the following links to download:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.bz2">eCos development tools</a> (ecosSWtools-981021-src.tar.bz2 - 21MB)
-<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.gz">eCos development tools</a> (ecosSWtools-981021-src.tar.gz - 26MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-arm-990321-src.tar.bz2">eCos development tools for ARM</a> (ecosSWtools-arm-990321-src.tar.bz2 - 17MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-arm-990321-src.tar.gz">eCos development tools for ARM</a> (ecosSWtools-arm-990321-src.tar.gz - 21MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-990319-src.tar.bz2">eCos development tools for other targets</a> (ecosSWtools-990319-src.tar.bz2 - 23MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-990319-src.tar.gz">eCos development tools for other targets</a> (ecosSWtools-990319-src.tar.gz - 28MB)
 </ul>
+
+Note that Linux users may optionally build eCos for the synthetic Linux
+target using <i>egcs</i> version 1.1.1 or later. The
+<A HREF="docs-1.2.1/tutorials/ecos-tutorial/hardware-setup.html">Hardware setup</A>
+chapter in the eCos documentation set provides further detail.
 
 <h3>Installation</h3>
 
@@ -39,7 +48,7 @@ on one of the following links to download:
    <tt>.</tt> is ahead of the GNU native compiler tools in the
    path.<p>
 
-  <li>Build the eCos development tools (ecosSWtools-981021)
+  <li>Build the eCos development tools
     by following these steps at a <i>sh</i>, <i>ksh</i> or <i>bash</i>
     prompt. Users of the <i>csh</i> and <i>tcsh</i> shells should
     replace <nobr>"<tt>&gt; <i>filename</i>.out
@@ -53,49 +62,63 @@ on one of the following links to download:
         <nobr><tt>
         mkdir /usr/cygnus<br>
         cd /usr/cygnus<br>
-        bunzip2 &lt; ecosSWtools-981021-src.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
-        <tt>gunzip &lt; ecosSWtools-981021-src.tar.gz | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)
+        bunzip2 &lt; ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 bzip2 archive)<br>
+        <tt>gunzip &lt; ecosSWtools-arm-990321-src.tar.gz | tar xvf -&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 gzip archive)<br>
+        <tt>bunzip2 &lt; ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 bzip2 archive)<br>
+        <tt>gunzip &lt; ecosSWtools-990319-src.tar.gz | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 gzip archive)
         </nobr><p>
 
-        The directory
-        <nobr><tt>/usr/cygnus/ecosSWtools-981021/src</tt></nobr> should
+        The directory <nobr><tt>/usr/cygnus/ecosSWtools-arm-990321/src</tt></nobr> or 
+        <nobr><tt>/usr/cygnus/ecosSWtools-990319/src</tt></nobr> should
         be generated and populated during the extraction process.<p>
 
     <li>Create an object directory for your builds:<p>
     <nobr><tt>mkdir /tmp/build</nobr><br>
     <nobr>cd /tmp/build</tt></nobr><p>
 
-     <li>Configure the tools, saving the output to configure.out:<p>
-     <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/configure -v \</nobr><br>
-         <nobr>&nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-981021 \</nobr><br>
-         <nobr>&nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i> \</nobr><br>
-         <nobr>&nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr><p>
+     <li>Configure the tools, saving the output to <tt>configure.out</tt>:<p>
+
+     <nobr>
+     <tt>/usr/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
+     &nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-arm-990321 \<br>
+     &nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-arm-990321/H-<i>host-triplet</i> \<br>
+     &nbsp;&nbsp;--target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+
+     <tt>/usr/cygnus/ecosSWtools-990319/src/configure -v \<br>
+     &nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-990319 \<br>
+     &nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-990319/H-<i>host-triplet</i> \<br>
+     &nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)<p>
+     </nobr>
 
      You should replace <i><tt>target-triplet</tt></i> in the
-     above command with one of the supported target triplets:
-     <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr>
-     or <nobr><tt>powerpc-eabi</tt></nobr>. You should replace
+     above command with one of the following target triplets:
+     <nobr><tt>i686-pc-linux-gnu</tt></nobr>, <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>powerpc-eabi</tt></nobr>,
+     <nobr><tt>sparclite-elf</tt></nobr> or <nobr><tt>mips-tx39-elf</tt></nobr>.
+     You should replace
      <i><tt>host-triplet</tt></i> with the host triplet for your
      build system. You can determine the host triplet by running
-     <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/config.guess</tt></nobr>.<p>
+     <nobr><tt>/usr/cygnus/ecosSWtools-arm-990321/src/config.guess</tt></nobr> or 
+     <nobr><tt>/usr/cygnus/ecosSWtools-990319/src/config.guess</tt></nobr>.<p>
 
-    <li>Build and install the tools, saving the output to make.out:<p>
-    <nobr><tt>make -w all install &gt; make.out 2&gt;&amp;1</tt></nobr><p>
+    <li>Build and install the tools, saving the output to <tt>make.out</tt>:<p>
+    <tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+    <tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)
   </ul>
-
+   <p>
    When the build is complete, the executable files of
    the eCos development tools may be found in the directory
-   <nobr><tt>/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i>/bin</tt></nobr>.
-   You should add this directory to your path.<p>
+   <nobr><tt>/usr/cygnus/ecosSWtools-arm-990321/H-<i>host-triplet</i>/bin</tt></nobr> or
+   <nobr><tt>/usr/cygnus/ecosSWtools-990319/H-<i>host-triplet</i>/bin</tt></nobr>.
+   You should add this directory to the head of your PATH environment variable.<p>
 
   <li>Extract the eCos repository using the following commands:<p>
 
     <nobr><tt>cd /usr/local</nobr><br>
-    <nobr>bunzip2 &lt; ecos-1.1.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
-    <tt>gunzip &lt; ecos-1.1.tar.gz | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)</nobr><p>
+    <nobr>bunzip2 &lt; ecos-1.2.1.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
+    <tt>gunzip &lt; ecos-1.2.1.tar.gz | tar xvf -&nbsp;&nbsp;</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)</nobr><p>
 
     On completion, the eCos repository may be found in the directory
-    <nobr><tt>/usr/local/ecos-1.1</tt></nobr>.
+    <nobr><tt>/usr/local/ecos-1.2.1</tt></nobr>.
 
 </ol>
 

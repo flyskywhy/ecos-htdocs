@@ -7,29 +7,16 @@
 
 <h2>eCos Problem Reports</h2>
 
-<hr size=3>
-
-<h3>Reviewing problems</h3>
-
-If you believe you have found a problem with eCos sourceware, check the
+<hr size=3><h3>Reviewing problems</h3>If you believe you have found a problem with eCos sourceware, check the
 <a href="problemlist.html">known problems list</a>. The problem may have
-been reported already. This list contains suggestions for working around
-certain known problems.
+been reported already. This list contains suggestions for working around certain known problems.<p>
 
-<p>Please note that we are unable to provide technical support to eCos
-sourceware users. Cygnus can provide mission-critical support via the
-<a href="http://www.cygnus.com/ecos/ecos_support.html">eCos Gold Partner Program</a>
-for those who require it.
+Please note that we are unable to provide technical support to eCos sourceware users. Cygnus can provide mission-critical support via the <a href="http://www.cygnus.com/ecos/ecos_support.html">eCos Gold Partner Program</a> for those who require it.
 
 <h3>Submitting a problem report</h3>
-
 If you have been unable to find reference to the problem you are
-experiencing in the known problems list, please submit a problem report
-to Cygnus using the following form. By providing a problem report, you
-will assist us in improving the software for the benefit of all users.
-It is important to provide as much information as possible to enable
-our engineers to reproduce and analyse the problem.
-
+experiencing in the known problems list, please submit a problem report to Cygnus using the following form. By providing a problem report, you will assist us in improving the software for the benefit of all users.
+It is important to provide as much information as possible to enable our engineers to reproduce and analyse the problem.
 <form method="POST" action="/cgi-bin/mailform.pl">
    <input type=hidden name="recipient" value="bugs@cygnus.com">
    <input type=hidden name="page" value="sourceware.cygnus.com/ecos/problemreport.html">
@@ -93,8 +80,7 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
 
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>Class:</TD>
-  <TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked>
-       <B>Target software bug</B><BR>
+  <TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked>       <B>Target software bug</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug">
        <B>Host tool bug</B><BR>
     <INPUT TYPE="radio" NAME="&#62;Class" VALUE="doc-bug">
@@ -111,6 +97,7 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
   <TD ALIGN=RIGHT>Release:</TD> 
   <TD ALIGN=LEFT><SELECT NAME="&#62;Release">
   <OPTION selected>Select a Release
+    <OPTION>eCos v1.2.1
     <OPTION>eCos v1.1
 <!--
     <OPTION>eCos v1.0
@@ -128,8 +115,7 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
     <OPTION>Windows NT 4.0 Japanese
     <OPTION>Windows 95
     <OPTION>Windows 98
-    <OPTION>Linux
-    <OPTION>(all hosts)
+    <OPTION>Linux    <OPTION>(all hosts)
   </SELECT></TD>
 </TR>
 
@@ -137,6 +123,10 @@ all eCos sourceware PRs have customer ID of "ecos-contrib" -->
   <TD ALIGN=RIGHT>Target Platform:</TD> 
   <TD ALIGN=LEFT><SELECT NAME="Target">
     <OPTION selected>Select a Target
+    <OPTION >ARM
+    <OPTION >Fujitsu SPARClite
+    <OPTION >Fujitsu SPARClite Simulator
+    <OPTION >Linux Synthetic
     <OPTION >Matsushita MN10300
     <OPTION >Matsushita MN10300 Simulator
     <OPTION >PowerPC

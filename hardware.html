@@ -2,91 +2,108 @@
 <HEAD>
 <TITLE>Supported Targets</TITLE>
 </HEAD>
-
 <!--#include virtual="include/header.html"-->
-
 <H2>Supported Targets</H2>
 <HR SIZE=3>
 
 <H3>Index</H3>
-
+<A HREF="#arm">ARM7 Family</A><br>
+<A HREF="#sparclite">Fujitsu SPARClite 32-bit Product Family</A><br>
 <A HREF="#mn10300">Matsushita MN10300 32-bit Microcontroller Series</A><br>
 <A HREF="#tx39">Toshiba TX39 32-bit TX SystemRISC Series</A><br>
 <A HREF="#powerpc">MPC800 Embedded PowerPC(tm) Family</A> (beta)
 
-<H3><A NAME="mn10300">Matsushita MN10300 32-bit Microcontroller Series</A></H3>
+<p>
+Note that support for the <a href="http://semiconductor.hitachi.com/superh/">Hitachi SH-3</a> and
+<a href="http://www.necel.com/home.nsf/WebSearch?OpenForm&Microprocessors&V(*R*)+Series(TM)+64-Bit+MIPS(R)+RISC&V(*R*)4300(TM)+Family">NEC VR4300</a>
+processors is available under an <a href="http://www.cygnus.com/ecos/ecos_support.html">early access program</a>.
+Contact Cygnus at <a href="mailto:ecos-info@cygnus.com">ecos-info@cygnus.com</a> for further information.
+Support for other targets is planned and will be announced via the <a href="intouch.html">ecos-announce</a> mailing list. For further information concerning the porting of eCos, see the porting section of the <a href="faq.html">FAQ</a>.
 
+<H3><A NAME="arm">ARM7 Family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
-
-  <tr valign=top bgcolor=#999999>
-    <td><b>Processor</b></td>
-    <td><b>Evaluation board</b></td>
-    <td><b>Information</b></td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>
-    <td>stdeval1</td>
-    <td>Syoichi Yamamoto<br>Kyoto Micro Computer Co Ltd, Japan<br>tel +81 (75) 9530963<br>fax +81 (75) 9530935<br>e-mail <a href="mailto:yama@kmckk.co.jp">yama@kmckk.co.jp</a></td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>
-    <td>stdeval1 simulator</td>
-    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
-  </tr>
-
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.arm.com/Pro+Peripherals/Cores/ARM7TDMI/">ARM7TDMI</a></td>
+  <td><A HREF="http://www.arm.com/DevSupp/Boards/pid7t.html">ARM PID7T</td>
+  <td rowspan=2>ARM Ltd, UK<br>Head Office<br>tel +44 (1223) 400400<br>fax +44 (1223) 400410<br>e-mail <a href="mailto:info@arm.com">info@arm.com</a><p>ARM Inc, USA<br>750 University Avenue<br>Suite 150<br>Los Gatos<br>CA 95032<br>tel +1 (408) 3995199<br>fax +1 (408) 3998854</td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.sharpmeg.com/lh77/lh77.html">Sharp LH77790</a> (ARM7DI core)</td>
+  <td><A HREF="http://www.arm.com/Documentation/Overviews/AEB/index.html">ARM AEB-1</a></td>
+</tr>
 </table>
 
-<H3><A NAME="tx39">Toshiba TX39 32-bit TX SystemRISC Series</A></H3>
-
+<H3><A NAME="sparclite">Fujitsu SPARClite 32-bit Product Family</A></H3>
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.fujitsumicro.com/sparc/sparcProd01.asp">MB86831<BR>MB86832<BR>MB86833</a></td>
+  <td><A HREF="http://www.fujitsu.co.jp/hypertext/Products/Device/CATALOG/AD07/07-00013/3e-5.html">Fujitsu MB86800-MA01</A></td>
+  <td>Fujitsu Microelectronics Inc, USA<br>Customer Response Center<br>tel +1 (800) 8668608<br>e-mail <A HREF="mailto:fmicrc@fmi.fujitsu.com">fmicrc@fmi.fujitsu.com</A></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.fujitsumicro.com/sparc/sparcProd01.asp">MB86831<BR>MB86832<BR>MB86833</a></td>
+  <td>SPARClite simulator</td>
+  <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
+</tr>
+</table>
 
-  <tr valign=top bgcolor=#999999>
-    <td><b>Processor</b></td>
-    <td><b>Evaluation board</b></td>
-    <td><b>Information</b></td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.toshiba.com/taec/nonflash/components/microprocessor.html">TX39</a></td>
-    <td><A href="http://sies.tjsys.co.jp/tj/board/jmr-tx3904a/">JMR3904</a> (Japanese)</td>
-    <td>
-      Siamak Siyami<br>Toshiba America Electronic Components, USA<br>tel +1 (949) 4552218<br>fax +1 (949) 8593963<br>e-mail <a href="mailto:siyams@taec.com">siyams@taec.com</a>
-      <p>Toshiba Information Systems (Japan) Corporation, Japan<br>tel +81 (44) 2468780<br>fax +81 (44) 2468137<br>e-mail <a href="mailto:ms_sales@open.tjsys.co.jp">ms_sales@open.tjsys.co.jp</a>
-      <p>Reiner Teroerde<br>Toshiba Electronics Europe GmbH, Germany<br>tel +49 (211) 5296265<br>fax +49 (211) 5296404<br>e-mail <a href="mailto:rteroerde@tee.toshiba.de">rteroerde@tee.toshiba.de</a>
-    </td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.toshiba.com/taec/nonflash/components/microprocessor.html">TX39</a></td>
-    <td>JMR3904 simulator</td>
-    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
-  </tr>
-
+<H3><A NAME="mn10300">Matsushita MN10300 32-bit Microcontroller Series</A></H3>
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>
+  <td>stdeval1</td>
+  <td>Syoichi Yamamoto<br>Kyoto Micro Computer Co Ltd, Japan<br>tel +81 (75) 9530963<br>fax +81 (75) 9530935<br>e-mail <a href="mailto:yama@kmckk.co.jp">yama@kmckk.co.jp</a></td>  </tr>  <tr valign=top bgcolor=#dddddd>    <td><A HREF="http://www.mec.panasonic.co.jp/sc/division/e-micom/catalog/mn10300.htm">MN10300</a></td>    <td>stdeval1 simulator</td>    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>  </tr></table><H3><A NAME="tx39">Toshiba TX39 32-bit TX SystemRISC Series</A></H3><table cellspacing=2 cellpadding=7 border=0 width=100%>  <tr valign=top bgcolor=#999999>    <td><b>Processor</b></td>    <td><b>Evaluation board</b></td>    <td><b>Information</b></td>  </tr>  <tr valign=top bgcolor=#dddddd>    <td><A HREF="http://www.toshiba.com/taec/nonflash/components/microprocessor.html">TX39</a></td>    <td><A href="http://sies.tjsys.co.jp/tj/board/jmr-tx3904a/">JMR3904</a> (Japanese)</td>    <td>      Siamak Siyami<br>Toshiba America Electronic Components, USA<br>tel +1 (949) 4552218<br>fax +1 (949) 8593963<br>e-mail <a href="mailto:siyams@taec.com">siyams@taec.com</a>      <p>Toshiba Information Systems (Japan) Corporation, Japan<br>tel +81 (44) 2468780<br>fax +81 (44) 2468137<br>e-mail <a href="mailto:ms_sales@open.tjsys.co.jp">ms_sales@open.tjsys.co.jp</a>      <p>Reiner Teroerde<br>Toshiba Electronics Europe GmbH, Germany<br>tel +49 (211) 5296265<br>fax +49 (211) 5296404<br>e-mail <a href="mailto:rteroerde@tee.toshiba.de">rteroerde@tee.toshiba.de</a>    </td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.toshiba.com/taec/nonflash/components/microprocessor.html">TX39</a></td>
+  <td>JMR3904 simulator</td>    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
+</tr>
 </table>
 
 <H3><A NAME="powerpc">MPC800 Embedded PowerPC(tm) Family</A></H3>
-
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
-  <tr valign=top bgcolor=#999999>
-    <td><b>Processor</b></td>
-    <td><b>Evaluation board</b></td>
-    <td><b>Information</b></td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
-    <td><A href="http://www.cogcomp.com/">CMA286-60</a></td>
-    <td>Cogent Computer Systems Inc, USA<br>tel +1 (508) 2789400<br>fax +1 (508) 2789500<br>e-mail <a href="mailto:cogent@cogcomp.com">cogent@cogcomp.com</a></td>
-  </tr>
-
-  <tr valign=top bgcolor=#dddddd>
-    <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></</td>
-    <td><A href="http://sourceware.cygnus.com/psim/">PSIM</A> simulator</td>
-    <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
-  </tr>
-
+<tr valign=top bgcolor=#999999>
+  <td><b>Processor</b></td>
+  <td><b>Evaluation board</b></td>
+  <td><b>Information</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.motorola.com/SPS/ADC/pps/prod/eppc/mpc823.html">MPC823</A></td>
+  <td><A href="http://www.cogcomp.com/">CMA287-23</a></td>
+  <td rowspan=3>Cogent Computer Systems Inc, USA<br>tel +1 (508) 2789400<br>fax +1 (508) 2789500<br>e-mail <a href="mailto:cogent@cogcomp.com">cogent@cogcomp.com</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC850.html">MPC850</a></td>
+  <td><A href="http://www.cogcomp.com/">CMA287-50</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
+  <td><A href="http://www.cogcomp.com/">CMA286-60</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
+  <td><A href="http://www.mot.com/SPS/ADC/pps/subpgs/refplat/8XX/fadsmb.html">MPC8xxFADS</a></td>
+  <td>Motorola Inc, USA<br>tel +1 (800) 5216274<br>e-mail <a href="mailto:cfcsupt1@email.sps.mot.com">cfcsupt1@email.sps.mot.com</a></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+  <td><A HREF="http://www.motorola.com/SPS/ADC/pps/prod/eppc/mpc823.html">MPC823</A><br><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC850.html">MPC850</a><br><A HREF="http://www.mot.com/SPS/RISC/netcomm/prod/eppc/MPC860.html">MPC860</a></td>
+  <td><A href="http://sourceware.cygnus.com/psim/">PSIM</A> simulator</td>
+  <td>Supplied with the <A HREF="getstart.html">eCos development tools</a></td>
+</tr>
 </table>
-
 <!--#include virtual="include/footer.html"-->

@@ -2,7 +2,7 @@
 <HEAD>
 <TITLE>eCos Sourceware</TITLE>
 <META NAME="description" CONTENT="Information concerning the embedded Cygnus operating system (eCos).">
-<META NAME="keywords" CONTENT="eCos, operating system, Cygnus, sourceware, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time">
+<META NAME="keywords" CONTENT="eCos, operating system, Cygnus, sourceware, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time, RTOS">
 </HEAD>
 
 <!--#include virtual="include/header.html"-->
@@ -11,7 +11,63 @@
 
 <HR SIZE=3>
 
-<h3>Introduction</h3>
+<h3>eCos News</h3>
+
+<h4>eCos 1.2.1 release</h4>
+
+The second public release of eCos is now available. Since the original eCos 1.1 release, Cygnus has continued its development
+adding a wealth of new features and additional ports. eCos 1.2.1 incorporates the following enhancements:
+
+<ul>
+<li>New architectures:<p> 
+  <ul>
+  <li>Advanced RISC Machines ARM7
+  <li>Fujitsu SPARClite MB8683x series of processors
+  </ul>
+
+<p>In addition to the new architectures, PowerPC support has been extended to include the MPC850 and MPC823 variants.
+
+<p><li>Several new evaluation board ports:<p>
+  <ul>
+  <li>ARM PID7T
+  <li>ARM AEB-1 (beta)
+  <li>Cogent CMA287-50 - PowerPC MPC850
+  <li>Cogent CMA287-23 - PowerPC MPC823
+  <li>Motorola FADS860 (unsupported contributed port)
+  <li>Fujitsu MB8683x evaluation boards
+  </ul>
+
+<p><li>New tools features:<p>
+  <ul>
+  <li>Synthetic target support under Linux x86 - run eCos apps natively under Linux
+  <li>Configuration Tool - built-in support for eCos testcase execution
+  <li>Configuration Tool - memory layout editor, simplifying the task of mapping eCos to your system’s memory map
+  <li>Configuration Tool - miscellaneous enhancements including progress bar for most operations
+  <li>Enhanced GDB multithreading support - user control of scheduler locking while debugging
+  <li>Enhanced GDB download protocol - halving the download time over serial connections
+  </ul>
+
+<p><li>New or extended runtime features:<p>
+  <ul>
+  <li>New eCos device driver architecture - including revised serial drivers for all supported boards
+  <li>Standardized kernel device driver API
+  <li>ISO C library now includes support for signals and date/time functions
+  <li>CygMon ROM monitor support for the SPARClite evaluation boards, including ethernet based download and debug
+  <li>Updated and expanded documentation including the new ports and device driver architecture
+  <li>Expanded testsuite
+  <li>A wealth of minor enhancements and bug fixes
+  </ul>
+</ul>
+
+<h4>Anonymous CVS access</h4>
+
+Cygnus Solutions strongly believes in the benefits of open development and, to encourage this,
+it is now possible to obtain the most recent versions of eCos using
+<A href="anoncvs.html">anonymous CVS access</a>.
+This facility will provide immediate access to the latest eCos features and the
+rapid deployment of any necessary bug fixes.
+
+<h3>About eCos</h3>
 
 The embedded Cygnus operating system (eCos) is an open-source,
 configurable, portable, and royalty-free embedded RTOS. The system
@@ -19,18 +75,9 @@ comes with everything necessary to develop eCos based applications,
 including tools, documentation and complete sources. All eCos runtime
 source code is distributed under the Cygnus eCos Public License
 (CEPL), a derivative of the Netscape Public License.
-<P>
-This release is a &quot;Technology Release&quot;. It provides all the
-functionality needed for a wide variety of embedded applications, and
-it has undergone extensive testing. However at this stage it is
-only available for a limited number of target architectures, and there
-is lots of additional functionality that can and will be added. We
-have chosen to release the system at this stage because it can already
-be of great benefit to many embedded system developers, and to
-encourage the development of an eCos open source user community on the
-net which will help to move the system forwards.
-<P>
-<H3>eCos functionality</H3>
+
+<p>
+The following functionality is provided:<p>
 <UL>
   <LI>Hardware Abstraction Layer (HAL)</LI>
   <LI>Real-time kernel</LI>
@@ -45,21 +92,18 @@ net which will help to move the system forwards.
 	<LI>Debug and instrumentation support</LI>
       </UL>
   <LI><A HREF="http://www.itron.gr.jp/">&micro;ITRON</A> 3.0 compatible API layered on top of the basic kernel</LI>
-  <LI>ISO C library
+  <LI>ISO C and math libraries
+  <LI>Serial device drivers
+  <LI>GDB debug support
 </UL>
-<P>
-<H3>Supported targets</H3>
-<P>
-Details of the targets supported by eCos are presented in the <a href="hardware.html">supported targets</a> tables. Support for other
-targets is planned and will be announced via the <a href="intouch.html">ecos-announce</a> mailing list. For further information concerning the porting of eCos, see the porting section of the <a href="faq.html">FAQ</a>.
 <P>
 <H3>Supported hosts</H3>
 <P>
 The main supported host is Windows NT on x86-based hardware. The
-system has also been tested on Red Hat 5.1 Linux using x86-based
+system has also been tested on Red Hat 5.x Linux using x86-based
 hardware, and on both Windows 95 and 98, but support for these hosts
-should be considered beta. The system has not been tested on
-any other host platform.
+should be considered beta. In addition to the tested host platforms,
+eCos has been hosted on Linux using PowerPC hardware and on Solaris 2.5.1.
 <P>
 <H3>Host software</H3>
 <P>
@@ -67,13 +111,15 @@ The system comes with full support for manual configuration of the
 system on all host platforms. In addition Windows users get a
 graphical configuration tool which simplifies the process of
 configuring a system and validating the resulting system. This tool is
-not yet available for Linux users. It is likely that new host tools,
+not yet available for Linux users. It has, however, been used successfully with
+Windows NT 4.0 running as a guest operating system under
+<A HREF="http://www.vmware.com/">VMware for Linux</A>. It is likely that new host tools,
 including future versions of the graphical configuration tool, will
 only be available as part of the Developer Kit product.
 <P>
 The system comes with a full set of tools needed for embedded systems
-development. This includes the compilers gcc and g++, the assembler
-and linker, the debugger gdb, and simulators for all the target
-architectures.
+development. This includes the <i>gcc</i> and <i>g++</i> compilers, the assembler
+and linker and the <i>gdb</i> debugger. Simulators are provided for most
+of the target architectures.
 
 <!--#include virtual="include/footer.html"-->

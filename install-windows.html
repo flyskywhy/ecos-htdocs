@@ -10,24 +10,27 @@
 
 <h3>Downloading</h3>
 
-The eCos 1.1 distribution for Windows is provided as a self-extracting
+The eCos 1.2.1 distribution for Windows is provided as a self-extracting
 executable file. Click on the following link to download:
 
 <ul>
-<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/eCos11.exe">eCos 1.1 sourceware for Windows</A> (eCos11.exe - 10MB)
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/eCos121.exe">eCos 1.2.1 sourceware for Windows</A> (eCos121.exe - 8MB)
 </ul>
 
 In order to build the eCos sources, you will require a cross-compiler
 and related development tools. The necessary tools are designated
-<i>ecosSWtools-981021</i> and are available in source form only. Note
+<i>ecosSWtools-arm-990321</i> for the ARM target and
+<i>ecosSWtools-990319</i> for the other supported targets.
+They are available in source form only. Note
 that, although eCos may be configured and built under Windows 95 and
 Windows 98, it is not possible to build the eCos development tools on
 these platforms. If you wish to develop eCos applications using Windows
 95 or Windows 98, you must build the development tools under Windows
-NT. Click on the following link to download:
+NT. Click on one of the following links to download:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.bz2">eCos development tools</a> (ecosSWtools-981021-src.tar.bz2 - 21MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-arm-990321-src.tar.bz2">eCos development tools for ARM</a> (ecosSWtools-arm-990321-src.tar.bz2 - 17MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-990319-src.tar.bz2">eCos development tools for other targets</a> (ecosSWtools-990319-src.tar.bz2 - 23MB)
 </ul>
 
 eCos also requires the GNU native tools for the building of the development tools and the eCos packages. Windows users should obtain the <a
@@ -59,7 +62,7 @@ Note that the Cygwin tools also include the <i>bzip2</i> utility required to ext
 
     <nobr><tt>mkdir /tmp</tt></nobr><p>
 
-<li>Build the eCos development tools (ecosSWtools-981021) by following
+<li>Build the eCos development tools by following
 these steps at the <i>bash</i> prompt:<p>
 
   <ul>
@@ -75,44 +78,65 @@ these steps at the <i>bash</i> prompt:<p>
   <li>Mount the Cygwin libraries as <nobr><tt>/lib</tt></nobr>:<p>
   <nobr><tt>mount C:/cygnus/cygwin-b20/H-i586-cygwin32/i586-cygwin32/lib /lib</tt></nobr><p>
 
-  <li>Set the MAKE_MODE environment variable to "unix":<p>
-  <nobr><tt>export MAKE_MODE=unix</tt></nobr><p>
+  <li>Set the necessary environment variables:<p>
+  <nobr><tt>export MAKE_MODE=unix</tt></nobr><br>
+  <nobr><tt>export BISON_HAIRY=/c/cygnus/cygwin-b20/share/bison.hairy</tt></nobr><br>
+  <nobr><tt>export BISON_SIMPLE=/c/cygnus/cygwin-b20/share/bison.simple</tt></nobr><p>
 
   <li>Extract the eCos development tool sources from the
       downloaded distribution file:<p>
       <nobr><tt>
           cd /c/cygnus<br>
-          bunzip2 -c ecosSWtools-981021-src.tar.bz2 | tar xvf -
-      </tt></nobr><p>
+          bunzip2 -c ecosSWtools-arm-990321-src.tar.bz2 | tar xvf -</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-arm-990321 archive)<br>
+          <tt>bunzip2 -c ecosSWtools-990319-src.tar.bz2 | tar xvf -&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for the ecosSWtools-990319 archive)
+      </nobr><p>
 
-   The directory <nobr><tt>C:\cygnus\ecosSWtools-981021\src</tt></nobr> should be generated and populated during the extraction process.<p>
+   The directory <nobr><tt>C:\cygnus\ecosSWtools-arm-990321\src</tt></nobr> or <nobr><tt>C:\cygnus\ecosSWtools-990319\src</tt></nobr> should be generated and populated during the extraction process.<p>
 
 
   <li>Create an object directory for your builds:<p>
   <nobr><tt>mkdir /c/build</nobr><br>
   <nobr>cd /c/build</tt></nobr><p>
 
-   <li>Configure the tools, saving the output to configure.out:<p>
-   <nobr><tt>/c/cygnus/ecosSWtools-981021/src/configure -v \</nobr><br>
-       <nobr>&nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-981021 \</nobr><br>
-       <nobr>&nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-981021/H-i586-cygwin32 \</nobr><br>
-       <nobr>&nbsp;&nbsp;--host=i586-cygwin32 --target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr><p>
+   <li>Configure the tools, saving the output to <tt>configure.out</tt>:<p>
+
+   <nobr>
+   <tt>/c/cygnus/ecosSWtools-arm-990321/src/configure -v \<br>
+       &nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-arm-990321 \<br>
+       &nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-arm-990321/H-i586-cygwin32 \<br>
+       &nbsp;&nbsp;--host=i586-cygwin32 --target=arm-elf &gt; configure.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+
+   <tt>/c/cygnus/ecosSWtools-990319/src/configure -v \<br>
+       &nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-990319 \<br>
+       &nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-990319/H-i586-cygwin32 \<br>
+       &nbsp;&nbsp;--host=i586-cygwin32 --target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)<p>
+   </nobr>
 
    You should replace <i><tt>target-triplet</tt></i> in the
-   above command with one of the supported target triplets:
-   <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr>
-   or <nobr><tt>powerpc-eabi</tt></nobr>.<p>
+   above command with one of the following target triplets:
+   <nobr><tt>i686-pc-linux-gnu</tt></nobr>, <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>powerpc-eabi</tt></nobr>,
+   <nobr><tt>sparclite-elf</tt></nobr> or <nobr><tt>mips-tx39-elf</tt></nobr>.<p>
 
-  <li>Build and install the tools, saving the output to make.out:<p>
-  <nobr><tt>make -w all install &gt; make.out 2&gt;&amp;1</tt></nobr><p>
+  <li>If you have configured for the <tt>i686-pc-linux-gnu</tt> target, a prebuilt version of <i>libgcc</i> is required.
+  Locate the file <tt>libgcc.a</tt> on the target PC (typically in the <tt>/usr/lib</tt> hierarchy) and copy it to <tt>/c/build/gcc/libgcc1.a</tt> in the
+  newly-created build tree. Note that the file is renamed during copying.<p>
+
+  <li>Build and install the tools, saving the output to <tt>make.out</tt>:<p>
+  <nobr>
+  <tt>make -w all install LIBGCC2_DEBUG_CFLAGS="-g1 -O1" \<br> &nbsp;&nbsp;LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-arm-990321)<p>
+  <tt>make -w all install LANGUAGES="c c++" &gt; make.out 2&gt;&amp;1</tt>&nbsp;&nbsp;&nbsp;&nbsp;(for ecosSWtools-990319)
+  </nobr>
   </ul>
 
+  <p>
   When the build is complete, the executable files of the eCos
-  development tools may be found in the directory
-  <nobr><tt>C:\cygnus\ecosSWtools-981021\H-i586-cygwin32\bin</tt></nobr>.<p>
+  development tools may be found in the directory <nobr><tt>C:\cygnus\ecosSWtools-arm-990321\H-i586-cygwin32\bin</tt></nobr> or
+  <nobr><tt>C:\cygnus\ecosSWtools-990319\H-i586-cygwin32\bin</tt></nobr>.<p>
 
 <li>Install eCos by running the downloaded distribution file and
-following the on-screen instructions.
+following the on-screen instructions. Note that it is not possible to upgrade an existing eCos installation.
+Any previous installations should be uninstalled (using the <i>Add/Remove Programs</i> utility in the
+Control Panel) before installing eCos 1.2.1.
 </ol>
 
 <!--#include virtual="include/footer.html"-->

@@ -7,22 +7,517 @@
 
 <H2>Known Problems</H2>
 <HR SIZE=3>
-<!-- eCos template HTML end -->
 
-<br>
+<h3>Current release</h3>
+
 <table border=0 cellspacing=2 cellpadding=7 width=100%>
+
   <tr bgcolor="#666666">
-    <td valign=top><FONT color="#FFFFFF"><b>ID</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b><center>CVS fix</center></b></font></td>
     <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
     <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
   </tr>
 
   <tr bgcolor="#999999">
-    <td colspan=3><b>eCos 1.1</b></td>
+    <td colspan=4><b>eCos 1.2.1 documentation</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17569</td>
+    <td>&nbsp;</td>
+    <td valign=top>The appearance of asterisks against configuration items in the
+		eCos Configuration Tool is not mentioned in the documentation.</td>
+    <td valign=top>Users should note that an asterisk appears against
+		configuration items which have changed since the configuration
+		was last saved.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19731</td>
+    <td>&nbsp;</td>
+    <td valign=top>With a SPARClite target, kernel exceptions may not work as
+		expected when support for CygMon is enabled. This is the
+		default configuration when building for the SPARClite
+		evaluation board with RAM startup. This problem occurs
+		because certain hardware exception vectors are handled
+		directly by CygMon, rather than eCos. As a result, registering
+		an exception handler for those exceptions will not have any
+		effect. This problem is exhibited in the kernel	tests except1
+		and kexcept1.</td>
+    <td valign=top>For the exceptions to be handled correctly the option
+		CYG_HAL_USE_ROM_MONITOR_CYGMON must be disabled in
+		<pkgconf/hal.h>. However, it will no longer be possible to
+		interactively debug the target.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19737</td>
+    <td>&nbsp;</td>
+    <td valign=top>Use of the BASE_DIR expression within Chapter 12 of
+		'Getting Started with eCos' is not clear.</td>
+    <td valign=top>The user should substitute the location of the eCos repository
+		wherever BASE_DIR is encountered (eg /usr/local/ecos-1.2.1).
+		Note also that pkgconf.tcl is located at
+		BASE_DIR/packages/pkgconf.tcl and not as otherwise specified in
+		this chapter.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19739</td>
+    <td>&nbsp;</td>
+    <td valign=top>The need to specify the architecture-specific version of GDB
+		while following the tutorial text in Chapter 13 of
+		'Getting Started with eCos' is not clear.</td>
+    <td valign=top>The user should substitute the appropriate architecture-
+		specific version of GDB (eg 'sparclite-elf-gdb') wherever 'gdb' 
+		is encountered in the documentation.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19871</td>
+    <td>&nbsp;</td>
+    <td valign=top>HAL stack size symbols are not documented.</td>
+    <td valign=top>HALs now define some symbols to make it easier to create stacks
+		of a suitable size for the system in question, if writing code
+		for many different eCos targets. This is target-dependent
+		because of the varying memory needs for stack frames and for
+		interrupt handling.<p>
+ 
+		The supported symbols are:<p>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;CYGNUM_HAL_STACK_SIZE_MINIMUM<br>
+		and<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;CYGNUM_HAL_STACK_SIZE_TYPICAL<p>
+
+		which are recommended for a thread which does almost nothing,
+		such as the idle thread and for one which makes substantial use
+		of system calls, a more typical thread, respectively. If your
+		threads have stack variables of any size, you should add their
+		size (in bytes) to these symbols when defining your stacks.<p>
+
+		If you enable asserts (CYGPKG_INFRA_DEBUG, CYGDBG_USE_ASSERTS),
+		then threads with stack size smaller than
+		CYGNUM_HAL_STACK_SIZE_MINIMUM will not be allowed to start; an
+		assert will fire, halting the system.<p>
+
+		These symbols are typically made up of others which may be
+		defined depending on architecture; an example is
+		CYGNUM_HAL_STACK_FRAME_SIZE which represents the stack space
+		needed to make a function call.  See your cyg/hal/hal_arch.h
+		file for details, or others that it includes, for the stack
+		requirements may vary with the number of simultaneously active
+		interrupt sources, for example.<p>
+ 
+		In future releases, these sizes may change depending on
+		configuration. Specifically, some target architectures are
+		undergoing HAL improvements for future releases that will
+		enable all interrupt processing code, including DSRs, to
+		execute on a single separate dedicated stack; this will mean
+		that normal thread stacks do not all need to have enough space
+		for fielding all possible simultaneous interrupts, but instead
+		just enough space to enter the interrupt system once.  This may
+		reduce memory requirements considerably, depending on target,
+		and so the values of these symbols will reduce to match in
+		versions where this feature is supported.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19935</td>
+    <td>&nbsp;</td>
+    <td valign=top>The configuration option
+		CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER is documented but
+		is no longer accessible from the eCos Configuration Tool.</td>
+    <td valign=top>Do not use CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19954</td>
+    <td>&nbsp;</td>
+    <td valign=top>The format of output generated by the eCos Configuration Tool
+		while running tests is not documented.</td>
+    <td valign=top>Developers should note that each line of output is prefixed by
+		<tt.t/aa.a> which indicates the time at which the line was
+		output.<P>
+
+		  &nbsp;&nbsp;&nbsp;&nbsp;tt.t is the time from the start of test execution<br>
+		  &nbsp;&nbsp;&nbsp;&nbsp;aa.a is the time since the output of the previous line<p>
+
+		Both quantities are measured in CPU seconds in the case of
+		execution in simulators and in elapsed seconds in the case of
+		execution on hardware.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19987</td>
+    <td>&nbsp;</td>
+    <td valign=top>The command necessary to run CygMon in the simulator is
+		incorrect in the GNUPro Reference for eCos (Toshiba TX39)
+		document.</td>
+    <td valign=top>The correct command line is as follows:<p>
+
+		  &nbsp;&nbsp;&nbsp;&nbsp;mips-tx39-elf-run --board=jmr3904 --memory-region 0xffff8000,0x900 --memory-region 0xffffe000,0x4 --memory-region 0xb2100000,0x4 --sockser-addr=localhost:XXXX cygmon50.rom</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20017</td>
+    <td>&nbsp;</td>
+    <td valign=top>In chapter 2 of 'Getting Started with eCos', the section 'ROM
+		monitor image' does not mention the need to enable GDB stub
+		support when debugging capabilities are required for the ARM
+		evaluation boards.</td>
+    <td valign=top>Enable all the options grouped under 'Source-level debugging'
+		in the eCos Configuration Tool.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20024</td>
+    <td>&nbsp;</td>
+    <td valign=top>The eCos serial filter tool (ser_filter) is not documented.</td>
+    <td valign=top>Refer to the file ser_filter.txt located in the tools/bin
+		directory under the base of the eCos installation for details
+		of this tool.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20025</td>
+    <td>&nbsp;</td>
+    <td valign=top>In the examples Makefile, the XCC line is incorrect for the
+		ARM AEB-1 evaluation board. The line for the ARM PID board
+		is correct.</td>
+    <td valign=top>Modify the line by removing an 'm' character such that the
+		line reads:<p>
+
+		  &nbsp;&nbsp;&nbsp;&nbsp;#XCC = arm-elf-gcc -mcpu=arm7di</td>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=4><b>eCos 1.2.1</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17485<br>19988</td>
+    <td>&nbsp;</td>
+    <td valign=top>In certain situations, pkgconf does not remove old header
+		files when packages are added/removed from an existing
+		build tree.</td>
+    <td valign=top>When packages are added/removed, the developer is recommended
+		to save the revised configuration to a new build tree.</td>
   </tr>
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>17814</td>
+    <td>&nbsp;</td>
+    <td valign=top>During installation under Windows, InstallShield incorrectly calculates the amount of disk
+		free-space. It calculates available space on a character, not
+		disk allocation unit basis. As the eCos distribution contains
+		many small files, this can lead to installation being allowed
+		to proceed when there is insufficient disk space available.</td>
+    <td valign=top>Please manually check that enough disk space exists after
+		consulting the installation requirements in the documentation.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18848</td>
+    <td>&nbsp;</td>
+    <td valign=top>The Linux getitimer returns [period, period] rather than
+		[period, period-elapsed]. This causes HAL_CLOCK_READ to fail.
+		The Linux synthetic target support is an alpha release.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18956</td>
+    <td>&nbsp;</td>
+    <td valign=top>An additional linker output section is required when linking
+		eCos tests compiled for the i386-linux synthetic target with
+		CYGIMP_LIBC_MALLOC_CXX_DELETE_CALLS_FREE enabled. The Linux
+		synthetic target support is an alpha release.</td>
+    <td valign=top>Add a .rel.got linker-defined memory section to the memory
+		layout when building eCos under these conditions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19234</td>
+    <td>&nbsp;</td>
+    <td valign=top>When using the eCos based GDB stub with the MN10300 target,
+		the downloaded program cannot be executed.</td>
+    <td valign=top>Only use provided CygMon ROM monitor with the MN10300.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19235</td>
+    <td>&nbsp;</td>
+    <td valign=top>When using the eCos based GDB stub with the TX39 target,
+		the GDB 'info threads' command lists one thread only.</td>
+    <td valign=top>Use provided CygMon ROM monitor with the TX39.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19676</td>
+    <td>&nbsp;</td>
+    <td valign=top>When running under Windows 95, the eCos Configuration Tool
+		does not always display any errors detected during the
+		loading of an eCos repository.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19695</td>
+    <td>&nbsp;</td>
+    <td valign=top>The cache locking macros (HAL_DCACHE_LOCK(),
+		HAL_DCACHE_UNLOCK(), HAL_ICACHE_LOCK(), HAL_ICACHE_UNLOCK())
+		for the TX39 may not lock the intended memory region.</td>
+    <td valign=top>The developer may implement alternative code to lock the
+		cache if this functionality is required.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19732</td>
+    <td>&nbsp;</td>
+    <td valign=top>Under certain conditions, it is possible for the eCos
+		Configuration Tool to enter a state where it will ignore user
+		requests to exit.</td>
+    <td valign=top>Exit the Configuration Tool using the Task Manager.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19742</td>
+    <td>&nbsp;</td>
+    <td valign=top>Under Windows 95, the eCos Configuration Tool may cause an
+		exception in USER.EXE while disabling an eCos package.
+		Windows 95 support is currently Beta.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19787</td>
+    <td>&nbsp;</td>
+    <td valign=top>Under certain circumstances, the eCos Configuration Tool may
+		output a linker script fragment which has a forward reference.
+		This results in a linker error of the form "LOADADDR forward
+		reference ..." when attempting to build the eCos tests.</td>
+    <td valign=top>When modifying memory layouts, ensure that the order of memory
+		sections is preserved during any section relocation.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19799</td>
+    <td>&nbsp;</td>
+    <td valign=top>Linker-defined memory sections which are defined to follow
+		a user-defined memory section may not be displayed or output
+		correctly by the eCos Configuration Tool.</td>
+    <td valign=top>Avoid specifying memory layouts where a linker-defined section
+		follows a user-defined section.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19822</td>
+    <td>&nbsp;</td>
+    <td valign=top>When using the GDB 'thread' command to switch context to
+		another thread, any register values changed by the user are not
+		preserved.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19823</td>
+    <td>&nbsp;</td>
+    <td valign=top>The eCos serial4 test may report an error when running
+		ser_filter under Sun Solaris. This is because serial ports on
+		the Sun cannot be configured to use two stop bits.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19908</td>
+    <td>&nbsp;</td>
+    <td valign=top>Use of the 'Find' dialog box within the eCos Configuration
+		Tool under the Japanese version of Windows NT 4.0 may generate
+		an exception.</td>
+    <td valign=top>Avoid use of the 'Find' dialog if this problem is encountered.
+</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19912</td>
+    <td>&nbsp;</td>
+    <td valign=top>If compiler optimization level is set to -O0, then in very
+		rare circumstances the MN10300 HAL cache macros can cause
+		lockups.</td>
+    <td valign=top>Do not disable optimization when using the HAL cache macros.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19919</td>
+    <td>&nbsp;</td>
+    <td valign=top>The eCos Configuration Tool may generate an exception if a
+		build is stopped while the configuration header files are being
+		written.</td>
+    <td valign=top>Avoid stopping the build during this phase of the build
+		process.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19921</td>
+    <td>&nbsp;</td>
+    <td valign=top>Problems may be encountered when using the eCos Configuration
+		Tool to save eCos build trees with very long paths.</td>
+    <td valign=top>Limit the length of build tree paths if this problem is
+		encountered.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19922</td>
+    <td>&nbsp;</td>
+    <td valign=top>eCos will not build correctly on a file system which has been
+		mounted using the Cygwin binary mode.</td>
+    <td valign=top>Do not attempt to mount eCos-related file systems in binary
+		mode.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19942<br>19947</td>
+    <td>&nbsp;</td>
+    <td valign=top>The protocol used for negotiating a new serial configuration
+		in the eCos serial tests is not reliable when the host machine
+		has a high load.</td>
+    <td valign=top>There is no known workaround. A new implementation is planned.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19961</td>
+    <td>&nbsp;</td>
+    <td valign=top>The eCos Configuration Tool may generate an exception if the
+		user cancels the message box "Press OK when the target is reset
+		ready for test download" when running tests.</td>
+    <td valign=top>Always respond 'OK' to this message box.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19976</td>
+    <td>&nbsp;</td>
+    <td valign=top>If the user halts the execution of a series of tests from the
+		eCos Configuration Tool, the tool may be left in a state where
+		it is unable to restart test execution.</td>
+    <td valign=top>Exit and restart the configuration tool.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19991</td>
+    <td>&nbsp;</td>
+    <td valign=top>There is an race condition in the eCos stress_threads test
+		which can cause failures to be erroneously reported if the
+		bitmap scheduler has been configured.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>20020</td>
+    <td>&nbsp;</td>
+    <td valign=top>Certain eCos tests do not start the scheduler and so interrupts
+		are disabled. When run on hardware, these tests cannot be
+		interrupted using Ctrl-C.</td>
+    <td valign=top>There is no workaround.</td>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=4><b>GNU tools for eCos 1.2.1 and CygMon</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18007</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB cannot cope with executables whose absolute pathnames are
+		longer than 128 characters. This is only a problem when gdb is
+		used with hardware. The built in simulators are OK. The failure
+		mode is that the application will download correctly, but then
+		GDB terminates with an error.</td>
+    <td valign=top>Only attempt to run applications located in a path consisting
+		of less than 128 characters.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18034</td>
+    <td>&nbsp;</td>
+    <td valign=top>The Windows hosted compiler must be provided with file
+		extension when using the "-o" flag. If no extension is provided
+		the compilation fails with an unrelated and misleading error.</td>
+    <td valign=top>Always specify an extension when using "-o"</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18585</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB does not allow the value of variables of type 'bool' to be
+		changed.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18615</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB and GDBTk do not list/display inline functions correctly
+		for object files which have been created without the gcc -O2
+		flag.</td>
+    <td valign=top>Use the -O2 flag of gcc to create object files which call 
+		inline functions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>18694</td>
+    <td>&nbsp;</td>
+    <td valign=top>GDB shows the code associated with a weak symbol when an
+		alternative symbol definition has been provided.</td>
+    <td valign=top>The developer may comment out the weak definitions.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19388<br>19968<br>19970<br>19981</td>
+    <td>&nbsp;</td>
+    <td valign=top>Certain entries in a GDB backtrace may be incorrect and the
+		backtrace may be incomplete. The nature of these errors
+		is target-dependent.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19885</td>
+    <td>&nbsp;</td>
+    <td valign=top>Setting $pc at the TX39 '(gdb)' prompt can cause GDB to core
+		dump.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>19945<br>19946</td>
+    <td>&nbsp;</td>
+    <td valign=top>The PowerPC simulator does not correctly communicate certain
+		exception conditions to GDB. This causes the eCos kexcept1,
+		signal2 and except1 tests to fail.</td>
+    <td valign=top>There is no known workaround.</td>
+  </tr>
+
+</table>
+
+<h3>Previous releases</h3>
+
+<table border=0 cellspacing=2 cellpadding=7 width=100%>
+
+  <tr bgcolor="#666666">
+    <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b><center>CVS fix</center></b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
+    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
+  </tr>
+
+  <tr bgcolor="#999999">
+    <td colspan=4><b>eCos 1.1</b></td>
+  </tr>
+
+  <tr bgcolor="#DDDDDD">
+    <td valign=top>17814</td>
+    <td>&nbsp;</td>
     <td valign=top>Windows only problem. InstallShield incorrectly calculates the
 		amount of disk free-space. It calculates available space on a
 		character, not disk allocation unit basis. As the eCos
@@ -35,6 +530,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18003</td>
+    <td>&nbsp;</td>
     <td valign=top>The Windows based eCos Configuration Tool does not support
 		early versions of Internet Explorer - version 2 or earlier.
 		When accessing help in the Configuration Tool, the browser
@@ -46,11 +542,12 @@
   </tr>
 
   <tr bgcolor="#999999">
-    <td colspan=3><b>GNU tools for eCos 1.1 and CygMon</b></td>
+    <td colspan=4><b>GNU tools for eCos 1.1 and CygMon</b></td>
   </tr>
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>16573</td>
+    <td>&nbsp;</td>
     <td valign=top>On the TX39 and MN10300, the CygMon command line "load"
 		command does not function correctly.</td>
     <td valign=top>Use gdb to load binaries into the target system using the GDB
@@ -61,22 +558,15 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>17046</td>
+    <td>&nbsp;</td>
     <td valign=top>Only applicable to the MN103002 evaluation board hardware.
 		Breakpoints do not function after a watchdog exception fires.</td>
     <td valign=top>No known workaround.</td>
   </tr>
 
   <tr bgcolor="#DDDDDD">
-    <td valign=top>17614</td>
-    <td valign=top>Developer's Kit release only. Mixing some operations between
-		the GDBTk GUI and console window can cause problems. Operations
-		that should not be mixed include all download and execution
-		related commands.</td>
-    <td valign=top>Avoid the use the GDBTk console window where possible.</td>
-  </tr>
-
-  <tr bgcolor="#DDDDDD">
     <td valign=top>17831<BR>18000</td>
+    <td>&nbsp;</td>
     <td valign=top>The TX39 simulator does not support simulation of the external
 		interrupt configuration register (located at 0xffffe000). This
 		correctly leads to the "intr0" and "kintr0" eCos testcases
@@ -86,6 +576,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>17974</td>
+    <td>&nbsp;</td>
     <td valign=top>The MN103002 simulator does not support simulation of the
 		on-chip watchdog timer. This correctly leads to the "watchdog"
 		eCos testcase failing.</td>
@@ -94,6 +585,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18007</td>
+    <td>&nbsp;</td>
     <td valign=top>GDB cannot cope with executables whose absolute pathnames are
 		longer than 128 characters. This is only a problem when gdb is
 		used with hardware. The built in simulators are OK. The failure
@@ -105,6 +597,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18034</td>
+    <td>&nbsp;</td>
     <td valign=top>The Windows hosted compiler must be provided with file
 		extension when using the "-o" flag. If no extension is provided
 		the compilation fails with an unrelated and misleading error.</td>
@@ -113,6 +606,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18036</td>
+    <td>&nbsp;</td>
     <td valign=top>When using the PowerPC simulator built in to GDB, GDB only
 		displays the top stack frame, and it is not possible to select
 		any other stack frame.</td>
@@ -120,16 +614,8 @@
   </tr>
 
   <tr bgcolor="#DDDDDD">
-    <td valign=top>18055</td>
-    <td valign=top>TX39 GDBTk (Developer's Kit release only) does not allow you
-		to remove assembler level breakpoints in the assembly window.</td>
-    <td valign=top>Either use the breakpoint window to disable the breakpoint, or
-		use the console window to remove the breakpoints with the
-		delete command.</td>
-  </tr>
-
-  <tr bgcolor="#DDDDDD">
     <td valign=top>18056</td>
+    <td>&nbsp;</td>
     <td valign=top>GDB can occasionally run out of memory when repeatedly loading
 		applications into the simulator.</td>
     <td valign=top>If you experience this problem, simply exit GDB and restart.</td>
@@ -137,6 +623,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18085<BR>18001</td>
+    <td>&nbsp;</td>
     <td valign=top>TX39 (Sourceware release only) problem connecting to simulated
 		CygMon. Following the instructions in the documentation will
 		not result in successful connection to a standalone simulator
@@ -149,6 +636,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18086</td>
+    <td>&nbsp;</td>
     <td valign=top>TX39 GDB deletion of assembler breakpoints within interrupt
 		handlers can cause problems. This problem does not occur in the
 		TX39 simulator.</td>
@@ -158,27 +646,18 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>18110</td>
+    <td>&nbsp;</td>
     <td valign=top>TX39 "si" and "ni" commands can cause problems in a
 		multi-threaded environment. In certain circumstances GDB can
 		get confused by a thread context switch when single stepping.
-		This is a rare occurance, but results in control of the target
+		This is a rare occurrence, but results in control of the target
 		being lost.</td>
     <td valign=top>If this occurs, hit ^C to regain control of the target.</td>
   </tr>
 
   <tr bgcolor="#DDDDDD">
-    <td valign=top>18121</td>
-    <td valign=top>No on-line GDBTk manual present (Developer's Kit only). The
-		Developer's Kit comes with full printed documentation including
-		a GDBTk manual. As an added bonus we have included a HTML
-		version of this manual on the eCos 1.1 CD.</td>
-    <td valign=top>The HTML version of the GDBTk manual can be found on the CD ROM
-		in the following location: "gdbtk\gdbtk.htm".</td>
-  </tr>
-
-
-  <tr bgcolor="#DDDDDD">
     <td valign=top>18122</td>
+    <td>&nbsp;</td>
     <td valign=top>PowerPC GDB stub BREAK support is only partial implemented in
 		this release. When a user interrupts execution, GDB doesn't
 		display the context of the running thread.</td>
@@ -189,6 +668,6 @@
 
 </table>
 
-<p><font size=-1>Revision 1.1.0</font>
+<p><font size=-1>Revision 1.2.1.0</font>
 
 <!--#include virtual="include/footer.html"-->
