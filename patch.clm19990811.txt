@@ -1,0 +1,49 @@
+1999-07-30  Catherine Moore <clm@cygnus.com>
+ 
+        * gas/config/tc-arm.c (tc_gen_reloc): Record the vtable entry in
+        the relocation's section offset.
+
+        * bfd/elf32-arm.h (elf32_arm_check_relocs):  Use r_offset for
+        R_ARM_GNU_VTENTRY.
+ 
+
+Index: gas/config/tc-arm.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/gas/config/tc-arm.c,v
+retrieving revision 1.66.2.3
+diff -c -2 -p -r1.66.2.3 tc-arm.c
+*** tc-arm.c	1999/07/16 20:31:06	1.66.2.3
+--- tc-arm.c	1999/07/30 17:14:36
+*************** tc_gen_reloc (section, fixp)
+*** 5746,5749 ****
+--- 5746,5754 ----
+      }
+  
++    /* HACK: Since arm ELF uses Rel instead of Rela, encode the
++       vtable entry to be used in the relocation's section offset.  */
++    if (fixp->fx_r_type == BFD_RELOC_VTABLE_ENTRY)
++      reloc->address = fixp->fx_offset;
++ 
+    return reloc;
+  }
+Index: bfd/elf32-arm.h
+===================================================================
+RCS file: /cvs/cvsfiles/devo/bfd/elf32-arm.h,v
+retrieving revision 1.2.4.2
+diff -c -2 -p -r1.2.4.2 elf32-arm.h
+*** elf32-arm.h	1999/07/16 20:22:55	1.2.4.2
+--- elf32-arm.h	1999/07/30 17:14:43
+*************** elf32_arm_check_relocs (abfd, info, sec,
+*** 1727,1731 ****
+             used.  Record for later use during GC.  */
+          case R_ARM_GNU_VTENTRY:
+!           if (!_bfd_elf32_gc_record_vtentry (abfd, sec, h, rel->r_addend))
+              return false;
+            break;
+--- 1727,1731 ----
+             used.  Record for later use during GC.  */
+          case R_ARM_GNU_VTENTRY:
+!           if (!_bfd_elf32_gc_record_vtentry (abfd, sec, h, rel->r_offset))
+              return false;
+            break;
+
