@@ -1,0 +1,595 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Using pkgconf.tcl on UNIX</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Configure and build eCos from source"
+HREF="configure-and-build-ecos-from-source.html"><LINK
+REL="PREVIOUS"
+TITLE="Configure and build eCos from source"
+HREF="configure-and-build-ecos-from-source.html"><LINK
+REL="NEXT"
+TITLE="Run an eCos test case"
+HREF="run-an-ecos-test-case.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. Configure and build eCos from source</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="USING-PKGCONF-TCL-ON-UNIX"
+>Using <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</A
+></H1
+><P
+>	  On UNIX systems the <SPAN
+CLASS="APPLICATION"
+>Configuration
+	    Tool</SPAN
+> is not yet available, but it is still
+	  possible to configure and build a kernel by editing some
+	  header files manually and using the
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> command
+	  (<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is the underlying engine
+	  used by the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>).
+	</P
+><P
+>	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is a
+	  <SPAN
+CLASS="APPLICATION"
+>Tcl</SPAN
+> script, invoked on UNIX with 
+	  the <B
+CLASS="COMMAND"
+>tclsh</B
+>
+	  interpreter.  On Windows you should invoke the interpreter
+	  with <B
+CLASS="COMMAND"
+>cygtclsh80</B
+>.  The examples will
+	  use <B
+CLASS="COMMAND"
+>tclsh</B
+>, as mentioned in <A
+HREF="notation-and-conventions-in-this-manual.html"
+>Chapter 1</A
+>.
+	</P
+><P
+>	  Before invoking <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> you need to
+	  choose a directory in which to work.  For the purposes of
+	  this tutorial, the default path will be 
+	  <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</TT
+>.  Create this
+	  directory and change to it by typing:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mkdir <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/ecos-work</B
+></TT
+></P
+><P
+>	  To choose the targets to enable, the packages
+	  to set, and a few other configuration options for your
+	  kernel, type:
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --help</B
+></TT
+></P
+>
+	  to see what options can be used with
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>.  Useful commands to begin with are:
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --packages</B
+></TT
+></P
+>
+	  to list available packages, and
+<P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --targets</B
+></TT
+></P
+>
+	  to list available targets.
+	</P
+><P
+>	  Here is sample output from <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>
+	  showing you which options are available and enabled by
+	  default.</P
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 14-1. Getting help from
+	    <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;	    
+$ tclsh &#60;replaceable&#62;BASE_DIR&#60;/replaceable&#62;/pkgconf.tcl --help
+Usage: pkgconf [options]
+Available options are:
+  --help               : display this text.
+  --packages           : list all packages.
+  --targets            : list all possible targets.
+  --target=&#60;arch&#62;      : target the specified architecture.
+  --platform=sim       : target the simulator rather than hardware.
+  --startup=rom        : generate code suitable for ROMming.
+  --disable-&#60;pkg&#62;      : disable a given package.
+  --enable-&#60;pkg&#62;       : enable a given package.
+  --&#60;pkg&#62;-version=v0.3 : use a specific version of a package.
+  --defaults           : use default settings instead of the save file.
+  --srcdir=&#60;dir&#62;       : specify location of the component repository.
+  --builddir=&#60;dir&#62;     : specify location of the build directory.
+  --prefix=&#60;dir&#62;       : specify location of the install directory.
+$  </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="EXAMPLE"
+><P
+><B
+>Example 14-2. Getting the list of targets from
+	    <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+></B
+></P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;	    
+$ tclsh &#60;BASE_DIR&#62;/pkgconf.tcl --targets
+Known targets:
+  mn10300 : aliases  MN10300 mn10300-elf am30 am30-elf am32 am32-elf 
+    Required packages
+        MN10300 common HAL (CYGPKG_HAL_MN10300)
+    Platform stdeval1, supported startups  ram rom 
+      Required packages
+          MN10300 stdeval1 support (CYGPKG_HAL_MN10300_STDEVAL1)
+          GDB Pseudo Device (CYGPKG_DEVICES_GDB)
+          Common Serial Device Code (CYGPKG_DEVICES_SERIAL_RS232_COMMON)
+          MN10300 Serial Device Code (CYGPKG_DEVICES_SERIAL_RS232_MN10300)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)
+    Platform sim, supported startups  ram 
+      Required packages
+          MN10300 simulator support (CYGPKG_HAL_MN10300_SIM)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)
+  tx39    : aliases  TX39 mips-tx39 mips-tx39-elf 
+    Required packages
+        TX39 common HAL (CYGPKG_HAL_TX39)
+    Platform jmr3904, supported startups  ram rom 
+      Required packages
+          TX39 jmr3904 support (CYGPKG_HAL_TX39_JMR3904)
+          Common Serial Device Code (CYGPKG_DEVICES_SERIAL_RS232_COMMON)
+          TX39 Serial Device Code (CYGPKG_DEVICES_SERIAL_RS232_TX39)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)
+    Platform sim, supported startups  ram 
+      Required packages
+          TX39 simulator support (CYGPKG_HAL_TX39_SIM)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)
+  powerpc : aliases  PowerPC powerpc-eabi 
+    Required packages
+        PowerPC common HAL (CYGPKG_HAL_POWERPC)
+    Platform cogent, supported startups  ram rom 
+      Required packages
+          PowerPC Cogent board support (CYGPKG_HAL_POWERPC_COGENT)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)
+    Platform sim, supported startups  ram 
+      Required packages
+          PowerPC simulator support (CYGPKG_HAL_POWERPC_SIM)
+          Wallclock Device Code (CYGPKG_DEVICES_WALLCLOCK)
+          Watchdog Device Code (CYGPKG_DEVICES_WATCHDOG)  </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><P
+>	  To select the <SPAN
+CLASS="HARDWARE"
+>MN10300</SPAN
+> target, the
+	  simulation platform, and RAM startup, type:
+	</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --platform=stdeval1 --startup=ram</B
+></TT
+></P
+><P
+>	  To select the <SPAN
+CLASS="HARDWARE"
+>TX39</SPAN
+>
+	  target, the simulation platform, and RAM startup,
+	  type:
+	</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=tx39 --platform=jmr3904 --startup=ram</B
+></TT
+></P
+><P
+>	  To configure for a <SPAN
+CLASS="HARDWARE"
+>PowerPC</SPAN
+> target,
+	  the simulation platform, and RAM startup type:
+	</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/pkgconf.tcl --target=powerpc --platform=sim --startup=ram</B
+></TT
+></P
+><P
+>	  You can now run <B
+CLASS="COMMAND"
+>make</B
+> or <B
+CLASS="COMMAND"
+>make
+	    tests</B
+>, after which you will be at the same point
+	  the graphical <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>
+	  leaves you &#8212; you can start developing your own
+	  applications, following the steps in <A
+HREF="build-and-run-simple-applications.html"
+>Chapter 16</A
+>.
+	</P
+><P
+>	  The procedure shown above allows you to do very
+	  coarse-grained configuration of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel: you can
+	  select which packages to include in your kernel, and give
+	  target and startup options.  But you cannot select
+	  components within a package, or set the very fine-grained
+	  options. </P
+><P
+>	  To select fine-grained configuration options you will need
+	  to edit the header files in the directory
+	  <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf</TT
+>.  For example, to
+	  select a different scheduler for the kernel, you would edit
+	  the file <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf/kernel.h</TT
+> and
+	  change the two lines
+	  <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#define CYGSEM_KERNEL_SCHED_MLQUEUE
+#undef  CYGSEM_KERNEL_SCHED_BITMAP  </PRE
+></TD
+></TR
+></TABLE
+>
+	  to
+	  <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;#undef  CYGSEM_KERNEL_SCHED_MLQUEUE
+#define CYGSEM_KERNEL_SCHED_BITMAP  </PRE
+></TD
+></TR
+></TABLE
+>
+	  and then rebuild.
+	</P
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Caution</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+> You should follow the manual configuration
+	    process described above very carefully, and you should
+	    read the comments in that file to see when one option
+	    depends on other options or packages being enabled or
+	    disabled.  If you do not you might end up with an inconsistently
+	    configured kernel which could fail to build or might
+	    execute incorrectly.
+	  </P
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="run-an-ecos-test-case.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configure and build eCos from source</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configure-and-build-ecos-from-source.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Run an eCos test case</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

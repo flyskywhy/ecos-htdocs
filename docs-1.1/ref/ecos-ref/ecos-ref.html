@@ -1,0 +1,927 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>eCosTM Reference Manual</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="NEXT"
+TITLE="Preliminaries"
+HREF="preliminaries.html"></HEAD
+><BODY
+><DIV
+CLASS="BOOK"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</A
+></H1
+><H3
+CLASS="AUTHOR"
+>The eCos Team</H3
+><DIV
+CLASS="AFFILIATION"
+><H4
+CLASS="ORGNAME"
+>Cygnus Solutions</H4
+></DIV
+><P
+CLASS="COPYRIGHT"
+><A
+HREF="ln15.html"
+>Copyright</A
+> © 1998 by <SPAN
+CLASS="HOLDER"
+>Cygnus Solutions</SPAN
+></P
+><HR><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>I. <A
+HREF="preliminaries.html"
+>Preliminaries</A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="ecos-kernel-overview.html"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel overview</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ecos-kernel-overview.html#THE-SCHEDULER"
+>The scheduler</A
+></DT
+><DT
+><A
+HREF="thread-synchronization.html"
+>Thread synchronization</A
+></DT
+><DT
+><A
+HREF="exceptions.html"
+>Exceptions</A
+></DT
+><DT
+><A
+HREF="interrupts.html"
+>Interrupts</A
+></DT
+><DT
+><A
+HREF="counters-clocks-alarms-and-timers.html"
+>Counters, clocks, alarms and timers</A
+></DT
+></DL
+></DD
+><DT
+>2. <A
+HREF="a-tour-of-the-kernel-sources.html"
+>A tour of the kernel sources</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="a-tour-of-the-kernel-sources.html#KERNEL-HEADERS"
+>Kernel headers</A
+></DT
+><DT
+><A
+HREF="kernel-source-files.html"
+>Kernel source files</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>II. <A
+HREF="kernel-apis.html"
+>Kernel APIs</A
+></DT
+><DD
+><DL
+><DT
+>3. <A
+HREF="requirements-for-programs.html"
+>Requirements for programs</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="requirements-for-programs.html#MAIN-VERSUS-CYG-USER-START"
+><TT
+CLASS="FUNCTION"
+><B
+>main()</B
+></TT
+>
+	  <I
+CLASS="FOREIGNPHRASE"
+>versus</I
+>
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_user_start()</B
+></TT
+></A
+></DT
+><DT
+><A
+HREF="necessary-headers.html"
+>Necessary headers</A
+></DT
+><DT
+><A
+HREF="necessary-link-instructions.html"
+>Necessary link instructions</A
+></DT
+><DT
+><A
+HREF="interrupt-and-exception-handlers.html"
+>Interrupt and exception handlers</A
+></DT
+><DT
+><A
+HREF="memory-allocation.html"
+>Memory allocation</A
+></DT
+><DT
+><A
+HREF="assertions-and-bad-parameter-handling.html"
+>Assertions and bad parameter handling</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="system-startup.html"
+>System startup</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="system-startup.html#SYSTEM-STARTUP-THE-HAL"
+>System startup &#8212; the HAL</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-start.html"
+>System startup &#8212; cyg_start()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-prestart.html"
+>System startup &#8212; cyg_prestart()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-package-start.html"
+>System startup &#8212; cyg_package_start()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-user-start.html"
+>System startup &#8212; cyg_user_start()</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="native-kernel-c-language-api.html"
+>Native kernel C language API</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="native-kernel-c-language-api.html#TYPES-USED-IN-PROGRAMMING-ECOS"
+>Types used in programming <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></A
+></DT
+><DT
+><A
+HREF="thread-operations.html"
+>Thread operations</A
+></DT
+><DT
+><A
+HREF="priority-manipulation.html"
+>Priority manipulation</A
+></DT
+><DT
+><A
+HREF="exception-handling.html"
+>Exception handling</A
+></DT
+><DT
+><A
+HREF="interrupt-handling.html"
+>Interrupt handling</A
+></DT
+><DT
+><A
+HREF="counters-clocks-and-alarms.html"
+>Counters, clocks and alarms</A
+></DT
+><DT
+><A
+HREF="synchronization.html"
+>Synchronization</A
+></DT
+><DT
+><A
+HREF="memory-pools.html"
+>Memory pools</A
+></DT
+><DT
+><A
+HREF="message-boxes.html"
+>Message boxes</A
+></DT
+><DT
+><A
+HREF="flags.html"
+>Flags</A
+></DT
+></DL
+></DD
+><DT
+>6. <A
+HREF="micro-itron-api.html"
+>µITRON API</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="micro-itron-api.html#TASK-MANAGEMENT-FUNCTIONS"
+>Task Management Functions</A
+></DT
+><DT
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Task-Dependent Synchronization Functions</A
+></DT
+><DT
+><A
+HREF="synchronization-and-communication-functions.html"
+>Synchronization and Communication Functions</A
+></DT
+><DT
+><A
+HREF="extended-synchronization-and-communication-functions.html"
+>Extended Synchronization and Communication
+	  Functions</A
+></DT
+><DT
+><A
+HREF="interrupt-management-functions.html"
+>Interrupt management functions</A
+></DT
+><DT
+><A
+HREF="memory-pool-management-functions.html"
+>Memory pool Management Functions</A
+></DT
+><DT
+><A
+HREF="time-management-functions.html"
+>Time Management Functions</A
+></DT
+><DT
+><A
+HREF="system-management-functions.html"
+>System Management Functions</A
+></DT
+><DT
+><A
+HREF="network-support-functions.html"
+>Network Support Functions</A
+></DT
+></DL
+></DD
+><DT
+>A. <A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>The eCos
+    Hardware Abstraction Layer (HAL)</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="the-ecos-hardware-abstraction-layer-hal.html#ARCHITECTURE-IMPLEMENTATION-AND-PLATFORM"
+>Architecture, implementation and platform</A
+></DT
+><DT
+><A
+HREF="general-principles.html"
+>General principles</A
+></DT
+><DT
+><A
+HREF="architectural-hal-files.html"
+>Architectural HAL files</A
+></DT
+><DT
+><A
+HREF="future-developments.html"
+>Future developments</A
+></DT
+><DT
+><A
+HREF="kernel-porting-notes.html"
+>Kernel porting notes</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>III. <A
+HREF="ecos-device-drivers.html"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Device Drivers</A
+></DT
+><DD
+><DL
+><DT
+>7. <A
+HREF="philosophy-of-device-drivers.html"
+>Philosophy of device drivers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="philosophy-of-device-drivers.html#SIMPLE-DEVICE-DRIVERS"
+>Simple device drivers</A
+></DT
+><DT
+><A
+HREF="managing-request-queues.html"
+>Managing request queues</A
+></DT
+><DT
+><A
+HREF="connecting-to-standard-i-o.html"
+>Connecting to standard I/O</A
+></DT
+><DT
+><A
+HREF="philosophy-of-device-drivers3500.html"
+>Device drivers shipped with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></A
+></DT
+><DT
+><A
+HREF="philosophy-of-device-drivers3508.html"
+>Language choice</A
+></DT
+></DL
+></DD
+><DT
+>8. <A
+HREF="writing-a-device-driver.html"
+>Writing a device driver</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="writing-a-device-driver.html#AEN3523"
+>Interrupt handling</A
+></DT
+><DT
+><A
+HREF="writing-a-device-driver3541.html"
+>Input Output Request Blocks
+	  (<SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+>s)</A
+></DT
+><DT
+><A
+HREF="writing-a-device-driver3559.html"
+>Integrating a device driver with the Standard C
+	Library</A
+></DT
+></DL
+></DD
+><DT
+>9. <A
+HREF="serial-device-driver-c-api.html"
+>Serial device driver C API</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="serial-device-driver-c-api.html#PRELIMINARIES-AND-CONFIGURATION"
+>Preliminaries and configuration</A
+></DT
+><DT
+><A
+HREF="serial-device-driver-c-api3670.html"
+>The system calls</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="wallclock-and-watchdog-devices.html"
+>Wallclock and watchdog devices</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="wallclock-and-watchdog-devices.html#WALLCLOCK-DEVICE"
+>Wallclock device</A
+></DT
+><DT
+><A
+HREF="watchdog-device.html"
+>Watchdog device</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>IV. <A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>The ISO Standard C and Math Libraries</A
+></DT
+><DD
+><DL
+><DT
+>11. <A
+HREF="c-and-math-library-overview.html"
+>C and math library overview</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="c-and-math-library-overview.html#OMITTED-FUNCTIONALITY"
+>Omitted functionality</A
+></DT
+><DT
+><A
+HREF="included-non-iso-functions.html"
+>Included non-ISO functions</A
+></DT
+><DT
+><A
+HREF="deviations-from-the-standard.html"
+>Deviations from the standard</A
+></DT
+><DT
+><A
+HREF="math-library-compatibility-modes.html"
+>Math library compatibility modes</A
+></DT
+><DT
+><A
+HREF="some-implementation-details.html"
+>Some implementation details</A
+></DT
+><DT
+><A
+HREF="c-and-math-library-overview-thread-safety.html"
+>Thread safety</A
+></DT
+><DT
+><A
+HREF="c-library-startup.html"
+>C library startup</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>V. <A
+HREF="configuration-option-reference.html"
+>Configuration Option Reference</A
+></DT
+><DD
+><DL
+><DT
+>12. <A
+HREF="package-cygpkg-hal.html"
+>Package: eCos HAL</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-hal.html#COMPONENT-CYGPKG-HAL-COMMON"
+>Component: Platform-independent HAL options</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-hal-debug.html"
+>Component: Source-level debugging support</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-hal-mn10300.html"
+>Package: MN10300 architecture</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-hal-tx39.html"
+>Package: TX39 architecture</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-hal-powerpc.html"
+>Package: PowerPC architecture</A
+></DT
+></DL
+></DD
+><DT
+>13. <A
+HREF="package-cygpkg-infra.html"
+>Package: Infrastructure</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-infra.html#OPTION-CYGDBG-INFRA-DIAG-PRINTF-USE-VARARG"
+>Option: Use varargs in diag_printf()</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-infra-debug.html"
+>Component: Asserts &#38; Tracing</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-infra-startup.html"
+>Component: Startup options</A
+></DT
+><DT
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memcpy.html"
+>Option: Smaller slower memcpy()</A
+></DT
+><DT
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memset.html"
+>Option: Smaller slower memset()</A
+></DT
+></DL
+></DD
+><DT
+>14. <A
+HREF="package-cygpkg-kernel.html"
+>Package: eCos kernel</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-kernel.html#COMPONENT-CYGPKG-KERNEL-INTERRUPTS"
+>Component: Kernel interrupt handling</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-exceptions.html"
+>Component: Exception handling</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-sched.html"
+>Component: Kernel schedulers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-counters.html"
+>Component: Counters and clocks</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-threads.html"
+>Component: Thread-related options</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-synch.html"
+>Component: Synchronization primitives</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-instrument.html"
+>Component: Kernel instrumentation</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Component: Memory allocators</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-debug.html"
+>Component: Source-level debugging support</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Component: Kernel APIs</A
+></DT
+></DL
+></DD
+><DT
+>15. <A
+HREF="package-cygpkg-uitron.html"
+>Package: eCos µITRON Compatibility Layer</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-uitron.html#OPTION-CYGIMP-UITRON-STRICT-CONFORMANCE"
+>Option: Check Strict µITRON Standards Conformance</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-loose-conformance.html"
+>Option: System configuration overrides µITRON</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-inline-funcs.html"
+>Option: Inline Functions</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-cpp-outline-funcs.html"
+>Option: C++ Function Names</A
+></DT
+><DT
+><A
+HREF="option-cygsem-uitron-bad-params-return-errors.html"
+>Option: Return Error Codes for Bad Params</A
+></DT
+><DT
+><A
+HREF="option-cygsem-uitron-params-null-is-good-ptr.html"
+>Option: NULL is a good pointer</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-semas.html"
+>Component: Semaphores</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Component: Mailboxes</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-flags.html"
+>Component: Eventflags</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Component: Tasks</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mempoolfixed.html"
+>Component: Fixed-Size Memorypools</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mempoolvar.html"
+>Component: Variable-Size Memorypools</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-alarms.html"
+>Component: Alarm Handlers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-cyclics.html"
+>Component: Cyclic Handlers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-version.html"
+>Component: Version information</A
+></DT
+></DL
+></DD
+><DT
+>16. <A
+HREF="package-cygpkg-libc.html"
+>Package: C Library</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-libc.html#OPTION-CYGIMP-LIBC-CTYPE-INLINES"
+>Option: Inline versions of &#60;ctype.h&#62; functions</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-string.html"
+>Component: String functions</A
+></DT
+><DT
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Option: Inline version of the longjmp() function</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-stdlib.html"
+>Component: Standard utility functions</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Component: Standard Input/Output functions</A
+></DT
+><DT
+><A
+HREF="component-cygsem-libc-thread-safety.html"
+>Component: Thread safety</A
+></DT
+><DT
+><A
+HREF="option-cygnum-libc-max-locale-name-size.html"
+>Option: Size of locale name strings</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-startup.html"
+>Component: ISO C startup/termination</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libc-trace.html"
+>Component: Tracing output levels in C library</A
+></DT
+></DL
+></DD
+><DT
+>17. <A
+HREF="package-cygpkg-libm.html"
+>Package: Math Library</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-libm.html#COMPONENT-CYGPKG-LIBM-COMPATIBILITY"
+>Component: Compatibility mode</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libm-thread-safety.html"
+>Component: Thread safety</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-libm-trace.html"
+>Component: Tracing output levels in Math library</A
+></DT
+><DT
+><A
+HREF="option-x-tloss.html"
+>Option: Bessel function limit of significance</A
+></DT
+></DL
+></DD
+><DT
+>18. <A
+HREF="package-cygpkg-error.html"
+>Package: Common error code support</A
+></DT
+><DT
+>19. <A
+HREF="package-cygpkg-devices.html"
+>Package: Device drivers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-cygpkg-devices.html#PACKAGE-CYGPKG-DEVICES-GDB"
+>Package: GDB pseudo device</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-serial-rs232-common.html"
+>Package: Serial RS232 devices</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-wallclock.html"
+>Package: Wallclock device</A
+></DT
+><DT
+><A
+HREF="package-cygpkg-devices-watchdog.html"
+>Package: Watchdog device</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="preliminaries.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Preliminaries</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

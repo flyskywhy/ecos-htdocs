@@ -1,0 +1,349 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Sample numbers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Real time characterization"
+HREF="real-time-characterization.html"><LINK
+REL="PREVIOUS"
+TITLE="Measured items"
+HREF="measured-items.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="measured-items.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 11. Real time characterization</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+>&nbsp;</TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="SAMPLE-NUMBERS"
+>Sample numbers</A
+></H1
+><H2
+CLASS="SECT2"
+><A
+NAME="MN10300-STDEVAL1-BOARD"
+>MN10300, stdeval1 board</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>	    
+
+Clock: 570 584 594 5A2 5B0 5BE 5CC 5DA 5E8 5F6 
+Average 14 clock ticks overhead
+Clock interrupt took 9 microseconds (141 clock ticks)
+Ticks: 4
+
+Testing parameters:
+   Clock samples:          10
+   Threads:                32
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+   Ave     Min     Max Variance   Function
+======  ======  ====== ========   ========
+    16      12      46        1   Create thread
+     2       2       6        0   Yield thread [all suspended]
+     1       1       4        0   Suspend [suspended] thread
+     1       1       3        0   Resume thread
+     2       2       6        0   Set priority
+     0       0       0        0   Get priority
+     6       6      16        0   Kill [suspended] thread
+     2       1       4        0   Yield [no other] thread
+     3       3       7        0   Resume [suspended low priority] thread
+     1       1       2        0   Resume [runnable low priority] thread
+     3       2       6        0   Suspend [runnable] thread
+     1       1       3        0   Yield [only low prio] thread
+     7       7      15        0   Kill [runnable] thread
+    18      16      47        1   Resume [high priority] thread
+     4       4      11        0   Thread switch
+     0       0       1        0   Scheduler lock
+     0       0       1        0   Scheduler unlock [0 threads]
+     0       0       1        0   Scheduler unlock [1 suspended thread]
+     0       0       2        0   Scheduler unlock [many suspended threads]
+     0       0      27        0   Scheduler unlock [many low prio threads]
+     0       0       3        0   Init mutex
+     1       1       3        0   Lock [unlocked] mutex
+     2       2       6        0   Unlock [locked] mutex
+     1       1       3        0   Trylock [unlocked] mutex
+     1       1       2        0   Trylock [locked] mutex
+     0       0       0        0   Destroy mutex
+    18      18      19        0   Unlock/Lock mutex
+     1       1       4        0   Create mbox
+     0       0       0        0   Peek [empty] mbox
+     3       3       7        0   Put [first] mbox
+     0       0       0        0   Peek [1 msg] mbox
+     2       1       4        0   Put [second] mbox
+     0       0       0        0   Peek [2 msgs] mbox
+     2       2       6        0   Get [first] mbox
+     2       2       3        0   Get [second] mbox
+     1       1       6        0   Tryput [first] mbox
+     1       1       4        0   Peek item [non-empty] mbox
+     1       1       4        0   Tryget [non-empty] mbox
+     1       1       2        0   Peek item [empty] mbox
+     1       1       3        0   Tryget [empty] mbox
+     0       0       1        0   Waiting to get mbox
+     0       0       0        0   Waiting to put mbox
+     2       1       5        0   Delete mbox
+    10      10      14        0   Put/Get mbox
+     0       0       2        0   Init semaphore
+     1       1       2        0   Post [0] semaphore
+     1       1       2        0   Wait [1] semaphore
+     0       0       2        0   Trywait [0] semaphore
+     1       1       1        0   Trywait [1] semaphore
+     0       0       1        0   Peek semaphore
+     0       0       0        0   Destroy semaphore
+    10      10      15        0   Post/Wait semaphore
+     0       0       2        0   Create counter
+     0       0       1        0   Get counter value
+     0       0       0        0   Set counter value
+     4       4       4        0   Tick counter
+     0       0       1        0   Delete counter
+     1       0       4        0   Create alarm
+     2       2       6        0   Initialize alarm
+     0       0       0        0   Disable alarm
+     2       2       5        0   Enable alarm
+     0       0       0        0   Delete alarm
+     2       2       4        0   Tick counter [1 alarm]
+     2       2       3        0   Tick counter [many alarms]
+     5       5       7        0   Tick &#38; fire counter [1 alarm]
+   587     586     622        1   Tick &#38; fire counter [many alarms]
+     9       9      21        0   Alarm latency [0 threads]
+    18      15      22        0   Alarm latency [2 threads]
+    21      17      33        0   Alarm latency [many threads]
+
+Timing complete - 21510 ms total
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;    </PRE
+></TD
+></TR
+></TABLE
+><H2
+CLASS="SECT2"
+><A
+NAME="TX39-JMR3904-BOARD"
+>TX39, JMR3904 board</A
+></H2
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>	    
+
+Clock: 216 217 218 218 218 219 219 21A 21A 21B 
+Average 0 clock ticks overhead
+Clock interrupt took 25 microseconds (39 clock ticks)
+Ticks: 4
+
+Testing parameters:
+   Clock samples:          10
+   Threads:                32
+   Thread switches:       128
+   Mutexes:                32
+   Mailboxes:              32
+   Semaphores:             32
+   Scheduler operations:  128
+   Counters:               32
+   Alarms:                 32
+
+
+   Ave     Min     Max Variance   Function
+======  ======  ====== ========   ========
+    14      12      27        0   Create thread
+     1       1       7        0   Yield thread [all suspended]
+     5       4       7        0   Suspend [suspended] thread
+     2       2       5        0   Resume thread
+     3       2       9        0   Set priority
+     0       0       1        0   Get priority
+    11      11      26        0   Kill [suspended] thread
+     1       1       7        0   Yield [no other] thread
+     6       5      13        0   Resume [suspended low priority] thread
+     3       2       5        0   Resume [runnable low priority] thread
+     7       7      13        0   Suspend [runnable] thread
+     2       2       7        0   Yield [only low prio] thread
+     4       4       6        0   Suspend [runnable-&#62;not runnable] thread
+    10       9      22        0   Kill [runnable] thread
+    22      20      38        1   Resume [high priority] thread
+     6       6      12        0   Thread switch
+     0       0       2        0   Scheduler lock
+     1       1       2        0   Scheduler unlock [0 threads]
+     3       3       3        0   Scheduler unlock [1 suspended thread]
+     1       1       3        0   Scheduler unlock [many suspended threads]
+     1       1       2        0   Scheduler unlock [many low prio threads]
+     0       0       3        0   Init mutex
+     1       1       7        0   Lock [unlocked] mutex
+     3       2       8        0   Unlock [locked] mutex
+     1       1       5        0   Trylock [unlocked] mutex
+     1       1       4        0   Trylock [locked] mutex
+     0       0       1        0   Destroy mutex
+    30      30      32        0   Unlock/Lock mutex
+     1       0       5        0   Create mbox
+     0       0       1        0   Peek [empty] mbox
+     2       2       8        0   Put [first] mbox
+     0       0       1        0   Peek [1 msg] mbox
+     2       1       8        0   Put [second] mbox
+     0       0       1        0   Peek [2 msgs] mbox
+     7       7      11        0   Get [first] mbox
+     7       7      10        0   Get [second] mbox
+     1       1       8        0   Tryput [first] mbox
+     1       1       7        0   Peek item [non-empty] mbox
+     2       2       9        0   Tryget [non-empty] mbox
+     1       1       5        0   Peek item [empty] mbox
+     1       1       6        0   Tryget [empty] mbox
+     0       0       0        0   Waiting to get mbox
+     0       0       0        0   Waiting to put mbox
+     2       2       9        0   Delete mbox
+    19      19      24        0   Put/Get mbox
+     0       0       4        0   Init semaphore
+     1       1       4        0   Post [0] semaphore
+     1       1       7        0   Wait [1] semaphore
+     1       1       5        0   Trywait [0] semaphore
+     1       1       3        0   Trywait [1] semaphore
+     0       0       2        0   Peek semaphore
+     0       0       2        0   Destroy semaphore
+    19      19      24        0   Post/Wait semaphore
+     0       0       3        0   Create counter
+     0       0       1        0   Get counter value
+     0       0       1        0   Set counter value
+     2       2       4        0   Tick counter
+     0       0       2        0   Delete counter
+     1       1       4        0   Create alarm
+     6       5      13        0   Initialize alarm
+     0       0       1        0   Disable alarm
+     4       3      13        0   Enable alarm
+     0       0       3        0   Delete alarm
+     1       1       5        0   Tick counter [1 alarm]
+     1       1       3        0   Tick counter [many alarms]
+     4       3       9        0   Tick &#38; fire counter [1 alarm]
+   483     481     520        0   Tick &#38; fire counter [many alarms]
+    21      21      38        0   Alarm latency [0 threads]
+    29      29      50        0   Alarm latency [2 threads]
+    33      26      52        0   Alarm latency [many threads]
+
+Timing complete - 21560 ms total
+PASS:&#60;Basic timing OK&#62;
+EXIT:&#60;done&#62;    </PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="measured-items.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Measured items</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="real-time-characterization.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>&nbsp;</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,373 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: eCos kernel</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="configuration-option-reference.html"><LINK
+REL="PREVIOUS"
+TITLE="Option: Smaller slower memset()"
+HREF="option-cygimp-infra-prefer-small-to-fast-memset.html"><LINK
+REL="NEXT"
+TITLE="Component: Exception handling"
+HREF="component-cygpkg-kernel-exceptions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memset.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-exceptions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-KERNEL"
+>Chapter 14. Package: eCos kernel</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-kernel.html#COMPONENT-CYGPKG-KERNEL-INTERRUPTS"
+>Component: Kernel interrupt handling</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-exceptions.html"
+>Component: Exception handling</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-sched.html"
+>Component: Kernel schedulers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-counters.html"
+>Component: Counters and clocks</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-threads.html"
+>Component: Thread-related options</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-synch.html"
+>Component: Synchronization primitives</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-instrument.html"
+>Component: Kernel instrumentation</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-memory.html"
+>Component: Memory allocators</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-debug.html"
+>Component: Source-level debugging support</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Component: Kernel APIs</A
+></DT
+></DL
+></DIV
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This package contains the core functionality of the eCos kernel. It
+relies on functionality provided by various HAL packages and by the
+eCos infrastructure. In turn the eCos kernel provides support for
+other packages such as the device drivers and the µITRON compatibility
+layer.
+      </P
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-KERNEL-INTERRUPTS"
+>Component: Kernel interrupt handling</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_INTERRUPTS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The majority of configuration options related to interrupt handling
+are in the HAL packages, since usually the code has to be platform-specific.
+There are a number of options provided within the kernel related to
+slightly higher-level concepts, for example Delayed Service Routines.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGIMP-KERNEL-INTERRUPTS-DSRS"
+>Component: Use delayed service routines (DSRs)</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_INTERRUPTS_DSRS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>In eCos the recommended way to handle device interrupts is to do a
+minimum amount of work inside the low level interrupt handler itself,
+and instead do as much as possible in a Delayed Service Routine or
+DSR. If an application does not make use of DSRs directly or indirectly
+then it is possible to disable the DSR support completely, which reduces
+the overheads of context switches and interrupt handling. Note that
+the kernel real-time clock makes use of DSRs, as do many of the device
+drivers. 
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGIMP-KERNEL-INTERRUPTS-DSRS-LIST"
+>Option: Use linked lists for DSRs</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_INTERRUPTS_DSRS_LIST</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When DSR support is enabled the kernel must keep track of all the
+DSRs that are pending. This information can be kept in a fixed-size
+table or in a linked list. The list implementation requires that the
+kernel disable interrupts for a very short period of time outside
+interrupt handlers, but there is no possibility of a table overflow
+occurring.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGIMP-KERNEL-INTERRUPTS-DSRS-TABLE"
+>Option: Use fixed-size table for DSRs</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_INTERRUPTS_DSRS_TABLE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When DSR support is enabled the kernel must keep track of all the
+DSRs that are pending. This information can be kept in a fixed-size
+table or in a linked list. The table implementation involves a very
+small risk of overflow at run-time if a given interrupt source is
+able to have more than one pending DSR. However it has the advantage
+that the kernel does not need to disable interrupts outside interrupt
+handlers.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-KERNEL-INTERRUPTS-DSRS-TABLE-SIZE"
+>Option: Number of entries in fixed-size DSR table</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_INTERRUPTS_DSRS_TABLE_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When DSR support is enabled the kernel must keep track of all the
+DSRs that are pending. One approach involves a fixed-size table, which
+involves a very small risk of overflow at run-time. By increasing
+the table size it is possible to reduce this risk.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGIMP-KERNEL-INTERRUPTS-CHAIN"
+>Option: Chain all interrupts together</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_KERNEL_INTERRUPTS_CHAIN</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Interrupts can be attached to vectors either singly, or be chained
+together. The latter is necessary if there is no way of discovering
+which device has interrupted without inspecting the device itself.
+It can also reduce the amount of RAM needed for interrupt decoding
+tables and code.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memset.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-exceptions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option: Smaller slower memset()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configuration-option-reference.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Exception handling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

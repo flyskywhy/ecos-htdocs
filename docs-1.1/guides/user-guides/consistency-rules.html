@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Consistency Rules</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="Persistence"
+HREF="persistence.html"><LINK
+REL="NEXT"
+TITLE="View Settings"
+HREF="view-settings.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="CONSISTENCY-RULES"
+>Consistency Rules</A
+></H1
+><P
+>Consistency rules exist to verify that any configuration
+	  that may be generated is legal &#8212; it
+	  will build successfully and generate code that will behave
+	  in a reasonable manner.</P
+><P
+>Consistency rules are checked as configurable items are
+	changed, and the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> 
+	can suggest fixes for the consistency check failure(s) about 
+	to be introduced by suggesting a change to the configurable
+	item or a related item:</P
+><P
+><IMG
+SRC="pix/Image54.gif"
+ALT=""></P
+><P
+>If you accept the fix (by clicking the "Yes" or "Yes to
+	All" buttons) an appropriate change will be made to the
+	related configuration item.  If you click "No" or "No to All"
+	no change will be made, but the setting of the original
+	item will still be possible.  If you click Cancel at any stage
+	the setting will be aborted and you will be alerted to the set
+	of failing rules.</P
+><P
+>Note that the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> 
+	will only be capable of suggesting fixes in limited circumstances.  
+	The conditions are summarized in the following tables:</P
+><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 3-1. After changing an item's value</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Action</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Failing rule</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Suggested action</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Types of item action may be applied to</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Requires</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable required item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precludes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluded item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item
+		  group</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Unset</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Required by</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable requiring item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item
+		  group</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precluded by</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluding item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item group</TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 3-2. Before building</B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Rule</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Suggested action</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Types of item action may be applied to</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Requires</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable required item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precludes</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluded item</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item
+		  group</TD
+></TR
+></TABLE
+></DIV
+><P
+>The process of suggesting fixes may be disabled using the
+	Tools-&#62;Options dialog.</P
+><P
+>For any item, you can identify currently failing
+	consistency rules in the Properties Table; failing rules are
+	marked with an exclamation point.  A complete list may be
+	obtained from the Tools-&#62;Options dialog.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Persistence</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>View Settings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

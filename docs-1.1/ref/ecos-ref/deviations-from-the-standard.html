@@ -1,0 +1,173 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Deviations from the standard</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="C and math library overview"
+HREF="c-and-math-library-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Included non-ISO functions"
+HREF="included-non-iso-functions.html"><LINK
+REL="NEXT"
+TITLE="Math library compatibility modes"
+HREF="math-library-compatibility-modes.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="included-non-iso-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 11. C and math library overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="math-library-compatibility-modes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="DEVIATIONS-FROM-THE-STANDARD"
+>Deviations from the standard</A
+></H1
+><P
+>	  The most obvious deviation from the standard is when a
+	  programmer chooses one of the several configurations
+	  (described in <A
+HREF="package-cygpkg-libc.html"
+>Chapter 16</A
+>) that are not ISO compliant.
+	</P
+><P
+>	  The <I
+CLASS="EMPHASIS"
+>default</I
+> configuration of the C
+	  library is ISO compliant with the following exception:
+	</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	    Since signals are not yet supported,
+	    <TT
+CLASS="FUNCTION"
+><B
+>abort()</B
+></TT
+> does not perform a
+	    <TT
+CLASS="LITERAL"
+>raise(SIGABRT)</TT
+>, as required by the
+	    standard.  It simply calls <TT
+CLASS="LITERAL"
+>_exit()</TT
+>
+	    instead.
+	  </P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="included-non-iso-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="math-library-compatibility-modes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Included non-ISO functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c-and-math-library-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Math library compatibility modes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

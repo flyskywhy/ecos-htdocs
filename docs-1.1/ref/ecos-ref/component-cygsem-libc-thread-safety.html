@@ -1,0 +1,252 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Thread safety</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C Library"
+HREF="package-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Standard Input/Output functions"
+HREF="component-cygpkg-libc-stdio.html"><LINK
+REL="NEXT"
+TITLE="Option: Size of locale name strings"
+HREF="option-cygnum-libc-max-locale-name-size.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Package: C Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="option-cygnum-libc-max-locale-name-size.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGSEM-LIBC-THREAD-SAFETY"
+>Component: Thread safety</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_THREAD_SAFETY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the C library has support for thread
+safe operation in general. This requires eCos kernel support for per-thread
+data, and adjustment of the stack limit.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBC-PER-THREAD-ERRNO"
+>Option: Per-thread errno</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_PER_THREAD_ERRNO</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the standard error code reporting variable
+errno is a per-thread variable, rather than global.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBC-PER-THREAD-STRTOK"
+>Option: Per-thread strtok()</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_PER_THREAD_STRTOK</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the string function strtok() has its
+state recorded on a per-thread basis rather than global. If this option
+is disabled, some per-thread space can be saved. Note there is also
+a POSIX-standard strtok_r() function to achieve a similar effect with
+user support.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBC-PER-THREAD-RAND"
+>Option: Per-thread rand()</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_PER_THREAD_RAND</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the pseudo-random number generation functions
+rand() and srand() have their state recorded on a per-thread basis
+rather than global. If this option is disabled, some per-thread space
+can be saved. Note there is also a POSIX-standard rand_r() function
+to achieve a similar effect with user support.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBC-STDIO-THREAD-SAFE-STREAMS"
+>Option: Thread safe I/O streams</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_STDIO_THREAD_SAFE_STREAMS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether standard I/O streams are thread-safe.
+Having this option set allows the streams to be locked when accessed
+by multiple threads simultaneously.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="option-cygnum-libc-max-locale-name-size.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Standard Input/Output functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Option: Size of locale name strings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

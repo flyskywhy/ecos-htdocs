@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Foreword</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="NEXT"
+TITLE="Release Notes"
+HREF="release-notes.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="ecos-tutorial.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="release-notes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="FOREWORD"
+>Foreword</A
+></H1
+><P
+>      Welcome to the
+      <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+> version
+      1.1 Technology Release.</P
+><P
+>	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is an open, configurable, portable, and royalty-free
+      embedded real-time operating system, shipped with complete
+      sources.</P
+><P
+></P
+><UL
+><LI
+><P
+>	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is <I
+CLASS="FIRSTTERM"
+>open</I
+> in that no parts of
+	  the system are proprietary.  All interfaces are published
+	  and complete source code is available.  Any programmer can
+	  develop with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, and contributors will help define
+	  future aspects of the standard.
+	</P
+></LI
+><LI
+><P
+> One of the key technological innovations in
+	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is our <I
+CLASS="FIRSTTERM"
+>configuration system</I
+>.
+	  The configuration system allows the application to impose its
+	  requirements on to the run-time components, both in terms of
+	  functionality and implementation, whereas traditionally the
+	  operating system has constrained the application's own
+	  implementation. Essentially, this allows <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> developers to
+	  create their own application-specific operating system. The
+	  configuration system also presents <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> as a
+	  <I
+CLASS="FIRSTTERM"
+>component architecture</I
+>, which allows
+	  applications to be built from a wide range of configurable
+	  run-time components. These components are provided either as
+	  part of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> core, or by commercial developers,
+	  contributors, or Cygnus.
+	</P
+></LI
+><LI
+><P
+>	  <I
+CLASS="FIRSTTERM"
+>Royalty-free</I
+> means that you can
+	  develop and deploy your application using <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> without
+	  your profit margin taking a hit. In addition, there are no
+	  developer kit or toolchain purchase costs. We provide
+	  everything you need for basic embedded applications
+	  development.</P
+></LI
+><LI
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is designed to be <I
+CLASS="FIRSTTERM"
+>portable</I
+> to
+	  a wide range of target architectures: the kernel and other
+	  runtime components run on top of a Hardware Abstraction
+	  Layer (HAL), and thus will run on any new architecture once
+	  the HAL has been ported to that architecture.
+	</P
+></LI
+><LI
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> has been designed to support embedded applications
+	  with real-time requirements, and therefore behaves in a
+	  deterministic manner and includes all the necessary
+	  synchronization primitives, scheduling policies, and
+	  interrupt handling mechanisms needed for real-time
+	  applications.
+	</P
+></LI
+></UL
+><P
+>      This first public distribution of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> of November 1998 is a
+      <I
+CLASS="FIRSTTERM"
+>technology release</I
+>.  It includes
+      everything you might need to develop embedded applications,
+      including compilers, debuggers, simulators, kernel, and
+      libraries.  We consider the system stable and well tested, but
+      our coverage of target platforms, and some areas of
+      functionality will increase as the use of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> expands. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+      currently supports three architectures: the Matsushita MN10300,
+      the Toshiba TX39, and the PowerPC (PowerPC support is still a
+      beta release).  The availability of source code under open
+      source licensing terms, as well as Cygnus's own efforts, should
+      allow a rapid proliferation of new architecture and platform
+      ports.</P
+><P
+>      We are releasing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> at this point because we want you and
+      other embedded software developers to start using it and to
+      participate in making <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> a better product for the entire
+      embedded software community.  Indeed, our long-term plan is that
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> should become a rich, ubiquitous
+      <I
+CLASS="EMPHASIS"
+>infrastructure</I
+> for the development of
+      embedded applications. We will achieve this in part by Cygnus's
+      own efforts, but also with the assistance of a community of
+      programmers who collaborate to improve <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. To this end, 
+      we guarantee to you that <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> will always be free. You will 
+      have the freedom to use and redistribute <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, and your
+      enhancements to it. This is because <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is licensed under an
+      open source license, the <A
+HREF="cygnus-ecos-public-license.html"
+TARGET="_top"
+>Cygnus eCos Public License
+      (CEPL)</A
+>.
+    </P
+><P
+>      Cygnus provides a Web site for all open source projects that it
+      sponsors, and this hosts an area dedicated to the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+      developer community <A
+HREF="http://sourceware.cygnus.com/ecos/"
+TARGET="_top"
+>http://sourceware.cygnus.com/ecos/</A
+>.
+      The site contains a rich set of resources including the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+      source code and development tools.  In fact everything you need
+      to start developing your own applications using
+      <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. Complementing the Sourceware site is an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> product
+      site, featuring news, press releases, details of Cygnus's
+      commercial engineering and support services, and products, and
+      third party partner offerings.  This is situated at <A
+HREF="http://www.cygnus.com/ecos/"
+TARGET="_top"
+>http://www.cygnus.com/ecos/</A
+>.
+    </P
+><P
+>      If you want to get involved in the ongoing development of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+      you should read the material available on the Sourceware Web
+      page mentioned above, take part in discussions on the mailing
+      lists, and start getting familiar with programming <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. Then
+      you can contribute in the usual ways &#8212; by giving us
+      feedback on how <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> might be made more useful to you, by
+      submitting bug reports, by contributing patches, and by
+      contributing new code.
+    </P
+><P
+>      This is just the beginning of the evolution of eCos and its
+      associated components, and Cygnus is dedicated to its further
+      development and expansion. Among other things, upcoming releases
+      will feature a wider range of architectural ports, further
+      enhancement to the configuration and build system, a
+      comprehensive device driver architecture,
+      <SPAN
+CLASS="TRADEMARK"
+>Java</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> runtime support, full C++ API
+      support, and further debugging and analysis tools.
+    </P
+><P
+CLASS="LITERALLAYOUT"
+>Paul&nbsp;Beskeen,&nbsp;Director&nbsp;of&nbsp;Engineering,&nbsp;<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><br>
+October&nbsp;1998</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Release Notes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

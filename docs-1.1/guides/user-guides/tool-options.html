@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Tools Options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="View Settings"
+HREF="view-settings.html"><LINK
+REL="NEXT"
+TITLE="Building"
+HREF="building.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="view-settings.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="building.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="TOOL-OPTIONS"
+>Tools Options</A
+></H1
+><P
+>You can use the Tools-&#62;Options menu item to change the
+	way the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> operates 
+	on the data and the settings that are applied to builds. </P
+><P
+><IMG
+SRC="pix/Image46.gif"
+ALT=""></P
+><P
+>The first group of controls affects the output in
+	      the header files:</P
+><P
+></P
+><UL
+><LI
+><P
+>Brief Description</P
+><P
+>Check this item if you wish a brief description
+		  of each item to be included as a comment in the
+		  header file. The brief description will be 
+		  displayed in the floating help window.</P
+></LI
+><LI
+><P
+>URL</P
+><P
+>Check this item if you wish the documentation
+		  URL for each item to be included as a comment in the
+		  header file.</P
+></LI
+><LI
+><P
+>Compile-time consistency rule checks</P
+><P
+>Check this item if you wish to output compile-time
+                  checks (using #error preprocessor directives) to enforce
+                  the consistency rules applied within the 
+		  <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>.</P
+></LI
+></UL
+><P
+>The second group of controls affects the way in
+		  which consistency rule checking is carried out:</P
+><P
+></P
+><UL
+><LI
+><P
+>After any item changed</P
+><P
+>Select this option if you want consistency rules
+		  to be checked when changing the value of any 
+		  configurable item. Note that only rules relating to the 
+		  item being changed are checked.</P
+></LI
+><LI
+><P
+>Before building</P
+><P
+>Select this option if you wish to defer rule
+		  checking until you build.</P
+></LI
+><LI
+><P
+>Never</P
+><P
+>Select this option if you wish to suppress rule
+	          checking entirely. Note that this option is unsafe, as it
+	          may lead to be generation of inconsistent
+	          configurations that may fail to build or may lead to
+	          unexpected results at run-time.</P
+></LI
+><LI
+><P
+>Suggest fixes for consistency check failures</P
+><P
+>Select this option if you wish the
+		<SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> to
+		suggest ways in which a consistency check failure may
+		be resolved. Only relatively simple consistency check
+		failures may be resolved in this way.</P
+></LI
+></UL
+><H2
+CLASS="SECT2"
+><A
+NAME="BUILD-TAB"
+>Build Options</A
+></H2
+><P
+><IMG
+SRC="pix/Image47.gif"
+ALT=""></P
+><P
+>The Build-&#62;Options dialog controls the options
+	  used for building the sources.</P
+><P
+>The Make options control determines options to be passed
+	  to make. By default, this control contains -j&#60;n&#62; where &#60;n&#62;
+	  is the number of processors installed on the host machine.</P
+><P
+>The Package control selects a package to which the build
+	  options will apply. If the package selected is the parent of
+	  other packages, the controls in the "child package
+	  treatment" group will be enabled.</P
+><P
+>The Option Category control determines the category of
+	  flag being set.  </P
+><P
+>The Child Package Treatment group determines how options
+	  should be propagated to descendants of the current
+	  package:</P
+><P
+></P
+><UL
+><LI
+><P
+>Overwrite: changes will overwrite
+	      corresponding options in child packages.  New options
+	      will be added to child packages and deleted options will
+	      be removed.</P
+></LI
+><LI
+><P
+>Ignore: changes will not affect child
+	      packages</P
+></LI
+><LI
+><P
+>Prompt: you will be prompted for the action
+	      to take for each
+	      option</P
+></LI
+></UL
+><P
+>The dialog toolbar buttons allow you to add, remove, and
+	  move options:</P
+><P
+>To delete an option, click:
+	  <IMG
+SRC="pix/Image55.gif"
+ALT=""></P
+><P
+>To add an option, click:
+	  <IMG
+SRC="pix/Image56.gif"
+ALT=""></P
+><P
+>To move an option up, click:
+	  <IMG
+SRC="pix/Image57.gif"
+ALT=""></P
+><P
+>To move an option down, click:
+	  <IMG
+SRC="pix/Image58.gif"
+ALT=""></P
+><P
+>To modify an option, double-click it.  The option may
+	  then be edited in place.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="view-settings.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="building.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>View Settings</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Building</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

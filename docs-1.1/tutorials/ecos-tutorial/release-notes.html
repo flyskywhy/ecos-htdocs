@@ -1,0 +1,310 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Release Notes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="PREVIOUS"
+TITLE="Foreword"
+HREF="foreword.html"><LINK
+REL="NEXT"
+TITLE="Notation and conventions"
+HREF="notation-and-conventions-in-this-manual.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="foreword.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="notation-and-conventions-in-this-manual.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="PART"
+><H1
+CLASS="TITLE"
+>I. Release Notes</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+>1. <A
+HREF="notation-and-conventions-in-this-manual.html"
+>Notation and conventions</A
+></DT
+><DT
+>2. <A
+HREF="overview-of-the-release.html"
+>Overview of the release</A
+></DT
+><DT
+>3. <A
+HREF="package-contents.html"
+>Package contents</A
+></DT
+><DT
+>4. <A
+HREF="system-requirements.html"
+>System Requirements</A
+></DT
+><DT
+>5. <A
+HREF="reporting-problems.html"
+>Reporting Problems</A
+></DT
+><DT
+>6. <A
+HREF="a-note-on-testing.html"
+>A note on testing</A
+></DT
+><DT
+>7. <A
+HREF="a-note-on-using-the-simulator.html"
+>Using the simulator</A
+></DT
+><DT
+>8. <A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Known limitations in the eCos version 1.1 release</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="PARTINTRO"
+><P
+>        These release notes accompany version 1.1 of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.
+      </P
+><P
+>        This release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> supports the following
+	<I
+CLASS="EMPHASIS"
+>target</I
+> microprocessors:</P
+><P
+></P
+><UL
+><LI
+><P
+>	     Matsushita <SPAN
+CLASS="HARDWARE"
+>MN10300</SPAN
+>
+	     </P
+></LI
+><LI
+><P
+>	     Toshiba <SPAN
+CLASS="HARDWARE"
+>TX39</SPAN
+>
+	     </P
+></LI
+><LI
+><P
+>	    <SPAN
+CLASS="HARDWARE"
+>PowerPC</SPAN
+> - support for the PowerPC is
+	    still &#8220;beta&#8221;
+	  </P
+></LI
+></UL
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	  In the current release, <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is using a subset of the
+	  PowerPC architecture. Only the initial (and very simple)
+	  memory mapping relies on MPC860-specific features.
+	  Everything else relies on features that are common to the
+	  entire PowerPC family, which should make ports to other
+	  PowerPC CPUs simple.
+	</P
+></BLOCKQUOTE
+><P
+>	This release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> supports the following
+	<I
+CLASS="EMPHASIS"
+>host</I
+> operating systems:
+      </P
+><P
+></P
+><UL
+><LI
+><P
+>	    <SPAN
+CLASS="TRADEMARK"
+>Microsoft</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> <SPAN
+CLASS="TRADEMARK"
+>Windows
+	      NT</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+>, <SPAN
+CLASS="TRADEMARK"
+>Windows 95</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> and
+	    <SPAN
+CLASS="TRADEMARK"
+>Windows 98</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> &#8212; support for
+	    Windows 95 and Windows 98 is still &#8220;beta&#8221;.
+	  </P
+></LI
+><LI
+><P
+>	    <SPAN
+CLASS="TRADEMARK"
+>UNIX</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> (specifically Linux) &#8212;
+	    support for UNIX is still &#8220;beta&#8221;.  Linux is
+	    the only tested UNIX variant.
+	  </P
+></LI
+></UL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="foreword.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="notation-and-conventions-in-this-manual.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Foreword</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Notation and conventions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

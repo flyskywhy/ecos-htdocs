@@ -1,0 +1,288 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Real time characterization</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Special Topics"
+HREF="special-topics.html"><LINK
+REL="PREVIOUS"
+TITLE="Special Topics"
+HREF="special-topics.html"><LINK
+REL="NEXT"
+TITLE="How can you use this data?"
+HREF="how-can-you-use-this-data.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="special-topics.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="how-can-you-use-this-data.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="REAL-TIME-CHARACTERIZATION"
+>Chapter 11. Real time characterization</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="real-time-characterization.html#METHODOLOGY"
+>Methodology</A
+></DT
+><DT
+><A
+HREF="how-can-you-use-this-data.html"
+>How can you use this data?</A
+></DT
+><DT
+><A
+HREF="whats-missing.html"
+>What's missing?</A
+></DT
+><DT
+><A
+HREF="measured-items.html"
+>Measured items</A
+></DT
+><DT
+><A
+HREF="sample-numbers.html"
+>Sample numbers</A
+></DT
+></DL
+></DIV
+><P
+>	When building a real-time system, care must be taken to ensure
+	that the system will be able to perform properly within the
+	constraints of that system.  One of these constraints may be
+	how fast certain operations can be performed.  Another might
+	be how deterministic the overall behaviour of the system is.
+	Lastly the memory footprint (size) and unit cost may be
+	important.
+      </P
+><P
+>	One of the major problems encountered while evaluating a
+	system will be how to compare it with possible alternatives.
+	Most manufacturers of real-time systems publish performance
+	numbers, ostensibly so that users can compare the different
+	offerings.  However, what these numbers mean and how they were
+	gathered is often not clear.  Also, the values are typically
+	measures on a particular piece of hardware.  In order to truly
+	compare, one must obtain measurements for exactly the same set
+	of hardware that were gathered in a similar fashion.
+      </P
+><P
+>	Two major items need to be present in any given set of
+	measurements. First, the raw values for the various
+	operations; these are typically quite easy to measure and
+	will be available for most systems.  The second is the
+	determinacy of the numbers, in other words how much the value might
+	change depending on other factors within the system. This
+	value is affected by a number of factors: how long might
+	interrupts be masked, can the function be interrupted, even
+	very hardware-specific effects such as cache locality and
+	pipeline usage.  Obviously it is much more difficult to
+	measure the determinacy of any given operation. Just as
+	obvious is that determinacy is fundamentally important to
+	proper overall characterization of a system.
+      </P
+><P
+>	In the discussion and numbers that follow, three key
+	measurements are provided.  The first is an estimate of the
+	interrupt latency.  This is the length of time from when a
+	hardware interrupt occurs until its Interrupt Service Routine
+	(ISR) is called.  The second is an estimate of overall
+	interrupt overhead.  This is the length of time average
+	interrupt processing takes, as measured by the real-time clock
+	interrupt.  Other interrupt sources will certainly take a
+	different amount of time, but this data cannot be easily
+	gathered.  Finally, the timings for the various kernel
+	primitives are provided. 
+      </P
+><H1
+CLASS="SECT1"
+><A
+NAME="METHODOLOGY"
+>Methodology</A
+></H1
+><P
+>	  We have measured key operations in the kernel by using a
+	  simple test program which exercises the various kernel
+	  primitive operations.  We use a hardware timer, normally the
+	  one used to drive the real-time clock, for these
+	  measurements.  In most cases this timer can be read with
+	  quite high resolution, typically in the range of a few
+	  microseconds.  For each measurement, the operation is
+	  repeated a number of times.  Time stamps are obtained
+	  directly before and after the operation is performed.  The
+	  data gathered for the entire set of operations is then
+	  analyzed, generating average (mean), maximum and minimum
+	  values.  The sample variance (a measure of how close most
+	  samples are to the mean) is also calculated.  The cost of
+	  obtaining the real-time clock timer values is also measured
+	  and subtracted from all other times.
+	</P
+><P
+>	  Most kernel functions can be measured separately.  In each
+	  case, a reasonable number of iterations are performed.
+	  Where the test case involves a kernel object, for example creating
+	  a task, each iteration is performed on a different object.
+	  There is also a set of tests which measures the interactions
+	  between multiple tasks and certain kernel primitives.  Most
+	  functions are tested in such a way as to determine the
+	  variations introduced by varying numbers of objects in the
+	  system. For example, the mailbox tests measure the cost of a 'peek'
+	  operation when the mailbox is empty, has a single item, and
+	  has multiple items present. In this way, any effects of the
+	  state of the object or how many items it contains can be
+	  determined.
+	</P
+><P
+>	  There are a few things to consider about these measurements.
+	  Firstly, they are quite micro in scale and only measure the
+	  operation in question.  These measurements do not adequately
+	  describe how the timings would be perturbed in a real system
+	  with multiple interrupting sources.  Secondly, the
+	  possible abberation incurred by the real-time clock (system
+	  heartbeat tick) is explicitly avoided. Virtually all kernel
+	  functions have been designed to be interruptable. Thus the
+	  times presented are typical, but best case, since any
+	  particular function may be interrupted by the clock tick
+	  processing. This number is explicitly calculated so that the
+	  value may be included in any deadline calculations required
+	  by the end user.  Lastly, the reported measurements were
+	  obtained from a system built with all options at their
+	  default values.  Kernel instrumentation and asserts are also
+	  disabled for these measurements.  Any number of
+	  configuration options can change the measured results,
+	  sometimes quite dramatically. For example, mutexes are using
+	  priority inheritance in these measurements. The numbers will
+	  change if the system is built with priority inheritance on
+	  mutex variables turned off.
+	</P
+><P
+>	  The final value that is measured is an estimate of interrupt
+	  latency. This particular value is not explicitly calculated
+	  in the test program used, but rather by instrumenting the
+	  kernel itself.  The raw number of timer ticks that elapse
+	  from the time the timer generates an interrupt and the start
+	  of the timer interrupt service routine (ISR) is kept in the
+	  kernel.  These values are printed by the test program after
+	  all other operations have been tested.  Thus this should be
+	  a reasonable estimate of the interrupt latency over time.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="special-topics.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="how-can-you-use-this-data.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Special Topics</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="special-topics.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>How can you use this data?</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

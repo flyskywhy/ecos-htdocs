@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>System startup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Kernel APIs"
+HREF="kernel-apis.html"><LINK
+REL="PREVIOUS"
+TITLE="Assertions and bad parameter handling"
+HREF="assertions-and-bad-parameter-handling.html"><LINK
+REL="NEXT"
+TITLE="System startup &#8212; cyg_start()"
+HREF="system-startup-cyg-start.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="assertions-and-bad-parameter-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-start.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="SYSTEM-STARTUP"
+>Chapter 4. System startup</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="system-startup.html#SYSTEM-STARTUP-THE-HAL"
+>System startup &#8212; the HAL</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-start.html"
+>System startup &#8212; cyg_start()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-prestart.html"
+>System startup &#8212; cyg_prestart()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-package-start.html"
+>System startup &#8212; cyg_package_start()</A
+></DT
+><DT
+><A
+HREF="system-startup-cyg-user-start.html"
+>System startup &#8212; cyg_user_start()</A
+></DT
+></DL
+></DIV
+><P
+>	We describe here the steps performed by
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> upon startup, mentioning how a
+	programmer can introduce custom startup routines.
+      </P
+><H1
+CLASS="SECT1"
+><A
+NAME="SYSTEM-STARTUP-THE-HAL"
+>System startup &#8212; the HAL</A
+></H1
+><P
+>	  The HAL (Hardware Abstraction Layer, see <A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Appendix A</A
+>)
+	  is the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> package which
+	  contains all startup code.  Its startup procedure is
+	  outlined in detail in <A
+HREF="architectural-hal-files.html#HAL-APPENDIX-STARTUP"
+>the section called <I
+>HAL startup</I
+> in Appendix A</A
+>, but the main steps can be
+	  summarized here:</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+> The <SPAN
+CLASS="ACRONYM"
+>HAL</SPAN
+>
+	      initializes the hardware, coordinates with the ROM monitor
+	      and peforms diagnostics.</P
+></LI
+><LI
+><P
+>The HAL invokes all static and global C++
+	      constructors. </P
+></LI
+><LI
+><P
+> The HAL jumps to
+	      <TT
+CLASS="FUNCTION"
+><B
+>cyg_start()</B
+></TT
+>, which has the following
+	      prototype:</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_start</B
+></CODE
+>(void);<P
+></P
+></DIV
+></LI
+></OL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="assertions-and-bad-parameter-handling.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-start.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Assertions and bad parameter handling</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="kernel-apis.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>System startup &#8212; cyg_start()</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

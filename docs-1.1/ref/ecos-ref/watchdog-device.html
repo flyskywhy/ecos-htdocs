@@ -1,0 +1,320 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Watchdog device</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Wallclock and watchdog devices"
+HREF="wallclock-and-watchdog-devices.html"><LINK
+REL="PREVIOUS"
+TITLE="Wallclock and watchdog devices"
+HREF="wallclock-and-watchdog-devices.html"><LINK
+REL="NEXT"
+TITLE="The ISO Standard C and Math Libraries"
+HREF="the-iso-standard-c-and-math-libraries.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="wallclock-and-watchdog-devices.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 10. Wallclock and watchdog devices</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="WATCHDOG-DEVICE"
+>Watchdog device</A
+></H1
+><P
+>	  The watchdog device allows applications to make use of a
+	  timer facility. First the application should register an
+	  action routine with the watchdog device, and start the
+	  watchdog running. After this the application must call a
+	  watchdog reset function at regular intervals, or else the
+	  device will cause the installed action routines to be
+	  invoked. The assumption is that the watchdog timer should
+	  never trigger unless there has been a serious fault in
+	  either the hardware or the software, and the application's
+	  action routine should perform an appropriate reset
+	  operation.
+	</P
+><P
+>	  The main reason for having a watchdog timer is to guard
+	  against software and certain hardware failures that may
+	  cause the system to stop working, but can be cured by a
+	  reset or some other form of restart.
+	</P
+><P
+>	  The watchdog device is either implemented by interfacing to
+	  a hardware watchdog device, or it is emulated using an alarm
+	  on the kernel real-time clock.
+	</P
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN3810"
+>Cyg_Watchdog class</A
+></H2
+><P
+>	    The Watchdog device is implemented by the Cyg_Watchdog
+	    class. It has the following members.</P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3813"
+>Cyg_Watchdog::start()</A
+></H3
+><P
+>		  This causes the watchdog to start operation. Once
+		  this function has been called, the
+		  <TT
+CLASS="FUNCTION"
+><B
+>reset()</B
+></TT
+> function must be called
+		  to prevent the watchdog timer from firing.</P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3817"
+>Cyg_Watchdog::reset()</A
+></H3
+><P
+>	      This function must be called frequently to prevent the
+	      watchdog from triggering. The maximum time allowed
+	      between calls depends on the underlying hardware. All
+	      devices are currently configured for this maximum time
+	      to be approximately one second.
+	    </P
+><P
+>	      This function should be called from a thread context or
+	      some other relatively high level part of the system.
+	      Calling it from an interrupt or DSR is not a good idea
+	      since the interrupt and DSR system may continue to run
+	      even when the rest of the system is broken.
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3821"
+>Cyg_Watchdog::trigger()</A
+></H3
+><P
+>	      This function causes the watchdog to trigger
+	      immediately. It causes all of the watchdog actions to be
+	      called. This may be useful if a system restart is needed
+	      before the watchdog timer expires.
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3824"
+>Cyg_Watchdog::install_action()</A
+></H3
+><P
+>	      This function installs a Cyg_Watchdog_Action object into
+	      the list of actions to be performed when the watchdog
+	      triggers. See below for further information.
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3827"
+>Cyg_Watchdog::uninstall_action()</A
+></H3
+><P
+>	      This function removes a Cyg_Watchdog_Action object from
+	      the trigger list.
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3830"
+>Cyg_Watchdog::watchdog</A
+></H3
+><P
+>	      This is a static pointer to the single instance of the
+	      Watchdog device.
+	    </P
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN3833"
+>Cyg_Watchdog_Action class</A
+></H2
+><P
+>This class is a carrier for watchdog trigger
+	    functions. Each function is installed by creating an
+	    instance of this class and installing it into the watchdog
+	    device.
+	  </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3836"
+>Cyg_Watchdog_Action::Cyg_Watchdog_Action()</A
+></H3
+><P
+>	      This is the constructor for this class. It takes two
+	      arguments.  The first is a pointer to an action function
+	      that has the following prototype:
+	    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;void trigger_function( CYG_ADDRWORD data )</PRE
+></TD
+></TR
+></TABLE
+><P
+>	      The second argument is of type CYG_ADDRWORD and is a
+	      data value or pointer that is passed to the trigger
+	      function when it is called.
+	    </P
+><P
+>	      The action object is not installed into the watchdog at
+	      this point.
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3842"
+>Cyg_Watchdog_Action::install()</A
+></H3
+><P
+>	      This function installs this watchdog action object into
+	      the watchdog device. 
+	    </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3845"
+>Cyg_Watchdog_Action:uninstall()</A
+></H3
+><P
+>		This function uninstalls the watchdog action object
+		from the watchdog device.</P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3848"
+>Cyg_Watchdog_Action::~Cyg_Watchdog_Action()</A
+></H3
+><P
+>		  This is the destructor for this class. It will
+		  automatically uninstall the action object from the
+		  watchdog if it is still installed.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="wallclock-and-watchdog-devices.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Wallclock and watchdog devices</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="wallclock-and-watchdog-devices.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The ISO Standard C and Math Libraries</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

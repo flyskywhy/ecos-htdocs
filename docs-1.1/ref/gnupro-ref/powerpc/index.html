@@ -1,0 +1,2101 @@
+<HTML>
+<HEAD>
+   <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+   <META NAME="Generator" CONTENT="Microsoft Word 97">
+   <META NAME="GENERATOR" CONTENT="Mozilla/4.04 [en] (Win95; I) [Netscape]">
+   <TITLE>GNUPro Toolkit Reference</TITLE>
+</HEAD>
+<BODY LINK="#0000FF">
+&nbsp;<B><FONT SIZE=+2><FONT FACE="Arial">GNUPro</FONT><FONT FACE="Symbol">&Ocirc;</FONT><FONT FACE="Arial">
+Toolkit</FONT></FONT></B>
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3></FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>GNUPro Toolkit
+Reference for eCos</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right><B><I><FONT FACE="AvantGarde"><FONT SIZE=+3>PowerPC</FONT></FONT></I></B></DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right>&nbsp;</DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>eCos 1.1</FONT></FONT></B></DIV>
+
+<DIV ALIGN=right><B><FONT FACE="Arial"><FONT SIZE=+0>October 1998</FONT></FONT></B></DIV>
+<B><FONT SIZE=+2>&nbsp;</FONT></B>
+<BR><FONT SIZE=+1>&nbsp;<A HREF="#Table of Contents">Table of Contents</A></FONT>
+<BR>
+<HR WIDTH="100%">
+
+<P><FONT SIZE=-1>Copyright <FONT FACE="Symbol">&Oacute;</FONT> 1998 <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B> All rights reserved.</FONT>
+<BR><FONT SIZE=-1>No part of this document may be reproduced in any form
+or by any means without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>No part of this document may be changed and/or modified
+without the prior express written consent of <B><FONT FACE="Arial">CYGNUS
+SOLUTIONS, Inc.</FONT></B></FONT>
+<BR><FONT SIZE=-1>GNUPro<FONT FACE="Symbol">&Ocirc;</FONT> , the GNUPro<FONT FACE="Symbol">&Ocirc;</FONT>
+logo, and the Cygnus Solutions logo are trademarks of</FONT>
+<BR><FONT SIZE=-1><B><FONT FACE="Arial">CYGNUS SOLUTIONS, Inc.</FONT></B>
+All other brand and product names are trademarks of their respective owners.</FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Corporate Headquarters</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>1325 Chesapeake Terrace</FONT>
+<BR><FONT SIZE=-1>Sunnyvale, CA 94089 USA</FONT>
+<BR><FONT SIZE=-1>TEL: +1 408 542 9600</FONT>
+<DIR><FONT SIZE=-1>Support:</FONT>
+<BR><FONT SIZE=-1>Within USA/Canada: +1 800 CYGNUS1</FONT>
+<BR><FONT SIZE=-1>Outside USA/Canada: +1 408 542 9601</FONT></DIR>
+<FONT SIZE=-1>FAX: +1 408 542 9699</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.com</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.com/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus East</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>955 Massachusetts Avenue</FONT>
+<BR><FONT SIZE=-1>Cambridge, MA 02139-3180</FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus Japan</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>NIHON CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>Madre Matsuda Building</FONT>
+<BR><FONT SIZE=-1>4-13 Kioi-cho Chiyoda-ku</FONT>
+<BR><FONT SIZE=-1>Tokyo 102-0094 JAPAN</FONT>
+<BR><FONT SIZE=-1>TEL: +81-3-3234-3896</FONT>
+<BR><FONT SIZE=-1>FAX: +81-3-3239-3300</FONT>
+<BR><FONT SIZE=-1>EMAIL: <B><FONT FACE="Courier New">info@cygnus.co.jp</FONT></B></FONT>
+<BR><FONT SIZE=-1>WEBSITE: <B><FONT FACE="Courier New">http://www.cygnus.co.jp/</FONT></B></FONT>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>Cygnus U.K.</FONT></FONT></B>
+
+<P><B><FONT FACE="Arial"><FONT SIZE=-1>CYGNUS SOLUTIONS</FONT></FONT></B>
+<BR><FONT SIZE=-1>35-36 Cambridge Place</FONT>
+<BR><FONT SIZE=-1>Cambridge CB2 1NS</FONT>
+<BR><FONT SIZE=-1>United Kingdom</FONT>
+<DIV ALIGN=right><FONT FACE="Arial"><FONT SIZE=-1>Part #: 300-400-1010046-1.0</FONT></FONT></DIV>
+&nbsp;
+<BR>&nbsp;
+<BR><A NAME="Table of Contents"></A><B><FONT SIZE=+3>Table of Contents</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><B><FONT SIZE=-1><A HREF="#_Toc434049264">Introduction&nbsp;</A></FONT></B>
+<UL><FONT SIZE=-1><A HREF="#_Toc434049265">Tool naming conventions</A>&nbsp;</FONT>
+<BR><FONT SIZE=-1><A HREF="#_Toc434049266">Toolkit features&nbsp;</A></FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc434049267">Processor version(s)&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049268">Targets Supported&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049269">Hosts Supported</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049270">Object file format</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc434049271">GNUPro on Windows NT</A>&nbsp;</FONT>
+<UL><I><FONT SIZE=-1><A HREF="#_Toc434049272">Windows environment settings</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049273">Case Sensitivity</A></FONT></I></UL>
+<FONT SIZE=-1><A HREF="#_Toc434049274">GNUPro on Redhat Linux</A></FONT></UL>
+<B><FONT SIZE=-1><A HREF="#_Toc434049275">Reference&nbsp;</A></FONT></B>
+<DIR><FONT SIZE=-1><A HREF="#_Toc434049276">Compiler&nbsp;</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049277">PowerPC-specific command-line
+options</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049278">Preprocessor symbols</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049279">PowerPC-specific attributes&nbsp;</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049280">New compiler and linker features&nbsp;</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049281">Initialization prioritization</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049282">Selective linking</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049283">EABI Summary</A>&nbsp;</FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049284">Data type sizes and alignments</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049285">Subroutine calls</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049286">The Stack Frame&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049287">Parameter Assignment to Registers&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049288">Structure passing&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049289">Varargs handling</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049290">Function Return Values</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049291">Assembler&nbsp;</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049292">PowerPC-specific command-line
+options&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049293">Syntax&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049294">Register names</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049295">Assembler directives</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049296">Linker&nbsp;</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049297">PowerPC-specific command-line
+options</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049298">Debugger</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049299">PowerPC-specific command-line
+options&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049300">Debugging programs with multiple
+threads</A></FONT></I></DIR>
+<FONT SIZE=-1><A HREF="#_Toc434049301">Simulator</A></FONT>
+<DIR><I><FONT SIZE=-1><A HREF="#_Toc434049302">Features</A>&nbsp;</FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049303">Simulator-specific command
+line options&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049304">Using the simulator&nbsp;</A></FONT></I>
+<BR><I><FONT SIZE=-1><A HREF="#_Toc434049305">Simulator exceptions within
+GDB</A></FONT></I></DIR>
+</DIR>
+<B><FONT SIZE=-1><A HREF="#_Toc434049306">Appendix A: Bibliography&nbsp;</A></FONT></B>
+
+<P><FONT SIZE=+0>&nbsp;</FONT>
+<BR><A NAME="_Toc434049264"></A><B><FONT SIZE=+3>Introduction</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><A NAME="_Toc382726584"></A><FONT SIZE=+0>The GNUPro Toolkit from
+Cygnus is a complete solution for C and C++ development for the PowerPC.
+The tools include the compiler, interactive debugger and utilities libraries.
+Debugger and linker support is also included for the Cogent CMA286-60 MPC860
+Evaluation board. In addition to this manual, please read "<B><I>Getting
+started with eCos</I></B>."</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049265"></A><B><FONT SIZE=+2>Tool naming conventions</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Cross-development tools in the Cygnus GNUPro Toolkit
+normally have names that reflect the target processor and the object file
+format output by the tools</FONT>
+<BR><FONT SIZE=+0>(for example ELF). This makes it possible to install
+more than one set of tools in the same binary directory, including both
+native and cross-development tools.</FONT>
+
+<P><FONT SIZE=+0>The complete tool name is a three-part hyphenated string.
+The first part indicates the processor family (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>powerpc</FONT></FONT><FONT SIZE=+0>’).
+The second part is (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>eabi</FONT></FONT><FONT SIZE=+0>’).
+The third part is the generic tool name (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>gcc</FONT></FONT><FONT SIZE=+0>’).
+For example, the GCC compiler for the Motorola PowerPC is ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-gcc</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><FONT SIZE=+0>The Motorola MPC860 package includes the following supported
+tools:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="444" >
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><B><FONT SIZE=-1>Tool Description</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><B><FONT SIZE=-1>Tool Name</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GCC compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-gcc</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>C++ compiler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-c++</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GAS assembler</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-as</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GLD linker</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-ld</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>Standalone simulator</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-run</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>Binary Utilities</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-ar</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-nm</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-objcopy</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-objdump</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-ranlib</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-size</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT SIZE=-1><FONT FACE="Courier New">powerpc-eabi-strings</FONT>&nbsp;</FONT>&nbsp;
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-strip</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="35%"><FONT SIZE=-1>GDB debugger</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="65%"><FONT FACE="Courier New"><FONT SIZE=-1>powerpc-eabi-gd</FONT><FONT SIZE=-2>b</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The binaries for a Windows NT hosted toolchain are installed
+with an ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix. However, the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>.exe</FONT></FONT><FONT SIZE=+0>’
+suffix does not need to be specified when running the executable.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc399038257"></A><A NAME="_Toc425129974"></A><A NAME="_Toc425237788"></A><A NAME="_Toc425129976"></A><A NAME="_Toc425237790"></A><A NAME="_Toc434049266"></A><B><FONT SIZE=+2>Toolkit
+features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following describes PowerPC-specific features of
+the GNUPro Toolkit.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049267"></A><B><FONT SIZE=+1>Processor version(s)</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>Motorola MPC860.</FONT></DIR>
+</DIR>
+<A NAME="_Toc382726586"></A><A NAME="_Toc434049268"></A><B><FONT SIZE=+1>Targets
+Supported</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>GNUPro Instruction Set Simulator</FONT>
+
+<P><FONT SIZE=+0>Cogent CMA286-60 MPC860 Evaluation board</FONT>
+
+<P><FONT SIZE=+0>Both targets run in big-endian mode.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049269"></A><B><FONT SIZE=+1>Hosts Supported</FONT></B>
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="469" >
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><B><FONT SIZE=+0>CPU</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Operating System</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><B><FONT SIZE=+0>Vendor</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Windows NT 4.0</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Microsoft</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="23%"><FONT SIZE=+0>x86</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat Linux 5.x</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="39%"><FONT SIZE=+0>Redhat</FONT></TD>
+</TR>
+</TABLE></CENTER>
+<A NAME="_Toc434049270"></A><B><FONT SIZE=+2>Object file format</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The PowerPC tools support the ELF object file format.
+Refer to Chapter 4, <B><I>System V Application Binary Interface</I></B>
+(Prentice Hall, 1990.). Use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>ld</FONT></FONT><FONT SIZE=+0>’
+(refer to <B><I>Using LD</I> in<I> GNUPro Utilities</I></B>) or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>objcopy</FONT></FONT><FONT SIZE=+0>’
+(refer to <B><I>The GNU Binary Utilities</I> in<I> GNUPro Utilities</I></B>)
+to produce S-records.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+&nbsp;<A NAME="_Toc434049271"></A><B><FONT SIZE=+2>GNUPro on Windows NT</FONT></B>
+<BR>
+<HR WIDTH="100%">
+
+<P><A NAME="_Toc434049272"></A><B><FONT SIZE=+1>Windows environment settings</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The Windows NT hosted toolchain requires the following
+environmental settings to function properly. Assume the release is installed
+in:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>C:\cygnus\gnupro\i386-cygwin32\powerpc-eabi\ecos-98r1p3</FONT></FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>SET PROOT=C:\cygnus\gnupro\i386-cygwin32\powerpc-eabi\ecos-98r1p3</FONT></FONT>
+<BR><A NAME="_Toc368474905"></A><FONT FACE="Courier New"><FONT SIZE=-1>SET
+PATH=%PROOT%\H-i386-cygwin32\bin;%PATH%</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>SET INFOPATH=%PROOT%\info</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>REM Set TMPDIR to point to a
+ramdisk if you have one</FONT></FONT>
+<BR><FONT FACE="Courier New"><FONT SIZE=-1>SET TMPDIR=C:\TEMP</FONT></FONT>
+
+<P><FONT SIZE=+0>For the Sourceware release of eCos, ensure that the Unsupported
+Tools for eCos are also installed. Assuming these are installed in their
+default location in</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>C:\cygnus\gnupro\i386-cygwin32\i386-cygwin32\unsupported-98r1p2</FONT></FONT>
+
+<P><FONT SIZE=+0>then add the environmental setting:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>SET PATH=C:\cygnus\gnupro\i386-cygwin32\i386-cygwin32\unsupported-98r1p2\H-i386-cygwin32\bin;%PATH%</FONT></FONT>
+<DIR>&nbsp;</DIR>
+<FONT SIZE=+0>If you are using the eCos Developer’s Kit CD release (not
+included in the sourceware release), a working environment can be established
+by using the following shortcut from the Windows Start menu:</FONT>
+
+<P><FONT SIZE=-1><FONT FACE="Arial">Programs->Cygnus eCos->eCos Development
+Environment</FONT><FONT FACE="Courier New">.</FONT></FONT>
+
+<P><FONT SIZE=+0>This will bring up a window running "bash", and your Windows
+environment will be automatically set up.</FONT></DIR>
+</DIR>
+<A NAME="_Toc433628179"></A><A NAME="_Toc434049273"></A><B><FONT SIZE=+1>Case
+Sensitivity</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>command line options</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler labels</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>linker script commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>section names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>The following strings are not case sensitive under Windows
+NT:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>gdb commands</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>assembler instructions and register names</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Case sensitivity for Windows NT is dependent on system
+configuration. By default, file names under Windows NT are not case sensitive.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc434049274"></A><B><FONT SIZE=+2>GNUPro on Redhat Linux</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro Tools for Redhat Linux are supplied in a
+ZIP format file. Detailed instructions for installation can be found on
+the eCos sourceware site:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1><A HREF="http://www.sourceware.cygnus.com/ecos/">http://sourceware.cygnus.com/ecos/</A></FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Assuming the sources for the tools were installed in</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-981021/src</FONT></FONT>
+<BR>&nbsp;</DIR>
+By following the instructions in the Installation Guide, you should eventually
+have the tools installed in
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>/usr/cygnus/ecosSWtools-981021/H-i386-pc-linux-gnu/bin</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>In which case, we recommend you have the following settings
+in your appropriate shell startup script.</FONT>
+
+<P><FONT SIZE=+0>For Bourne shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>PROOT=/usr/cygnus/ecosSWtools-981021</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>PATH=$PROOT/H-i386-pc-linux-gnu/bin:$PATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>INFOPATH=$PROOT/info:${INFOPATH-/usr/local/info:/usr/info}</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>MANPATH=$PROOT/man:${MANPATH-/usr/local/man:/usr/man}</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>export PATH INFOPATH
+MANPATH</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>For C-shell compatible shells:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv PROOT /usr/cygnus/ecosSWtools-981021</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>if ( "$?MANPATH" == "0"
+) then</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv MANPATH "/usr/local/man:/usr/man"</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>if ( "$?INFOPATH" ==
+"0" ) then</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv INFOPATH "/usr/local/info:/usr/info"</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>endif</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv MANPATH $PROOT/man:$MANPATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>setenv INFOPATH $PROOT/info:$INFOPATH</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>set path = ( $PROOT/H-i386-pc-linux-gnu/bin
+$path )</FONT></FONT></DIR>
+<A NAME="_Toc368474908"></A>
+<BR>&nbsp;</DIR>
+</DIR>
+<A NAME="_Toc434049275"></A><B><FONT SIZE=+3>Reference</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="_Toc434049276"></A><B><FONT SIZE=+2>Compiler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes PowerPC-specific features of
+the GNUPro Compiler.</FONT></DIR>
+</DIR>
+<A NAME="_Ref413205429"></A><A NAME="_Ref413205467"></A><A NAME="_Toc434049277"></A><B><FONT SIZE=+1>PowerPC-specific
+command-line options</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic compiler options, refer
+to "GNU CC Command Options" in <I>Using GNU CC </I>in <B><I>GNUPro Compiler
+Tools</I></B>. In addition, the following PowerPC-specific command-line
+options are supported:</FONT>
+
+<P><FONT SIZE=+0>These ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-m</FONT></FONT><FONT SIZE=+0>’
+options are defined for the PowerPC.</FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-mcpu=860</FONT></FONT>
+<DIR><FONT SIZE=+0>Specifically set the architecture type, register usage,
+choice of mnemonics, and instruction scheduling parameters for machine
+type. Supported value is ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>860</FONT></FONT><FONT SIZE=+0>’.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>-mbig</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-mbig-endian&nbsp;</FONT></FONT>
+<DIR><FONT SIZE=+0>This option is on by default. On System V.4 and embedded
+PowerPC systems compile code for the processor in big endian mode.</FONT>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>-msoft-float</FONT></FONT>
+<DIR><FONT SIZE=+0>This option is on by default. It causes the compiler
+to generate output containing library calls for floating point operations.</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434049278"></A><B><FONT SIZE=+1>Preprocessor symbols</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>The compiler supports the following preprocessor symbols:</FONT>
+<DIR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>__powerpc__</FONT></FONT>
+<DIR><FONT SIZE=+0>Is always defined.</FONT></DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>__embedded__</FONT></FONT>
+<DIR><FONT SIZE=+0>Is always defined.</FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434049279"></A><B><FONT SIZE=+1>PowerPC-specific attributes</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>There are no PowerPC-specific attributes. See "Declaring
+Attributes of Functions" and "Specifying Attributes of Variables" in "Extensions
+to the C Language Family" in <I>Using GNU CC</I> in <B><I>GNUPro Compiler
+Tools</I></B> for more information.</FONT></DIR>
+</DIR>
+<A NAME="_Toc395075402"></A><A NAME="_Toc415038407"></A>
+
+<P><A NAME="_Toc434049280"></A><B><FONT SIZE=+2>New compiler and linker
+features</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro compiler and linker have been improved by
+Cygnus to provide even more benefits for customers developing for embedded
+targets. These features are guaranteed order of initialization at startup,
+and selective linking.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049281"></A><B><FONT SIZE=+1>Initialization prioritization</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>In C++, you can define static and global objects with
+constructors, or initialize static and global variables from a function.
+This means that the constructors or functions are run before the rest of
+your program starts. However, when you have these objects spread over multiple
+files, the C++ standard does not specify the order in which they are initialized,
+and for all practical purposes the order is random. For an embedded system,
+this can be a problem, as you may want to ensure that a static scheduler
+object is initialized before static threads can attach to it, or that devices
+are initialized before they are used. GNUPro solves this problem by allowing
+you to define a priority when the static or global is declared. The following
+example shows the syntax:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>static object_t myobj
+__attribute__((init_priority (30000) ));</FONT></FONT>
+
+<P><FONT SIZE=+0>The syntax is slightly different if the object takes any
+arguments to its constructor:</FONT>
+
+<P><FONT FACE="Courier New"><FONT SIZE=-1>static object_t myobj __attribute__((init_priority
+(30000) )) = object_t(arg1, arg2);</FONT></FONT>
+
+<P><FONT SIZE=+0>The numeric priority can be from 1 to 65535, with 1 being
+the highest priority, and 65535 being the lowest. The default priority
+for objects without this attribute is 65535. Constructors with a higher
+priority are guaranteed execution before constructors with lower priority.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must provide the argument ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-finit-priority</FONT></FONT><FONT SIZE=+0>’
+to the compiler on its command-line for it to recognize this attribute
+when you are compiling your C++ source files.</FONT>
+
+<P><FONT SIZE=+0>If you are using eCos, be warned that eCos uses initialization
+priorities internally. Ensure you choose an appropriate priority level
+so that other eCos subsystems will have initialized before you refer to
+them in your own constructor.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434049282"></A><B><FONT SIZE=+1>Selective linking</FONT></B>
+<DIR>
+<DIR><FONT SIZE=+0>When writing C and C++ code, it is sometimes natural
+to include more than one function in a source file. For example in C++,
+it is common to have all methods for a particular class contained in the
+same C++ source file. However, there is a drawback that, conventionally,
+if you use just one of these functions, then all the functions defined
+in that file also get included in the final executable image. For an embedded
+system, this can substantially and unnecessarily increase the size of the
+final image stored in ROM, or loaded into RAM when debugging.</FONT>
+
+<P><FONT SIZE=+0>The GNUPro C and C++ compilers can now optionally remove
+these unnecessary functions from the final image. They also ensure that
+any shared global data is removed that is only referenced by functions
+that are removed. This can be done by including the options ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+on the command-line, when you invoke the C or C++ compiler. The ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-ffunction-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary functions, and the ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-fdata-sections</FONT></FONT><FONT SIZE=+0>’
+option removes unnecessary data.</FONT>
+
+<P><FONT SIZE=+0>In addition, when classes define virtual methods in C++,
+it is possible to remove any unused methods from the final image by passing
+the option</FONT> <FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-fvtable-gc</FONT></FONT><FONT SIZE=+0>’
+to the C++ compiler on its command-line.</FONT>
+
+<P><FONT SIZE=+0>In all cases, you must also supply a command-line option
+when linking. If invoking the linker ld directly, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on its command-line; alternatively, if you are using the preferred method
+of linking your executable, using the form</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>gcc
+-o <I>&lt;program name></I> <I>&lt;file1>.o &lt;file2>.o</I></FONT></FONT><FONT SIZE=+0>’,
+then also pass the option ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-Wl,--gc-sections</FONT></FONT><FONT SIZE=+0>’
+on the compiler command-line, for example:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>gcc -o prog f1.o f2.o
+-Wl,--gc-sections</FONT></FONT></DIR>
+</DIR>
+</DIR>
+&nbsp;
+
+<P><A NAME="_Toc434049283"></A><B><FONT SIZE=+2>EABI Summary</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes the V.4 EABI. The PowerPC tools
+adhere<B> </B>to the V.4 EABI. The Motorola MPC 860 does not have hardware
+floating-point support.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049284"></A><B><FONT SIZE=+1>Data type sizes and alignments</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following table shows the size and alignment for
+all data types:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="432" >
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Type</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Size (bytes)</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Alignment (bytes)</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>char</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>1 byte</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>1 byte</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>short</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>2 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>2 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>int</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>unsigned</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>float</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT FACE="Courier New"><FONT SIZE=-1>double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>8 bytes</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="21"><FONT SIZE=+0>4 bytes</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>Alignment within aggregates (structs and unions) is as above,
+with padding added if needed</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Aggregates have alignment equal to that of their most aligned
+member</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Aggregates have sizes which are a multiple of their alignment</FONT></LI>
+</UL>
+</UL>
+</UL>
+<B><FONT SIZE=+1>&nbsp;</FONT></B>
+
+<P><A NAME="_Toc434049285"></A><B><FONT SIZE=+1>Subroutine calls</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The following describes the calling conventions for
+subroutine calls. The first table outlines the registers used for passing
+and returning parameters. The second table outlines other register usage.</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="342" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><B>Parameter registers:</B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>general-purpose</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r3-r10</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>return general-purpose</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r3-r4</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>floating point</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>f1-f8</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>return floating point</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>f1</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+<FONT SIZE=-1>&nbsp;</FONT>
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="342" >
+<TR>
+<TD VALIGN=TOP COLSPAN="2"><B>Register usage:</B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>function linkage</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r0, r11,
+r12, r31</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>stack pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r1</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>kernel reserved</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r2</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>small data pointer</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r13</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>volatile</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r0, r3-r13,
+f0-f13, lr, ctr, xer, fpscr, cr0, cr1, cr5-cr7</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>non-volatile</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>r14-r31,
+f14-f31</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="47%"><FONT SIZE=+0>return address</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="53%"><FONT FACE="Courier New"><FONT SIZE=-1>lr</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>General-purpose and floating-point parameter registers are
+allocated independently.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Structures that are less than or equal to 32 bits are passed
+as values.</FONT></LI>
+
+<LI>
+<A NAME="_Toc395075405"></A><A NAME="_Toc415038408"></A><FONT SIZE=+0>Structures
+that are greater than 32 bits are passed as pointers.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>Bit 6 of ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>cr1</FONT></FONT><FONT SIZE=+0>’
+is set if a variable-argument function is passed floating-point arguments
+in registers.</FONT></LI>
+</UL>
+</UL>
+</UL>
+<B><FONT SIZE=+1>&nbsp;</FONT></B>
+
+<P><A NAME="_Toc434049286"></A><B><FONT SIZE=+1>The Stack Frame</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes the PowerPC stack frame:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>The stack grows downwards from high addresses to low addresses.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A leaf function need not allocate a stack frame if it does
+not need one.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A frame pointer need not be allocated.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The stack pointer shall always be aligned to 4 byte boundaries.</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>Stack frames for functions that take a fixed number
+of arguments look like this:</FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT>
+
+<P><IMG SRC="Image10.gif" HEIGHT=528 WIDTH=327>
+
+<P><FONT SIZE=+0>When alloca is executed, the back chain to the caller’s
+stack frame and the link register save area must be updated.</FONT>
+
+<P><FONT SIZE=+0>The parameter save area does not contain space to store
+the 8 integer arguments. If it is desired that they be stored, the callee
+must allocate space to save it in the local variable area of the stack.
+Structures and unions are copied into temporary slots and an address of
+the temporary slot is passed as the argument.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+<FONT SIZE=+0>&nbsp;</FONT>&nbsp;
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0></FONT>&nbsp;<FONT SIZE=+0></FONT>
+
+<P><FONT SIZE=+0>Stack frames for functions that take a variable number
+of arguments look like this:</FONT>
+
+<P><IMG SRC="Image11.gif" HEIGHT=538 WIDTH=336>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434049287"></A><B><FONT SIZE=+1>Parameter Assignment to Registers</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Consider the parameters in a function call as ordered
+from left (first parameter) to right. In this algorithm, ‘FR’ contains
+the number of the next available</FONT>
+<BR><FONT SIZE=+0>floating-point register, ‘GR’ contains the number of
+the next available general-purpose register, and ‘STARG’ is the address
+of the next available stack parameter word.</FONT></DIR>
+</DIR>
+<B>INITIALIZE:</B>
+<DIR>
+<DIR><FONT SIZE=+0>Set ‘GR=r3’, ‘FR=f1’, and ‘STARG’ to point to parameter
+word 1.</FONT></DIR>
+</DIR>
+<B>SCAN:</B>
+<DIR>
+<DIR><FONT SIZE=+0>If there are no more parameters, terminate. Otherwise,
+select one of the following depending on the type of the next parameter:</FONT>
+
+<P><B><FONT SIZE=+0>DOUBLE OR FLOAT:</FONT></B>
+
+<P><FONT SIZE=+0>If ‘FR > f8’, go to ‘STACK’. Otherwise, load the parameter
+value into</FONT>
+<BR><FONT SIZE=+0>floating-point register ‘FR’ and advance ‘FR’ to the
+next floating-point register. Then go to ‘SCAN’.</FONT>
+
+<P><B><FONT SIZE=+0>SIMPLE ARG:</FONT></B>
+
+<P><FONT SIZE=+0>A SIMPLE ARG is one of the following:</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>One of the simple integer types which will fit into a general-purpose
+register</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A pointer to an object of any type</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A struct or union small enough to fit in a register</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>A larger struct or union, which shall be treated as a pointer
+to a copy of that object</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>If ‘GR > r10’, go to ‘STACK’. Otherwise, load the parameter
+value into general-purpose register ‘GR’ and advance ‘GR’ to the next general-purpose
+register. Values shorter than the register size are sign-extended or zero-extended
+depending on whether they are signed or unsigned. Then go to ‘SCAN’.</FONT>
+
+<P><B><FONT SIZE=+0>LONG LONG:</FONT></B>
+
+<P><FONT SIZE=+0>If ‘GR > r8’, go to ‘STACK’. Otherwise, if ‘GR’ is even,
+advance ‘GR’ to the next register. Load the 64-bit ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>long
+long</FONT></FONT><FONT SIZE=+0>’ value into register pair ‘GR’ and ‘GR+1’.
+Advance ‘GR’ to ‘GR+2’ and go to ‘SCAN’.</FONT>
+
+<P><B><FONT SIZE=+0>&nbsp;</FONT></B>
+<BR><B><FONT SIZE=+0>STACK:</FONT></B>
+
+<P><FONT SIZE=+0>Parameters not otherwise handled above are passed in the
+parameter words of the caller's stack frame. SIMPLE ARGs, as defined above,
+are considered to have size and alignment equal to the size of a general-purpose
+register, with simple argument types shorter than this sign-extended or
+zero-extended to this width. ‘float’ arguments are considered to have size
+and alignment equal to the 32 bits. ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>double</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>long long</FONT></FONT><FONT SIZE=+0>’
+are considered to have size and alignment equal to 64 bits. Round ‘STARG’
+up to a multiple of the alignment requirement of the parameter and copy
+the argument byte-for-byte into ‘STARG’, ‘STARG+1’, ... ‘STARG+size-1’.
+Set ‘STARG’ to ‘STARG+size’ and go to ‘SCAN’.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049288"></A><B><FONT SIZE=+1>Structure passing</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>As noted above, code, which passes structures and unions
+by value is implemented specially; in this section, "struct" will refer
+to structures and unions inclusively. Structs small enough to fit in a
+register are passed by value in a single general-purpose register or in
+a 32-bit stack slot. Larger structs are handled, by the caller making a
+copy of the struct, in order to preserve the pass-by-value semantics, and
+passing a pointer to the copy. The copy is made in the local variable area
+of the caller’s stack.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049289"></A><B><FONT SIZE=+1>Varargs handling</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Varargs are handled differently in the V.4 EABI than
+they are for most other ABIs. Variable argument functions must store the
+registers used for passing arguments that aren’t used for fixed arguments
+into a 96-word area in the local variable section of the stack. If bit
+6 of the CR is not 1, it doesn’t have to save the floating-point registers.
+The V.4 EABI never passes floating-point arguments in general-purpose registers.
+The registers used to hold arguments are saved in a separate save area,
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>va_list</FONT></FONT><FONT SIZE=+0>’
+is an array of 1 element of a structure that contains pointers to the stack
+and register save area, and two char values indicating how many general-purpose
+and floating-point registers have been processed.</FONT>
+
+<P><FONT SIZE=+0>The ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>va_list</FONT></FONT><FONT SIZE=+0>’
+type is defined as follows:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>typedef struct {</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>char gpr; /* index to
+next saved gp register */</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>char fpr; /* index to
+next saved fp register */</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>char *ovf_arg_area;
+/* pointer to next overflow arg */</FONT></FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>char *reg_save_area;
+/* pointer to register save area */</FONT></FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>} va_list[1];</FONT></FONT></DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434049290"></A><B><FONT SIZE=+1>Function Return Values</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Data types and register usage for return values:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="438" >
+<TR>
+<TD VALIGN=TOP WIDTH="33%"><B><FONT SIZE=+0>Type</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="67%"><B><FONT SIZE=+0>Register</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>int</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r3</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>short</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r3</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r3</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>long
+long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r3+r4</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>float</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>f1</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>f1</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="33%" HEIGHT="22"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>struct/union</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="67%" HEIGHT="22"><FONT SIZE=+0>see below</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>Structures and unions, which will fit into two general-purpose
+registers are returned in ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r3</FONT></FONT><FONT SIZE=+0>’,
+or in ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r3</FONT></FONT><FONT SIZE=+0>’
+and ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r4</FONT></FONT><FONT SIZE=+0>’
+if necessary. The caller handles larger structures and unions by passing,
+as a "hidden" first argument, a pointer to space allocated to receive the
+return value.</FONT>
+<BR>&nbsp;</DIR>
+</DIR>
+&nbsp;
+
+<P><A NAME="_Toc415038410"></A><A NAME="_Toc434049291"></A><B><FONT SIZE=+2>Assembler</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><A NAME="_Toc415038411"></A><FONT SIZE=+0>This section describes PowerPC-specific
+features of the GNUPro Assembler.</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049292"></A><B><FONT SIZE=+1>PowerPC-specific command-line
+options</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic assembler options, refer
+to "Command-Line Options" in <I>Using AS</I> in <B><I>GNUPro Utilities</I></B>.</FONT></DIR>
+</DIR>
+<A NAME="wednesday"></A><A NAME="_Toc415038412"></A><A NAME="_Toc434049293"></A><B><FONT SIZE=+1>Syntax</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><A NAME="_Ref371824657"></A><FONT SIZE=+0>For more information about
+the PowerPC instruction set and PowerPC assembly conventions, see <B><I>The
+PowerPC (tm) Architecture:A SPECIFICATION FOR A NEW FAMILIY OF RISC PROCESSORS
+</I></B>(Morgan Kaufmann Publishers, Inc.)</FONT>
+<BR><FONT SIZE=+0>or</FONT>
+<BR><FONT SIZE=+0><B><I>PowerPC (tm) Microprocessor Family:The Programming
+Environments </I></B>(Published by both IBM (MPRPPCFPE-01) and Motorola
+(MPCFPE/AD))</FONT></DIR>
+</DIR>
+<A NAME="_Toc415038413"></A><A NAME="_Toc434049294"></A><B><FONT SIZE=+1>Register
+names</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>There are 32 32-bit general (integer) registers, named
+‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r0</FONT></FONT><FONT SIZE=+0>’</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>through</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>r31</FONT></FONT><FONT SIZE=+0>’.
+There are 32 64-bit floating-point registers, named ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f0</FONT></FONT><FONT SIZE=+0>’</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>through</FONT><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>f31</FONT></FONT><FONT SIZE=+0>’.</FONT>
+
+<P><FONT SIZE=+0>The compiler will generate assembly code, which uses the
+numbers `0' through `31' to represent general-purpose registers.</FONT>
+
+<P><FONT SIZE=+0>The following symbols can be used as aliases for individual
+registers:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="264" >
+<TR>
+<TD VALIGN=TOP WIDTH="41%"><B><FONT SIZE=+0>Symbol</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="59%"><B><FONT SIZE=+0>Register</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="41%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>sp</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="59%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r1</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="41%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>toc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="59%"><FONT FACE="Courier New,Courier"><FONT SIZE=-1>r2</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>&nbsp;</FONT></FONT>
+<DIR>
+<DIR><FONT SIZE=+0>Furthermore, the GNU tools recognize the PowerPC’s special
+registers:</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="258" >
+<TR>
+<TD VALIGN=TOP WIDTH="42%"><B><FONT SIZE=+0>Symbol</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="58%"><B><FONT SIZE=+0>Register</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="42%"><FONT FACE="Courier New"><FONT SIZE=-1>lr</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="58%"><FONT SIZE=+0>the link register</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="42%"><FONT FACE="Courier New"><FONT SIZE=-1>ctr</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="58%"><FONT SIZE=+0>the count register</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="42%"><FONT FACE="Courier New"><FONT SIZE=-1>cr0 ...
+cr7</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="58%"><FONT SIZE=+0>the condition registers</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>Other PowerPC special registers (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>xer</FONT></FONT><FONT SIZE=+0>’,
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>fpscr</FONT></FONT><FONT SIZE=+0>’,
+etc.) are supported by the GNU tools, but do not have names since they
+are used implicitly by specific instructions (‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>qv:
+mcrxr</FONT></FONT><FONT SIZE=+0>’): these registers may also be referenced
+in assembly language by number.</FONT>
+
+<P><B><FONT SIZE=+1>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc434049295"></A><B><FONT SIZE=+1>Assembler directives</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<BR>&nbsp;
+<UL><FONT SIZE=+0>This is a complete list of the PowerPC assembler directives.</FONT></UL>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="528" >
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.abicalls</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.b</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.fail</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.irepc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.psize</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.abort</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.d</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.file</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.irp</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.purgem</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.aent</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.l</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.fill</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.irpc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.quad</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.align</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.s</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.float</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.lcomm</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.rdata</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.appfile</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.w</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.fmask</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.lflags</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.rep</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.appline</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb.x</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.format</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.linkonce</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.rept</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ascii</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.debug</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.frame</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.list</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.rva</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.asciiz</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.double</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.global</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.livereg</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.sbttl</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.asciz</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.globl</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.llen</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.sdata</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.balign</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.b</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.gpword</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.loc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.set</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.balignl</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.d</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.half</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.long</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.short</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.balignw</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.l</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.hword</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.lsym</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.single</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.bgnb</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.p</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.if</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.macro</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.skip</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.bss</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.s</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.mask</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.space</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.byte</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.w</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifdef</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.mexit</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.spc</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.comm</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ds.x</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifeq</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.mri</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.stabd</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.common</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dword</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifeqs</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.name</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.stabn</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.common.s</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.eject</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifge</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.noformat</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.stabs</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.cpadd</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.else</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifgt</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.nolist</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.string</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.cpload</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.elsec</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifle</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.nopage</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.struct</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.cprestore</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.end</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.iflt</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.octa</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.text</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.data</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.endb</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifnc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.offset</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.title</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.endc</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifndef</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.option</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ttl</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.b</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.endif</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifne</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.org</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.verstamp</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.d</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ent</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifnes</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.p2align</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.word</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.l</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.equ</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.ifnotdef</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.p2alignl</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.xcom</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.s</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.equiv</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.include</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.p2alignw</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.xdef</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.w</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.err</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.insn</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.page</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.xref</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dc.x</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.exitm</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.int</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.plen</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.xstabs</FONT></FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.dcb</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.extern</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.irep</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.print</FONT></FONT></TD>
+
+<TD VALIGN=TOP WIDTH="20%" HEIGHT="22"><FONT FACE="Courier New"><FONT SIZE=-1>.zero</FONT></FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<BR>&nbsp;
+
+<P><A NAME="_Toc434049296"></A><B><FONT SIZE=+2>Linker</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>eCos generates linker scripts appropriate for the exact
+eCos configuration<B> </B>you have chosen. Instructions on how to use this
+linker script are provided<B> </B>in the manual <B><I>Getting Started with
+eCos</I>.</B></FONT></DIR>
+</DIR>
+<A NAME="_Toc434049297"></A><FONT SIZE=+1>PowerPC-specific command-line
+options</FONT>
+<DIR>
+<DIR><FONT SIZE=+0>For a list of available generic linker options, refer
+to "Command Language" in <I>Using LD</I> in <B><I>GNUPro Utilities</I></B>.
+There are no PowerPC-specific command-line linker options.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Ref372526299"></A><A NAME="_Ref372526330"></A><A NAME="_Toc434049298"></A><B><FONT SIZE=+2>Debugger</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>This section describes PowerPC-specific features of
+the GNUPro Debugger.</FONT>
+<BR><FONT SIZE=+0>For debugging examples, see chapter "Run an eCos test
+case" in<I> <B>Getting Started with eCos</B></I></FONT>
+
+<P><FONT SIZE=+0>There are two ways for GDB to talk to a PowerPC target.</FONT></DIR>
+</DIR>
+
+<OL>
+<OL>
+<LI>
+<FONT SIZE=+0>Simulator:</FONT></LI>
+
+<BR><FONT SIZE=+0>eCos may be build for the minimal simulator with RAM
+startup. Linking your program against the eCos ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>libtarget.a</FONT></FONT><FONT SIZE=+0>’
+library, and with the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target.ld</FONT></FONT><FONT SIZE=+0>’
+linker script will produce the correct final executable that should be
+loaded into the simulator.</FONT>
+
+<P><B><I><FONT SIZE=+0>Note:</FONT></I></B>
+<BR><FONT SIZE=+0>Loading binaries into the simulator that were built for
+real hardware with RAM startup will not work.</FONT>
+
+<P><FONT SIZE=+0>To activate the simulator in GDB, follow the instructions
+in the Simulator section later in this document.</FONT>
+<BR>&nbsp;
+<LI>
+<FONT SIZE=+0>Remote target board:</FONT></LI>
+
+<BR><FONT SIZE=+0>To load your program onto the standard evaluation board,
+build eCos for the hardware with RAM startup. Provided the board is fitted
+with the GDB loader stub ROM, you may connect to the target board in GDB
+using the command ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target
+remote <I>&lt;devicename></I></FONT></FONT><FONT SIZE=+0>’ where ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;devicename></FONT></FONT></I><FONT SIZE=+0>’
+will be a serial device such as ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>com2</FONT></FONT><FONT SIZE=+0>’
+(Windows NT) or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>/dev/ttyS1</FONT></FONT><FONT SIZE=+0>’
+(Linux). Then load the code onto the target board by typing ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>load</FONT></FONT><FONT SIZE=+0>’.
+After being downloaded, the program can be executed.</FONT></OL>
+</OL>
+
+<DIR>
+<DIR><B><FONT SIZE=+0><I>Note</I>:</FONT></B>
+<BR><FONT SIZE=+0>When using the remote target, GDB does not accept the
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>run</FONT></FONT><FONT SIZE=+0>’
+command. However, since downloading the program has the side effect of
+setting the PC to the start address, you can start your program by typing
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>continue</FONT></FONT><FONT SIZE=+0>’
+(the letter ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>c</FONT></FONT><FONT SIZE=+0>’
+works as a shortcut for the ‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>continue</FONT></FONT><FONT SIZE=+0>’
+command).</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049299"></A><B><FONT SIZE=+1>PowerPC-specific command-line
+options</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>For the available generic debugger options, refer to
+<I>Debugging with GDB</I> in <B><I>GNUPro Debugging Tools</I></B>. There
+are no PowerPC specific debugger command-line options.</FONT></DIR>
+</DIR>
+<A NAME="_Ref370778797"></A><A NAME="_Toc386594255"></A><A NAME="_Toc390691984"></A><A NAME="_Toc390692120"></A><A NAME="_Toc401042769"></A><A NAME="_Toc401633243"></A>
+
+<P><A NAME="_Toc434049300"></A><B><FONT SIZE=+1>Debugging programs with
+multiple threads</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>Programs with multiple threads can be debugged using
+either the graphic user interface to GDB, GDBTk or the GDB command line
+interface. The following describes how to debug multiple threads using
+the GDB command line.</FONT>
+
+<P><FONT SIZE=+0>In some operating systems, such as eCos, a single program
+may have more than one thread of execution. The precise semantics of threads
+differ from one operating system to another, but in general the threads
+of a single program are akin to multiple processes, except that they share
+one address space (that is, they can all examine and modify the same variables).
+On the other hand, each thread has its own registers and execution stack,
+and perhaps private memory.</FONT>
+
+<P><FONT SIZE=+0>GDB provides the following functions for debugging multi-thread
+programs</FONT></DIR>
+</DIR>
+
+<UL>
+<UL>
+<UL>
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>threadno</I></FONT></FONT><FONT SIZE=+0>’,
+a command to switch among threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’, a command to inquire about existing
+threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>‘</FONT><FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread
+apply [<I>threadno</I>][<I>all</I>] <I>args</I></FONT></FONT><I><FONT FACE="Courier New"><FONT SIZE=-2>
+</FONT></FONT></I><FONT SIZE=+0>’, a command to apply a command to a list
+of threads</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>thread-specific breakpoints</FONT></LI>
+</UL>
+</UL>
+</UL>
+
+<DIR>
+<DIR><FONT SIZE=+0>The GDB thread-debugging facility allows you to observe
+all threads while your program runs, but whenever GDB takes control, one
+thread in particular is always the focus of debugging. This thread is called
+the current thread. Debugging commands show program information from the
+perspective of the current thread.</FONT>
+<BR>&nbsp;
+<BR><FONT SIZE=+0>For debugging purposes, GDB associates its own thread
+number, always a single integer, with each thread in your program.</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>info threads</FONT></FONT>
+<DIR><FONT SIZE=+0>Display a summary of all threads currently in your program.
+GDB displays for each thread (in the following order):</FONT></DIR>
+</DIR>
+</DIR>
+
+<OL>
+<DIR>
+<DIR>
+<OL>
+<LI>
+<FONT SIZE=+0>The thread number assigned by GDB.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The target system’s thread.</FONT></LI>
+
+<LI>
+<FONT SIZE=+0>The current stack frame summary for that thread.</FONT></LI>
+</OL>
+</DIR>
+</DIR>
+</OL>
+
+<DIR>
+<DIR>
+<DIR><FONT SIZE=+0>An asterisk ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>*</FONT></FONT><FONT SIZE=+0>’
+to the left of the GDB thread number indicates the current thread. Use
+the following example for clarity.</FONT></DIR>
+&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb)</B> info threads</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>* 2 thread 2 breakme
+()</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_1/tests/thread_gdb.c:91</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: controller,
+State: running, Priority: 0, More: &lt;none></FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>1 thread 1 Cyg_HardwareThread::thread_entry
+(thread=0x1111aaa2)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/packages/kernel/v1_1/src/common/thread.cxx:68</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Name: Idle Thread,
+State: running, Priority: 31, More: &lt;none></FONT></FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT>
+<DIR><FONT SIZE=+0>Make thread number ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’the
+current thread. The command argument, ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. GDB responds by displaying
+the system identifier of the thread you selected, and its current stack
+frame summary, as in the following output.</FONT>
+<BR>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb) </B>thread
+2</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>[Switching to thread
+2]</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>#0 change_state (id=0,
+newstate=0 '\000')</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>at /eCos/kernel/current/tests/bin_sem2.cxx:93</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>93 if (PHILO_LOOPS
+== state_changes++)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Current language:
+auto; currently c++</FONT></FONT></B></DIR>
+<FONT FACE="Courier New,Courier">&nbsp;</FONT>
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>thread apply [<I>&lt;threadno></I>][<I>&lt;all></I>]
+<I>&lt;args></I></FONT></FONT>
+<DIR><FONT SIZE=+0>The thread apply command allows you to apply a command
+to one or more threads. Specify the numbers of the threads that you want
+affected with the command argument ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’,
+where</FONT><I><FONT FACE="Courier New"><FONT SIZE=-2> </FONT></FONT></I><FONT SIZE=+0>‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is the internal GDB thread number, as shown in the first field of the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info
+threads</FONT></FONT><FONT SIZE=+0>’ display. To apply a command to all
+threads, use ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread apply
+all args</FONT></FONT><FONT SIZE=+0>’.</FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Whenever GDB stops your program, due to a breakpoint or a
+signal, it automatically selects the thread where that breakpoint or signal
+happened.</FONT>
+
+<P><FONT SIZE=+0>When your program has multiple threads, you can choose
+whether to set breakpoints on all threads, or on a particular thread.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>break <I>&lt;linespec></I>
+thread <I>&lt;threadno></I></FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>If ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;linespec></FONT></FONT></I><FONT SIZE=+0>’
+specifies source lines, then there are several ways of writing them. Use
+the qualifier ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread <I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’
+with a breakpoint command to specify that you only want GDB to stop the
+program when a particular thread reaches this breakpoint. ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;threadno></FONT></FONT></I><FONT SIZE=+0>’
+is one of the numeric thread identifiers assigned by GDB, shown in the
+first column of the ‘info threads’ display.</FONT>
+
+<P><FONT SIZE=+0>If you do not specify ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ when you set a breakpoint,
+the breakpoint applies to all threads of your program.</FONT>
+
+<P><FONT SIZE=+0>You can use the thread qualifier on conditional breakpoints
+as well; in this case, place ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>thread
+<I>&lt;threadno></I></FONT></FONT><FONT SIZE=+0>’ before the breakpoint
+condition, as the following example shows.</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>(gdb</B>) break
+frik.c:13 thread 28 if bartab > lim</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>Whenever your program stops under GDB for any reason, all
+threads of execution stop; not just the current thread. This allows you
+to examine the overall state of the program, including switching between
+threads, without worrying that things may change.</FONT>
+
+<P><FONT SIZE=+0>Conversely, whenever you restart the program, all threads
+start executing. This is true even when single stepping with commands like
+‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>step</FONT></FONT><FONT SIZE=+0>’
+or ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>next</FONT></FONT><FONT SIZE=+0>’.
+In particular, GDB cannot single-step all threads in lockstep. Since thread
+scheduling is up to your debugging target’s operating system (not controlled
+by GDB), other threads may execute more than one statement while the current
+thread completes a single step. In general other threads stop in the middle
+of a statement, rather than at a clean statement boundary, when the program
+stops.</FONT>
+
+<P><FONT SIZE=+0>You might even find your program stopped in another thread
+after continuing or even single stepping. This happens whenever some other
+thread runs into a breakpoint, a signal, or an exception before the first
+thread completes whatever you requested.</FONT>
+
+<P><B><FONT SIZE=+2>&nbsp;</FONT></B></DIR>
+</DIR>
+<A NAME="_Toc414871787"></A><A NAME="_Toc434049301"></A><B><FONT SIZE=+2>Simulator</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>The GNUPro simulator allows execution of a program compiled
+for the PowerPC target CPU on any supported host computer. It includes
+a simulator module for the target CPU instruction set, memory, and may
+also include simulated peripheral devices such as serial I/O and timers.
+Altogether, these features allow developers to test their PowerPC programs,
+without need for an actual board with that CPU.</FONT>
+
+<P><FONT SIZE=+0>The PowerPC simulator is capable of matching the instruction
+timing characteristics of different PowerPC CPUs, and can provide detailed
+instruction dispatch and cache profiling information. This can be handy
+for performance analysis, but is not necessary for simply testing eCos
+programs.</FONT>
+
+<P><FONT SIZE=+0>The simulator can also model devices, which will eventually
+allow eCos programs compiled for hardware targets to be run on the simulator.
+This is already possible to do on the simulators for the two other eCos
+target CPUs, but no devices have been defined for the PowerPC simulator
+in this release.</FONT></DIR>
+</DIR>
+<A NAME="_Toc433446046"></A><A NAME="_Toc434049302"></A><B><FONT SIZE=+1>Features</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The PowerPC simulator includes support for 32, 32-bit
+general-purpose registers and 32, 32-bit floating-point registers, as well
+as most special purpose registers.</FONT>
+
+<P><FONT SIZE=+0>The current release of eCos only supports the Motorola
+MPC860, which does not contain floating-point registers, so these registers
+are not currently used.</FONT>
+
+<P><FONT SIZE=+0>The user program is provided with a single block of memory
+at address ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>0x00000000</FONT></FONT><FONT SIZE=+0>’.
+The default size of this block is 1MB, but another size can be specified
+at simulator startup.</FONT></DIR>
+</DIR>
+<A NAME="_Toc414871788"></A><A NAME="_Toc433446047"></A>
+
+<P><A NAME="_Toc434049303"></A><B><FONT SIZE=+1>Simulator-specific command
+line options</FONT></B>
+<BR>&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>Running eCos programs only requires one particular option:</FONT>
+<BR>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-o '/iobus/pal@0xf0001000/reg
+0xf0001000 32'</FONT></FONT>
+<DIR>&nbsp;<FONT SIZE=+0>This simulator option defines an IO port in the
+simulator memory space which is used by eCos for console output. Pretty
+much like a serial port if you will, except that the simulator feeds any
+characters written on this IO port to stdout.</FONT>
+<BR>&nbsp;
+<BR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>C:\> </B>powerpc-eabi-run
+-o '/iobus/pal@0xf0001000/reg 0xf0001000 32' hello</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Hello, eCos world!</FONT></FONT></B>
+<BR>&nbsp;</DIR>
+<FONT FACE="Courier New,Courier"><FONT SIZE=-1>-f <I>&lt;file></I></FONT></FONT>
+<DIR><FONT SIZE=+0>Merge ‘</FONT><I><FONT FACE="Courier New"><FONT SIZE=-1>&lt;file></FONT></FONT></I><FONT SIZE=+0>’
+into the device tree. Use this as an alternative way to specify the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>-o</FONT></FONT><FONT SIZE=+0>’
+option. For example in eCos, using the supplied file ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>BASE_DIR/hal/powerpc/sim/v1_1/runtime/tree</FONT></FONT><FONT SIZE=+0>’
+as an argument.</FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>The following general options, are supported by the simulator:</FONT>
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1>--help</FONT></FONT>
+<DIR><FONT SIZE=+0>Here is a list of the PowerPC-specific options, as printed
+by ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>--help</FONT></FONT><FONT SIZE=+0>’:</FONT>
+<BR>&nbsp;
+
+<P><FONT FACE="Courier New,Courier"><FONT SIZE=-1><B>C:\> </B>powerpc-eabi-run
+-–help</FONT></FONT>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Usage:</FONT></FONT></B>
+<DIR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>psim [ &lt;psim-option>
+... ] &lt;image> [ &lt;image-arg> ... ]</FONT></FONT></B></DIR>
+<B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>Where</FONT></FONT></B>
+<DIR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&lt;image> Name
+of the PowerPC program to run.</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&lt;image-arg> Argument
+to be passed to &lt;image></FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>&lt;psim-option>
+See below</FONT></FONT></B></DIR>
+<B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>The following are valid
+&lt;psim-option>s:</FONT></FONT></B>
+<DIR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-c &lt;count> Limit
+the simulation to &lt;count> iterations</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-i or -i2 Print instruction
+counting statistics</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-I Print execution
+unit statistics</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-e &lt;os-emul> specify
+an OS or platform to model</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-E &lt;endian> Specify
+the endianness of the target</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-f &lt;file> Merge
+&lt;file> into the device tree</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-h -? -H give more
+detailed usage</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-m &lt;model> Specify
+the processor to model (604)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-n &lt;nr-smp> Specify
+the number of processors in SMP simulations</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-o &lt;dev-spec>
+Add device &lt;dev-spec> to the device tree</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-r &lt;ram-size>
+Set RAM size in bytes (OEA environments)</FONT></FONT></B>
+<BR><B><FONT FACE="Courier New,Courier"><FONT SIZE=-1>-t [!]&lt;trace>
+Enable (disable) &lt;trace> option</FONT></FONT></B></DIR>
+</DIR>
+</DIR>
+</DIR>
+<FONT SIZE=+0>&nbsp;</FONT>
+
+<P><A NAME="_Toc433446048"></A><A NAME="_Toc434049304"></A><B><FONT SIZE=+1>Using
+the simulator</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>An eCos program is normally built with a particular
+"download method" in mind, that is, the means by which the program is to
+be ultimately loaded into the target hardware. Use the configuration options
+in eCos’s Hardware Abstraction Layer (HAL) package to support the different
+download methods. The following table summarizes the ways in which an eCos
+image can be prepared for different types of download.</FONT>
+
+<P><FONT SIZE=+0>HAL configuration, for various download methods</FONT></DIR>
+</DIR>
+&nbsp;
+<CENTER><TABLE BORDER CELLPADDING=7 WIDTH="439" >
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><B><FONT SIZE=+0>Download method</FONT></B></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><B><FONT SIZE=+0>HAL configuration</FONT></B></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Burn hardware ROM</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>ROM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to ROM emulator</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>ROM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to board
+with GDB stub</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>RAM startup</FONT></TD>
+</TR>
+
+<TR>
+<TD VALIGN=TOP WIDTH="62%" HEIGHT="21"><FONT SIZE=+0>Download to simulator
+ignoring devices</FONT></TD>
+
+<TD VALIGN=TOP WIDTH="38%" HEIGHT="21"><FONT SIZE=+0>SIM configuration</FONT></TD>
+</TR>
+</TABLE></CENTER>
+&nbsp;
+<DIR>
+<DIR><FONT SIZE=+0>The debugging environment for most developers will be
+either a<B> </B>hardware board with GDB stubs, or the simulator, in which
+case the developer will be<B> </B>able to select a single HAL configuration
+(RAM startup for the board,<B> </B>SIM configuration for the simulator).</FONT>
+
+<P><FONT SIZE=+0>Simulator clocks and timers sometimes appear to be running
+very slowly, even when there are apparently no active threads. Delays that
+should only be in seconds can run to minutes. These delays occur because
+the eCos kernel idle thread is running intensively, and the simulator emulates
+it faithfully. With the SIM configuration, however, the eCos kernel realizes
+it is in a simulated environment, and can therefore adjust the clock settings
+to be more realistic.</FONT>
+
+<P><FONT SIZE=+0>For further information on the PowerPC PSIM simulator,
+please refer to</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New,Courier"><FONT SIZE=-1><A HREF="http://sourceware.cygnus.com/psim/">http://sourceware.cygnus.com/psim/</A></FONT></FONT>
+
+<P>&nbsp;</DIR>
+</DIR>
+</DIR>
+<A NAME="_Toc434049305"></A><B><FONT SIZE=+1>Simulator exceptions within
+GDB</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><FONT SIZE=+0>If you invoke the simulator within GDB, using the ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>target
+sim</FONT></FONT><FONT SIZE=+0>’ command, you may encounter some ambiguities
+when processing signals and exceptions. When an exception is raised in
+the simulator, GDB does not known whether the simulated program is intended
+to handle the exception, or if GDB is intended to handle it.</FONT>
+
+<P><FONT SIZE=+0>For example, suppose you are debugging a ROM monitor in
+the simulator invoked from GDB (we’ll call this GDB1), and you have downloaded
+an application to it from a second GDB session (which we will call GDB2).
+The second GDB session, GDB2, would simply consider the simulated target
+as a remote target and nothing more. Now suppose that in GDB2 you set a
+breakpoint in the program. The breakpoint will be physically set in GDB1.
+So when the breakpoint is reached, instead of the breakpoint being handled
+by the ROM monitor as if it was a real target, the breakpoint will be interpreted
+by GDB1 as if you had asked GDB1 to set a breakpoint in the ROM monitor
+code. This may not be your desired intention. To solve this, you can tell
+GDB1 not to process breakpoints itself, but to let the simulated target
+process them.</FONT>
+
+<P><FONT SIZE=+0>To do this, use the following command:</FONT>
+<BR>&nbsp;
+<DIR><FONT FACE="Courier New"><FONT SIZE=-1>handle SIGxxxx pass nostop
+noprint</FONT></FONT>
+<BR>&nbsp;</DIR>
+<FONT SIZE=+0>where ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>SIGxxxx</FONT></FONT><FONT SIZE=+0>’
+is one of the signals listed by GDB when you use the</FONT>
+<BR><FONT SIZE=+0>‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>info handle</FONT></FONT><FONT SIZE=+0>’
+command to the GDB console prompt.</FONT>
+
+<P><FONT SIZE=+0>For example the command ‘</FONT><FONT FACE="Courier New"><FONT SIZE=-1>handle
+SIGTRAP pass nostop noprint</FONT></FONT><FONT SIZE=+0>’ tells GDB to not
+stop the simulated target at a breakpoint, or even to print that it has
+been stopped. Instead, the command tells GDB to pass the information back
+to the program. You can modify the command to use with other signals and
+exceptions.</FONT>
+
+<P><FONT SIZE=+0>Note: if you use the aforementioned command, you will
+no longer be able to set breakpoints in the ROM monitor code (as in the
+example). You may be able to work around this problem by using conditional
+breakpoints. Please consult the GDB manual on how to use conditional-breakpoints.</FONT>
+
+<P><FONT SIZE=+0>The ambiguities discussed in this section are not a problem
+when you are using the standalone simulator. In such a case, the standalone
+simulator is the only target program that can handle the exception.</FONT>
+
+<P><FONT SIZE=+0>&nbsp;</FONT></DIR>
+</DIR>
+<A NAME="_Toc434049306"></A><B><FONT SIZE=+3>Appendix A:</FONT></B> <B><FONT SIZE=+3>Bibliography</FONT></B>
+<BR>
+<HR WIDTH="100%">
+<DIR>
+<DIR><B><I><FONT SIZE=+0>The PowerPC (tm) Architecture:A SPECIFICATION
+FOR A NEW FAMILIY OF RISC PROCESSORS</FONT></I></B>
+<BR>(Published by Morgan Kaufmann Publishers, Inc. San Francisco, California
+ISBN 1-55860-316-6 PB)
+
+<P><B><I>PowerPC (tm) Microprocessor Family:The Programming Environments</I></B>
+<BR>(Published by both IBM (MPRPPCFPE-01) and Motorola (MPCFPE/AD))
+
+<P><B><I>Getting Started with eCos</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>eCos User Guides</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>eCos Reference Manual</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>Getting Started with GNUPro Toolkit</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Compiler Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Debugging Tools</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Libraries</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Utilities</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Advanced Topics</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>GNUPro Tools for Embedded Systems</I></B>
+<BR>(Sunnyvale: Cygnus Solutions, 1998)
+
+<P><B><I>System V Application Binary Interface</I></B>
+<BR>(Prentice Hall, 1990)
+
+<P><B>&nbsp;</B>
+
+<P><B>&nbsp;</B></DIR>
+</DIR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,204 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Thread safety</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: Math Library"
+HREF="package-cygpkg-libm.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: Math Library"
+HREF="package-cygpkg-libm.html"><LINK
+REL="NEXT"
+TITLE="Component: Tracing output levels in Math library"
+HREF="component-cygpkg-libm-trace.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="package-cygpkg-libm.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 17. Package: Math Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libm-trace.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-LIBM-THREAD-SAFETY"
+>Component: Thread safety</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBM_THREAD_SAFETY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option controls whether the C library has support for thread
+safe operation in general. This requires eCos kernel support for per-thread
+data, and adjustment of the stack limit.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBM-THREAD-SAFE-COMPAT-MODE"
+>Option: Compatibility mode setting</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBM_THREAD_SAFE_COMPAT_MODE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option makes the setting of the compatiblity mode be a per-thread
+property. This directly implies that it also becomes thread-safe.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-LIBM-THREAD-SAFE-GAMMA-FUNCTIONS"
+>Option: gamma() and lgamma()</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBM_THREAD_SAFE_GAMMA_FUNCTIONS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option makes the gamma() and lgamma() functions be thread-safe.
+Note that these functions are identical - they take the log of the
+absolute value of their argument. The sign of the argument is stored
+in a variable called signgam. Enabling this option makes signgam a
+per-thread variable. Note there are also gamma_r() and lgamma_r()
+alternatives that allow signgam to be passed in by reference as an
+argument.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libm.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libm-trace.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: Math Library</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libm.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Tracing output levels in Math library</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Managing request queues</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Philosophy of device drivers"
+HREF="philosophy-of-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="Philosophy of device drivers"
+HREF="philosophy-of-device-drivers.html"><LINK
+REL="NEXT"
+TITLE="Connecting to standard I/O"
+HREF="connecting-to-standard-i-o.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="philosophy-of-device-drivers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 7. Philosophy of device drivers</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="connecting-to-standard-i-o.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="MANAGING-REQUEST-QUEUES"
+>Managing request queues</A
+></H1
+><P
+>	  Some programmers will write more sophisticated device
+	  drivers which must handle requests from several tasks, and
+	  manage a queue of requests.</P
+><P
+>	  In <I
+CLASS="EMPHASIS"
+>time sharing</I
+> systems the kernel
+	  handles the request queue, and this involves dynamic memory
+	  allocation or pre-allocation of large buffers by the kernel.
+	  In a small-footprint real-time operating system, this queue
+	  management should be done by user tasks and not by the
+	  kernel, which is why in the next chapter we propose a
+	  formalism for <I
+CLASS="FIRSTTERM"
+>Input Output Request
+	    Blocks</I
+>
+	  (<I
+CLASS="FIRSTTERM"
+><SPAN
+CLASS="ACRONYM"
+>IORB</SPAN
+></I
+>s), in which
+	  a user task prepares a request block (with all space
+	  allocated) and passes it to the device driver API.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="philosophy-of-device-drivers.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="connecting-to-standard-i-o.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Philosophy of device drivers</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="philosophy-of-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Connecting to standard I/O</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

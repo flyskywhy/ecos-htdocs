@@ -1,0 +1,278 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Notation and conventions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="Release Notes"
+HREF="release-notes.html"><LINK
+REL="NEXT"
+TITLE="Overview of the release"
+HREF="overview-of-the-release.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="release-notes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="overview-of-the-release.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="NOTATION-AND-CONVENTIONS-IN-THIS-MANUAL"
+>Chapter 1. Notation and conventions</A
+></H1
+><P
+>	Since the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> development environment can run on both
+	Windows and UNIX, and since there are three supported target
+	architectures (MN10300, TX39, and PowerPC), we will use 
+        some notation conventions to avoid repeating instructions which are
+	very similar to each other.
+       </P
+><P
+></P
+><UL
+><LI
+><P
+>	    Cross-development commands like <B
+CLASS="COMMAND"
+>gcc</B
+> and
+	    <B
+CLASS="COMMAND"
+>gdb</B
+> are prefixed with information about
+	    the platform for which you are cross-compiling.  For
+	    example, <B
+CLASS="COMMAND"
+>gcc</B
+> for the MN10300 is invoked
+	    as <B
+CLASS="COMMAND"
+>mn10300-elf-gcc</B
+>; for the TX39,
+	    <B
+CLASS="COMMAND"
+>gcc</B
+> is invoked as
+	    <B
+CLASS="COMMAND"
+>mips-tx39-elf-gcc</B
+>; and for the PowerPC
+	    it is <B
+CLASS="COMMAND"
+>powerpc-eabi-gcc</B
+>. The same is
+	    true for <B
+CLASS="COMMAND"
+>gdb</B
+>: the commands are
+	    <B
+CLASS="COMMAND"
+>mn10300-elf-gdb</B
+>,
+	    <B
+CLASS="COMMAND"
+>mips-tx39-elf-gdb</B
+>, and
+	    <B
+CLASS="COMMAND"
+>powerpc-eabi-gdb</B
+>.</P
+><P
+>	     When you see examples that invoke <B
+CLASS="COMMAND"
+>gcc</B
+>
+	     and <B
+CLASS="COMMAND"
+>gdb</B
+> you should
+	     add the appropriate prefix for the architecture you are
+	     using.
+	   </P
+></LI
+><LI
+><P
+>	    The default directory for installing <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> on Windows
+	    (usually <TT
+CLASS="FILENAME"
+>C:\Program Files\Cygnus
+	      Solutions\eCos</TT
+>) is different from that on
+	    UNIX (usually
+	    <TT
+CLASS="FILENAME"
+>/usr/local/ecos-1.1</TT
+>). Since
+	    many command line examples in the tutorials use these
+	    paths, the base directory will be shown as
+	    <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>.</P
+></LI
+><LI
+><P
+>	  Windows and UNIX have similar file system syntax, but the
+	  MS-DOS command interpreter on Windows uses the backslash
+	  character (<B
+CLASS="KEYCAP"
+>\</B
+>) as a path separator, while
+	  UNIX and POSIX shells use the forward slash
+	  (<B
+CLASS="KEYCAP"
+>/</B
+>).</P
+><P
+>	  This document will use the POSIX shell convention of forward
+	  slashes.
+	</P
+></LI
+><LI
+><P
+>	  The <SPAN
+CLASS="APPLICATION"
+>GCC</SPAN
+> cross compiler generates
+	  executable files with the <TT
+CLASS="FILENAME"
+>.exe</TT
+> suffix on
+	  Windows, but not on UNIX.</P
+><P
+>	  We will omit the <TT
+CLASS="FILENAME"
+>.exe</TT
+> suffix in
+	  executable file names.  For example: we will write
+	  <TT
+CLASS="FILENAME"
+>hello</TT
+> instead of
+	  <TT
+CLASS="FILENAME"
+>hello.exe</TT
+>.
+	</P
+></LI
+></UL
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="overview-of-the-release.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Release Notes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Overview of the release</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

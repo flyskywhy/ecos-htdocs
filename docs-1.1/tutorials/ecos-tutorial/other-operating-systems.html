@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>µITRON and other operating systems</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Overview of the release"
+HREF="overview-of-the-release.html"><LINK
+REL="PREVIOUS"
+TITLE="Configurability"
+HREF="configurability.html"><LINK
+REL="NEXT"
+TITLE="ISO C library"
+HREF="iso-c-library-1.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="configurability.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Overview of the release</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="iso-c-library-1.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="OTHER-OPERATING-SYSTEMS"
+>µITRON and other operating systems</A
+></H1
+><P
+>	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s configurability is the key to implementing
+	  different operating systems as compatibility layers on top
+	  of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s kernel. This is because the semantics of basic
+	  kernel functions can be configured to match the semantics of
+	  other operating systems.</P
+><P
+>	  We have already implemented the µITRON operating system
+	  specification on top of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.  µITRON is configured by
+	  selecting appropriate options in the kernel (a real-time
+	  clock, the mlqueue scheduler, and no timeslicing), and
+	  writing a thin layer to map the µITRON system calls.</P
+><P
+>	  Our µITRON port implements the complete µITRON 3.02
+	  &#8220;Standard functionality&#8221; (level S)
+	  specification, as well as some of the &#8220;Extended&#8221;
+	  (level E) functions.  The µITRON implementation is described
+	  in more detail in the <I
+CLASS="CITETITLE"
+>eCos Reference
+	    Manual</I
+>.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="configurability.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="iso-c-library-1.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Configurability</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="overview-of-the-release.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>ISO C library</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

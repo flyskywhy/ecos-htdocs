@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Variable-Size Memorypools </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos µITRON Compatibility Layer"
+HREF="package-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Fixed-Size Memorypools "
+HREF="component-cygpkg-uitron-mempoolfixed.html"><LINK
+REL="NEXT"
+TITLE="Component: Alarm Handlers"
+HREF="component-cygpkg-uitron-alarms.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-mempoolfixed.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: eCos µITRON Compatibility Layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-alarms.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-MEMPOOLVAR"
+>Component: Variable-Size Memorypools</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_MEMPOOLVAR</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>µITRON supports memory pools for dynamic, task-safe memory allocation.
+Two kinds are supported, fixed-size and variable-size. There may be
+multiple of each type of pool, each with differing characteristics.
+This option controls whether there are any variable-size memorypools
+in the system. A variable-size memorypool allocates blocks of memory
+of any size requested, resources permitting.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGNUM-UITRON-MEMPOOLVAR"
+>Option: Number of variable-size memory pools</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_MEMPOOLVAR</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of µITRON Variable-Size Memorypools present in the system.
+Valid Variable-Size Memorypool IDs will range from 1 to this value.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-MEMPOOLVAR-CREATE-DELETE"
+>Component: Support create and delete</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_MEMPOOLVAR_CREATE_DELETE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Support variable-size memory pool create and delete operations (cre_mpl,
+del_mpl). Otherwise all variable-size mempools are created, up to
+the number specified above.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-UITRON-MEMPOOLVAR-INITIALLY"
+>Option: Number of variable-size mempools created initially</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_MEMPOOLVAR_INITIALLY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of variable-size mempools initially created. This number
+should not be more than the number of variable mempools in the system,
+though setting it to a large value to mean 'all' is acceptable. Initially,
+only variable mempools numbered from 1 to this number exist; higher
+numbered ones must be created before use. All mempools must be initialized
+to tell the system what memory to use for each pool.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGDAT-UITRON-MEMPOOLVAR-EXTERNS"
+>Option: Externs for initialization</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_UITRON_MEMPOOLVAR_EXTERNS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Multiline</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Variable mempool initializers may refer to external objects such as
+memory for the pool to manage. Use this option to define or declare
+any external objects needed by the pool's static initializer below.
+Example: create some memory for a mempool using 'static char vpool1[2000];'
+to set up a chunk of memory of 2000 bytes. Note: this option is invoked
+in the 'outermost' context of C++ source, where global/static objects
+are created; it should contain valid, self-contained, C++ source.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGDAT-UITRON-MEMPOOLVAR-INITIALIZERS"
+>Option: Static initializers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_UITRON_MEMPOOLVAR_INITIALIZERS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Multiline</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Variable block memory pools should be statically initialized: enter
+a list of initializers separated by commas, one per line. An initializer
+is 'CYG_UIT_MEMPOOLVAR(ADDR,SIZE)' where addr is the address of memory
+to manage, and size is the total size of that memory. If create and
+delete operations are supported, initializers of the form 'CYG_UIT_MEMPOOLVAR_NOEXS(ADDR,SIZE)'
+should be used for pools which are not initially created, to tell
+the system what memory to use for each pool. Note: this option is
+invoked in the context of a C++ array initializer, between curly brackets.
+Ensure that the number of initializers here exactly matches the total
+number of variable pools specified.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-mempoolfixed.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-alarms.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Fixed-Size Memorypools</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Alarm Handlers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>eCos kernel overview</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Preliminaries"
+HREF="preliminaries.html"><LINK
+REL="PREVIOUS"
+TITLE="Preliminaries"
+HREF="preliminaries.html"><LINK
+REL="NEXT"
+TITLE="Thread synchronization"
+HREF="thread-synchronization.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="preliminaries.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="thread-synchronization.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="ECOS-KERNEL-OVERVIEW"
+>Chapter 1. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel overview</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="ecos-kernel-overview.html#THE-SCHEDULER"
+>The scheduler</A
+></DT
+><DT
+><A
+HREF="thread-synchronization.html"
+>Thread synchronization</A
+></DT
+><DT
+><A
+HREF="exceptions.html"
+>Exceptions</A
+></DT
+><DT
+><A
+HREF="interrupts.html"
+>Interrupts</A
+></DT
+><DT
+><A
+HREF="counters-clocks-alarms-and-timers.html"
+>Counters, clocks, alarms and timers</A
+></DT
+></DL
+></DIV
+><P
+>        This is an overview of the internal workings of the
+        <SPAN
+CLASS="PRODUCTNAME"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+></SPAN
+> kernel.
+      </P
+><H1
+CLASS="SECT1"
+><A
+NAME="THE-SCHEDULER"
+>The scheduler</A
+></H1
+><P
+>	  At the core of the kernel is the scheduler. This defines the
+	  way in which threads are run, and provides the mechanisms by
+	  which they may synchronize. It also controls the means by
+	  which interrupts affect thread execution.  No single
+	  scheduler can cover all possible system configurations.  For
+	  different purposes we will need to cover several scheduling
+	  polices.  In this release three schedulers are provided
+	  (described in more detail in <A
+HREF="kernel-source-files.html#SCHED-SUBDIRECTORY"
+>the section called <I
+>Sched subdirectory</I
+> in Chapter 2</A
+>):</P
+><P
+></P
+><UL
+><LI
+><P
+>	      a <I
+CLASS="FIRSTTERM"
+>bitmap scheduler</I
+>
+	    </P
+></LI
+><LI
+><P
+>	      a <I
+CLASS="FIRSTTERM"
+>multi-level queue scheduler</I
+>
+	    </P
+></LI
+><LI
+><P
+>	      a <I
+CLASS="FIRSTTERM"
+>lottery scheduler</I
+>
+	    </P
+></LI
+></UL
+><P
+>	  At present the system will only support a single scheduler
+	  at any one time. Future systems may allow multiple
+	  schedulers to co-exist, but this will be hidden behind the
+	  scheduler API in the current release.
+	</P
+><P
+>	  To make scheduling safe we need a mechanism to protect the
+	  scheduler data structures from concurrent  access. The
+	  traditional approach to this is to disable interrupts during
+	  the critical regions. Unfortunately this  increases the
+	  maximum interrupt dispatch latency, which is to be avoided
+	  in any real-time system.
+	</P
+><P
+>	  The mechanisms chosen for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is to maintain a counter,
+	Scheduler::sched_lock that, if non-zero, prevents  any
+	rescheduling. The current thread can claim the lock by calling
+	<TT
+CLASS="FUNCTION"
+><B
+>Scheduler::lock()</B
+></TT
+>. This increments the
+	counter and prevents any further scheduling. The function
+	<TT
+CLASS="FUNCTION"
+><B
+>Scheduler::unlock()</B
+></TT
+> decrements the
+	counter and if  it returns to zero, allows scheduling to
+	continue.
+	</P
+><P
+>	  For this to work in the presence of interrupts, it is
+	  necessary for the interrupt service routines (ISRs) to defer
+	  any scheduler-oriented operations until the lock is about to
+	  go zero. We do this by splitting the work of an ISR into two
+	  parts, with  the second part, the Deferred Service Routine
+	  (<SPAN
+CLASS="ACRONYM"
+>DSR</SPAN
+>), being queued until the scheduler
+	  decides it is safe to  run. This is covered in more detail
+	  in <A
+HREF="interrupts.html"
+>the section called <I
+>Interrupts</I
+></A
+> and <A
+HREF="interrupt-and-exception-handlers.html"
+>the section called <I
+>Interrupt and exception handlers</I
+> in Chapter 3</A
+>.
+	</P
+><P
+>	  On a uni-processor, <TT
+CLASS="FUNCTION"
+><B
+>Scheduler::lock()</B
+></TT
+>
+	  is a simple increment of Scheduler::sched_lock. It does not
+	  need to be  a read-modify-write cycle since the lock is
+	  strictly nested. The mere fact that the current thread is
+	  running implies that the lock has not been claimed by
+	  another thread, so it is always claimable.
+	</P
+><P
+>	  <TT
+CLASS="FUNCTION"
+><B
+>Scheduler::unlock()</B
+></TT
+> is generic to all
+	  scheduler implementations.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="preliminaries.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="thread-synchronization.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Preliminaries</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="preliminaries.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Thread synchronization</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

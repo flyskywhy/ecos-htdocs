@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Compiler and linker options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="eCos Programming Concepts and Techniques"
+HREF="programming-concepts-and-techniques.html"><LINK
+REL="PREVIOUS"
+TITLE="Application build tree"
+HREF="application-build-tree.html"><LINK
+REL="NEXT"
+TITLE="Compiling a C++ application"
+HREF="compiling-a-cxx-application.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="application-build-tree.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="compiling-a-cxx-application.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="COMPILER-AND-LINKER-OPTIONS"
+>Chapter 6. Compiler and linker options</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="compiler-and-linker-options.html#COMPILING-A-C-APPLICATION"
+>Compiling a C application</A
+></DT
+><DT
+><A
+HREF="compiling-a-cxx-application.html"
+>Compiling a C++ application</A
+></DT
+></DL
+></DIV
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is built using the GNU C and C++ compilers.  The
+	  versions of the tools Cygnus has prepared for this release
+	  have some enhancements, such as constructor priority ordering
+	  and selective linking, which will eventually become part
+	  of the standard distribution.
+	</P
+><P
+>	  Some <SPAN
+CLASS="APPLICATION"
+>GCC</SPAN
+> options are required for
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, and others can be useful.  This guide gives a brief
+	  description of the required options as well as some
+	  recommended <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>-specific options.  All other
+	  <SPAN
+CLASS="APPLICATION"
+>GCC</SPAN
+> options described in the
+	  <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> manuals are still
+	  available.
+	</P
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPILING-A-C-APPLICATION"
+>Compiling a C application</A
+></H1
+><P
+>	    The following command lines demonstrate the
+	    <I
+CLASS="EMPHASIS"
+>minimum</I
+> set of options required to
+	    compile and link an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> program written in C.  Remember
+	    that when this manual shows <B
+CLASS="COMMAND"
+>gcc</B
+> you
+	    should type the full name of the cross compiler:
+	    <B
+CLASS="COMMAND"
+>mn10300-elf-gcc</B
+>,  
+	    <B
+CLASS="COMMAND"
+>mips-tx39-elf-gcc</B
+>,  or
+	    <B
+CLASS="COMMAND"
+>powerpc-eabi-gcc</B
+>.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>gcc -c  -I<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/include -fno-rtti -fno-exceptions file.cxx</B
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>gcc -o program file.o -L<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/lib -Ttarget.ld -nostdlib</B
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	    The following command lines use some other options which are
+	    recommended because they use the selective linking feature:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>gcc -c  -I<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/include -I. -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -g -O2 file.cxx</B
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>gcc -o program file.o -ffunction-sections -fdata-sections -Wl,--gc-sections -g -O2 -L<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/lib -Ttarget.ld -nostdlib</B
+></PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="application-build-tree.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="compiling-a-cxx-application.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Application build tree</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="programming-concepts-and-techniques.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Compiling a C++ application</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

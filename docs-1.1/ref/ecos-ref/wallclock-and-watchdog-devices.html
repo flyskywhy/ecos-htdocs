@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Wallclock and watchdog devices</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Device Drivers"
+HREF="ecos-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="The system calls"
+HREF="serial-device-driver-c-api3670.html"><LINK
+REL="NEXT"
+TITLE="Watchdog device"
+HREF="watchdog-device.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="serial-device-driver-c-api3670.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="watchdog-device.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="WALLCLOCK-AND-WATCHDOG-DEVICES"
+>Chapter 10. Wallclock and watchdog devices</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="wallclock-and-watchdog-devices.html#WALLCLOCK-DEVICE"
+>Wallclock device</A
+></DT
+><DT
+><A
+HREF="watchdog-device.html"
+>Watchdog device</A
+></DT
+></DL
+></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="WALLCLOCK-DEVICE"
+>Wallclock device</A
+></H1
+><P
+>	  The wallclock device provides real time stamps, as opposed
+	  to the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel timers which typically just count the
+	  number of clock ticks since the hardware was powered up.
+	  Depending on the target platform this device may involve
+	  interacting with a suitable clock chip, or it may be
+	  emulated by using the kernel timers.
+	</P
+><P
+>	  This device maintains a standard UNIX style timestamp
+	  consisting of a count of seconds since an epoch. The
+	  conventional UNIX epoch is 1970-1-1 00:00, but any base time
+	  may be used.
+	</P
+><P
+>	  At present the Wallclock device is emulated by using the
+	  kernel real-time clock with an initial epoch of the system
+	  startup time. In future systems, where CMOS clocks or the
+	  equivalent hardware are available, it will make use of this
+	  to track the passage of time.
+	</P
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN3789"
+><TT
+CLASS="CLASSNAME"
+>Cyg_WallClock</TT
+> class</A
+></H2
+><P
+>	    The wallclock device is implemented in C++ by the class
+	    <TT
+CLASS="CLASSNAME"
+>Cyg_WallClock</TT
+>. It has the following
+	    class members.
+	  </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3794"
+>Cyg_WallClock::get_current_time(void)</A
+></H3
+><P
+>	    This returns the current value of the timestamp.</P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3797"
+>Cyg_WallClock::set_current_time(cyg_uint32 time_stamp)</A
+></H3
+><P
+>	    This sets the internal timestamp for the current second.
+	    Setting it to zero makes the point at which it was called
+	    the epoch. Setting it to some non-zero value establishes
+	    the epoch to be <TT
+CLASS="PARAMETER"
+><I
+>time_stamp</I
+></TT
+> seconds
+	    in the past.
+	  </P
+><P
+>	    In the absence of underlying hardware to provide a time
+	    base, the Wallclock device can only track real-time if
+	    this function is called with a real-time value derived
+	    from elsewhere (i.e. user input, network time protocol
+	    etc.).
+	  </P
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN3802"
+>Cyg_WallClock::wallclock</A
+></H3
+><P
+>	      This is a static pointer to the single instance of
+	      the Wallclock  device.
+	    </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="serial-device-driver-c-api3670.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="watchdog-device.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The system calls</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Watchdog device</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

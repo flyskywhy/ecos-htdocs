@@ -1,0 +1,338 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Using the simulator</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="A note on testing"
+HREF="a-note-on-testing.html"><LINK
+REL="NEXT"
+TITLE="Known limitations in the eCos version 1.1 release"
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="a-note-on-testing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="A-NOTE-ON-USING-THE-SIMULATOR"
+>Chapter 7. Using the simulator</A
+></H1
+><P
+>	There are various ways to download an executable image to a
+	target board, and these involve different ways of preparing
+	the executable image.  There are configuration options in
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s Hardware Abstraction Layer (HAL package) to support
+	the different download methods.  The following table
+	summarizes the ways in which an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> image can be prepared
+	for different types of download.
+      </P
+><DIV
+CLASS="TABLE"
+><P
+><B
+><A
+NAME="CONFIGURATION-FOR-VARIOUS-DOWNLOAD-METHODS"
+>Table 7-1. Configuration for various download methods</A
+></B
+></P
+><TABLE
+BORDER="1"
+CLASS="CALSTABLE"
+><TR
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download method</TH
+><TH
+ALIGN="LEFT"
+VALIGN="TOP"
+>HAL configuration</TH
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Burn hardware ROM</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to ROM emulator</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to board with <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>RAM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator without <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>ROM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator with <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>RAM startup</TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>Download to simulator ignoring devices</TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+>SIM configuration</TD
+></TR
+></TABLE
+></DIV
+><P
+></P
+><TABLE
+CLASS="CAUTION"
+BORDER="1"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="CENTER"
+><B
+>Caution</B
+></TD
+></TR
+><TR
+><TD
+ALIGN="LEFT"
+><P
+>	  You cannot run an application configured for RAM startup on the
+	  simulator directly: it will fail during startup. You can
+	  only download it to the simulator if you are already running
+	  <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> in the simulator, as
+	  described in the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> documentation.
+	</P
+></TD
+></TR
+></TABLE
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	  Configuring <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>'s HAL package for simulation should
+	  rarely be needed for real development: binaries built with
+	  such a kernel will not run on target boards at all, and the
+	  MN10300 and TX39 simulators can run binaries built for
+	  target boards.  The main use for a &#8220;simulation&#8221;
+	  configuration is if you are trying to work around problems
+	  with the device drivers or with the simulator.  Also note
+	  that when using a TX39 system configured for simulator
+	  startup you should then invoke the simulator with the
+	  <TT
+CLASS="OPTION"
+>--board=jmr3904pal</TT
+> option instead of
+	  <TT
+CLASS="OPTION"
+>--board=jmr3904</TT
+>.
+	</P
+></BLOCKQUOTE
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	  The PowerPC does not have <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> 
+	  support, so the combinations listed above that use 
+	  <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> do not apply.
+	</P
+></BLOCKQUOTE
+><P
+>	The debugging environment for most developers will be either a
+	hardware board or the simulator, in which case they will be
+	able to select a single HAL configuration (RAM startup for the
+	board, ROM startup for the simulator).</P
+><P
+>	More information on the interactions between
+	<SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>, the simulators, and
+	<SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>'s thread-aware debugging
+	features, please read the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> booklet with information
+	about the specific architecture.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="a-note-on-testing.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>A note on testing</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Known limitations in the eCos version 1.1 release</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

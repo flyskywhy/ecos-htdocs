@@ -1,0 +1,546 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Memory pool Management Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="µITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Interrupt management functions"
+HREF="interrupt-management-functions.html"><LINK
+REL="NEXT"
+TITLE="Time Management Functions"
+HREF="time-management-functions.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="interrupt-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="time-management-functions.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="MEMORY-POOL-MANAGEMENT-FUNCTIONS"
+>Memory pool Management Functions</A
+></H1
+><P
+>	These functions are fully supported in this release:
+      </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pget_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>tget_blf</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rel_blf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, VP <VAR
+CLASS="PDPARAM"
+>blf</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mpf</B
+></CODE
+>(T_RMPF *<VAR
+CLASS="PDPARAM"
+>pk_rmpf</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>get_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pget_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>tget_blk</B
+></CODE
+>(VP *<VAR
+CLASS="PDPARAM"
+>p_blk</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, INT <VAR
+CLASS="PDPARAM"
+>blksz</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rel_blk</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, VP <VAR
+CLASS="PDPARAM"
+>blk</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mpl</B
+></CODE
+>(T_RMPL *<VAR
+CLASS="PDPARAM"
+>pk_rmpl</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Note that of the memory provided for a particular pool to
+	  manage in the static initialization of the memory pool
+	  objects, some memory will be used to manage the pool itself.
+	  Therefore the number of blocks * the blocksize will be less
+	  than the total memory size.
+	</P
+><P
+>	  The following functions are supported in this release, if enabled
+	  with CYGPKG_UITRON_MEMPOOLVAR_CREATE_DELETE or
+	  CYGPKG_UITRON_MEMPOOLFIXED_CREATE_DELETE as appropriate,
+	  with some restrictions:
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mpl</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>, T_CMPL *<VAR
+CLASS="PDPARAM"
+>pk_cmpl</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mpl</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mplid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mpf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>, T_CMPF *<VAR
+CLASS="PDPARAM"
+>pk_cmpf</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mpf</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mpfid</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Because of the static initialization facilities provided for
+	  system objects, a memory pool is allocated a region of
+	  memory to manage statically in the configuration (see <A
+HREF="component-cygpkg-uitron-mempoolfixed.html"
+>the section called <I
+>Component: Fixed-Size Memorypools</I
+> in Chapter 15</A
+> and
+	  <A
+HREF="component-cygpkg-uitron-mempoolvar.html"
+>the section called <I
+>Component: Variable-Size Memorypools</I
+> in Chapter 15</A
+>).  So
+	  while memory pools can be created and deleted, the same area
+	  of memory is used for that memory pool (memory pool ID
+	  number) each time. The requested variable pool size
+	  (pk_cmpl-&#62;mplsz) or the number of fixed-size blocks
+	  (pk_cmpf-&#62;mpfcnt) times the block size (pk_cmpf-&#62;blfsz) are
+	  checked for fitting within the statically allocated memory
+	  area, so if a create call succeeds, the resulting pool will
+	  be at least as large as that requested. For this reason
+	  <TT
+CLASS="FUNCTION"
+><B
+>del_mpl()</B
+></TT
+> and
+	  <TT
+CLASS="FUNCTION"
+><B
+>del_mpf()</B
+></TT
+> do not in any sense free the
+	  memory that was managed by the deleted pool for use by other
+	  pools; it may only be managed by a pool of the same object
+	  id.
+	</P
+><P
+>	  For both fixed and variable memory pools, the queueing order
+	  when waiting on a synchronization object depends on the
+	  underlying kernel configuration. The multi-level queue
+	  scheduler is required for strict µITRON conformance and it
+	  queues tasks in FIFO order, so requests to create an object
+	  with priority queueing of tasks (pk_cxxx-&#62;xxxatr = TA_TPRI)
+	  are rejected with E_RSATR.  Additional undefined bits in the
+	  attributes fields must be zero.
+	</P
+><P
+>	  In general, extended information (pk_cxxx-&#62;exinf) is ignored.
+	</P
+><H2
+CLASS="BRIDGEHEAD"
+>Error checking</H2
+><P
+>The following conditions are only checked for, and only
+	  return errors if
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_UITRON_BAD_PARAMS_RETURN_ERRORS</I
+></TT
+> is enabled:</P
+><P
+></P
+><UL
+><LI
+><P
+>invalid object id; less than 1 or greater
+	      than
+	      <TT
+CLASS="PARAMETER"
+><I
+>CYGNUM_UITRON_MEMPOOLVAR/MEMPOOLFIXED</I
+></TT
+>
+	      as appropriate, or non-existent object, returns E_ID or
+	      E_NOEXS</P
+></LI
+><LI
+><P
+>	      dispatching is enabled in any call which can sleep, or
+	      E_CTX</P
+></LI
+><LI
+><P
+>	      tmout must be positive, otherwise E_PAR</P
+></LI
+><LI
+><P
+>	      pk_cxxx pointers in <TT
+CLASS="FUNCTION"
+><B
+>cre_xxx()</B
+></TT
+> must
+	      be valid pointer, or E_PAR</P
+></LI
+><LI
+><P
+>	      return value pointers in <TT
+CLASS="FUNCTION"
+><B
+>ref_xxx()</B
+></TT
+>
+	      is a valid pointer, or E_PAR</P
+></LI
+><LI
+><P
+>return value pointers in get block routines is a
+	      valid pointer, or E_PAR</P
+></LI
+><LI
+><P
+>blocksize request in get variable block routines is
+	      greater than zero, or E_PAR</P
+></LI
+></UL
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="interrupt-management-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="time-management-functions.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Interrupt management functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Time Management Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

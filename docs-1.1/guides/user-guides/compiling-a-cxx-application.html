@@ -1,0 +1,236 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Compiling a C++ application</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Compiler and linker options"
+HREF="compiler-and-linker-options.html"><LINK
+REL="PREVIOUS"
+TITLE="Compiler and linker options"
+HREF="compiler-and-linker-options.html"><LINK
+REL="NEXT"
+TITLE="Debugging techniques"
+HREF="debugging-techniques.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="compiler-and-linker-options.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. Compiler and linker options</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="debugging-techniques.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPILING-A-CXX-APPLICATION"
+>Compiling a C++ application</A
+></H1
+><P
+>	    The following command lines demonstrate the
+	    <I
+CLASS="EMPHASIS"
+>minimum</I
+> set of options required to
+	    compile and link an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> program written in C++.  Remember
+	    that when this manual shows <B
+CLASS="COMMAND"
+>g++</B
+> you
+	    should type the full name of the cross compiler:
+	    <B
+CLASS="COMMAND"
+>mn10300-elf-g++</B
+>,  
+	    <B
+CLASS="COMMAND"
+>mips-tx39-elf-g++</B
+>, or
+	    <B
+CLASS="COMMAND"
+>powerpc-eabi-g++</B
+>.
+	  </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>g++ -c  -I<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/include -fno-rtti -fno-exceptions file.cxx</B
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>g++ -o program file.o -L<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/lib -Ttarget.ld -nostdlib</B
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	    The following command lines use some other options which are
+	    recommended because they use the selective linking feature:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>g++ -c  -I<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/include -I. -ffunction-sections -fdata-sections -fno-rtti -fno-exceptions -fvtable-gc -finit-priority -g -O2 file.cxx</B
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><B
+CLASS="COMMAND"
+>g++ -o program file.o -ffunction-sections -fdata-sections -Wl,--gc-sections -g -O2 -L<TT
+CLASS="REPLACEABLE"
+><I
+>INSTALL_DIR</I
+></TT
+>/lib -Ttarget.ld -nostdlib</B
+></PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="compiler-and-linker-options.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="debugging-techniques.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Compiler and linker options</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="compiler-and-linker-options.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Debugging techniques</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

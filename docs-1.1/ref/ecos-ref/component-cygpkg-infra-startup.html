@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Startup options</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: Infrastructure"
+HREF="package-cygpkg-infra.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Asserts & Tracing"
+HREF="component-cygpkg-infra-debug.html"><LINK
+REL="NEXT"
+TITLE="Option: Smaller slower memcpy()"
+HREF="option-cygimp-infra-prefer-small-to-fast-memcpy.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-infra-debug.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Package: Infrastructure</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memcpy.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-INFRA-STARTUP"
+>Component: Startup options</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_INFRA_STARTUP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Some packages require a startup routine to be called. This can be
+carried out by application code, by supplying a routine called cyg_package_start()
+which calls the appropriate package startup routine(s). Alternatively,
+this routine can be constructed automatically and configured to call
+the startup routines of your choice.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-START-ISO-C-COMPATIBILITY"
+>Option: Start ISO C library</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_START_ISO_C_COMPATIBILITY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Generate a call to initialize the ISO C library (libc) within the
+system version of cyg_package_start(). This enables compatibility
+with ISO C, in particular in eCos it creates a thread that invokes
+the function main() which the user must supply. It does this by invoking
+the function cyg_iso_c_start(). If this is disabled, and you want
+to use the C library, you call cyg_iso_c_start() from your own cyg_package_start()
+or cyg_userstart().
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGSEM-START-UITRON-COMPATIBILITY"
+>Option: Start µITRON subsystem</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_START_UITRON_COMPATIBILITY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Generate a call to initialize the µITRON compatibility subsystem within
+the system version of cyg_package_start(). This enables compatibility
+with µITRON. You must configure µITRON with the correct tasks before
+starting the µITRON subsystem. If this is disabled, and you want to
+use µITRON, you must call cyg_uitron_start() from your own cyg_package_start()
+or cyg_userstart().
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-infra-debug.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="option-cygimp-infra-prefer-small-to-fast-memcpy.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Asserts &#38; Tracing</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-infra.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Option: Smaller slower memcpy()</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

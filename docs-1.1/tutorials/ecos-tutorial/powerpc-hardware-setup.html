@@ -1,0 +1,225 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>PowerPC hardware setup</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Hardware setup"
+HREF="hardware-setup.html"><LINK
+REL="PREVIOUS"
+TITLE="TX39 hardware setup"
+HREF="tx39-hardware-setup.html"><LINK
+REL="NEXT"
+TITLE="Verification"
+HREF="verification.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tx39-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 12. Hardware setup</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="POWERPC-HARDWARE-SETUP"
+>PowerPC hardware setup</A
+></H1
+><P
+>	  The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> package comes with an EPROM which provides GDB
+	  support for the Cogent CMA/286-60 MPC860 evaluation
+	  board. An image of this EPROM is also provided at
+	  <TT
+CLASS="FILENAME"
+>loaders/powerpc-cogent/gdbload.bin</TT
+>
+	  under the root of your <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> installation. The EPROM is
+	  installed to socket U4 on the board. Attention should be
+	  paid to the correct orientation of the EPROM during
+	  installation.
+	</P
+><P
+>	  If you are going to burn a new EPROM using the binary image,
+	  be careful to get the byte order correct. It needs to be
+	  big-endian. If the EPROM burner software has a hex-editor,
+	  check that the first few bytes of the image look like:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;00000000: 3c60 fff0 6063 2000 7c68 03a6 4e80 0020  &#60;`..`c .|h..N.. </PRE
+></TD
+></TR
+></TABLE
+><P
+>	  If the byte order is wrong you will see
+	  <I
+CLASS="EMPHASIS"
+>603c</I
+> instead of
+	  <I
+CLASS="EMPHASIS"
+>3c60</I
+> etc. Use the EPROM burner software
+	  to make a byte-swap before you burn to image to the EPROM.
+	</P
+><P
+>	  When you switch on the Cogent board with an eCos GDB stub
+	  EPROM installed, you should see the following text on the
+	  LCD:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;eCos ROM 03:40:1
+Oct 28 1998  </PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub in the EPROM allows
+	  communication with <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> using the
+	  serial port at connector P12. The communication parameters
+	  are fixed at 38400 baud, 8 data bits, no parity bit and 1
+	  stop bit (8-N-1). No flow control is employed. Connection to
+	  the host computer should be made using a dedicated serial
+	  cable as specified in the Cogent CMA manual.
+	</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	  On the Cogent CMA102 board, the serial connector used for GDB
+ 	  communication is called P3.</P
+></BLOCKQUOTE
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tx39-hardware-setup.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="verification.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>TX39 hardware setup</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Verification</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,226 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Eventflags</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos µITRON Compatibility Layer"
+HREF="package-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Mailboxes"
+HREF="component-cygpkg-uitron-mboxes.html"><LINK
+REL="NEXT"
+TITLE="Component: Tasks"
+HREF="component-cygpkg-uitron-tasks.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: eCos µITRON Compatibility Layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-FLAGS"
+>Component: Eventflags</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_FLAGS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>µITRON Eventflag objects are used with functions named xxx_flg();
+they support communication between tasks by means of setting and clearing
+bits in a word or flag value. Waiting for all or any of a set of bits
+is supported.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGNUM-UITRON-FLAGS"
+>Option: Number of event flags</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_FLAGS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of µITRON eventflag objects present in the system. Valid
+eventflag object IDs will range from 1 to this value.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-FLAGS-CREATE-DELETE"
+>Component: Support create and delete</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_FLAGS_CREATE_DELETE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Support eventflag create and delete operations (cre_flg, del_flg).
+Otherwise all eventflags are created, up to the number specified above.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-UITRON-FLAGS-INITIALLY"
+>Option: Number of eventflags created initially</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_FLAGS_INITIALLY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of µITRON eventflags initially created. This number should
+not be more than the number of eventflags in the system, though setting
+it to a large value to mean 'all' is acceptable. Initially, only eventflags
+numbered 1 to this number exist; higher numbered ones must be created
+before use.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Mailboxes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Tasks</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

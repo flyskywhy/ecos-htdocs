@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Exceptions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos kernel overview"
+HREF="ecos-kernel-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Thread synchronization"
+HREF="thread-synchronization.html"><LINK
+REL="NEXT"
+TITLE="Interrupts"
+HREF="interrupts.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="thread-synchronization.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="interrupts.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="EXCEPTIONS"
+>Exceptions</A
+></H1
+><P
+>	  An exception is a synchronous event caused by the execution
+	  of a thread. These include both the machine exceptions
+	  raised by hardware (such as divide-by-zero, memory fault and
+	  illegal instruction) and machine exceptions raised by
+	  software (such as deadline overrun). The standard C++
+	  exception mechanism is too expensive to use for this, and in
+	  any case has the wrong semantics for the exception handling
+	  in an RTOS.
+	</P
+><P
+>	  The simplest, and most flexible, mechanism for exception
+	  handling is to call a function. This function needs context
+	  in which to work, so access to some working data is
+	  required. The function may also need to be  handed some data
+	  about the exception raised: at least the exception number
+	  and some optional parameters.
+	</P
+><P
+>	  The exception handler receives a data argument which is a
+	  value that was registered with the handler and points to
+	  context information.  It also receives an exception_number
+	  which identifies the exception taken, and an error code which
+	  contains any additional information (such as a memory fault
+	  address) needed to handle the exception. Returning from the
+	  function will allow the thread to continue.
+	</P
+><P
+>	  Exception handlers may be either global or per-thread, or
+	  both, depending on configuration options. If exceptions are
+	  per-thread, it is necessary to have an exception handler
+	  attached to each thread.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="thread-synchronization.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="interrupts.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Thread synchronization</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-kernel-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Interrupts</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

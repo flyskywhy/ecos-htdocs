@@ -1,0 +1,328 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Standard utility functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C Library"
+HREF="package-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Option: Inline version of the longjmp() function"
+HREF="option-cygimp-libc-setjmp-inlines.html"><LINK
+REL="NEXT"
+TITLE="Component: Standard Input/Output functions"
+HREF="component-cygpkg-libc-stdio.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Package: C Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-LIBC-STDLIB"
+>Component: Standard utility functions</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_STDLIB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Options associated with the standard utility functions in &#60;stdlib.h&#62;
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGIMP-LIBC-STDLIB-INLINES"
+>Option: Inline versions of &#60;stdlib.h&#62; functions</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_LIBC_STDLIB_INLINES</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option chooses whether some of the particularly simple standard
+utility functions from &#60;stdlib.h&#62; are available as inline functions.
+This may improve performance, and as the functions are small, may
+even improve code size.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGPKG-LIBC-RAND"
+>Component: Provide rand() and srand()</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_RAND</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option chooses whether the pseudo-random number generator functions
+rand() and srand() are available. Some space may saved if not.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-LIBC-RAND-SEED"
+>Option: Random number seed</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_LIBC_RAND_SEED</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This selects the initial random number seed for rand()'s pseudo-random
+number generator. For strict ISO standard compliance, this should
+be 1, as per section 7.10.2.2 of the standard.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGPKG-LIBC-MALLOC"
+>Component: Support for dynamic memory allocation</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_MALLOC</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This enables support for dynamic memory allocation as supplied by
+the functions malloc(), free(), calloc() and realloc(). As these functions
+are often used, but can have quite an overhead, disabling them here
+can ensure they cannot even be used accidentally when static allocation
+is preferred.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-LIBC-MALLOC-MEMPOOL-SIZE"
+>Option: Size of the dynamic memory pool in bytes</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_LIBC_MALLOC_MEMPOOL_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>At this stage, dynamic memory allocation by malloc() and calloc()
+must be from a fixed-size, contiguous memory pool. This option is
+the size of that pool, in bytes. Note that not all of this is available
+for programs to use - some is needed for internal information about
+memory regions, and some may be lost to ensure that memory allocation
+only returns memory aligned on word (or double word) boundaries -
+a very common architecture constraint.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGIMP-LIBC-MALLOC-CXX-DELETE-CALLS-FREE"
+>Option: Support for C++ delete operator</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_LIBC_MALLOC_CXX_DELETE_CALLS_FREE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>C++ new and delete operators can call the C library's malloc() and
+free() implicitly. If this is what is required, enable this option.
+However, if enabled, the dynamic memory allocation code is always
+linked in to the application, even if it is not explicitly called
+and new/delete are not used. This increases code and data size needlessly.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGFUN-LIBC-STRTOD"
+>Option: Provides strtod() and atof()</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGFUN_LIBC_strtod</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option allows use of the utility function strtod() (and consequently
+atof()) to convert from string to double precision floating point
+numbers. Disabling this option removes the dependency on the math
+library package.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="option-cygimp-libc-setjmp-inlines.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-libc-stdio.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option: Inline version of the longjmp() function</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Standard Input/Output functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

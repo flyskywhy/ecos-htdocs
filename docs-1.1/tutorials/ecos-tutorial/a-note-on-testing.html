@@ -1,0 +1,496 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>A note on testing</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Release Notes"
+HREF="release-notes.html"><LINK
+REL="PREVIOUS"
+TITLE="Reporting Problems"
+HREF="reporting-problems.html"><LINK
+REL="NEXT"
+TITLE="Using the simulator"
+HREF="a-note-on-using-the-simulator.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="reporting-problems.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="a-note-on-using-the-simulator.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="A-NOTE-ON-TESTING"
+>Chapter 6. A note on testing</A
+></H1
+><P
+>	The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel and other packages have test suites which
+	rigorously exercise the available features and confirm correct
+	execution. The tests are run on many different possible 
+	configurations &#8212; the total number of
+	permutations makes it impossible to test them all.  The use of
+	test suites is particularly important for embedded systems,
+	where software robustness is a priority. All <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> software
+	is tested prior to shipping, but if you define your own
+	configuration, you will probably want to verify that the test
+	cases work for it.</P
+><P
+>	This release includes test suites for the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel,
+	kernel C API, C library, µITRON compatibility, and device driver
+	packages. The use of the test suites is similar for all
+	packages. The tests are supplied both as prebuilt images (if
+	you have the CD distribution of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer's Kit)
+	and as source code for building with specific <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	configurations.
+      </P
+><P
+>	Each test suite consists of a number of test cases which must
+	be executed individually by following these steps:</P
+><DIV
+CLASS="PROCEDURE"
+><OL
+TYPE="1"
+><LI
+><P
+>Compile and link the test cases with the
+	    appropriately configured <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> packages, using the
+	    <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>'s
+	    <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> menu and choosing the
+	    <SPAN
+CLASS="GUIMENUITEM"
+>Tests</SPAN
+> item, or by typing
+	    <TT
+CLASS="COMPUTEROUTPUT"
+>make tests</TT
+> (further
+	    details in <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 14</A
+>).
+	  </P
+></LI
+><LI
+><P
+>	    Start <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+>.
+	    </P
+></LI
+><LI
+><P
+>Set up the baud rate, usually with
+	    <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>set remotebaud
+		38400</B
+></TT
+></TT
+>.</P
+></LI
+><LI
+><P
+>Select the target board, usually with
+	    <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote
+		com1</B
+></TT
+></TT
+> on Windows or
+	    <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb) </TT
+><TT
+CLASS="USERINPUT"
+><B
+>target remote
+		ttyS0</B
+></TT
+></TT
+> on Linux.</P
+></LI
+><LI
+><P
+>Download the test program, usually with
+	    <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb)
+	      </TT
+><TT
+CLASS="USERINPUT"
+><B
+>load</B
+></TT
+></TT
+>.  This
+	    can take some time.</P
+></LI
+><LI
+><P
+>Execute the test program, usually with
+	    <TT
+CLASS="LITERAL"
+><TT
+CLASS="PROMPT"
+>(gdb)
+	      </TT
+><TT
+CLASS="USERINPUT"
+><B
+>continue</B
+></TT
+></TT
+>.</P
+></LI
+></OL
+></DIV
+><P
+>	Each test case runs without further intervention. A test case
+	may involve one or more individual tests. Successful
+	completion of each test within the test case is reported as a
+	line of text which is sent to the diagnostic channel (usually
+	the serial port) for display on a terminal or terminal
+	emulator.</P
+><P
+>	Each test case runs only once and usually requires the target
+	hardware to be reset on completion. Note that certain test
+	cases may not terminate immediately, especially if they
+	involve delays and run on the target simulators.</P
+><P
+>	In the CD distribution of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Developer's Kit, the test
+	cases are located in the following directories:</P
+><P
+></P
+><UL
+><LI
+><P
+>one prebuilt test compiled for RAM startup
+	    (needs <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>, and will only
+	    run on real hardware):
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/mn10300-stdeval-ram</TT
+>
+	    for the MN10300,
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/tx39-jmr3904-ram</TT
+>
+	    for the TX39, and
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/powerpccogent-ram</TT
+>
+	    for the PowerPC.
+	  </P
+></LI
+><LI
+><P
+>one prebuilt test compiled for ROM startup (will
+	    work in real hardware and in the simulator):
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/mn10300-stdeval-rom</TT
+>
+	    for the MN10300,
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/tx39-jmr3904-rom</TT
+>
+	    for the TX39, and
+	    <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/prebuilt/v1_1/powerpc-cogent-rom</TT
+>
+	    for the PowerPC.
+	  </P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	      The PowerPC ROM test does not work with the PowerPC
+	      simulator, but it does work with a PROM emulator.
+	    </P
+></BLOCKQUOTE
+></LI
+><LI
+><P
+>test case source code is under the base source
+	    directory <TT
+CLASS="FILENAME"
+><TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/packages/</TT
+>:</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>compat/uitron/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/serial/rs232/common/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/serial/rs232/mn10300/v1_1/tests</TT
+>
+	    (for the MN10300)</P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/serial/rs232/tx39/v1_1/tests</TT
+>
+		(for the TX39)</P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/wallclock/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>devs/watchdog/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>kernel/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>language/c/libc/v1_1/tests</TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FILENAME"
+>language/c/libm/v1_1/tests</TT
+></P
+></LI
+></UL
+></LI
+></UL
+><P
+>In <A
+HREF="verification.html"
+>the section called <I
+>Verification</I
+> in Chapter 12</A
+> you will find detailed
+	instructions on running a test case to verify that your hardware
+	board is working with the supplied software.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="reporting-problems.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="a-note-on-using-the-simulator.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Reporting Problems</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="release-notes.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Using the simulator</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,250 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Software installation on UNIX</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Software installation"
+HREF="software-installation.html"><LINK
+REL="PREVIOUS"
+TITLE="Software installation"
+HREF="software-installation.html"><LINK
+REL="NEXT"
+TITLE="Hardware setup"
+HREF="hardware-setup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="software-installation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 11. Software installation</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="hardware-setup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="SOFTWARE-INSTALLATION-ON-UNIX"
+>Software installation on UNIX</A
+></H1
+><P
+>At this time the UNIX version of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is only
+	  available as a Sourceware release.</P
+><P
+>	  This means that there is no CDROM distribution, but you can
+	  download the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> toolchain for UNIX and the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  distribution for UNIX from Cygnus's Sourceware site <A
+HREF="http://sourceware.cygnus.com/ecos/"
+TARGET="_top"
+>http://sourceware.cygnus.com/ecos/</A
+>.
+	  </P
+><P
+>	  You first need to build and install the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> package for
+	  Linux. Installation and building instructions will be on the
+	  Web page.</P
+><P
+>	  The UNIX distribution of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is packaged as a compressed
+	  archive file.  The Sourceware site will have both a gzipped
+	  tar archive file,
+	  <TT
+CLASS="FILENAME"
+>ecos-1.1.tar.gz</TT
+>, and a tar
+	  archive file compressed with <B
+CLASS="COMMAND"
+>bzip2</B
+>,
+	  <TT
+CLASS="FILENAME"
+>ecos-1.1.tar.bz2</TT
+> &#8212; this
+	  file is significantly smaller, but it requires that the
+	  <B
+CLASS="COMMAND"
+>bzip2</B
+> command be installed.</P
+><P
+>To install the tar archive in
+	  <TT
+CLASS="FILENAME"
+>/usr/local</TT
+>, unbundle the archive with
+	  the following command:
+      </P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd /usr/local</B
+></TT
+></P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>gunzip --to-stdout ecos-1.1.tar.gz | tar xvf -</B
+></TT
+></P
+><P
+>or</P
+><P
+CLASS="LITERALLAYOUT"
+><TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>bunzip2 &#60; ecos-1.1.tar.bz2 | tar xvf -</B
+></TT
+></P
+><P
+>	This will create the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> source code repository in
+	<TT
+CLASS="FILENAME"
+>/usr/local/ecos-1.1</TT
+>.
+	</P
+><P
+>	  At this point you are ready to configure and build a
+	  customized <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel as shown in <A
+HREF="configure-and-build-ecos-from-source.html"
+>Chapter 14</A
+>.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="software-installation.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="hardware-setup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Software installation</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="software-installation.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Hardware setup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

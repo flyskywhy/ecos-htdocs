@@ -1,0 +1,264 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Package: eCos µITRON Compatibility Layer</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Configuration Option Reference"
+HREF="configuration-option-reference.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Kernel APIs"
+HREF="component-cygpkg-kernel-api.html"><LINK
+REL="NEXT"
+TITLE="Option: System configuration overrides µITRON"
+HREF="option-cygimp-uitron-loose-conformance.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="option-cygimp-uitron-loose-conformance.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="PACKAGE-CYGPKG-UITRON"
+>Chapter 15. Package: eCos µITRON Compatibility Layer</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="package-cygpkg-uitron.html#OPTION-CYGIMP-UITRON-STRICT-CONFORMANCE"
+>Option: Check Strict µITRON Standards Conformance</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-loose-conformance.html"
+>Option: System configuration overrides µITRON</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-inline-funcs.html"
+>Option: Inline Functions</A
+></DT
+><DT
+><A
+HREF="option-cygimp-uitron-cpp-outline-funcs.html"
+>Option: C++ Function Names</A
+></DT
+><DT
+><A
+HREF="option-cygsem-uitron-bad-params-return-errors.html"
+>Option: Return Error Codes for Bad Params</A
+></DT
+><DT
+><A
+HREF="option-cygsem-uitron-params-null-is-good-ptr.html"
+>Option: NULL is a good pointer</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-semas.html"
+>Component: Semaphores</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mboxes.html"
+>Component: Mailboxes</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-flags.html"
+>Component: Eventflags</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Component: Tasks</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mempoolfixed.html"
+>Component: Fixed-Size Memorypools</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-mempoolvar.html"
+>Component: Variable-Size Memorypools</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-alarms.html"
+>Component: Alarm Handlers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-cyclics.html"
+>Component: Cyclic Handlers</A
+></DT
+><DT
+><A
+HREF="component-cygpkg-uitron-version.html"
+>Component: Version information</A
+></DT
+></DL
+></DIV
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>eCos supports a µITRON Compatibility Layer, providing full Level S
+(Standard) compliance with Version 3.02 of the µITRON Standard, plus
+many Level E (Extended) features. µITRON is the premier Japanese embedded
+RTOS standard.
+      </P
+><H1
+CLASS="SECT1"
+><A
+NAME="OPTION-CYGIMP-UITRON-STRICT-CONFORMANCE"
+>Option: Check Strict µITRON Standards Conformance</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_UITRON_STRICT_CONFORMANCE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Require the rest of the system configuration to match the needs of
+strict µITRON standards conformance. This option can only be set if
+the rest of the system is configured correctly for µITRON semantics,
+for example there must be a realtime clock, a suitable scheduler,
+and no timeslicing. Of course a system without this selected can be
+completely conformant; this is here to help you check.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-kernel-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="option-cygimp-uitron-loose-conformance.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Kernel APIs</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="configuration-option-reference.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Option: System configuration overrides µITRON</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

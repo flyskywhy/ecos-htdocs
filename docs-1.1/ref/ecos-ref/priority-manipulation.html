@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Priority manipulation</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Thread operations"
+HREF="thread-operations.html"><LINK
+REL="NEXT"
+TITLE="Exception handling"
+HREF="exception-handling.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="thread-operations.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="exception-handling.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="PRIORITY-MANIPULATION"
+>Priority manipulation</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	  <B
+CLASS="FSFUNC"
+>cyg_thread_set_priority</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>, cyg_priority_t <VAR
+CLASS="PDPARAM"
+>priority</VAR
+>);<P
+></P
+></DIV
+><P
+>	Sets the priority of the given thread to the given value.  The
+	smaller the value, the higher the priority of the
+	thread.</P
+><P
+>	  Allowed priorities range between 1 and 64.  The values of
+	  these parameters are configuration-dependent because they
+	  depend on which scheduler has been selected, and what value
+	  has been configured for the
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGNUM_KERNEL_SCHED_PRIORITIES</I
+></TT
+>
+	  configuration parameter (see <A
+HREF="thread-operations.html"
+>the section called <I
+>Thread operations</I
+></A
+> and <A
+HREF="component-cygpkg-kernel-sched.html#OPTION-CYGNUM-KERNEL-SCHED-PRIORITIES"
+>the section called <I
+>Option: Number of priority levels</I
+> in Chapter 14</A
+>).</P
+><P
+>	  There is always an idle thread, owned by the kernel, running
+	  at <TT
+CLASS="PARAMETER"
+><I
+>CYG_THREAD_MIN_PRIORITY</I
+></TT
+>.  Because
+	  of this, ordinary threads should never be run at the lowest
+	  priority.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_priority_t
+	    <B
+CLASS="FSFUNC"
+>cyg_thread_get_priority</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>);<P
+></P
+></DIV
+><P
+>	Returns the priority of the given thread.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_delay</B
+></CODE
+>(cyg_tick_count_t
+	    <VAR
+CLASS="PDPARAM"
+>delay</VAR
+>);<P
+></P
+></DIV
+><P
+>        Puts the current thread to sleep for <TT
+CLASS="PARAMETER"
+><I
+>delay</I
+></TT
+>
+	ticks.  In a default configuration there are approximately
+        100 ticks a second.  The actual length of the ticks is given
+        by the resolution of the real-time clock.  See <A
+HREF="counters-clocks-and-alarms.html"
+>the section called <I
+>Counters, clocks and alarms</I
+></A
+> for more information on
+	counter resolution.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="thread-operations.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="exception-handling.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Thread operations</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Exception handling</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

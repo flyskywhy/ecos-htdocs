@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Thread operations</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="NEXT"
+TITLE="Priority manipulation"
+HREF="priority-manipulation.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="native-kernel-c-language-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="priority-manipulation.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="THREAD-OPERATIONS"
+>Thread operations</A
+></H1
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_scheduler_start</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	Starts the scheduler with the threads that have been created.
+	It never returns.  The scheduler has been chosen at
+	configuration time.  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> currently ships with three
+	schedulers: a bitmap scheduler, a multi-level scheduler
+	(selected by default), and an experimental "lottery" scheduler
+	which should not be used.</P
+><P
+>	The configuration tool can be used to select between
+	schedulers.  The configuration options (described in <A
+HREF="component-cygpkg-kernel-sched.html"
+>the section called <I
+>Component: Kernel schedulers</I
+> in Chapter 14</A
+>) are
+	<TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_SCHED_BITMAP</I
+></TT
+>,
+	<TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_SCHED_MLQUEUE</I
+></TT
+> and
+	<TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_SCHED_LOTTERY</I
+></TT
+>.</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>	    Interrupts are not enabled until the scheduler has been
+	    started with <TT
+CLASS="FUNCTION"
+><B
+>cyg_scheduler_start()</B
+></TT
+>.</P
+></BLOCKQUOTE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_scheduler_lock</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  Locks the scheduler so that a context switch cannot occur.
+	  This can be used to protect data shared between a thread and
+	  a DSR, or between multiple threads, by surrounding the
+	  critical region with
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_scheduler_lock()</B
+></TT
+> and
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_scheduler_unlock()</B
+></TT
+>.
+	</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_scheduler_unlock</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  Unlocks the scheduler so that context switching can occur
+	  again.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_create</B
+></CODE
+>(cyg_addrword_t
+	    <VAR
+CLASS="PDPARAM"
+>sched_info</VAR
+>, cyg_thread_entry_t
+	    *<VAR
+CLASS="PDPARAM"
+>entry</VAR
+>, cyg_addrword_t <VAR
+CLASS="PDPARAM"
+>entry_data</VAR
+>, char *<VAR
+CLASS="PDPARAM"
+>name</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>stack_base</VAR
+>, cyg_ucount32
+	    <VAR
+CLASS="PDPARAM"
+>stack_size</VAR
+>, cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_thread *<VAR
+CLASS="PDPARAM"
+>thread</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Creates a thread in a suspended state.  The thread will not
+	  run until it has been resumed with
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_resume()</B
+></TT
+> and the scheduler
+	  has been started with
+	  <TT
+CLASS="FUNCTION"
+><B
+>cyg_scheduler_start()</B
+></TT
+>.</P
+><P
+>Here is a description of the parameters of
+      <TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_create()</B
+></TT
+>:</P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>sched_info</I
+></TT
+></DT
+><DD
+><P
+>		Information to be passed to the scheduler.  For almost
+		all schedulers this is a simple priority value, and
+		you can simply pass a nonnegative integer when you
+		create the thread.
+	      </P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>entry</I
+></TT
+></DT
+><DD
+><P
+>A user-supplied function: it is routine that
+	      begins execution of the new thread.  This function takes
+	      a single argument of type <SPAN
+CLASS="TYPE"
+>cyg_addrword_t</SPAN
+>,
+	      which is usually a pointer to a block of data, which
+	      allows <TT
+CLASS="FUNCTION"
+><B
+>cyg_scheduler_start()</B
+></TT
+> to
+	      pass data to this particular thread.</P
+><P
+>Here is a typedef for the
+	      <TT
+CLASS="PARAMETER"
+><I
+>entry</I
+></TT
+> function:
+	    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef void cyg_thread_entry_t(cyg_addrword_t);</PRE
+></TD
+></TR
+></TABLE
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>entry_data</I
+></TT
+></DT
+><DD
+><P
+>A data value passed to the
+		<TT
+CLASS="PARAMETER"
+><I
+>entry</I
+></TT
+> function. This may be
+		either a machine word datum or the address of a block
+		of data.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>name</I
+></TT
+></DT
+><DD
+><P
+>A C string with the name of this
+	  thread.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>stack_base</I
+></TT
+></DT
+><DD
+><P
+>The address of the stack base.  If this
+		value is <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+> then
+		<TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_create()</B
+></TT
+> will choose a
+		stack base.</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>Passing a stack base of
+		<TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+> is not supported in this
+		release.  You must pass a real address for the stack
+		base.</P
+></BLOCKQUOTE
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>stack_size</I
+></TT
+></DT
+><DD
+><P
+>The size of the stack for this thread.  If this is
+		0, the default stack size will be used for this thread.</P
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>Passing a stack size of 0 is not supported
+		  in this release.  You must pass a real stack
+		  size.</P
+></BLOCKQUOTE
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>handle</I
+></TT
+></DT
+><DD
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>cyg_thread_create()</B
+></TT
+>
+	      returns the thread handle in this location.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>thread</I
+></TT
+></DT
+><DD
+><P
+>The thread housekeeping information is
+		placed in the memory pointed to by this parameter. If
+		this pointer is <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+> then the
+		memory will be allocated.
+	      <BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>Passing a NULL value for the thread data
+		    structure address is not supported in this
+		    release. You must pass a valid address.
+		</P
+></BLOCKQUOTE
+>
+	    </P
+></DD
+></DL
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_exit</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	Exits the current thread. At present this simply puts the
+	thread into suspended state.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_suspend</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>);<P
+></P
+></DIV
+><P
+>	Suspends the <TT
+CLASS="PARAMETER"
+><I
+>thread</I
+></TT
+>.  A thread may be
+	suspended multiple times, in which case it will need to be
+	resumed the same number of times before it will run.
+      </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_resume</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Resumes <TT
+CLASS="PARAMETER"
+><I
+>thread</I
+></TT
+>.  If a thread has been
+	  suspended multiple times it will need to be resumed the same
+	  number of times before it will run. Threads are created in a
+	  suspended state and must be resumed before they will
+	  run.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_yield</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  Yields control to the next runnable thread of equal
+	  priority. If no such thread exists, then this function has
+	  no effect.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_thread_kill</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>thread</VAR
+>);<P
+></P
+></DIV
+><P
+>	  Kills <TT
+CLASS="PARAMETER"
+><I
+>thread</I
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_handle_t
+	    <B
+CLASS="FSFUNC"
+>cyg_thread_self</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>	  Returns the handle of the current thread.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="priority-manipulation.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Native kernel C language API</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Priority manipulation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

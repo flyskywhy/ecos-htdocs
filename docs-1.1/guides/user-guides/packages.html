@@ -1,0 +1,548 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Packages</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="PREVIOUS"
+TITLE="Building the system"
+HREF="building-the-system.html"><LINK
+REL="NEXT"
+TITLE="Coarse-grained configuration"
+HREF="coarse-grained-configuration.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="building-the-system.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Manual configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="coarse-grained-configuration.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="PACKAGES"
+>Packages</A
+></H1
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is a component architecture. The system comes as a
+	  number of packages which can be enabled or disabled as
+	  required, and new packages can be added as they become
+	  available. Unfortunately, the packages are not completely
+	  independent: for example the µITRON compatibility package
+	  relies almost entirely on functionality provided by the
+	  kernel package, and it would not make sense to try to build
+	  µITRON if the kernel was disabled. The C library has fewer
+	  dependencies: some parts of the C library rely on kernel
+	  functionality, but it is possible to disable these parts and
+	  thus build a system that has the C library but no kernel.
+	  The graphical configuration tool has the capability of
+	  checking that all the dependencies are satisfied, but the
+	  command line tools do not currently have these capabilities,
+	  so it is possible to produce configurations that will not
+	  build or (conceivably) that will build but not run.
+	  Developers should be aware of this and take appropriate
+	  care. 
+	</P
+><P
+>	  By default, <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will enable all
+	  packages that are appropriate for the target architecture
+	  and platform, and it will list these packages when it
+	  generates the build tree:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --platform=stdeval1</B
+></TT
+>
+Generating build tree.
+Component repository is /usr/local/ecos-1.1/packages
+Build tree is /home/ecos_user/ecos-work
+Install directory is /home/ecos_user/ecos-work/install
+Architecture mn10300, platform stdeval1, startup ram.
+Processing package hal/common/v1.1
+Processing package infra/v1.1
+Processing package kernel/v1.1
+Processing package compat/uitron/v1.1
+Processing package language/c/libc/v1.1
+Processing package language/c/libm/v1.1
+Processing package error/v1.1
+Processing package devs/common/v1.1
+Processing package hal/mn10300/arch/v1.1
+Processing package hal/mn10300/stdeval1/v1.1
+Processing package devs/gdb/v1.1
+Processing package devs/serial/rs232/common/v1.1
+Processing package devs/wallclock/v1.1
+Processing package devs/watchdog/v1.1
+Processing package devs/serial/rs232/mn10300/v1.1
+Generating install directory /home/ecos_user/ecos-work/install
+Generating miscellaneous files.
+Generating toplevel makefile.
+Generating save file.
+The Build tree is ready.</PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The common HAL package and the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> infrastructure must be
+	  present in every configuration. In addition, it is always
+	  necessary to have one architectural HAL package and one
+	  platform HAL package: in the above example these are
+	  <TT
+CLASS="FILENAME"
+>hal/mn10300/arch/v1.1</TT
+> and
+	  <TT
+CLASS="FILENAME"
+>hal/mn10300/stdeval1/v1.1</TT
+> respectively.
+	  The remaining packages are optional, and can be disabled as
+	  required.
+    </P
+><P
+>	  Some packages are inappropriate for a given target. For
+	  example, the package
+	  <TT
+CLASS="FILENAME"
+>devs/serial/rs232/tx39/v1.1</TT
+> contains
+	  device  driver code for the TX39's on-chip serial device.
+	  This device driver is clearly inappropriate if the target
+	  hardware does not have a TX39 processor, and it will not be
+	  in the configuration.
+    </P
+><P
+>	  The application may not require all of the packages; for
+	  example, it might not need the µITRON compatibility package,
+	  or the floating point support provided by the math library.
+	  It should be mostly harmless to leave these packages in the
+	  configuration anyway. There is a slight overhead when <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>
+	  is built because the packages will get compiled, and there
+	  is also a small disk space penalty. However, any unused
+	  facilities will get stripped out at link-time, so having
+	  redundant packages will not affect the final executable.
+    </P
+><P
+>	  Disabling packages can sometimes cause problems because of
+	  dependencies.  For example, there are parts of the C
+	  library, such as the implementation of
+	  <TT
+CLASS="FUNCTION"
+><B
+>strtod()</B
+></TT
+>, which rely on the math
+	  library. It is possible to configure the C library such that
+	  all those functions are disabled, thus removing the
+	  dependency on the math library. In fact, when the graphical
+	  Configuration Tool is used this is a very simple operation.
+	  If you are restricted to command-line tools then it becomes
+	  more difficult and possibly error-prone, although most of
+	  the possible errors would be caught at compile-time. It is
+	  therefore recommended that packages not be disabled unless
+	  absolutely necessary.
+	</P
+><P
+>	  If it is necessary to disable a package anyway, this should
+	  be done on the <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> command line
+	  with a <TT
+CLASS="OPTION"
+>--disable</TT
+> argument. For example, to
+	  generate a build tree with the µITRON package disabled, use
+	  the following command line:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --disable-uitron</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The word following <TT
+CLASS="OPTION"
+>--disable-</TT
+> should be the
+	  name of the package or one of its aliases. To get details of
+	  all of the packages that are available a
+	  <TT
+CLASS="OPTION"
+>--packages</TT
+> argument can be passed to
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>.
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --packages</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The output includes the full name of the µITRON package,
+	  <TT
+CLASS="PARAMETER"
+><I
+>CYGPKG_UITRON</I
+></TT
+>, and two aliases. Any
+	  of these can be used, so the following commands are
+	  equivalent:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl -target=TARGET --disable-CYGPKG_UITRON</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl -target=TARGET "--disable-uITRON compatibility"</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl -target=TARGET --disable-uitron</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  Most users will probably pick the last of these commands.
+    </P
+><P
+>	  If a package is disabled by default but should still be part
+	  of the configuration then it can be enabled explicitly using
+	  a <TT
+CLASS="OPTION"
+>--enable</TT
+> argument, for example:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --enable-devices_serial_rs232_tx39</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  A more rational use for the <TT
+CLASS="OPTION"
+>--enable</TT
+>
+	  argument would be to reenable a package in an existing
+	  configuration. This is discussed in more detail in the next
+	  section.
+    </P
+><P
+>	The output of <B
+CLASS="COMMAND"
+>pkgconf.tcl --packages</B
+> will
+	also list the versions of each package that are available. The
+	<SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> component repository has been designed so that multiple
+	versions of a package can co-exist in one directory hierarchy.
+	For example, it is possible to have versions of the kernel
+	corresponding to the last release, the current release, and an
+	experimental snapshot, all in the same tree. This means that
+	it is relatively straightforward to switch between the
+	experimental snapshot and the stable release version. It is
+	also possible to use the same component repository for
+	different projects: if a product is close to being released
+	then it is usually a good idea to stick with the same versions
+	of all the packages that have been used throughout the
+	development, rather than updating to the latest release.
+	Developers should be aware that this versioning scheme also
+	has disadvantages, should consult
+	  <A
+HREF="managing-the-package-repository.html"
+>Chapter 10</A
+> for more
+	details.
+    </P
+><P
+>	  By default, when <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is used to
+	  generate a build tree it will select the latest versions of
+	  all the packages. Details of the versions will be shown as
+	  part of the <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> output &#8212;
+	  the final directory listed for each package that gets
+	  processed corresponds to the version that has been selected.
+	  It is possible to override this on the command line on a
+	  per-package basis. For example, the following command would
+	  specify a particular version of the kernel:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 --kernel-version=ss19981130</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  There is no support for selecting a particular version that
+	  should be applied to all packages. In the long term such a
+	  facility would not make sense since different packages will
+	  be supplied by different vendors and they will have very
+	  different release cycles.
+	  </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="building-the-system.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="coarse-grained-configuration.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Building the system</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Coarse-grained configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,292 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Component: Fixed-Size Memorypools </TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos µITRON Compatibility Layer"
+HREF="package-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Tasks"
+HREF="component-cygpkg-uitron-tasks.html"><LINK
+REL="NEXT"
+TITLE="Component: Variable-Size Memorypools "
+HREF="component-cygpkg-uitron-mempoolvar.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: eCos µITRON Compatibility Layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="component-cygpkg-uitron-mempoolvar.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-MEMPOOLFIXED"
+>Component: Fixed-Size Memorypools</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_MEMPOOLFIXED</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>µITRON supports memory pools for dynamic, task-safe memory allocation.
+Two kinds are supported, fixed-size and variable-size. There may be
+multiple of each type of pool, each with differing characteristics.
+This option controls whether there are any fixed-size memorypools
+in the system. A fixed-size memorypool allocates blocks of memory
+of its preset fixed size and none other.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGNUM-UITRON-MEMPOOLFIXED"
+>Option: Number of fixed-size memory pools</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_MEMPOOLFIXED</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of µITRON Fixed-Size Memorypools present in the system.
+Valid Fixed-Size Memorypool IDs will range from 1 to this value.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="COMPONENT-CYGPKG-UITRON-MEMPOOLFIXED-CREATE-DELETE"
+>Component: Support create and delete</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_MEMPOOLFIXED_CREATE_DELETE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Support fixed-size memory pool create and delete operations (cre_mpf,
+del_mpf). Otherwise all fixed mempools are created, up to the number
+specified above.
+      </P
+><H3
+CLASS="SECT3"
+><A
+NAME="OPTION-CYGNUM-UITRON-MEMPOOLFIXED-INITIALLY"
+>Option: Number of fixed mempools created initially</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_MEMPOOLFIXED_INITIALLY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of fixed mempools initially created. This number should
+not be more than the number of fixed mempools in the system, though
+setting it to a large value to mean 'all' is acceptable. Initially,
+only fixed mempools numbered from 1 to this number exist; higher numbered
+ones must be created before use. Whilst all mempools must be initialized
+to tell the system what memory to use for each pool, it is only useful
+to initialize the blocksize of fixed mempools up to this number; the
+blocksize for higher numbered ones will be defined when they are created.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGDAT-UITRON-MEMPOOLFIXED-EXTERNS"
+>Option: Externs for initialization</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_UITRON_MEMPOOLFIXED_EXTERNS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Multiline</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Fixed mempool initializers may refer to external objects such as memory
+for the pool to manage. Use this option to define or declare any external
+objects needed by the pool's static initializer below. Example: create
+some memory for a mempool using 'static char fpool1[2000];' to set
+up a chunk of memory of 2000 bytes. Note: this option is invoked in
+the 'outermost' context of C++ source, where global/static objects
+are created; it should contain valid, self-contained, C++ source.
+      </P
+><H2
+CLASS="SECT2"
+><A
+NAME="OPTION-CYGDAT-UITRON-MEMPOOLFIXED-INITIALIZERS"
+>Option: Static initializers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_UITRON_MEMPOOLFIXED_INITIALIZERS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Multiline</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Fixed block memory pools should be statically initialized: enter a
+list of initializers separated by commas, one per line. An initializer
+is 'CYG_UIT_MEMPOOLFIXED(ADDR,SIZE,BLOCK)' where addr is the address
+of memory to manage, size is the total size of that memory, and block
+is the block size for allocation by the pool. If create and delete
+operations are supported, initializers of the form 'CYG_UIT_MEMPOOLFIXED_NOEXS(ADDR,SIZE)'
+should be used for pools which are not initially created, to tell
+the system what memory to use for each pool. Note: this option is
+invoked in the context of a C++ array initializer, between curly brackets.
+Ensure that the number of initializers here exactly matches the total
+number of fixed pools specified.
+      </P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-tasks.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="component-cygpkg-uitron-mempoolvar.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Tasks</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="package-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Variable-Size Memorypools</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

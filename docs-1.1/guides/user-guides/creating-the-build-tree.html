@@ -1,0 +1,622 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Creating the Build Tree</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="PREVIOUS"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="NEXT"
+TITLE="Building the system"
+HREF="building-the-system.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="manual-configuration.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Manual configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="building-the-system.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="CREATING-THE-BUILD-TREE"
+>Creating the Build Tree</A
+></H1
+><P
+>	  Generating a build tree is a non-trivial operation and
+	  should not be attempted manually. Instead, <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is shipped
+	  with a program called <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> which
+	  provides the required functionality. This program is
+	  implemented in the scripting language Tcl/Tk and it needs to
+	  be run inside a Tcl interpreter. The use of a scripting
+	  language eliminates the need to ship separate pkgconf binary
+	  executables for every host platform. However, it does mean
+	  that the host machine must have a suitable interpreter
+	  installed: <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> requires Tcl 8.0
+	  or later. Most Linux users will have a suitable interpreter
+	  pre-installed, usually in
+	  <TT
+CLASS="FILENAME"
+>/usr/bin/tclsh</TT
+>: if the installed
+	  interpreter is not version 8.0 or later then this will be
+	  detected at run-time and remedial action will be suggested.
+	  For Windows users, a suitable interpreter
+	  <B
+CLASS="COMMAND"
+>cygtclsh80.exe</B
+> is shipped with the system
+	  as part of the Cygwin tools.
+	</P
+><P
+>	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> does not generate the
+	  top-level directory of the build tree itself; you must do
+	  this yourself.
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>mkdir ecos-work</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cd ecos-work</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The next step is to run the <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>
+	  script using the Tcl interpreter. Remembering that
+	  <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+> is the base directory in
+	  which we installed <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, on a UNIX machine the command for
+	  this would be:
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl &#60;arguments&#62;</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	Under Windows NT, with the <SPAN
+CLASS="APPLICATION"
+>bash</SPAN
+>
+	shell, the equivalent command would be:
+      </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>cygtclsh80 <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl &#60;arguments&#62;</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  In the remainder of this chapter the UNIX version will be
+	  used for all examples, since <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> developers with Windows
+	  NT hosts are more likely to use the graphical configuration
+	  tool.
+    </P
+><P
+>	  If <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is given a
+	  <TT
+CLASS="OPTION"
+>--help</TT
+> argument then it will give some
+	  basic information about the legal arguments. Reference
+	  information for <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is located
+	  in <A
+HREF="reference-for-pkgconf-tcl.html"
+>Chapter 9</A
+>.
+    </P
+><P
+>	  When a build tree is first created it is necessary to
+	  specify the target hardware. For details of the hardware
+	  that is supported in the current distribution, it is
+	  possible to invoke <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> with a
+	  <TT
+CLASS="OPTION"
+>--targets</TT
+> arguments.
+	</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --targets</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  This will result in a fairly significant amount of output,
+	  which will increase further as <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is ported to more and
+	  more architectures. The output is organized on a
+	  per-architecture basis. The supported architectures include
+	  MN10300, TX39, and PowerPC. The desired architecture has to
+	  be specified on the command line.</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300</B
+></TT
+>  </PRE
+></TD
+></TR
+></TABLE
+><P
+>	  This will create a build tree corresponding to the mn10300
+	  architecture and the default platform for that architecture,
+	  the stdeval1 evaluation board. It will also use the default
+	  startup for that platform, RAM startup, which means that any
+	  executables produced will be suitable for downloading into a
+	  board equipped with the CygMon ROM monitor. The alternative
+	  startup, ROM, would be appropriate if the executable is
+	  intended to be burned into EPROMs.
+    </P
+><P
+>	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is fairly flexible in its
+	  argument parsing so it will accept a number of different
+	  ways of specifying its arguments. All of the following
+	  commands are equivalent:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>% </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target mn10300</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl -target mn10300</B
+></TT
+>
+<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl -target=mn10300</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  In addition, <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will accept
+	  several aliases for the architecture. For example, it is
+	  possible to specify <TT
+CLASS="OPTION"
+>--target=mn10300-elf</TT
+>,
+	  matching the architecture prefix that is used for the
+	  compiler <B
+CLASS="COMMAND"
+>mn10300-elf-gcc</B
+> and other tools.
+	  All recognized aliases will be listed in the output of
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl --targets</B
+>.
+    </P
+><P
+>	  For most architectures there will be some number of
+	  supported platforms, also listed in the output of
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl --targets</B
+>. For example, the
+	  supported platforms for the TX39 architecture include the
+	  JMR3904 evaluation board and a minimal simulator. By default
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> will use the first listed
+	  platform for a given architecture. It is possible to
+	  override this using a <B
+CLASS="COMMAND"
+>--platform</B
+> command
+	  line argument, for example:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=tx39 --platform=sim</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  Some platforms support multiple startups. This is not true
+	  of the tx39 simulator where RAM startup is the only option,
+	  but on the JMR3904 board both RAM and ROM startup are
+	  possible. The output from <B
+CLASS="COMMAND"
+>pkgconf.tcl --targets</B
+>
+	  includes details of all the startups that are available for
+	  a given platform. By default <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>
+	  will use the first one that is listed, but it is possible to
+	  override this using a <B
+CLASS="COMMAND"
+>--startup</B
+> command
+	  line argument:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;<TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=tx39 --platform=jmr3904 --startup=rom</B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>	  The output from <B
+CLASS="COMMAND"
+>pkgconf.tcl --targets</B
+>
+	  also includes details of software packages that are
+	  associated with particular architectures and platforms.
+	  Details of how <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> handles
+	  software packages are given below.
+    </P
+><P
+>	  Since <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> is located at the top
+	  level of the component repository it is not necessary to
+	  specify the location of the repository explicitly: instead
+	  this can be determined automatically by examining the
+	  arguments passed to tclsh. It is possible to override this
+	  on the command line by using a <TT
+CLASS="OPTION"
+>--srcdir</TT
+>
+	  argument, but this should rarely be necessary.
+	  <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> assumes that the current
+	  directory is the build tree, but this can be overridden
+	  using a <TT
+CLASS="OPTION"
+>--builddir</TT
+> command line argument.
+	  It also assumes that the install tree should be in an
+	  "install" directory inside the build tree, but this can be
+	  overridden using a <TT
+CLASS="OPTION"
+>--prefix</TT
+> arguments. The
+	  reference documentation should be consulted for more details
+	  of these arguments.
+	</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="building-the-system.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Manual configuration</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Building the system</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>ROM monitor image</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="Getting Started with eCosTM"
+HREF="ecos-tutorial.html"><LINK
+REL="UP"
+TITLE="Overview of the release"
+HREF="overview-of-the-release.html"><LINK
+REL="PREVIOUS"
+TITLE="Architectural simulators"
+HREF="architectural-simulators.html"><LINK
+REL="NEXT"
+TITLE="Tests and examples"
+HREF="tests-and-examples.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="architectural-simulators.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 2. Overview of the release</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="tests-and-examples.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="ROM-MONITOR-IMAGE"
+>ROM monitor image</A
+></H1
+><P
+>	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> ships with a <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> ROM
+	  monitor for the MN10300 and TX39 evaluation boards.  This
+	  includes a <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub, thus
+	  allowing <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to be used to debug
+	    <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> applications on these evaluation boards.  In
+	  addition to shipping the actual ROM, we also provide the
+	  image of that ROM in case you need to burn identical
+	  copies for additional boards (see <A
+HREF="hardware-setup.html"
+>Chapter 12</A
+>).
+	</P
+><P
+>	  For the PowerPC Cogent board we provide a ROM image with a
+	  <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub. This allows
+	  <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> to connect to the board and
+	  download <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> programs. When an <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> program is run, the
+	  <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub in ROM loses control.
+	  This means that if you require debugging capabilities, you
+	  must include <SPAN
+CLASS="APPLICATION"
+>GDB</SPAN
+> stub support
+	  when configuring <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.
+	</P
+><P
+>	  The source code to <SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> is
+	  included as part of the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> package, so that you may
+	  recompile it as described in the <SPAN
+CLASS="PRODUCTNAME"
+>GNUPro</SPAN
+> documentation.
+      </P
+><P
+>	Please note that previous releases of
+	<SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> are incompatible with
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>.   You must use the version of
+	<SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+> that is provided with
+	  <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> rather than an older version of
+	<SPAN
+CLASS="PRODUCTNAME"
+>CygMon</SPAN
+>.</P
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="architectural-simulators.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-tutorial.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="tests-and-examples.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Architectural simulators</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="overview-of-the-release.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Tests and examples</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Getting Started with eCosTM</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="NEXT"
+TITLE="Foreword"
+HREF="foreword.html"></HEAD
+><BODY
+><DIV
+CLASS="BOOK"
+><H1
+CLASS="TITLE"
+><A
+NAME="AEN2"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+></A
+></H1
+><H2
+CLASS="SUBTITLE"
+>Version 1.1</H2
+><H3
+CLASS="AUTHOR"
+>The eCos Team</H3
+><DIV
+CLASS="AFFILIATION"
+><H4
+CLASS="ORGNAME"
+>Cygnus Solutions</H4
+></DIV
+><P
+CLASS="COPYRIGHT"
+><A
+HREF="ln16.html"
+>Copyright</A
+> © 1998 by <SPAN
+CLASS="HOLDER"
+>Cygnus Solutions</SPAN
+></P
+><HR><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="foreword.html"
+>Foreword</A
+></DT
+><DT
+>I. <A
+HREF="release-notes.html"
+>Release Notes</A
+></DT
+><DD
+><DL
+><DT
+>1. <A
+HREF="notation-and-conventions-in-this-manual.html"
+>Notation and conventions</A
+></DT
+><DT
+>2. <A
+HREF="overview-of-the-release.html"
+>Overview of the release</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="overview-of-the-release.html#HARDWARE-ABSTRACTION"
+>Hardware abstraction</A
+></DT
+><DT
+><A
+HREF="real-time-kernel.html"
+>Real-time kernel</A
+></DT
+><DT
+><A
+HREF="configurability.html"
+>Configurability</A
+></DT
+><DT
+><A
+HREF="other-operating-systems.html"
+>µITRON and other operating systems</A
+></DT
+><DT
+><A
+HREF="iso-c-library-1.html"
+>ISO C library</A
+></DT
+><DT
+><A
+HREF="serial-device-drivers.html"
+>Serial device drivers</A
+></DT
+><DT
+><A
+HREF="architectural-simulators.html"
+>Architectural simulators</A
+></DT
+><DT
+><A
+HREF="rom-monitor-image.html"
+>ROM monitor image</A
+></DT
+><DT
+><A
+HREF="tests-and-examples.html"
+>Tests and examples</A
+></DT
+><DT
+><A
+HREF="overview-of-the-release344.html"
+>GNU tools and their documentation</A
+></DT
+><DT
+><A
+HREF="ecos-ducumentation.html"
+>eCos documentation</A
+></DT
+></DL
+></DD
+><DT
+>3. <A
+HREF="package-contents.html"
+>Package contents</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="package-contents.html#ECOS-SOURCEWARE-RELEASE"
+>eCos Sourceware release</A
+></DT
+><DT
+><A
+HREF="ecos-developers-kit.html"
+>eCos Developer's Kit</A
+></DT
+></DL
+></DD
+><DT
+>4. <A
+HREF="system-requirements.html"
+>System Requirements</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="system-requirements.html#REQUIRED"
+>Required</A
+></DT
+><DT
+><A
+HREF="recommended.html"
+>Recommended</A
+></DT
+></DL
+></DD
+><DT
+>5. <A
+HREF="reporting-problems.html"
+>Reporting Problems</A
+></DT
+><DT
+>6. <A
+HREF="a-note-on-testing.html"
+>A note on testing</A
+></DT
+><DT
+>7. <A
+HREF="a-note-on-using-the-simulator.html"
+>Using the simulator</A
+></DT
+><DT
+>8. <A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html"
+>Known limitations in the eCos version 1.1 release</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release.html#KNOWN-BUGS-IN-ECOS"
+>Known bugs in eCos</A
+></DT
+><DT
+><A
+HREF="known-limitations-in-the-ecos-v-1-1-release657.html"
+>Known bugs in GNUPro</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>II. <A
+HREF="documentation-roadmap.html"
+>Documentation Roadmap</A
+></DT
+><DD
+><DL
+><DT
+>9. <A
+HREF="top-down-view-of-the-documentation.html"
+>Top down view of the documentation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="top-down-view-of-the-documentation.html#GETTING-STARTED-WITH-ECOS"
+>Getting Started with <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></A
+></DT
+><DT
+><A
+HREF="ecos-user-guide.html"
+>eCos User's Guide</A
+></DT
+><DT
+><A
+HREF="ecos-reference-manual.html"
+>eCos Reference Manual</A
+></DT
+></DL
+></DD
+><DT
+>10. <A
+HREF="where-to-look-if.html"
+>Where to look for answers</A
+></DT
+></DL
+></DD
+><DT
+>III. <A
+HREF="installation-guide.html"
+>Installation Guide</A
+></DT
+><DD
+><DL
+><DT
+>11. <A
+HREF="software-installation.html"
+>Software installation</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="software-installation.html#SOFTWARE-INSTALLATION-ON-WINDOWS-NT"
+>Software installation on Windows</A
+></DT
+><DT
+><A
+HREF="software-installation-on-unix.html"
+>Software installation on UNIX</A
+></DT
+></DL
+></DD
+><DT
+>12. <A
+HREF="hardware-setup.html"
+>Hardware setup</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="hardware-setup.html#MN10300-HARDWARE-SETUP"
+>MN10300 hardware setup</A
+></DT
+><DT
+><A
+HREF="tx39-hardware-setup.html"
+>TX39 hardware setup</A
+></DT
+><DT
+><A
+HREF="powerpc-hardware-setup.html"
+>PowerPC hardware setup</A
+></DT
+><DT
+><A
+HREF="verification.html"
+>Verification</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>IV. <A
+HREF="programming-tutorial.html"
+>Programming Tutorial</A
+></DT
+><DD
+><DL
+><DT
+>13. <A
+HREF="introduction-the-quickest-way.html"
+>Starting to program with eCos</A
+></DT
+><DT
+>14. <A
+HREF="configure-and-build-ecos-from-source.html"
+>Configure and build eCos from source</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="configure-and-build-ecos-from-source.html#USING-THE-CONFIGURATION-TOOL-ON-WINDOWS"
+>Using the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+>
+	  on Windows</A
+></DT
+><DT
+><A
+HREF="using-pkgconf-tcl-on-unix.html"
+>Using <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> on UNIX</A
+></DT
+></DL
+></DD
+><DT
+>15. <A
+HREF="run-an-ecos-test-case.html"
+>Run an eCos test case</A
+></DT
+><DT
+>16. <A
+HREF="build-and-run-simple-applications.html"
+>Build and run simple applications</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="build-and-run-simple-applications.html#ECOS-HELLO-WORLD"
+>eCos hello world</A
+></DT
+><DT
+><A
+HREF="a-simple-program-with-two-threads.html"
+>A sample program with two threads</A
+></DT
+></DL
+></DD
+><DT
+>17. <A
+HREF="more-features-clocks-and-alarm-handlers.html"
+>More features &#8212; clocks and alarm handlers</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="more-features-clocks-and-alarm-handlers.html#AEN1494"
+>A sample program with alarms</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>V. <A
+HREF="appendices.html"
+>Appendices</A
+></DT
+><DD
+><DL
+><DT
+>A. <A
+HREF="cygnus-ecos-public-license.html"
+>CYGNUS ECOS PUBLIC LICENSE</A
+></DT
+><DT
+>B. <A
+HREF="the-ecos-copyright-assignment-form.html"
+>The <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Copyright Assignment Form</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="the-ecos-copyright-assignment-form.html#RATIONALE"
+>Rationale</A
+></DT
+><DT
+><A
+HREF="how-to-assign-copyright.html"
+>How to assign copyright</A
+></DT
+></DL
+></DD
+></DL
+></DD
+></DL
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="foreword.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+>&nbsp;</TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Foreword</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

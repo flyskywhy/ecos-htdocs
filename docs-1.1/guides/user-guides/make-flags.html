@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML
+><HEAD
+><TITLE
+>Make flags</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet version 1.19"><LINK
+REL="HOME"
+TITLE="eCosTM User's Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Manual configuration"
+HREF="manual-configuration.html"><LINK
+REL="PREVIOUS"
+TITLE="Fine-grained Configuration"
+HREF="fine-grained-configuration.html"><LINK
+REL="NEXT"
+TITLE="Editing the sources"
+HREF="editing-the-sources.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-1"
+>TM</FONT
+></SUP
+> User's Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="fine-grained-configuration.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 8. Manual configuration</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="editing-the-sources.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+CLASS="SECT1"
+><A
+NAME="MAKE-FLAGS"
+>Make flags</A
+></H1
+><P
+>	  The arguments passed to <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> and
+	  the configuration options in the header files control what
+	  code gets compiled. It is also possible to control how the
+	  code gets compiled, in other words what compiler flags are
+	  used.
+    </P
+><P
+>	  In <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> the various compiler flags are organized into five
+	  categories: architectural flags such as
+	  <TT
+CLASS="OPTION"
+>-mcpu=860</TT
+>, which provide more specific
+	  information about the target hardware; diagnostic flags such
+	  as <TT
+CLASS="OPTION"
+>-Wall</TT
+> and
+	  <TT
+CLASS="OPTION"
+>-Wstrict-prototypes</TT
+> which control the
+	  warnings that the compiler may generate; flags related to
+	  optional aspects of the language, for example
+	  <TT
+CLASS="OPTION"
+>-fno-rtti</TT
+> to suppress the use of run-time
+	  type information which is not needed by <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>; options that
+	  affect code generation such as <TT
+CLASS="OPTION"
+>-O2</TT
+>; and
+	  anything else.
+    </P
+><P
+>	  For each of these five categories, it is possible to specify
+	  whether the flags should be applied only when compiling C
+	  code, only for C++ code, only when linking test executables,
+	  or for all invocations of the compiler. This gives a total
+	  of 20 variables that can be manipulated.
+	</P
+><P
+></P
+><TABLE
+BORDER="0"
+><TR
+><TD
+>ARCHFLAGS</TD
+><TD
+>CARCHFLAGS</TD
+><TD
+>CXXARCHFLAGS</TD
+><TD
+>LDARCHFLAGS</TD
+></TR
+><TR
+><TD
+>ERRFLAGS</TD
+><TD
+>CERRFLAGS</TD
+><TD
+>CXXERRFLAGS</TD
+><TD
+>LDERRFLAGS</TD
+></TR
+><TR
+><TD
+>LANGFLAGS</TD
+><TD
+>CLANGFLAGS</TD
+><TD
+>CXXLANGFLAGS</TD
+><TD
+>LDLANGFLAGS</TD
+></TR
+><TR
+><TD
+>DBGFLAGS</TD
+><TD
+>CDBGFLAGS</TD
+><TD
+>CXXDBGFLAGS</TD
+><TD
+>LDDBGFLAGS</TD
+></TR
+><TR
+><TD
+>EXTRAFLAGS</TD
+><TD
+>CEXTRAFLAGS</TD
+><TD
+>CXXEXTRAFLAGS</TD
+><TD
+>LDEXTRAFLAGS</TD
+></TR
+></TABLE
+><P
+></P
+><P
+>	  The variable <TT
+CLASS="PARAMETER"
+><I
+>CXXERRFLAGS</I
+></TT
+> should be
+	  used for diagnostic-related compiler flags that only apply
+	  when compiling C++ code. An example of this would be
+	  <TT
+CLASS="OPTION"
+>-Woverloaded-virtual</TT
+>. Similarly,
+	  <TT
+CLASS="PARAMETER"
+><I
+>DBGFLAGS</I
+></TT
+> is intended for compiler
+	  flags related to code generation that should be used for all
+	  compiles and links, for example <TT
+CLASS="OPTION"
+>-O2</TT
+>.
+    </P
+><P
+>	  A number of compiler flags are highly recommended when
+	  building <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>, although the exact details will vary from
+	  platform to platform. When <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+>
+	  generates or updates a build tree it will write these
+	  default flags to the file <TT
+CLASS="PARAMETER"
+><I
+>pkgconf.mak</I
+></TT
+>
+	  in the pkgconf subdirectory of the build tree.
+    </P
+><P
+>	  There are a number of different ways in which the default
+	  sets of compiler flags can be overridden &#8212; the most
+	  appropriate one to use depends very much on the situation.
+	</P
+><P
+></P
+><OL
+TYPE="1"
+><LI
+><P
+>It is possible to override any of the
+	      variables on the make command line, for example:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;	      <TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>make DBGFLAGS=-O4</B
+></TT
+> </PRE
+></TD
+></TR
+></TABLE
+><P
+>	      This has the disadvantage that the information is not
+	      stored anywhere. If it is necessary to do multiple
+	      builds with the same compiler flags then you must
+	      remember to pass the same command line arguments to make
+	      every time. If you forget to do so at any time then the
+	      results can be confusing and irreproducible.
+	    </P
+></LI
+><LI
+><P
+>It is possible to set environment variables, for
+	      example:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;	      <TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>DBGFLAGS=-O4</B
+></TT
+>
+	      <TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>export DBGFLAGS</B
+></TT
+> </PRE
+></TD
+></TR
+></TABLE
+><P
+>	      (The exact command line will depend on the shell you use).
+	    </P
+><P
+>	      This information is somewhat more persistent than the
+	      command line argument approach, especially if the
+	      environment variables are set in the shell's startup
+	      files rather than in a running shell. This approach has
+	      the big disadvantage that the settings may affect other
+	      build systems, for example whatever environment is used
+	      to build the application itself. Another, but more minor,
+	      disadvantage is that it is very easy to forget that an
+	      environment variable has been set, leading to confusion
+	      if you are trying to work out exactly why a
+	      particular compiler flag is being used.
+	    </P
+></LI
+><LI
+><P
+>		It is possible to specify any of the variables on the
+		<B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> command line, for example:
+	    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>&#13;	      <TT
+CLASS="PROMPT"
+>$ </TT
+><TT
+CLASS="USERINPUT"
+><B
+>tclsh <TT
+CLASS="REPLACEABLE"
+><I
+>BASE_DIR</I
+></TT
+>/pkgconf.tcl --target=mn10300 DBGFLAGS=-O4</B
+></TT
+> </PRE
+></TD
+></TR
+></TABLE
+><P
+>	      Any variables specified in this way will end up in the
+	      pkgconf.mak file in the build tree's pkgconf directory,
+	      and will persist until you run
+	      <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> again with a different
+	      value for the variable. This approach has the advantage
+	      that no files need to be edited, but it has the minor
+	      disadvantage that it is somewhat more difficult to
+	      restore the default settings.
+	    </P
+></LI
+><LI
+><P
+>You can edit the file <TT
+CLASS="FILENAME"
+>makevars</TT
+>
+	      in the build tree's pkgconf subdirectory. This file
+	      contains a number of lines  resembling the
+	      following:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;   ifeq ($(DBGFLAGS),)
+   DBGFLAGS 	:= $(PKGCONF_DBGFLAGS)
+   #DBGFLAGS	:=
+   endif </PRE
+></TD
+></TR
+></TABLE
+><P
+>	      The ifeq/endif test makes sure that the makefile
+	      variable DBGFLAGS is not already defined, either on the
+	      command line or in an environment variable. If it is not
+	      defined then the variable will normally be set on the
+	      next line, and the value that will be used is the
+	      default value which <B
+CLASS="COMMAND"
+>pkgconf.tcl</B
+> has
+	      written to the pkgconf.mak file. It is possible to
+	      comment out this line, uncomment the next line, and fill
+	      in appropriate compiler flags.
+	    </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;   ifeq ($(DBGFLAGS),)
+   #DBGFLAGS 	:= $(PKGCONF_DBGFLAGS)
+   DBGFLAGS	:= -O4
+   endif</PRE
+></TD
+></TR
+></TABLE
+><P
+>	      It is now possible to switch between the default and the
+	      custom behavior very easily, simply by moving the
+	      comment character between the two lines.
+    </P
+><P
+>	      Editing the makevars file like this is the most flexible
+	      and robust mechanism for controlling compiler flags, but
+	      it requires a bit more work on your part.
+	</P
+><P
+>	      The makevars file contains a number of other makefile
+	      variables that you can edit. For example, it is possible
+	      to change the name of the compiler that will be used for
+	      all the builds.
+	</P
+></LI
+></OL
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="fine-grained-configuration.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="editing-the-sources.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Fine-grained Configuration</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="manual-configuration.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Editing the sources</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
