@@ -23,8 +23,8 @@ REL="PREVIOUS"
 TITLE="How to Contact Red Hat"
 HREF="contacting-redhat.html"><LINK
 REL="NEXT"
-TITLE="User Interface"
-HREF="user-interface.html"></HEAD
+TITLE="Installing RedBoot"
+HREF="installing-redboot.html"></HEAD
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -43,7 +43,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5e, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5g, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -64,7 +64,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="user-interface.html"
+HREF="installing-redboot.html"
 >Next</A
 ></TD
 ></TR
@@ -88,7 +88,12 @@ CLASS="TOC"
 ></DT
 ><DT
 ><A
-HREF="getting-started-with-redboot.html#AEN86"
+HREF="getting-started-with-redboot.html#REDBOOT-ON-THE-WEB"
+>More information about RedBoot on the web</A
+></DT
+><DT
+><A
+HREF="installing-redboot.html"
 >Installing RedBoot</A
 ></DT
 ><DT
@@ -175,45 +180,33 @@ CLASS="EMPHASIS"
 >
 document, which provides information about the portability and extendability
 of RedBoot in an eCos environment.</P
-><P
->This chapter explains how to install and configure RedBoot for your
-target.</P
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN86"
->Installing RedBoot</A
+NAME="REDBOOT-ON-THE-WEB"
+>More information about RedBoot on the web</A
 ></H1
 ><P
->To install the RedBoot
-package, follow the procedures detailed in the accompanying README. </P
+>Information about the RedBoot product, including information about 
+details of porting,
+customization, training and technical support services from Red Hat, is
+available from the
+<A
+HREF="http://www.redhat.com/embedded/technologies/redboot/"
+TARGET="_top"
+>RedBoot 
+Product web site</A
+>. </P
 ><P
->Although there are other possible configurations, RedBoot is usually
-run from the target platform&#8217;s flash boot sector or boot ROM, and is
-designed to run when your system is initially powered on. The method used
-to install the RedBoot image into non-volatile storage varies from platform
-to platform. In general, it requires that the image be programmed into flash
-in situ or programmed into the flash or ROM using a device programmer. In
-some cases this will be done at manufacturing time; the platform being delivered
-with RedBoot already in place. In other cases, you will have to program RedBoot
-into the appropriate device(s) yourself. Installing to flash in situ may require
-special cabling or interface devices and software provided by the board manufacturer.
-The details of this installation process for a given platform will be found
-in Installation and Testing. Once installed, user-specific configuration options
-may be applied, using the <TT
-CLASS="COMPUTEROUTPUT"
->fconfig</TT
-> command,
-providing that persistent data storage in flash is present in the relevant
-RedBoot version. See <A
-HREF="configuring-the-redboot-environment.html"
->the section called <I
->Configuring the RedBoot Environment</I
-></A
->
-for details.</P
+>The <A
+HREF="http://sources.redhat.com/redboot/"
+TARGET="_top"
+>RedBoot Net
+Distribution web site</A
+> contains downloadable sources and documentation
+for all publically released targets, including the latest features and updates.</P
 ></DIV
 ></DIV
 ><DIV
@@ -247,7 +240,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="user-interface.html"
+HREF="installing-redboot.html"
 >Next</A
 ></TD
 ></TR
@@ -266,7 +259,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->User Interface</TD
+>Installing RedBoot</TD
 ></TR
 ></TABLE
 ></DIV

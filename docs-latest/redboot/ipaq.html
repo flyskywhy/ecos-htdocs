@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5e, May 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5g, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1617"
+NAME="AEN1626"
 >Overview</A
 ></H2
 ><P
@@ -105,7 +105,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1621"
+NAME="AEN1630"
 >Initial Installation</A
 ></H2
 ><P
@@ -116,7 +116,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1624"
+NAME="AEN1633"
 >Installing RedBoot on the iPAQ using Windows/CE</A
 ></H3
 ><P
@@ -134,7 +134,9 @@ CLASS="NOTE"
 ><P
 ><B
 >NOTE: </B
->We have only tested this operation with a 32Mbyte CF memory card. </P
+>We have only tested this operation with a 32Mbyte CF memory card. 
+Given that the backup will take 16MBytes + 1KByte, something more than a 16MByte
+card will be required.</P
 ></BLOCKQUOTE
 ></DIV
 ></P
@@ -142,6 +144,9 @@ CLASS="NOTE"
 >Use the "r2c" command to dump Flash contents to the CF memory card.  Once this
 completes, RedBoot can be installed with no fear since the Parrot loader can
 be used to restore the Flash contents at a later time.</P
+><P
+>If you expect to completely recover the state of the iPAQ Win/CE environment, then
+HotSync should be run to backup all "RAM" files as well before installing RedBoot.</P
 ><P
 >The next step in installing RedBoot on the iPAQ actually involves Windows/CE,
 which is the native environment on the unit.  Using WinCE, you need to
@@ -184,7 +189,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1642"
+NAME="AEN1652"
 >Installing RedBoot on the iPAQ - using the Compaq boot loader</A
 ></H3
 ><P
@@ -198,7 +203,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="IPAQ-INSTALL-RB-PERMANENTLY"
+NAME="SETTING-UP-AND-TESTING-REDBOOT"
 >Setting up and testing RedBoot</A
 ></H3
 ><P
@@ -265,8 +270,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1654"
->ipaq-install-rb-permanently. Installing RedBoot permanently</A
+NAME="IPAQ-INSTALL-RB-PERMANENTLY"
+>Installing RedBoot permanently</A
 ></H3
 ><P
 >Once you are satisfied with the setup and that RedBoot is operating
@@ -292,8 +297,9 @@ ALIGN="LEFT"
 ><P
 >This step will destroy your Windows/CE environment.</P
 ><P
->Before you take this step, you might want to save your WinCE FLASH contents.
-This can  be done using the Compaq OSloader:     <P
+>Before you take this step, it is strongly recommended you save your WinCE FLASH contents
+as outlined above using the "parrot" loader, or
+by using the Compaq OSloader:     <P
 ></P
 ><UL
 ><LI
@@ -373,14 +379,14 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1673"
+NAME="AEN1683"
 >Restoring Windows/CE</A
 ></H3
 ><P
 >To restore Windows/CE from the backup taken in <A
 HREF="ipaq.html#IPAQ-INSTALL-RB-PERMANENTLY"
 >the section called <I
->Setting up and testing RedBoot</I
+>Installing RedBoot permanently</I
 ></A
 >,
 visit <A
@@ -396,7 +402,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1678"
+NAME="AEN1688"
 >Flash Management</A
 ></H2
 ><DIV
@@ -404,7 +410,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1680"
+NAME="AEN1690"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -465,7 +471,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1687"
+NAME="AEN1697"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -525,7 +531,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1694"
+NAME="AEN1704"
 >Additional commands</A
 ></H2
 ><P
@@ -641,7 +647,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1733"
+NAME="AEN1743"
 >Memory Maps</A
 ></H2
 ><P
@@ -668,7 +674,11 @@ WIDTH="100%"
 CLASS="PROGRAMLISTING"
 >Physical Address Range     Description 
 -----------------------    ---------------------------------- 
-0x00000000 - 0x01ffffff    16Mb to 32Mb FLASH (nCS0) 
+0x00000000 - 0x01ffffff    16Mb to 32Mb FLASH (nCS0) [organized as below]
+  0x000000 - 0x0003ffff      Parrot Loader
+  0x040000 - 0x0007ffff      RedBoot
+  0xf80000 - 0x00fbffff      Fconfig data
+  0xfc0000 - 0x00ffffff      FIS directory
 0x30000000 - 0x3fffffff    Compact Flash 
 0x48000000 - 0x4bffffff    iPAQ internal registers    
 0x80000000 - 0xbfffffff    SA-1110 Internal Registers 
@@ -695,7 +705,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1740"
+NAME="AEN1750"
 >Resource Usage</A
 ></H2
 ><P
@@ -713,7 +723,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1743"
+NAME="AEN1753"
 >Rebuilding RedBoot</A
 ></H2
 ><P

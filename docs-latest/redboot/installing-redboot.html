@@ -12,7 +12,7 @@
 <HTML
 ><HEAD
 ><TITLE
->RedBoot Editing Commands</TITLE
+>Installing RedBoot</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
@@ -20,14 +20,14 @@ REL="HOME"
 TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
-TITLE="RedBoot Commands and Examples"
-HREF="redboot-commands-and-examples.html"><LINK
+TITLE="Getting Started with RedBoot"
+HREF="getting-started-with-redboot.html"><LINK
 REL="PREVIOUS"
-TITLE="RedBoot Commands and Examples"
-HREF="redboot-commands-and-examples.html"><LINK
+TITLE="Getting Started with RedBoot"
+HREF="getting-started-with-redboot.html"><LINK
 REL="NEXT"
-TITLE="Common Commands"
-HREF="common-commands.html"></HEAD
+TITLE="User Interface"
+HREF="user-interface.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -54,20 +54,20 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="redboot-commands-and-examples.html"
+HREF="getting-started-with-redboot.html"
 >Prev</A
 ></TD
 ><TD
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 2. RedBoot Commands and Examples</TD
+>Chapter 1. Getting Started with RedBoot</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="common-commands.html"
+HREF="user-interface.html"
 >Next</A
 ></TD
 ></TR
@@ -80,57 +80,37 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="REDBOOT-EDITING-COMMANDS"
->RedBoot Editing Commands</A
+NAME="INSTALLING-REDBOOT"
+>Installing RedBoot</A
 ></H1
 ><P
->RedBoot
-uses the following line editing commands. <P
-></P
-><UL
-><LI
+>To install the RedBoot
+package, follow the procedures detailed in the accompanying README. </P
 ><P
-><SPAN
-CLASS="GUIBUTTON"
->Delete</SPAN
-> (0x7F) or <SPAN
-CLASS="GUIBUTTON"
->Backspace</SPAN
-> (0x08) moves the cursor back one character and erases what is
-there destructively.</P
-><P
->The mention of ^ is in the context of the <TT
+>Although there are other possible configurations, RedBoot is usually
+run from the target platform&#8217;s flash boot sector or boot ROM, and is
+designed to run when your system is initially powered on. The method used
+to install the RedBoot image into non-volatile storage varies from platform
+to platform. In general, it requires that the image be programmed into flash
+in situ or programmed into the flash or ROM using a device programmer. In
+some cases this will be done at manufacturing time; the platform being delivered
+with RedBoot already in place. In other cases, you will have to program RedBoot
+into the appropriate device(s) yourself. Installing to flash in situ may require
+special cabling or interface devices and software provided by the board manufacturer.
+The details of this installation process for a given platform will be found
+in Installation and Testing. Once installed, user-specific configuration options
+may be applied, using the <TT
 CLASS="COMPUTEROUTPUT"
 >fconfig</TT
+> command,
+providing that persistent data storage in flash is present in the relevant
+RedBoot version. See <A
+HREF="configuring-the-redboot-environment.html"
+>the section called <I
+>Configuring the RedBoot Environment</I
+></A
 >
-command. This command uses some special line-editing features. When certain
-characters appear alone on the input line, a behavior is elicited.</P
-></LI
-><LI
-><P
->^ (caret) switch to editing the previous item in the <TT
-CLASS="COMPUTEROUTPUT"
->fconfig</TT
-> list. If fconfig edits item A, followed by item B,
-pressing ^ when changing item B, allows you to change item A. This is similar
-to the up arrow.</P
-></LI
-><LI
-><P
->. (period) stop editing any further items. This does not change
-the current item.</P
-></LI
-><LI
-><P
-><SPAN
-CLASS="GUIBUTTON"
->Return</SPAN
-> (blank line) leaves the value
-for this item unchanged. Currently it is not possible to step through the
-value for the start-up script; it must always be retyped.</P
-></LI
-></UL
-></P
+for details.</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -147,7 +127,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="redboot-commands-and-examples.html"
+HREF="getting-started-with-redboot.html"
 >Prev</A
 ></TD
 ><TD
@@ -163,7 +143,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="common-commands.html"
+HREF="user-interface.html"
 >Next</A
 ></TD
 ></TR
@@ -172,20 +152,20 @@ HREF="common-commands.html"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->RedBoot Commands and Examples</TD
+>Getting Started with RedBoot</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="redboot-commands-and-examples.html"
+HREF="getting-started-with-redboot.html"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Common Commands</TD
+>User Interface</TD
 ></TR
 ></TABLE
 ></DIV
