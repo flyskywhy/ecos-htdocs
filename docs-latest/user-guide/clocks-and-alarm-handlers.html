@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -14,7 +14,7 @@ Handlers</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -38,7 +38,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -56,7 +55,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="sample-twothreads.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -70,7 +68,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="the-ecos-configuration-tool.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,9 +80,9 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CLOCKS-AND-ALARM-HANDLERS"
-></A
 >Chapter 14. More Features &#8212; Clocks and Alarm
-Handlers</H1
+Handlers</A
+></H1
 ><P
 >If a program wanted to execute a task at a given time, or
 periodically, it could do it in an inefficient way by sitting in a
@@ -97,31 +94,19 @@ which allow the program to be informed at the desired time.</P
 CLASS="PRODUCTNAME"
 >eCos</SPAN
 > provides a rich timekeeping formalism, involving
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >counters</I
-></SPAN
->, <SPAN
-CLASS="emphasis"
-><I
+>, <I
 CLASS="EMPHASIS"
 >clocks</I
-></SPAN
 >,
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >alarms</I
-></SPAN
->, and <SPAN
-CLASS="emphasis"
-><I
+>, and <I
 CLASS="EMPHASIS"
 >timers</I
-></SPAN
 >.  The
 precise definition, relationship, and motivation of these features is
 beyond the scope of this tutorial, but these examples illustrate how
@@ -137,8 +122,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SAMPLE-ALARMS"
-></A
->A Sample Program with Alarms</H1
+>A Sample Program with Alarms</A
+></H1
 ><P
 ><TT
 CLASS="FILENAME"
@@ -155,7 +140,7 @@ changed, it prints a message.</P
 ><DIV
 CLASS="EXAMPLE"
 ><A
-NAME="AEN908"
+NAME="AEN922"
 ></A
 ><P
 ><B
@@ -252,12 +237,9 @@ void test_alarm_func(cyg_handle_t alarmH, cyg_addrword_t data)
 CLASS="COMMAND"
 >continue</B
 > at
-the (<SPAN
-CLASS="emphasis"
-><I
+the (<I
 CLASS="EMPHASIS"
 >gdb</I
-></SPAN
 >) prompt) the output should look like
 this:</P
 ><TABLE
@@ -375,12 +357,9 @@ CLASS="PRODUCTNAME"
 ></LI
 ><LI
 ><P
->There is a <SPAN
-CLASS="emphasis"
-><I
+>There is a <I
 CLASS="EMPHASIS"
 >critical region</I
-></SPAN
 > in this program:
 the variable <TT
 CLASS="LITERAL"
@@ -411,7 +390,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -423,7 +401,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="sample-twothreads.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -432,7 +409,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -441,7 +417,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="the-ecos-configuration-tool.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -457,7 +432,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="user-guide-programming.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

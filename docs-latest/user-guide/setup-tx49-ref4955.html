@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-tx39-sim.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-vr4300-vrc4373.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SETUP-TX49-REF4955"
-></A
->TX49 Hardware Setup</H1
+>TX49 Hardware Setup</A
+></H1
 ><P
 >The eCos installation CD contains a copy of the eCos GDB stubs
 in  SREC format which must be programmed into the board&#8217;s
@@ -94,9 +91,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3294"
-></A
->Preparing the GDB stubs</H2
+NAME="AEN3308"
+>Preparing the GDB stubs</A
+></H2
 ><P
 >These stub preparation steps are not strictly necessary as
 the eCos distribution ships with pre-compiled stubs in the directory <TT
@@ -109,9 +106,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3298"
-></A
->Building the GDB stub image with the eCos Configuration Tool</H3
+NAME="AEN3312"
+>Building the GDB stub image with the eCos Configuration Tool</A
+></H3
 ><P
 ></P
 ><OL
@@ -119,56 +116,41 @@ TYPE="1"
 ><LI
 ><P
 >		  Start with a new document - selecting the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >File-&#62;New</I
-></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  menu item, and then select the TX49 REF4955 hardware.</P
 ></LI
 ><LI
 ><P
 >While still displaying the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  dialog box, select the stubs package template to build a GDB stub.
 Click 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >OK</I
-></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 >Build eCos stubs using 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Library</I
-></SPAN
 >.</P
 ></LI
 ><LI
@@ -184,9 +166,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3316"
-></A
->Building the GDB stub image with ecosconfig</H3
+NAME="AEN3330"
+>Building the GDB stub image with ecosconfig</A
+></H3
 ><P
 ></P
 ><OL
@@ -243,9 +225,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3329"
-></A
->Installing GDB stubs into FLASH</H2
+NAME="AEN3343"
+>Installing GDB stubs into FLASH</A
+></H2
 ><P
 >Boot into the board&#8217;s firmware in little-endian mode:</P
 ><P
@@ -341,7 +323,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -353,7 +334,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-tx39-sim.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -362,7 +342,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -371,7 +350,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-vr4300-vrc4373.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -387,7 +365,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="NEXT"
 TITLE="Introduction"
@@ -36,8 +36,8 @@ CLASS="TITLEPAGE"
 CLASS="TITLE"
 ><A
 NAME="AEN2"
-></A
->eCos User Guide</H1
+>eCos User Guide</A
+></H1
 ><P
 CLASS="COPYRIGHT"
 >Copyright &copy; 2001, 2002 by Red Hat, Inc.</P
@@ -77,42 +77,59 @@ NAME="AEN15"
 >Trademarks</B
 ></P
 ><P
->Red Hat, the Red Hat Shadow Man logo&reg;, eCos&#8482;, RedBoot&#8482;,
-GNUPro&reg;, and Insight&#8482; are trademarks of Red Hat, Inc. </P
+>Altera&reg; and Excalibur&#8482; are trademarks of Altera Corporation.</P
 ><P
->Sun Microsystems&reg; and Solaris&reg; are registered trademarks of
-Sun Microsystems, Inc. </P
+>AMD&reg; is a registered trademark of Advanced Micro Devices, Inc.</P
 ><P
->SPARC&reg; is a registered trademark of SPARC International, Inc., and
-is used under license by Sun Microsystems, Inc. </P
+>ARM&reg;, StrongARM&reg;, Thumb&reg;, ARM7&#8482;, ARM9&#8482;  is a registered trademark of Advanced RISC Machines, Ltd.</P
 ><P
->Intel&reg; is a registered trademark of Intel Corporation.</P
+>Cirrus Logic&reg; and Maverick&#8482; are registered trademarks of Cirrus Logic, Inc.</P
 ><P
->Motorola&#8482; is a trademark of Motorola, Inc.</P
-><P
->ARM&reg; is a registered trademark of Advanced RISC Machines, Ltd.</P
-><P
->MIPS&#8482; is a trademark of MIPS Technologies, Inc.</P
-><P
->Toshiba&reg; is a registered trademark of the Toshiba Corporation.</P
-><P
->NEC&reg; is a registered trademark if the NEC Corporation.</P
-><P
->Cirrus Logic&reg; is a registered trademark of Cirrus Logic, Inc.</P
+>Cogent&#8482; is a trademark of Cogent Computer Systems, Inc.</P
 ><P
 >Compaq&reg; is a registered trademark of the Compaq Computer Corporation.</P
 ><P
->Matsushita&#8482; is a trademark of the Matsushita Electric Corporation.</P
+>Fujitsu&reg; is a registered trademark of Fujitsu Limited.</P
 ><P
->Samsung&reg; and CalmRISC&#8482; are trademarks or registered trademarks
-of Samsung, Inc. </P
+>IBM&reg;, and PowerPC&#8482; are trademarks of International Business Machines Corporation.</P
+><P
+>IDT&reg; is a registered trademark of Integrated Device Technology Inc.</P
+><P
+>Intel&reg;, i386&#8482;, Pentium&reg;, StrataFlash&reg; and XScale&#8482; are trademarks of Intel Corporation.</P
+><P
+>Intrinsyc&reg; and Cerf&#8482; are trademarks of Intrinsyc Software, Inc.</P
 ><P
 >Linux&reg; is a registered trademark of Linus Torvalds. </P
 ><P
->UNIX&reg; is a registered trademark of The Open Group. </P
+>Matsushita&#8482; and Panasonic&reg; are trademarks of the Matsushita Electric Industrial Corporation.</P
 ><P
->Microsoft&reg;, Windows&reg;, and Windows NT&reg; are registered trademarks
-of Microsoft Corporation, Inc. </P
+>Microsoft&reg;, Windows&reg;, Windows NT&reg; and Windows XP&reg; are registered trademarks of Microsoft Corporation, Inc. </P
+><P
+>MIPS&reg;, MIPS32&#8482; MIPS64&#8482;, 4K&#8482;, 5K&#8482; Atlas&#8482; and Malta&#8482; are trademarks of MIPS Technologies, Inc.</P
+><P
+>Motorola&reg;, ColdFire&reg; is a trademark of Motorola, Inc.</P
+><P
+>NEC&reg; V800&#8482;, V850&#8482;, V850/SA1&#8482;, V850/SB1&#8482;, VR4300&#8482;, and VRC4375&#8482; are trademarks of NEC Corporation.</P
+><P
+>PMC-Sierra&reg; RM7000&#8482; and Ocelot&#8482; are trademarks of PMC-Sierra Incorporated. </P
+><P
+>Red Hat, eCos&#8482;, RedBoot&#8482;, GNUPro&reg;, and Insight&#8482; are trademarks of Red Hat, Inc. </P
+><P
+>Samsung&reg; and CalmRISC&#8482; are trademarks or registered trademarks of Samsung, Inc. </P
+><P
+>Sharp&reg; is a registered trademark of Sharp Electronics Corp.</P
+><P
+>SPARC&reg; is a registered trademark of SPARC International, Inc., and is used under license by Sun Microsystems, Inc. </P
+><P
+>Sun Microsystems&reg; and Solaris&reg; are registered trademarks of Sun Microsystems, Inc. </P
+><P
+>SuperH&#8482; and Renesas&#8482; are trademarks owned by Renesas Technology Corp.</P
+><P
+>Texas Instruments&reg;, OMAP&#8482; and Innovator&#8482; are trademarks of Texas Instruments Incorporated.</P
+><P
+>Toshiba&reg; is a registered trademark of the Toshiba Corporation.</P
+><P
+>UNIX&reg; is a registered trademark of The Open Group. </P
 ><P
 >All other brand and product names, trademarks, and copyrights are the
 property of their respective owners. </P
@@ -169,14 +186,14 @@ HREF="ecos-licensing-previous.html"
 ></DD
 ><DT
 >4. <A
-HREF="c229.html"
+HREF="notation-and-conventions.html"
 >Notation and Conventions</A
 ></DT
 ><DD
 ><DL
 ><DT
 ><A
-HREF="c229.html#GDB-AND-GCC-COMMAND-NOTATION"
+HREF="notation-and-conventions.html#GDB-AND-GCC-COMMAND-NOTATION"
 >GDB and GCC Command Notation</A
 ></DT
 ><DT
@@ -1113,7 +1130,7 @@ HREF="configuring-and-building-ecos-from-source.html#USER-GUIDE-DOWNLOAD-METHODS
 ></DT
 ><DT
 >18-1. <A
-HREF="config-tool-screen-layout.html#AEN1271"
+HREF="config-tool-screen-layout.html#AEN1285"
 >Cell types</A
 ></DT
 ><DT
@@ -1164,7 +1181,7 @@ HREF="using-configtool-windows-linux.html#FIGURE-SELECTING-THE-BUILD-LIBRARY-MEN
 ></DT
 ><DT
 >11-5. <A
-HREF="using-configtool-windows-linux.html#AEN605"
+HREF="using-configtool-windows-linux.html#AEN619"
 >Save file dialog</A
 ></DT
 ><DT
@@ -1179,7 +1196,7 @@ HREF="using-configtool-windows-linux.html#FIGURE-USER-TOOLS-DIALOG"
 ></DT
 ><DT
 >11-8. <A
-HREF="using-configtool-windows-linux.html#AEN646"
+HREF="using-configtool-windows-linux.html#AEN660"
 >Selecting the Build Tests menu item</A
 ></DT
 ><DT
@@ -1208,17 +1225,17 @@ CLASS="APPLICATION"
 ></DT
 ><DT
 >15-2. <A
-HREF="config-tool-component-repository.html#AEN1045"
+HREF="config-tool-component-repository.html#AEN1059"
 >Repository relocation dialog box</A
 ></DT
 ><DT
 >15-3. <A
-HREF="config-tool-documents.html#AEN1074"
+HREF="config-tool-documents.html#AEN1088"
 >Save As dialog box</A
 ></DT
 ><DT
 >15-4. <A
-HREF="config-tool-documents.html#AEN1083"
+HREF="config-tool-documents.html#AEN1097"
 >Open dialog box</A
 ></DT
 ><DT
@@ -1228,77 +1245,77 @@ HREF="methods-of-displaying-html-help.html#FIGURE-HELP-VIEWER"
 ></DT
 ><DT
 >17-1. <A
-HREF="config-tool-settings.html#AEN1205"
+HREF="config-tool-settings.html#AEN1219"
 >Settings dialog, Display tab</A
 ></DT
 ><DT
 >17-2. <A
-HREF="config-tool-settings.html#AEN1231"
+HREF="config-tool-settings.html#AEN1245"
 >Settings dialog, Viewers tab</A
 ></DT
 ><DT
 >19-1. <A
-HREF="config-tool-updating-configuration.html#AEN1374"
+HREF="config-tool-updating-configuration.html#AEN1388"
 >Packages dialog box</A
 ></DT
 ><DT
 >19-2. <A
-HREF="config-tool-platform-selection.html#AEN1391"
+HREF="config-tool-platform-selection.html#AEN1405"
 >Platforms dialog box</A
 ></DT
 ><DT
 >19-3. <A
-HREF="config-tool-platform-selection.html#AEN1398"
+HREF="config-tool-platform-selection.html#AEN1412"
 >Platform Modify dialog box</A
 ></DT
 ><DT
 >19-4. <A
-HREF="config-tool-using-templates.html#AEN1415"
+HREF="config-tool-using-templates.html#AEN1429"
 >Templates dialog box</A
 ></DT
 ><DT
 >19-5. <A
-HREF="config-tool-using-templates.html#AEN1428"
+HREF="config-tool-using-templates.html#AEN1442"
 >Options</A
 ></DT
 ><DT
 >19-6. <A
-HREF="config-tool-using-templates.html#AEN1448"
+HREF="config-tool-using-templates.html#AEN1462"
 >Resolve conflicts window</A
 ></DT
 ><DT
 >20-1. <A
-HREF="config-tool-searching.html#AEN1469"
+HREF="config-tool-searching.html#AEN1483"
 >Find dialog box</A
 ></DT
 ><DT
 >21-1. <A
-HREF="config-tool-building.html#AEN1519"
+HREF="config-tool-building.html#AEN1533"
 >Build tools</A
 ></DT
 ><DT
 >21-2. <A
-HREF="config-tool-selecting-user-tools.html#AEN1531"
+HREF="config-tool-selecting-user-tools.html#AEN1545"
 >User tools</A
 ></DT
 ><DT
 >22-1. <A
-HREF="config-tool-test-execution.html#AEN1562"
+HREF="config-tool-test-execution.html#AEN1576"
 >Properties dialog box</A
 ></DT
 ><DT
 >22-2. <A
-HREF="config-tool-test-execution.html#AEN1601"
+HREF="config-tool-test-execution.html#AEN1615"
 >Run tests</A
 ></DT
 ><DT
 >22-3. <A
-HREF="config-tool-test-execution.html#AEN1614"
+HREF="config-tool-test-execution.html#AEN1628"
 >Add files from folder</A
 ></DT
 ><DT
 >25-1. <A
-HREF="component-repo-and-working-dirs.html#AEN2020"
+HREF="component-repo-and-working-dirs.html#AEN2034"
 >Component repository</A
 ></DT
 ></DL
@@ -1313,38 +1330,38 @@ CLASS="LOT"
 ></DT
 ><DT
 >11-1. <A
-HREF="using-ecosconfig-on-linux.html#AEN681"
+HREF="using-ecosconfig-on-linux.html#AEN695"
 >Getting  help from ecosconfig</A
 ></DT
 ><DT
 >11-2. <A
-HREF="using-ecosconfig-on-linux.html#AEN684"
+HREF="using-ecosconfig-on-linux.html#AEN698"
 >ecosconfig output &#8212; 
 list of available packages, targets and templates</A
 ></DT
 ><DT
 >14-1. <A
-HREF="clocks-and-alarm-handlers.html#AEN908"
+HREF="clocks-and-alarm-handlers.html#AEN922"
 >A sample program that creates an alarm</A
 ></DT
 ><DT
 >27-1. <A
-HREF="debugging-techniques.html#AEN2287"
+HREF="debugging-techniques.html#AEN2301"
 >Hello world with tracing</A
 ></DT
 ><DT
 >27-2. <A
-HREF="kernel-instrumentation.html#AEN2356"
+HREF="kernel-instrumentation.html#AEN2370"
 >Using instrument buffers</A
 ></DT
 ><DT
 >27-3. <A
-HREF="kernel-instrumentation.html#AEN2365"
+HREF="kernel-instrumentation.html#AEN2379"
 >Instrument buffer output</A
 ></DT
 ><DT
 >28-1. <A
-HREF="modifying-the-memory-layout.html#AEN2990"
+HREF="modifying-the-memory-layout.html#AEN3004"
 ><SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
@@ -1358,7 +1375,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1380,7 +1396,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="user-guide-introduction.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR

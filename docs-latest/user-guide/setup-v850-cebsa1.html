@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-sh-se7751.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-v850-cebsb1.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SETUP-V850-CEBSA1"
-></A
->NEC CEB-V850/SA1 Hardware Setup</H1
+>NEC CEB-V850/SA1 Hardware Setup</A
+></H1
 ><P
 >The CEB-V850 board is fitted with a socketed EPROM. The internal
 Flash of the V850 supplied with the CEB-V850 boards defaults to
@@ -137,17 +134,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4277"
-></A
->Installing the Stubs into ROM</H2
+NAME="AEN4291"
+>Installing the Stubs into ROM</A
+></H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4279"
-></A
->Preparing the Binaries</H3
+NAME="AEN4293"
+>Preparing the Binaries</A
+></H3
 ><P
 >These two binary preparation steps are not strictly necessary
 as the eCos distribution ships with pre-compiled binaries in the
@@ -158,9 +155,9 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN4282"
-></A
->Building the ROM images with the eCos Configuration Tool</H4
+NAME="AEN4296"
+>Building the ROM images with the eCos Configuration Tool</A
+></H4
 ><P
 ></P
 ><OL
@@ -168,56 +165,41 @@ TYPE="1"
 ><LI
 ><P
 >Start with a new document - selecting the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >File-&#62;New</I
-></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  menu item, and then select the NEC CEB-V850/SA1 hardware.</P
 ></LI
 ><LI
 ><P
 >While still displaying the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  dialog box, select the &#8220;stubs&#8221; package template
 to build a GDB stub. Click 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >OK</I
-></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 >Build eCos using 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Library</I
-></SPAN
 >. </P
 ></LI
 ><LI
@@ -233,9 +215,9 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN4300"
-></A
->Building the ROM images with ecosconfig</H4
+NAME="AEN4314"
+>Building the ROM images with ecosconfig</A
+></H4
 ><P
 ></P
 ><OL
@@ -297,9 +279,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4313"
-></A
->Installing the Stubs into ROM or FLASH</H3
+NAME="AEN4327"
+>Installing the Stubs into ROM or FLASH</A
+></H3
 ><P
 ></P
 ><OL
@@ -323,9 +305,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4320"
-></A
->Debugging with the NEC V850 I.C.E.</H2
+NAME="AEN4334"
+>Debugging with the NEC V850 I.C.E.</A
+></H2
 ><P
 >eCos applications may be debugged using the NEC V850 In Circuit
 Emulator (I.C.E.) A PC running Microsoft Windows is required in
@@ -350,9 +332,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4325"
-></A
->INITIAL SETUP</H3
+NAME="AEN4339"
+>INITIAL SETUP</A
+></H3
 ><P
 ></P
 ><OL
@@ -424,9 +406,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4343"
-></A
->BUILD PROCEDURES</H3
+NAME="AEN4357"
+>BUILD PROCEDURES</A
+></H3
 ><P
 >A pre-built v850ice.exe executable is supplied in the loaders/v850-ceb_v850 directory
 relative to the root of the eCos installation. However the following process
@@ -474,9 +456,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4352"
-></A
->V850ICE.EXE EXECUTION</H3
+NAME="AEN4366"
+>V850ICE.EXE EXECUTION</A
+></H3
 ><P
 >The v850ice command line syntax is:</P
 ><P
@@ -520,9 +502,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4367"
-></A
->V850-ELF-GDB EXECUTION</H3
+NAME="AEN4381"
+>V850-ELF-GDB EXECUTION</A
+></H3
 ><P
 >Run the v850-elf-gdb client to debug the V850 target.  It
 is necessary to issue certain configuration commands to the I.C.E.
@@ -606,9 +588,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4378"
-></A
->MDI INTERFACE VS. GDB INTERFACE</H3
+NAME="AEN4392"
+>MDI INTERFACE VS. GDB INTERFACE</A
+></H3
 ><P
 >If a filename is referenced in an MDI command, whether the
 command is entered in the MDI window or issued from the gdb client
@@ -637,9 +619,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4383"
-></A
->eCos THREAD DEBUGGING</H3
+NAME="AEN4397"
+>eCos THREAD DEBUGGING</A
+></H3
 ><P
 >eCos and the V850 I.C.E. libremote server have been written
 to work together to allow debugging of eCos threads. This is an
@@ -737,7 +719,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -749,7 +730,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-sh-se7751.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -758,7 +738,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -767,7 +746,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-v850-cebsb1.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -783,7 +761,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

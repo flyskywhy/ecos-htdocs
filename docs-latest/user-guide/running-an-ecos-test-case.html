@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="using-ecosconfig-on-linux.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="using-commandline-testcase.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -82,11 +79,11 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="RUNNING-AN-ECOS-TEST-CASE"
-></A
 >Chapter 12. Running an <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
-> Test Case</H1
+> Test Case</A
+></H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -117,12 +114,12 @@ HREF="testing-filters.html"
 ><P
 >In <A
 HREF="using-configtool-windows-linux.html"
->the Section called <I
+>the section called <I
 >Configuration Tool on Windows and Linux Quick Start</I
 > in Chapter 11</A
 > or <A
 HREF="using-ecosconfig-on-linux.html"
->the Section called <I
+>the section called <I
 >Ecosconfig on Windows and Linux Quick Start</I
 > in Chapter 11</A
 > you created the <SPAN
@@ -136,40 +133,31 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="USING-CONFIGTOOL-TESTCASE"
-></A
 >Using the <SPAN
 CLASS="APPLICATION"
 >Configuration Tool</SPAN
+></A
 ></H1
 ><P
 >Test executables that have been linked using the
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&gt;Tests</I
-></SPAN
 > operation against the current
-configuration can be executed by selecting <SPAN
-CLASS="emphasis"
-><I
+configuration can be executed by selecting <I
 CLASS="EMPHASIS"
 >Tools-&#62;Run
 Tests</I
-></SPAN
 >.</P
 ><P
 >When a test run is invoked, a property sheet is displayed, see
 <A
 HREF="running-an-ecos-test-case.html#PROGRAMMING-RUN-TESTS"
 >Figure 12-1</A
->. Press the <SPAN
-CLASS="emphasis"
-><I
+>. Press the <I
 CLASS="EMPHASIS"
 >Uncheck
 All</I
-></SPAN
 > button and then find and check just one test,
 <TT
 CLASS="FILENAME"
@@ -189,12 +177,9 @@ NAME="PROGRAMMING-RUN-TESTS"
 SRC="pix/run-tests.png"></P
 ></DIV
 ><P
->Now press the <SPAN
-CLASS="emphasis"
-><I
+>Now press the <I
 CLASS="EMPHASIS"
 >Properties</I
-></SPAN
 > button to set up
 communications with the target. This will bring up a properties dialog
 shown in <A
@@ -202,20 +187,14 @@ HREF="running-an-ecos-test-case.html#PROGRAMMING-RUN-PROPERTIES"
 >Figure 12-2</A
 >. If you have
 connected the target board via a serial cable, check the
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Serial</I
-></SPAN
 > radio button, and select the serial port
 and baud rate for the board. If the target is connected via the
-network select the <SPAN
-CLASS="emphasis"
-><I
+network select the <I
 CLASS="EMPHASIS"
 >TCP/IP</I
-></SPAN
 > button and enter the IP
 address that the board has been given, and the port number (usually
 9000).</P
@@ -233,27 +212,18 @@ NAME="PROGRAMMING-RUN-PROPERTIES"
 SRC="pix/ch-properties-dialog.png"></P
 ></DIV
 ><P
->Click OK on this dialog and go back to the <SPAN
-CLASS="emphasis"
-><I
+>Click OK on this dialog and go back to the <I
 CLASS="EMPHASIS"
 >Run
 Tests</I
-></SPAN
-> dialog. Press the <SPAN
-CLASS="emphasis"
-><I
+> dialog. Press the <I
 CLASS="EMPHASIS"
 >Run</I
-></SPAN
 > button and
 the selected test will be downloaded and run. The
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Output</I
-></SPAN
 > tab will show you how this is
 progressing. If it seems to stop for a long time, check that the
 target board is correctly connected, and that <SPAN
@@ -291,7 +261,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -303,7 +272,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="using-ecosconfig-on-linux.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -312,7 +280,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -321,7 +288,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="using-commandline-testcase.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -337,7 +303,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="user-guide-programming.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

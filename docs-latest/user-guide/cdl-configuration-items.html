@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="cdl-packages.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="cdl-conflicts.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,15 +80,12 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="CDL-CONFIGURATION-ITEMS"
-></A
->Configuration Items</H1
+>Configuration Items</A
+></H1
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Configuration items</I
-></SPAN
 > are the
 	  individual entities that form a configuration.  Each item
 	  corresponds to the setting of a C pre-processor macro (for
@@ -113,24 +107,18 @@ CLASS="PRODUCTNAME"
 ><UL
 ><LI
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >None</I
-></SPAN
 >: such entities serve only as
 place holders in the hierarchy, allowing other entities to be grouped
 more easily.</P
 ></LI
 ><LI
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Boolean</I
-></SPAN
 > entities are the most common
 flavor; they correspond to units of functionality that can be either
 enabled or disabled.  If the entity is enabled then there will be
@@ -138,12 +126,9 @@ a #define; code will check the setting using, for example, #ifdef</P
 ></LI
 ><LI
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Data</I
-></SPAN
 > entities encapsulate some arbitrary
 data. Other properties such as a set or range of legal values can
 be used to constrain the actual values, for example to an integer
@@ -151,25 +136,16 @@ or floating point value within a certain range.</P
 ></LI
 ><LI
 ><P
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Booldata</I
-></SPAN
 > entities combine the attributes
-of <SPAN
-CLASS="emphasis"
-><I
+of <I
 CLASS="EMPHASIS"
 >Boolean</I
-></SPAN
-> and <SPAN
-CLASS="emphasis"
-><I
+> and <I
 CLASS="EMPHASIS"
 >Data</I
-></SPAN
 >: they
 can be enabled or disabled and, if enabled, will hold a data value.</P
 ></LI
@@ -185,9 +161,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1896"
-></A
->Expressions</H2
+NAME="AEN1910"
+>Expressions</A
+></H2
 ><P
 >Expressions are relationships between CDL items.  There are
 three types of expression in CDL:</P
@@ -275,9 +251,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1921"
-></A
->Properties</H2
+NAME="AEN1935"
+>Properties</A
+></H2
 ><P
 >Each configuration item has a set of properties.  The following
 table describes the most commonly used:</P
@@ -298,22 +274,16 @@ CLASS="CALSTABLE"
 ><TH
 ALIGN="LEFT"
 VALIGN="TOP"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Property</I
-></SPAN
 ></TH
 ><TH
 ALIGN="LEFT"
 VALIGN="TOP"
-><SPAN
-CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Use </I
-></SPAN
 ></TH
 ></TR
 ></THEAD
@@ -383,12 +353,9 @@ ALIGN="LEFT"
 VALIGN="TOP"
 >A
 		  goal expression denoting the requirement for this item to be active
-(see below: <SPAN
-CLASS="emphasis"
-><I
+(see below: <I
 CLASS="EMPHASIS"
 >Inactive Items</I
-></SPAN
 >) </TD
 ></TR
 ><TR
@@ -401,12 +368,9 @@ ALIGN="LEFT"
 VALIGN="TOP"
 >A goal
 expression denoting requirements this item places on others (see
-below: <SPAN
-CLASS="emphasis"
-><I
+below: <I
 CLASS="EMPHASIS"
 >Conflicts</I
-></SPAN
 >) </TD
 ></TR
 ><TR
@@ -479,17 +443,14 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1974"
-></A
->Inactive Items</H2
+NAME="AEN1988"
+>Inactive Items</A
+></H2
 ><P
 >Descendants of an item that is disabled are inactive: their
-values may not be changed.  Items may also become <SPAN
-CLASS="emphasis"
-><I
+values may not be changed.  Items may also become <I
 CLASS="EMPHASIS"
 >inactive</I
-></SPAN
 > if
 an active_if expression is used to make the item dependent
 on an expression involving other items. </P
@@ -500,7 +461,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -512,7 +472,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="cdl-packages.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -521,7 +480,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -530,7 +488,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="cdl-conflicts.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -546,7 +503,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="cdl-concepts.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

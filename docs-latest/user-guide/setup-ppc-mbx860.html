@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-ppc-cogent.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-ppc-sim.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,8 +80,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SETUP-PPC-MBX860"
-></A
->PowerPC MBX860 Hardware Setup</H1
+>PowerPC MBX860 Hardware Setup</A
+></H1
 ><P
 >The eCos Developer&#8217;s Kit package comes with an EPROM
 which provides GDB support for the Motorola
@@ -117,17 +114,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3420"
-></A
->Installing the Stubs into FLASH</H2
+NAME="AEN3434"
+>Installing the Stubs into FLASH</A
+></H2
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3422"
-></A
->Preparing the Binaries</H3
+NAME="AEN3436"
+>Preparing the Binaries</A
+></H3
 ><P
 >These two binary preparation steps are not strictly necessary
 as the eCos distribution ships with pre-compiled binaries in the
@@ -141,9 +138,9 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN3426"
-></A
->Building the ROM images with the eCos Configuration Tool</H4
+NAME="AEN3440"
+>Building the ROM images with the eCos Configuration Tool</A
+></H4
 ><P
 ></P
 ><OL
@@ -151,24 +148,18 @@ TYPE="1"
 ><LI
 ><P
 >Start with a new document - selecting the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >File-&#62;New</I
-></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  menu item, and then select the PowerPC    Motorola MBX860/821
 hardware.</P
@@ -176,32 +167,23 @@ hardware.</P
 ><LI
 ><P
 >While still displaying the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
-></SPAN
 >
  dialog box, select the &#8220;stubs&#8221; package template
 to build a GDB stub. Click 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >OK</I
-></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 >Build eCos using 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build-&#62;Library</I
-></SPAN
 >. </P
 ></LI
 ><LI
@@ -217,9 +199,9 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN3444"
-></A
->Building the ROM images with ecosconfig</H4
+NAME="AEN3458"
+>Building the ROM images with ecosconfig</A
+></H4
 ><P
 ></P
 ><OL
@@ -280,9 +262,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3457"
-></A
->Installing the Stubs into ROM</H3
+NAME="AEN3471"
+>Installing the Stubs into ROM</A
+></H3
 ><P
 ></P
 ><OL
@@ -295,12 +277,9 @@ into ROM or FLASH referring to the instructions of your ROM programmer.</P
 ><LI
 ><P
 > Plug the ROM/FLASH into socket XU1 as described
-near the beginning of this <SPAN
-CLASS="emphasis"
-><I
+near the beginning of this <I
 CLASS="EMPHASIS"
 >Hardware Setup</I
-></SPAN
 > section.</P
 ></LI
 ></OL
@@ -310,9 +289,9 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3465"
-></A
->Installing the Stubs into FLASH</H3
+NAME="AEN3479"
+>Installing the Stubs into FLASH</A
+></H3
 ><P
 >This assumes you have EPPC-Bug in the on-board FLASH. This
 can be determined by setting up the board according to the below
@@ -337,9 +316,9 @@ CLASS="SECT4"
 ><H4
 CLASS="SECT4"
 ><A
-NAME="AEN3473"
-></A
->Program FLASH</H4
+NAME="AEN3487"
+>Program FLASH</A
+></H4
 ><P
 ></P
 ><OL
@@ -409,7 +388,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -421,7 +399,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-ppc-cogent.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -430,7 +407,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -439,7 +415,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-ppc-sim.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -455,7 +430,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

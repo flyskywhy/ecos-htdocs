@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -13,7 +13,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -37,7 +37,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,7 +54,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="fine-grained-configuration.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,7 +67,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="editing-the-sources.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,11 +80,11 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="EDITING-AN-ECOS-SAVEFILE"
-></A
 >Editing an <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
-> Savefile</H1
+> Savefile</A
+></H1
 ><P
 >The <SPAN
 CLASS="PRODUCTNAME"
@@ -110,12 +107,9 @@ CLASS="COMMAND"
 >An <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
-> savefile is actually a script in the <SPAN
-CLASS="emphasis"
-><I
+> savefile is actually a script in the <I
 CLASS="EMPHASIS"
 >Tcl</I
-></SPAN
 > programming
 language, so any modifications to the file need to preserve Tcl
 syntax. For most configuration options, any modifications will be
@@ -141,9 +135,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2719"
-></A
->Header</H2
+NAME="AEN2733"
+>Header</A
+></H2
 ><P
 >An <SPAN
 CLASS="PRODUCTNAME"
@@ -189,9 +183,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2725"
-></A
->Toplevel Section</H2
+NAME="AEN2739"
+>Toplevel Section</A
+></H2
 ><P
 >The header is followed by a section that defines the
 	    configuration as a whole. A typical example would
@@ -268,9 +262,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2733"
-></A
->Conflicts Section</H2
+NAME="AEN2747"
+>Conflicts Section</A
+></H2
 ><P
 >The toplevel section is followed by details of all the
 	    conflicts (if any) in the configuration, for
@@ -308,12 +302,9 @@ CLASS="LITERAL"
 > has
 been given an illegal value: typically this would be fixed by searching
 for the definition of that option later on in the savefile and modifying
-the value. The second conflict is more interesting, an unsatisfied <SPAN
-CLASS="emphasis"
-><I
+the value. The second conflict is more interesting, an unsatisfied <I
 CLASS="EMPHASIS"
 >requires</I
-></SPAN
 > constraint.
 Configuration options are not independent: disabling some functionality
 in, say, the kernel, can have an impact elsewhere; in this case
@@ -366,9 +357,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2747"
-></A
->Data Section</H2
+NAME="AEN2761"
+>Data Section</A
+></H2
 ><P
 >The bulk of the savefile lists the various packages,
 	    components, and options, including their values and the
@@ -494,12 +485,9 @@ CLASS="SCREEN"
 ><P
 >Configurable entities may not be active. This can be either
 because the parent is disabled or inactive, or because there are
-one or more <SPAN
-CLASS="emphasis"
-><I
+one or more <I
 CLASS="EMPHASIS"
 >active_if</I
-></SPAN
 > properties. Modifying
 the value of an inactive entity has no effect on the configuration,
 so this information is provided first:</P
@@ -608,12 +596,9 @@ are not user-modifiable, but typically the value will depend on
 other options which can be modified. Such calculated options can
 be useful when controlling what gets built or what ends up in the
 generated configuration header files. A calculated value may also
-effect other parts of the configuration, for instance, via a <SPAN
-CLASS="emphasis"
-><I
+effect other parts of the configuration, for instance, via a <I
 CLASS="EMPHASIS"
 >requires</I
-></SPAN
 > constraint.</P
 ><TABLE
 BORDER="5"
@@ -633,20 +618,14 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->A special type of calculated value is the <SPAN
-CLASS="emphasis"
-><I
+>A special type of calculated value is the <I
 CLASS="EMPHASIS"
 >interface</I
-></SPAN
 >.
 The value of an interface is the number of active and enabled options
-which <SPAN
-CLASS="emphasis"
-><I
+which <I
 CLASS="EMPHASIS"
 >implement</I
-></SPAN
 > that interface. Again the value
 of an interface cannot be modified directly; only by modifying the
 options which implement the interface. However, an interface can
@@ -1212,12 +1191,9 @@ to allow the current value to be validated, and the configuration
 system will be unable to flag conflicts. This issue will be addressed in
 future releases of the configuration system.</P
 ><P
->Following the value-related fields for a given option, any <SPAN
-CLASS="emphasis"
-><I
+>Following the value-related fields for a given option, any <I
 CLASS="EMPHASIS"
 >requires</I
-></SPAN
 > constraints belonging
 to this option will be listed. These constraints are only effective
 if the option is active and, for bool and booldata flavors, enabled.
@@ -1278,9 +1254,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2845"
-></A
->Tcl Syntax</H2
+NAME="AEN2859"
+>Tcl Syntax</A
+></H2
 ><P
 ><SPAN
 CLASS="PRODUCTNAME"
@@ -1340,13 +1316,10 @@ The quote marks around the user data are also interpreted by the
 Tcl interpreter and serve to turn the entire data field into a single
 argument. The backslashes preceding the opening and closing square
 brackets prevent the Tcl interpreter from treating these characters
-specially, otherwise there would be an attempt at <SPAN
-CLASS="emphasis"
-><I
+specially, otherwise there would be an attempt at <I
 CLASS="EMPHASIS"
 >command
 substitution</I
-></SPAN
 > as described below. The double backslashes
 at the end of each line of the data will be turned into a single
 backslash by the Tcl interpreter, rather than escaping the newline
@@ -1947,13 +1920,10 @@ safe editing of <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
 > savefiles. Further information is available
-from a wide variety of sources, for example the book <SPAN
-CLASS="emphasis"
-><I
+from a wide variety of sources, for example the book <I
 CLASS="EMPHASIS"
 >Tcl
 and the Tk Toolkit </I
-></SPAN
 >by John K Ousterhout.</P
 ></DIV
 ></DIV
@@ -1962,7 +1932,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -1974,7 +1943,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="fine-grained-configuration.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -1983,7 +1951,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -1992,7 +1959,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="editing-the-sources.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -2008,7 +1974,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="manual-configuration.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

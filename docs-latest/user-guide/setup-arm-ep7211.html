@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -14,7 +14,7 @@ Board Hardware Setup</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
+CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
 REL="HOME"
 TITLE="eCos User Guide"
@@ -39,7 +39,6 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
-SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -57,7 +56,6 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-arm-cma230.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -71,7 +69,6 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-arm-ep7212.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -85,9 +82,9 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="SETUP-ARM-EP7211"
-></A
 >Cirrus Logic ARM EP7211 Development
-Board Hardware Setup</H1
+Board Hardware Setup</A
+></H1
 ><P
 >eCos comes with two Flash ROM images that provide GDB support
 for the Cirrus Logic EP7211 Development Board (also known as the
@@ -142,18 +139,15 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3824"
-></A
->Building programs for programming into FLASH</H2
+NAME="AEN3838"
+>Building programs for programming into FLASH</A
+></H2
 ><P
 >If your application is to be run directly from FLASH, you
 must configure eCos appropriately for "ROM" startup. This can be
-done in the <SPAN
-CLASS="emphasis"
-><I
+done in the <I
 CLASS="EMPHASIS"
 >eCos Configuration Tool</I
-></SPAN
 > by setting
 the "Startup type" HAL option to "ROM". If using the ecosconfig utility,
 set the user_value of the CYG_HAL_STARTUP
@@ -185,9 +179,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3831"
-></A
->Building the GDB Stub FLASH ROM images</H2
+NAME="AEN3845"
+>Building the GDB Stub FLASH ROM images</A
+></H2
 ><P
 >Pre-built GDB stubs images are provided in the directory loaders/arm-edb7211 relative
 to the root of your eCos installation, but here are instructions
@@ -203,9 +197,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3835"
-></A
->Building the ROM images with the eCos Configuration Tool</H2
+NAME="AEN3849"
+>Building the ROM images with the eCos Configuration Tool</A
+></H2
 ><P
 ></P
 ><OL
@@ -213,36 +207,24 @@ TYPE="1"
 ><LI
 ><P
 >Start with a new document - selecting the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >File</I
-></SPAN
->-&#62;<SPAN
-CLASS="emphasis"
-><I
+>-&#62;<I
 CLASS="EMPHASIS"
 >New</I
-></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build</I
-></SPAN
->-&#62;<SPAN
-CLASS="emphasis"
-><I
+>-&#62;<I
 CLASS="EMPHASIS"
 >Templates</I
-></SPAN
 >
  menu item, and then select the "Cirrus Logic development board"
 hardware.</P
@@ -250,49 +232,34 @@ hardware.</P
 ><LI
 ><P
 >While still displaying the 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build</I
-></SPAN
 >
 -&#62;
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Templates</I
-></SPAN
 >
  dialog box, select either the "stubs" package template to build
 a GDB stub image, or the "cygmon" template to build the CygMon ROM
 Monitor. Click 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >OK</I
-></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 >Build eCos using 
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Build</I
-></SPAN
 >
 -&#62;
-<SPAN
-CLASS="emphasis"
-><I
+<I
 CLASS="EMPHASIS"
 >Library</I
-></SPAN
 ></P
 ></LI
 ><LI
@@ -309,9 +276,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3857"
-></A
->Building the ROM images with ecosconfig</H2
+NAME="AEN3871"
+>Building the ROM images with ecosconfig</A
+></H2
 ><P
 ></P
 ><OL
@@ -382,9 +349,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3872"
-></A
->Loading the ROM Image into On-board Flash</H2
+NAME="AEN3886"
+>Loading the ROM Image into On-board Flash</A
+></H2
 ><P
 >Program images can be written into Flash memory by means of
 a bootstrap program which is built into the  EDB7211.  This program
@@ -493,9 +460,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3900"
-></A
->Building the Flash Downloader on Linux</H2
+NAME="AEN3914"
+>Building the Flash Downloader on Linux</A
+></H2
 ><P
 >eCos provides a Flash download program suitable for use with
 the  EP7211 Development Board which will run on Linux.  Follow these
@@ -543,21 +510,18 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3908"
-></A
->Developing eCos Programs with the ARM Multi-ICE</H2
+NAME="AEN3922"
+>Developing eCos Programs with the ARM Multi-ICE</A
+></H2
 ><P
 >The EP7211 Development Board supports use of the ARM
 	    Multi-processor EmbeddedICE(tm), also known as the
 	    Multi-ICE. Full instructions on how to install and use the
 	    Multi-ICE in conjunction with GDB are provided in the
-	    <SPAN
-CLASS="emphasis"
-><I
+	    <I
 CLASS="EMPHASIS"
 >"GNUPro Toolkit Reference for eCos
 	      ARM/Thumb"</I
-></SPAN
 > manual. However, the following
 	    platform-specific details should be noted.</P
 ><P
@@ -634,7 +598,6 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
-SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -646,7 +609,6 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-arm-cma230.html"
-ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -655,7 +617,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
-ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -664,7 +625,6 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-arm-ep7212.html"
-ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -680,7 +640,6 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
-ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
