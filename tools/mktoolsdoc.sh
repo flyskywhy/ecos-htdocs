@@ -236,9 +236,10 @@ If the standard GDB source distribution was downloaded rather than insight,
 then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-<i>YYYYMMDD</i></tt></nobr> rather than
 <nobr><tt>/src/gdb/insight-<i>YYYYMMDD</i></tt></nobr>.<p>
 
-<li>You must now apply a small number of source patches that are required to
-fix outstanding problems and add eCos support to the tools.
-Download the <a href="patches/ecos-net-gdb-patchset">ecos-net-gdb-patchset</a> patch to a file.
+<li>You may now need to apply a small number of source patches that are
+required to fix outstanding problems and add eCos support to the tools.
+If you are using a GDB/Insight snapshot dated earlier than 2000-03-30, then
+you must download the <a href="patches/ecos-net-gdb-patchset">ecos-net-gdb-patchset</a> patch to a file.
 This can be achieved with most browsers by either shift-clicking or right-clicking on the link.
 You must not view the link and cut-and-paste because white space must be preserved exactly.
 Apply the patch:<p>
