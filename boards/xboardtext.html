@@ -1,0 +1,197 @@
+<head>
+  <title><!--#echo var="platfullname" --></title>
+</head>
+<!--#include virtual="/ecos/include/header.html"-->
+<h1><!--#echo var="platfullname" --></h1>
+<hr noshade size=3>
+
+<!--#if expr="$redbootsupport = 1" -->
+<!--#if expr="$redbootonly = 1" -->
+<!--#set var="supportstr" value="RedBoot" -->
+<!--#else -->
+<!--#set var="supportstr" value="both eCos and RedBoot" -->
+<!--#endif -->
+<!--#else -->
+<!--#set var="supportstr" value="eCos" -->
+<!--#endif -->
+
+
+<p>
+The <!--#echo var="platfullname" --> platform, based on the
+<!--#echo var="proc" --> is supported by <!--#echo var="supportstr" -->.
+
+<!--#if expr="$quality = A" -->
+This port is currently considered to be of Alpha quality only at this
+time.
+<!--#elif expr="$quality = B" -->
+This port is currently considered to be of Beta quality at this time.
+<!--#endif -->
+</p>
+<!--#if expr="$contributed = 1" -->
+<p>The support for this platform was contributed to eCos, and
+the eCos maintainers are grateful on behalf of the open source community
+to all contributors. Note that some contributed ports may not
+have been tested.</p>
+<!--#endif -->
+
+<!--#if expr="$nodevices = 0" -->
+<h2>Supported devices</h2>
+
+<p>Device drivers are included for:
+<ul>
+<!--#if expr="$serialsupport = 1" -->
+<li>Serial
+<!--#endif -->
+<!--#if expr="$ethernetsupport = 1" -->
+<li>Ethernet
+<!--#endif -->
+<!--#if expr="$flashsupport = 1" -->
+<li>FLASH
+<!--#endif -->
+<!--#if expr="$pcisupport = 1" -->
+<li>PCI
+<!--#endif -->
+<!--#if expr="$usbsupport = 1" -->
+<li>USB
+<!--#endif -->
+<!--#if expr="$pcmciacfsupport = 1" -->
+<li>PCMCIA/Compact Flash
+<!--#endif -->
+<!--#if expr="$keypadsupport = 1" -->
+<li>Keypad
+<!--#endif -->
+<!--#if expr="$touchscreensupport = 1" -->
+<li>Touchscreen
+<!--#endif -->
+<!--#if expr="$rtcsupport = 1" -->
+<li>Timekeeping (real-time clock)
+<!--#endif -->
+<!--#if expr="$watchdogsupport = 1" -->
+<li>Watchdog
+<!--#endif -->
+</ul>
+</p>
+<!--#else -->
+<p>
+Note that no proper device drivers are present in this port, although
+diagnostic output is available.
+</p>
+<!--#endif -->
+
+<h2>Availability</h2>
+
+<h4>Hardware</h4>
+<p>
+<!--#echo encoding="none" var="hwavailability" -->
+</p>
+
+<h4>Software</h4>
+<!--#if expr="($redbootonly = 0) && ($redbootsupport = 1) && ($eloc = $rbloc)" -->
+<!-- Special case for both being in the same place, so that it reads better -->
+<p>Source code for <!--#echo var="supportstr" --> is available publically
+from
+<!--#if expr="$eloc = 'CVS'" -->
+the <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
+<!--#else -->
+eCos releases <!--#echo var="loc" --> and onwards, as well as
+from the <a href="/ecos/anoncvs.html">anonymous CVS repository</a>.
+</p>
+<!--#endif -->
+
+<!--#else -->
+
+<p>The <!--#echo var="platfullname" --> platform is supported by
+
+<!--#if expr="$redbootonly = 0" -->
+eCos from
+
+<!--#if expr="$eloc = CVS" -->
+the <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
+<!--#else -->
+public releases <!--#echo var="eloc" --> and onwards in addition to
+being available from the <a href="/ecos/anoncvs.html">anonymous CVS
+repository</a>.
+<!--#endif -->
+
+<!--#if expr="$redbootsupport = 1" -->
+RedBoot sources are publically available from
+<!--#if expr="$rbloc = CVS" -->
+the eCos <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
+<!--#else -->
+eCos public releases <!--#echo var="rbloc" --> and onwards, in addition to
+being available from the <a href="/ecos/anoncvs.html">anonymous CVS
+repository</a>.
+<!--#endif -->
+<!--#endif -->
+
+<!--#else -->
+Redboot from
+<!--#if expr="$rbloc = CVS" -->
+the eCos <a href="/ecos/anoncvs.html">anonymous CVS repository</a> only.
+<!--#else -->
+eCos releases <!--#echo var="rbloc" --> and onwards, in addition to
+being available from the <a href="/ecos/anoncvs.html">anonymous CVS
+repository</a>.
+<!--#endif -->
+<!--#endif -->
+</p>
+<!--#endif -->
+
+<h2>Documentation</h2>
+
+<!--#if expr="$archurl || $procurl || $platurl" -->
+<p>
+Specifications are available for the
+<!--#if expr="$archurl" -->
+<a href="<!--#echo var="archurl" -->" target="_top">architecture</a> and
+<!--#endif -->
+<!--#if expr="$procurl" -->
+<a href="<!--#echo var="procurl" -->" target="_top">processor</a> and
+<!--#endif -->
+<!--#if expr="$platurl" -->
+<a href="<!--#echo var="platurl" -->" target="_top">platform</a> and
+<!--#endif -->
+
+are available on-line from the manufacturer's web site.
+</p>
+<!--#endif -->
+
+<!--#if expr="$redbootsupport = 1" -->
+<p>
+Instructions for installing RedBoot on the <!--#echo var="platshortname" -->
+can be found in the <a href="http://www.ecos2.vsr.si/cvsdoc/ref/redboot.html">RedBoot
+User's Guide</a>.
+
+<!--#if expr="$rbplatdocurl" -->
+Board specific instructions, including installation instructions
+can be found <a href="<!--#echo var="rbplatdocurl" -->">here within the
+User's Guide</a>.
+<!--#endif -->
+</p>
+<!--#endif -->
+<!--#if expr="$redbootonly = 0 && $platdocurl" -->
+<p>
+Instructions for installing and using eCos on the <!--#echo var="platshortname" -->
+are available <a href="<!--#echo var="platdocurl" -->">here</a>.
+</p>
+<p>
+The most recent version of the full documentation set may be found
+on-line <a href="/ecos/docs-latest/">here</a>.
+</p>
+<!--#endif -->
+
+<!--#if expr="$redbootsupport = 1 && $redbootbinaryurl" -->
+<h2>RedBoot support</h2>
+
+<p>
+Prebuilt binaries of RedBoot are <a href="<!--#echo var="redbootbinaryurl" -->">
+available for download</a> for both ROM and RAM startup. Some necessary
+support files may also be included.
+Consult the RedBoot documentation on how to use these binaries.
+</p>
+<!--#endif -->
+
+<!--#echo encoding="none" var="thanks" -->
+
+<hr noshade size=3>
+<!--#include virtual="/ecos/include/footer.html"-->
