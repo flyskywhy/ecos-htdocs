@@ -3,13 +3,13 @@
   <head>
     <title>RedBoot</title>
     <META NAME="description" CONTENT="Information concerning the RedBoot embedded system boot monitor and debug firmware.">
-    <META NAME="keywords" CONTENT="RedBoot, bootstrap, firmware, debug, linux, eCos, operating system, Red Hat, RedHat, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time, RTOS">
+    <META NAME="keywords" CONTENT="RedBoot, bootstrap, firmware, debug, linux, eCos, operating system, configurable, free, open-source, open source, portable, embedded, royalty free, royalty-free, real-time, real time, RTOS">
   </head>
 
 <!--#include virtual="include/header.html"-->
 
-    <h1><img src="title_redboot.gif" alt="RedBoot"></h1>
-    
+    <h1>RedBoot</h1>
+
     <hr noshade size=3>
     <h2>News</h2>
     <table width=100% cellpadding=5>
@@ -30,7 +30,7 @@ available <a href="/ecos/boards/at91eb40.html">here</a>.
       <td><b>Analogue & Micro PowerPC 860T "Viper" port</b>
 <p>
 Both eCos and RedBoot <a href="/ecos/boards/viper.html">have been ported</a> to the
-<a href="http://www.analogue-micro.com/" target="_top">Analogue & Micro</a> 
+<a href="http://www.analogue-micro.com/" target="_top">Analogue & Micro</a>
 <a href="http://www.analogue-micro.com/PowerPC.html"
 target="_top">PowerPC 860T Viper board</a>, including Flash and Fast
 Ethernet support. Sources are available from
@@ -54,19 +54,18 @@ serial, ethernet drivers and PCI support. Sources are available from
     <tr>
       <td width=15% valign=top><i>November 14, 2000</i></td>
       <td>RedBoot <a href="http://noframes.linuxjournal.com/advertising/Press/2000ec_winners.html" target="_top">
-      wins the "Best Real-Time Tool" category</a> in the 
+      wins the "Best Real-Time Tool" category</a> in the
       <a href="http://www.linuxjournal.com/" target="_top">Linux Journal</a>
       Magazine Third Annual Editors' Choice Awards.</td>
     </tr>
   </table>
     <h2>Overview</h2>
-    
+
     <p>
-      RedBoot, the <b>R</b>ed Hat <b>E</b>mbedded <b>D</b>ebug
-      and <b>Boot</b>strap firmware, is a complete bootstrap environment
-      for embedded systems. Based on Red Hat's <a href="/ecos/">eCos RTOS</a>
-      Hardware Abstraction Layer, RedBoot inherits eCos' qualities of
-      reliability, compactness, configurability, and portability. 
+      RedBoot is a complete bootstrap environment
+      for embedded systems. Based on the <a href="/ecos/">eCos</a>
+      Hardware Abstraction Layer, RedBoot inherits the eCos qualities of
+      reliability, compactness, configurability, and portability.
     </p>
     <p>
       RedBoot allows download and execution of embedded applications
@@ -93,16 +92,6 @@ serial, ethernet drivers and PCI support. Sources are available from
       startup, boot scripts can be stored in Flash allowing for example
       loading of images from Flash or a TFTP server.
     </p>
-    <p>
-      As an open source company, Red Hat has made all sources and
-      documentation for RedBoot, and the eCos operating system on which it
-      is based, freely available without license or royalties.
-    </p>
-    <p>
-      For more details about the RedBoot product, please visit the
-      <a href="http://www.redhat.com/embedded/technologies/redboot/"
-         target="_top"> RedBoot product site</a>.
-    </p>
     <h2>Hardware support and RedBoot binaries</h2>
     <p>
       As RedBoot is based on the <a href="/ecos/" target="_top">eCos
@@ -110,13 +99,13 @@ serial, ethernet drivers and PCI support. Sources are available from
       to which eCos has been ported.
     </p>
     <p>
-      Full details of <a href="/ecos/hardware.html">supported hardware are
-      available</a>, including whether RedBoot is supported. Red Hat has
-      also made available <a href="/ecos/boards/redbootbins/">prebuilt RedBoot
-      binaries for all publically supported platforms</a> which can also
-      be found along with platform specific documentation, including programming
-      information, from the "More Info" link for each board on the 
-      <a href="/ecos/hardware.html">list of supported hardware</a>.
+      A full list of eCos <a href="/ecos/hardware.html">supported hardware</a> is
+      available, including details of RedBoot support.
+      <a href="/ecos/boards/redbootbins/">Prebuilt RedBoot binaries</a> are
+      also available for all publically supported platforms. These can
+      be found, along with platform specific documentation,
+      from the <i>More Info</i> link for each board in the
+      list of <a href="/ecos/hardware.html">supported hardware</a>.
     </p>
     <h2>Documentation</h2>
     <p>
@@ -128,11 +117,11 @@ serial, ethernet drivers and PCI support. Sources are available from
     </p>
     <h2>Getting the source</h2>
     <p>
-      Red Hat is a passionate advocate of open source and has made all
-      sources to RedBoot available under the
-      <a href="/ecos/license.html">Red Hat eCos Public License</a>. As
-      a result, all users have already been able to benefit from the
-      developer community's efforts to enhance and maintain RedBoot.
+      All the
+      source code of RedBoot is available under the
+      <a href="/ecos/license-overview.html">eCos License</a>. As
+      a result, all users are able to benefit from the
+      efforts of the developer community to enhance and maintain RedBoot.
     </p>
     <p>
       All sources are available from the <a href="/ecos/anoncvs.html">
@@ -140,23 +129,12 @@ serial, ethernet drivers and PCI support. Sources are available from
       they have a recent version of the
       <a href="http://www.cygwin.com/" target="_top">Cygwin tools</a>.
     </p>
-    <h2>Contacting Red Hat</h2>
+    <h2>Mailing lists</h2>
     <p>
       <a href="/ecos/intouch.html">Mailing lists for RedBoot and eCos</a>
       are available if you wish to receive announcements about RedBoot or
-      eCos, or to participate with the developer's community in technical
+      eCos, or to participate with the developer community in technical
       discussion.
-    </p>
-    <p>
-      Red Hat are also pleased to offer a range of engineering services
-      including porting, enhancements, consultancy and world-class
-      commercial grade support in all areas to do with RedBoot and eCos.
-    </p>
-    <p>
-      Contact <a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>
-      for more details. Note: technical queries will not be answered at this
-      address.
     </p>
     <hr noshade size=3>
 <!--#include virtual="include/footer.html"-->
-
