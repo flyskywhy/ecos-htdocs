@@ -272,7 +272,7 @@ Linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x
 >></b> fi loa -d eCos_demo<br>
 <b>>></b> go -w 5 0x20040<br>
 <b>>></b> fi loa -d Linux<br>
-<b>>></b> ex -b 0x100000 -l 0x280000 -c "noinitrd root=/dev/mtdblock3 init=/linuxrc console=ttySA0,38400" -w 5<br>
+<b>>></b> ex -b 0x100000 -l 0x280000 -c "noinitrd root=/dev/mtdblock/3 init=/linuxrc console=ttySA0,38400" -w 5<br>
 <b>>><br>
 Boot script timeout (1000ms resolution): 5</b> .<br>
 <b>Update RedBoot non-volatile configuration - are you sure (y/n)?</b> y<br></tt>
