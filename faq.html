@@ -941,22 +941,7 @@ requires a lot of disk space, especially on a FAT-based file system.
 If you come across a strange toolchain build failure then please check
 there is plenty of disk space available on all the relevant drives.
 
-<P>
 <h4><A NAME="problems_windows">Toolchain build problems under Windows</A></h4>
-
-<P>
-Building the toolchain under Windows 95 or 98 is not supported. It is
-necessary to use an NT system instead for the initial toolchain build.
-On some Windows 95 machines it may be possible to get a working
-toolchain if you install the very latest version of cygwin and try
-hard enough, but there are no guarantees.
-
-<P>
-Binary mount points must not be used. Some tools do not understand
-about cygwin binary mount points and will end up inserting carriage
-return/linefeed pairs into text files anyway. Cygwin programs will not
-expect the spurious carriage returns in files under a binary mount
-point.
 
 <P>
 Note that under windows, running the configure script will output:
@@ -967,6 +952,72 @@ Note that under windows, running the configure script will output:
 </PRE>
 
 This is normal, and is not an error message.
+
+<h5>What if the patches fail to apply?</h5>
+<P>
+Some of the tools patches are against sources that are under continuous development,
+which may mean that the patches may no longer apply. Analyze the patch reject (.rej) files 
+to determine if this is the case, and if so, send a message to the <a href="intouch.html">
+ecos-discuss</a> mailing list.
+
+<p>If you get a message from the patch utility reporting that it cannot create a file
+<tt>C:\TEMP/xxxx</tt> where <tt>xxxx</tt> is some number, then this probably indicates
+that the environment variables <tt>TMP</tt> or <tt>TMPDIR</tt> have been set to a
+Windows-style location, such as <tt>C:\TEMP</tt> rather than a
+Cygwin-style location, such as <tt>/tmp</tt>. This may also cause other problems in future so it
+is highly recommended that you override this environment variable in the cygwin.bat
+startup file (located in the bin directory of the Cygwin installation) which is executed
+when the Start Menu is used to start a Cygwin bash shell. This may be done in cygwin.bat
+with a command such as:<p>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;set TMP=/tmp</tt>
+<p>Alternatively, after invoking a bash shell, remember to issue the command:<p>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;TMP=/tmp ; export TMP</tt><p>
+or similar.<p>
+
+<h5><A NAME="newcygwindll">I have Cygwin v1.1.1 and the build is failing</A></h5>
+
+<P>If your build is failing with the message:<p>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;Makefile:nn: *** commands commence before first target.  Stop.</tt><p>
+this indicates that the Makefile contains carriage return characters at the end
+of each line which is confusing <tt>make</tt>. This happens most frequently
+when using Cygwin v1.1.1. You may determine the version of the installed Cygwin
+DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
+
+<p>The most complete solution is to upgrade your Cygwin DLL to the latest version.
+Instructions for this may be found in the <A HREF="http://sourceware.cygnus.com/cygwin/faq">
+Cygwin FAQ</A>.
+
+<p>If Cygwin v1.1.2 is not yet available (it will be announced on the
+<a href="http://sourceware.cygnus.com/cygwin">Cygwin home page</a> when
+it is released), you should download a <a href="http://sourceware.cygnus.com/cygwin/snapshots">
+development snapshot</a> dated June 2000 or later for now.
+
+<p>
+
+<h5>Insight 5.0 cannot display my source files, although gdb -nw works</h5>
+<p>
+You need to apply a patch to the Insight TCL directory. Please revisit
+the <a href="getstart.html">development tool build instructions</a>.
+<p>
+
+
+<h5>I have Cygwin b20.1 and....</h5>
+
+<P>
+Cygwin b20.1 is now obsolete. While it may still be possible to get
+support on the cygwin and ecos-discuss lists when using this version
+of Cygwin, it is likely the initial recommended solution will be
+to upgrade your Cygwin installation to v1.1 or later.
+
+<h5>I'm using Windows 95/98</h5>
+
+<P>
+Building the tools under Windows 95 or 98 is not supported. It may
+work, but it has proven unreliable in the past. It is recommended to
+use an NT system instead for the initial toolchain build.
+On some Windows 95 machines it may be possible to get a working
+toolchain if you install the very latest version of cygwin and try
+hard enough, but there are no guarantees.
 
 <P>
 <h4><A NAME="problems_linux">Toolchain build problems under Linux</A></h4>
@@ -991,41 +1042,14 @@ may be missing. The most likely candidates are the ncurses and
 ncurses-devel packages, and it will be necessary to install these
 first.
 
-<P>
-There is a known problem building toolchains under Redhat 6.0, resulting
-in toolchain build errors.
-<P>
-This problem can be solved using <A HREF="ecos-arm-rh6.patch">this patch
-for the ARM toolchain</A> and <A HREF="ecos-rh6.patch">this patch for
-the MN10300/TX39/Sparclite/PowerPC/i386 toolchain</A>.
-The patch must not have Windows CRLF line endings, so ensure it is downloaded
-without them if you are using a Windows browser. The easiest way to do this
-is by holding shift while clicking the link, and saving it to a file.
-
-For ARM, assuming the patch is saved in the <CODE>/tmp</CODE> directory, it
-can be applied by changing directory to <CODE>ecosSWtools-arm-990321/src</CODE>
-and entering the command:
-<P>
-<PRE>
-     patch -p0 < /tmp/ecos-arm-rh6.patch
-</PRE>
-
-For the non-ARM toolchain, assuming the patch is saved in the <CODE>/tmp</CODE>
-directory, it can be applied by changing directory to
-<CODE>ecosSWtools-990319/src</CODE>
-and entering the command:
-<P>
-<PRE>
-     patch -p0 < /tmp/ecos-rh6.patch
-</PRE>
 
 <P>
 <h4><A NAME="problems_unix">Toolchain build problems on other Unix systems</A></h4>
 
 <P>
-Officially Red Hat Linux is the only supported host Unix systems, but
-in practice it is possible to build the toolchain on other systems as
-well. As with <A HREF="#problems_linux">Linux</A> care has to be
+Officially Red Hat Linux is the only supported host Unix system for use
+with eCos, but in practice it is possible to build the tools on other
+systems as well. As with <A HREF="#problems_linux">Linux</A> care has to be
 taken care with the position of . in your PATH. In addition you will
 need to have a reasonable set of existing tools on your Unix machine
 before you can build a cross-compiler. A good starting point is the <A
@@ -1035,10 +1059,36 @@ Two problems are occasionally encountered on Solaris systems. One of
 these relates to the <A
 HREF="/ml/ecos-discuss/1999-02/msg00005.html">admin</A>
 command. Another involves <A
-HREF="/ml/ecos-discuss/1999-02/msg00003.html">termio</A>.
+HREF="/ml/ecos-discuss/1999-02/msg00003.html">termio</A> although
+this is believed to be fixed in recent tools sources.
 Solutions to these problems are available via the mailing list
 archives.
 <P>
+
+<h4><A NAME="problems_building_ecos">Problems building eCos</A></h4>
+
+<h5>When I run the gcc 2.95.2 I just installed I get an error "<tt>cpp: too many input files</tt>"</h5>
+<p>
+<tt>gcc</tt> reports the error message "<tt>cpp: too many input files</tt>" if you have moved
+your gcc installation from the location you originally specified when it was configured.
+This location is determined primarily by the <tt>--exec-prefix</tt> argument to gcc's
+configure script.
+<p>
+More recent gcc snapshots do not have this limitation, which is specific to gcc 2.95.2
+or earlier. To resolve it, you can: use a more recent gcc snapshot; reconfigure gcc
+with the intended installation location set correctly; or set up symlinks from the
+old location to the new one.
+<P>
+<h5>The eCos Configuration Tool stops with errors when building eCos</h5>
+<p>
+If you get errors when building eCos from the eCos Configuration Tool, you
+should ensure that there are text-mode Cygwin mount points representing
+each of the drives in use. For example:<p>
+
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;c:/&nbsp;/c</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;d:/&nbsp;/d</tt><br>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;h:/&nbsp;/h</tt><br>
+<p>and so forth.
 
 <h3>Miscellaneous</h3>
 

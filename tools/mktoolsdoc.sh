@@ -233,7 +233,26 @@ required to fix outstanding problems and add eCos support to the tools.
 Patches may be downloaded using most browsers by either shift-clicking
 or right-clicking on the link to the patch. You must not view the link
 and cut-and-paste because white space must be preserved exactly.<p>
+${WINDOWS+
+<b>Warning:</b> Users of Cygwin v1.1.1 will not be able to apply
+these patches successfully as described due to a bug present in that
+version of the Cygwin DLL. You may determine the version of the installed Cygwin
+DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
+If the version installed is v1.1.1, please read <a href="../faq.html#newcygwindll">
+this FAQ entry</a> to resolve the problem.
+<p>
+}
 
+${WINDOWS+
+If Insight 5.0 is being used, rather than the standard GDB source
+distribution, then you must download the <a href="patches/insight-tcl.pat">
+insight-tcl.pat</a> patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; insight-tcl.pat | patch -p0
+</tt></nobr>
+<p>
+}
 ${GCCSNAP-
 Download the <a href="patches/ecos-gcc-2952.pat">
 ecos-gcc-2952.pat</a> patch to a file and apply it:<p>
@@ -299,8 +318,7 @@ PATH and precedes the current directory. The
 following build procedures will fail if <tt>.</tt> is ahead of the native tools in the PATH.<p>
 
 ${WINDOWS+
-Avoid using spaces in build and install directory paths. The use of directories which are
-mounted by Cygwin in binary mode should also be avoided. Building on an NTFS file system is
+Avoid using spaces in build and install directory paths. Building on an NTFS file system is
 strongly recommended due to the large number of small files involved in the build process.
 
 Cygwin users must set the <tt>MAKE_MODE</tt> environment variable as follows:<p>
@@ -417,7 +435,7 @@ The eCos Configuration Tool also allows you to set the build tools path.
 <h3>Troubleshooting</h3>
 
 If you encounter difficulties in building or using the development tools, first check
-the <a href="../faq.html">eCos FAQ</a> and the
+the <a href="../faq.html#problems_toolchain">eCos FAQ</a> and the
 <a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
 if the topic has come up before. Initial queries
 may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,

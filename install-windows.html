@@ -33,7 +33,15 @@ on the <a href="../cygwin/">Cygwin web site</a>.<p>
 <li>Install eCos by running the downloaded distribution file and
 following the on-screen instructions. Note that it is not possible to upgrade an existing eCos installation.
 Any previous installations should be uninstalled (using the <i>Add/Remove Programs</i> utility in the
-Control Panel) before installing eCos 1.3.1.
+Control Panel) before installing eCos 1.3.1.<p>
+
+<li>Provide text-mode Cygwin mount points for the eCos Configuration Tool to use. Do this by entering
+the following command at a Cygwin bash prompt:<p>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;c:/&nbsp;/c</tt>
+<p>This mounts C:\ on the Cygwin mount point <tt>/c</tt>. Repeat for other drives on your
+system:<p>
+<tt>&nbsp;&nbsp;&nbsp;&nbsp;bash-2.03$ mount&nbsp;-f&nbsp;d:/&nbsp;/d</tt>
+<p>and so forth.
 </ol>
 
 <h3>Downloading and installing the development tools</h3>
