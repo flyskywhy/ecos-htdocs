@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 9. HAL Interfaces</TD
+>Chapter 4. HAL Interfaces</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-SMP-SUPPORT">SMP Support</H1
+NAME="HAL-SMP-SUPPORT"
+></A
+>SMP Support</H1
 ><P
 >eCos contains support for limited Symmetric Multi-Processing
 (SMP). This is only available on selected architectures and platforms.</P
@@ -91,7 +93,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8542">Target Hardware Limitations</H2
+NAME="AEN3095"
+></A
+>Target Hardware Limitations</H2
 ><P
 >To allow a reasonable implementation of SMP, and to reduce the
 disruption to the existing source base, a number of assumptions have
@@ -181,7 +185,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8562">HAL Support</H2
+NAME="AEN3115"
+></A
+>HAL Support</H2
 ><P
 >SMP support in any platform depends on the HAL supplying the
 appropriate operations. All HAL SMP support is defined in the
@@ -206,7 +212,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8569">CPU Control</H3
+NAME="AEN3122"
+></A
+>CPU Control</H3
 ><P
 >This group consists of descriptive and control macros for managing the
 CPUs in an SMP system.</P
@@ -335,7 +343,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8618">Test-and-set Support</H3
+NAME="AEN3171"
+></A
+>Test-and-set Support</H3
 ><P
 >Test-and-set is the foundation of the SMP synchronization
 mechanisms.</P
@@ -421,7 +431,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8645">Spinlocks</H3
+NAME="AEN3198"
+></A
+>Spinlocks</H3
 ><P
 >Spinlocks provide inter-CPU locking. Normally they will be implemented
 on top of the test-and-set mechanism above, but may also be
@@ -536,7 +548,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8690">Scheduler Lock</H3
+NAME="AEN3243"
+></A
+>Scheduler Lock</H3
 ><P
 >The scheduler lock is the main protection for all kernel data
 structures. By default the kernel implements the scheduler lock itself
@@ -634,7 +648,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8722">Interrupt Routing</H3
+NAME="AEN3275"
+></A
+>Interrupt Routing</H3
 ><P
 >The routing of interrupts to different CPUs is supported by two new
 interfaces in hal_intr.h.</P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 18. Device Driver Interface to the Kernel</TD
+>Chapter 13. Device Driver Interface to the Kernel</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="DEVAPI-API">The API</H1
+NAME="DEVAPI-API"
+></A
+>The API</H1
 ><P
 >This section details the Driver Kernel
 Interface. Note that most of these functions are identical to Kernel C
@@ -100,7 +102,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11577">cyg_drv_isr_lock</H2
+NAME="AEN6130"
+></A
+>cyg_drv_isr_lock</H2
 ><P
 ></P
 ><DIV
@@ -157,7 +161,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11600">cyg_drv_isr_unlock</H2
+NAME="AEN6153"
+></A
+>cyg_drv_isr_unlock</H2
 ><P
 ></P
 ><DIV
@@ -217,7 +223,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11624">cyg_drv_spinlock_init</H2
+NAME="AEN6177"
+></A
+>cyg_drv_spinlock_init</H2
 ><P
 ></P
 ><DIV
@@ -298,7 +306,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11653">cyg_drv_spinlock_destroy</H2
+NAME="AEN6206"
+></A
+>cyg_drv_spinlock_destroy</H2
 ><P
 ></P
 ><DIV
@@ -360,7 +370,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11677">cyg_drv_spinlock_spin</H2
+NAME="AEN6230"
+></A
+>cyg_drv_spinlock_spin</H2
 ><P
 ></P
 ><DIV
@@ -428,7 +440,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11702">cyg_drv_spinlock_clear</H2
+NAME="AEN6255"
+></A
+>cyg_drv_spinlock_clear</H2
 ><P
 ></P
 ><DIV
@@ -494,7 +508,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11727">cyg_drv_spinlock_try</H2
+NAME="AEN6280"
+></A
+>cyg_drv_spinlock_try</H2
 ><P
 ></P
 ><DIV
@@ -570,7 +586,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11755">cyg_drv_spinlock_test</H2
+NAME="AEN6308"
+></A
+>cyg_drv_spinlock_test</H2
 ><P
 ></P
 ><DIV
@@ -645,7 +663,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11783">cyg_drv_spinlock_spin_intsave</H2
+NAME="AEN6336"
+></A
+>cyg_drv_spinlock_spin_intsave</H2
 ><P
 ></P
 ><DIV
@@ -739,7 +759,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11814">cyg_drv_spinlock_clear_intsave</H2
+NAME="AEN6367"
+></A
+>cyg_drv_spinlock_clear_intsave</H2
 ><P
 ></P
 ><DIV
@@ -827,7 +849,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11844">cyg_drv_dsr_lock</H2
+NAME="AEN6397"
+></A
+>cyg_drv_dsr_lock</H2
 ><P
 ></P
 ><DIV
@@ -882,7 +906,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11867">cyg_drv_dsr_unlock</H2
+NAME="AEN6420"
+></A
+>cyg_drv_dsr_unlock</H2
 ><P
 ></P
 ><DIV
@@ -944,7 +970,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11892">cyg_drv_mutex_init</H2
+NAME="AEN6445"
+></A
+>cyg_drv_mutex_init</H2
 ><P
 ></P
 ><DIV
@@ -1007,7 +1035,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11917">cyg_drv_mutex_destroy</H2
+NAME="AEN6470"
+></A
+>cyg_drv_mutex_destroy</H2
 ><P
 ></P
 ><DIV
@@ -1074,7 +1104,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11942">cyg_drv_mutex_lock</H2
+NAME="AEN6495"
+></A
+>cyg_drv_mutex_lock</H2
 ><P
 ></P
 ><DIV
@@ -1154,7 +1186,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN11970">cyg_drv_mutex_trylock</H2
+NAME="AEN6523"
+></A
+>cyg_drv_mutex_trylock</H2
 ><P
 ></P
 ><DIV
@@ -1238,7 +1272,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12000">cyg_drv_mutex_unlock</H2
+NAME="AEN6553"
+></A
+>cyg_drv_mutex_unlock</H2
 ><P
 ></P
 ><DIV
@@ -1305,7 +1341,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12025">cyg_drv_mutex_release</H2
+NAME="AEN6578"
+></A
+>cyg_drv_mutex_release</H2
 ><P
 ></P
 ><DIV
@@ -1378,7 +1416,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12052">cyg_drv_cond_init</H2
+NAME="AEN6605"
+></A
+>cyg_drv_cond_init</H2
 ><P
 ></P
 ><DIV
@@ -1462,7 +1502,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12080">cyg_drv_cond_destroy</H2
+NAME="AEN6633"
+></A
+>cyg_drv_cond_destroy</H2
 ><P
 ></P
 ><DIV
@@ -1527,7 +1569,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12105">cyg_drv_cond_wait</H2
+NAME="AEN6658"
+></A
+>cyg_drv_cond_wait</H2
 ><P
 ></P
 ><DIV
@@ -1610,7 +1654,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12132">cyg_drv_cond_signal</H2
+NAME="AEN6685"
+></A
+>cyg_drv_cond_signal</H2
 ><P
 ></P
 ><DIV
@@ -1682,7 +1728,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12158">cyg_drv_cond_broadcast</H2
+NAME="AEN6711"
+></A
+>cyg_drv_cond_broadcast</H2
 ><P
 ></P
 ><DIV
@@ -1748,7 +1796,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12183">cyg_drv_interrupt_create</H2
+NAME="AEN6736"
+></A
+>cyg_drv_interrupt_create</H2
 ><P
 ></P
 ><DIV
@@ -1871,7 +1921,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12221">cyg_drv_interrupt_delete</H2
+NAME="AEN6774"
+></A
+>cyg_drv_interrupt_delete</H2
 ><P
 ></P
 ><DIV
@@ -1941,7 +1993,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12247">cyg_drv_interrupt_attach</H2
+NAME="AEN6800"
+></A
+>cyg_drv_interrupt_attach</H2
 ><P
 ></P
 ><DIV
@@ -2001,7 +2055,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12271">cyg_drv_interrupt_detach</H2
+NAME="AEN6824"
+></A
+>cyg_drv_interrupt_detach</H2
 ><P
 ></P
 ><DIV
@@ -2061,7 +2117,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12295">cyg_drv_interrupt_mask</H2
+NAME="AEN6848"
+></A
+>cyg_drv_interrupt_mask</H2
 ><P
 ></P
 ><DIV
@@ -2123,7 +2181,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12319">cyg_drv_interrupt_mask_intunsafe</H2
+NAME="AEN6872"
+></A
+>cyg_drv_interrupt_mask_intunsafe</H2
 ><P
 ></P
 ><DIV
@@ -2192,7 +2252,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12344">cyg_drv_interrupt_unmask</H2
+NAME="AEN6897"
+></A
+>cyg_drv_interrupt_unmask</H2
 ><P
 ></P
 ><DIV
@@ -2257,7 +2319,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12369">cyg_drv_interrupt_unmask_intunsafe</H2
+NAME="AEN6922"
+></A
+>cyg_drv_interrupt_unmask_intunsafe</H2
 ><P
 ></P
 ><DIV
@@ -2328,7 +2392,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12395">cyg_drv_interrupt_acknowledge</H2
+NAME="AEN6948"
+></A
+>cyg_drv_interrupt_acknowledge</H2
 ><P
 ></P
 ><DIV
@@ -2396,7 +2462,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12420">cyg_drv_interrupt_configure</H2
+NAME="AEN6973"
+></A
+>cyg_drv_interrupt_configure</H2
 ><P
 ></P
 ><DIV
@@ -2489,7 +2557,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12450">cyg_drv_interrupt_level</H2
+NAME="AEN7003"
+></A
+>cyg_drv_interrupt_level</H2
 ><P
 ></P
 ><DIV
@@ -2560,7 +2630,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12476">cyg_drv_interrupt_set_cpu</H2
+NAME="AEN7029"
+></A
+>cyg_drv_interrupt_set_cpu</H2
 ><P
 ></P
 ><DIV
@@ -2633,7 +2705,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12502">cyg_drv_interrupt_get_cpu</H2
+NAME="AEN7055"
+></A
+>cyg_drv_interrupt_get_cpu</H2
 ><P
 ></P
 ><DIV
@@ -2695,7 +2769,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12526">cyg_ISR_t</H2
+NAME="AEN7079"
+></A
+>cyg_ISR_t</H2
 ><P
 ></P
 ><DIV
@@ -2799,7 +2875,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN12561">cyg_DSR_t</H2
+NAME="AEN7114"
+></A
+>cyg_DSR_t</H2
 ><P
 ></P
 ><DIV

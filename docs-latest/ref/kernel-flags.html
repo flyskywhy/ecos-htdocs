@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-FLAGS">Event Flags</H1
+NAME="KERNEL-FLAGS"
+></A
+>Event Flags</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1555"
+NAME="AEN1585"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN1555"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1566"><H2
+NAME="AEN1596"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN1567"><P
+NAME="AEN1597"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -328,16 +334,24 @@ CLASS="FUNCTION"
 >cyg_flag_wait</TT
 > which adds a timeout: the wait
 operation must succeed within the specified number of ticks, or it
-will fail with a return value of 0. <TT
+will fail with a return value of 0. The number of ticks is specified
+as an absolute, not relative tick count, and so in order to wait for a
+relative number of ticks, the return value of the
+<TT
+CLASS="FUNCTION"
+>cyg_current_time()</TT
+> function should be added to
+determine the absolute number of ticks.
+<TT
 CLASS="FUNCTION"
 >cyg_flag_poll</TT
->
-is a non-blocking variant: if the wait operation can succeed
-immediately it acts like <TT
+> is a non-blocking variant: if the
+wait operation can succeed immediately it acts like
+<TT
 CLASS="FUNCTION"
 >cyg_flag_wait</TT
->, otherwise
-it returns immediately with a value of 0.
+>, otherwise it returns immediately
+with a value of 0.
       </P
 ><P
 ><TT
@@ -345,8 +359,28 @@ CLASS="FUNCTION"
 >cyg_flag_setbits</TT
 > is called by a producer thread
 or from inside a DSR when an event occurs. The specified bits are or'd
-into the current event flag value. This may cause a waiting thread to
-be woken up, if its condition is now satisfied.
+into the current event flag value. This may cause one or more waiting 
+threads to be woken up, if their conditions are now satisfied. How many 
+threads are awoken depends on the use of <TT
+CLASS="LITERAL"
+>CYG_FLAG_WAITMODE_CLR</TT
+>. The queue of threads waiting on the flag is walked to find 
+threads which now have their wake condition fulfilled. If the awoken thread 
+has passed <TT
+CLASS="LITERAL"
+>CYG_FLAG_WAITMODE_CLR</TT
+> the walking of the queue 
+is terminated, otherwise the walk continues. Thus if no threads have passed 
+<TT
+CLASS="LITERAL"
+>CYG_FLAG_WAITMORE_CLR</TT
+> all threads with fulfilled 
+conditions will be awoken. If <TT
+CLASS="LITERAL"
+>CYG_FLAG_WAITMODE_CLR</TT
+> is 
+passed by threads with fulfilled conditions, the number of awoken threads 
+will depend on the order the threads are in the queue.
       </P
 ><P
 ><TT

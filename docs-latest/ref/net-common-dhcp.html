@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 37. Support Features</TD
+>Chapter 32. Support Features</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-COMMON-DHCP">DHCP</H1
+NAME="NET-COMMON-DHCP"
+></A
+>DHCP</H1
 ><P
 >This API publishes a routine to maintain DHCP state, and a
 semaphore that is signalled when a lease requires attention: this
@@ -163,6 +165,37 @@ thread will shut down all interfaces and attempt to initialize all
 the interfaces again from scratch.  This may cause chaos in the
 app, which is why managing the DHCP state in an application aware
 thread is actually better, just far less convenient for testing.</P
+><P
+>If the configuration option CYGOPT_NET_DHCP_OPTION_HOST_NAME
+is defined, then the TAG_HOST_NAME DHCP option will be included
+in any DHCP lease requests.  The text for the hostname is set by
+calling <TT
+CLASS="FUNCTION"
+>dhcp_set_hostname()</TT
+>.  Any DHCP lease requests
+made prior to calling <TT
+CLASS="FUNCTION"
+>dhcp_set_hostname()</TT
+> will not
+include the TAG_HOST_NAME DHCP option.  The configuration option
+CYGNUM_NET_DHCP_OPTION_HOST_NAME_LEN controls the maximum length allowed
+for the hostname.  This permits the hostname text to be determined at
+run-time.  Setting the hostname to the empty string will have the effect
+of disabling the TAG_HOST_NAME DHCP option.</P
+><P
+>If the configuration option CYGOPT_NET_DHCP_OPTION_DHCP_CLIENTID_MAC
+is defined, then the TAG_DHCP_CLIENTID DHCP option will be included
+in any DHCP lease requests.  The client ID used will be the current
+MAC address of the network interface.</P
+><P
+>The option CYGOPT_NET_DHCP_PARM_REQ_LIST_ADDITIONAL allows
+additional DHCP options to be added to the request sent to the DHCP
+server. This option should be set to a comma separated list of options.</P
+><P
+> The option CYGOPT_NET_DHCP_PARM_REQ_LIST_REPLACE is similar to
+CYGOPT_NET_DHCP_PARM_REQ_LIST_ADDITIONAL but in this case it
+completely replaces the default list of options with the configured
+set of comma separated options.</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -25,8 +25,8 @@ REL="PREVIOUS"
 TITLE="Architecture Characterization"
 HREF="hal-architecture-characterization.html"><LINK
 REL="NEXT"
-TITLE="HAL I/O"
-HREF="hal-input-and-output.html"></HEAD
+TITLE="Clocks and Timers"
+HREF="hal-clocks-and-timers.html"></HEAD
 ><BODY
 CLASS="SECTION"
 BGCOLOR="#FFFFFF"
@@ -62,13 +62,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 9. HAL Interfaces</TD
+>Chapter 4. HAL Interfaces</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="hal-input-and-output.html"
+HREF="hal-clocks-and-timers.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -82,11 +82,13 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-INTERRUPT-HANDLING">Interrupt Handling</H1
+NAME="HAL-INTERRUPT-HANDLING"
+></A
+>Interrupt Handling</H1
 ><P
 >These interfaces contain definitions related to interrupt
 handling. They include definitions of exception and interrupt numbers,
-interrupt enabling and masking, and realtime clock operations.</P
+interrupt enabling and masking.</P
 ><P
 >These definitions are normally found in
 <TT
@@ -113,7 +115,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8188">Vector numbers</H2
+NAME="AEN2721"
+></A
+>Vector numbers</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -210,7 +214,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8206">Interrupt state control</H2
+NAME="AEN2739"
+></A
+>Interrupt state control</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -308,7 +314,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8228">ISR and VSR management</H2
+NAME="AEN2761"
+></A
+>ISR and VSR management</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -415,7 +423,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8250">Interrupt controller management</H2
+NAME="AEN2783"
+></A
+>Interrupt controller management</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -589,98 +599,6 @@ CLASS="FUNCTION"
 ></DL
 ></DIV
 ></DIV
-><DIV
-CLASS="SECTION"
-><H2
-CLASS="SECTION"
-><A
-NAME="AEN8297">Clock control</H2
-><TABLE
-BORDER="5"
-BGCOLOR="#E0E0F0"
-WIDTH="70%"
-><TR
-><TD
-><PRE
-CLASS="PROGRAMLISTING"
->HAL_CLOCK_INITIALIZE( period )
-HAL_CLOCK_RESET( vector, period )
-HAL_CLOCK_READ( pvalue )</PRE
-></TD
-></TR
-></TABLE
-><P
->These macros provide control over a clock or timer device that may be
-used by the kernel to provide time-out, delay and scheduling
-services. The clock is assumed to be implemented by some form of
-counter that is incremented or decremented by some external source and
-which raises an interrupt when it reaches a predetermined value.</P
-><P
-><TT
-CLASS="FUNCTION"
->HAL_CLOCK_INITIALIZE()</TT
-> initializes the timer
-device to interrupt at the given period. The period is essentially the
-value used to initialize the timer counter and must be calculated from
-the timer frequency and the desired interrupt rate. The timer device
-should generate an interrupt every <TT
-CLASS="VARNAME"
->period</TT
-> cycles.</P
-><P
-><TT
-CLASS="FUNCTION"
->HAL_CLOCK_RESET()</TT
-> re-initializes the timer to
-provoke the next interrupt. This macro is only really necessary when
-the timer device needs to be reset in some way after each interrupt.</P
-><P
-><TT
-CLASS="FUNCTION"
->HAL_CLOCK_READ()</TT
-> reads the current value of the
-timer counter and puts the value in the location pointed to by
-<TT
-CLASS="PARAMETER"
-><I
->pvalue</I
-></TT
->. The value stored will always be the
-number of timer cycles since the last interrupt, and hence ranges
-between zero and the initial period value. If this is a count-down
-cyclic timer, some arithmetic may be necessary to generate this value.</P
-></DIV
-><DIV
-CLASS="SECTION"
-><H2
-CLASS="SECTION"
-><A
-NAME="AEN8309">Microsecond Delay</H2
-><TABLE
-BORDER="5"
-BGCOLOR="#E0E0F0"
-WIDTH="70%"
-><TR
-><TD
-><PRE
-CLASS="PROGRAMLISTING"
->HAL_DELAY_US(us)</PRE
-></TD
-></TR
-></TABLE
-><P
->This is an optional definition. If defined the macro implements a busy
-loop delay for the given number of microseconds. This is usually
-implemented by waiting for the required number of hardware timer ticks
-to pass. </P
-><P
->This operation should normally be used when a very short delay is
-needed when controlling hardware, programming FLASH devices and similar
-situations where a wait/timeout loop would otherwise be used. Since it
-may disable interrupts, and is implemented by busy waiting, it should
-not be used in code that is sensitive to interrupt or context switch
-latencies.</P
-></DIV
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -716,7 +634,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="hal-input-and-output.html"
+HREF="hal-clocks-and-timers.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -740,7 +658,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->HAL I/O</TD
+>Clocks and Timers</TD
 ></TR
 ></TABLE
 ></DIV

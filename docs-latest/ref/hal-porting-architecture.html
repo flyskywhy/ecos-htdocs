@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 11. Porting Guide</TD
+>Chapter 6. Porting Guide</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-ARCHITECTURE">Architecture HAL Porting</H1
+NAME="HAL-PORTING-ARCHITECTURE"
+></A
+>Architecture HAL Porting</H1
 ><P
 >A new architecture HAL is the most complex HAL to write, and it the
 least easily described. Hence this section is presently nothing more
@@ -92,7 +94,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN10060">HAL Architecture Porting Process</H2
+NAME="AEN4613"
+></A
+>HAL Architecture Porting Process</H2
 ><P
 >The easiest way to make a new architecture HAL is simply to copy an
 existing architecture HAL of an, if possible, closely matching
@@ -624,7 +628,7 @@ CLASS="FUNCTION"
 HREF="hal-exception-handling.html#HAL-STARTUP"
 >the Section called <I
 >HAL Startup</I
-> in Chapter 10</A
+> in Chapter 5</A
 > for details.</P
 ></LI
 ><LI
@@ -634,7 +638,7 @@ table for all synchronous exception vectors. See <A
 HREF="hal-default-synchronous-exception-handling.html"
 >the Section called <I
 >Default Synchronous Exception Handling</I
-> in Chapter 10</A
+> in Chapter 5</A
 > for details of
 what this VSR does.</P
 ></LI
@@ -645,7 +649,7 @@ entries that correspond to external interrupts. See <A
 HREF="hal-default-synchronous-exception-handling.html"
 >the Section called <I
 >Default Synchronous Exception Handling</I
-> in Chapter 10</A
+> in Chapter 5</A
 > for details of
 what this VSR does.</P
 ></LI
@@ -733,7 +737,7 @@ switch code. See <A
 HREF="hal-architecture-characterization.html#HAL-CONTEXT-SWITCH"
 >the Section called <I
 >Thread Context Switching</I
-> in Chapter 9</A
+> in Chapter 4</A
 > for details of
 how these functions operate. This file may also contain the
 implementation of <TT
@@ -979,7 +983,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-ARCHITECTURE-CDL">CDL Requirements</H2
+NAME="HAL-PORTING-ARCHITECTURE-CDL"
+></A
+>CDL Requirements</H2
 ><P
 >The CDL needed for any particular architecture HAL depends to a large
 extent on the needs of that architecture. This includes issues such as

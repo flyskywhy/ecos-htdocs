@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -22,8 +22,8 @@ REL="UP"
 TITLE="The SNTP Client"
 HREF="net-sntp.html"><LINK
 REL="PREVIOUS"
-TITLE="What it does"
-HREF="net-sntp-operation.html"><LINK
+TITLE="Configuring the unicast list of NTP servers"
+HREF="net-sntp-unicast.html"><LINK
 REL="NEXT"
 TITLE="The SNTP test program"
 HREF="net-sntp-testing.html"></HEAD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="net-sntp-operation.html"
+HREF="net-sntp-unicast.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 50. The SNTP Client</TD
+>Chapter 55. The SNTP Client</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,13 +82,15 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-SNTP-WARNING">Warning: timestamp wrap around</H1
+NAME="NET-SNTP-WARNING"
+></A
+>Warning: timestamp wrap around</H1
 ><P
 >The timestamp in the NTP packet is a 32bit integer which represents
 the number of seconds after 00:00 01/01/1900. This 32bit number will
 wrap around at 06:28:16 Feb 7 2036. At this point in time, the eCos
 time will jump back to around 00:00:00 Jan 1 1900 when the next
-NTP packett is received. </P
+NTP packet is received. </P
 ><P
 >YOU HAVE BEEN WARNED!</P
 ></DIV
@@ -108,7 +110,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="net-sntp-operation.html"
+HREF="net-sntp-unicast.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -136,7 +138,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->What it does</TD
+>Configuring the unicast list of NTP servers</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 11. Porting Guide</TD
+>Chapter 6. Porting Guide</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-STRUCTURE">HAL Structure</H1
+NAME="HAL-PORTING-STRUCTURE"
+></A
+>HAL Structure</H1
 ><P
 >In order to write an eCos HAL it's a good idea to have at least a
 passing understanding of how the HAL interacts with the rest of the
@@ -92,20 +94,24 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8926">HAL Classes</H2
+NAME="AEN3479"
+></A
+>HAL Classes</H2
 ><P
 >The eCos HAL consists of four HAL sub-classes. This table gives a
 brief description of each class and partly reiterates the description
 in <A
 HREF="hal-architecture-variant-and-platform.html"
->Chapter 7</A
+>Chapter 2</A
 >. The links
 refer to the on-line CVS tree (specifically to the sub-HALs used by
 the PowerPC MBX target).</P
 ><DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN8930"><P
+NAME="AEN3483"
+></A
+><P
 ></P
 ><TABLE
 BORDER="1"
@@ -247,7 +253,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8963">File Descriptions</H2
+NAME="AEN3516"
+></A
+>File Descriptions</H2
 ><P
 >Listed below are the files found in various HALs, with a short
 description of what each file contains. When looking in existing HALs
@@ -260,11 +268,15 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN8966">Common HAL</H3
+NAME="AEN3519"
+></A
+>Common HAL</H3
 ><DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN8968"><P
+NAME="AEN3521"
+></A
+><P
 ></P
 ><TABLE
 BORDER="1"
@@ -526,7 +538,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9043">Architecture HAL</H3
+NAME="AEN3596"
+></A
+>Architecture HAL</H3
 ><P
 >Some architecture HALs may add extra files for architecture
 specific serial drivers, or for handling interrupts and exceptions if it
@@ -539,7 +553,9 @@ definitions.</P
 ><DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN9047"><P
+NAME="AEN3600"
+></A
+><P
 ></P
 ><TABLE
 BORDER="1"
@@ -783,7 +799,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9118">Variant HAL</H3
+NAME="AEN3671"
+></A
+>Variant HAL</H3
 ><P
 >Some variant HALs may add extra files for variant specific serial
 drivers, or for handling interrupts/exceptions if it makes sense.</P
@@ -795,7 +813,9 @@ provide the definitions, those override the variant definitions.</P
 ><DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN9122"><P
+NAME="AEN3675"
+></A
+><P
 ></P
 ><TABLE
 BORDER="1"
@@ -942,7 +962,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9165">Platform HAL</H3
+NAME="AEN3718"
+></A
+>Platform HAL</H3
 ><P
 >Extras files may be added for platform specific serial
 drivers. Extra files for handling interrupts and exceptions will be
@@ -950,7 +972,9 @@ present if it makes sense.</P
 ><DIV
 CLASS="INFORMALTABLE"
 ><A
-NAME="AEN9168"><P
+NAME="AEN3721"
+></A
+><P
 ></P
 ><TABLE
 BORDER="1"
@@ -1140,7 +1164,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9221">Auxiliary HAL</H3
+NAME="AEN3774"
+></A
+>Auxiliary HAL</H3
 ><P
 >Auxiliary HALs contain whatever files are necessary to provide the
 required functionality. There are no predefined set of files required

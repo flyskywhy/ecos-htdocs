@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -81,7 +81,9 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="TCPIP-FREEBSD-TCPIP-APIS">Chapter 41. APIs</H1
+NAME="TCPIP-FREEBSD-TCPIP-APIS"
+></A
+>Chapter 36. APIs</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -106,7 +108,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="TCPIP-FREEBSD-STANDARD-NETWORKING-API">Standard networking</H1
+NAME="TCPIP-FREEBSD-STANDARD-NETWORKING-API"
+></A
+>Standard networking</H1
 ><P
 >The APIs for the standard networking calls such as
 <TT
@@ -139,6 +143,67 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ></P
+><P
+><TT
+CLASS="FILENAME"
+>network.h</TT
+> at the top level
+defines various extensions, for example the API
+<TT
+CLASS="FUNCTION"
+>init_all_network_interfaces(void)</TT
+>
+described
+above.  We advise including <TT
+CLASS="FILENAME"
+>network.h</TT
+> whether
+you use these features or not.</P
+><P
+>In general, using the networking code may require definition
+of two symbols: _KERNEL and __ECOS.  _KERNEL
+is not normally required; __ECOS is normally required.
+So add this to your compile lines for files which use the network
+stack:</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>        -D__ECOS</PRE
+></TD
+></TR
+></TABLE
+><P
+>To expand a little, it&#8217;s like this because this is
+a port of a standard distribution external to eCos.  One goal
+is to perturb the sources as little as possible, so that upgrading
+and maintenance from the external distribution is simplified.  The __ECOS
+symbol marks out the eCos additions in making the port.
+The _KERNEL symbol is traditional UNIX practice: it distinguishes
+a compilation which is to be linked into the kernel from one which
+is part of an application.  eCos applications are fully linked,
+so this distinction does not apply.  _KERNEL can however
+be used to control the visibility of the internals of the stack,
+so depending on what features your application uses, it may or may
+not be necessary.</P
+><P
+>The include file <TT
+CLASS="FILENAME"
+>network.h</TT
+> undefines _KERNEL
+unconditionally, to provide an application-like compilation environment.
+If you were writing code which, for example,
+enumerates the stack&#8217;s internal
+structures, that is a kernel-like compilation environment, so you
+would need to define _KERNEL (in addition to __ECOS)
+and avoid including <TT
+CLASS="FILENAME"
+>network.h</TT
+>.</P
 ></DIV
 ></DIV
 ><DIV

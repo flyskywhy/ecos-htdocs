@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-THREAD-TERMINATION">Thread termination</H1
+NAME="KERNEL-THREAD-TERMINATION"
+></A
+>Thread termination</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN560"
+NAME="AEN581"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN560"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN565"><H2
+NAME="AEN586"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN566"><P
+NAME="AEN587"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -129,7 +135,7 @@ CLASS="FUNCDEF"
 ><CODE
 ><CODE
 CLASS="FUNCDEF"
->void cyg_thread_delete</CODE
+>cyg_bool_t cyg_thread_delete</CODE
 >(cyg_handle_t thread);</CODE
 ></P
 ><P
@@ -139,7 +145,7 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN582"
+NAME="AEN603"
 ></A
 ><H2
 >Description</H2
@@ -245,7 +251,18 @@ invoked on a thread that is still running then there is an implicit
 call to <TT
 CLASS="FUNCTION"
 >cyg_thread_kill</TT
->.
+>. This function returns
+<TT
+CLASS="LITERAL"
+>true</TT
+> if the delete was successful, and
+<TT
+CLASS="LITERAL"
+>false</TT
+> if the delete did not happen. The delete
+may not happen for example if the thread being destroyed is a lower
+priority thread than the running thread, and will thus not wake up
+in order to exit until it is rescheduled.
       </P
 ></DIV
 ><DIV

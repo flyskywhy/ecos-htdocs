@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-CONDITION-VARIABLES">Condition Variables</H1
+NAME="KERNEL-CONDITION-VARIABLES"
+></A
+>Condition Variables</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1232"
+NAME="AEN1255"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN1232"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1240"><H2
+NAME="AEN1263"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN1241"><P
+NAME="AEN1264"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -406,13 +412,23 @@ and the current thread will be suspended in an atomic operation. When
 some other thread performs a signal or broadcast operation the current
 thread will be woken up and automatically reclaim ownership of the mutex
 again, allowing it to examine global state and determine whether or
-not the condition is now satisfied. The kernel supplies a variant of
-this function, <TT
+not the condition is now satisfied.
+      </P
+><P
+>The kernel supplies a variant of this function,
+<TT
 CLASS="FUNCTION"
 >cyg_cond_timed_wait</TT
->, which can be
-used to wait on the condition variable or until some number of clock
-ticks have occurred. The mutex will always be reclaimed before
+>, which can be used to wait on
+the condition variable or until some number of clock ticks have
+occurred. The number of ticks is specified as an absolute, not
+relative tick count, and so in order to wait for a relative number of
+ticks, the return value of the <TT
+CLASS="FUNCTION"
+>cyg_current_time()</TT
+>
+function should be added to determine the absolute number of ticks.
+The mutex will always be reclaimed before
 <TT
 CLASS="FUNCTION"
 >cyg_cond_timed_wait</TT

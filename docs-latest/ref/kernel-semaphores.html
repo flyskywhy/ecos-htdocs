@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-SEMAPHORES">Semaphores</H1
+NAME="KERNEL-SEMAPHORES"
+></A
+>Semaphores</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1330"
+NAME="AEN1355"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN1330"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1338"><H2
+NAME="AEN1363"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN1339"><P
+NAME="AEN1364"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -299,12 +305,20 @@ CLASS="FUNCTION"
 >cyg_semaphore_wait</TT
 >. It can be used to wait until
 either an event has occurred or a number of clock ticks have happened.
-The function returns success if the semaphore wait operation
-succeeded, or false if the operation timed out or was aborted by
+The number of ticks is specified as an absolute, not relative tick
+count, and so in order to wait for a relative number of ticks, the
+return value of the <TT
+CLASS="FUNCTION"
+>cyg_current_time()</TT
+> function
+should be added to determine the absolute number of ticks. The
+function returns success if the semaphore wait operation succeeded, or
+false if the operation timed out or was aborted by
 <TT
 CLASS="FUNCTION"
 >cyg_thread_release</TT
->. If support for the real-time
+>.
+If support for the real-time
 clock has been removed from the current configuration then this
 function will not be available.
 <TT
@@ -312,7 +326,15 @@ CLASS="FUNCTION"
 >cyg_semaphore_trywait</TT
 > is another variant which
 will always return immediately rather than block, again returning
-success or failure.
+success or failure. If <TT
+CLASS="FUNCTION"
+>cyg_semaphore_timedwait</TT
+>
+is given a timeout in the past, it operates like
+<TT
+CLASS="FUNCTION"
+>cyg_semaphore_trywait</TT
+>.
       </P
 ><P
 ><TT

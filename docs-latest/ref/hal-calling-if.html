@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 11. Porting Guide</TD
+>Chapter 6. Porting Guide</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECTION"
 ><H1
 CLASS="SECTION"
 ><A
-NAME="HAL-CALLING-IF">Virtual Vectors (eCos/ROM Monitor Calling Interface)</H1
+NAME="HAL-CALLING-IF"
+></A
+>Virtual Vectors (eCos/ROM Monitor Calling Interface)</H1
 ><P
 >Some eCos platforms have supported full debugging capabilities via
 CygMon since day one. Platforms of the architectures PowerPC, ARM, and
@@ -100,7 +102,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-VIRTUAL-VECTORS">Virtual Vectors</H2
+NAME="HAL-PORTING-VIRTUAL-VECTORS"
+></A
+>Virtual Vectors</H2
 ><P
 >What are virtual vectors, what do they do, and why are they
 needed?</P
@@ -143,7 +147,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9238">Initialization (or Mechanism vs. Policy)</H3
+NAME="AEN3791"
+></A
+>Initialization (or Mechanism vs. Policy)</H3
 ><P
 >Virtual vectors are a <SPAN
 CLASS="emphasis"
@@ -202,7 +208,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9252">Pros and Cons of Virtual Vectors</H3
+NAME="AEN3805"
+></A
+>Pros and Cons of Virtual Vectors</H3
 ><P
 >There are pros and cons associated with the use of virtual
 vectors. We do believe that the pros generally outweigh the cons by a
@@ -310,7 +318,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9285">Available services</H3
+NAME="AEN3838"
+></A
+>Available services</H3
 ><P
 >The <TT
 CLASS="FILENAME"
@@ -342,7 +352,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9296">The COMMS channels</H2
+NAME="AEN3849"
+></A
+>The COMMS channels</H2
 ><P
 >As all HAL IO happens via the COMMS channels these deserve to be
 described in a little more detail. In particular the controls of where
@@ -353,7 +365,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9299">Console and Debugging Channels</H3
+NAME="AEN3852"
+></A
+>Console and Debugging Channels</H3
 ><P
 >There are two COMMS channels - one for console IO and one for
 debugging IO. They can be individually configured to use any of the
@@ -383,7 +397,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9306">Mangling</H3
+NAME="AEN3859"
+></A
+>Mangling</H3
 ><P
 >As debuggers usually have a protocol using specialized commands
 when communicating with the stub on the target, sending out text as
@@ -405,7 +421,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9311">Controlling the Console Channel</H3
+NAME="AEN3864"
+></A
+>Controlling the Console Channel</H3
 ><P
 >Console output configuration is either inherited from the ROM
 monitor launching the application, or it is specified by the
@@ -548,7 +566,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9353">Footnote: Design Reasoning for Control of Console Channel</H3
+NAME="AEN3906"
+></A
+>Footnote: Design Reasoning for Control of Console Channel</H3
 ><P
 >The current code for controlling the console channel is a
 replacement for an older implementation which had some shortcomings
@@ -603,7 +623,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN9367">The calling Interface API</H2
+NAME="AEN3920"
+></A
+>The calling Interface API</H2
 ><P
 >The calling interface API is defined by hal_if.h and hal_if.c in
 hal/common.</P
@@ -656,7 +678,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9380">Implemented Services</H3
+NAME="AEN3933"
+></A
+>Implemented Services</H3
 ><P
 >This is a brief description of the services, some of which are
 described in further detail below.</P
@@ -832,7 +856,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9456">Compatibility</H3
+NAME="AEN4009"
+></A
+>Compatibility</H3
 ><P
 >When a platform is changed to support the calling interface,
 applications will use it if so configured. That means that if an
@@ -858,7 +884,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9462">Implementation details</H3
+NAME="AEN4015"
+></A
+>Implementation details</H3
 ><P
 >During the startup of a ROM monitor, the calling table will be
 initialized. This also happens if eCos is configured <SPAN
@@ -895,7 +923,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9471">New Platform Ports</H3
+NAME="AEN4024"
+></A
+>New Platform Ports</H3
 ><P
 >The <TT
 CLASS="FUNCTION"
@@ -938,7 +968,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9483">New architecture ports</H3
+NAME="AEN4036"
+></A
+>New architecture ports</H3
 ><P
 >There are no specific requirements for a new architecture port in
 order to support the calling interface, but the basic debugging
@@ -950,7 +982,9 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="HAL-PORTING-IO-CHANNELS">IO channels</H2
+NAME="HAL-PORTING-IO-CHANNELS"
+></A
+>IO channels</H2
 ><P
 >The calling interface provides procedure tables for all IO channels on
 the platform. These are used for console (diagnostic) and debugger IO,
@@ -968,7 +1002,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9490">Available Procedures</H3
+NAME="AEN4043"
+></A
+>Available Procedures</H3
 ><P
 >This is a brief description of the procedures</P
 ><P
@@ -1151,7 +1187,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9580">Usage</H3
+NAME="AEN4133"
+></A
+>Usage</H3
 ><P
 >The standard eCos diagnostics IO functions use the channel
 procedure table when <TT
@@ -1208,7 +1246,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9588">Compatibility</H3
+NAME="AEN4141"
+></A
+>Compatibility</H3
 ><P
 >The use of this service is controlled by the option
 <TT
@@ -1223,7 +1263,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9592">Implementation Details</H3
+NAME="AEN4145"
+></A
+>Implementation Details</H3
 ><P
 >There is an array of procedure tables (raw comm channels) for each
 IO device of the platform which get initialized by the ROM monitor, or
@@ -1267,7 +1309,9 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN9602">New Platform Ports</H3
+NAME="AEN4155"
+></A
+>New Platform Ports</H3
 ><P
 >Define CDL options <TT
 CLASS="LITERAL"

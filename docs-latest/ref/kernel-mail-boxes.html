@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-MAIL-BOXES">Mail boxes</H1
+NAME="KERNEL-MAIL-BOXES"
+></A
+>Mail boxes</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1425"
+NAME="AEN1453"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN1425"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1439"><H2
+NAME="AEN1467"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN1440"><P
+NAME="AEN1468"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -290,7 +296,14 @@ CLASS="FUNCTION"
 >cyg_mbox_timed_get</TT
 > will wait until either
 a message is available or until a number of clock ticks have occurred.
-If no message is posted within the timeout then a null pointer will be
+The number of ticks is specified as an absolute, not relative tick
+count, and so in order to wait for a relative number of ticks, the
+return value of the <TT
+CLASS="FUNCTION"
+>cyg_current_time()</TT
+> function
+should be added to determine the absolute number of ticks.  If no
+message is posted within the timeout then a null pointer will be
 returned. <TT
 CLASS="FUNCTION"
 >cyg_mbox_tryget</TT
@@ -319,13 +332,17 @@ CLASS="FUNCTION"
 >cyg_mbox_timed_put</TT
 > variant imposes a time limit
 on the put operation, returning false if the operation cannot be
-completed within the specified number of clock ticks. The
+completed within the specified number of clock ticks and as for
 <TT
 CLASS="FUNCTION"
+>cyg_mbox_timed_get</TT
+> this is an absolute tick
+count. The <TT
+CLASS="FUNCTION"
 >cyg_mbox_tryput</TT
-> variant is non-blocking,
-returning false if there are no free slots available and the message
-cannot be posted without blocking.
+> variant is
+non-blocking, returning false if there are no free slots available and
+the message cannot be posted without blocking.
       </P
 ><P
 >There are a further four functions available for examining the current

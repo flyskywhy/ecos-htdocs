@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="USBS-CONTROL">Control Endpoints</H1
+NAME="USBS-CONTROL"
+></A
+>Control Endpoints</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16877"
+NAME="AEN12258"
 ></A
 ><H2
 >Name</H2
@@ -91,7 +93,9 @@ NAME="AEN16877"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN16880"><H2
+NAME="AEN12261"
+></A
+><H2
 >Synopsis</H2
 ><TABLE
 BORDER="5"
@@ -113,7 +117,7 @@ typedef struct usbs_control_endpoint {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16882"
+NAME="AEN12263"
 ></A
 ><H2
 ><TT
@@ -180,7 +184,7 @@ should be consulted for more details of DSR handling.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16892"
+NAME="AEN12273"
 ></A
 ><H3
 >Initialization</H3
@@ -247,7 +251,7 @@ data.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16903"
+NAME="AEN12284"
 ></A
 ><H3
 >State</H3
@@ -479,7 +483,7 @@ at the cost of increased code and cpu overheads.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16933"
+NAME="AEN12314"
 ></A
 ><H3
 >Standard Control Messages</H3
@@ -516,7 +520,7 @@ consist of an initial eight-byte header, containing fields such as a
 request type. This may be followed by a further data transfer, either
 from host to peripheral or from peripheral to host. The way this is
 handled is described in the <A
-HREF="usbs-control.html#AEN16966"
+HREF="usbs-control.html#AEN12347"
 >Buffer Management</A
 > section below.</P
 ><P
@@ -530,7 +534,7 @@ CLASS="STRUCTFIELD"
 field. Then it determines the request type: standard, class, vendor,
 or reserved. The way in which the last three of these are processed is
 described in the section <A
-HREF="usbs-control.html#AEN16958"
+HREF="usbs-control.html#AEN12339"
 >Other
 Control Messages</A
 >. Some
@@ -657,7 +661,7 @@ since the information is also relevant to USB hosts.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16958"
+NAME="AEN12339"
 ></A
 ><H3
 >Other Control Messages</H3
@@ -714,7 +718,7 @@ install an appropriate handler and process the requests appropriately. </P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16966"
+NAME="AEN12347"
 ></A
 ><H3
 >Buffer Management</H3
@@ -912,7 +916,7 @@ CLASS="FUNCTION"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN17003"
+NAME="AEN12384"
 ></A
 ><H3
 >Polling Support</H3

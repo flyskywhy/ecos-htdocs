@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="USBS-WRITING">Writing a USB Device Driver</H1
+NAME="USBS-WRITING"
+></A
+>Writing a USB Device Driver</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN17056"
+NAME="AEN12437"
 ></A
 ><H2
 >Name</H2
@@ -91,7 +93,7 @@ NAME="AEN17056"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17059"
+NAME="AEN12440"
 ></A
 ><H2
 >Introduction</H2
@@ -123,7 +125,7 @@ written.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17064"
+NAME="AEN12445"
 ></A
 ><H2
 >The Control Endpoint</H2
@@ -197,7 +199,7 @@ CLASS="STRUCTFIELD"
 ></TT
 > and other fields related to data
 transfers will be managed <A
-HREF="usbs-control.html#AEN16966"
+HREF="usbs-control.html#AEN12347"
 >jointly</A
 > by higher-level code and
 the device driver. The remaining fields are generally filled in by
@@ -225,7 +227,7 @@ after power-up.</P
 >Where possible the device driver should detect state changes, such as
 when the connection between host and peripheral is established, and
 <A
-HREF="usbs-control.html#AEN16903"
+HREF="usbs-control.html#AEN12284"
 >report</A
 > these to higher-level
 code via the <TT
@@ -275,7 +277,7 @@ no default handler for these.</P
 >Some control messages will involve further data transfer, not just the
 initial packet. The device driver must handle this in accordance with
 the USB specification and the <A
-HREF="usbs-control.html#AEN16966"
+HREF="usbs-control.html#AEN12347"
 >buffer management strategy</A
 >. The
 driver is also responsible for keeping track of whether or not the
@@ -291,7 +293,7 @@ the same code that the interrupt handler would.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17092"
+NAME="AEN12473"
 ></A
 ><H2
 >Data Endpoints</H2
@@ -434,7 +436,7 @@ devtab entries as well as via low-level accesses.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17119"
+NAME="AEN12500"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -520,7 +522,7 @@ provided, to avoid unnecessary memory overheads.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17132"
+NAME="AEN12513"
 ></A
 ><H2
 >Interrupt Handling</H2
@@ -551,7 +553,7 @@ be invoked at DSR or thread level.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17136"
+NAME="AEN12517"
 ></A
 ><H2
 >Support for USB Testing</H2

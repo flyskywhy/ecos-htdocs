@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="USBS-ENUM">USB Enumeration Data</H1
+NAME="USBS-ENUM"
+></A
+>USB Enumeration Data</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16456"
+NAME="AEN11837"
 ></A
 ><H2
 >Name</H2
@@ -91,7 +93,9 @@ NAME="AEN16456"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN16459"><H2
+NAME="AEN11840"
+></A
+><H2
 >Synopsis</H2
 ><TABLE
 BORDER="5"
@@ -137,7 +141,7 @@ typedef struct usbs_enumeration_data {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16461"
+NAME="AEN11842"
 ></A
 ><H2
 >USB Enumeration Data</H2
@@ -211,7 +215,7 @@ extension.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16472"
+NAME="AEN11853"
 ></A
 ><H3
 ><SPAN
@@ -338,7 +342,7 @@ binary-coded decimal.</P
 ><P
 >The above fields are all numerical in nature. A USB peripheral can
 also provide a number of strings as described <A
-HREF="usbs-enum.html#AEN16547"
+HREF="usbs-enum.html#AEN11928"
 >below</A
 >, for example the name of the
 vendor can be provided. The various <TT
@@ -356,7 +360,7 @@ one configuration will be active at any one time, and the host will
 switch between them as appropriate. If a peripheral does involve
 multiple configurations then typically it will be the responsibility
 of application code to <A
-HREF="usbs-control.html#AEN16933"
+HREF="usbs-control.html#AEN12314"
 >handle</A
 > the standard
 set-configuration control message.</P
@@ -364,7 +368,7 @@ set-configuration control message.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16497"
+NAME="AEN11878"
 ></A
 ><H3
 ><SPAN
@@ -482,7 +486,7 @@ requirements in units of 2mA.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16515"
+NAME="AEN11896"
 ></A
 ><H3
 ><SPAN
@@ -551,7 +555,7 @@ another setting that only needs 50K/s. The host can use the standard
 set-interface control message to choose the most appropriate setting.
 The handling of this request is the responsibility of higher-level
 code, so the application may have to <A
-HREF="usbs-control.html#AEN16933"
+HREF="usbs-control.html#AEN12314"
 >install</A
 > its own handler.</P
 ><P
@@ -585,7 +589,7 @@ the interfaces for the second configuration, and so on.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16530"
+NAME="AEN11911"
 ></A
 ><H3
 ><SPAN
@@ -706,7 +710,7 @@ configuration; etc.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16547"
+NAME="AEN11928"
 ></A
 ><H3
 >Strings</H3
@@ -750,7 +754,7 @@ control messages when a string descriptor is requested.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16552"
+NAME="AEN11933"
 ></A
 ><H3
 ><SPAN

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 48. Embedded HTTP Server</TD
+>Chapter 53. Embedded HTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-HTTPD-CONFIGURATION">Server Configuration</H1
+NAME="NET-HTTPD-CONFIGURATION"
+></A
+>Server Configuration</H1
 ><P
 >The HTTP server has a number of configuration options:</P
 ><DIV
@@ -90,7 +92,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15589"><TT
+NAME="AEN10954"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_SERVER_PORT</TT
 ></H2
@@ -105,7 +109,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15593"><TT
+NAME="AEN10958"
+></A
+><TT
 CLASS="LITERAL"
 >CYGDAT_HTTPD_SERVER_ID</TT
 ></H2
@@ -118,7 +124,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15597"><TT
+NAME="AEN10962"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_THREAD_COUNT</TT
 ></H2
@@ -136,7 +144,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15601"><TT
+NAME="AEN10966"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_THREAD_PRIORITY</TT
 ></H2
@@ -152,7 +162,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15605"><TT
+NAME="AEN10970"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_THREAD_STACK_SIZE</TT
 ></H2
@@ -173,7 +185,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15611"><TT
+NAME="AEN10976"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_SERVER_BUFFER_SIZE</TT
 ></H2
@@ -187,7 +201,30 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15615"><TT
+NAME="AEN10980"
+></A
+><TT
+CLASS="LITERAL"
+>CYGNUM_HTTPD_SERVER_AUTO_START</TT
+></H2
+><P
+>This option causes the HTTP Daemon to be started automatically during
+system initialization. If this option is not set then the application
+must start the daemon explicitly by calling
+<TT
+CLASS="FUNCTION"
+>cyg_httpd_startup()</TT
+>. This option is set by
+default.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN10985"
+></A
+><TT
 CLASS="LITERAL"
 >CYGNUM_HTTPD_SERVER_DELAY</TT
 ></H2

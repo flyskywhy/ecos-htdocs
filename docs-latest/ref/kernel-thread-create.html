@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="KERNEL-THREAD-CREATE">Thread creation</H1
+NAME="KERNEL-THREAD-CREATE"
+></A
+>Thread creation</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN256"
+NAME="AEN267"
 ></A
 ><H2
 >Name</H2
@@ -91,12 +93,16 @@ NAME="AEN256"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN259"><H2
+NAME="AEN270"
+></A
+><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
 ><A
-NAME="AEN260"><P
+NAME="AEN271"
+></A
+><P
 ></P
 ><TABLE
 BORDER="5"
@@ -464,7 +470,7 @@ CLASS="PROGRAMLISTING"
 static unsigned char producer_stack[PRODUCER_STACKSIZE];
 static unsigned char worker_stacks[NUMBER_OF_WORKERS][WORKER_STACKSIZE];
 static cyg_handle_t producer_handle, worker_handles[NUMBER_OF_WORKERS];
-static cyg_thread_t producer_thread, worker_threads[NUMBER_OF_WORKERS];
+static cyg_thread   producer_thread, worker_threads[NUMBER_OF_WORKERS];
 
 static void
 producer(cyg_addrword_t data)

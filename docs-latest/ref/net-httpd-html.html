@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 48. Embedded HTTP Server</TD
+>Chapter 53. Embedded HTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -82,7 +82,9 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="NET-HTTPD-HTML">Support Functions and Macros</H1
+NAME="NET-HTTPD-HTML"
+></A
+>Support Functions and Macros</H1
 ><P
 >The emphasis of this server is on dynamically generated content,
 rather than fetching it from a filesystem. To do this the handler
@@ -145,7 +147,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15631">HTTP Support</H2
+NAME="AEN11001"
+></A
+>HTTP Support</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -211,7 +215,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15644">General HTML Support</H2
+NAME="AEN11014"
+></A
+>General HTML Support</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -340,7 +346,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15670">Table Support</H2
+NAME="AEN11040"
+></A
+>Table Support</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -402,7 +410,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15683">Forms Support</H2
+NAME="AEN11053"
+></A
+>Forms Support</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -552,7 +562,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN15714">Predefined Handlers</H2
+NAME="AEN11084"
+></A
+>Predefined Handlers</H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -561,7 +573,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->&#13;int cyg_httpd_send_html( FILE *client, char *filename, char *request, void *arg );
+>&#13;cyg_bool cyg_httpd_send_html( FILE *client, char *filename, char *request, void *arg );
 
 typedef struct
 {
@@ -571,7 +583,7 @@ typedef struct
 } cyg_httpd_data;
 #define CYG_HTTPD_DATA( __name, __type, __length, __data )
 
-int cyg_httpd_send_data( FILE *client, char *filename, char *request, void *arg );&#13;</PRE
+cyg_bool cyg_httpd_send_data( FILE *client, char *filename, char *request, void *arg );&#13;</PRE
 ></TD
 ></TR
 ></TABLE

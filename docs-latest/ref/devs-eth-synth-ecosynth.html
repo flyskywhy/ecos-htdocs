@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -79,11 +79,13 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="DEVS-ETH-SYNTH-ECOSYNTH">Synthetic Target Ethernet Driver</H1
+NAME="DEVS-ETH-SYNTH-ECOSYNTH"
+></A
+>Synthetic Target Ethernet Driver</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN19248"
+NAME="AEN14629"
 ></A
 ><H2
 >Name</H2
@@ -91,7 +93,7 @@ NAME="AEN19248"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN19251"
+NAME="AEN14632"
 ></A
 ><H2
 >Overview</H2
@@ -140,7 +142,9 @@ CLASS="COMMAND"
 ><DIV
 CLASS="INFORMALFIGURE"
 ><A
-NAME="AEN19261"><P
+NAME="AEN14642"
+></A
+><P
 ></P
 ><DIV
 CLASS="MEDIAOBJECT"
@@ -728,6 +732,21 @@ dynamically obtain its IP addresses from these daemons. Note it is a
 good idea to specify a MAC address otherwise a different random MAC
 address will be used each time and the dhcpd daemon will not be able
 to reissue the same IP address.
+    </P
+><P
+>Host daemons like dhcpd, ntpd, radvd etc are started at boot
+time. Since the tap device does not exists at this point in time it is
+not possible for these daemons to bind to the tap device. A simple
+solution is to use the program
+<B
+CLASS="COMMAND"
+>install/bin/mktap</B
+>. This takes one parameter, the
+name of the tap device it should create. eg,
+<TT
+CLASS="LITERAL"
+>tap3</TT
+>. 
     </P
 ><P
 >An alternative approach would be to set up the Linux box as a network

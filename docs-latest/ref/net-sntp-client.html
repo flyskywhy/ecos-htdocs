@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -77,19 +77,24 @@ WIDTH="100%"></DIV
 ><DIV
 CLASS="PART"
 ><A
-NAME="NET-SNTP-CLIENT"><DIV
+NAME="NET-SNTP-CLIENT"
+></A
+><DIV
 CLASS="TITLEPAGE"
 ><H1
 CLASS="TITLE"
->XVIII. Simple Network Time Protocol Client</H1
+>XX. Simple Network Time Protocol Client</H1
 ><DIV
 CLASS="PARTINTRO"
 ><A
-NAME="AEN15766"><P
+NAME="AEN11136"
+></A
+><P
 >The SNTP package provides implementation of a client for RFC 2030, the
 Simple Network Time Protocol (SNTP). The client listens for broadcasts
 or IPv6 multicasts from an NTP server and uses the information received to
-set the system clock.</P
+set the system clock.  It can also be configured to send SNTP time
+requests to specific NTP servers using SNTP's unicast mode.</P
 ></DIV
 ><DIV
 CLASS="TOC"
@@ -99,7 +104,7 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->50. <A
+>55. <A
 HREF="net-sntp.html"
 >The SNTP Client</A
 ></DT
