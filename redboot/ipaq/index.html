@@ -40,8 +40,8 @@
       <tt>
 <b>RedBoot></b> lo -d -r -b 0x200000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/ecosromfs.gz">ecosromfs.gz</a><br>
 <b>Raw file loaded 0x00200000-0x002736c0</b><br>
-<b>RedBoot></b> lo -d -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
-<b>Raw file loaded 0x00020000-0x0005f367</b><br>
+<b>RedBoot></b> lo -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
+<b>Raw file loaded 0x00020000-0x00054d3c</b><br>
       </tt>
     </blockquote>
     </p>
@@ -59,7 +59,7 @@
     ecosromfs.gz</a> file via XMODEM. Then enter the command:
     <blockquote>
       <tt>
-<b>RedBoot></b> lo -d -m xmodem -r -b 0x20000<br>
+<b>RedBoot></b> lo -m xmodem -r -b 0x20000<br>
       </tt>
     </blockquote>
     Send the
@@ -70,12 +70,18 @@
     <p>
       It is possible to run the demo with just the nanoxdemo.gz file loaded
       (without needing the ecosromfs.gz file), without programming anything
-      into the FLASH. The demo may be run simply with the command:
+      into the FLASH. The demo may be run simply with the commands:
     <blockquote>
       <tt>
+<b>RedBoot></b> lo -d -r -b 0x20000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/ecos/nanoxdemo.gz">nanoxdemo.gz</a><br>
+<b>Raw file loaded 0x00020000-0x00054d3c</b><br>
 <b>RedBoot></b> go 0x20040<br>
       </tt>
     </blockquote>
+    </p>
+    <p>
+    Note the addition of the "-d" flag which indicates to uncompress the data as
+    it is being loaded,
     </p>
     <p>
       However note that without the ecosromfs.gz file programmed into FLASH,
@@ -110,19 +116,15 @@
 ... Erase from 0x50fc0000-0x51000000: .<br>
 ... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .<br>
 ... Lock from 0x50fc0000-0x51000000: .<br>
-RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
-<b>An image named 'RedBoot[backup]' exists - are you sure (y/n)? </b>y<br>
-<b>* CAUTION * about to program 'RedBoot[backup]'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; at 0x50040000..0x5007ffff from 0x00100000 - are you sure (y/n)? </b>y<br>
-<b>... Erase from 0x50040000-0x50080000: .<br>
-... Program from 0x0020000-0x00060000 at 0x50040000: .<br>
+RedBoot> </b>fi cr eCos_demo -f 0x50ec0000 -l 0x40000 -b 0x20000 -r 0x20000 -e 0x20040<br>
+<b>... Erase from 0x50ec0000-0x50f00000: .<br>
+... Program from 0x0020000-0x00060000 at 0x50080000: .<br>
 ... Unlock from 0x50fc0000-0x51000000: .<br>
 ... Erase from 0x50fc0000-0x51000000: .<br>
 ... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .<br>
 ... Lock from 0x50fc0000-0x51000000: .</b><br>
       </tt>
     </blockquote>
-  <b>Note:</b> For now, we'll put the NanoX in the RedBoot[backup] slot.
   </p>
 
     <h2>Running the Embedded Linux demo</h2>
@@ -140,7 +142,7 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
     <blockquote>
       <pre>
 <b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqjffs2.img">ipaqjffs2.img</a>
-<b>Raw file loaded 0x00100000-0x00cc0000</b>
+<b>Raw file loaded 0x00100000-0x00c99540</b>
       </pre>
     </blockquote>
     </p>
@@ -150,7 +152,7 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
       type the following command:
     <blockquote>
       <pre>
-<b>RedBoot></b> lo -d -m xmodem -r -b 0x100000
+<b>RedBoot></b> lo -m xmodem -r -b 0x100000
       </pre>
     </blockquote>
     Now send the
@@ -162,9 +164,9 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
       Now save this image to flash with the command:
     <blockquote>
       <tt>
-<b>RedBoot> </b>fi cr JFFS2 -f 0x50100000 -b 0x100000 -l 0xe00000 -s 0xbc0000<br>
-<b>... Erase from 0x50100000-0x50f00000: ........................................................<br>
-... Program from 0x00100000-0x00cc0000 at 0x50100000: ...............................................<br>
+<b>RedBoot> </b>fi cr JFFS2 -f 0x50100000 -b 0x100000 -l 0xdc0000 -s 0xb99540<br>
+<b>... Erase from 0x50100000-0x50ec0000: ........................................................<br>
+... Program from 0x00100000-0x00c99540 at 0x50100000: ...............................................<br>
 ... Unlock from 0x50fc0000-0x51000000: .<br>
 ... Erase from 0x50fc0000-0x51000000: .<br>
 ... Program from 0x01f70000-0x01fb0000 at 0x50fc0000: .<br>
@@ -187,7 +189,7 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
     <blockquote>
       <pre>
 <b>RedBoot></b> lo -r -b 0x100000 /tftpboot/<a href="ftp://sources.redhat.com/pub/ecos/ipaqdemo/linux/ipaqzimage.img">ipaqzimage.img</a>
-<b>Raw file loaded 0x00100000-0x0017dfd8</b>
+<b>Raw file loaded 0x00100000-0x0017e122</b>
       </pre>
     </blockquote>
     </p>
@@ -197,7 +199,7 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
       type the following command:
     <blockquote>
       <pre>
-<b>RedBoot></b> lo -d -m xmodem -r -b 0x100000
+<b>RedBoot></b> lo -m xmodem -r -b 0x100000
       </pre>
     </blockquote>
     Now send the
@@ -236,18 +238,18 @@ RedBoot> </b>fi cr RedBoot[backup] -b 0x20000 -r 0x20000 -e 0x20040<br>
 <pre><b>RedBoot></b> fi li
 <b>Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FLASH addr&nbsp; Mem addr&nbsp;&nbsp;&nbsp; Length&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Entry point
 RedBoot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50000000&nbsp; 0x00100000&nbsp; 0x00040000&nbsp; 0x50000040
-RedBoot[backup]&nbsp;&nbsp; 0x50040000&nbsp; 0x00020000&nbsp; 0x00040000&nbsp; 0x00020040
 RedBoot config&nbsp;&nbsp;&nbsp; 0x50F80000&nbsp; 0x50F80000&nbsp; 0x00040000&nbsp; 0x00000000
 FIS directory&nbsp;&nbsp;&nbsp;&nbsp; 0x50FC0000&nbsp; 0x50FC0000&nbsp; 0x00040000&nbsp; 0x00000000
-JFFS2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50100000&nbsp; 0x00100000&nbsp; 0x00E00000&nbsp; 0x00000000
 ROM_DISK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50F00000&nbsp; 0x01F00000&nbsp; 0x00080000&nbsp; 0x00000000
+eCos_demo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50EC0000&nbsp; 0x00020000&nbsp; 0x00040000&nbsp; 0x00020040
+JFFS2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50100000&nbsp; 0x00100000&nbsp; 0x00DC0000&nbsp; 0x00000000
 Linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x50080000&nbsp; 0x00100000&nbsp; 0x00080000&nbsp; 0x00000000</b></pre>
 </blockquote></p>
     <p>
       The eCos Microwindows/NanoX demo can be run using the commands:
     <blockquote>
       <pre>
-<b>RedBoot></b> fi loa -d RedBoot[backup]
+<b>RedBoot></b> fi loa -d eCos_demo
 <b>RedBoot></b> go 0x20040
       </pre>
     </blockquote>
@@ -256,8 +258,8 @@ Linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x
       The Embedded Linux demo can be run using the commands:
     <blockquote>
       <tt>
-<b>RedBoot></b> fi loa Linux<br>
-<b>RedBoot></b> ex -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock/3 init=/linuxrc console=ttySA0,38400"<br>
+<b>RedBoot></b> fi loa -d Linux<br>
+<b>RedBoot></b> ex -b 0x100000 -l 0x280000 -c "noinitrd root=/dev/mtdblock/3 init=/linuxrc console=ttySA0,38400"<br>
       </tt>
     </blockquote>
     </p>
@@ -267,10 +269,10 @@ Linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0x
 <tt><b>RedBoot></b> fc<br>
 <b>Run script at boot: false</b> t<br>
 <b>Enter script, terminate with empty line<br>
->></b> fi loa -d RedBoot[backup]<br>
+>></b> fi loa -d eCos_demo<br>
 <b>>></b> go -w 5 0x20040<br>
-<b>>></b> fi loa Linux<br>
-<b>>></b> ex -b 0x100000 -l 0x80000 -c "noinitrd root=/dev/mtdblock3 init=/linuxrc console=ttySA0,38400" -w 5<br>
+<b>>></b> fi loa -d Linux<br>
+<b>>></b> ex -b 0x100000 -l 0x280000 -c "noinitrd root=/dev/mtdblock3 init=/linuxrc console=ttySA0,38400" -w 5<br>
 <b>>><br>
 Boot script timeout (1000ms resolution): 5</b> .<br>
 <b>Update RedBoot non-volatile configuration - are you sure (y/n)?</b> y<br></tt>
