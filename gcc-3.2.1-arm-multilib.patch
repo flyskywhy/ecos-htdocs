@@ -1,0 +1,46 @@
+diff -r -u gcc-3.2.1.orig/gcc/config/arm/t-arm-elf gcc-3.2.1/gcc/config/arm/t-arm-elf
+--- gcc-3.2.1.orig/gcc/config/arm/t-arm-elf	Fri Jan 17 21:26:24 2003
++++ gcc-3.2.1/gcc/config/arm/t-arm-elf	Thu Jan 23 16:29:13 2003
+@@ -21,9 +21,39 @@
+ 	cat $(srcdir)/config/fp-bit.c >> dp-bit.c
+ 
+ 	
+-MULTILIB_OPTIONS     = marm/mthumb
+-MULTILIB_DIRNAMES    = arm thumb
+-MULTILIB_EXCEPTIONS  = 
++# Note - the selection of multilibs here has
++# been tailored to the requirements of eCos.
++
++MULTILIB_OPTIONS     = mthumb
++MULTILIB_DIRNAMES    = thumb
++
++MULTILIB_OPTIONS    += mthumb-interwork
++MULTILIB_DIRNAMES   += interwork
++
++MULTILIB_OPTIONS    += mcpu=xscale mcpu=strongarm1110 mcpu=arm9tdmi
++MULTILIB_DIRNAMES   += xscale strongarm armv4t
++
++# Note: the multilib_exceptions matches both -mthumb and
++# -mthumb-interwork
++MULTILIB_EXCEPTIONS += *mthumb*/*mcpu=strongarm*
++MULTILIB_EXCEPTIONS += *mcpu=xscale*/*mcpu=strongarm*
++MULTILIB_EXCEPTIONS += *mcpu=xscale*/*mcpu=arm9*
++MULTILIB_EXCEPTIONS += *mcpu=strongarm*/*mcpu=arm9*
++
++# We have to match all the arm cpu variants which are similar to the
++# StrongARM 1110 or the ARM 9TDMI.
++# Note that in the following the ? is interpreted as an = for the
++# purposes of matching command line options.
++MULTILIB_MATCHES    += mcpu?strongarm1110=mcpu?strongarm
++MULTILIB_MATCHES    += mcpu?strongarm1110=mcpu?strongarm110
++MULTILIB_MATCHES    += mcpu?strongarm1110=mcpu?strongarm1100
++MULTILIB_MATCHES    += mcpu?arm9tdmi=mcpu?arm9
++MULTILIB_MATCHES    += mcpu?arm9tdmi=mcpu?arm920t
++MULTILIB_MATCHES    += mcpu?arm9tdmi=mcpu?arm940t
++
++#MULTILIB_OPTIONS     = marm/mthumb
++#MULTILIB_DIRNAMES    = arm thumb
++#MULTILIB_EXCEPTIONS  = 
+ 	
+ # MULTILIB_OPTIONS     = mlittle-endian/mbig-endian
+ # MULTILIB_DIRNAMES    = le be
