@@ -1,0 +1,109 @@
+Index: ./tcl/generic/tclPosixStr.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/tcl/generic/tclPosixStr.c,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -p -r1.9 -r1.10
+*** ./tcl/generic/tclPosixStr.c	1999/01/26 03:53:17	1.9
+--- ./tcl/generic/tclPosixStr.c	1999/05/18 23:10:04	1.10
+*************** Tcl_ErrnoId()
+*** 336,342 ****
+  #ifdef ENXIO
+  	case ENXIO: return "ENXIO";
+  #endif
+! #ifdef EOPNOTSUPP
+  	case EOPNOTSUPP: return "EOPNOTSUPP";
+  #endif
+  #ifdef EPERM
+--- 336,342 ----
+  #ifdef ENXIO
+  	case ENXIO: return "ENXIO";
+  #endif
+! #if defined(EOPNOTSUPP) && (!defined(ENOTSUP) || (EOPNOTSUPP != ENOTSUP))
+  	case EOPNOTSUPP: return "EOPNOTSUPP";
+  #endif
+  #ifdef EPERM
+*************** Tcl_ErrnoMsg(err)
+*** 783,789 ****
+  #ifdef ENXIO
+  	case ENXIO: return "no such device or address";
+  #endif
+! #ifdef EOPNOTSUPP
+  	case EOPNOTSUPP: return "operation not supported on socket";
+  #endif
+  #ifdef EPERM
+--- 783,789 ----
+  #ifdef ENXIO
+  	case ENXIO: return "no such device or address";
+  #endif
+! #if defined(EOPNOTSUPP) && (!defined(ENOTSUP) || (EOPNOTSUPP != ENOTSUP))
+  	case EOPNOTSUPP: return "operation not supported on socket";
+  #endif
+  #ifdef EPERM
+Index: ./expect/exp_strf.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/expect/exp_strf.c,v
+retrieving revision 1.8
+diff -p -r1.8 exp_strf.c
+*** ./expect/exp_strf.c	1998/08/24 23:29:23	1.8
+--- ./expect/exp_strf.c	1999/05/21 17:03:16
+*************** static int weeknumber();
+*** 98,104 ****
+--- 98,106 ----
+  adddecl(static int iso8601wknum();)
+  #else
+  
++ #ifndef strchr
+  extern char *strchr(const char *str, int ch);
++ #endif
+  extern char *getenv(const char *v);
+  static int weeknumber(const struct tm *timeptr, int firstweekday);
+  adddecl(static int iso8601wknum(const struct tm *timeptr);)
+Index: ./make/arscan.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/make/arscan.c,v
+retrieving revision 1.20
+diff -u -5 -p -r1.20 arscan.c
+--- ./make/arscan.c	1996/11/01 22:08:25	1.20
++++ ./make/arscan.c	1999/08/03 23:50:52
+@@ -432,18 +432,17 @@ ar_name_equal (name, mem, truncated)
+ #ifdef AIAMAG
+       /* TRUNCATED should never be set on this system.  */
+       abort ();
+ #else
+       struct ar_hdr hdr;
+-      return !strncmp (name, mem,
+-		       sizeof (hdr.ar_name) - 
+ #if !defined (__hpux) && !defined (cray)
+-		       1
++      return !strncmp (name, mem,
++		       sizeof (hdr.ar_name) - 1);
+ #else
+-		       2
++      return !strncmp (name, mem,
++		       sizeof (hdr.ar_name) - 2);
+ #endif /* !__hpux && !cray */
+-		       );
+ #endif
+     }
+ 
+   return !strcmp (name, mem);
+ 
+Index: ./gdb/gdb_string.h
+===================================================================
+RCS file: /cvs/cvsfiles/devo/gdb/gdb_string.h,v
+retrieving revision 2.3
+diff -u -5 -p -r2.3 gdb_string.h
+--- ./gdb/gdb_string.h	1996/07/26 02:59:29	2.3
++++ ./gdb/gdb_string.h	1999/08/03 23:50:52
+@@ -57,8 +57,10 @@ extern void *memcpy();
+ extern void *memmove();
+ extern int   memcmp();
+ # endif
+ #endif
+ 
++#ifndef strdup
+ extern char *strdup ();
++#endif
+ 
+ #endif	/* !defined(GDB_STRING_H) */

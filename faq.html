@@ -990,25 +990,31 @@ ncurses-devel packages, and it will be necessary to install these
 first.
 
 <P>
-There is a known problem building the ARM toolchain under Redhat 6.0, where
-it fails with the following errors:
+There is a known problem building toolchains under Redhat 6.0, resulting
+in toolchain build errors.
 <P>
-<PRE>
-    ..generic/tclPosixStr.c: In function 'Tcl_ErrnoId':
-    ..generic/tclPosixStr.c:340: duplicate case value
-    ..generic/tclPosixStr.c:328: this is the first entry for that value
-    ..generic/tclPosixStr.c: In function 'Tcl_ErrnoMsg':
-    ..generic/tclPosixStr.c:787: duplicate case value
-    ..generic/tclPosixStr.c:775: this is the first entry for that value
-</PRE>
-<P>
-This problem can be solved using <A HREF="ecos-arm-rh6.patch">this patch</A>.
-Assuming the patch is saved in the <CODE>/tmp</CODE> directory, it can be
-applied by changing directory to <CODE>ecosSWtools-arm-990321/src</CODE>
+This problem can be solved using <A HREF="ecos-arm-rh6.patch">this patch
+for the ARM toolchain</A> and <A HREF="ecos-rh6.patch">this patch for
+the MN10300/TX39/Sparclite/PowerPC/i386 toolchain</A>.
+The patch must not have Windows CRLF line endings, so ensure it is downloaded
+without them if you are using a Windows browser. The easiest way to do this
+is by holding shift while clicking the link, and saving it to a file.
+
+For ARM, assuming the patch is saved in the <CODE>/tmp</CODE> directory, it
+can be applied by changing directory to <CODE>ecosSWtools-arm-990321/src</CODE>
 and entering the command:
 <P>
 <PRE>
      patch -p0 < /tmp/ecos-arm-rh6.patch
+</PRE>
+
+For the non-ARM toolchain, assuming the patch is saved in the <CODE>/tmp</CODE>
+directory, it can be applied by changing directory to
+<CODE>ecosSWtools-990319/src</CODE>
+and entering the command:
+<P>
+<PRE>
+     patch -p0 < /tmp/ecos-rh6.patch
 </PRE>
 
 <P>
