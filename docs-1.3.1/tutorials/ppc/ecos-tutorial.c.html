@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Software Installation</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Software Installation</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.b.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.d.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1967288">
+ </A>
+Software Installation<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1740611">
+ </A>
+Software <A NAME="marker=1740610">
+ </A>
+Installation on Windows</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1740612">
+ </A>
+If you have a CD distribution of the eCos Developer's Kit, you have received the eCos software and its supporting utilities on a single CDROM for installation on a PC-compatible computer running Windows NT 4.0, Windows 95, or Windows 98. If you use NT you must apply the NT 4.0 Service Pack 3 or above before installing eCos. Support is only for Windows NT 4.0. Installations on other Windows platforms are beta.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1740613">
+ </A>
+The following components are provided on the eCos CDROM: </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1740614">
+ </A>
+eCos source code</LI>
+<P><LI>
+<A NAME="pgfId=1740615">
+ </A>
+Prebuilt eCos libraries and tests</LI>
+<P><LI>
+<A NAME="pgfId=1740616">
+ </A>
+eCos documentation</LI>
+<P><LI>
+<A NAME="pgfId=1740617">
+ </A>
+Red Hat GNUPro compiler toolchain for eCos source code compilation</LI>
+<P><LI>
+<A NAME="pgfId=1740619">
+ </A>
+Red Hat <A NAME="marker=1740618">
+ </A>
+Cygwin environment: this product provides a POSIX compatibility layer on top of Windows NT, and supports the GNUPro tools on Windows NT.</LI>
+<P><LI>
+<A NAME="pgfId=1740620">
+ </A>
+The GNU user tools--a collection of utilities that developers, particularly those with a UNIX background, will find useful. However, they are not supported by Red Hat.</LI>
+<P><LI>
+<A NAME="pgfId=1740621">
+ </A>
+Documentation for the GNUPro tools, including a Reference Manual for the particular evaluation board being used to run eCos.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2276443">
+ </A>
+If you have obtained the <A NAME="marker=2276442">
+ </A>
+Net release of eCos for Windows, you will have the distribution in a self-extracting archive. Apart from the difference in medium, the installation procedure for eCos itself will be the same as for the CDROM-based distribution. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2276444">
+ </A>
+The software installation process involves a number of installation utilities. Some familiarity with Windows is assumed.</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=2276445">
+ </A>
+Invoke the file Setup.exe on the CDROM. This will start the installation procedure. If you have the <TT CLASS="Code">
+autorun</TT>
+ feature enabled, Windows will run Setup.exe automatically when the CDROM is inserted into the drive.</LI>
+<P><LI>
+<A NAME="pgfId=2276446">
+ </A>
+The setup program will offer to install the GNU user tools. Click <TT CLASS="Code">
+Ok</TT>
+. </LI>
+<P><LI>
+<A NAME="pgfId=2276447">
+ </A>
+You will be prompted for a path in which to install the GNU user tools. The default will be in the <TT CLASS="Code">
+/cygnus/gnupro/i686-cygwin32/i686-cygwin32</TT>
+ hierarchy (usually on drive C). It will then offer to install the source code and documentation for the GNU user tools. It is recommended that you install the documentation, but not the source code, unless you are interested in modifying or recompiling the GNU user tools. </LI>
+<P><LI>
+<A NAME="pgfId=2276448">
+ </A>
+At this point the setup program will begin installing eCos. Click <TT CLASS="Code">
+Ok</TT>
+.</LI>
+<P><LI>
+<A NAME="pgfId=2276449">
+ </A>
+The default path offered for eCos installation will be in the <TT CLASS="Code">
+/Program Files/Red Hat</TT>
+ hierarchy (usually on drive C). You may change this path, and indeed you will need to change it if that partition does not have sufficient free disk space available. It is recommended that you accept the default selection of software components for installation.</LI>
+<P><LI>
+<A NAME="pgfId=2276450">
+ </A>
+You will be asked to select the program folder under which the eCos menu items will be placed. The default folder name is <TT CLASS="Code">
+Red Hat eCos</TT>
+. </LI>
+<P><LI>
+<A NAME="pgfId=2276451">
+ </A>
+The installation should finish normally, offering to show you the <TT CLASS="Code">
+README</TT>
+ file that contains any last minute information and a list of known problems detected after this document was printed. Once the installation is finished, you can start eCos or view the online documentation by selecting <SPAN CLASS="Bold">
+Start</SPAN>
+ -&gt; <SPAN CLASS="Bold">
+Programs</SPAN>
+ -&gt;<SPAN CLASS="Bold">
+ Red Hat eCos</SPAN>
+, and then choosing an option within this folder, e.g <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+, <SPAN CLASS="Bold">
+Package Administration Tool</SPAN>
+, etc. </LI>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=2276453">
+ </A>
+<A NAME="40270">
+ </A>
+At this point you are ready to configure and build a customized eCos kernel as described in <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
+ Configuring and Building eCos from Source</A>
+. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2000062">
+ </A>
+Software <A NAME="marker=2000061">
+ </A>
+Installation on UNIX</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2000064">
+ </A>
+Installation and build instructions for the eCos Net release are available on the Red Hat eCos web site <TT CLASS="Code">
+<A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">
+http://sourceware.cygnus.com/ecos/</A>
+</TT>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2000065">
+ </A>
+Users of the eCos Developer's Kit under UNIX should use the following instructions, which assume that the CD-ROM is available at <TT CLASS="Code">
+/cdrom/cdrom0</TT>
+.</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=2000066">
+ </A>
+Extract the eCos repository from the compressed tar archive <EM CLASS="Command">
+ecos-131.taz</EM>
+, located in the root directory of the CD-ROM using the following commands:<BR>
+<TT CLASS="Code">
+<BR>
+# mkdir /usr/local<BR>
+# cd /usr/local<BR>
+# zcat &lt; /cdrom/cdrom0/ecos-131.taz | tar xvf -<BR>
+</TT>
+<BR>
+On completion, the eCos repository may be found in the directory <TT CLASS="Code">
+/usr/local/ecos-1.3.1</TT>
+.</LI>
+<P><LI>
+<A NAME="pgfId=2000070">
+ </A>
+Extract the eCos development tools from the compressed tar archive <TT CLASS="Code">
+tool-bin.taz</TT>
+, located in the root directory of the CD-ROM, using the following commands:<BR>
+<TT CLASS="Code">
+<BR>
+# mkdir /usr/cygnus<BR>
+# cd /usr/cygnus<BR>
+# zcat &lt; /cdrom/cdrom0/tool-bin.taz | tar xvf -<BR>
+</TT>
+<BR>
+On completion, the executable files of the eCos development tools may be found in the directory <TT CLASS="Code">
+/usr/cygnus/ecos-DEVTOOLSVERSION/H-host-triplet/bin</TT>
+. The source code for the development tools may optionally be installed in the same way:<BR>
+<TT CLASS="Code">
+<BR>
+$ zcat &lt; /cdrom/cdrom0/tool-src.taz | tar xvf -</TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2000071">
+ </A>
+Add the eCos development tools and any native tools supporting the eCos build process to the front of your path. Under Solaris, for example, you should modify the PATH environment variable as follows.<BR>
+<BR>
+Using sh, ksh, or bash:<BR>
+<TT CLASS="Code">
+<BR>
+$ PATH=/usr/cygnus/ecos-99r1-991015/H-sparc-sun-solaris2.5/bin:/usr/xpg4/bin:/usr/ucb:$PATH<BR>
+$ export PATH<BR>
+</TT>
+<BR>
+Using csh or tcsh:</LI>
+</OL>
+<P CLASS="BodyListFollow">
+<A NAME="pgfId=2043907">
+ </A>
+Note that csh also requires the shell command &quot;rehash&quot; after modifying the path for the path change to take effect.<BR>
+<TT CLASS="Code">
+<BR>
+% setenv PATH  /usr/cygnus/ecos-99r1-991015/H-sparc-sun-solaris2.5/bin:/usr/xpg4/bin:/usr/ucb:$PATH<BR>
+</TT>
+<BR>
+At this point you are ready to configure and build a customized eCos kernel as shown in <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
+ Configuring and Building eCos from Source</A>
+. </P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2000075">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2000076">
+ </A>
+The order of directories in the PATH is very important, and build failures may result if the PATH is not set correctly. If you are having difficulties in building eCos, please make sure you have set the PATH exactly as above.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Software Installation</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.b.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.d.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

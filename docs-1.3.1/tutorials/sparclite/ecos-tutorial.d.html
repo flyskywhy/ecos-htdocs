@@ -1,0 +1,376 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ecos-tutorial.css">
+<TITLE> Target Setup</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1740665">
+ </A>
+<A NAME="marker=1740664">
+ </A>
+<A NAME="34045">
+ </A>
+Target Setup<DIV>
+<IMG SRC="ecos-tutorial-5.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269271">
+ </A>
+Connecting To A Target Via Serial</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269272">
+ </A>
+While eCos supports a variety of targets, communication with the targets happens in one of four ways. These are descibed in general below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290096">
+ </A>
+The descriptions are followed by descriptions of each target, providing specific details of how to set up the target (if hardware) and the necessary communication information (such as baud rate for hardware targets, or special connection options for simulator targets).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290095">
+ </A>
+Most targets will have eCos GDB stubs or CygMon installed. These normally wait for GDB to connect at 38400 baud, using 8 data bit, no parity bit and 1 stop-bit (no hardware flow control). Check the section for your target to ensure it uses this speed. If not, adjust the following instructions accordingly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269273">
+ </A>
+The following instructions depend on you to select the appropriate serial port on the host - the serial port which connects to the target's (primary) serial port. On Linux this could be /dev/ttyS0, while the same port on Windows would be named COM1, or <BR>
+/dev/ttya on Solaris. Substitute the proper serial port name in the below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269274">
+ </A>
+Connect to the target by issuing the following commands in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269275"> </A>
+(gdb) set remotebaud 38400    
+(gdb) set mips-force-32bit-saved-gpregs
+(gdb) target remote /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269276">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File-&gt;Target Settings</SPAN>
+... window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269277"> </A>
+Target: Remote/Serial     
+Baud Rate: 38400     
+Port: /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269278">
+ </A>
+You will also need to open the GDB console window with View-&gt;Console and enter &quot;set mips-force-32bit-saved-gpregs&quot; at the prompt</P>
+<P CLASS="Body">
+<A NAME="pgfId=2397398">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="Bold">
+Run-&gt;Connect to target</SPAN>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269279">
+ </A>
+Connecting To A Target Via Ethernet</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269280">
+ </A>
+Some targets allow GDB to connect via Ethernet - if so, it will be mentioned in the section describing the target. Substitute the target's assigned IP address or hostname for &lt;hostname&gt; in the following. The &lt;port&gt; is the TCP port which the eCos GDB stub or <SPAN CLASS="Bold">
+CygWin</SPAN>
+ is listening on. It is also listed in the section describing the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269281">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269282"> </A>
+(gdb) target remote &lt;hostname&gt;:&lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269283">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File-&gt;Target Settings</SPAN>
+... window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269284"> </A>
+Target: Remote/TCP     
+Hostname: &lt;hostname&gt;     
+Port: &lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269285">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="Bold">
+Run-&gt;Connect to target</SPAN>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2336728">
+ </A>
+Connecting To A Simulator Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2336729">
+ </A>
+GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2336730">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+(gdb) target sim [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336732">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="Bold">
+File-&gt;Target Settings</SPAN>
+... window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+Target: Simulator     
+Options: [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336734">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="Bold">
+Run-&gt;Connect to target</SPAN>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269293">
+ </A>
+Connecting To A Synthetic Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269294">
+ </A>
+Synthetic targets are special in that the built tests and applications actually run as native applications on the host. This means that there is no target to connect to - the test or application can be run directly from the GDB console using:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269295"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269296">
+ </A>
+or from Insight by pressing the <SPAN CLASS="Bold">
+Run</SPAN>
+ icon. There is therefore no need to connect to the target or download the application, so you should ignore GDB &quot;target&quot; and &quot;load&quot; commands in any instructions found in other places in the documentation.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2403239">
+ </A>
+<A NAME="marker=2403238">
+ </A>
+SPARClite Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2403240">
+ </A>
+The eCos Developer's Kit package comes with a ROM which provides GDB support for the Fujitsu SPARClite Evaluation Board by way of CygMon<EM CLASS="ProductName">
+. </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403241">
+ </A>
+An image of this ROM is also provided at <TT CLASS="Code">
+BASE_DIR/loaders/sparclite-sleb/cygmon.bin.</TT>
+ The ROM is installed in socket IC9 on the evaluation board. Attention should be paid to the correct orientation of the ROM during installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403242">
+ </A>
+The GDB stub allows communication with GDB using a TCP channel via the ethernet port at connector J5.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2403245">
+ </A>
+<A NAME="marker=2403243">
+ </A>
+<A NAME="21569">
+ </A>
+Ethernet Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2403246">
+ </A>
+The ethernet setup is described in the board's manual, but here is a recapitulation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403247">
+ </A>
+Set the board's ethernet address using SW1 on the motherboard:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2403248"> </A>
+	    SW1-4 SW1-3 SW1-2 SW1-1    Ethernet Address
+	    ----- ----- ----- -----    ----------------
+	    OFF   OFF   OFF   OFF     No ethernet, use serial
+	    OFF   OFF   OFF    ON     00:00:0E:31:00:01
+	    OFF   OFF    ON   OFF     00:00:0E:31:00:02
+	    OFF   OFF    ON    ON     00:00:0E:31:00:03
+	    OFF    ON   OFF   OFF     00:00:0E:31:00:04
+	    OFF    ON   OFF    ON     00:00:0E:31:00:05
+	    OFF    ON    ON   OFF     00:00:0E:31:00:06
+	    OFF    ON    ON    ON     00:00:0E:31:00:07
+	    ON    OFF   OFF   OFF     00:00:0E:31:00:08
+	    ON    OFF   OFF    ON     00:00:0E:31:00:09
+	    ON    OFF    ON   OFF     00:00:0E:31:00:0A
+	    ON    OFF    ON    ON     00:00:0E:31:00:0B
+	    ON     ON   OFF   OFF     00:00:0E:31:00:0C
+	    ON     ON   OFF    ON     00:00:0E:31:00:0D
+	    ON     ON    ON   OFF     00:00:0E:31:00:0E
+	    ON     ON    ON    ON     00:00:0E:31:00:0F
+</PRE>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2403250">
+ </A>
+<A NAME="marker=2403249">
+ </A>
+BOOTP/DHCP service on Linux</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2403251">
+ </A>
+Configure the BOOTP or DHCP server on the network to recognize the evaluation board's ethernet address so it can assign the board an IP address. Below is a sample DHCP server configuration from a Linux system (<TT CLASS="Code">
+/etc/dhcpd.conf</TT>
+). It shows a setup for three evaluation boards.</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2403252"> </A>
+#
+# DHCP server configuration.
+#
+allow bootp;
+
+subnet 192.168.1.0 netmask 255.255.255.0 {
+  host mb831evb {
+    hardware ethernet 00:00:0e:31:00:01;
+    fixed-address mb831evb;
+  }
+  host mb832evb {
+    hardware ethernet 00:00:0e:31:00:02;
+    fixed-address mb832evb;
+  }
+  host mb833evb {
+    hardware ethernet 00:00:0e:31:00:03;
+    fixed-address mb833evb;
+  }
+} </PRE>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2403254">
+ </A>
+<A NAME="marker=2403253">
+ </A>
+BOOTP/DHCP boot process</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2403255">
+ </A>
+Even when configured to use a TCP channel, CygMon will still print a boot message to the serial channel. If the BOOTP process was successful and an IP address was found, a message &quot;BOOTP found xxx.xxx.xxx.xxx&quot; will be printed where xxx.xxx.xxx.xxx is the IP address assigned by the BOOTP or DHCP server. If the BOOTP process fails, a message indicating failure will be printed and the serial port will be used as the debug channel.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403256">
+ </A>
+Once the board finds an IP address it will respond to ICMP echo request packets (ping). This gives a simple means to test the health of the board.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403260">
+ </A>
+As described in <A HREF="ecos-tutorial.d.html#21569" CLASS="XRef">
+ Ethernet Setup</A>
+, it should now be possible to connect to the SPARCLite board from within GDB by using the command:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2403261"> </A>
+(gdb) target remote &lt;host&gt;:1000</PRE>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2403262">
+ </A>
+Serial Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2403263">
+ </A>
+The CygMon stubs also allow communication with GDB by way of the serial port at connector CON1. The communication parameters are fixed at 19200 baud, 8 data bits, no parity bit and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a null modem cable. A gender changer may also be required.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2403264">
+ </A>
+SPARClite Architectural Simulator Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2403265">
+ </A>
+The ESA SPARClite simulator is an architectural simulator which implements all the features of the SPARClite needed to run eCos. The current implementation provides accurate simulation of the instruction set, interrupt controller, and timers, as well as having generic support for diagnostic output and exceptions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403266">
+ </A>
+Note that the ESA SPARClite simulator is unsupported, but is included in the release as a convenience.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2403267">
+ </A>
+To simplify connection to the simulator, you are advised to create a GDB macro by putting the following code in your personal GDB start-up file (gdb.ini on Windows and .gdbinit on UNIX).</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2403268"> </A>
+define ssim   
+ target sim -nfp -sparclite -dumbio   
+ rbreak cyg_test_exit   
+ rbreak cyg_assert_fail  
+end</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2403269">
+ </A>
+You can then connect to the simulator by invoking the command <TT CLASS="Code">
+ssim</TT>
+ on the command line:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2403270"> </A>
+ (gdb) ssim</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2403271">
+ </A>
+You can achieve the same effect by typing out the macro's content on the command line if necessary.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1997405">
+ </A>
+      <BR>
+     <A NAME="marker=1997404">
+ </A>
+i386/Linux Synthetic Target Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1997406">
+ </A>
+When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2392364">
+ </A>
+NOTE:</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2392365">
+ </A>
+Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1997407">
+ </A>
+These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1997408">
+ </A>
+Tools</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2395006">
+ </A>
+For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
+gcc -v</TT>
+ or <TT CLASS="Code">
+egcs -v</TT>
+, and the linker version using <TT CLASS="Code">
+ld -v</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395013">
+ </A>
+If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools i686-pc-linux-gnu-gcc, i686-pc-linux-gnu-ar,  i686-pc-linux-gnu-ld, and i686-pc-linux-gnu-objcopy are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editting the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395068">
+ </A>
+If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395069">
+ </A>
+<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">
+http://sourceware.cygnus.com/ecos/getstart.html</A>
+</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

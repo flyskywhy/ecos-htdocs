@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Programming with eCos</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=2297977">
+ </A>
+Programming with eCos<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2297979">
+ </A>
+The remaining chapters of this document compromise a simple tutorial for configuring and building eCos, building and running eCos tests, and finally building three stand-alone example programs which use the  eCos API to perform some simple tasks.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297784">
+ </A>
+You will need a properly installed eCos system, with the accompanying versions of the GNUPro tools. On Windows you will be using the bash command line interpreter that comes with Cygwin, with the environment variables set as described in the GNUPro documentation.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2298014">
+ </A>
+The Development Process</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2298015">
+ </A>
+Most development projects using eCos would contain some (or most) of  the following:</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2298016">
+ </A>
+eCos Configuration</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2297788">
+ </A>
+eCos is configured to provide the desired API (the inclusion of libc, uitron, and the disabling certain undesired funtions, etc.), and semantics (selecting scheduler, mutex behavior, etc.). See <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
+ Configuring and Building eCos from Source</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297789">
+ </A>
+It would normally make sense to enable eCos assertion checking at this time as well, to catch as many programming errors during the development phase as possible.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297790">
+ </A>
+Note that it should not be necessary to spend much time on eCos configuration initially. It may be important to perform fine tuning to reduce the memory footprint and to improve performance when the product reaches a testable state.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2297791">
+ </A>
+    Integrity check of the eCos configuration</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2297792">
+ </A>
+While Red Hat strive to thoroughly test eCos, the vast number of configuration permutations mean that the particular configuration parameters used for your project may not have been tested.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297793">
+ </A>
+Therefore, we advise running all the eCos tests after the project's eCos configuration has been determined. See <A HREF="ecos-tutorial.12.html#14697" CLASS="XRef">
+ Test Suites</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297794">
+ </A>
+Obviously, this should be repeated if the configuration changes later on in the development process.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2297795">
+ </A>
+    Application Development - Target Neutral Part</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2297796">
+ </A>
+While your project is probably targeting a specific architecture and platform, possibly custom hardware, part of the application development may be possible to do using simulated or synthetic targets.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297797">
+ </A>
+There are two primary reasons for doing this:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2297798">
+ </A>
+It may be possible (to some extent) to perform application development in parallel with the design/implementation of the target hardware, thus providing more time for developing and testing functionality, and reducing time-to-market.</LI>
+<P><LI>
+<A NAME="pgfId=2297799">
+ </A>
+The build-run-debug-cycle may be faster when the application does not have to be downloaded to a target via a serial interface. Debugging is also likely to be more responsive when not having to communicate with a stub via serial. And finally, it also removes the need for manually or automatically resetting the target hardware.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2297800">
+ </A>
+This is possible to do since all targets (including simulators and synthetic ones) provide the same basic API: that is, kernel, libc, libm, uitron, infra, and to some extent, HAL and IO.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297801">
+ </A>
+Synthetic targets are especially suitable as they allow you to jury-rig simulations of elaborate devices by interaction with the host system, where an IO device API can hide the details from the application. When switching to hardware later in the development cycle, the IO driver is properly implemented. While this is possible to do, and has been done, it is not specifically documented or supported by Red Hat. It may become so later.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297802">
+ </A>
+Therefore, select a simulator or synthetic target and use it for as long as possible doing application development. That is, configure for the selected target, build eCos, build the application and link with eCos, run and debug. Repeat the latter two steps.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297803">
+ </A>
+Obviously, at some time you will have to switch to the intended target hardware, for example when adding target specific feature support, for memory footprint/performance characterization, and for final tuning of eCos and the application.</P>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2297804">
+ </A>
+    Application Development - Target Specific Part</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2297805">
+ </A>
+Repeat the build-run-debug-cycle while performing final tuning and debugging of application. Remember to disable eCos assertion checking,  as it reduces performance.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297806">
+ </A>
+It may be a useful to switch between this and the previous step repeatedly through the development process; use the simulator/synthetic target for actual development, and use the target hardware to continually check memory footprint and performance. There should be little cost in switching between the two targets when using two separate build trees. </P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

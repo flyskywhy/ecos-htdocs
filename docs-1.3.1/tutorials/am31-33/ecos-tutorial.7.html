@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Overview of the Release</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Overview of the Release</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1671761">
+ </A>
+Overview of the Release<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1414391">
+ </A>
+The Embedded Configurable Operating System (eCos) software is a set of tools and a run-time environment for developing embedded applications. eCos is a configurable, open source system that allows you to build a run-time system that closely matches the needs of your application. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1414404">
+ </A>
+eCos is aimed at embedded software developers using architectures with tight memory requirements, who want a portable framework for developing their applications.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1945728">
+ </A>
+This chapter outlines the features of eCos version 1.3.1. The initial release version was 1.3, and additional 1.3 releases will incorporate an additional number, represented in this manual by &quot;x&quot;. Please note the exact version number of the version that you are using, because it is incorporated in certain file paths.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1950838">
+ </A>
+If you want to start programming eCos immediately, see <A HREF="ecos-tutorial.b.html#14571" CLASS="XRef">
+ Part II: Installation Guide</A>
+ and <A HREF="ecos-tutorial.f.html#42115" CLASS="XRef">
+ Part III: Programming Tutorial</A>
+. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1945735">
+ </A>
+Hardware Abstraction</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1414455">
+ </A>
+eCos includes a <A NAME="marker=1414445">
+ </A>
+Hardware Abstraction Layer (<EM CLASS="Acronym">
+HAL</EM>
+) that hides the specific features of each CPU and platform so that the kernel and other run-time components can be implemented in a portable fashion. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1414464">
+ </A>
+The eCos HAL has now been ported to numerous architectures, and to one synthetic target, Linux i386. Notes on porting the HAL to new platforms are provided in the <EM CLASS="Emphasis">
+eCos</EM>
+<EM CLASS="EquationVariables">
+ Reference Manual</EM>
+, part: <EM CLASS="EquationVariables">
+The eCos Hardware Abstraction Layer</EM>
+, section: <EM CLASS="EquationVariables">
+Kernel porting notes</EM>
+. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1414490">
+ </A>
+Embedded Kernel</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1414499">
+ </A>
+The core of eCos is a full-featured, flexible, and configurable embedded kernel. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1414503">
+ </A>
+The kernel provides, among other features, multi-threading, a choice of schedulers, a full set of synchronization primitives, memory allocation primitives, and thread manipulation functions (see the <EM CLASS="Emphasis">
+eCos</EM>
+<EM CLASS="EquationVariables">
+ Reference Manual</EM>
+ for the full kernel API).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414516">
+ </A>
+The kernel is designed so that some parts of it can be changed or replaced without affecting other kernel components. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1414524">
+ </A>
+The following is a partial list of <A NAME="marker=1414521">
+ </A>
+kernel features:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1414536">
+ </A>
+choice of memory allocation algorithm </LI>
+<P><LI>
+<A NAME="pgfId=1414545">
+ </A>
+choice of scheduling algorithm</LI>
+<P><LI>
+<A NAME="pgfId=1414554">
+ </A>
+a rich set of synchronization primitives </LI>
+<P><LI>
+<A NAME="pgfId=1414563">
+ </A>
+timers, counters, and alarms </LI>
+<P><LI>
+<A NAME="pgfId=1414572">
+ </A>
+interrupt handling</LI>
+<P><LI>
+<A NAME="pgfId=1414581">
+ </A>
+exception handling</LI>
+<P><LI>
+<A NAME="pgfId=1414590">
+ </A>
+cache control </LI>
+<P><LI>
+<A NAME="pgfId=1414599">
+ </A>
+thread support </LI>
+<P><LI>
+<A NAME="pgfId=1414612">
+ </A>
+kernel support for multi-threaded debugging with GDB</LI>
+<P><LI>
+<A NAME="pgfId=1414621">
+ </A>
+trace buffers</LI>
+<P><LI>
+<A NAME="pgfId=1414631">
+ </A>
+infrastructure and instrumentation </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1414645">
+ </A>
+The kernel API and configuration are described in the <EM CLASS="Emphasis">
+eCos</EM>
+<EM CLASS="EquationVariables">
+ Reference Manual</EM>
+. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1414653">
+ </A>
+Configurability</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1414664">
+ </A>
+The eCos kernel and other components can be configured in great detail at compile time, avoiding the addition of unwanted code to the library to be linked with your application code. There is no performance penalty for configuration.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414678">
+ </A>
+Configuration is fine-grained, so that very small details of eCos' behavior can be tuned by selecting configuration options. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1414687">
+ </A>
+eCos is organized as a component architecture, with a language to describe the constraints between components and individual configuration options. These constraints are necessary to resolve inconsistent configurations, such as disabling the code which handles the real-time clock, while enabling per-thread timers.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414692">
+ </A>
+The designer of a component or general-purpose library should write configurable code using a <A NAME="marker=1414693">
+ </A>
+component definition language (<EM CLASS="Acronym">
+CDL</EM>
+). Once that has been done there is no additional burden on the end user (i.e. an embedded systems programmer), who will be able to use eCos' graphical <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ to configure the kernel and basic libraries without needing to understand how the configuration infrastructure works.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414731">
+ </A>
+A tutorial on how to configure eCos is located in <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
+ Configuring and Building eCos from Source</A>
+. The <SPAN CLASS="Bold">
+eCos</SPAN>
+<EM CLASS="EquationVariables">
+ User's Guide</EM>
+ has complete information on running the <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ and CDL. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1414756">
+ </A>
+<EM CLASS="FmSymbol">
+&#181</EM>
+ITRON and Other Operating Systems</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1414765">
+ </A>
+eCos' configurability is the key to simulating different operating systems by using compatibility layers on top of eCos' kernel, because the semantics of basic kernel functions can be configured to match the semantics of other operating systems.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414774">
+ </A>
+The specification for the  <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON operating system has been implemented on top of eCos. <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON is configured by selecting appropriate options in the kernel (a real-time clock, the <TT CLASS="Code">
+mlqueue</TT>
+ scheduler, and no timeslicing); and writing a thin layer to map the <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON system calls.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414783">
+ </A>
+The <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON port implements the complete <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON 3.02 &quot;Standard functionality&quot; (level S) specification, as well as some of the &quot;Extended&quot; (level E) functions. The <EM CLASS="FmSymbol">
+&#181</EM>
+ITRON implementation is described in more detail in the <EM CLASS="EquationVariables">
+eCos Reference Manual</EM>
+. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1414797">
+ </A>
+ISO C Library</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1414809">
+ </A>
+The <A NAME="marker=1414801">
+ </A>
+ISO C and <A NAME="marker=1414803">
+ </A>
+math library shipped with eCos was written to be configurable and tightly integrated with the kernel and the HAL.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414814">
+ </A>
+By carefully selecting configuration options in the C library, you can significantly reduce the size of the final executable image. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1839091">
+ </A>
+Serial Device Drivers</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2331564">
+ </A>
+eCos provides <A NAME="marker=2331563">
+ </A>
+serial device drivers for all supported eCos platforms, with the exception of the i386 Linux synthetic target and most simulator platforms. The serial drivers provide an API (documented in the <EM CLASS="EquationVariables">
+eCos Reference Manual</EM>
+) to control serial ports directly. The standard <A NAME="marker=2331565">
+ </A>
+I/O library can be configured to use them as a transport layer.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2264021">
+ </A>
+<A NAME="22631">
+ </A>
+<A NAME="marker=2264020">
+ </A>
+ROM Monitor Image</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2399894">
+ </A>
+eCos ships with a <SPAN CLASS="Bold">
+</SPAN>
+<A NAME="marker=2399892">
+ </A>
+CygMon <A NAME="marker=2399893">
+ </A>
+ROM monitor for the MN10300, TX39, SPARClite, EDB7211, EDB7212 and EP7211 Development Boards. This includes a <A NAME="marker=2399895">
+ </A>
+GDB stub, thus allowing GDB to be used to debug eCos applications on these evaluation boards. In addition to shipping the actual ROM, the image of that ROM is provided in case you need to burn identical copies for additional boards (see <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
+ Target Setup</A>
+). </P>
+<P CLASS="Body">
+<A NAME="pgfId=2382408">
+ </A>
+For the AM33 STB and MN10300 stdeval1 and i386 PC, the ROM images include a GDB stub. This allows GDB to connect to the board and download eCos programs. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2399956">
+ </A>
+For the AM33 STB, the ROM image includes a GDB stub that can be installed in the FLASH ROM on the board.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1839607">
+ </A>
+No ROM image is required for the synthetic Linux target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2400027">
+ </A>
+For the MN10300, TX39 and SPARClite port of CygMon, the source code to it is included as part of the GNUPro package, so that you may recompile it as described in the GNUPro documentation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1415438">
+ </A>
+Please note that previous releases of CygMon are incompatible with eCos. You must use the version of CygMon that is provided with eCos rather than an older version of CygMon.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1415460">
+ </A>
+Tests and Examples</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1415468">
+ </A>
+Test suites are included for every portion of eCos shipped in this release; these are brief programs that test the behavior of most system calls and libraries in eCos. <A HREF="ecos-tutorial.12.html#14697" CLASS="XRef">
+ Test Suites</A>
+ describes how to build and run these test suites.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1415494">
+ </A>
+The last chapters in <A HREF="ecos-tutorial.f.html#42115" CLASS="XRef">
+ Part III: Programming Tutorial</A>
+ give examples that guide you through running eCos applications, starting from a &quot;Hello world&quot; program and then moving on to more complex programs that use additional kernel features. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1415508">
+ </A>
+GNU Tools and their Documentation</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2038303">
+ </A>
+Red Hat's <A NAME="marker=1415512">
+ </A>
+GNUPro Toolkit, which includes the <SPAN CLASS="Bold">
+</SPAN>
+<A NAME="marker=1415521">
+ </A>
+GCC and <SPAN CLASS="Bold">
+G++</SPAN>
+<A NAME="marker=1415527">
+ </A>
+ compilers and the <A NAME="marker=1415534">
+ </A>
+GDB debugger, is needed to build eCos applications. It is bundled with the CDROM distribution of the eCos<SPAN CLASS="Bold">
+ </SPAN>
+<A NAME="marker=1415545">
+ </A>
+Developer's Kit, and is also available on the <A NAME="marker=1415547">
+ </A>
+net at <TT CLASS="Code">
+<A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">
+http://sourceware.cygnus.com/ecos/</A>
+</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1415561">
+ </A>
+Online HTML versions of the full GNUPro documentation are included with eCos, as well as a specific GNUPro tools reference guide for your hardware architecture, customized for use with eCos. The full GNUPro documentation can also be found on the web at <TT CLASS="Code">
+<A HREF="http://www.redhat.com/support/manuals/gnupro.html" CLASS="URL">
+http://www.redhat.com/support/manuals/gnupro.html</A>
+</TT>
+</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=1996752">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2345215">
+ </A>
+The Linux synthetic i386 target is an exception, as there is (currently) no GNUPro manual. However, the GNUPro source archive contains documentation for the tools. This documentation is usually also included as part of a default Red Hat Linux installation, accessible with the <EM CLASS="ProductName">
+info</EM>
+ program.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2345216">
+ </A>
+eCos Documentation</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2345217">
+ </A>
+The eCos documentation set includes <EM CLASS="EquationVariables">
+Getting Started with </EM>
+<EM CLASS="Emphasis">
+eCos</EM>
+, the <EM CLASS="Emphasis">
+eCos</EM>
+<EM CLASS="EquationVariables">
+ User's Guide</EM>
+, the <EM CLASS="Emphasis">
+eCos</EM>
+<EM CLASS="EquationVariables">
+ Reference Manual</EM>
+, and a <EM CLASS="Emphasis">
+GNUPro</EM>
+<EM CLASS="EquationVariables">
+ Reference Manual</EM>
+ for your specific architecture.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1415653">
+ </A>
+For users of the eCos Net releases, these are available online in HTML format at <TT CLASS="Code">
+<A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">
+</A>
+</TT>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2012849">
+ </A>
+<TT CLASS="Code">
+<A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">
+http://sourceware.cygnus.com/ecos/.</A>
+</TT>
+</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Overview of the Release</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Test Suites</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Test Suites</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=2340143">
+ </A>
+<A NAME="14697">
+ </A>
+Test Suites<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2340210">
+ </A>
+The eCos kernel and other packages have test suites that rigorously exercise the available features and confirm correct execution. The  tests are run on many different possible configurations, but the high  number of configuration permutations makes it impossible to test them all. The use of test suites is particularly important for embedded systems, where software robustness is a priority. All eCos software  is tested prior to shipping, but if you define your own configuration, you will probably want to verify that the test cases work for it.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340211">
+ </A>
+This release includes test suites for the eCos kernel, kernel C API, C library, ITRON compatibility, and device driver packages. The use of the test suites is similar for all packages. The tests are supplied as source code for building with your specific eCos  configurations. The test case source code is located under the base source directory BASE_DIR/packages/:</P>
+<UL>
+<P><LI>
+<A NAME="pgfId=2340212">
+ </A>
+compat/uitron/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340271">
+ </A>
+hal/common/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340272">
+ </A>
+io/serial/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340273">
+ </A>
+devs/wallclock/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340274">
+ </A>
+devs/watchdog/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340275">
+ </A>
+kernel/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340276">
+ </A>
+language/c/libc/v1_3_1/tests    </LI>
+<P><LI>
+<A NAME="pgfId=2340277">
+ </A>
+language/c/libm/v1_3_1/tests</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=2340213">
+ </A>
+ There may be additional tests found in other packages.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340214">
+ </A>
+Each test suite consists of a number of test cases which can be executed individually. A test case may involve one or more individual  tests of the package's features. Successful completion of each test within the test case is reported as a line of text that is sent to the diagnostic channel (usually the serial port) for display on a terminal or terminal emulator.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340215">
+ </A>
+Each test case runs only once and usually requires target hardware to be reset on completion. Note that certain test cases may not terminate immediately, especially if they involve delays and run on a target simulator.</P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2340218">
+ </A>
+Using the Configuration Tool</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2340219">
+ </A>
+Using the eCos Configuration Tool it is possible to automate the downloading and execution of tests with the appropriately configured eCos packages. To do so, compile and link the test cases by using the <SPAN CLASS="Bold">
+Build-&gt;Tests</SPAN>
+ menu item, after which the tests can be downloaded and executed by selecting <SPAN CLASS="Bold">
+Tools-&gt;Run Tests</SPAN>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340220">
+ </A>
+When a test run is invoked, a resizable property sheet is displayed, comprising three tabs: <SPAN CLASS="Bold">
+Executables</SPAN>
+, <SPAN CLASS="Bold">
+Output</SPAN>
+ and <SPAN CLASS="Bold">
+Summary</SPAN>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340221">
+ </A>
+Three buttons appear on the property sheet itself: <SPAN CLASS="Bold">
+Run/Stop</SPAN>
+, <SPAN CLASS="Bold">
+Close</SPAN>
+ and <SPAN CLASS="Bold">
+Properties</SPAN>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340222">
+ </A>
+The <SPAN CLASS="Bold">
+Run</SPAN>
+ button is used to initiate a test run. Those tests selected  on the Executables tab are run, and the output recorded on the <SPAN CLASS="Bold">
+Output</SPAN>
+ and <SPAN CLASS="Bold">
+Summary</SPAN>
+ tabs. During the course of a run, the <SPAN CLASS="Bold">
+Run</SPAN>
+ button changes to <SPAN CLASS="Bold">
+Stop</SPAN>
+. This button may be used to interrupt a test run at any point.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340223">
+ </A>
+See the <EM CLASS="Emphasis">
+eCos User's Guide</EM>
+ for further details.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2340224">
+ </A>
+Using the command line</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2340225">
+ </A>
+At the moment, there is no tool for automating testing on Linux, so you will have to run the tests manually.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340226">
+ </A>
+It may also be necessary to run tests by hand if the automated tool finds any failing tests: it may be necessary to diagnose the problem by debugging the test.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340227">
+ </A>
+Build the tests by typing &#153make tests' in the root of the build  directory. This will cause the tests to be built and installed under <TT CLASS="Code">
+&lt;install-path&gt;/tests/</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340228">
+ </A>
+Running the test manually is done simply by invoking GDB, connecting to the target, downloading the test, optionally setting some breakpoints, and then running the test. All this was covered in <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
+ Target Setup</A>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2340229">
+ </A>
+Testing Filters</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2340230">
+ </A>
+While most test cases today run solely in the target environment, some packages may require external testing infrastructure and/or feedback from the external environment to do complete testing.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340231">
+ </A>
+The serial package is an example of this. It is the first package to require external testing infrastructure, but it will certainly not be the last.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340232">
+ </A>
+Since the serial line is also used for communication with GDB, a  filter is inserted in the communication pathway between GDB and the serial device which is connected to the hardware target. The filter forwards all communication between the two, but also listens for special commands embedded in the data stream from the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340233">
+ </A>
+When such a command is seen, the filter stops forwarding data to GDB  from the target and enters a special mode. In this mode the test case running on the target is able to control the filter, commanding it to run various tests. While these tests run, GDB is isolated from the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340234">
+ </A>
+As the test completes (or if the filter detects a target crash) the communication path between GDB and the hardware target is re-established, allowing GDB to resume control.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340235">
+ </A>
+In theory, it is possible to extend the filter to provide a generic framework for other target-external testing components, thus decoupling the testing infrastructure from the (possibly limited) communication means provided by the target (serial, JTAG, Ethernet, etc). </P>
+<P CLASS="Body">
+<A NAME="pgfId=2340236">
+ </A>
+Another advantage is that the host tools will not need to know about the various testing environments required by the eCos packages, since all contact with the target will continue to happen via GDB.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340237">
+ </A>
+It remains to be seen if it will be possible, or sensible, to implement all target-external testing infrastructure via filters.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Test Suites</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.13.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
