@@ -91,28 +91,24 @@ directory for use in subsequent sessions.</p>
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P ecos</kbd>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P net</kbd>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P snmp</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -P ecos</kbd>
 
-<p>These commands should initiate a connection to the CVS server and check out
+<p>This command should initiate a connection to the CVS server and check out
 the latest version of eCos, including TCP/IP networking stack and SNMP. For
 those who want the last version of eCos to be released under the RHEPL,
 instead type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P ecos</kbd>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P net</kbd>
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P snmp</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r last-rhepl -P ecos</kbd>
 
 <p>In the future, when you want to update your
 repository to the latest version, go to the base of the repository tree and
 use the command:</p>
 
-<kbd>cvs -z 6 update -d -P</kbd>
+<kbd>cvs update -d -P</kbd>
 
-<p>or for the older RHEPL'd version of eCos:</p>
+<p>or to update to the older RHEPL'd version of eCos:</p>
 
-<kbd>cvs -z 6 update -r last-rhepl -d -P</kbd>
+<kbd>cvs update -r last-rhepl -d -P</kbd>
 
 <h2>Using the repository</h2>
 
