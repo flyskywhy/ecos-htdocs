@@ -12,7 +12,7 @@
 <HTML
 ><HEAD
 ><TITLE
->User Interface</TITLE
+>RedBoot Editing Commands</TITLE
 ><META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
@@ -20,14 +20,14 @@ REL="HOME"
 TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
-TITLE="Getting Started with RedBoot"
-HREF="getting_started_with_redboot.html"><LINK
+TITLE="RedBoot Commands and Examples"
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
-TITLE="Getting Started with RedBoot"
-HREF="getting_started_with_redboot.html"><LINK
+TITLE="RedBoot Commands and Examples"
+HREF="redboot-commands-and-examples.html"><LINK
 REL="NEXT"
-TITLE="Configuring the RedBoot Environment"
-HREF="configuring_the_redboot_environment.html"></HEAD
+TITLE="Common Commands"
+HREF="common-commands.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,20 +54,20 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="getting_started_with_redboot.html"
+HREF="redboot-commands-and-examples.html"
 >Prev</A
 ></TD
 ><TD
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 1. Getting Started with RedBoot</TD
+>Chapter 2. RedBoot Commands and Examples</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="configuring_the_redboot_environment.html"
+HREF="common-commands.html"
 >Next</A
 ></TD
 ></TR
@@ -80,34 +80,57 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN91"
->User Interface</A
+NAME="REDBOOT-EDITING-COMMANDS"
+>RedBoot Editing Commands</A
 ></H1
 ><P
 >RedBoot
-provides a command line user interface (CLI). At the minimum, this interface
-is normally available on a serial port on the platform. If more than one serial
-interface is available, RedBoot is normally configured to try to use any one
-of the ports for the CLI. Once command input has been received on one port,
-that port is used exclusively until reset. If the platform has networking
-capabilities, the RedBoot CLI is also accessible using the <TT
-CLASS="COMPUTEROUTPUT"
->telnet</TT
-> access protocol. By default, RedBoot runs <TT
-CLASS="COMPUTEROUTPUT"
->telnet</TT
-> on port TCP/9000,
-but this is configurable and/or settable by the user. </P
+uses the following line editing commands. <P
+></P
+><UL
+><LI
 ><P
->RedBoot also contains a set of GDB "stubs", consisting of code which supports the GDB remote
-protocol. GDB stub mode is automatically invoked when the '$' character appears
-as the first character of a command line. The platform will remain in GDB
-stub mode until explicitly disconnected (via the GDB protocol). The GDB stub
-mode is available regardless of the connection method; either serial or network.
-Note that if a GDB connection is made via the network, then special care must
-be taken to preserve that connection when running user code. eCos contains
-special network sharing code to allow for this situation, and can be used
-as a model if this methodology is required in other OS environments.</P
+><SPAN
+CLASS="GUIBUTTON"
+>Delete</SPAN
+> (0x7F) or <SPAN
+CLASS="GUIBUTTON"
+>Backspace</SPAN
+> (0x08) moves the cursor back one character and erases what is
+there destructively.</P
+><P
+>The mention of ^ is in the context of the <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+>
+command. This command uses some special line-editing features. When certain
+characters appear alone on the input line, a behavior is elicited.</P
+></LI
+><LI
+><P
+>^ (caret) switch to editing the previous item in the <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+> list. If fconfig edits item A, followed by item B,
+pressing ^ when changing item B, allows you to change item A. This is similar
+to the up arrow.</P
+></LI
+><LI
+><P
+>. (period) stop editing any further items. This does not change
+the current item.</P
+></LI
+><LI
+><P
+><SPAN
+CLASS="GUIBUTTON"
+>Return</SPAN
+> (blank line) leaves the value
+for this item unchanged. Currently it is not possible to step through the
+value for the start-up script; it must always be retyped.</P
+></LI
+></UL
+></P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -124,7 +147,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="getting_started_with_redboot.html"
+HREF="redboot-commands-and-examples.html"
 >Prev</A
 ></TD
 ><TD
@@ -140,7 +163,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="configuring_the_redboot_environment.html"
+HREF="common-commands.html"
 >Next</A
 ></TD
 ></TR
@@ -149,20 +172,20 @@ HREF="configuring_the_redboot_environment.html"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Getting Started with RedBoot</TD
+>RedBoot Commands and Examples</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="getting_started_with_redboot.html"
+HREF="redboot-commands-and-examples.html"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Configuring the RedBoot Environment</TD
+>Common Commands</TD
 ></TR
 ></TABLE
 ></DIV

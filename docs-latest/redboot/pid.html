@@ -21,10 +21,10 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="Motorola PowerPC MBX"
-HREF="mbx.html"><LINK
+TITLE="ARM Evaluator7T (e7t) board with ARM7TDMI"
+HREF="e7t.html"><LINK
 REL="NEXT"
 TITLE="Compaq iPAQ PocketPC"
 HREF="ipaq.html"></HEAD
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="mbx.html"
+HREF="e7t.html"
 >Prev</A
 ></TD
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1302"
+NAME="AEN1507"
 >Overview</A
 ></H2
 ><P
@@ -114,7 +114,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1316"
+NAME="AEN1521"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -147,7 +147,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1322"
+NAME="AEN1527"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -158,7 +158,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1325"
+NAME="AEN1530"
 >Memory Maps</A
 ></H2
 ><P
@@ -187,7 +187,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1329"
+NAME="AEN1534"
 >Resource Usage</A
 ></H2
 ><P
@@ -201,6 +201,32 @@ uses. </P
 addresses 0x00008000 - 0x0003ffff. RAM physical addresses from 0x00040000
 to the end of RAM are available for general use, such as a temporary scratchpad
 for downloaded images, before they are written to flash.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1539"
+>Rebuilding RedBoot</A
+></H2
+><P
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;pid&#8221;, &#8220;arm&#8221; and &#8220;pid&#8221; respectively.
+Note that the configuration export files supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>hal/arm/pid/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -218,7 +244,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="mbx.html"
+HREF="e7t.html"
 >Prev</A
 ></TD
 ><TD
@@ -243,13 +269,13 @@ HREF="ipaq.html"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->Motorola PowerPC MBX</TD
+>ARM Evaluator7T (e7t) board with ARM7TDMI</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD

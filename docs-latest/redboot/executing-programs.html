@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="RedBoot Commands and Examples"
-HREF="redboot_commands_and_examples.html"><LINK
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
 TITLE="Persistent State Flash-based Configuration and Control"
-HREF="persistent_state_flash.html"><LINK
+HREF="persistent-state-flash.html"><LINK
 REL="NEXT"
 TITLE="Rebuilding RedBoot"
-HREF="rebuilding_redboot.html"></HEAD
+HREF="rebuilding-redboot.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="persistent_state_flash.html"
+HREF="persistent-state-flash.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="rebuilding_redboot.html"
+HREF="rebuilding-redboot.html"
 >Next</A
 ></TD
 ></TR
@@ -80,7 +80,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="EXECUTING_PROGRAMS"
+NAME="EXECUTING-PROGRAMS"
 >Executing Programs from RedBoot</A
 ></H1
 ><P
@@ -100,7 +100,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The image is assumed to be a stand-alone entity, as RedBoot gives the
 entire platform over to it. Typical examples would be an eCos application
 or a Linux kernel.</P
@@ -162,16 +162,36 @@ CLASS="VARIABLELIST"
 ><DT
 >exec - Execute a Linux kernel image</DT
 ><DD
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
 ><P
->NOTE: This command is not available for all platforms. Its availability
-is indicated in specific platform information in Chapter 5.</P
+><B
+>NOTE: </B
+>This command is not available for all platforms. Its availability is
+indicated in specific platform information in Chapter 5.</P
+></BLOCKQUOTE
+></DIV
 ><H2
 CLASS="BRIDGEHEAD"
 >Arguments</H2
-><P
->[-w timeout]         [-b &lt;load addr&#62; [-l &lt;length]]
-       [-r &lt;ramdisk addr&#62; [-s &lt;ramdisk length&#62;]]    
-   [-c "kernel command line"] [&lt;entry_point&#62;]</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>[-w timeout]         
+[-b &lt;load addr&#62; [-l &lt;length]]
+[-r &lt;ramdisk addr&#62;
+[-s &lt;ramdisk length&#62;]]    
+[-c "kernel command line"] [&lt;entry_point&#62;]</PRE
+></TD
+></TR
+></TABLE
 ><P
 >This command is used to execute a non-eCos application, typically a
 Linux kernel. Additional information may be passed to the kernel at startup
@@ -184,7 +204,7 @@ location (0xC0008000 in the case of the SA1110). Since this memory is  used
 by RedBoot internally, it is not possible to load the kernel to that location
 directly. Thus the requirement for the "-b" option which tells the command
 where the kernel has been loaded. When the exec command runs, the image will
-be relocated to the appropriate location before being startedThe "-r" and
+be relocated to the appropriate location before being started. The "-r" and
 "-s" options are used to pass information to the kernel about where a statically
 loaded ramdisk (initrd) is located.</P
 ><P
@@ -211,7 +231,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="persistent_state_flash.html"
+HREF="persistent-state-flash.html"
 >Prev</A
 ></TD
 ><TD
@@ -227,7 +247,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="rebuilding_redboot.html"
+HREF="rebuilding-redboot.html"
 >Next</A
 ></TD
 ></TR
@@ -242,7 +262,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Up</A
 ></TD
 ><TD

@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="RedBoot Commands and Examples"
-HREF="redboot_commands_and_examples.html"><LINK
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
 TITLE="Flash Image System (FIS)"
-HREF="flash_image_system.html"><LINK
+HREF="flash-image-system.html"><LINK
 REL="NEXT"
 TITLE="Executing Programs from RedBoot"
-HREF="executing_programs.html"></HEAD
+HREF="executing-programs.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="flash_image_system.html"
+HREF="flash-image-system.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="executing_programs.html"
+HREF="executing-programs.html"
 >Next</A
 ></TD
 ></TR
@@ -80,7 +80,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="PERSISTENT_STATE_FLASH"
+NAME="PERSISTENT-STATE-FLASH"
 >Persistent State Flash-based Configuration and Control</A
 ></H1
 ><P
@@ -90,8 +90,32 @@ NAME="PERSISTENT_STATE_FLASH"
 of multiple executable images and of non-volatile information such as IP addresses
 and other network information.</P
 ><P
->See other fis commands in <A
-HREF="flash_image_system.html"
+>RedBoot on platforms that support flash based configuration information
+will report the following message the first time that RedBoot is booted on
+the target:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>flash configuration checksum error or invalid key</PRE
+></TD
+></TR
+></TABLE
+><P
+>This error can be ignored if no flash based configuration is desired,
+or can be silenced by running the <TT
+CLASS="COMPUTEROUTPUT"
+>fconfig</TT
+>
+command as described below. At this point you may also wish to run the <TT
+CLASS="COMPUTEROUTPUT"
+>fis init</TT
+> command. See other fis commands in <A
+HREF="flash-image-system.html"
 >the section called <I
 >Flash Image System (FIS)</I
 ></A
@@ -100,7 +124,7 @@ HREF="flash_image_system.html"
 >Certain control and configuration information used by RedBoot can be
 stored in flash. </P
 ><P
->The details of what information is maintained in flash differs, based
+>The details of what information is maintained in flash differ, based
 on the platform and the configuration. However, the basic operation used to
 maintain this information is the same. Using the <TT
 CLASS="COMPUTEROUTPUT"
@@ -125,7 +149,7 @@ CLASS="COMPUTEROUTPUT"
 process may be stopped simply by entering a period (.) on the line. Entering
 the caret (^) moves the editing back to the previous item. See &#8220;RedBoot
 Editing Commands&#8221;, <A
-HREF="redboot_editing_commands.html"
+HREF="redboot-editing-commands.html"
 >the section called <I
 >RedBoot Editing Commands</I
 ></A
@@ -133,6 +157,101 @@ HREF="redboot_editing_commands.html"
 ><P
 >If any changes are made in the configuration, then the updated data
 will be written back to flash after getting acknowledgement from the user. </P
+><P
+>If the optional flag <TT
+CLASS="COMPUTEROUTPUT"
+>-n</TT
+> is specified
+(with or without <TT
+CLASS="COMPUTEROUTPUT"
+>-l</TT
+>) then &#8220;nicknames&#8221;
+of the entries are used.  These are shorter and less descriptive than
+&#8220;full&#8221; names.  The full name may also be displayed by adding the
+<TT
+CLASS="COMPUTEROUTPUT"
+>-f</TT
+> flag.</P
+><P
+>The reason for telling you nicknames is that a quick way to set a single
+entry is provided, using the format
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fconfig <TT
+CLASS="REPLACEABLE"
+><I
+>nickname</I
+></TT
+> <TT
+CLASS="REPLACEABLE"
+><I
+>value</I
+></TT
+></B
+></TT
+></PRE
+></TD
+></TR
+></TABLE
+>
+If no
+value is supplied, the command will list and prompt for only that entry.
+If a value is supplied, then the entry will be set to that value.  You will
+be prompted whether to write the new information into flash if any change
+was made.  For example
+<TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>  ======================================================================
+  RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fconfig -l -n</B
+></TT
+>
+  boot_script: false 
+  bootp: false 
+  bootp_my_ip: 10.16.19.176 
+  bootp_server_ip: 10.16.19.66 
+  gdb_port: 9000 
+  net_debug: false 
+  RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fconfig bootp_my_ip 10.16.19.177</B
+></TT
+>
+  bootp_my_ip: 10.16.19.176 Setting to 10.16.19.177
+  Update RedBoot non-volatile configuration - are you sure (y/n)? <TT
+CLASS="USERINPUT"
+><B
+>y</B
+></TT
+>
+  ... Unlock from 0x507c0000-0x507e0000: .
+  ... Erase from 0x507c0000-0x507e0000: .
+  ... Program from 0x0000a8d0-0x0000acd0 at 0x507c0000: .
+  ... Lock from 0x507c0000-0x507e0000: .
+  RedBoot&#62; 
+  ======================================================================</PRE
+></TD
+></TR
+></TABLE
+></P
 ><P
 >One item which is always present in the configuration data is the ability
 to execute a script at boot time. A sequence of RedBoot commands can be entered
@@ -152,9 +271,9 @@ CLASS="PROGRAMLISTING"
 RedBoot&#62; <TT
 CLASS="USERINPUT"
 ><B
->fconfig</B
+>fconfig -l</B
 ></TT
-> -l      
+>
 Run script at boot: false      
 Use BOOTP for network configuration: false      
 Local IP address: 192.168.1.29      
@@ -185,7 +304,12 @@ CLASS="USERINPUT"
 >fconfig</B
 ></TT
 >      
-Run script at boot: false t                          ^
+Run script at boot: false <TT
+CLASS="USERINPUT"
+><B
+>t</B
+></TT
+>
       Boot script:      
 Enter script, terminate with empty line
 &#62;&#62; <TT
@@ -201,17 +325,18 @@ CLASS="USERINPUT"
 ></TT
 >
 Use BOOTP for network configuration: false .  
-Update RedBoot non-volatile configuration - are you sure (y/n)?<TT
+Update RedBoot non-volatile configuration - are you sure (y/n)? <TT
 CLASS="USERINPUT"
 ><B
 >y</B
 ></TT
->                                                                 
+>
 ... Erase from 0xa0fc0000-0xa0fe0000: .  
 ... Program from 0x8c021f60-0x8c022360 at 0xa0fc0000: . 
 RedBoot&#62;      
 RedBoot(tm) debug environment - built 08:22:24, Aug 23 2000 
 Copyright (C) 2000, Red Hat, Inc.   
+
 
 RAM: 0x8c000000-0x8c800000      
 flash: 0xa0000000 - 0xa1000000, 128 blocks of 0x00020000 bytes ea.
@@ -236,9 +361,13 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The bold characters above indicate where something was entered on the
-console. As you can see, the fi li command at the end came from the script,
+console. As you can see, the <TT
+CLASS="COMPUTEROUTPUT"
+>fi li</TT
+> command
+at the end came from the script,
 not the console. Once the script is executed, command processing reverts to
 the console. </P
 ></BLOCKQUOTE
@@ -259,7 +388,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="flash_image_system.html"
+HREF="flash-image-system.html"
 >Prev</A
 ></TD
 ><TD
@@ -275,7 +404,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="executing_programs.html"
+HREF="executing-programs.html"
 >Next</A
 ></TD
 ></TR
@@ -290,7 +419,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Up</A
 ></TD
 ><TD

@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Getting Started with RedBoot"
-HREF="getting_started_with_redboot.html"><LINK
+HREF="getting-started-with-redboot.html"><LINK
 REL="PREVIOUS"
 TITLE="User Interface"
-HREF="x91.html"><LINK
+HREF="user-interface.html"><LINK
 REL="NEXT"
 TITLE="RedBoot Commands and Examples"
-HREF="redboot_commands_and_examples.html"></HEAD
+HREF="redboot-commands-and-examples.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x91.html"
+HREF="user-interface.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Next</A
 ></TD
 ></TR
@@ -80,7 +80,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="CONFIGURING_THE_REDBOOT_ENVIRONMENT"
+NAME="CONFIGURING-THE-REDBOOT-ENVIRONMENT"
 >Configuring the RedBoot Environment</A
 ></H1
 ><P
@@ -94,7 +94,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN122"
+NAME="AEN129"
 >Target Network Configuration</A
 ></H2
 ><P
@@ -205,7 +205,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN166"
+NAME="AEN173"
 >Host Network Configuration</A
 ></H2
 ><P
@@ -238,7 +238,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN185"
+NAME="AEN192"
 >Enable TFTP on Red Hat Linux 6.2</A
 ></H3
 ><DIV
@@ -298,7 +298,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN204"
+NAME="AEN211"
 >Enable TFTP on Red Hat Linux 7</A
 ></H3
 ><DIV
@@ -365,8 +365,11 @@ CLASS="NOTE"
 ><B
 >NOTE: </B
 >Under Red Hat 7 you must address files by absolute pathnames, for example: <TT
-CLASS="COMPUTEROUTPUT"
->/tftpboot/boot.img not /boot.img</TT
+CLASS="FILENAME"
+>/tftpboot/boot.img</TT
+> not <TT
+CLASS="FILENAME"
+>/boot.img</TT
 >, as you may have done with
 other implementations.</P
 ></BLOCKQUOTE
@@ -377,11 +380,11 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN226"
->Enable BOOTP server</A
+NAME="AEN234"
+>Enable BOOTP/DHCP server on Red Hat Linux</A
 ></H3
 ><P
->DHCP and First, ensure that you have
+>First, ensure that you have
 the proper package, <TT
 CLASS="COMPUTEROUTPUT"
 >dhcp</TT
@@ -408,7 +411,7 @@ default-lease-time 600;
 max-lease-time 7200; 
 option subnet-mask 255.255.255.0; 
 option broadcast-address 192.168.1.255; 
-option domain-name-servers 63.225.98.241, 206.196.128.1, 205.180.230.20,205.180.230.21;    205.180.230.20,205.180.230.21; 
+option domain-name-servers 198.41.0.4, 128.9.0.107;
 option domain-name &#8220;bogus.com&#8221;; 
 allow bootp;
 shared-network BOGUS {   
@@ -450,7 +453,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN240"
+NAME="AEN248"
 >RedBoot network gateway</A
 ></H3
 ><P
@@ -462,11 +465,18 @@ it talks to must be on the same subnet. If you need to talk to a host on a
 different subnet (even if it's on the same &#8216;wire&#8217;), you need to
 go through an ARP proxy, providing that there is a Linux box connected to
 the network which is able to route to the TFTP server. For example: <TT
-CLASS="COMPUTEROUTPUT"
->/proc/sys/net/ipv4/conf/&lt;interface&#62;/proxy_arp </TT
+CLASS="FILENAME"
+>/proc/sys/net/ipv4/conf/<TT
+CLASS="REPLACEABLE"
+><I
+>&lt;interface&#62;</I
+></TT
+>/proxy_arp </TT
 >where <TT
-CLASS="COMPUTEROUTPUT"
->&lt;interface&#62;</TT
+CLASS="REPLACEABLE"
+><I
+>&lt;interface&#62;</I
+></TT
 >should be replaced with whichever network interface
 is nearest to the board.</P
 ></DIV
@@ -476,7 +486,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN249"
+NAME="AEN258"
 >Verification</A
 ></H2
 ><P
@@ -513,7 +523,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x91.html"
+HREF="user-interface.html"
 >Prev</A
 ></TD
 ><TD
@@ -529,7 +539,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Next</A
 ></TD
 ></TR
@@ -544,7 +554,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="getting_started_with_redboot.html"
+HREF="getting-started-with-redboot.html"
 >Up</A
 ></TD
 ><TD

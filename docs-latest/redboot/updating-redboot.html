@@ -21,10 +21,10 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="PREVIOUS"
 TITLE="Rebuilding RedBoot"
-HREF="rebuilding_redboot.html"><LINK
+HREF="rebuilding-redboot.html"><LINK
 REL="NEXT"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"></HEAD
+HREF="installation-and-testing.html"></HEAD
 ><BODY
 CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
@@ -43,7 +43,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -51,7 +51,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="rebuilding_redboot.html"
+HREF="rebuilding-redboot.html"
 >Prev</A
 ></TD
 ><TD
@@ -64,7 +64,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Next</A
 ></TD
 ></TR
@@ -76,7 +76,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="UPDATING_REDBOOT"
+NAME="UPDATING-REDBOOT"
 >Chapter 4. Updating RedBoot</A
 ></H1
 ><DIV
@@ -84,7 +84,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN760"
+NAME="AEN844"
 >Introduction</A
 ></H1
 ><P
@@ -130,7 +130,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN779"
+NAME="AEN863"
 >Start RedBoot, Running from flash</A
 ></H2
 ><P
@@ -141,40 +141,63 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="DIFFERENT_VERSION_FROM_RAM"
+NAME="DIFFERENT-VERSION-FROM-RAM"
 >Load and start a different version of RedBoot, running from RAM</A
 ></H2
 ><P
 >There are a number of choices here. The basic case is where the RAM
 based version has been stored in the FIS (flash Image System). To load and
-execute this version, use the commands:  <TABLE
+execute this version, use the commands: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
 ><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; fis load RedBoot[backup]  
-RedBoot&#62; go</PRE
+CLASS="SCREEN"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis load RedBoot[backup]</B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>go</B
+></TT
+></PRE
 ></TD
 ></TR
 ></TABLE
->If this image is not available, or does not work,
+>
+If this image is not available, or does not work,
 then an alternate RAM based image must be loaded. Using the load command:
- <TABLE
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
 ><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; load redboot_RAM.srec</PRE
+CLASS="SCREEN"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>load redboot_RAM.srec</B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>go</B
+></TT
+></PRE
 ></TD
 ></TR
 ></TABLE
->  <DIV
+>
+<DIV
 CLASS="NOTE"
 ><BLOCKQUOTE
 CLASS="NOTE"
@@ -184,19 +207,7 @@ CLASS="NOTE"
 >The details of how to load are installation specific. The file must
 be placed somewhere the host computer can provide it to the target RedBoot
 system. Either TFTP (shown) or X/Ymodem can be used to download the image
-into RAM.  <TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="100%"
-><TR
-><TD
-><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; go</PRE
-></TD
-></TR
-></TABLE
-></P
+into RAM.</P
 ></BLOCKQUOTE
 ></DIV
 >Once the image is loaded into RAM, it may be used to update the secondary
@@ -204,17 +215,34 @@ RedBoot image in flash using the FIS commands. Some platforms support locking
 (write protecting) certain regions of the flash, while others do not. If your
 platform does not support the lock/unlock commands, simply ignore these steps.
 Again, the details of these commands (in particular the numeric values) differ
-on each target platform, but the ideas are the same:  <TABLE
+on each target platform, but the ideas are the same:
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
 ><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; fis unlock -f &lt;flash addr&#62; -l &lt;flash length&#62;  
-RedBoot&#62; fis create RedBoot[backup] -f &lt;flash addr&#62; -b &lt;flash source&#62; -r &lt;image addr&#62; -l &lt;flash length&#62;  
-RedBoot&#62; fis lock -f &lt;flash addr&#62; -l &lt;flash length&#62;</PRE
+CLASS="SCREEN"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis unlock -f &lt;flash addr&#62; -l &lt;flash length&#62;</B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis create RedBoot[backup] -f &lt;flash addr&#62; -b &lt;flash source&#62;
+         -r &lt;image addr&#62; -l &lt;flash length&#62;</B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis lock -f &lt;flash addr&#62; -l &lt;flash length&#62;</B
+></TT
+></PRE
 ></TD
 ></TR
 ></TABLE
@@ -225,7 +253,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="UPDATE_PRIMARY_IMAGE"
+NAME="UPDATE-PRIMARY-IMAGE"
 >Update the primary RedBoot flash image</A
 ></H2
 ><P
@@ -241,19 +269,31 @@ flash based version from the host.</P
 >Since the flash version is designed to load and run from flash, the
 image must be relocated into some suitable, available, RAM location. The details
 of this are target platform specific (found in the target appendix), but the
-command will look something like this:  <TABLE
+command will look something like this:
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
 ><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; load redboot_ROM.srec -b &lt;flash source&#62;</PRE
+CLASS="SCREEN"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>load redboot_ROM.srec -b &lt;flash source&#62;</B
+></TT
+></PRE
 ></TD
 ></TR
 ></TABLE
->This command loads the flash image into RAM at 0x00100000,
+>
+This command loads the flash image into RAM at <TT
+CLASS="USERINPUT"
+><B
+>flash_source</B
+></TT
+>,
 using the TFTP protocol via a network connection. Other options are available,
 refer to the command section on <TT
 CLASS="COMPUTEROUTPUT"
@@ -266,17 +306,34 @@ the FIS commands. Some platforms support locking (write protecting) certain
 regions of the flash, while others do not. If your platform does not support
 the lock/unlock commands, simply ignore these steps. Again, the details of
 these commands (in particular the numeric values) differ on each target platform,
-but the ideas are the same:  <TABLE
+but the ideas are the same:
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
 ><TR
 ><TD
 ><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; fis unlock -f &lt;flash addr&#62; -l &lt;flash length&#62;  
-RedBoot&#62; fis create RedBoot -f &lt;flash addr&#62; -b &lt;flash source&#62; -l &lt;flash length&#62; -s &lt;data length&#62;  
-RedBoot&#62; fis lock -f &lt;flash addr&#62; -l &lt;flash addr&#62;</PRE
+CLASS="SCREEN"
+>RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis unlock -f &lt;flash addr&#62; -l &lt;flash length&#62;</B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis create RedBoot -f &lt;flash addr&#62; -b &lt;flash source&#62; -l &lt;flash length&#62; 
+         -s &lt;data length&#62;  </B
+></TT
+>
+RedBoot&#62; <TT
+CLASS="USERINPUT"
+><B
+>fis lock -f &lt;flash addr&#62; -l &lt;flash addr&#62;</B
+></TT
+></PRE
 ></TD
 ></TR
 ></TABLE
@@ -303,7 +360,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN806"
+NAME="AEN901"
 >Reboot; run RedBoot from flash</A
 ></H2
 ><P
@@ -342,7 +399,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="rebuilding_redboot.html"
+HREF="rebuilding-redboot.html"
 >Prev</A
 ></TD
 ><TD
@@ -358,7 +415,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Next</A
 ></TD
 ></TR

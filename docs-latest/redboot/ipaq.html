@@ -21,10 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
 TITLE="ARM ARM7 PID, Dev7 and Dev9"
-HREF="pid.html"></HEAD
+HREF="pid.html"><LINK
+REL="NEXT"
+TITLE="Cirrus Logic EP72xx (EDB7211, EDB7212) "
+HREF="edb7xxx.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -43,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -63,7 +66,10 @@ VALIGN="bottom"
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="edb7xxx.html"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -82,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1342"
+NAME="AEN1553"
 >Overview</A
 ></H2
 ><P
@@ -99,7 +105,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1346"
+NAME="AEN1557"
 >Initial Installation</A
 ></H2
 ><P
@@ -110,7 +116,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1349"
+NAME="AEN1560"
 >Installing RedBoot on the iPAQ using Windows/CE</A
 ></H3
 ><P
@@ -155,7 +161,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1362"
+NAME="AEN1573"
 >Installing RedBoot on the iPAQ - using the Compaq boot loader</A
 ></H3
 ><P
@@ -193,7 +199,7 @@ WIDTH="90%"
 CLASS="PROGRAMLISTING"
 >Bytes Sent: 168320   BPS:2771
 Transfer complete                      
-                 lash...erasing ...             
+                 Flash...erasing ...             
 Erasing sector 00040000             
 writing flash..             
 addr: 00040000 data: EA00000E             
@@ -231,7 +237,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="IPAQ_INSTALL_RB_PERMANENTLY"
+NAME="IPAQ-INSTALL-RB-PERMANENTLY"
 >Setting up and testing RedBoot</A
 ></H3
 ><P
@@ -298,8 +304,8 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1384"
->ipaq_install_rb_permanently. Installing RedBoot permanently</A
+NAME="AEN1595"
+>ipaq-install-rb-permanently. Installing RedBoot permanently</A
 ></H3
 ><P
 >Once you are satisfied with the setup and that RedBoot is operating
@@ -390,25 +396,27 @@ ALIGN="CENTER"
 ><TR
 ><TD
 ALIGN="LEFT"
+><P
+>You must type these commands exactly! Failure to do so may render your
+iPAQ totally useless. Once you've done this, RedBoot should come up every
+time you reset.</P
 ></TD
 ></TR
 ></TABLE
 ></DIV
->You must type these commands exactly! Failure to do so may render
-your iPAQ totally useless. Once you've done this, RedBoot should come up every
-time you reset.</P
+></P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1402"
+NAME="AEN1614"
 >Restoring Windows/CE</A
 ></H3
 ><P
 >To restore Windows/CE from the backup taking in <A
-HREF="ipaq.html#IPAQ_INSTALL_RB_PERMANENTLY"
+HREF="ipaq.html#IPAQ-INSTALL-RB-PERMANENTLY"
 >the section called <I
 >Setting up and testing RedBoot</I
 ></A
@@ -421,7 +429,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1406"
+NAME="AEN1618"
 >Flash Management</A
 ></H2
 ><DIV
@@ -429,7 +437,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1408"
+NAME="AEN1620"
 >Additional config options</A
 ></H3
 ><P
@@ -438,7 +446,7 @@ CLASS="COMPUTEROUTPUT"
 >exec</TT
 > command to run Linux kernels
 is supported for this board (see <A
-HREF="executing_programs.html"
+HREF="executing-programs.html"
 >the section called <I
 >Executing Programs from RedBoot</I
 > in Chapter 2</A
@@ -463,13 +471,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1416"
+NAME="AEN1628"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
 >To update the secondary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#DIFFERENT_VERSION_FROM_RAM"
+HREF="updating-redboot.html#DIFFERENT-VERSION-FROM-RAM"
 >the section called <I
 >Load and start a different version of RedBoot, running from RAM</I
 > in Chapter 4</A
@@ -524,13 +532,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1423"
+NAME="AEN1635"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
 >To update the primary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
@@ -584,7 +592,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1430"
+NAME="AEN1642"
 >Memory Maps</A
 ></H2
 ><P
@@ -596,7 +604,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The virtual memory maps in this section use a C and B column to indicate
 whether or not the region is cached (C) or buffered (B).</P
 ></BLOCKQUOTE
@@ -618,6 +626,7 @@ CLASS="PROGRAMLISTING"
 0xc0000000 - 0xc1ffffff    DRAM Bank 0 - 32Mb SDRAM 
 0xe0000000 - 0xe7ffffff    Cache Clean   
 
+
 Virtual Address Range    C B  Description 
 -----------------------  - -  ---------------------------------- 
 0x00000000 - 0x01ffffff  Y Y  DRAM - 32Mb 
@@ -637,7 +646,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1437"
+NAME="AEN1649"
 >Resource Usage</A
 ></H2
 ><P
@@ -655,16 +664,26 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1440"
+NAME="AEN1652"
 >Rebuilding RedBoot</A
 ></H2
 ><P
->The instructions for chapter 3: Redbuilding RedBoot may be followed,
-but note that the configuration export files supplied in the <TT
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;ipaq&#8221;, &#8220;arm&#8221; and &#8220;sa11x0/ipaq&#8221; respectively.
+Note that the configuration export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
->hal/arm/sa11x0/ipaq/VERSION/misc</TT
-> directory in the RedBoot
-sources should be used.</P
+>hal/arm/sa11x0/ipaq/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -697,7 +716,10 @@ HREF="redboot.html"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="edb7xxx.html"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
@@ -710,14 +732,14 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Cirrus Logic EP72xx (EDB7211, EDB7212)</TD
 ></TR
 ></TABLE
 ></DIV

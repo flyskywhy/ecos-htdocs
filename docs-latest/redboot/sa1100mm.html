@@ -21,7 +21,7 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
 TITLE="Intel StrongArm EBSA 285"
 HREF="ebsa285.html"><LINK
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,13 +88,13 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1009"
+NAME="AEN1120"
 >Overview</A
 ></H2
 ><P
 >RedBoot supports both board serial ports. The default serial port
 settings are 38400,8,N,1. flash management is also supported. Two basic RedBoot
-configurations are supported: n	<P
+configurations are supported: n <P
 ></P
 ><UL
 ><LI
@@ -113,7 +113,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1023"
+NAME="AEN1134"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -124,7 +124,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1026"
+NAME="AEN1137"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -135,7 +135,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1029"
+NAME="AEN1140"
 >Memory Maps</A
 ></H2
 ><P
@@ -146,7 +146,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The virtual memory maps in this section use a C and B column to indicate
 whether or not the region is cached (C) or buffered (B).</P
 ></BLOCKQUOTE
@@ -176,6 +176,7 @@ CLASS="PROGRAMLISTING"
 0xe0000000 - 0xe7ffffff    Cache Clean  
 Virtual Address Range    C B  Description 
 
+
 -----------------------  - -  ---------------------------------- 
 0x00000000 - 0x007fffff  Y Y  DRAM Bank 0 
 0x08000000 - 0x083fffff  Y Y  Application flash 
@@ -201,18 +202,44 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1036"
+NAME="AEN1147"
 >Resource Usage</A
 ></H2
 ><P
 >The flash based RedBoot image occupies virtual addresses 0x50000000
 - 0x5000ffff. The RAM based RedBoot image occupies virtual addresses 0x10000
-- 0x2ffff. RAM addresses from 0x30000 to the end end of RAM are available
-for general use such as a temporary scratchpad for downloaded images before
-they are written to flash.</P
+- 0x2ffff. RAM addresses from 0x30000 to the end of RAM are available for
+general use such as a temporary scratchpad for downloaded images before they
+are written to flash.</P
 ><P
 > The SA11x0 OS timer is used as a polled timer to provide timeout support
 for XModem file transfers.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1151"
+>Rebuilding RedBoot</A
+></H2
+><P
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;sa1100mm&#8221;, &#8220;arm&#8221; and &#8220;sa11x0/sa1100mm&#8221; respectively.
+Note that the configuration export files supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>hal/arm/sa11x0/sa1100mm/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -261,7 +288,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD

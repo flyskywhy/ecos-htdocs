@@ -21,7 +21,7 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
 TITLE="Intel SA1100 (Brutus) "
 HREF="brutus.html"><LINK
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN953"
+NAME="AEN1058"
 >Overview</A
 ></H2
 ><P
@@ -117,7 +117,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN968"
+NAME="AEN1073"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -142,7 +142,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN972"
+NAME="AEN1077"
 >Flash management</A
 ></H2
 ><DIV
@@ -150,13 +150,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN974"
+NAME="AEN1079"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
 >To update the primary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
@@ -169,9 +169,9 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0x50000000      
--b 0x30000      
--l 0x10000</PRE
+>-f 0x41000000
+-b 0x100000
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -182,13 +182,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN979"
+NAME="AEN1084"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
 >To update the secondary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#DIFFERENT_VERSION_FROM_RAM"
+HREF="updating-redboot.html#DIFFERENT-VERSION-FROM-RAM"
 >the section called <I
 >Load and start a different version of RedBoot, running from RAM</I
 > in Chapter 4</A
@@ -201,7 +201,10 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0x50010000      -b 0x10000      -r 10000      -l 10000</PRE
+>-f 0x41040000
+-b 0x20000
+-r 0x20000
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -213,7 +216,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN984"
+NAME="AEN1089"
 >Communication Channels</A
 ></H2
 ><P
@@ -224,7 +227,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN987"
+NAME="AEN1092"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -235,7 +238,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN990"
+NAME="AEN1095"
 >Memory Maps</A
 ></H2
 ><P
@@ -280,16 +283,16 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN997"
+NAME="AEN1102"
 >Resource Usage</A
 ></H2
 ><P
 >The flash based RedBoot image occupies flash addresses 0x41000000 -
 0x4101ffff. It also reserves the first 128K bytes of RAM for runtime uses.
 The RAM based RedBoot image occupies RAM addresses 0x20000 - 0x3ffff. RAM
-addresses from 0x40000 to the end end of RAM are available for general use
-such as a temporary scratchpad for downloaded images before they are written
-to flash.</P
+addresses from 0x40000 to the end of RAM are available for general use such
+as a temporary scratchpad for downloaded images before they are written to
+flash.</P
 ><P
 >Timer3 is used as a polled timer to provide timeout support for networking
 and XModem file transfers.</P
@@ -299,12 +302,13 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1001"
->Intel StrongARM EBSA-285 Building Test Cases to run with RedBoot</A
+NAME="AEN1106"
+>Building eCos Test Cases to run with old RedBoots</A
 ></H2
 ><P
->The default configuration for EBSA-285 at present always sends diagnostic
-output to the serial line; to use RedBoot to channel diagnostic output to
+>If using older versions of RedBoot, the default configuration for
+EBSA-285 will send diagnostic output to the serial line only, not over an ethernet
+connection. To allow eCos programs to use RedBoot to channel diagnostic output to
 GDB whether connected by net or serial, enable the configuration option  <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -342,6 +346,32 @@ debugging, you can still do that, but you must only use the serial device
 for GDB connection and you must not enable the option mentioned above. However,
 it is no longer necessary to do that to get thread-awareness; RedBoot is thread
 aware.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1112"
+>Rebuilding RedBoot</A
+></H2
+><P
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;ebsa285&#8221;, &#8220;arm&#8221; and &#8220;ebsa285&#8221; respectively.
+Note that the configuration export files supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>hal/arm/ebsa285/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -390,7 +420,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD

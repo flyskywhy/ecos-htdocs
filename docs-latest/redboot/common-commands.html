@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="RedBoot Commands and Examples"
-HREF="redboot_commands_and_examples.html"><LINK
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
 TITLE="RedBoot Editing Commands"
-HREF="redboot_editing_commands.html"><LINK
+HREF="redboot-editing-commands.html"><LINK
 REL="NEXT"
 TITLE="Flash Image System (FIS)"
-HREF="flash_image_system.html"></HEAD
+HREF="flash-image-system.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="redboot_editing_commands.html"
+HREF="redboot-editing-commands.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="flash_image_system.html"
+HREF="flash-image-system.html"
 >Next</A
 ></TD
 ></TR
@@ -80,7 +80,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN324"
+NAME="COMMON-COMMANDS"
 >Common Commands</A
 ></H1
 ><P
@@ -124,7 +124,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN338"
+NAME="AEN347"
 >Connectivity</A
 ></H2
 ><P
@@ -167,7 +167,7 @@ CLASS="CALSTABLE"
 WIDTH="168"
 ALIGN="LEFT"
 VALIGN="TOP"
->-v	</TD
+>-v </TD
 ><TD
 WIDTH="100%"
 ALIGN="LEFT"
@@ -268,7 +268,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN380"
+NAME="AEN389"
 >General</A
 ></H2
 ><P
@@ -412,7 +412,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN422"
+NAME="AEN431"
 >Download Process</A
 ></H2
 ><P
@@ -435,10 +435,26 @@ using either the TFTP protocol, or the console serial connection using the
 X/Y modem protocol. Files to be downloaded may either be executable images
 in SREC format or raw data. The format of the command is:  </P
 ><P
-><TT
-CLASS="FUNCTION"
->load file [-v] [-d] [-b location] [-r] [-m {xmodem | ymodem
-| tftp}][-h host_IP_address]</TT
+><P
+><B
+CLASS="COMMAND"
+>load</B
+>  {<TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+>} [-v] [-d] [-b <TT
+CLASS="REPLACEABLE"
+><I
+>location</I
+></TT
+>] [-r] [-m  {xmodem | ymodem | tftp}] [-h <TT
+CLASS="REPLACEABLE"
+><I
+>host_IP_address</I
+></TT
+>]</P
 ></P
 ></DD
 ></DL
@@ -533,15 +549,44 @@ VALIGN="TOP"
 WIDTH="100%"
 ALIGN="LEFT"
 VALIGN="TOP"
->The -m option is used to select
-the download method. The choices are:<I
+><P
+>The -m option is used to
+select the download method. The choices are:<P
+></P
+><TABLE
+BORDER="0"
+><TBODY
+><TR
+><TD
+><I
 CLASS="EMPHASIS"
->xmodem, ymodem</I
-> - serial download using standard protocols over the console serial
-port. When using this method, the &lt;file&#62; parameter is not required. <I
+>xmodem</I
+>, <I
+CLASS="EMPHASIS"
+>ymodem</I
+> - serial
+download using standard protocols over the console serial port. When using
+this method, the <TT
+CLASS="REPLACEABLE"
+><I
+>file</I
+></TT
+> parameter is not required.</TD
+></TR
+><TR
+><TD
+><I
 CLASS="EMPHASIS"
 >tftp</I
-> - network based download using the TFTP protocol.</TD
+> - network based download using the TFTP
+protocol.</TD
+></TR
+></TBODY
+></TABLE
+><P
+></P
+></P
+></TD
 ></TR
 ><TR
 ><TD
@@ -596,7 +641,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="redboot_editing_commands.html"
+HREF="redboot-editing-commands.html"
 >Prev</A
 ></TD
 ><TD
@@ -612,7 +657,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="flash_image_system.html"
+HREF="flash-image-system.html"
 >Next</A
 ></TD
 ></TR
@@ -627,7 +672,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Up</A
 ></TD
 ><TD

@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="RedBoot Commands and Examples"
-HREF="redboot_commands_and_examples.html"><LINK
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
 TITLE="Common Commands"
-HREF="x324.html"><LINK
+HREF="common-commands.html"><LINK
 REL="NEXT"
 TITLE="Persistent State Flash-based Configuration and Control"
-HREF="persistent_state_flash.html"></HEAD
+HREF="persistent-state-flash.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="x324.html"
+HREF="common-commands.html"
 >Prev</A
 ></TD
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="persistent_state_flash.html"
+HREF="persistent-state-flash.html"
 >Next</A
 ></TD
 ></TR
@@ -80,7 +80,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="FLASH_IMAGE_SYSTEM"
+NAME="FLASH-IMAGE-SYSTEM"
 >Flash Image System (FIS)</A
 ></H1
 ><P
@@ -140,7 +140,7 @@ About to initialize [format] flash image system - are you sure (y/n)? n
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->fis [-c] list</DT
+>fis [-c] [-d] list</DT
 ><DD
 ><P
 >This command lists the images currently available in the FIS. Certain
@@ -155,6 +155,22 @@ is displayed instead of the <TT
 CLASS="COMPUTEROUTPUT"
 >Mem Addr</TT
 > field.
+  </P
+><P
+>If the <I
+CLASS="EMPHASIS"
+>-d</I
+> option is specified, the image
+<TT
+CLASS="COMPUTEROUTPUT"
+>datalength</TT
+> is displayed instead of the
+length [amount of flash used]. The <TT
+CLASS="COMPUTEROUTPUT"
+>datalength</TT
+>
+is the length of data within the allocated flash image actually being
+used for data.
   </P
 ></DD
 ></DL
@@ -206,7 +222,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >There is currently no cross-checking between actual flash contents and
 the image directory, which mans that there could be a segment of flash which
 is not erased that does not correspond to a named image, or vice-versa.  </P
@@ -592,7 +608,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >Depending on the system, attempting to write to write-protected flash
 may generate errors or warnings, or be benignly quiet.  </P
 ></BLOCKQUOTE
@@ -713,7 +729,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="x324.html"
+HREF="common-commands.html"
 >Prev</A
 ></TD
 ><TD
@@ -729,7 +745,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="persistent_state_flash.html"
+HREF="persistent-state-flash.html"
 >Next</A
 ></TD
 ></TR
@@ -744,7 +760,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="redboot_commands_and_examples.html"
+HREF="redboot-commands-and-examples.html"
 >Up</A
 ></TD
 ><TD

@@ -21,7 +21,7 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="PREVIOUS"
 TITLE="Updating RedBoot"
-HREF="updating_redboot.html"><LINK
+HREF="updating-redboot.html"><LINK
 REL="NEXT"
 TITLE="Intel SA1100 (Brutus) "
 HREF="brutus.html"></HEAD
@@ -43,7 +43,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -51,7 +51,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="updating_redboot.html"
+HREF="updating-redboot.html"
 >Prev</A
 ></TD
 ><TD
@@ -76,7 +76,7 @@ WIDTH="100%"></DIV
 CLASS="CHAPTER"
 ><H1
 ><A
-NAME="INSTALLATION_AND_TESTING"
+NAME="INSTALLATION-AND-TESTING"
 >Chapter 5. Installation and Testing</A
 ></H1
 ><DIV
@@ -88,7 +88,7 @@ CLASS="TOC"
 ></DT
 ><DT
 ><A
-HREF="installation_and_testing.html#IQ80310"
+HREF="installation-and-testing.html#IQ80310"
 >Cyclone IQ80310</A
 ></DT
 ><DT
@@ -119,12 +119,17 @@ HREF="atlas.html"
 ><DT
 ><A
 HREF="ocelot.html"
->QED MIPS RM7000 Ocelot</A
+>PMC-Sierra MIPS RM7000 Ocelot</A
 ></DT
 ><DT
 ><A
 HREF="mbx.html"
 >Motorola PowerPC MBX</A
+></DT
+><DT
+><A
+HREF="e7t.html"
+>ARM Evaluator7T (e7t) board with ARM7TDMI</A
 ></DT
 ><DT
 ><A
@@ -135,6 +140,16 @@ HREF="pid.html"
 ><A
 HREF="ipaq.html"
 >Compaq iPAQ PocketPC</A
+></DT
+><DT
+><A
+HREF="edb7xxx.html"
+>Cirrus Logic EP72xx (EDB7211, EDB7212)</A
+></DT
+><DT
+><A
+HREF="nano.html"
+>Bright Star Engineering commEngine and nanoEngine</A
 ></DT
 ></DL
 ></DIV
@@ -151,7 +166,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN822"
+NAME="AEN917"
 >Overview</A
 ></H2
 ><P
@@ -194,7 +209,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN842"
+NAME="AEN937"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -222,15 +237,18 @@ bins/cyclone-rom.bin
 bins/cyclone-rom.elf    
 bins/cyclone-rom.srec 
 
+
 For RedBoot running from flash address 0x40000: 
 bins/cyclone-roma.bin    
 bins/cyclone-roma.elf    
 bins/cyclone-roma.srec 
 
+
 For RedBoot running from RAM with RedBoot in the flash boot sector: 
 bins/cyclone-ram.bin    
 bins/cyclone-ram.elf    
 bins/cyclone-ram.srec 
+
 
 For RedBoot running from RAM with ARM bootloader in the flash boot sector: 
 bins/cyclone-rama.bin    
@@ -307,7 +325,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN853"
+NAME="AEN948"
 >Error codes</A
 ></H2
 ><P
@@ -334,7 +352,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN857"
+NAME="AEN952"
 >Using RedBoot with ARM Bootloader</A
 ></H2
 ><P
@@ -350,7 +368,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN860"
+NAME="AEN955"
 >Flash management</A
 ></H2
 ><DIV
@@ -358,19 +376,18 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN862"
+NAME="AEN957"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
 >To update the primary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
 >, but the actual numbers used with
 the flags in the sample commands should be: </P
-><P
 ><H2
 CLASS="BRIDGEHEAD"
 >ARM bootloader in flash boot sector</H2
@@ -409,14 +426,13 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ></P
-></P
 ></DIV
 ><DIV
 CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN873"
+NAME="AEN967"
 >Updating the secondary RedBoot image</A
 ></H3
 ><H2
@@ -462,7 +478,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN879"
+NAME="AEN973"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -490,7 +506,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN883"
+NAME="AEN977"
 >IQ80310 Hardware Tests</A
 ></H2
 ><P
@@ -533,7 +549,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN888"
+NAME="AEN982"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -549,20 +565,31 @@ WIDTH="100%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >% export TOPDIR=`pwd` 
-% export ECOS_REPOSITORY=${TOPDIR}/src/ecos-monitors/ \
-   redboot-??????-intel/packages 
+% export ECOS_REPOSITORY=\
+    ${TOPDIR}/src/ecos-monitors/redboot-<TT
+CLASS="REPLACEABLE"
+><I
+>DATE</I
+></TT
+>-intel/packages
 % mkdir ${TOPDIR}/build 
 % cd ${TOPDIR}/build 
 % ecosconfig new iq80310 redboot 
-% ecosconfig import ${ECOS_REPOSITORY}/hal/arm/iq80310/current/ \
-   misc/redboot_ROM.ecm 
-% ecosconfig tree % make</PRE
+% ecosconfig import \
+   ${ECOS_REPOSITORY}/hal/arm/iq80310/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc/redboot_ROM.ecm 
+% ecosconfig tree 
+% make</PRE
 ></TD
 ></TR
 ></TABLE
 >If a different configuration is desired,
 simply use the above build process but substitute an alternate configuration
-file for the ecosconfig import command. </P
+file for the ecosconfig import command, e.g.:</P
 ><P
 >For a RedBoot that runs from flash address 0x40000 with the ARM booloader
 in the flash boot sector, use: <TABLE
@@ -573,8 +600,13 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->% ecosconfig import 
-${ECOS_REPOSITORY}/hal/arm/iq80310/current/misc/redboot_ROMA.ecm</PRE
+>% ecosconfig import \
+  ${ECOS_REPOSITORY}/hal/arm/iq80310/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc/redboot_ROMA.ecm</PRE
 ></TD
 ></TR
 ></TABLE
@@ -588,8 +620,13 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->% ecosconfig import 
-${ECOS_REPOSITORY}/hal/arm/iq80310/current/misc/redboot_RAM.ecm</PRE
+>% ecosconfig import \
+  ${ECOS_REPOSITORY}/hal/arm/iq80310/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc/redboot_RAM.ecm</PRE
 ></TD
 ></TR
 ></TABLE
@@ -603,8 +640,13 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->% ecosconfig import 
-${ECOS_REPOSITORY}/hal/arm/iq80310/current/misc/redboot_RAMA.ecm</PRE
+>% ecosconfig import \
+  ${ECOS_REPOSITORY}/hal/arm/iq80310/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc/redboot_RAMA.ecm</PRE
 ></TD
 ></TR
 ></TABLE
@@ -615,7 +657,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN896"
+NAME="AEN995"
 >Interrupts</A
 ></H2
 ><P
@@ -653,6 +695,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_NIRQ          5 // external IRQ
 #define CYGNUM_HAL_INTERRUPT_NFIQ          6 // external FIQ
 
+
 // *** XINT6 interrupts ***
 #define CYGNUM_HAL_INTERRUPT_DMA_0         7
 #define CYGNUM_HAL_INTERRUPT_DMA_1         8
@@ -660,6 +703,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_GTSC         10 // Global Time Stamp Counter
 #define CYGNUM_HAL_INTERRUPT_PEC          11 // Performance Event Counter
 #define CYGNUM_HAL_INTERRUPT_AAIP         12 // application accelerator unit
+
 
 // *** XINT7 interrupts ***
 // I2C interrupts
@@ -669,6 +713,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_I2C_STOP     16
 #define CYGNUM_HAL_INTERRUPT_I2C_LOSS     17
 #define CYGNUM_HAL_INTERRUPT_I2C_ADDRESS  18
+
 
 // Messaging Unit interrupts
 #define CYGNUM_HAL_INTERRUPT_MESSAGE_0           19
@@ -680,6 +725,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_INDEX_REGISTER      25
 // PCI Address Translation Unit
 #define CYGNUM_HAL_INTERRUPT_BIST                26
+
 
 // *** External board interrupts (XINT3) ***
 #define CYGNUM_HAL_INTERRUPT_TIMER        27 // external timer
@@ -695,6 +741,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_PCI_S_INTB   33 // secondary PCI INTB
 #define CYGNUM_HAL_INTERRUPT_PCI_S_INTA   34 // secondary PCI INTA
 
+
 // *** NMI Interrupts go to FIQ ***
 #define CYGNUM_HAL_INTERRUPT_MCU_ERR       35
 #define CYGNUM_HAL_INTERRUPT_PATU_ERR      36
@@ -708,6 +755,7 @@ CLASS="PROGRAMLISTING"
 #define CYGNUM_HAL_INTERRUPT_reserved52    44
 #define CYGNUM_HAL_INTERRUPT_AAU_ERR       45
 #define CYGNUM_HAL_INTERRUPT_BIU_ERR       46
+
 
 // *** ATU FIQ sources ***
 #define CYGNUM_HAL_INTERRUPT_P_SERR        47
@@ -732,7 +780,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN904"
+NAME="AEN1003"
 >Memory Maps</A
 ></H2
 ><P
@@ -745,7 +793,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The virtual memory maps in this section use a C and B column to indicate
 whether or not the region is cached (C) or buffered (B).</P
 ></BLOCKQUOTE
@@ -777,6 +825,7 @@ CLASS="PROGRAMLISTING"
 0xc0000000 - 0xefffffff    Unused 
 0xf0000000 - 0xffffffff    80200 Internal Registers  
 
+
 Virtual Address Range    C B  Description 
 -----------------------  - -  ---------------------------------- 
 0x00000000 - 0x00000fff  Y Y  SDRAM 
@@ -803,7 +852,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN912"
+NAME="AEN1011"
 >Resource Usage</A
 ></H2
 ><P
@@ -839,7 +888,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="updating_redboot.html"
+HREF="updating-redboot.html"
 >Prev</A
 ></TD
 ><TD

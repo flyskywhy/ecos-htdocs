@@ -21,7 +21,7 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
 TITLE="Intel SA1100 Multimedia Board "
 HREF="sa1100mm.html"><LINK
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1042"
+NAME="AEN1159"
 >Overview</A
 ></H2
 ><P
@@ -114,7 +114,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1056"
+NAME="AEN1173"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -130,7 +130,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1060"
+NAME="AEN1177"
 >Flash management</A
 ></H2
 ><DIV
@@ -138,13 +138,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1062"
+NAME="AEN1179"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
 >To update the primary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
@@ -170,13 +170,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1067"
+NAME="AEN1184"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
 >To update the secondary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#DIFFERENT_VERSION_FROM_RAM"
+HREF="updating-redboot.html#DIFFERENT-VERSION-FROM-RAM"
 >the section called <I
 >Load and start a different version of RedBoot, running from RAM</I
 > in Chapter 4</A
@@ -201,7 +201,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1072"
+NAME="AEN1189"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -212,7 +212,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1075"
+NAME="AEN1192"
 >Memory Maps</A
 ></H2
 ><P
@@ -223,7 +223,7 @@ CLASS="NOTE"
 CLASS="NOTE"
 ><P
 ><B
->NOTE:: </B
+>NOTE: </B
 >The virtual memory maps in this section use a C and B column to indicate
 whether or not the region is cached (C) or buffered (B).</P
 ></BLOCKQUOTE
@@ -253,6 +253,7 @@ CLASS="PROGRAMLISTING"
 0xd8000000 - 0xdfffffff    DRAM Bank 3 
 0xe0000000 - 0xe7ffffff    Cache Clean  
 
+
 Virtual Address Range    C B  Description 
 -----------------------  - -  ---------------------------------- 
 0x00000000 - 0x01ffffff  Y Y  DRAM Bank 0 
@@ -278,17 +279,43 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1082"
+NAME="AEN1199"
 >Resource Usage</A
 ></H2
 ><P
 >The RAM based RedBoot image occupies RAM addresses 0x20000 - 0x5ffff.
-RAM addresses from 0x60000 to the end end of RAM are available for general
-use such as a temporary scratchpad for downloaded images before they are written
+RAM addresses from 0x60000 to the end of RAM are available for general use
+such as a temporary scratchpad for downloaded images before they are written
 to flash. </P
 ><P
 >The SA11x0 OS timer is used as a polled timer to provide timeout support
 for network and XModem file transfers.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1203"
+>Rebuilding RedBoot</A
+></H2
+><P
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;assabet&#8221;, &#8220;arm&#8221; and &#8220;sa11x0/assabet&#8221; respectively.
+Note that the configuration export files supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>hal/arm/sa11x0/assabet/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -337,7 +364,7 @@ WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD

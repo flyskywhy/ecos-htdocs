@@ -21,13 +21,13 @@ TITLE="RedBoot&#8482; User's Guide"
 HREF="redboot.html"><LINK
 REL="UP"
 TITLE="Installation and Testing"
-HREF="installation_and_testing.html"><LINK
+HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
-TITLE="QED MIPS RM7000 Ocelot"
+TITLE="PMC-Sierra MIPS RM7000 Ocelot"
 HREF="ocelot.html"><LINK
 REL="NEXT"
-TITLE="ARM ARM7 PID, Dev7 and Dev9"
-HREF="pid.html"></HEAD
+TITLE="ARM Evaluator7T (e7t) board with ARM7TDMI"
+HREF="e7t.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -46,7 +46,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.3, April 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5, May 2001</TH
 ></TR
 ><TR
 ><TD
@@ -67,7 +67,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="pid.html"
+HREF="e7t.html"
 >Next</A
 ></TD
 ></TR
@@ -88,7 +88,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1237"
+NAME="AEN1371"
 >Overview</A
 ></H2
 ><P
@@ -116,7 +116,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1252"
+NAME="AEN1386"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -233,7 +233,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1278"
+NAME="AEN1412"
 >Flash management</A
 ></H2
 ><DIV
@@ -241,13 +241,13 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1280"
+NAME="AEN1414"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
 >To update the primary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#UPDATE_PRIMARY_IMAGE"
+HREF="updating-redboot.html#UPDATE-PRIMARY-IMAGE"
 >the section called <I
 >Update the primary RedBoot flash image</I
 > in Chapter 4</A
@@ -273,18 +273,19 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1285"
+NAME="AEN1419"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
 >To update the secondary RedBoot images, follow the procedures detailed
 in <A
-HREF="updating_redboot.html#DIFFERENT_VERSION_FROM_RAM"
+HREF="updating-redboot.html#DIFFERENT-VERSION-FROM-RAM"
 >the section called <I
 >Load and start a different version of RedBoot, running from RAM</I
 > in Chapter 4</A
 >, but the actual numbers used
-with the flags in the sample commands should be:        <TABLE
+with the flags in the sample commands should be:
+<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -292,7 +293,10 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->-f 0xfe020000      -b 0x20000      -r 0x20000      -l 0x20000</PRE
+>-f 0xfe020000
+-b 0x20000
+-r 0x20000
+-l 0x20000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -304,7 +308,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1290"
+NAME="AEN1424"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -315,11 +319,11 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1293"
+NAME="AEN1427"
 >Memory Maps</A
 ></H2
 ><P
->Memory Maps RedBoot sets up the following memory map on the PID board.<TABLE
+>Memory Maps RedBoot sets up the following memory map on the MBX board.<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -343,7 +347,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1297"
+NAME="AEN1431"
 >Resource Usage</A
 ></H2
 ><P
@@ -353,6 +357,32 @@ runtime uses. RAM based RedBoot configurations are designed to run from RAM
 at physical addresses 0x00020000 - 0x0004ffff. RAM physical addresses from
 0x00050000 to the end of RAM are available for general use, such as a temporary
 scratchpad for downloaded images, before they are written to flash.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1434"
+>Rebuilding RedBoot</A
+></H2
+><P
+>The instructions in <A
+HREF="rebuilding-redboot.html"
+>Chapter 3</A
+> should be followed.
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
+&#8220;mbx&#8221;, &#8220;powerpc&#8221; and &#8220;mbx&#8221; respectively.
+Note that the configuration export files supplied in the <TT
+CLASS="COMPUTEROUTPUT"
+>hal/powerpc/mbx/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc</TT
+>
+directory in the RedBoot source tree should be used.</P
 ></DIV
 ></DIV
 ><DIV
@@ -386,7 +416,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="pid.html"
+HREF="e7t.html"
 >Next</A
 ></TD
 ></TR
@@ -395,20 +425,20 @@ HREF="pid.html"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->QED MIPS RM7000 Ocelot</TD
+>PMC-Sierra MIPS RM7000 Ocelot</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="installation_and_testing.html"
+HREF="installation-and-testing.html"
 >Up</A
 ></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->ARM ARM7 PID, Dev7 and Dev9</TD
+>ARM Evaluator7T (e7t) board with ARM7TDMI</TD
 ></TR
 ></TABLE
 ></DIV
