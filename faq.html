@@ -31,7 +31,7 @@
   <LI><A HREF="#license_coverage">Does the license cover situation ...?</A></LI>
   <h4>Contributing</h4>
   <LI><A HREF="#contrib_have_to">Do I have to contribute?</A></LI>
-  <LI><A HREF="#contrib_bazaar">Cathedral or bazaar?</A></LI>
+  <LI><A HREF="#contrib_bazaar">Which development model - cathedral or bazaar?</A></LI>
   <LI><A HREF="#contrib_how">How do I contribute?</A></LI>
   <LI><A HREF="#contrib_what">What contributions would be accepted?</A></LI>
   <LI><A HREF="#contrib_assign">Why do I need to sign a copyright assignment?</A></LI>
@@ -44,16 +44,16 @@
 
 <H4><A NAME="what_ecos">What is eCos?</A></H4>
 
-eCos (Embedded Cygnus Operating System) is an open-source,
+eCos (embedded Cygnus operating system) is an open-source,
 royalty-free, highly configurable, application-specific operating
 system ideal for embedded systems development. eCos is targeted at
 high-volume applications in consumer electronics, telecommunications,
 automotive, and other deeply embedded applications. eCos ensures
 embedded developers have a common software infrastructure for
 delivering a diverse range of embedded products and enables embedded
-software developers to focus on delivering better products instead of
-developing or maintaining a real-time operating system before
-beginning the development of a product.
+software developers to focus on delivering better products, instead of
+developing or maintaining a real-time operating system in addition
+to the products themselves.
 
 <H4><A NAME="what_why">Why has Cygnus produced another embedded
 real-time operating system?</A></H4>
@@ -69,17 +69,17 @@ force embedded product manufacturing companies to develop their own
 run-time technologies:
 
 <UL TYPE=DISC>
-  <LI><B>Cost</B> - eCos is royalty free, delivered with
-the microprocessor and portable across chip architectures, which makes
-it well-suited for software developers of high-volume applications in
-consumer electronics, telecommunications, automotive and other deeply
-embedded applications,
+  <LI><B>Cost</B> - eCos is royalty free and license cost free. It is
+portable across chip architectures, which makes it well-suited for
+software developers of high-volume applications in consumer
+electronics, telecommunications, automotive and other deeply embedded
+applications,
   <P>
   <LI><B>Control</B> - eCos is an open-source run-time
 technology which fosters innovation, reduces risk, and places
 customers in control of their application specific content by enabling
 programmers on the Internet to read, redistribute, and modify the
-source code for eCos,
+source code for eCos.
   <P>
   <LI><B>Technical Fit</B> - eCos provides source-level
 configuration (more than 200 configuration points) to exactly match
@@ -90,7 +90,7 @@ multi-threaded debugging, graphical configuration, test suites, etc.
 <P>
 <H4><A NAME="what_source">Do you provide the source code?</A></H4>
 <P>
-Absolutely. In fact Cygnus wants eCos development to happen as an open
+Absolutely. In fact Cygnus wants to run eCos development as an open
 source project, with the cooperation of the development community on
 the net. Cygnus has many years of experience in this field through our
 work on the gcc and g++ compilers, the gdb debugger, and many other
@@ -105,7 +105,7 @@ the range processors. Even if we limit the eCos target market to
 deeply embedded devices and to processors for which a gcc port is
 available, it is not possible to write a single system which meets
 everybody's requirements. The conventional approach forces application
-developers to warp their software so that it works within the
+developers to adapt their software so that it works within the
 limitations of the operating system. The eCos approach is to provide a
 whole range of options and let the developer configure a system that
 best matches the needs of the application. Typical configuration
@@ -129,29 +129,29 @@ options is of course not very original. The critical problem is that
 configuration options are not independent: for example, changing a
 kernel option may affect whether or not the C library can provide
 thread-safe versions of various routines. The key innovation in eCos
-is that that configuration options are treated as data items in their
+is that configuration options are treated as data items in their
 own right, complete with descriptions of all the dependencies between
 the various options. There is a graphical configuration tool which
 allows users to conveniently manipulate the various options,
 understand the various interactions, and check that the resulting
-configuration is actually valid.
+configuration is valid.
 <P>
 The configuration framework also serves to componentize the system
 into different packages. The core system consists of a number of
-different such as the kernel, the C library, the maths library, and so
-on. It is possible to enable or disable entire packages, as well as to
-manipulate configuration options within these packages. It is also
-possible to add new packages to the system, for example a TCP/IP
-stack. The key point is that these new packages can specify
-dependencies on other parts of the system, for example the TCP/IP
-stack could specify that it needs per-thread data support. The same
-technology that makes configurability work in the core system allows
-new packages to be added to the system and readily incorporated into
-an application. We expect large numbers of these packages to become
-available over time, and already there are software vendors who want
-to turn their existing software into eCos packages. We expect that
-many contributions from the open source community will take the form
-of ports of existing software or of completely new packages.
+different packages including the kernel, the C library, and the maths
+library. It is possible to enable or disable entire
+packages, as well as to manipulate configuration options within these
+packages. It is also possible to add new packages to the system, for
+example a TCP/IP stack. The key point is that these new packages can
+specify dependencies on other parts of the system, for example the
+TCP/IP stack could specify that it needs per-thread data support. The
+same technology that makes configurability work in the core system
+allows new packages to be added to the system and readily incorporated
+into an application. We expect large numbers of these packages to
+become available over time, and already there are software vendors who
+want to turn their existing software into eCos packages. We expect
+that many contributions from the open source community will take the
+form of ports of existing software or of completely new packages.
 <P>
 The eCos configuration system does not affect how you develop your own
 application code. It is not necessary to write your application in any
@@ -166,29 +166,31 @@ A side effect of a fully configurable system is that it is just about
 impossible to answer questions like &quot;What is the memory footprint
 of the kernel?&quot or &quot;What is the interrupt latency?&quot;
 These figures depend in large part on the configuration options
-selected by the user. For example if a simple application does not the
-kernel at all, directly or indirectly, then the kernel package can be
-disabled completely and its memory footprint is 0 bytes. This
-information is not useful to a different application developer who
-needs lots of kernel functionality.
+selected by the user. For example if a simple application does not
+require the kernel at all, directly or indirectly, then the kernel
+package can be disabled completely and its memory footprint is 0
+bytes. 
 <P>
 <A
 HREF="docs/guides/user-guides/real-time-characterization.html">Basic
-performance information</A> is available as part of the documentation,
-including details of how the numbers were arrived at.
+performance characterization data</A> is available as part of the
+documentation, together with a description of the tests that were used
+to obtain this data. The sources for these tests are included with the
+eCos distribution.
 <P>
 <H4><A NAME="what_mail">Are there any mailing lists?</A></H4>
 <P>
 Certainly. There are two main mailing lists which anybody can <A
-HREF="intouch.html">subscribe</A> to. The ecos-announce mailing
-list is a moderated list for major announcements. The ecos-discuss
-mailing list is an unmoderated list for general discussion, both
-technical and non-technical. All of Cygnus's eCos development team
-will read this list and join in the discussions as appropriate.
+HREF="intouch.html">subscribe</A> to. The &lt;ecos-announce&gt; mailing list
+is a low-volume moderated list for major announcements. The
+&lt;ecos-discuss&gt; mailing list is an unmoderated list for general
+discussion, both technical and non-technical. All of Cygnus's eCos
+development team will read this list and join in the discussions as
+appropriate.
 <P>
 If you have a question which you do not want to discuss in a public
 forum then there is a separate <A
-HREF="mailto:ecos-maintainers@cygnus.com">ecos-maintainers</A> mail
+HREF="mailto:ecos-maintainers@cygnus.com">&lt;ecos-maintainers&gt;</A> mail
 address. All requests sent to this request will be considered
 confidential, and nobody outside Cygnus is able to subscribe to this
 list. 
@@ -217,12 +219,12 @@ itself but also to any changes anybody makes to the core system.
 <P>
 A key aspect of the eCos public license is that it is intended to
 protect the eCos user community as a whole. It should prevent any
-company or individual contributing code to the system and then, maybe
-after waiting six months or so, claim that all eCos users are now
-guilty of copyright or patent infringements and have to pay royalties.
-It should also prevent any company from making some small
-improvements, calling the result a completely new system, and
-releasing this under a new and less generous license.
+company or individual contributing code to the system and then claim
+that all eCos users are now guilty of copyright or patent
+infringements and have to pay royalties. It should also prevent any
+company from making some small improvements, calling the result a
+completely new system, and releasing this under a new and less
+generous license.
 <P>
 The license does impose one obligation on application developers: you
 must include a <A HREF="license.html#B">notice</A> with your
@@ -239,7 +241,7 @@ the different products that use eCos.
 <P>
 <h4><A NAME="license_core_changes">What about changes to the core system?</A></h4>
 <P>
-Yes. If you make a change to the core eCos system then we believe that
+If you make a change to the core eCos system then we believe that
 the entire user community should have the opportunity to benefit from
 that change. This does not necessarily mean that your changes will
 become part of the core system, since there are fairly strict criteria
@@ -251,10 +253,10 @@ maintainers, not by the person making the changes.
 <P>
 eCos is designed to be the component framework for the embedded
 systems industry. An eCos release consists of a number of different
-packages such as the kernel, the C library, a uITRON compatibility
-layer, and so on. All the packages that go into such a release and the
-associated documentation constitute the core system, and the license
-describes this using the term &quot;Original Code&quot;.
+packages including the kernel, the C library, and a uITRON
+compatibility layer. All the packages that go into such a release and
+the associated documentation constitute the core system, and the
+license describes this using the term &quot;Original Code&quot;.
 <P>
 Another way of looking at this is from a purely practical perspective.
 At the end of the day building an application involves linking
@@ -265,7 +267,7 @@ code that goes into the building of this library is part of the core
 system and is covered by the eCos public license. Anything which goes
 into the application-specific object files is not part of the core
 system and is not covered by the public license. Note that this is not
-a legally binding definition. In particular you cannot get around the
+a legally binding definition - in particular you cannot get around the
 public license simply by copying bits of eCos sources and making them
 part of your application code.
 <P>
@@ -296,11 +298,10 @@ existing license restrictions that will apply. For example if you
 create a new eCos device driver by copying an existing one and editing
 it then this would constitute a modification to existing code and the
 eCos public license would apply to the new device driver. If you
-create a new device driver from scratch, or more likely by using an
-unencumbered skeleton driver, then you can decide for yourself what
-license should apply. If you want the package to be freely available
-to the entire eCos community then we recommend the eCos public
-license, but the choice is yours.
+create a new device driver from scratch then you can decide for
+yourself what license should apply. If you want the package to be
+freely available to the entire eCos community then we recommend the
+eCos public license, but the choice is yours.
 <P>
 <h4><A NAME="license_why_new">Why has Cygnus created a new license?</A></h4>
 <P>
@@ -316,7 +317,7 @@ community as a whole, thus improving the system and making it even
 more attractive to potential users. Some existing licenses such as the
 BSD license do not provide this.
 <P>
-The Gnu Public License does meet these requirements, but it goes
+The GNU Public License does meet these requirements, but it goes
 further: all applications that get linked with GPL'd code are also
 covered by the GPL, which means in practice that application
 developers have to make the sources available. In the embedded systems
@@ -344,12 +345,12 @@ are compatible with our overall goals.
 <P>
 <h4><A NAME="contrib_have_to">Do I have to contribute?</A></h4>
 <P>
-No. We expect that many people will simply want to use the system as
+No. We expect that most people will simply want to use the system as
 it is (or rather, as it is after they have configured it to meet their
 specific needs), without changing the core system itself or adding any
 new packages. Such users are under no obligation to contribute.
 <P>
-<h4><A NAME="contrib_bazaar">Cathedral or bazaar?</A></h4>
+<h4><A NAME="contrib_bazaar">Which development model - cathedral or bazaar?</A></h4>
 <P>
 The <A
 HREF="http://www.earthspace.net/~esr/writings/cathedral-bazaar/cathedral-bazaar.html"
@@ -357,14 +358,12 @@ TARGET="_top">bazaar</A> of course. For the eCos system Cygnus is
 committed to an open development model. In addition to the full
 releases we will be making regular snapshot releases and provide
 anonymous CVS access to the sources. Discussions about the system will
-generally be held in an open <A
-HREF="intouch.html">ecos-discuss</A> mailing list.
-<P>
-However it is necessary to apply a caveat to this. Many of Cygnus's
-commercial dealings involve confidential information and are covered
-by non-disclosure agreements. A potential port to another architecture
-would generally be covered by such an agreement, and hence we would
-not be able to disclose any details on an open forum.
+generally be held in the open <A HREF="intouch.html">&lt;ecos-discuss&gt;</A>
+mailing list. However it is necessary to apply a caveat to this. Many
+of Cygnus's commercial dealings involve confidential information and
+are covered by non-disclosure agreements. A potential port to another
+architecture would generally be covered by such an agreement, and
+hence we would not be able to disclose any details in an open forum.
 <P>
 <h4><A NAME="contrib_how">How do I contribute?</A></h4>
 <P>
@@ -374,11 +373,11 @@ system, including the documentation and the web site, helps us to
 identify areas which need improvement. Reporting a problem gives us a
 chance to fix it, especially if you provide us with a simple test case
 and sufficient information to reproduce the problem. Participation in
-the discussions in the <A HREF="intouch.html">ecos-discuss</A> mailing
+the discussions in the <A HREF="intouch.html">&lt;ecos-discuss&gt;</A> mailing
 list gives us a better understanding of the user community, and
 perhaps some new ideas.
 <P>
-If you wish to contribute to the actual code there are still different
+If you wish to contribute to the actual code there are multiple
 levels of involvement. You can write a new package. This could be a
 HAL package as part of a port of the system to new hardware. It could
 be a device driver. It could provide some new functionality such as a
@@ -391,7 +390,7 @@ memory. You may add new functionality. Contributions to the
 documentation and to the test suites are particularly welcome, since
 these areas are often overlooked by contributors.
 <P>
-Small patches can be sent directly to the ecos-discuss mailing list.
+Small patches can be sent directly to the &lt;ecos-discuss&gt; mailing list.
 For larger patches it is better to send a message to the mailing list
 indicating where the patch can be found. An ftp upload area will be
 installed on the sourceware server in the near future to facilitate
@@ -407,7 +406,7 @@ include the following:
 <P>
 <OL>
   <LI>It must not have undesirable effects in terms of code
-      size, data size, cpu cycles, or determinism of the system. This
+      size, data size, CPU cycles, or determinism of the system. This
       restriction can be relaxed if the new behaviour can only be
       explicitly enabled by means of one or more configuration
       options.
@@ -429,7 +428,7 @@ include the following:
 <P>
 A contribution need not meet all these requirements immediately. In
 fact it often makes sense to start with a proposal on the <A
-HREF="intouch.html">ecos-discuss</A> mailing list, possibly including
+HREF="intouch.html">&lt;ecos-discuss&gt;</A> mailing list, possibly including
 an initial patch which is known to be unacceptable, with the
 understanding that the contributor will make further changes. If there
 are major problems with the proposed contribution then it is better to
@@ -439,7 +438,7 @@ duplication of effort. There may be better and easier ways to tackle
 the problem. If you want to discuss a proposal using more private
 communication channels rather than a public mailing list then you can
 send email directly to <A
-HREF="mailto:ecos-maintainers@cygnus.com">ecos-maintainers@cygnus.com</A>.
+HREF="mailto:ecos-maintainers@cygnus.com">&lt;ecos-maintainers@cygnus.com&gt;</A>.
 <P>
 <h4><A NAME="contrib_assign">Why do I need to sign a copyright assignment?</A></h4>
 <P>
@@ -468,7 +467,7 @@ officer of the company or a person with the necessary authority.
 <P>
 We are aware that copyright assignments involve an unpleasant amount
 of bureaucracy for many contributors, especially since we have to deal
-with the paperwork at the other end. However we believe that the
+with the paperwork at the other end. However, we believe that the
 additional protection offered is necessary for the eCos user community
 as a whole. 
 <P>
@@ -478,10 +477,10 @@ Our intention is to provide a set of web pages indicating various
 projects that people can work on. These pages will include projects
 already in progress and projects that have been suggested but that
 have not yet started. Typically additions to these projects will be
-proposed on the <A HREF="intouch.html">ecos-discuss</A> mailing list,
-discussed for a while, and then a summary will be prepared and become
-one of these web pages. Until these pages are ready the best place to
-start would be the ecos-discuss mailing list itself.
+proposed on the <A HREF="intouch.html">&lt;ecos-discuss&gt;</A> mailing list,
+discussed for a while, and then a summary will be prepared. Until
+these pages are ready the best place to start would be the
+&lt;ecos-discuss&gt; mailing list itself.
 <P>
 <A HREF="#top">Top</A>
 <P>
