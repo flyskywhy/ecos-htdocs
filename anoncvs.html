@@ -64,7 +64,7 @@ discuss access with your local systems administrator.
 <P>
 Type the following command to login to the CVS server:
 <PRE>
-      cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos login
+      cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos login
 </PRE>
 <P>
 You will be prompted for a password which is <i>anoncvs</i>. You only need to
@@ -74,7 +74,7 @@ directory for use in subsequent sessions.
 <P>
 Change to the directory where you want to check out eCos and type:
 <PRE>
-     cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos -z 9 co -P ecos
+     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos -z 9 co -P ecos
 </PRE>
 <P>
 This command should initiate a connection to the sourceware server and check
@@ -111,7 +111,7 @@ form <CODE>ecos-sw-&lt;date in ISO format&gt;</CODE> (eg <CODE>ecos-sw-1999-05-1
 <P>
 To check out a particular version from scratch, use a command such as:
 <PRE>
-     cvs -d :pserver:anoncvs@sourceware.cygnus.com:/cvs/ecos co -r ecos-v1_2_1-release ecos
+     cvs -d :pserver:anoncvs@anoncvs.cygnus.com:/cvs/ecos co -r ecos-v1_2_1-release ecos
 </PRE>
 <P>
 As with all such <i>sticky</I> checkouts, a cvs
