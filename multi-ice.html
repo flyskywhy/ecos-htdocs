@@ -128,7 +128,8 @@ multi-ice directory. For example:
   bash-2.04$ cd gdb/multi-ice
   bash-2.04$ make -w MULTI_ICE_INCLUDES="-I/cygdrive/c/Rdi/Headers" \
     MULTI_ICE_LIBS="-L/cygdrive/c/Multi-ICE -L/tmp/migdb/gdb-5.1.1/gdb/multi-ice -ltoolconf" 2>&1 | tee make.out
-</pre></p>
+</pre>
+<b>Note:</b> There may be a large number of warnings.</p>
 <p>At this point the build of the multi-ice-gdb-server should be complete.
 As it needs access to the Multi-ICE.dll file, it is probably easiest to
 copy it straight alongside the ARM Multi-ICE server software:
@@ -138,10 +139,6 @@ copy it straight alongside the ARM Multi-ICE server software:
 </pre></p>
 
 <h2>Running the <tt>multi-ice-gdb-server</tt></h2>
-
-<p>Firstly, when running the <tt>multi-ice-gdb-server</tt>, the Cygwin
-DLL should be available on the PATH.</p>
-
 
 <h3>Connecting to the Multi-ICE server software</h3>
 
@@ -160,13 +157,12 @@ connected to in green.</p>
 <p>Note that certain targets may require jumper modifications, or re-soldered
 connections. For more details, see the ARM Multi-ICE User Guide.</p></li>
 
-<li><i>Start the GNUPro `multi-ice-gdb-server' software</i>
+<li><i>Start the `multi-ice-gdb-server' software</i>
 <p>Open a DOS window or a bash shell and start the <tt>multi-ice-gdb-server</tt>
-software on the host computer. If starting a DOS window, ensure the cygwin
-user tools are also on your PATH.
+software on the host computer. If starting a DOS window, ensure the Cygwin
+DLL is also on your PATH.
 <pre>
-C:\> multi-ice-gdb-server.exe --remote-port 9000 --byte-sex l
---config-dialog
+C:\> multi-ice-gdb-server.exe --remote-port 9000 --byte-sex l --config-dialog
 </pre></p></li>
 
 <li><i>Changing the default MultiICE settings:</i>
@@ -228,6 +224,8 @@ the second connection attempt will just time out.</p>
         </li></ol>
 
 <h3>eCos Thread debugging using Multi-ICE</h3>
+
+<p><b>Note:</b> This functionality will not be available until eCos 2.0.</p>
 
 <p>Normally, the Multi-ICE (and the Multi-ICE GDB server) have no knowledge of
 threads which might be running on the target hardware. In the case of an
