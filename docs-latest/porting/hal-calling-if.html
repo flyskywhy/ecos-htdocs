@@ -20,6 +20,351 @@ monitor. This calling interface is based on the tables used by libbsp
 and is thus backwards compatible with the existing CygMon supported
 platforms.
 
+<h3>Virtual Vectors</h3>
+
+<p>What are virtual vectors, what do they do, and why are they
+needed?</p>
+
+<p>"Virtual vectors" is the name of a table located at a static
+location in the target address space. This table contains 64 vectors
+that point to <em>service</em> functions or data.</p>
+
+<p>The fact that the vectors are always placed at the same location in
+the address space means that both ROM and RAM startup configurations
+can access these and thus the services pointed to.</p>
+
+<p>The primary goal is to allow services to be provided by ROM
+configurations (ROM monitors in particular) with <em>clients</em> in
+RAM configurations being able to use these services.</p>
+
+<p>Without the table of pointers this would be impossible since the
+ROM and RAM applications would be linked separately - in effect having
+separate name spaces - preventing direct references from one to the
+other.</p>
+
+<p>This decoupling of service from client is needed by RedBoot,
+allowing among other things debugging of applications which do not
+contain debugging client code (stubs).</p>
+
+
+<h4>Initialization (or Mechanism vs. Policy)</h4>
+
+<p>Virtual vectors are a <em>mechanism</em> for decoupling services
+from clients in the address space.</p>
+
+<p>The mechanism allows services to be implemented by ROM monitor, RAM
+application, to be switched out at run-time, to be disabled by
+installing pointers to dummy functions, etc.</p>
+
+<p>The appropriate use of the mechanism is specified loosely by a
+<em>policy</em>. The general policy dictates that the vectors are
+initialized in whole by ROM monitors (built for ROM or RAM), or by
+stand-alone applications.</p>
+
+<p>For configurations relying on a ROM monitor environment, the policy
+is to allow initialization on a service by service basis. The default
+is to initialize all services, except COMMS services since these are
+presumed to already be carrying a communication session to the
+debugger / console which was used for launching the application.  This
+means that the bulk of the code gets tested in normal builds, and not
+just once in a blue moon when building new stubs or a ROM
+configuration.</p>
+
+<p>The configuration options are written to comply with this policy by
+default, but can be overridden by the user if desired. Defaults
+are:</p>
+
+<ul>
+<li> <p>For application development: the ROM monitor provides
+     debugging and diagnostic IO services, the RAM application relies
+     on these by default.</p>
+
+<li> <p>For production systems: the application contains all the
+     necessary services.</p>
+</ul>
+
+<h4>Pros and Cons of Virtual Vectors</h4>
+
+<p>There are pros and cons associated with the use of virtual
+vectors. We do believe that the pros generally outweigh the cons by a
+great margin, but there may be situations where the opposite is
+true.</p>
+
+<p>The use of the services are implemented by way of macros, meaning
+that it is possible to circumvent the virtual vectors if
+desired. There is (as yet) no implementation for doing this, but it is
+possible.</p>
+
+<p>Here is a list of pros and cons:</p>
+
+<dl>
+<dt><p>Pro: Allows debugging without including stubs</p></dt>
+
+      <dd><p>This is the primary reason for using virtual vectors. It
+          allows the ROM monitor to provide most of the debugging
+          infrastructure, requiring only the application to provide
+          hooks for asynchronous debugger interrupts and for accessing
+          kernel thread information.</p></dd>
+
+<dt><p>Pro: Allows debugging to be initiated from arbitrary
+       channel</p></dt>
+
+      <dd><p> While this is only true where the application does not
+           actively override the debugging channel setup, it is a very
+           nice feature during development. In particular it makes it
+           possible to launch (and/or debug) applications via Ethernet
+           even though the application configuration does not contain
+           networking support.</p></dd>
+
+<dt><p>Pro: Image smaller due to services being provided by ROM
+       monitor</p></dt>
+
+      <dd><p>All service functions except HAL IO are included in the
+           default configuration. But if these are all disabled the
+           image for download will be a little smaller. Probably
+           doesn't matter much for regular development, but it is a
+           worthwhile saving for the 20000 daily tests run in the Red
+           Hat eCos test farm.</p></dd>
+
+<dt><p>Con: The vectors add a layer of indirection, increasing application
+       size and reducing performance.</p></dt>
+
+      <dd><p>The size increase is a fraction of what is required to
+           implement the services. So for RAM configurations there is
+           a net saving, while for ROM configurations there is a small
+           overhead.</p></dd>
+
+      <dd><p>The performance loss means little for most of the
+           services (of which the most commonly used is diagnostic IO
+           which happens via polled routines anyway).</p></dd>
+
+<dt><p>Con: The layer of indirection is another point of
+       failure.</p></dt>
+
+      <dd><p> The concern primarily being that of vectors being
+           trashed by rogue writes from bad code, causing a complete
+           loss of the service and possibly a crash.  But this does
+           not differ much from a rogue write to anywhere else in the
+           address space which could cause the same amount of
+           mayhem. But it is arguably an additional point of failure
+           for the service in question.</p></dd>
+
+<dt><p>Con: All the indirection stuff makes it harder to bring a HAL
+       up</p></dt>
+
+      <dd><p> This is a valid concern. However, seeing as most of the
+           code in question is shared between all HALs and should
+           remain unchanged over time, the risk of it being broken
+           when a new HAL is being worked on should be
+           minimal.</p></dd>
+
+      <dd><p> When starting a new port, be sure to implement the HAL
+           IO drivers according to the scheme used in other drivers,
+           and there should be no problem.</p></dd>
+
+      <dd><p> However, it is still possible to circumvent the vectors
+           if they are suspect of causing problems: simply change the
+           HAL_DIAG_INIT and HAL_DIAG_WRITE_CHAR macros to use the raw
+           IO functions.</p></dd>
+</dl>
+
+<h4>Available services</h4>
+
+<p>The hal_if.h file in the common HAL defines the complete list of
+available services. A few worth mentioning in particular:</p>
+
+<ul>
+<li> <p>COMMS services. All HAL IO happens via the communication
+        channels.</p>
+<li> <p>uS delay. Fine granularity (busy wait) delay function.</p>
+<li> <p>Reset. Allows a software initiated reset of the board.</p>
+</ul>
+
+
+<h3>The COMMS channels</h3>
+
+<p>As all HAL IO happens via the COMMS channels these deserve to be
+described in a little more detail. In particular the controls of where
+diagnostic output is routed and how it is treated to allow for display
+in debuggers.</p>
+
+
+<h4>Console and Debugging Channels</h4>
+
+<p>There are two COMMS channels - one for console IO and one for
+debugging IO. They can be individually configured to use any of the
+actual IO ports (serial or Ethernet) available on the platform.</p>
+
+<p>The console channel is used for any IO initiated by calling the
+diag_*() functions. Note that these should only be used during
+development for debugging, assertion and possibly tracing
+messages. All proper IO should happen via proper devices. This means
+it should be possible to remove the HAL device drivers from production
+configurations where assertions are disabled.</p>
+
+<p>The debugging channel is used for communication between the
+debugger and the stub which remotely controls the target for the
+debugger (the stub runs on the target). This usually happens via some
+protocol, encoding commands and replies in some suitable form.</p>
+
+<p>Having two separate channels allows, e.g., for simple logging
+without conflicts with the debugger or interactive IO which some
+debuggers do not allow.</p>
+
+
+<h4>Mangling</h4>
+
+<p>As debuggers usually have a protocol using specialized commands
+when communicating with the stub on the target, sending out text as
+raw ASCII from the target on the same channel will either result in
+protocol errors (with loss of control over the target) or the text may
+just be ignored as junk by the debugger.</p>
+
+<p>To get around this, some debuggers have a special command for text
+output. Mangling is the process of encoding diagnostic ASCII text
+output in the form specified by the debugger protocol.</p>
+
+<p>When it is necessary to use mangling, i.e. when writing console
+output to the same port used for debugging, a mangler function is
+installed on the console channel which mangles the text and passes it
+on to the debugger channel.</p>
+
+
+<h4>Controlling the Console Channel</h4>
+
+<p>Console output configuration is either inherited from the ROM
+monitor launching the application, or it is specified by the
+application. This is controlled by the new option
+CYGSEM_HAL_VIRTUAL_VECTOR_INHERIT_CONSOLE which defaults to enabled
+when the configuration is set to use a ROM monitor.</p>
+
+<p>If the user wants to specify the console configuration in the
+application image, there are two new options that are used for
+this.</p>
+
+<p>Defaults are to direct diagnostic output via a mangler to the
+debugging channel (CYGDBG_HAL_DIAG_TO_DEBUG_CHAN enabled). The mangler
+type is controlled by the option CYGSEM_HAL_DIAG_MANGLER. At present
+there are only two mangler types:</p>
+
+<dl>
+<dt><p>GDB</p></dt>
+
+  <dd><p> This causes a mangler appropriate for debugging with GDB to be
+       installed on the console channel.</p></dd>
+
+<dt><p>None</p></dt>
+
+   <dd><p> This causes a NULL mangler to be installed on the console
+        channel.  It will redirect the IO to/from the debug channel
+        without mangling of the data. This option differs from setting
+        the console channel to the same IO port as the debugging
+        channel in that it will keep redirecting data to the debugging
+        channel even if that is changed to some other port.</p></dd>
+
+</dl>
+
+<p>Finally, by disabling CYGDBG_HAL_DIAG_TO_DEBUG_CHAN, the diagnostic
+output is directed in raw form to the specified console IO port.</p>
+
+<p>In summary this results in the following common configuration
+scenarios for RAM startup configurations:</p>
+
+<ul>
+<li><p> For regular debugging with diagnostic output appearing in the
+     debugger, mangling is enabled and stubs disabled.</p>
+
+     <p>Diagnostic output appears via the debugging channel as
+     initiated by the ROM monitor, allowing for correct behavior
+     whether the application was launched via serial or Ethernet, from
+     the RedBoot command line or from a debugger.</p>
+
+<li><p> For debugging with raw diagnostic output, mangling is
+     disabled.</p>
+
+     <p> Debugging session continues as initiated by the ROM monitor,
+     whether the application was launched via serial or
+     Ethernet. Diagnostic output is directed at the IO port configured
+     in the application configuration.</p>
+
+     <p><b>Note:</b> There is one caveat to be aware of. If the
+       application uses proper devices (be it serial or Ethernet) on
+       the same ports as those used by the ROM monitor, the
+       connections initiated by the ROM monitor will be
+       terminated.</p>
+</ul>
+
+<p>And for ROM startup configurations:</p>
+
+<ul>
+<li><p> Production configuration with raw output and no debugging
+     features (configured for RAM or ROM), mangling is disabled, no
+     stubs are included.</p>
+
+     <p>Diagnostic output appears (in unmangled form) on the specified
+     IO port.</p>
+
+<li><p> RedBoot configuration, includes debugging features and necessary
+     mangling.</p>
+
+     <p>Diagnostic and debugging output port is auto-selected by the
+     first connection to any of the supported IO ports. Can change
+     from interactive mode to debugging mode when a debugger is
+     detected - when this happens a mangler will be installed as
+     required.</p>
+
+<li><p> GDB stubs configuration (obsoleted by RedBoot configuration),
+     includes debugging features, mangling is hardwired to GDB
+     protocol.</p>
+
+     <p>Diagnostic and debugging output is hardwired to configured IO
+     ports, mangling is hardwired.</p>
+</ul>
+
+
+<h4>Footnote: Design Reasoning for Control of Console Channel</h4>
+
+<p>The current code for controlling of the console channel is a
+replacement for an older implementation which had some shortcomings
+addressed by the new implementation.</p>
+
+<p>This is what the old implementation did: on initialization it would
+check if the CDL configured console channel differed from the active
+debug channel - and if so, set the console channel, thereby disabling
+mangling.</p>
+
+<p>The idea was that whatever channel was configured to be used for
+console (i.e., diagnostic output) in the application was what should
+be used. Also, it meant that if debug and console channels were
+normally the same, a changed console channel would imply a request for
+unmangled output.</p>
+
+<p>But this prevented at least two things:</p>
+
+<ul>
+<li><p> It was impossible to inherit the existing connection by which
+     the application was launched (either by RedBoot commands via
+     telnet, or by via a debugger).</p>
+
+     <p>This was mostly a problem on targets supporting Ethernet
+     access since the diagnostic output would not be returned via the
+     Ethernet connection, but on the configured serial port.</p>
+
+     <p>The problem also occurred on any targets with multiple serial
+     ports where the ROM monitor was configured to use a different
+     port than the CDL defaults.</p>
+
+<li><p> Proper control of when to mangle or just write out raw ASCII
+        text.</p>
+
+     <p>Sometimes it's desirable to disable mangling, even if the
+     channel specified is the same as that used for debugging. This
+     usually happens if GDB is used to download the application, but
+     direct interaction with the application on the same channel is
+     desired (GDB protocol only allows output from the target, no
+     input).</p>
+</ul>
+
 <h3>The calling interface API</h3>
 
 <p>The calling interface API is defined by hal_if.h and hal_if.c in

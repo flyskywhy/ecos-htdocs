@@ -24,7 +24,14 @@ frame header from IP frame.
 
 Getting started: use server_test and ping target to see output. The
 other way can be tricky if there's no output, or if the output gets
-ignored by the host.
+ignored by the host. (enable CYGPKG_NET_BUILD_TESTS)
+
+Disable CYGHWR_NET_DRIVER_ETH0_BOOTP and CYGPKG_NET_DHCP, set
+CYGHWR_NET_DRIVER_ETH0_ADDRS and suitable values in
+CYGHWR_NET_DRIVER_ETH0_ADDRS_IP,
+CYGHWR_NET_DRIVER_ETH0_ADDRS_BROADCAST and
+CYGHWR_NET_DRIVER_ETH0_ADDRS_GATEWAY. 
+
 
 gotcha: frame padding, may need to be enabled specifically, and hosts
 will (silently!) ignore small packets.
