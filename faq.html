@@ -982,7 +982,7 @@ this indicates that the Makefile contains carriage return characters at the end
 of each line which is confusing <tt>make</tt>. This happens most frequently
 when using Cygwin v1.1.1. You may determine the version of the installed Cygwin
 DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
-
+<p>
 <p>The most complete solution is to upgrade your Cygwin DLL to the latest version.
 Instructions for this may be found in the <A HREF="http://sourceware.cygnus.com/cygwin/faq">
 Cygwin FAQ</A>.
@@ -993,13 +993,37 @@ it is released), you should download a <a href="http://sourceware.cygnus.com/cyg
 development snapshot</a> dated June 2000 or later for now.
 
 <p>
+<h5>My gcc build fails with the message "<tt>conflicting types for `strsignal'</tt>"</h5>
+<p>
+This problem is also fixed in Cygwin v1.1.2, so update your cygwin installation as
+above. If you are using a development snapshot to resolve this problem,
+you will need to ensure the "winsup" package is updated, not just the Cygwin DLL
+itself. You will also need to use a development snapshot dated after 3rd June.
+
+<h5>My build fails with the message "<tt>tinfo2.cc:31:33: stdlib.h: No such file or directory</tt>"</h5>
+<p>
+Download the <a href="tools/patches/tinfo2inhibitlibc.pat">tinfo2inhibitlibc.pat</a>
+patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; tinfo2inhibitlibc.pat | patch -p0
+</nobr></tt>
+<p>The make command can now simply be reexecuted.
 
 <h5>Insight 5.0 cannot display my source files, although gdb -nw works</h5>
 <p>
-You need to apply a patch to the Insight TCL directory. Please revisit
-the <a href="getstart.html">development tool build instructions</a>.
+You need to apply a patch to the Insight TCL directory. Download the
+<a href="tools/patches/insight-tcl.pat">
+insight-tcl.pat</a> patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; insight-tcl.pat | patch -p0
+</tt></nobr>
 <p>
-
+You must now rebuild and reinstall Insight as described in the build instructions
+you originally used. It is safest to use a new empty build directory rather than
+reusing the Insight build directory from the previous build.
+<p>
 
 <h5>I have Cygwin b20.1 and....</h5>
 
