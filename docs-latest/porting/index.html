@@ -91,7 +91,7 @@ system.
 <p><HR SIZE=3>
 <h4>Platform HAL Porting</h4>
 
-<p>This is the type of port that takes less effort. It basically
+<p>This is the type of port that takes the least effort. It basically
 consists of describing the platform (board) for the HAL: memory
 layout, early platform initialization, interrupt controllers, and
 simple serial device driver.
@@ -106,11 +106,11 @@ possibly a variant HAL port.
 <p><HR SIZE=3>
 <h4>Variant HAL Porting</h4>
 
-<p>A variant port can both be a fairly limited job, but can also
+<p>A variant port can be a fairly limited job, but can also
 require quite a lot of work. A variant HAL describes how a specific
 CPU variant differs from the generic CPU architecture. The variant HAL
 can re-define cache, MMU, interrupt, and other features which override
-the default implementation provided by the architecture HAl.
+the default implementation provided by the architecture HAL.
 
 <p>Doing a variant port requires a preexisting architecture HAL port.
 
