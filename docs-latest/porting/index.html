@@ -30,20 +30,28 @@ probably need to make some implementation decisions, tweak a few
 things, and just plain have to rely on common sense.
 
 <p>However, what is covered here should be a large part of the
-process. If you get stuck, you are advised to read the ecos-discuss
-archive where you may find discussions which apply to the problem at
-hand. You are also invited to ask questions on the list to help you
-resolve problems - but as is always the case with community lists, do
-not consider it an oracle for any and all questions. Use common sense
-- if you ask too many questions which could have been answered by
-reading the documentation, FAQ or source code, you are likely to be
-ignored.
+process. If you get stuck, you are advised to read the <a
+href="http://sourceware.cygnus.com/ml/ecos-discuss/">ecos-discuss
+archive</a> where you may find discussions which apply to the problem
+at hand. You are also invited to ask questions on the <a
+href="http://sourceware.cygnus.com/ecos/intouch.html">ecos-discuss
+mailing list</a> to help you resolve problems - but as is always the
+case with community lists, do not consider it an oracle for any and
+all questions. Use common sense - if you ask too many questions which
+could have been answered by reading the <a
+href="http://sourceware.cygnus.com/ecos/docs-latest/">documentation</a>,
+<a href="http://sourceware.cygnus.com/ecos/faq.html">FAQ</a> or <a
+href="http://sourceware.cygnus.com/cgi-bin/cvsweb.cgi/ecos/packages/?cvsroot=ecos">source
+code</a>, you are likely to be ignored.
 
 
 <p>This document will be continually improved by Red Hat engineers as
 time allows. Feedback and help with improving the document is sought,
 so if you have any comments at all, please do not hesitate to post
-them on ecos-discuss.
+them on <a
+href="mailto:ecos-discuss@sourceware.cygnus.com?subject=[porting]
+<subject>">ecos-discuss</a> (please prefix the subject with
+[porting]).
 
 <p>At the moment this document is mostly an outline. Many details to
 fill in before it becomes truly usable. Many places you'll find a list
@@ -70,6 +78,8 @@ system.
 <p><a href="hal-diag.html">Diagnostics IO</a>
 
 <p><a href="hal-calling-if.html">eCos/ROM Monitor Calling Interface</a>
+
+<p><a href="hal-stubs.html">eCos GDB stubs</a>
 
 
 <p><HR SIZE=3>
@@ -115,6 +125,5 @@ the default implementation provided by the architecture HAl.
 <h3>Writing a Driver</h3>
 
 <em>TBD: link to existing driver porting help (or move it here)</em>
-
 
 <!--#include virtual="../../include/footer.html"-->
