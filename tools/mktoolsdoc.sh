@@ -239,22 +239,32 @@ then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-<i>YYYYMMDD</
 <li>You may now need to apply a small number of source patches that are
 required to fix outstanding problems and add eCos support to the tools.
 If you are using a GDB/Insight snapshot dated earlier than 2000-03-30, then
-you must download the <a href="patches/ecos-net-gdb-patchset">ecos-net-gdb-patchset</a> patch to a file.
+you must download the <a href="patches/ecos-gdb.pat">ecos-gdb.pat</a> patch to a file.
 This can be achieved with most browsers by either shift-clicking or right-clicking on the link.
 You must not view the link and cut-and-paste because white space must be preserved exactly.
 Apply the patch:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-gdb-patchset
+${WINDOWS+
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gdb.pat | patch -p0
+}
+${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gdb.pat
+}
 </tt></nobr>
 <p>
 
 ${GCCSNAP-
-In a similar manner, download the <a href="patches/ecos-net-gcc-2.95.2-patchset">
-ecos-net-gcc-2.95.2-patchset</a> patch to a file and apply it:<p>
+In a similar manner, download the <a href="patches/ecos-gcc-2952.pat">
+ecos-gcc-2952.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-2.95.2<br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-gcc-2.95.2-patchset
+${WINDOWS+
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gcc-2952.pat | patch -p0
+}
+${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-2952.pat
+}
 </tt></nobr>
 <p>
 
@@ -266,11 +276,16 @@ are handled correctly:<p>
 }
 ${GCCSNAP+
 If you are using a GCC snapshot dated 2000-03-20 or earlier, then in a similar
-manner to the above, download the <a href="patches/ecos-net-gcc-snap-cpp-patch">
-ecos-net-gcc-snap-cpp-patch</a> patch to a file and apply it:<p>
+manner to the above, download the <a href="patches/ecos-gcc-snap-cpp.pat">
+ecos-gcc-snap-cpp.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-gcc-snap-cpp-patch
+${WINDOWS+
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gcc-snap-cpp.pat | patch -p0
+}
+${WINDOWS-
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap-cpp.pat
+}
 </tt></nobr>
 <p>
 
@@ -627,14 +642,6 @@ outputfunc linux-i686-linux.html
 
 TOOLPREFIX=mips-tx39-elf
 TARGETNAME="MIPS TX39"
-EXTRAPATCH='
-Finally, download the <a href="patches/binutils.tx39name.patch">binutils.tx39name.patch</a> patch
-to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; binutils.tx39name.patch
-</tt></nobr><p>
-'
 
 
 ###################
@@ -653,6 +660,14 @@ INSIGHTBLDDSK=120MB
 INSIGHTINSTDSK=45MB
 TOTBLDDSK=195MB
 TOTINSTDSK=85MB
+EXTRAPATCH='
+Finally, download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-binutils-tx39name.pat | patch -p0
+</tt></nobr><p>
+'
 
 outputfunc win-mips-tx39-elf.html
 
@@ -673,6 +688,14 @@ INSIGHTBLDDSK=125MB
 INSIGHTINSTDSK=80MB
 TOTBLDDSK=190MB
 TOTINSTDSK=110MB
+EXTRAPATCH='
+Finally, download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-binutils-tx39name.pat
+</tt></nobr><p>
+'
 
 outputfunc linux-mips-tx39-elf.html
 
@@ -779,19 +802,6 @@ unset GCCSNAP
 TOOLPREFIX=mn10300-elf
 TARGETNAME="MN10300/AM33"
 GCCSNAP=
-EXTRAPATCH='
-Some hosts have had difficulty compiling the mn10300 architectural
-simulator (part of the GDB source distribution).
-Specifically, the compiler may abort when compiling the source
-file <tt>sim/mn10300/semantics.c</tt>.
-If this happens, download the <a href="patches/ecos-net-mn10300-sim-O1-optional-patch">
-ecos-net-mn10300-sim-O1-optional-patch</a> patch to a file and apply it to
-reduce the compiler optimization level when compiling the file:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-mn10300-sim-O1-optional-patch
-</tt></nobr><p>
-'
 
 ###################
 # Windows mn10300
@@ -810,6 +820,19 @@ INSIGHTBLDDSK=125MB
 INSIGHTINSTDSK=35MB
 TOTBLDDSK=195MB
 TOTINSTDSK=70MB
+EXTRAPATCH='
+Some hosts have had difficulty compiling the mn10300 architectural
+simulator (part of the GDB source distribution).
+Specifically, the compiler may abort when compiling the source
+file <tt>sim/mn10300/semantics.c</tt>.
+If this happens, download the <a href="patches/ecos-mn10300-sim-o1.pat">
+ecos-mn10300-sim-o1.pat</a> patch to a file and apply it to
+reduce the compiler optimization level when compiling the file:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-mn10300-sim-o1.pat | patch -p0
+</tt></nobr><p>
+'
 
 outputfunc win-mn10300-elf.html
 
@@ -830,6 +853,19 @@ INSIGHTBLDDSK=145MB
 INSIGHTINSTDSK=90MB
 TOTBLDDSK=205MB
 TOTINSTDSK=120MB
+EXTRAPATCH='
+Some hosts have had difficulty compiling the mn10300 architectural
+simulator (part of the GDB source distribution).
+Specifically, the compiler may abort when compiling the source
+file <tt>sim/mn10300/semantics.c</tt>.
+If this happens, download the <a href="patches/ecos-mn10300-sim-o1.pat">
+ecos-mn10300-sim-o1.pat</a> patch to a file and apply it to
+reduce the compiler optimization level when compiling the file:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-mn10300-sim-o1.pat
+</tt></nobr><p>
+'
 
 outputfunc linux-mn10300-elf.html
 
@@ -842,17 +878,6 @@ EXTRAPATCH=
 TOOLPREFIX=thumb-elf
 TARGETNAME="ARM THUMB"
 GCCSNAP=
-EXTRAPATCH='
-GCC has known problems with ARM and thumb targets in snapshots dated between
-2000-02-14 and 2000-03-13 inclusive. If you are using one of these snapshots,
-download the 
-<a href="patches/ecos-net-thumb-stackalign-patch">ecos-net-thumb-stackalign-patch</a>
-patch to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-thumb-stackalign-patch
-</tt></nobr><p>
-'
 
 ###################
 # Windows thumb
@@ -871,6 +896,17 @@ INSIGHTBLDDSK=110MB
 INSIGHTINSTDSK=140MB
 TOTBLDDSK=185MB
 TOTINSTDSK=75MB
+EXTRAPATCH='
+GCC has known problems with ARM and thumb targets in snapshots dated between
+2000-02-14 and 2000-03-13 inclusive. If you are using one of these snapshots,
+download the 
+<a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
+patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-thumb-stackalign.pat | patch -p0
+</tt></nobr><p>
+'
 
 outputfunc win-thumb-elf.html
 
@@ -890,6 +926,17 @@ INSIGHTBLDDSK=115MB
 INSIGHTINSTDSK=60MB
 TOTBLDDSK=180MB
 TOTINSTDSK=95MB
+EXTRAPATCH='
+GCC has known problems with ARM and thumb targets in snapshots dated between
+2000-02-14 and 2000-03-13 inclusive. If you are using one of these snapshots,
+download the 
+<a href="patches/ecos-thumb-stackalign.pat">ecos-thumb-stackalign.pat</a>
+patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-thumb-stackalign.pat
+</tt></nobr><p>
+'
 
 outputfunc linux-thumb-elf.html
 
@@ -902,25 +949,6 @@ unset GCCSNAP
 TOOLPREFIX=mips64vr4300-elf
 TARGETNAME="NEC MIPS VR4300"
 GCCSNAP=
-EXTRASNAPPATCH='
-Now download the <a href="patches/ecos-net-gcc-snap-patchset">ecos-net-gcc-snap-patchset</a> patch
-to a file and apply it:<p>
-<nobr><tt>
-<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-net-gcc-snap-patchset
-</tt></nobr><p>
-'
-
-EXTRAPATCH='
-Finally, if you are using a GDB snapshot dated earlier than 2000-04-09 you must
-download the <a href="patches/gdb-vr4300-mipsregsize.patch">gdb-vr4300-mipsregsize.patch</a> patch
-to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; gdb-vr4300-mipsregsize.patch
-</tt></nobr><p>
-'
-
 
 ###################
 # Windows vr4300
@@ -939,6 +967,25 @@ INSIGHTBLDDSK=115MB
 INSIGHTINSTDSK=35MB
 TOTBLDDSK=195MB
 TOTINSTDSK=75MB
+EXTRASNAPPATCH='
+Now download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-gcc-snap.pat | patch -p0
+</tt></nobr><p>
+'
+
+EXTRAPATCH='
+Finally, if you are using a GDB snapshot dated earlier than 2000-04-09 you must
+download the <a href="patches/ecos-gdb-vr4300-mipsregsize.pat">ecos-gdb-vr4300-mipsregsize.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-gdb-vr4300-mipsregsize.pat | patch -p0
+</tt></nobr><p>
+'
+
 
 outputfunc win-vr4300-elf.html
 
@@ -959,6 +1006,25 @@ INSIGHTBLDDSK=130MB
 INSIGHTINSTDSK=70MB
 TOTBLDDSK=205MB
 TOTINSTDSK=105MB
+EXTRASNAPPATCH='
+Now download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+<!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap.pat
+</tt></nobr><p>
+'
+
+EXTRAPATCH='
+Finally, if you are using a GDB snapshot dated earlier than 2000-04-09 you must
+download the <a href="patches/ecos-gdb-vr4300-mipsregsize.pat">ecos-gdb-vr4300-mipsregsize.pat</a> patch
+to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gdb-vr4300-mipsregsize.pat
+</tt></nobr><p>
+'
+
 
 outputfunc linux-vr4300-elf.html
 
