@@ -8,7 +8,7 @@
 <h1>Known Problems</h1>
 <HR SIZE=3>
 
-<h2>Current release</h2>
+<h2>Previous releases</h2>
 
 <table border=0 cellspacing=2 cellpadding=4>
 
@@ -25,7 +25,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19739</td>
-    <td>&nbsp;</td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>The need to specify the architecture-specific version of GDB
 		while following the tutorial text in 
 		'Getting Started with eCos' is not clear.</td>
@@ -36,7 +36,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19871</td>
-    <td>&nbsp;</td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>HAL stack size symbols are not documented.</td>
     <td valign=top>HALs now define some symbols to make it easier to create stacks
 		of a suitable size for the system in question, if writing code
@@ -84,7 +84,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19935</td>
-    <td>&nbsp;</td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>The configuration option
 		CYGVAR_KERNEL_INSTRUMENT_EXTERNAL_BUFFER is documented but
 		is no longer accessible from the eCos Configuration Tool.</td>
@@ -93,7 +93,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>20024</td>
-    <td>&nbsp;</td>
+    <td><CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>The eCos serial filter tool (ser_filter) is not documented.</td>
     <td valign=top>Refer to the file ser_filter.txt located in the tools/bin
 		directory under the base of the eCos installation for details
@@ -149,7 +149,7 @@
 
   <tr bgcolor="#DDDDDD">
     <td valign=top>19922</td>
-    <td>&nbsp;</td>
+    <td>&nbsp;<CENTER><IMG SRC="img/tick.gif"></CENTER></td>
     <td valign=top>eCos will not build correctly on a file system which has been
 		mounted using the Cygwin binary mode.</td>
     <td valign=top>Do not attempt to mount eCos-related file systems in binary
@@ -505,7 +505,7 @@
     <td valign=top>902267</td>
     <td><CENTER>&nbsp;</CENTER></td>
     <td valign=top>When running an application which produces large amounts
-                of output, selecting 'q &lt;return&gt;' when presented with 
+                of output, selecting 'q &lt;return&gt;' when presented with
                 the prompt:
                   ---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
                 gdb will hang if you select 'q &lt;return&gt;' and then try to
@@ -514,19 +514,6 @@
     <td valign=top>Do not select 'q &lt;return&gt;'.  Instead select '&lt;return&gt;'
                 and press ^C to halt the application. Alternatively, remove
                 the prompts with the GDB command 'set height 0'.</td>
-  </tr>
-
-</table>
-
-<h2>Previous releases</h2>
-
-<table border=0 cellspacing=2 cellpadding=4>
-
-  <tr bgcolor="#666666">
-    <td valign=top><FONT color="#FFFFFF"><b><center>ID</center></b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b><center>CVS fix</center></b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b>Problem</b></font></td>
-    <td valign=top><FONT color="#FFFFFF"><b>Workaround</b></font></a>
   </tr>
 
   <tr bgcolor="#999999">
@@ -1255,6 +1242,6 @@
 </table>
 
 
-<p><font size=-1>Revision 1.3.1.0</font>
+<p><font size=-1>Revision 1.3.1.1</font>
 
 <!--#include virtual="include/footer.html"-->
