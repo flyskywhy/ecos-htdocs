@@ -421,9 +421,12 @@ The eCos Configuration Tool also allows you to set the build tools path.
 <h3>Troubleshooting</h3>
 
 If you encounter difficulties in building or using the development tools, first check
-the <a href="../faq.html">eCos FAQ</a>. Initial queries
+the <a href="../faq.html">eCos FAQ</a> and the
+<a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
+if the topic has come up before. Initial queries
 may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
-there are other mailing lists which may be more appropriate:
+there are other mailing lists which may be more appropriate if a problem is clearly
+related to a particular tool:
 <ul>
 <li><a href="http://sourceware.cygnus.com/ml/binutils/">Binutils mailing list</a>
 <li><a href="http://sourceware.cygnus.com/ml/gdb/">GDB mailing list</a>

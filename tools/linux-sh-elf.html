@@ -62,7 +62,7 @@ information about installing and using GCC.
 
 
 Unfortunately the most recent official release (GCC 2.95.2) is not capable of
-supporting eCos for Hitachi SH. A <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/index.html>snapshot of the
+supporting eCos for Hitachi SH. A <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/index.html">snapshot of the
 GCC development sources</a> should be used to obtain the most up-to-date compiler
 with new features and bug fixes.<p>
 
@@ -71,7 +71,7 @@ snapshots will fix bugs that have not yet been discovered. If you have compiler
 problems you may wish to consider updating to a more recent snapshot, or
 reverting to an older one.
 
-When downloading a snapshot from the <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/>
+When downloading a snapshot from the <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/">
 GCC snapshot download area</a> note that only the core compiler and C++
 distributions are required (prefix <tt>egcs-core-</tt> and <tt>egcs-g++-</tt>).<p>
 
@@ -126,11 +126,11 @@ to occupy approximately 6 times the space required by the compressed archive its
 
 
 To extract the downloaded sources, you will need to have either the
-<a href=../../bzip2/>bzip2</a> or <a href=http://www.gzip.org/>gzip</a>
+<a href="../../bzip2/">bzip2</a> or <a href="http://www.gzip.org/">gzip</a>
 compression utilities, depending on your choice of download format.
-A <i>patch</i> utility (preferably <a href=http://www.gnu.org/software/patch/patch.html>GNU patch</a>) is also required.<p>
+A <i>patch</i> utility (preferably <a href="http://www.gnu.org/software/patch/patch.html">GNU patch</a>) is also required.<p>
 The following steps should be followed at a <i>sh</i>, <i>ksh</i> or <i>bash</i> prompt. Users of
-the <i>csh</i> and <i>tcsh</i> shells should replace <tt>2&gt;&amp;1</tt> with <tt>|&amp;</tt> throughout:
+the <i>csh</i> and <i>tcsh</i> shells should replace "<tt>2&gt;&amp;1</tt>" with "<tt>|&amp;</tt>" throughout:
 
 
 
@@ -202,7 +202,7 @@ Apply the patch:<p>
 
 
 If you are using a GCC snapshot dated 2000-03-20 or earlier, then in a similar
-manner to the above, download the <a href=patches/ecos-net-gcc-snap-cpp-patch>
+manner to the above, download the <a href="patches/ecos-net-gcc-snap-cpp-patch">
 ecos-net-gcc-snap-cpp-patch</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
@@ -344,9 +344,12 @@ This directory should be added to the head of your PATH.
 <h3>Troubleshooting</h3>
 
 If you encounter difficulties in building or using the development tools, first check
-the <a href="../faq.html">eCos FAQ</a>. Initial queries
+the <a href="../faq.html">eCos FAQ</a> and the
+<a href="../../ml/ecos-discuss">ecos-discuss mailing list archive</a> to see
+if the topic has come up before. Initial queries
 may be directed to the <a href="../intouch.html">ecos-discuss</a> list. However,
-there are other mailing lists which may be more appropriate:
+there are other mailing lists which may be more appropriate if a problem is clearly
+related to a particular tool:
 <ul>
 <li><a href="http://sourceware.cygnus.com/ml/binutils/">Binutils mailing list</a>
 <li><a href="http://sourceware.cygnus.com/ml/gdb/">GDB mailing list</a>
