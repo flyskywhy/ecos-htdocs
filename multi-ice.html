@@ -101,7 +101,7 @@ sources were saved to <tt>C:\</tt>:
 
 <p>First configure the sources, e.g.:
 <pre>
-  bash-2.04$ /tmp/migdb/gdb-5.1.1/gdb/configure -v --target arm-elf 2>&1 | tee configure.out
+  bash-2.04$ /tmp/migdb/gdb-5.1.1/configure -v --target arm-elf --enable-multi-ice 2>&1 | tee configure.out
 </pre>
 which should produce a lot of output. The configure.out file contains a copy
 of the output for further diagnosis if something goes wrong.</p>
