@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<TITLE>What makes a good eCos patch</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<BR><H2>What makes a good eCos patch</H2>
+Revision 1.0
+<HR noshade SIZE=3>
+
+<p>eCos has relatively relaxed rules about what criteria must be
+fulfilled before a patch is accepted. Nevertheless, there are some key
+points to follow if you do not wish to be asked by an eCos maintainer
+to resubmit your patch. Following these guidelines will also make the
+maintainers' job easier and will lead to your patch being applied sooner:
+<ul>
+<li>All patches should be submitted in an appropriate format (see 
+<a href="patches-generating.html">the section on generating patches</a>).
+<li>Patches should be made against the <a href="anoncvs.html">
+development repository in CVS</a>. Patches against the most recent
+stable release of eCos will be considered, but if the area involved has
+changed greatly since that release, you will be asked to resubmit your patch
+against CVS.
+<li>Non-trivial contributed code requires a copyright assignment (see
+<a href="patches-assignment.html">the section on assigning copyright</a>)
+<li>Patches must have ChangeLog entries, and all new packages must have top
+level ChangeLog files. The
+<a href="http://www.gnu.org/prep/standards_toc.html">GNU Coding
+Standards</a> contain a
+<a href="http://www.gnu.org/prep/standards_40.html#SEC40">section</a> on how
+to write ChangeLog entries. Contributors should follow this style, although
+existing ChangeLogs will also give guidance as to the expectations. Significant
+additions or enhancements, such as a new port, may warrant an entry in the
+top-level NEWS file.
+<li>Patches should either follow the coding standard for the file patched,
+or that from which the file was derived. However, eCos is now intending to
+consolidate around the <a href="http://www.gnu.org/prep/standards_toc.html">GNU
+coding standards</a> for future new files, and we will warmly accept any
+patches conforming to those standards.
+<li>All patches which add new features to eCos should include documentation,
+preferably in DocBook format to allow direct integration into the eCos
+documentation set.
+<li>All patches which modify existing documented behaviour must include a
+patch to the documentation.
+<li>Patches must not break established behaviour that existing applications
+may rely on.
+<li>Almost needless to say, patches must be tested.
+<li>In particular, in "core" code, just because a patch fixes your problem,
+make sure it would not break anything for anyone else. A patch that regresses
+existing behaviour e.g. breaking existing drivers for other platforms, will not
+be applied however otherwise worthy. 
+Instead, functionality that changes existing behaviour may only be included
+if made configurable by a CDL option (defaulting to the value to preserve
+existing behaviour).
+<li>Similarly, changes which will increase ROM/RAM footprint or execution
+time in a non-trivial way would probably be better off as a CDL option to
+allow it to be disabled, or have the resources limited (e.g. buffer sizes, etc.)
+<li>Including a new test for the functionality the patch covers, or
+extending an existing test is highly desirable and will lead to a
+patch being included sooner as it is easier to verify.
+<li>New code or functions must be careful to avoid polluting the
+namespace.  The <tt>cyg_</tt> prefix (or <tt>hal_</tt> for HAL files)
+is conventionally used for all identifiers in the public
+namespace. eCos is not perfect in this regard at present, but we do
+not wish to make the situation worse.
+</ul>
+<p>
+Even if you do follow these guidelines to the letter, there is no
+guarantee that the maintainers will accept the patch.  The maintainers
+have a duty to the eCos community to ensure eCos stays stable and
+maintainable. Anything that performs "open heart surgery" on an
+important piece of code, or which takes eCos in a strategic direction the
+maintainers do not think eCos should go in may be rejected. Such
+patches can always be placed on the contributions page.  </p>
+
+<!--#include virtual="include/footer.html"-->

@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Generating the patch</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<BR><H2>Generating the patch</H2>
+Revision 1.0
+<HR noshade SIZE=3>
+
+<p>A patch consists of the output of the <b>diff</b> program and
+should contain not only the changes made to any existing files, but
+also any new files that have been added. Patches should be relative
+to the current <a href="anoncvs.html">eCos CVS repository</a>.</p>
+
+<p>Here we present two alternative approaches for generating the patch
+against the CVS repository. Choose whichever you feel most comfortable with.</p>
+
+<h3>Approach 1</h3>
+
+<p>First, check out or update your <a href="anoncvs.html">CVS repository
+sources</a>, and make your changes.</p>
+
+<p>We will generate the set of differences - a <i>patch</i>, also known as a
+<i>diff</i> in two stages. First we will generate the changes for existing
+files. Then we will include any new files.</p>
+
+<p>To generate the changes for existing files, this should simply be a case of
+using the following commands:
+<pre>
+$ cd ecos/packages
+$ cvs -q diff -u5 -p <i>&lt;changed files or directory containing files&gt;</i> >> <i>&lt;patch file&gt;</i>
+</pre>
+<p>For example:</p>
+<pre>
+$ cd ecos/packages
+$ cvs -q diff -u5 -p devs/eth/arm/ebsa285 kernel hal/common/current/ChangeLog \
+    hal/common/current/src/hal_if.c >> my.patch</i>
+</pre>
+
+<p>For convenience, you can add the diff arguments to your <tt>~/.cvsrc</tt>
+like so:
+<pre>
+$ cat >> ~/.cvsrc
+diff -u5 -p
+<i>&lt;Ctrl-Z (windows) or Ctrl-D (unix)&gt;</i>
+$
+</pre>
+<p>With this <tt>~/.cvsrc</tt> in place you may then omit the <tt>-u5 -p</tt>
+arguments to the <tt>cvs diff</tt> command.</p>
+
+<p>If you have created any new files, you must append them to the patch as
+follows in one of two ways:
+<ol>
+<li> With the following command at the same level as your earlier <tt>cvs
+diff</tt>:
+<pre>
+$ diff -u5N --from-file /dev/null <i>&lt;new files&gt;</i> >> <i>&lt;patch file&gt;</i>
+</pre>
+<p>For example:
+<pre>
+$ diff -u5N --from-file /dev/null devs/flash/arm/wizzo/current/ChangeLog \
+    devs/flash/arm/wizzo/current/cdl/wizzo.cdl \
+    devs/flash/arm/wizzo/current/include/flash_wizzo.h >> my.patch
+</pre>
+<li> A more programmatical alternative is:
+<pre>
+$ cvs -q up <i>&lt;files or directories&gt;</i> | awk '/^\?/ {print $2}' | xargs -rn1 diff -u5rN /x >> <i>&lt;patch file&gt;</i>
+</pre>
+which will look at the files or directories to see what files are new and
+generate diffs for only them. This command assumes that a file
+or directory named <tt>/x</tt> does <i>not</i> exist.</li>
+</ol>
+
+
+<h3>Approach 2</h3>
+
+<p>First, make sure you have two copies of the current CVS
+repository. You can do this by either <a href="anoncvs.html">checking it out</a>
+twice, or by copying an existing repository with the following command:
+
+<pre>
+$ cp -a clean devo
+</pre>
+
+<p>We will call these two copies <b>clean</b>, which will be an
+unchanged copy of the CVS repository, and <b>devo</b>, which is where
+you will do your patch development work.</p>
+
+<p>Now you can work on your patch in the <b>devo</b> repository. When
+it is complete, make sure it is tested and update the ChangeLog files
+or, if you are adding a new package, create new ChangeLog files. If it
+has been some time since you checked out the repository, do a <b>cvs
+update</b> in both repositories before continuing. Any new files you
+have added to the <b>devo</b> repository will be listed with a "?",
+this is normal and simply indicates that they are not currently
+checked in. Any files listed with a "C" indicate conflicts between
+your changes and any new changes in the repository. You must resolve
+these before continuing.</p>
+
+<p>To generate the patch, execute the following command:</p>
+
+<pre>
+$ diff -r -u5 -N -x CVS -x "*~" -x ".#*" clean/ecos/packages devo/ecos/packages >my.patch
+</pre>
+
+<p>The "-r" option causes the diff to operate recursively; the "-u5"
+option generates unified diffs with a five line context, which are
+easier to read than other diff formats; the "-N" option causes all new
+files to be included in the diff; the "-x CVS" causes all CVS
+directories to be excluded and the "-x "*~" -x ".#*"" causes any
+editor backup files to be excluded -- these are for emacs, you may
+need to change them if you use a different editor. The <b>clean</b>
+repository should come first on the command line and the <b>devo</b>
+second. In this example we are only diffing the packages directories,
+if you have made changes to the host tools or the generic
+documentation, leave off the "packages" component from both paths. If
+the patch only applies to a single package then you can add
+directories to these paths to diff only that package. The final part
+redirects the output of the diff command into the file "my.patch". You
+should choose a more descriptive filename, although the ".patch"
+extension may be kept since it is recognised by various tools.</p>
+
+<!--#include virtual="include/footer.html"-->

@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<TITLE>Submitting the patch</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<BR><H2>Submitting the patch</H2>
+Revision 1.0
+<HR noshade SIZE=3>
+
+<p>Patches are submitted through the eCos <b>Bugzilla</b> bug tracking
+system. This allows contributors and maintainers to keep track of the
+state and progress of a patch, and stops them getting lost or
+forgotten.</p>
+
+<p>To submit a patch, go to the eCos Bugzilla page at <a
+href="http://bugs.ecos.sourceware.org/">http://bugs.ecos.sourceware.org/</a>
+and click on <b>Report a Problem</b>.</p>
+
+<p>Bugzilla will now ask you to login. If you are a new user, click on
+the <b>create a new account</b> link and follow the instructions. If
+you have a Bugzilla account, log in and proceed to the first page
+where you will be asked to pick a product. Choose <b>eCos</b>.</p>
+
+<p>You will now be taken to the <b>Enter bug</b> page. Fill out the
+fields of this form as follows: </p>
+
+<dl>
+        <dt><b>Version</b>
+        <dd>Choose <b>CVS</b> here, unless you know that you should
+            choose something else.
+
+        <dt><b>Component</b>
+        <dd>Choose <b>Patches and contributions</b>.
+
+        <dt><b>Platform</b>
+        <dd>If the patch applies to a specific platform that is in
+            this list then choose that, if it applies to platform
+            independent code then choose <b>All</b>, otherwise choose
+            <b>Other</b>.
+
+        <dt><b>Architecture/HostOS</b>
+        <dd>If this patch is specific to a particular architecture
+            then choose that architecture here. If it applies to all
+            architectures then choose <b>All</b>. Otherwise choose
+            <b>Other</b>.
+
+        <dt><b>Severity</b>
+        <dd>If this is an addition to eCos then select "enhancement"
+            here, otherwise leave it as "normal".
+
+        <dt><b>Summary</b>
+        <dd>Enter a <b>brief</b> description of the patch here. Just a
+            few words which are used as a title in bug lists.
+
+        <dt><b>Description</b>
+        <dd>Enter a more complete description of the patch here. A copy
+            of the ChangeLog entry would be suitable.
+
+</dl>
+
+<p>Leave all other fields unchanged and press the <b>Commit</b> button
+to submit the report.</p>
+
+<p>You will now be taken to a page which should say "Bug XXXXXXX has
+been added to the database" where XXXXXXX will be the number assigned
+to your new bug. Midway down this page is a table containing a link
+titled "Create a New Attachment". Click on this link which will take
+you to the "Create New Attachment for Bug XXXXXXX" page.</p>
+
+<p>Here you should fill in the local pathname of the patch file, or
+use the <b>Browse</b> button, and enter a description that identifies
+this as the initial or candidate patch. Select the <b>patch</b>
+checkbox in the <b>Content Type</b> field, leave all the remaining
+fields alone, and click <b>Submit</b>.</p>
+
+<p>After uploading the patch file to the Bugzilla server, it will take
+you to a page with the message "Attachment #YY to Bug XXXXXXX Created".</p>
+
+<p>Your patch has now been submitted to the Bugzilla system. However,
+this is not the end of the process, the patch still has to be
+reviewed, committed and re-tested.</p>
+
+<h3>Reviewing the Patch</h3>
+
+<p>Once your patch has been submitted it is open for review. Initially
+it will be put into a pool from which a maintainer may pull it out and claim
+responsibility.</p>
+
+<p>The maintainer will review the patch and may add comments
+suggesting improvements or changes. These comments will be sent to you
+by email and will be reflected into a public list. Note that
+maintainers are busy people and they may not be able to review your
+patch immediately. We encourage any users who are interested in a
+patch to make comments and review patches, even before a maintainer has
+been assigned.</p>
+
+<p>You may respond to comments by clicking on the link in the e-mails,
+filling in the <b>Additional Comments</b> field on the bug's page and
+clicking <b>Commit</b>.</p>
+
+<p>If, as a result of the comments you want to submit an updated patch
+then click the "Create New Attachment" link on the bug page and fill
+in the form as before. This time, however, you should give a
+description that identifies this as a new version, you may also check
+the box for the original patch in the <b>Obsoletes</b>
+section. Finally, fill in the <b>Comment</b> with a description of the
+changes between this patch and the last before clicking the
+<b>Submit</b> button.</p>
+
+<p>This process may have to repeat several times until your patch is
+in a state that the maintainer considers acceptable for inclusion in
+to the main CVS repository.</p>
+
+<p>The state of the bug should reflect what the bug is waiting on. For
+example, it may require the submitter to rework the patch. Additionally
+a flag may indicate whether a <a href="patches-assignment.html">copyright
+assignment</a> is required if none has already been signed.</p>
+
+<h3>Committing the Patch</h3>
+
+<p>Once the patch is approved and assigned, it can be committed. A
+maintainer will apply the patch to the CVS repository and commit
+it.</p>
+
+<p>If the maintainer has hardware on which he can test the patch he
+may do so, particularly if it applies to generic code. However this
+cannot be assumed: maintainers do not have access to all the possible
+targets supported by eCos, and may be too busy to do more than commit
+the patch. Therefore it is very important that you test the patched
+CVS repository yourself and check that the patch has been applied
+correctly.</p>
+
+<p>To test the patch, execute a "cvs update -d" command in your
+<b>clean</b> version of the repository, and then build and test that
+the patch functions correctly. If you supplied a test program with the
+patch then this should suffice.</p>
+
+<h3>All Done</h3>
+
+<p>Once the patch has been committed, the maintainer will resolve the
+bug by changing its state. At this point the whole process is complete.</p>
+
+<p> Congratulations, you have successfully submitted a patch to eCos!</p>
+
+<!--#include virtual="include/footer.html"-->
