@@ -58,7 +58,7 @@ The <a href="http://gcc.gnu.org/">GNU Compiler Collection web site</a> contains 
 information about installing and using GCC.
 
 
-A <a href="ftp://gcc.gnu.org/pub/gcc/snapshots/index.html">snapshot of the
+A <a href=ftp://gcc.gnu.org/pub/gcc/snapshots/index.html>snapshot of the
 GCC development sources</a> may be used to obtain the most up-to-date compiler
 with new features and bug fixes. 
 
@@ -66,19 +66,19 @@ However, it is recommended that the most recent
 official release (GCC 2.95.2) is used, as it is likely to be more stable.<p>
 
 GCC 2.95.2 sources can be downloaded from the 
-<a href="ftp://gcc.gnu.org/pub/gcc/releases/index.html">releases page</a>. Both the core
+<a href=ftp://gcc.gnu.org/pub/gcc/releases/index.html>releases page</a>. Both the core
 distribution and the C++ distribution files are required for eCos. Alternatively, click
 on the appropriate following links to download the files directly:
 
 <ul>
 
 <li>
-<a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-core-2.95.2.tar.bz2">
+<a href=ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-core-2.95.2.tar.bz2>
   GCC 2.95.2 core compiler distribution</a> (gcc-core-2.95.2.tar.bz2 - 6.6MB)
 
 
 <li>
-<a href="ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-g++-2.95.2.tar.bz2">
+<a href=ftp://gcc.gnu.org/pub/gcc/releases/gcc-2.95.2/gcc-g++-2.95.2.tar.bz2>
   GCC 2.95.2 C++ distribution</a> (gcc-g++-2.95.2.tar.bz2 - 1.2MB)
 
 </ul>
@@ -106,23 +106,15 @@ still possible to run GDB in command-line mode by using the <tt>-nw</tt>
 command-line option when invoking GDB, so there is nothing to lose by using the Insight
 sources.<p>
 
-At this time, a new GDB release (version 5.0) is imminent. It is recommended
-that a recent <a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/">GDB snapshot</a>
-is used while the release is being finalized. Note that the snapshot
-files mentioning <i>dejagnu</i> are only required if you wish to run the GDB
-testsuite.
-
-Alternatively, click
-on on one of following links to download the files directly:
+The latest release (version 5.0) is recommended and may be downloaded via the GDB home page.
+Alternatively, click on on one of following links to download the files directly:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/insight+dejagnu.tar.bz2">
-  Latest Insight snapshot</a> (insight+dejagnu.tar.bz2 - 15MB)
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/gdb+dejagnu.tar.bz2">
-  Latest GDB snapshot</a> (gdb+dejagnu.tar.bz2 - 11.5MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/insight-5.0.tar.bz2">
+  Insight 5.0 distribution</a> (insight-5.0.tar.bz2 - 14MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/gdb-5.0.tar.bz2">
+  GDB 5.0 distribution</a> (gdb-5.0.tar.bz2 - 9.1MB)
 </ul>
-
-
 
 <p>
 <h3>Preparing the sources for building</h3>
@@ -159,7 +151,7 @@ build system:
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight.tar.bz2 | tar xvf -
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight-5.0.tar.bz2 | tar xvf -
 </tt></nobr>
 
 
@@ -171,31 +163,21 @@ The following directories should be generated and populated during the extractio
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/gcc-2.95.2<br>
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-<i>YYYYMMDD</i>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
 </tt></nobr>
 <p>
-If the standard GDB source distribution was downloaded rather than insight,
-then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-<i>YYYYMMDD</i></tt></nobr> rather than
-<nobr><tt>/src/gdb/insight-<i>YYYYMMDD</i></tt></nobr>.<p>
+If the standard GDB source distribution was downloaded rather than Insight,
+then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-5.0</tt></nobr> rather than
+<nobr><tt>/src/gdb/insight-5.0</tt></nobr>.<p>
 
 <li>You may now need to apply a small number of source patches that are
 required to fix outstanding problems and add eCos support to the tools.
-If you are using a GDB/Insight snapshot dated earlier than 2000-03-30, then
-you must download the <a href="patches/ecos-gdb.pat">ecos-gdb.pat</a> patch to a file.
-This can be achieved with most browsers by either shift-clicking or right-clicking on the link.
-You must not view the link and cut-and-paste because white space must be preserved exactly.
-Apply the patch:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-
-&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gdb.pat | patch -p0
+Patches may be downloaded using most browsers by either shift-clicking
+or right-clicking on the link to the patch. You must not view the link
+and cut-and-paste because white space must be preserved exactly.<p>
 
 
-</tt></nobr>
-<p>
-
-
-In a similar manner, download the <a href="patches/ecos-gcc-2952.pat">
+Download the <a href=patches/ecos-gcc-2952.pat>
 ecos-gcc-2952.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-2.95.2<br>
@@ -216,7 +198,7 @@ are handled correctly:<p>
 <p>
 
 
-Finally, download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
+Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
@@ -334,7 +316,7 @@ If there are any problems building the tools, you can use the file
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/gdb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-<i>YYYYMMDD</i>/configure --target=mips-tx39-elf \<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0/configure --target=mips-tx39-elf \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-i686-pc-cygwin \<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
@@ -344,7 +326,7 @@ If there are any problems building the tools, you can use the file
 <li>Build and install Insight:<p>
 
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;$ make -w all install 2&gt;&1 | tee make.out
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
 </tt></nobr>
 <p>
 </ol>

@@ -224,20 +224,19 @@ ${GCCSNAP+
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
 </tt></nobr>
 <p>
-If the standard GDB source distribution was downloaded rather than insight,
+If the standard GDB source distribution was downloaded rather than Insight,
 then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-5.0</tt></nobr> rather than
 <nobr><tt>/src/gdb/insight-5.0</tt></nobr>.<p>
 
 <li>You may now need to apply a small number of source patches that are
 required to fix outstanding problems and add eCos support to the tools.
-Any required patches are detailed below.<p>
+Patches may be downloaded using most browsers by either shift-clicking
+or right-clicking on the link to the patch. You must not view the link
+and cut-and-paste because white space must be preserved exactly.<p>
 
 ${GCCSNAP-
 Download the <a href="patches/ecos-gcc-2952.pat">
-ecos-gcc-2952.pat</a> patch to a file.
-This can be achieved with most browsers by either shift-clicking or right-clicking on the link.
-You must not view the link and cut-and-paste because white space must be preserved exactly.
-Apply the patch:<p>
+ecos-gcc-2952.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-2.95.2<br>
 ${WINDOWS+
@@ -256,9 +255,9 @@ are handled correctly:<p>
 </tt></nobr>
 }
 ${GCCSNAP+
-If you are using a GCC snapshot dated 2000-03-20 or earlier, then in a similar
-manner to the above, download the <a href="patches/ecos-gcc-snap-cpp.pat">
-ecos-gcc-snap-cpp.pat</a> patch to a file and apply it:<p>
+If you are using a GCC snapshot dated 2000-03-20 or earlier, download
+the <a href="patches/ecos-gcc-snap-cpp.pat">ecos-gcc-snap-cpp.pat</a>
+patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>
 ${WINDOWS+
@@ -642,7 +641,7 @@ INSIGHTINSTDSK=45MB
 TOTBLDDSK=195MB
 TOTINSTDSK=85MB
 EXTRAPATCH='
-Finally, download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
+Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
@@ -670,7 +669,7 @@ INSIGHTINSTDSK=80MB
 TOTBLDDSK=190MB
 TOTINSTDSK=110MB
 EXTRAPATCH='
-Finally, download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
+Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
@@ -949,7 +948,7 @@ INSIGHTINSTDSK=35MB
 TOTBLDDSK=195MB
 TOTINSTDSK=75MB
 EXTRASNAPPATCH='
-Now download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
+Download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
 <!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
@@ -977,7 +976,7 @@ INSIGHTINSTDSK=70MB
 TOTBLDDSK=205MB
 TOTINSTDSK=105MB
 EXTRASNAPPATCH='
-Now download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
+Download the <a href="patches/ecos-gcc-snap.pat">ecos-gcc-snap.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
 <!--&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/egcs-<i>YYYYMMDD</i><br>-->
