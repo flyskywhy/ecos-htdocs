@@ -1,0 +1,516 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Signals</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: C Library"
+HREF="p-cygpkg-libc.html"><LINK
+REL="PREVIOUS"
+TITLE="Option:
+Size of locale name strings"
+HREF="o-cygnum-libc-max-locale-name-size.html"><LINK
+REL="NEXT"
+TITLE="Component: ISO C startuptermination"
+HREF="c-cygpkg-libc-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="o-cygnum-libc-max-locale-name-size.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 19. Package: C Library</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-libc-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-LIBC-SIGNALS"
+>Component: Signals</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_SIGNALS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This component controls signal functionality, as implemented
+in ISO C chapter 7.7 with the signal() and raise() functions. As
+well as allowing a program to send itself signals, it is also possible
+to cause hardware exceptions to be signalled to the program in a
+similar way. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGSEM-LIBC-SIGNALS-THREAD-SAFE"
+>Option: Thread
+safe signals</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_THREAD_SAFE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Because signal handlers are global, and not thread-specific
+(as mandated by POSIX 1003.1) it is possible for multiple threads
+to clash and corrupt data if setting the same signal handler at
+the same time. With this option enabled, a kernel mutex will be
+used to protect the shared data. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGSEM-LIBC-SIGNALS-HWEXCEPTIONS"
+>Component:
+Hardware exceptions cause signals</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_HWEXCEPTIONS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This causes hardware exceptions like arithmetic exceptions
+(e.g. divide by zero) or bad memory accesses to be passed through
+as signals. It is thus possible for a program to handle these exceptions
+in a generic way using the appropriate signal handlers. The details
+of exactly which exceptions are passed through under what circumstances depend
+on the underlying HAL implementation. Consequently it must be remembered that
+signal handlers cannot be guaranteed to be invoked in the expected
+circumstances if you do not know about the underlying HAL implementation
+- it is possible that the architecture is unable to detect that
+exception. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGSEM-LIBC-SIGNALS-CHAIN-HWEXCEPTIONS"
+>Option:
+Chain old exception handlers</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_CHAIN_HWEXCEPTIONS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When hardware exceptions are generated, it is possible to
+chain into the old kernel exception handler before calling any registered
+signal handler. If this is not required, disable this option and
+only the signal handler will be called when this exception occurs.
+Disabling this option will also save some space and code usage. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-LIBC-SIGNALS-INLINE"
+>Component: Inline
+versions of functions</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_SIGNALS_INLINE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Some functions can be made inline instead of being function
+calls. These can be set here. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-LIBC-SIGNALS-RAISE-INLINE"
+>Option:
+raise()</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_LIBC_SIGNALS_RAISE_INLINE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Enabling this option makes raise() an inline function. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGIMP-LIBC-SIGNALS-SIGNAL-INLINE"
+>Option:
+signal()</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_LIBC_SIGNALS_SIGNAL_INLINE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Enabling this option makes signal() an inline function. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-LIBC-SIGNALS-ERROR-HANDLING"
+>Component:
+Error handling</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_SIGNALS_ERROR_HANDLING</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>You may or may not want errno to be set by certain functions.
+Not using errno could save both space, code, and avoid worrying
+about interactions between multiple threads when setting it. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGSEM-LIBC-SIGNALS-BAD-SIGNAL-FATAL"
+>Option:
+Bad signal fatal</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_BAD_SIGNAL_FATAL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Enabling this option will cause an assertion failure if the
+signal handling code is passed a bad signal. Otherwise an error
+will be returned, or in the case of a hardware-generated exception
+it will be silently ignored. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGSEM-LIBC-SIGNALS-RAISE-SETS-ERRNO"
+>Option:
+raise() sets errno</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_RAISE_SETS_ERRNO</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>You may or may not want errno to be set by raise() on error
+conditions. Not using errno could save both space, code, and avoid
+worrying about interactions between multiple threads when setting
+it. Strictly ISO C does not mandate that errno be set by raise(). </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGSEM-LIBC-SIGNALS-SIGNAL-SETS-ERRNO"
+>Option:
+signal() sets errno</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_LIBC_SIGNALS_SIGNAL_SETS_ERRNO</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>You may or may not want errno to be set by signal() on error
+conditions. Not using errno could save both space, code, and avoid
+worrying about interactions between multiple threads when setting
+it. Strictly ISO C mandates that errno be set by signal(). </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-LIBC-SIGNALS-TRACING"
+>Component: Tracing</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_LIBC_SIGNALS_TRACING</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>These options control the trace output for the C library internal
+signal implementation. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-LIBC-SIGNALS-RAISE-TRACE-LEVEL"
+>Option:
+Default trace level for raise()</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_LIBC_SIGNALS_RAISE_TRACE_LEVEL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This gives the default tracing level for the raise() function.
+Higher numbers are more verbose. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-LIBC-SIGNALS-HWHANDLER-TRACE-LEVEL"
+>Option:
+Default hardware exception handler trace level</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_LIBC_SIGNALS_HWHANDLER_TRACE_LEVEL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This gives the default tracing level for the hardware exception
+handler function (if enabled). Higher numbers are more verbose. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="o-cygnum-libc-max-locale-name-size.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-libc-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option:
+Size of locale name strings</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-libc.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: ISO C startup/termination</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

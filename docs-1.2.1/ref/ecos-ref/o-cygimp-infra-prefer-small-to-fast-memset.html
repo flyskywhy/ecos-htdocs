@@ -1,0 +1,164 @@
+<HTML
+><HEAD
+><TITLE
+>Option:
+Smaller slower memset()</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: Infrastructure"
+HREF="p-cygpkg-infra.html"><LINK
+REL="PREVIOUS"
+TITLE="Option:
+Smaller slower memcpy()"
+HREF="o-cygimp-infra-prefer-small-to-fast-memcpy.html"><LINK
+REL="NEXT"
+TITLE="Package: eCos kernel"
+HREF="p-cygpkg-kernel.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="o-cygimp-infra-prefer-small-to-fast-memcpy.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 16. Package: Infrastructure</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-kernel.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="O-CYGIMP-INFRA-PREFER-SMALL-TO-FAST-MEMSET"
+>Option:
+Smaller slower memset()</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGIMP_INFRA_PREFER_SMALL_TO_FAST_MEMSET</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Enabling this option causes the implementation of the standard
+memset() routine to reduce code size at the expense of execution
+speed. This option is automatically enabled with the use of the
+-Os option to the compiler. Also note that the compiler will try
+to use its own builtin version of memset() if possible, ignoring
+the implementation in this package, unless given the -fno-builtin
+compiler option. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="o-cygimp-infra-prefer-small-to-fast-memcpy.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-kernel.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option:
+Smaller slower memcpy()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-infra.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: eCos kernel</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

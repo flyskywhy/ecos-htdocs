@@ -1,0 +1,426 @@
+<HTML
+><HEAD
+><TITLE
+>Executing Tests</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="Building"
+HREF="building.html"><LINK
+REL="NEXT"
+TITLE="Keyboard
+Accelerators"
+HREF="keyboard-accelerators.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="building.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="keyboard-accelerators.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="AEN807"
+>Executing Tests</A
+></H1
+><P
+>Select <SPAN
+CLASS="GUIMENU"
+>Tools</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Run
+Tests</SPAN
+> to execute tests built using the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+>. If the dialog is dismissed using the <SPAN
+CLASS="GUIBUTTON"
+>OK</SPAN
+> button,
+the selected tests will be scheduled for execution. To stop the
+execution of tests before completion, select <SPAN
+CLASS="GUIMENU"
+>Build</SPAN
+> -&#62; <SPAN
+CLASS="GUIMENUITEM"
+>Stop</SPAN
+>,
+or click the corresponding toolbar icon.</P
+><P
+>Depending on the configuration selected, it may be possible
+to execute tests in a simulator process or using hardware attached
+to a serial port.</P
+><P
+>The following controls are used to determine how the tests
+are run:</P
+><P
+></P
+><UL
+><LI
+><P
+>Execute in simulator</P
+><P
+>Check this box if the tests are to be run in a simulator process.
+If this box is grayed, the configuration chosen is not suitable
+for both simulator and hardware test execution.</P
+></LI
+><LI
+><P
+>Serial Device</P
+><P
+>When executing on hardware, use this combo box to select the
+serial port to which the target board is connected.</P
+></LI
+><LI
+><P
+>Baud Rate</P
+><P
+>When executing on hardware, use this combo box to select the
+baud rate to be used for download.</P
+></LI
+><LI
+><P
+>Active Timeout</P
+><P
+>Set this box to a figure representing a timeout (in seconds)
+to be applied to the execution of each test; leave the timeout value
+at zero to allow the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> to
+choose a suitable default timeout value.</P
+><P
+>If the test executes for longer than the specified time (in
+the case of simulator runs, the time measured is CPU time; for hardware
+runs it is elapsed time) without outputting a line starting with
+one of the following:</P
+><P
+CLASS="LITERALLAYOUT"
+>INFO:<br>
+PASS:<br>
+FAIL:<br>
+EXIT:</P
+><P
+>then the test will be terminated with status &#8220;Timeout&#8221;.</P
+></LI
+></UL
+><P
+>The listbox within the dialog allows you to select which tests
+are to be run. Click &#8220;Check All&#8221; to select all
+build tests for execution, or &#8220;Uncheck All&#8221; to
+deselect all tests. Clicking the <SPAN
+CLASS="GUIBUTTON"
+>Refresh</SPAN
+> button
+causes the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> to rebuild
+its list of tests by re-examining the build tree to determine those
+test executables that have been successfully linked.</P
+><P
+><SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> tests use a set of primitives
+(currently implemented as macros) to allow for easy analysis of
+their output. When tests are run using host-side infrastructure
+(e.g. from the Configuration Tool) the correct use of these primitives
+is important, to allow test execution to be automated. In future
+releases, host-side test infrastructure may form part of the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> deliverable.</P
+><P
+>The result will be one of the following:</P
+><P
+><SPAN
+CLASS="RETURNVALUE"
+>NORESULT</SPAN
+>, <SPAN
+CLASS="RETURNVALUE"
+>INAPPLICABLE</SPAN
+>, <SPAN
+CLASS="RETURNVALUE"
+>PASS</SPAN
+>, <SPAN
+CLASS="RETURNVALUE"
+>FAIL</SPAN
+></P
+><P
+>When a test starts executing, its result is <SPAN
+CLASS="RETURNVALUE"
+>NORESULT</SPAN
+>.
+Test code should ensure that it is set to one of the other results
+by executing one of the following test primitives:</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void
+	    <B
+CLASS="FSFUNC"
+>CYG_TEST_INIT</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Must be called before any other test primitive.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>CYG_TEST_INFO(s)</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>The informational string s is output. This does not affect
+the result of a test.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>CYG_TEST_NA(s)</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>The result of the test is set to <SPAN
+CLASS="RETURNVALUE"
+>INAPPLICABLE</SPAN
+> and
+the informational string <SPAN
+CLASS="RETURNVALUE"
+>s</SPAN
+> is output. Note
+that the result of a test may subsequently be set to <SPAN
+CLASS="RETURNVALUE"
+>PASS</SPAN
+> or <SPAN
+CLASS="RETURNVALUE"
+>FAIL</SPAN
+> by
+means of <TT
+CLASS="FUNCTION"
+><B
+>CYG_TEST_PASS</B
+></TT
+> or <TT
+CLASS="FUNCTION"
+><B
+>CYG_TEST_FAIL</B
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>CYG_TEST_PASS(s)</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>The result of the test is set to <SPAN
+CLASS="RETURNVALUE"
+>PASS</SPAN
+> and
+the informational string <SPAN
+CLASS="RETURNVALUE"
+>s</SPAN
+> is output.
+Note that the result of a test may subsequently be set to <SPAN
+CLASS="RETURNVALUE"
+>FAIL</SPAN
+> by
+means of <TT
+CLASS="FUNCTION"
+><B
+>CYG_TEST_FAIL</B
+></TT
+>.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>CYG_TEST_FAIL(s)</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>The result of the test is set to <SPAN
+CLASS="RETURNVALUE"
+>FAIL</SPAN
+> and
+the informational string <SPAN
+CLASS="RETURNVALUE"
+>s</SPAN
+> is output.
+Having used <TT
+CLASS="FUNCTION"
+><B
+>CYG_TEST_FAIL</B
+></TT
+>, the result of the
+test cannot be changed.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>CYG_TEST_EXIT(s)</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>Must be called after all other test primitives. The informational
+string <SPAN
+CLASS="RETURNVALUE"
+>s</SPAN
+> is output and the test is terminated.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="building.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="keyboard-accelerators.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Building</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Keyboard
+Accelerators</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

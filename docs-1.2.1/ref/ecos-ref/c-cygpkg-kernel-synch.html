@@ -1,0 +1,280 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Synchronization primitives</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos kernel"
+HREF="p-cygpkg-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Component: Thread-related
+options"
+HREF="c-cygpkg-kernel-threads.html"><LINK
+REL="NEXT"
+TITLE="Component: Kernel
+instrumentation"
+HREF="c-cygpkg-kernel-instrument.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-threads.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 17. Package: eCos kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-kernel-instrument.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-KERNEL-SYNCH"
+>Component: Synchronization primitives</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_KERNEL_SYNCH</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Dummy</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The eCos kernel supports a number of different synchronization
+primitives such as mutexes, semaphores, condition variables, and
+message boxes. There are configuration options to control the exact
+behavior of some of these synchronization primitives. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN6939"
+>Option: Simple mutex priority inheritance</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INHERITANCE_SIMPLE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables a relatively simple implementation of
+mutex priority inheritance. The implementation will only work in
+the mlqueue scheduler, and it does not handle the rare case of nested
+mutexes completely correctly. However it is both fast and deterministic.
+Mutex priority inheritance can be disabled if the application does
+not require it, which will reduce both code size and data space. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGMFN-KERNEL-SYNCH-MBOXT-PUT-CAN-WAIT"
+>Option:
+Message box blocking put support</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGMFN_KERNEL_SYNCH_MBOXT_PUT_CAN_WAIT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Message boxes can support three different versions of the
+put-message operation. The first is tryput(), which will fail if
+the message box is already full. The other two are the ordinary
+put() function which will block if the message box is full, and
+a timed put() operation which will block for up to a certain length
+of time if the message box is currently full. The blocking versions
+require extra memory in the message box data structure and extra
+code in the other message box functions, so they can be disabled
+if the application does not require them. If this option is enabled
+then the system will always provide the blocking put() function,
+and it will also provide the timed put() function if thread timers
+are enabled. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-KERNEL-SYNCH-MBOX-QUEUE-SIZE"
+>Option:
+Message box queue size</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_KERNEL_SYNCH_MBOX_QUEUE_SIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This configuration option controls the number of messages
+that can be queued in a message box before a non-blocking put()
+operation will fail or a blocking put() operation will block. The
+cost in memory is one pointer per message box for each possible
+message. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGMFN-KERNEL-SYNCH-CONDVAR-TIMED-WAIT"
+>Option:
+Condition variable timed-wait support</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGMFN_KERNEL_SYNCH_CONDVAR_TIMED_WAIT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the condition variable timed wait facility. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-threads.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-kernel-instrument.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Component: Thread-related
+options</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Kernel
+instrumentation</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

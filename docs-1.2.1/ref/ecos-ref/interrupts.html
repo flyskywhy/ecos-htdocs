@@ -1,0 +1,199 @@
+<HTML
+><HEAD
+><TITLE
+>Interrupts</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos kernel overview"
+HREF="ecos-kernel-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Exceptions"
+HREF="exceptions.html"><LINK
+REL="NEXT"
+TITLE="Counters,
+clocks, alarms and timers"
+HREF="counters-clocks-alarms-and-timers.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="exceptions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 1. <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> kernel overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="counters-clocks-alarms-and-timers.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="INTERRUPTS"
+>Interrupts</A
+></H1
+><P
+>Interrupts are asynchronous events caused by external devices.
+They may occur at any time and are not associated in any way with
+the thread that is currently running. </P
+><P
+>The handling
+of interrupts is one of the more complex areas in RTOS design, largely because
+it is the least well defined. The ways in which interrupt vectors
+are named, how interrupts are delivered to the software and how
+interrupts are masked are all highly architecture- (and in some
+cases board-) specific. The approach taken in <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> is
+to provide a generalized mechanism with sufficient hooks for system-specific
+code to be inserted where needed. </P
+><P
+>Let us start by considering the issue of interrupt vectors.
+Hardware support differs greatly here: from the Intel Architecture
+and the 680X0 having support for vectoring individual interrupts
+to their own vectors, to most RISC architectures that only have
+a single vector. In the first case it is possible to attach an ISR
+directly to the vector and know that it need only concern itself
+with the device in question. In the second case it is necessary
+to determine which device is actually interrupting and then vector
+to the correct ISR. Where there is an external interrupt controller,
+it will be possible to query that and provide what is essentially
+a software implementation of hardware vectoring. Otherwise the actual
+hardware devices must be tested, by calling the ISRs in turn and letting
+them make the determination. Since it is possible for two devices
+to interrupt simultaneously, it is necessary to call all ISRs each
+time an interrupt occurs. </P
+><P
+>Interrupt masking has a similar variety of support. Most processors
+have a simple interrupt mask bit in a status register. The <SPAN
+CLASS="HARDWARE"
+>680X0</SPAN
+> has
+seven levels of masking. Any board with a interrupt controller can
+be programmed to provide similar multi-level masking. It is necessary
+to keep the interrupt masking mechanism simple and efficient, and
+use only architectural support. The cost of manipulating an on-board interrupt
+controller may be too high. However, individual device drivers may
+want access to their individual mask bits in the interrupt controller,
+so support for this must be provided. </P
+><P
+>Most of the infrastructure necessary for a (somewhat) portable
+treatment of interrupts is implemented in the <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> Hardware
+Abstraction Layer (HAL), which is documented in <A
+HREF="the-ecos-hardware-abstraction-layer-hal.html"
+>Chapter 7</A
+>. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="exceptions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="counters-clocks-alarms-and-timers.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Exceptions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-kernel-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Counters,
+clocks, alarms and timers</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

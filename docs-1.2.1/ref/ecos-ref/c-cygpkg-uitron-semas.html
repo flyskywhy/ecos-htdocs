@@ -1,0 +1,297 @@
+<HTML
+><HEAD
+><TITLE
+>Component: Semaphores</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos uITRON Compatibility Layer"
+HREF="p-cygpkg-uitron.html"><LINK
+REL="PREVIOUS"
+TITLE="Option:
+NULL is a good pointer"
+HREF="o-cygsem-uitron-params-null-is-good-ptr.html"><LINK
+REL="NEXT"
+TITLE="Component: Mailboxes"
+HREF="c-cygpkg-uitron-mboxes.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="o-cygsem-uitron-params-null-is-good-ptr.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 18. Package: eCos uITRON Compatibility Layer</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-cygpkg-uitron-mboxes.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-CYGPKG-UITRON-SEMAS"
+>Component: Semaphores</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_SEMAS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>uITRON Semaphore objects are used with functions named xxx_sem();
+they support traditional semaphore semantics. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="O-CYGNUM-UITRON-SEMAS"
+>Option: Number of semaphores</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_SEMAS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of uITRON semaphores present in the system. Valid
+semaphore object IDs will range from 1 to this value. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-UITRON-SEMAS-CREATE-DELETE"
+>Component:
+Support create and delete</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_SEMAS_CREATE_DELETE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Support semaphore create and delete operations (cre_sem,
+del_sem). Otherwise all semaphores are created, up to the
+number specified above. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGNUM-UITRON-SEMAS-INITIALLY"
+>Option: Number
+of semaphores created initially</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_UITRON_SEMAS_INITIALLY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The number of uITRON semaphores initially created. This number
+should not be more than the number of semaphores in the system,
+though setting it to a large value to mean "all" is
+acceptable. Initially, only semaphores numbered 1 to this number
+exist; higher numbered ones must be created before use. It is only
+useful to initialize semaphores up to this number; higher numbered
+ones must be created in order to use them, and so they will be re-initialized. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-UITRON-SEMAS-ARE-INITIALIZED"
+>Component:
+Initialize semaphore counts</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_UITRON_SEMAS_ARE_INITIALIZED</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>Initialize semaphores to specific count values. Otherwise
+semaphores are initialized with the count set to zero. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGDAT-UITRON-SEMA-INITIALIZERS"
+>Option: Static
+initializers</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_UITRON_SEMA_INITIALIZERS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Multiline</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>A list of initializers separated by commas, one per line.
+An initializer is "CYG_UIT_SEMA(INITIAL-COUNT)" or "CYG_UIT_SEMA_NOEXS" for
+slots above the number initially to be created, when create and
+delete operations are supported. Note: this option is invoked in
+the context of a C++ array initializer, between
+curly brackets. Ensure that the number of initializers here exactly
+matches the total number of semaphores specified. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="o-cygsem-uitron-params-null-is-good-ptr.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-cygpkg-uitron-mboxes.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Option:
+NULL is a good pointer</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-uitron.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Component: Mailboxes</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

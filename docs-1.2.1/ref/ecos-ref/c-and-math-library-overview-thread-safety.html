@@ -1,0 +1,311 @@
+<HTML
+><HEAD
+><TITLE
+>Thread
+safety</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="C and math library overview"
+HREF="c-and-math-library-overview.html"><LINK
+REL="PREVIOUS"
+TITLE="Some implementation
+details"
+HREF="some-implementation-details.html"><LINK
+REL="NEXT"
+TITLE="C
+library startup"
+HREF="c-library-startup.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="some-implementation-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 14. C and math library overview</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="c-library-startup.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="C-AND-MATH-LIBRARY-OVERVIEW-THREAD-SAFETY"
+>Thread
+safety</A
+></H1
+><P
+>The ISO C library has configuration options that control thread
+safety, i.e. working behavior if multiple threads call the same
+function at the same time.</P
+><P
+>The following functionality has to be configured correctly,
+or used carefully in a multi-threaded environment:</P
+><P
+></P
+><UL
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>printf()</B
+></TT
+> (and
+all standard I/O functions except for <TT
+CLASS="FUNCTION"
+><B
+>sprintf()</B
+></TT
+> and <TT
+CLASS="FUNCTION"
+><B
+>sscanf()</B
+></TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>strtok()</B
+></TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>rand()</B
+></TT
+> and <TT
+CLASS="FUNCTION"
+><B
+>srand()</B
+></TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>signal()</B
+></TT
+> and <TT
+CLASS="FUNCTION"
+><B
+>raise()</B
+></TT
+></P
+></LI
+><LI
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>asctime()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>ctime()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>gmtime()</B
+></TT
+>,
+and <TT
+CLASS="FUNCTION"
+><B
+>localtime()</B
+></TT
+></P
+></LI
+><LI
+><P
+>the <TT
+CLASS="FUNCTION"
+><B
+>errno</B
+></TT
+> variable</P
+></LI
+><LI
+><P
+>the <TT
+CLASS="FUNCTION"
+><B
+>environ</B
+></TT
+> variable</P
+></LI
+><LI
+><P
+>date and time settings</P
+></LI
+></UL
+><P
+>In some cases, to make <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> development
+easier, functions are provided (as specified by POSIX 1003.1) that
+define re-entrant alternatives, i.e. <TT
+CLASS="FUNCTION"
+><B
+>rand_r()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>strtok_r()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>asctime_r()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>ctime_r()</B
+></TT
+>, <TT
+CLASS="FUNCTION"
+><B
+>gmtime_r()</B
+></TT
+>,
+and <TT
+CLASS="FUNCTION"
+><B
+>localtime_r()</B
+></TT
+>. In other cases, configuration
+options are provided that control either locking of functions or their
+shared data, such as with standard I/O streams, or by using
+per-thread data, such as with the <TT
+CLASS="FUNCTION"
+><B
+>errno</B
+></TT
+> variable.</P
+><P
+>In some other cases, like the setting of date and time, no
+re-entrant or thread-safe alternative or configuration is provided
+as it is simply not a worthwhile addition (date and time should
+rarely need to be set.)</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="some-implementation-details.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="c-library-startup.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Some implementation
+details</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="c-and-math-library-overview.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>C
+library startup</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,245 @@
+<HTML
+><HEAD
+><TITLE
+>System startup  cygpackagestart()</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="System start-up"
+HREF="system-startup.html"><LINK
+REL="PREVIOUS"
+TITLE="System startup  cygprestart()"
+HREF="system-startup-cyg-prestart.html"><LINK
+REL="NEXT"
+TITLE="System startup  cyguserstart()"
+HREF="system-startup-cyg-user-start.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-prestart.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 4. System start-up</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="system-startup-cyg-user-start.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SYSTEM-STARTUP-CYG-PACKAGE-START"
+>System startup &#8212; cyg_package_start()</A
+></H1
+><P
+>The <TT
+CLASS="FUNCTION"
+><B
+>cyg_package_start()</B
+></TT
+> allows
+individual packages to do their initialization before the main user
+program is invoked.</P
+><P
+>Two of the packages shipped with this release of <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+> have
+code in the default <TT
+CLASS="FUNCTION"
+><B
+>cyg_package_start()</B
+></TT
+>: the µITRON
+and the ISO standard C library compatibility packages (see <A
+HREF="micro-itron-api.html"
+>Chapter 6</A
+> and <A
+HREF="the-iso-standard-c-and-math-libraries.html"
+>Part IV in <I
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</I
+></A
+>). </P
+><P
+>The infrastructure package has configuration options <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_START_UITRON_COMPATIBILITY</I
+></TT
+> and <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_START_ISO_C_COMPATIBILITY</I
+></TT
+> which
+control specialized initialization.</P
+><P
+>You can override the default <TT
+CLASS="FUNCTION"
+><B
+>cyg_package_start()</B
+></TT
+> routine
+by providing your own function by the same name with the following
+prototype: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_package_start</B
+></CODE
+>(void);<P
+></P
+></DIV
+><P
+>but you should be careful to initialize the default packages
+(if you are using them). An example user-supplied function might
+look like:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13;	void cyg_package_start(void)
+	{
+ #ifdef CYGSEM_START_UITRON_COMPATABILITY
+	cyg_uitron_start(); /* keep the µITRON initialization */
+ #endif
+	my_package_start(); /* make sure I initialize my package */
+	}</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>If you are supplying your own definition of this function
+from a C++ file, make sure it has &#8220;C&#8221; linkage.</P
+></BLOCKQUOTE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-prestart.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="system-startup-cyg-user-start.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>System startup &#8212; cyg_prestart()</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="system-startup.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>System startup &#8212; cyg_user_start()</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

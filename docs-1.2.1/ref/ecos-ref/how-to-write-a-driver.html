@@ -1,0 +1,467 @@
+<HTML
+><HEAD
+><TITLE
+>How to write a driver</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="IO Package (Device Drivers)"
+HREF="ecos-device-drivers.html"><LINK
+REL="PREVIOUS"
+TITLE="tty driver"
+HREF="tty-driver.html"><LINK
+REL="NEXT"
+TITLE="Device Driver Interface to the Kernel"
+HREF="device-driver-interface-to-kernel.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="tty-driver.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="device-driver-interface-to-kernel.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="HOW-TO-WRITE-A-DRIVER"
+>Chapter 12. How to write a driver</A
+></H1
+><P
+>A device
+driver is nothing more than a named entity that supports the basic
+I/O functions - read, write, get config, and set config.
+Typically a device driver also uses and manages interrupts from
+the device as well. While the interface is generic and device driver
+independent, the actual driver implementation is completely up to
+the device driver designer. </P
+><P
+>That said, the reason for using a device driver is to provide
+access to a device from application code in as general purpose a
+fashion as reasonable. Most driver writers are also concerned with
+making this access as simple as possible while being as efficient as
+possible. </P
+><P
+>Most device drivers are concerned with the movement of information,
+for example data bytes along a serial interface, or packets in a
+network. In order to make the most efficient use of system resources,
+interrupts are used. This can allow for other application processing
+to take place while the data transfers are underway, with interrupts
+used to indicate when various events have occurred. For example,
+a serial port typically generates an interrupt after a character
+has been sent &#8220;down the wire&#8221; and the interface
+is ready for another. It makes sense to allow further application processing
+while the data is being sent since this can take quite a long time.
+The interrupt can be used to allow the driver to send a character
+as soon as the current one is complete, without any active participation
+by the application code. </P
+><P
+>The main building blocks for device drivers are found in the
+include file: <TT
+CLASS="FILENAME"
+>cyg/io/devtab.h</TT
+></P
+><P
+>All device drivers in eCos are described by a device table
+entry, using the &#8220;cyg_devtab_entry_t&#8221; type.
+The entry should be created using the <TT
+CLASS="FUNCTION"
+><B
+>DEVTAB_ENTRY</B
+></TT
+> macro,
+like this:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> DEVTAB_ENTRY(l,name,dep_name,handlers,init,lookup,priv)
+Arguments:
+ l - The "C" label for this device table entry.
+ name - The "C" string name for the device.
+ dep_name - For a layered device, the "C" string name of the 
+ device this device is built upon.
+ handlers - A pointer to the I/O function "handlers" (see below).
+ init - A function called when eCos is initialized. This
+ function can query the device, setup hardware, etc.
+ lookup - A function called when "cyg_io_lookup()" is called
+ for this device.
+ priv - A placeholder for any device specific data required
+ by the driver.
+ </PRE
+></TD
+></TR
+></TABLE
+><P
+>The interface to the driver is through the &#8220;handlers&#8221; field.
+This is a pointer to a set of functions which implement the various 
+<TT
+CLASS="FUNCTION"
+><B
+>cyg_io_XXX()</B
+></TT
+> routines. This table is defined
+by the macro:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> DEVIO_TABLE(l,write,read,get_config,set_config)
+Arguments:
+ l - The "C" label for this table of handlers.
+ write - The function called as a result of "cyg_io_write()".
+ read - The function called as a result of "cyg_io_read()".
+ get_config - The function called as a result of "cyg_io_get_config()".
+ set_config - The function called as a result of "cyg_io_set_config()".
+ </PRE
+></TD
+></TR
+></TABLE
+><P
+>When eCos is initialized (sometimes called &#8220;boot&#8221; time),
+the &#8220;init&#8221; function is called for all devices
+in the system. The &#8220;init&#8221; function is allowed
+to return an error in which case the device will be placed &#8220;off
+line&#8221; and all I/O requests to that device will
+be considered in error. </P
+><P
+>The &#8220;lookup&#8221; function is called whenever
+the <TT
+CLASS="FUNCTION"
+><B
+>cyg_io_lookup()</B
+></TT
+> function is called with
+this device name. The lookup function may cause the device to come &#8220;on
+line&#8221; which would then allow I/O operations to
+proceed. Future versions of the I/O system will allow for
+other states, including power saving modes, etc. </P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="HOW-TO-WRITE"
+>How to write a serial hardware interface
+module</A
+></H1
+><P
+>The standard serial driver supplied with eCos is structured
+as a hardware independent portion and a hardware dependent interface
+module. To add support for a new serial port, the user should be
+able to use the existing hardware independent portion and just add
+their own interface module which handles
+the details of the actual device. The user should have no need to
+change the hardware independent portion. </P
+><P
+>The interfaces used by the serial driver and serial implementation
+modules are contained in the file <TT
+CLASS="FILENAME"
+>cyg/io/serial.h</TT
+></P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>In the text below we use the notation &#60;&#60;xx&#62;&#62; to
+mean a module specific value, referred to as &#8220;xx&#8221; below.</P
+></BLOCKQUOTE
+></DIV
+><P
+>The interface module contains the devtab entry (or entries
+if a single module supports more than one interface). This entry
+should have the form: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> DEVTAB_ENTRY(&#60;&#60;module_name&#62;&#62;, 
+ &#60;&#60;device_name&#62;&#62;,
+ 0,
+ &#38;serial_devio, 
+ &#60;&#60;module_init&#62;&#62;, 
+ &#60;&#60;module_lookup&#62;&#62;,
+ &#38;&#60;&#60;serial_channel&#62;&#62;
+ );
+
+Where:
+ module_name - The "C" label for this devtab entry
+ device_name - The "C" string for the device. E.g. "/dev/serial0".
+ serial_devio - The table of I/O functions. This set is defined in the
+ hardware independent serial driver and should be used.
+ module_init - The module initialization function.
+ module_lookup - The device lookup function. This function typically
+ sets up the device for actual use, turning on interrupts,
+ configuring the port, etc.
+ serial_channel - This table (defined below) contains the interface between
+ the interface module and the serial driver proper.
+ </PRE
+></TD
+></TR
+></TABLE
+><P
+>Each serial device must have a &#8220;serial channel&#8221;.
+This is a set of data which describes all operations on the device.
+It also contains buffers, etc., if the device is to be buffered.
+The serial channel is created by the macro: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> SERIAL_CHANNEL_USING_INTERRUPTS(l,funs,dev_priv,baud,stop,parity,word_length,
+ flags,out_buf,out_buflen,in_buf,in_buflen)
+Arguments:
+ l - The "C" label for this structure.
+ funs - The set of interface functions (see below).
+ dev_priv - A placeholder for any device specific data for this channel.
+ baud - The initial baud rate value (cyg_serial_baud_t).
+ stop - The initial stop bits value (cyg_serial_stop_bits_t)
+ parity - The initial parity mode value (cyg_serial_parity_t)
+ word_length - The initial word length value (cyg_serial_word_length_t)
+ flags - The initial driver flags value
+ out_buf - Pointer to the output buffer. NULL if none required.
+ out_buflen - The length of the output buffer.
+ in_buf - Pointer to the input buffer. NULL if none required.
+ in_buflen - The length of the input buffer.
+ </PRE
+></TD
+></TR
+></TABLE
+><P
+>If either buffer length is zero, no buffering will take place
+in that direction and only polled mode functions will be used.</P
+><P
+>The interface from the hardware independent driver into the
+hardware interface module is contained in the &#8216;funs&#8217; table
+above. This is defined by the macro: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+> SERIAL_FUNS(l,putc,getc,set_config,start_xmit,stop_xmit)
+Arguments:
+ l - The "C" label for this structure.
+ putc - bool (*putc)(serial_channel *priv, unsigned char c)
+ This function sends one character to the interface. It should
+ return "true" if the character is actually consumed. It should
+ return "false" if there is no space in the interface
+ getc - unsigned char (*getc)(serial_channel *priv)
+ This function fetches one character from the interface. It will
+ be only called in a non-interrupt driven mode, thus it should
+ wait for a character by polling the device until ready.
+ set_config - bool (*set_config)(serial_channel *priv, cyg_serial_info_t *config)
+ This function is used to configure the port. It should return "true"
+ if the hardware is updated to match the desired configuration. It 
+ should return "false" if the port cannot support some parameter 
+ specified by the given configuration. E.g. selecting 1.5 stop
+ bits and 8 data bits is invalid for most serial devices and should
+ not be allowed.
+ start_xmit - void (*start_xmit)(serial_channel *priv)
+ In interrupt mode, turn on the transmitter and allow for transmit
+ interrupts.
+ stop_xmit - void (*stop_xmit)(serial_channel *priv)
+ In interrupt mode, turn off the transmitter.
+ </PRE
+></TD
+></TR
+></TABLE
+><P
+>The device interface module can execute functions in the hardware
+independent driver via &#8220;chan-&#62;callbacks&#8221;.
+These functions are available: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>(*serial_init)</B
+></CODE
+>(serial_channel *<VAR
+CLASS="PDPARAM"
+>chan</VAR
+>);<P
+></P
+></DIV
+><P
+>This function is used to initialize the serial channel. It
+is only required if the channel is being used in interrupt mode.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>(*xmt_char)</B
+></CODE
+>(serial_channel *<VAR
+CLASS="PDPARAM"
+>chan</VAR
+>);<P
+></P
+></DIV
+><P
+>This function would be called from an interrupt handler after
+a transmit interrupt indicating that additional characters may be
+sent. The upper driver will call the &#8216;putc&#8217; function
+as appropriate to send more data to the device.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>(*rcv_char)</B
+></CODE
+>(serial_channel *<VAR
+CLASS="PDPARAM"
+>chan</VAR
+>, unsigned char <VAR
+CLASS="PDPARAM"
+>c</VAR
+>);<P
+></P
+></DIV
+><P
+>This function is used to tell the driver that a character
+has arrived at the interface. This function is typically called
+from the interrupt handler. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="tty-driver.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="device-driver-interface-to-kernel.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>&#8220;tty&#8221; driver</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-device-drivers.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Device Driver Interface to the Kernel</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,805 @@
+<HTML
+><HEAD
+><TITLE
+>Synchronization and Communication
+Functions</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="ITRON API"
+HREF="micro-itron-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Task-Dependent Synchronization Functions"
+HREF="task-dependent-synchronization-functions.html"><LINK
+REL="NEXT"
+TITLE="Extended
+Synchronization and Communication Functions"
+HREF="x2950.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 6. µITRON API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="x2950.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SYNCHRONIZATION-AND-COMMUNICATION-FUNCTIONS"
+>Synchronization and Communication
+Functions</A
+></H1
+><P
+>These functions are fully supported in this release: </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>sig_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>wai_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>preq_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>twai_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_sem</B
+></CODE
+>(T_RSEM *<VAR
+CLASS="PDPARAM"
+>pk_rsem </VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>set_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>setptn</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>clr_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>clrptn</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>wai_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>pol_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>twai_flg</B
+></CODE
+>(UINT *<VAR
+CLASS="PDPARAM"
+>p_flgptn</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>waiptn </VAR
+>, UINT <VAR
+CLASS="PDPARAM"
+>wfmode</VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_flg</B
+></CODE
+>(T_RFLG *<VAR
+CLASS="PDPARAM"
+>pk_rflg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>snd_msg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>, T_MSG <VAR
+CLASS="PDPARAM"
+>*pk_msg</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>rcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>prcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>trcv_msg</B
+></CODE
+>(T_MSG **<VAR
+CLASS="PDPARAM"
+>ppk_msg</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid </VAR
+>, TMO <VAR
+CLASS="PDPARAM"
+>tmout</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>ref_mbx</B
+></CODE
+>(T_RMBX *<VAR
+CLASS="PDPARAM"
+>pk_rmbx</VAR
+>, ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><P
+>The following functions are supported in this release (with
+some restrictions) if enabled with the appropriate configuration
+option for the object type (for example <TT
+CLASS="PARAMETER"
+><I
+>CYGPKG_UITRON_SEMAS_CREATE_DELETE</I
+></TT
+>)
+(see <A
+HREF="c-cygpkg-uitron-semas.html#C-CYGPKG-UITRON-SEMAS-CREATE-DELETE"
+>the section called <I
+>Component:
+Support create and delete</I
+> in Chapter 18</A
+>): </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>, T_CSEM *<VAR
+CLASS="PDPARAM"
+>pk_csem</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_sem</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>semid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>, T_CFLG *<VAR
+CLASS="PDPARAM"
+>pk_cflg</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_flg</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>flgid</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>cre_mbx</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>, T_CMBX *<VAR
+CLASS="PDPARAM"
+>pk_cmbx</VAR
+>);<P
+></P
+></DIV
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>ER <B
+CLASS="FSFUNC"
+>del_mbx</B
+></CODE
+>(ID <VAR
+CLASS="PDPARAM"
+>mbxid</VAR
+>);<P
+></P
+></DIV
+><P
+>In general the queueing order when waiting on a synchronization
+object depends on the underlying kernel configuration. The multi-level
+queue scheduler is required for strict µITRON conformance
+and it queues tasks in FIFO order, so requests to create an object
+with priority queueing of tasks (<TT
+CLASS="LITERAL"
+>pk_cxxx-&#62;xxxatr = TA_TPRI</TT
+>)
+are rejected with E_RSATR. Additional undefined bits in
+the attributes fields must be zero. </P
+><P
+>In general, extended information (pk_cxxx-&#62;exinf)
+is ignored. </P
+><P
+>For semaphores, the initial semaphore count (pk_csem-&#62;isemcnt)
+is supported; the new semaphore"s count is set. The maximum
+count is not supported, and is not in fact defined in type pk_csem. </P
+><P
+>For flags, multiple tasks are allowed to wait. Because single
+task waiting is a subset of this, the W bit (TA_WMUL) of
+the flag attributes is ignored; all other bits must be zero. The
+initial flag value is supported. </P
+><P
+>For mailboxes, the buffer count is defined statically by kernel
+configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGNUM_KERNEL_SYNCH_MBOX_QUEUE_SIZE</I
+></TT
+> (see <A
+HREF="c-cygpkg-kernel-synch.html"
+>the section called <I
+>Component: Synchronization primitives</I
+> in Chapter 17</A
+>);
+therefore the buffer count field is not supported and is not in
+fact defined in type pk_cmbx. Queueing of messages is FIFO ordered
+only, so TA_MPRI (in pk_cmbx-&#62;mbxatr)
+is not supported. </P
+><H2
+CLASS="BRIDGEHEAD"
+>Error checking</H2
+><P
+>The following conditions are only checked for, and only return
+errors if <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_UITRON_BAD_PARAMS_RETURN_ERRORS</I
+></TT
+> is
+enabled:</P
+><P
+></P
+><UL
+><LI
+><P
+>invalid object id; less than 1 or
+greater than CYGNUM_UITRON_TASKS/SEMAS/MBOXES
+as appropriate returns E_ID</P
+></LI
+><LI
+><P
+>dispatching is enabled in any call which can sleep,
+or E_CTX</P
+></LI
+><LI
+><P
+>tmout must be positive, otherwise E_PAR</P
+></LI
+><LI
+><P
+>pk_cxxx pointers in <TT
+CLASS="FUNCTION"
+><B
+>cre_xxx()</B
+></TT
+> must
+be valid pointer, or E_PAR</P
+></LI
+><LI
+><P
+>return value pointers in <TT
+CLASS="FUNCTION"
+><B
+>ref_xxx()</B
+></TT
+> is
+a valid pointer, or E_PAR</P
+></LI
+><LI
+><P
+>flag wait pattern must be non-zero, and mode must
+be valid, or E_PAR</P
+></LI
+><LI
+><P
+>return value pointer in flag wait calls is a valid
+pointer, or E_PAR</P
+></LI
+></UL
+><P
+>The following conditions are checked for, and can return error
+codes, regardless of the setting of <TT
+CLASS="PARAMETER"
+><I
+>CYGSEM_UITRON_BAD_PARAMS_RETURN_ERRORS</I
+></TT
+>:</P
+><P
+></P
+><UL
+><LI
+><P
+>When create and delete functions <TT
+CLASS="FUNCTION"
+><B
+>cre_xxx()</B
+></TT
+> and <TT
+CLASS="FUNCTION"
+><B
+>del_xxx()</B
+></TT
+> are
+supported, all calls which use a valid object ID number check that
+the object exists. If not, E_NOEXS is returned; see <A
+HREF="c-cygpkg-uitron-semas.html#C-CYGPKG-UITRON-SEMAS-CREATE-DELETE"
+>the section called <I
+>Component:
+Support create and delete</I
+> in Chapter 18</A
+>.</P
+></LI
+><LI
+><P
+>In create functions <TT
+CLASS="FUNCTION"
+><B
+>cre_xxx()</B
+></TT
+>,
+when supported, if the object already exists, then E_OBJ</P
+></LI
+><LI
+><P
+>In any call which can sleep, such as <TT
+CLASS="FUNCTION"
+><B
+>twai_sem()</B
+></TT
+>:
+return codes E_TMOUT, E_RLWAI, E_DLT
+or of course E_OK are returned depending on the reason
+for terminating the sleep</P
+></LI
+><LI
+><P
+>In polling functions such as <TT
+CLASS="FUNCTION"
+><B
+>preq_sem()</B
+></TT
+>return
+codes E_TMOUT or E_OK are returned depending on
+the state of the synchronization object</P
+></LI
+><LI
+><P
+>In creation functions, the attributes must be compatible
+with the selected underlying kernel configuration: in <TT
+CLASS="FUNCTION"
+><B
+>cre_sem()</B
+></TT
+> <TT
+CLASS="LITERAL"
+>pk_csem-&#62;sematr</TT
+> must
+be equal to <TT
+CLASS="LITERAL"
+>TA_TFIFO</TT
+> else E_RSATR.</P
+></LI
+><LI
+><P
+>In <TT
+CLASS="FUNCTION"
+><B
+>cre_flg()</B
+></TT
+> <TT
+CLASS="LITERAL"
+>pk_cflg-&#62;flgatr</TT
+> must
+be either <TT
+CLASS="LITERAL"
+>TA_WMUL</TT
+> or <TT
+CLASS="LITERAL"
+>TA_WSGL</TT
+> else E_RSATR.</P
+></LI
+><LI
+><P
+>In <TT
+CLASS="FUNCTION"
+><B
+>cre_mbx()</B
+></TT
+> <TT
+CLASS="LITERAL"
+>pk_cmbx-&#62;mbxatr</TT
+> must
+be <TT
+CLASS="LITERAL"
+>TA_TFIFO + TA_MFIFO</TT
+> else E_RSATR.</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="task-dependent-synchronization-functions.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="x2950.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Task-Dependent Synchronization Functions</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Extended
+Synchronization and Communication Functions</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

@@ -1,0 +1,246 @@
+<HTML
+><HEAD
+><TITLE
+>Package: SPARClite architecture</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos HAL"
+HREF="p-cygpkg-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: PowerPC architecture"
+HREF="p-cygpkg-hal-powerpc.html"><LINK
+REL="NEXT"
+TITLE="Package: TX39 architecture"
+HREF="p-cygpkg-hal-tx39.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-hal-powerpc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: eCos HAL</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-hal-tx39.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE"
+>Package: SPARClite architecture</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The SPARClite architecture HAL package provides generic support
+for this processor architecture. It is also necessary to select
+a specific target platform HAL package. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE-SLEB"
+>Package: SPARClite
+MB8683x evaluation board</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE_SLEB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The SPARClite evaluation board HAL package is provided for
+use with the Fujitsu MB8683x boards. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGHWR-HAL-SPARCLITE-SLEB-STARTUP"
+>Option:
+Startup type</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGHWR_HAL_SPARCLITE_SLEB_STARTUP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When targeting the SPARClite Evaluation Board it is possible
+to build the system for either RAM bootstrap or ROM bootstrap. The
+former generally requires that the board is equipped with ROMs containing
+the Cygmon ROM monitor or equivalent software that allows gdb to
+download the eCos application on to the board. The latter typically requires
+that the eCos application be blown into EPROMs or equivalent technology. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-SPARCLITE-SIM"
+>Package: Minimal
+simulator</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_SPARCLITE_SIM</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The minimal simulator HAL package is provided for when only
+a simple simulation of the processor architecture is desired, as
+opposed to detailed simulation of any specific board. To use this
+minimal simulator the command <B
+CLASS="COMMAND"
+>target sim -nfp -sparclite
+-dumbio</B
+> should be used from inside gdb. It is not possible
+to use any of the eCos device drivers when the simulator is running
+in this mode </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal-powerpc.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal-tx39.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: PowerPC architecture</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: TX39 architecture</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

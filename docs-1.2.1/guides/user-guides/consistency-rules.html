@@ -1,0 +1,419 @@
+<HTML
+><HEAD
+><TITLE
+>Consistency Rules</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="Basic Operations"
+HREF="basic-operations.html"><LINK
+REL="PREVIOUS"
+TITLE="Persistence"
+HREF="persistence.html"><LINK
+REL="NEXT"
+TITLE="View Settings"
+HREF="view-settings.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 3. Basic Operations</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CONSISTENCY-RULES"
+>Consistency Rules</A
+></H1
+><P
+>Consistency
+rules exist to verify that any configuration that may be generated
+is legal &#8212; it will build successfully and generate code
+that will behave in a reasonable manner.</P
+><P
+>Consistency rules are checked as configurable items are changed,
+and the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> can suggest
+fixes for the consistency check failure(s) about to be introduced
+by suggesting a change to the configurable item or a related item.</P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN598"
+>Correct Failing Rules Dialog</A
+></H2
+><P
+>This dialog is displayed if one or more failing rules
+are detected. Depending on the settings chosen in the <SPAN
+CLASS="GUIMENU"
+>Tools</SPAN
+> -&#62; 
+<SPAN
+CLASS="GUIMENUITEM"
+>Options</SPAN
+> dialog, it will be displayed
+after an item is changed or before a build is started.</P
+><P
+><P
+><IMG
+SRC="../Image54.gif"
+ALIGN="CENTER"></P
+></P
+><P
+>The dialog shows failing consistency rules and suggested fixes.
+If the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> is unable to
+suggest a suitable fix for a failing rule then the corresponding
+items will be grayed; otherwise you can check the adjacent box to
+accept the fix. Fixes are grouped according to the configuration
+items they affect (for example, &#8220;Disable item(s) requiring...&#8221;).
+A group of fixes may be selected or unselected by checking or unchecking
+the box on the summary line.</P
+><P
+>Clicking <SPAN
+CLASS="GUIBUTTON"
+>Apply</SPAN
+> causes the <SPAN
+CLASS="APPLICATION"
+>Configuration
+Tool</SPAN
+> to apply all selected fixes. Note that fixes
+may have side effects and so may cause the &#8220;Correct Failing
+Rules&#8221; dialog to be redisplayed.</P
+><P
+><IMG
+SRC="../CorrectFailingRules2.gif"
+ALIGN="CENTER"></P
+><P
+>Note that the <SPAN
+CLASS="APPLICATION"
+>Configuration Tool</SPAN
+> will
+only be capable of suggesting fixes in limited circumstances. The
+conditions are summarized in the following tables:</P
+><P
+></P
+><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 3-1. Fixes suggested
+after changing an item"s value</B
+></P
+><TABLE
+BORDER="0"
+CLASS="CALSTABLE"
+><TR
+><TH
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Action</TH
+><TH
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Failing rule</TH
+><TH
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Suggested action</TH
+><TH
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Types of item action may be applied to</TH
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Requires</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable required item</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precludes</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluded item</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item group</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Unset</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Required by</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable requiring item</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item group</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Set</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precluded by</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluding item</TD
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item group</TD
+></TR
+></TABLE
+></DIV
+><P
+></P
+><DIV
+CLASS="TABLE"
+><P
+><B
+>Table 3-2. Fixes suggested
+before building</B
+></P
+><TABLE
+BORDER="0"
+CLASS="CALSTABLE"
+><TR
+><TH
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Rule</TH
+><TH
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Suggested action</TH
+><TH
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Types of item action may be applied to</TH
+></TR
+><TR
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Requires</TD
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enable required item</TD
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio</TD
+></TR
+><TR
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Precludes</TD
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Disable precluded item</TD
+><TD
+WIDTH="144"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean or radio in one- or two-item group</TD
+></TR
+></TABLE
+></DIV
+><P
+>The process of suggesting fixes may be disabled using the <SPAN
+CLASS="GUIMENU"
+>Tools</SPAN
+>-&#62;<SPAN
+CLASS="GUIMENUITEM"
+>Options</SPAN
+> dialog.</P
+><P
+>For any item, you can identify currently failing consistency
+rules in the Properties Table; failing rules are marked with an
+exclamation point. A complete list may be obtained from the <SPAN
+CLASS="GUIMENU"
+>Tools</SPAN
+>-&#62;<SPAN
+CLASS="GUIMENUITEM"
+>Options</SPAN
+> dialog.</P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="persistence.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="view-settings.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Persistence</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="basic-operations.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>View Settings</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

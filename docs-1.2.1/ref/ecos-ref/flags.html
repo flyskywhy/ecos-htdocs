@@ -1,0 +1,749 @@
+<HTML
+><HEAD
+><TITLE
+>Flags</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Message
+boxes"
+HREF="message-boxes.html"><LINK
+REL="NEXT"
+TITLE="ITRON API"
+HREF="micro-itron-api.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="message-boxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="micro-itron-api.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="FLAGS"
+>Flags</A
+></H1
+><P
+>Flags are a synchronization
+mechanism which allow a thread to wait for a single condition or
+a combination of conditions. The conditions are represented by bits
+in a 32 bit word. Flags are inspired by the µITRON
+specification.</P
+><P
+>Flags are of type <SPAN
+CLASS="TYPE"
+>cyg_flag_t</SPAN
+>,
+which are 32 bit words, and routines are provided to set or mask
+some bits in the flag value. </P
+><P
+>A &#8220;consumer side&#8221; thread can wait for a &#8220;producer
+side&#8221; thread to set the entire collection of bits, or any
+subset of them.</P
+><P
+>When a thread sets some bits in a flag, all threads whose
+requirements are now satisfied are woken up; thus flags have broadcast
+semantics. A variation on the wait call can specify that the flag
+value be cleared when the wait call is satisfied, in which case
+the setting of bits would not be a broadcast. </P
+><P
+>Blocking, non-blocking, and &#8220;blocking with time-out&#8221; versions
+of the wait calls are provided. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_flag_init</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>);<P
+></P
+></DIV
+><P
+>Initializes a flag variable.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_flag_destroy</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>);<P
+></P
+></DIV
+><P
+>Destroys a flag variable.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_flag_setbits</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>, cyg_flag_value_t <VAR
+CLASS="PDPARAM"
+>value</VAR
+>);<P
+></P
+></DIV
+><P
+>Sets the bits in <TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+> which are set
+in <TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>.</P
+><P
+>A side effect of <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_setbits()</B
+></TT
+> is
+that the kernel wakes up any waiting threads whose requirements
+are now satisfied. </P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+></DT
+><DD
+><P
+>A pointer to the flag whose bits are being set.
+The new setting of <TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+> will be <TT
+CLASS="LITERAL"
+>*flag
+-&#62; (*flag | value)</TT
+>.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+></DT
+><DD
+><P
+>A word whose 1 bits will be also set in <TT
+CLASS="PARAMETER"
+><I
+>*flag</I
+></TT
+>. </P
+></DD
+></DL
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_flag_maskbits</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>, cyg_flag_value_t <VAR
+CLASS="PDPARAM"
+>value</VAR
+>);<P
+></P
+></DIV
+><P
+>Clear the bits in the given flag which are zero in the <TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+>.
+This cannot result in new threads being eligible for awakening.</P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+></DT
+><DD
+><P
+>A pointer to the flag whose bits are being cleared.
+The new setting of <TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+> will be <TT
+CLASS="LITERAL"
+>*flag
+-&#62; (*flag &#38; value)</TT
+>.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>value</I
+></TT
+></DT
+><DD
+><P
+>A word whose 0 bits will be also cleared in <TT
+CLASS="PARAMETER"
+><I
+>*flag</I
+></TT
+>. </P
+></DD
+></DL
+><P
+>We now describe the <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_wait()</B
+></TT
+>,
+which frequently uses the following macros: </P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>&#13; #define CYG_FLAG_WAITMODE_AND ((cyg_flag_mode_t)0)
+ #define CYG_FLAG_WAITMODE_OR ((cyg_flag_mode_t)2)
+ #define CYG_FLAG_WAITMODE_CLR ((cyg_flag_mode_t)1)</PRE
+></TD
+></TR
+></TABLE
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_flag_value_t <B
+CLASS="FSFUNC"
+>cyg_flag_wait</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>, cyg_flag_value_t <VAR
+CLASS="PDPARAM"
+>pattern</VAR
+>, cyg_flag_mode_t <VAR
+CLASS="PDPARAM"
+>mode</VAR
+>);<P
+></P
+></DIV
+><P
+>Wait for all the bits which are one in <TT
+CLASS="PARAMETER"
+><I
+>pattern</I
+></TT
+> to
+be set in the <TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+> value (if <TT
+CLASS="PARAMETER"
+><I
+>mode</I
+></TT
+> is <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_AND</I
+></TT
+>)
+or for any of the bits which are one in pattern to be set in the
+flag value (if <TT
+CLASS="PARAMETER"
+><I
+>mode</I
+></TT
+> is <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_OR</I
+></TT
+>).</P
+><P
+>When <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_wait()</B
+></TT
+> returns, meaning
+that the condition is met, the flag value which succeeded is returned
+from the call; in other circumstances (such as a bad value for <TT
+CLASS="PARAMETER"
+><I
+>mode</I
+></TT
+> or <TT
+CLASS="PARAMETER"
+><I
+>pattern</I
+></TT
+>),
+zero is returned to indicate the error.</P
+><P
+>If the mode is one of those above plus <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_CLR</I
+></TT
+>,
+the whole of the flag value is cleared to zero when the condition
+is met. </P
+><P
+><TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_wait()</B
+></TT
+> takes the following parameters: </P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>flag</I
+></TT
+></DT
+><DD
+><P
+>The value of the flag (set by the thread that called <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_setbits()</B
+></TT
+> or <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_maskbits()</B
+></TT
+>)
+is placed in here.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>pattern</I
+></TT
+></DT
+><DD
+><P
+>The set of bits which, if set, will cause the calling
+thread to be woken up. </P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>mode</I
+></TT
+></DT
+><DD
+><P
+>A parameter which modifies the conditions for wake-up.
+It can take the following values: </P
+><P
+></P
+><DL
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_AND</I
+></TT
+></DT
+><DD
+><P
+>Only wake up if <I
+CLASS="EMPHASIS"
+>all</I
+> the bits
+in <TT
+CLASS="PARAMETER"
+><I
+>mask</I
+></TT
+> is set in the flag.</P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_OR</I
+></TT
+></DT
+><DD
+><P
+>Wake up if <I
+CLASS="EMPHASIS"
+>any</I
+> of the bits
+in <TT
+CLASS="PARAMETER"
+><I
+>mask</I
+></TT
+> is set in the flag. </P
+></DD
+><DT
+><TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_AND</I
+></TT
+> + <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_CLR</I
+></TT
+>, <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_OR</I
+></TT
+> + <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_CLR</I
+></TT
+></DT
+><DD
+><P
+>Like <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_AND</I
+></TT
+> and <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_OR</I
+></TT
+>,
+but the entire flag is cleared to zero when the condition is met,
+whereas normally only the bits that are set in <TT
+CLASS="PARAMETER"
+><I
+>pattern</I
+></TT
+> would
+be cleared. </P
+></DD
+></DL
+></DD
+></DL
+><P
+>Waiting threads are queued depending on the semantics of the
+underlying scheduler. In release 1.2.1, this means that, if
+the multi-level queue scheduler is selected, queueing is in FIFO
+ordering, while the bitmap scheduler supports thread priority ordered queueing.
+When some flag value bits become signalled by a call to <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_setbits()</B
+></TT
+>,
+the queue is scanned in order, and each waiting thread in turn is
+awoken or re-queued depending on its request. When a thread is awoken,
+if it made the wait call with <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_CLR</I
+></TT
+>,
+the flag value is cleared to zero, and the scan of queued threads
+is terminated. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_flag_value_t <B
+CLASS="FSFUNC"
+>cyg_flag_timed_wait</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>, cyg_flag_value_t <VAR
+CLASS="PDPARAM"
+>pattern</VAR
+>, cyg_flag_mode_t <VAR
+CLASS="PDPARAM"
+>mode</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>abstime</VAR
+>);<P
+></P
+></DIV
+><P
+>A time-out version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_wait()</B
+></TT
+>.
+This waits for the condition required by pattern and mode to be
+met, or until the abstime time-out is reached, whichever is first.
+If the time-out is reached first, zero is returned. This call is
+only available if the configuration option <TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_TIMER</I
+></TT
+> (see <A
+HREF="c-cygpkg-kernel-threads.html#O-CYGFUN-KERNEL-THREADS-TIMER"
+>the section called <I
+>Option: Allow
+per-thread timers</I
+> in Chapter 17</A
+>)
+is enabled. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_flag_value_t <B
+CLASS="FSFUNC"
+>cyg_flag_poll</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>, cyg_flag_value_t <VAR
+CLASS="PDPARAM"
+>pattern</VAR
+>, cyg_flag_mode_t <VAR
+CLASS="PDPARAM"
+>mode</VAR
+>);<P
+></P
+></DIV
+><P
+>A non-blocking version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_flag_wait()</B
+></TT
+>.
+If the condition required by pattern and mode is met, the flag value
+is returned, otherwise zero is returned. The flag value may be cleared
+in the event of success by specifying <TT
+CLASS="PARAMETER"
+><I
+>CYG_FLAG_WAITMODE_CLR</I
+></TT
+> in
+the mode, as usual. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_flag_value_t <B
+CLASS="FSFUNC"
+>cyg_flag_peek</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns the current flag value.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_flag_waiting</B
+></CODE
+>(cyg_flag_t *<VAR
+CLASS="PDPARAM"
+>flag</VAR
+>);<P
+></P
+></DIV
+><P
+>Returns true if there are threads waiting on this flag.</P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="message-boxes.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="micro-itron-api.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Message
+boxes</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>µITRON API</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

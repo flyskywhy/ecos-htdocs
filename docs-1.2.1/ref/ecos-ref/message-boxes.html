@@ -1,0 +1,573 @@
+<HTML
+><HEAD
+><TITLE
+>Message
+boxes</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Native kernel C language API"
+HREF="native-kernel-c-language-api.html"><LINK
+REL="PREVIOUS"
+TITLE="Memory pools"
+HREF="memory-pools.html"><LINK
+REL="NEXT"
+TITLE="Flags"
+HREF="flags.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="memory-pools.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 5. Native kernel C language API</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="flags.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="MESSAGE-BOXES"
+>Message
+boxes</A
+></H1
+><P
+>Message boxes are a primitive mechanism for exchanging messages
+between threads, inspired by the µITRON specification.
+A message box can be created with <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_create()</B
+></TT
+> before
+the scheduler is started, and two threads in a typical producer/consumer
+relationship can access it. One thread, the producer, will use <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_put()</B
+></TT
+> to
+make data available to the consumer thread which uses <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_get()</B
+></TT
+> to
+access the data. </P
+><P
+>The size of the internal message queue is configured by the <TT
+CLASS="PARAMETER"
+><I
+>CYGNUM_KERNEL_SYNCH_MBOX_QUEUE_SIZE</I
+></TT
+> parameter
+(see <A
+HREF="c-cygpkg-kernel-synch.html#O-CYGNUM-KERNEL-SYNCH-MBOX-QUEUE-SIZE"
+>the section called <I
+>Option:
+Message box queue size</I
+> in Chapter 17</A
+>). The default value is 10. </P
+><P
+>Blocking, non-blocking and &#8220;blocking with time-out&#8221; versions
+of these calls are provided. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mbox_create</B
+></CODE
+>(cyg_handle_t *<VAR
+CLASS="PDPARAM"
+>handle</VAR
+>, cyg_mbox *<VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Creates a message box using the space provided in the <TT
+CLASS="PARAMETER"
+><I
+>mbox</I
+></TT
+> parameter,
+and returns a handle for future access to that message box.</P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void <B
+CLASS="FSFUNC"
+>cyg_mbox_delete</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Deletes the given message box. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void *<B
+CLASS="FSFUNC"
+>cyg_mbox_get</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Waits for a message to be available, then retrieves it and
+returns the address of the data. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void *<B
+CLASS="FSFUNC"
+>cyg_mbox_timed_get</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>timeout</VAR
+>);<P
+></P
+></DIV
+><P
+>Waits for a message to be available, but times out if <TT
+CLASS="PARAMETER"
+><I
+>timeout</I
+></TT
+> time
+passes. This version of the function is only available if the configuration
+option <TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_TIMER</I
+></TT
+> is turned
+on (see <A
+HREF="c-cygpkg-kernel-threads.html#O-CYGFUN-KERNEL-THREADS-TIMER"
+>the section called <I
+>Option: Allow
+per-thread timers</I
+> in Chapter 17</A
+>). </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void *<B
+CLASS="FSFUNC"
+>cyg_mbox_tryget</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Checks to see if a message is ready. If no message is available
+it returns immediately with a return value of <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+>.
+If a message is available it retrieves it and returns the address
+of the data. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>void *<B
+CLASS="FSFUNC"
+>cyg_mbox_peek_item</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Checks to see if a message is ready, and if one is available
+returns the address of the data <I
+CLASS="EMPHASIS"
+>without</I
+> removing
+the message from the queue. If no message is available it returns <TT
+CLASS="PARAMETER"
+><I
+>NULL</I
+></TT
+>. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mbox_put</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>item</VAR
+>);<P
+></P
+></DIV
+><P
+>Places a message in the given message box. If the queue is
+full it will block until the message can be sent. It returns true
+if the message was successfully sent, and false if the message was
+not sent and its sleep was awakened by the kernel before the message could
+be sent. </P
+><P
+>The <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_put()</B
+></TT
+> function is only available
+if the <TT
+CLASS="PARAMETER"
+><I
+>CYGMTH_MBOXT_PUT_CAN_WAIT</I
+></TT
+> configuration
+has been selected (see <A
+HREF="c-cygpkg-kernel-synch.html#O-CYGMFN-KERNEL-SYNCH-MBOXT-PUT-CAN-WAIT"
+>the section called <I
+>Option:
+Message box blocking put support</I
+> in Chapter 17</A
+>). </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mbox_timed_put</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>item</VAR
+>, cyg_tick_count_t <VAR
+CLASS="PDPARAM"
+>abstime</VAR
+>);<P
+></P
+></DIV
+><P
+>A time-out version of <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_put()</B
+></TT
+>.
+This will try to place the message in the given message box. If
+the queue is full, it will wait until <TT
+CLASS="PARAMETER"
+><I
+>abstime</I
+></TT
+> before
+giving up and returning <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+>. </P
+><P
+>The <TT
+CLASS="FUNCTION"
+><B
+>cyg_mbox_timed_put()</B
+></TT
+> function is
+only available if the both the <TT
+CLASS="PARAMETER"
+><I
+>CYGMFN_KERNEL_SYNCH_MBOXT_PUT_CAN_WAIT</I
+></TT
+> and <TT
+CLASS="PARAMETER"
+><I
+>CYGFUN_KERNEL_THREADS_TIMER</I
+></TT
+> configuration
+have been selected (see <A
+HREF="c-cygpkg-kernel-synch.html#O-CYGMFN-KERNEL-SYNCH-MBOXT-PUT-CAN-WAIT"
+>the section called <I
+>Option:
+Message box blocking put support</I
+> in Chapter 17</A
+> and <A
+HREF="c-cygpkg-kernel-threads.html#O-CYGFUN-KERNEL-THREADS-TIMER"
+>the section called <I
+>Option: Allow
+per-thread timers</I
+> in Chapter 17</A
+>). </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mbox_tryput</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>, void *<VAR
+CLASS="PDPARAM"
+>item</VAR
+>);<P
+></P
+></DIV
+><P
+>Tries to place a message in the given message box. It returns <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+> if
+the message was successfully sent, and <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+> if
+the message could not be sent immediately, usually because the queue
+was full. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_count32 <B
+CLASS="FSFUNC"
+>cyg_mbox_peek</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Takes a peek at the queue and returns the number of messages
+waiting in it. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mbox_waiting_to_get</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Queries the kernel to see if other processes are waiting to
+receive a message in the given message box. Returns <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+> if
+other processes are waiting, <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+> otherwise. </P
+><DIV
+CLASS="FUNCSYNOPSIS"
+><P
+></P
+><CODE
+CLASS="FUNCDEF"
+>cyg_bool_t <B
+CLASS="FSFUNC"
+>cyg_mbox_waiting_to_put</B
+></CODE
+>(cyg_handle_t <VAR
+CLASS="PDPARAM"
+>mbox</VAR
+>);<P
+></P
+></DIV
+><P
+>Queries the kernel to see if <I
+CLASS="EMPHASIS"
+>other</I
+> processes
+are waiting to send a message in the given message box. Returns <TT
+CLASS="PARAMETER"
+><I
+>true</I
+></TT
+> if
+other processes are waiting, <TT
+CLASS="PARAMETER"
+><I
+>false</I
+></TT
+> otherwise. </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="memory-pools.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="flags.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Memory pools</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="native-kernel-c-language-api.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Flags</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

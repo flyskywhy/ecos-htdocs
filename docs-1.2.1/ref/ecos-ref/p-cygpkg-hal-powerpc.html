@@ -1,0 +1,295 @@
+<HTML
+><HEAD
+><TITLE
+>Package: PowerPC architecture</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: eCos HAL"
+HREF="p-cygpkg-hal.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: MN10300 architecture"
+HREF="p-cygpkg-hal-mn10300.html"><LINK
+REL="NEXT"
+TITLE="Package: SPARClite architecture"
+HREF="p-cygpkg-hal-sparclite.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-hal-mn10300.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 15. Package: eCos HAL</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-hal-sparclite.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="P-CYGPKG-HAL-POWERPC"
+>Package: PowerPC architecture</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_POWERPC</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The PowerPC architecture HAL package provides generic support
+for this processor architecture. It is also necessary to select
+a specific target platform HAL package. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-POWERPC-COGENT"
+>Package: Cogent
+PowerPC evaluation board</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_POWERPC_COGENT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The cogent HAL package provides the support needed to run
+eCos on a Cogent board equipped with a PowerPC processor. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGHWR-HAL-POWERPC-COGENT-STARTUP"
+>Option:
+Startup type</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGHWR_HAL_POWERPC_COGENT_STARTUP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When targeting the cogent board it is possible to build the
+system for either RAM bootstrap, ROM bootstrap, or STUB bootstrap.
+RAM bootstrap generally requires that the board is equipped with
+ROMs containing a suitable ROM monitor or equivalent software that
+allows GDB to download the eCos application on to the board. The ROM
+bootstrap typically requires that the eCos application be blown
+into EPROMs or equivalent technology. STUB bootstrap is for configurations
+of eCos used only as GDB stub ROMs; the use of memory is limited
+to the top 1MB. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-POWERPC-FADS"
+>Package: Motorola
+FADS PowerPC evaluation board</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_POWERPC_FADS</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The FADS HAL package provides the support needed to run eCos
+on a Motorola FADS board equipped with a PowerPC processor. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGHWR-HAL-POWERPC-FADS-STARTUP"
+>Option: Startup
+type</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGHWR_HAL_POWERPC_FADS_STARTUP</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>When targeting the FADS board for RAM bootstrap it is expected
+that the image will be downloaded via the Motorola MPC8BUG tool. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="P-CYGPKG-HAL-POWERPC-SIM"
+>Package: Minimal simulator</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_HAL_POWERPC_SIM</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Radio</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>The minimal simulator HAL package is provided for use when
+only a simple simulation of the processor architecture is desired,
+as opposed to detailed simulation of any specific board. In particular
+it is not possible to simulate any of the I/O devices, so
+device drivers cannot be used. </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal-mn10300.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal-sparclite.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: MN10300 architecture</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-hal.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: SPARClite architecture</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

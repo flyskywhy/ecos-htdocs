@@ -1,0 +1,214 @@
+<HTML
+><HEAD
+><TITLE
+>Synchronization Levels</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Device Driver Interface to the Kernel"
+HREF="device-driver-interface-to-kernel.html"><LINK
+REL="PREVIOUS"
+TITLE="Device Driver Models"
+HREF="device-driver-models.html"><LINK
+REL="NEXT"
+TITLE="The API"
+HREF="the-api.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="device-driver-models.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 13. Device Driver Interface to the Kernel</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="the-api.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="SYNCHRONIZATION-LEVELS"
+>Synchronization Levels</A
+></H1
+><P
+>Since it would be dangerous for an ISR or DSR to make a call
+that might reschedule the current thread (by trying to lock a mutex
+for example) all functions in this API have an associated synchronization
+level. These levels are:</P
+><P
+></P
+><DL
+><DT
+>Thread</DT
+><DD
+><P
+>This function may only be called from within threads.
+This is usually the client code that makes calls into the device
+driver. In a non-kernel configuration, this will be code running
+at the default non-interrupt level. </P
+></DD
+><DT
+>DSR</DT
+><DD
+><P
+>This function may be called by either DSR or thread
+code.</P
+></DD
+><DT
+>ISR</DT
+><DD
+><P
+>This function may be called from ISR, DSR or thread
+code.</P
+></DD
+></DL
+><P
+>The following table shows, for each API function, the levels
+at which is may be called:</P
+><TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="100%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>                                            Callable from:
+Function                       ISR             DSR           Thread
+----------------------------------------------------------------------
+
+cyg_drv_isr_lock                                X               X
+cyg_drv_isr_unlock                              X               X
+cyg_drv_dsr_lock                                                X
+cyg_drv_dsr_unlock                                              X
+cyg_drv_mutex_init                                              X
+cyg_drv_mutex_destroy                                           X
+cyg_drv_mutex_lock                                              X
+cyg_drv_mutex_trylock                                           X
+cyg_drv_mutex_unlock                                            X
+cyg_drv_mutex_release                                           X
+cyg_drv_cond_init                                               X
+cyg_drv_cond_destroy                                            X
+cyg_drv_cond_wait                                               X
+cyg_drv_cond_signal                             X               X
+cyg_drv_cond_broadcast                          X               X
+cyg_drv_interrupt_create                                        X
+cyg_drv_interrupt_delete                                        X
+cyg_drv_interrupt_attach        X               X               X
+cyg_drv_interrupt_detach        X               X               X
+cyg_drv_interrupt_mask          X               X               X
+cyg_drv_interrupt_unmask        X               X               X
+cyg_drv_interrupt_acknowledge   X               X               X
+cyg_drv_interrupt_configure     X               X               X
+cyg_drv_interrupt_level         X               X               X
+      </PRE
+></TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="device-driver-models.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="the-api.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Device Driver Models</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="device-driver-interface-to-kernel.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>The API</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

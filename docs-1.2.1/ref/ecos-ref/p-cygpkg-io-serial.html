@@ -1,0 +1,1941 @@
+<HTML
+><HEAD
+><TITLE
+>Package: Serial device drivers</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Reference
+Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Package: IO sub-system"
+HREF="p-cygpkg-io.html"><LINK
+REL="PREVIOUS"
+TITLE="Package: IO sub-system"
+HREF="p-cygpkg-io.html"><LINK
+REL="NEXT"
+TITLE="Package: Wallclock device"
+HREF="p-cygpkg-devices-wallclock.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> Reference
+Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-io.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+>Chapter 22. Package: I/O sub-system</TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="p-cygpkg-devices-wallclock.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="P-CYGPKG-IO-SERIAL"
+>Package: Serial device drivers</A
+></H1
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables drivers for basic I/O services
+on serial devices. </P
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY"
+>Component: TTY-mode
+serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the terminal-like device driver used for
+serial devices that interact with humans, such as a system console. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-CONSOLE"
+>Option: Console
+device name</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_CONSOLE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the TTY device to use for the console. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-HALDIAG"
+>Component: HAL/diag
+serial device driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_HALDIAG</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the use of the HAL diagnostic channel
+via the standard I/O drivers. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY0"
+>Component: TTY
+mode channel #0</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes "/dev/tty0" to
+be included in the standard drivers. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY0-DEV"
+>Option: TTY
+mode channel #0 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY0_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for "/dev/tty0". </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY1"
+>Component: TTY
+mode channel #1</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes "/dev/tty1" to
+be included in the standard drivers. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY1-DEV"
+>Option: TTY
+mode channel #1 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY1_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for "/dev/tty1". </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TTY-TTY2"
+>Component: TTY
+mode channel #2</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TTY_TTY2</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option causes "/dev/tty2" to
+be included in the standard drivers. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TTY-TTY2-DEV"
+>Option: TTY
+mode channel #2 device</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TTY_TTY2_DEV</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option selects the physical device to use for "/dev/tty2". </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-PID"
+>Component: ARM PID
+serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_PID</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the ARM
+PID. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-PID-SERIAL0"
+>Component:
+ARM PID serial port 0 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_PID_SERIAL0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the ARM
+PID port 0. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-ARM-PID-SERIAL0-NAME"
+>Option:
+Device name for ARM PID serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_ARM_PID_SERIAL0_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the name of the serial device for the
+ARM PID port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-PID-SERIAL0-BAUD"
+>Option:
+Baud rate for the ARM PID serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_PID_SERIAL0_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+ARM PID port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-PID-SERIAL0-BUFSIZE"
+>Option:
+Buffer size for the ARM PID serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_PID_SERIAL0_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the ARM PID port 0. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-PID-SERIAL1"
+>Component:
+ARM PID serial port 1 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_PID_SERIAL1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the ARM
+PID port 1. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-ARM-PID-SERIAL1-NAME"
+>Option:
+Device name for ARM PID serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_ARM_PID_SERIAL1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the name of the serial device for the
+ARM PID port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-PID-SERIAL1-BAUD"
+>Option:
+Baud rate for the ARM PID serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_PID_SERIAL1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+ARM PID port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-PID-SERIAL1-BUFSIZE"
+>Option:
+Buffer size for the ARM PID serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_PID_SERIAL1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the ARM PID port 1. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-AEB"
+>Component: ARM AEB-1
+serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_AEB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the ARM
+AEB-1. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-AEB-SERIAL0"
+>Component:
+ARM AEB-1 serial port 0 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_AEB_SERIAL0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the ARM
+AEB-1 port 0. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-ARM-AEB-SERIAL0-NAME"
+>Option:
+Device name for the ARM AEB-1 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_ARM_AEB_SERIAL0_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option sets the name of the serial device for the ARM
+AEB-1 port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-AEB-SERIAL0-BAUD"
+>Option:
+Baud rate for the ARM AEB-1 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_AEB_SERIAL0_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+ARM AEB-1 port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-AEB-SERIAL0-BUFSIZE"
+>Option:
+Buffer size for the ARM AEB-1 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_AEB_SERIAL0_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the ARM AEB-1 port 0. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-ARM-AEB-SERIAL1"
+>Component:
+ARM AEB-1 serial port 1 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_ARM_AEB_SERIAL1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the ARM
+AEB-1 port 1. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-ARM-AEB-SERIAL1-NAME"
+>Option:
+Device name for the ARM AEB-1 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_ARM_AEB_SERIAL1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the name of serial device for the ARM
+AEB-1 port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-AEB-SERIAL1-BAUD"
+>Option:
+Baud rate for the ARM AEB-1 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_AEB_SERIAL1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+ARM AEB-1 port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-ARM-AEB-SERIAL1-BUFSIZE"
+>Option:
+Buffer size for the ARM AEB-1 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_ARM_AEB_SERIAL1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the ARM AEB-1 port 1. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-POWERPC-COGENT"
+>Component:
+Cogent PowerPC serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_POWERPC_COGENT</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the Cogent
+PowerPC. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-POWERPC-COGENT-SERIAL-A"
+>Component:
+Cogent PowerPC serial port A driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_POWERPC_COGENT_SERIAL_A</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the Cogent
+PowerPC port A. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8732"
+>Option: Device name for Cogent PowerPC serial port
+A</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_POWERPC_COGENT_SERIAL_A_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the Cogent PowerPC
+port A. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8740"
+>Option: Baud rate for the Cogent PowerPC serial port
+A driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_POWERPC_COGENT_SERIAL_A_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+Cogent PowerPC port A. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8748"
+>Option: Buffer size for the Cogent PowerPC serial
+port A driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_POWERPC_COGENT_SERIAL_A_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the Cogent PowerPC port A. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-POWERPC-COGENT-SERIAL-B"
+>Component:
+Cogent PowerPC serial port B driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_POWERPC_COGENT_SERIAL_B</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the Cogent
+PowerPC port B. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8764"
+>Option: Device name for Cogent PowerPC serial port
+B</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_POWERPC_COGENT_SERIAL_B_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the Cogent PowerPC
+port B. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8772"
+>Option: Baud rate for the Cogent PowerPC serial port
+B driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_POWERPC_COGENT_SERIAL_B_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+Cogent PowerPC port B. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8780"
+>Option: Buffer size for the Cogent PowerPC serial
+port B driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_POWERPC_COGENT_SERIAL_B_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the Cogent PowerPC port B. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB"
+>Component:
+SPARClite SLEB serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the SPARClite
+SLEB. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB-CON1"
+>Component:
+SPARClite SLEB serial CON1 port driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB_CON1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the SPARClite
+SLEB CON1 port. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-SPARCLITE-SLEB-CON1-NAME"
+>Option:
+Device name for SPARClite SLEB serial CON1 port</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_SPARCLITE_SLEB_CON1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the SPARClite SLEB
+CON1 port. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON1-BAUD"
+>Option:
+Baud rate for the SPARClite SLEB serial CON1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+SPARClite SLEB CON1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8820"
+>Option: Buffer size for the SPARClite SLEB serial
+CON1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the SPARClite SLEB CON1. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-SPARCLITE-SLEB-CON2"
+>Component:
+SPARClite SLEB serial CON2 port driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_SPARCLITE_SLEB_CON2</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for the SPARClite
+SLEB CON2 port. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-SPARCLITE-SLEB-CON2-NAME"
+>Option:
+Device name for SPARClite SLEB serial CON2 port</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_SPARCLITE_SLEB_CON2_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name for the SPARClite SLEB
+CON2 port. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-SPARCLITE-SLEB-CON2-BAUD"
+>Option:
+Baud rate for the SPARClite SLEB serial CON2 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON2_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+SPARClite SLEB CON2. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8852"
+>Option: Buffer size for the SPARClite SLEB serial
+CON2 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_SPARCLITE_SLEB_CON2_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the SPARClite SLEB CON2. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TX39-JMR3904"
+>Component:
+TX39 JMR3904 serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TX39_JMR3904</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the TX39
+JMR3904. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TX39-JMR3904-POLLED-MODE"
+>Component:
+TX39 JMR3904 polled mode serial drivers</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TX39_JMR3904_POLLED_MODE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>If asserted, this option specifies that the serial device
+drivers for the TX39 JMR3904 should be polled-mode instead of interrupt
+driven. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TX39-JMR3904-SERIAL0"
+>Component:
+TX39 JMR3904 serial port 0 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TX39_JMR3904_SERIAL0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for port 0 on
+the TX39 JMR3904. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TX39-JMR3904-SERIAL0-NAME"
+>Option:
+Device name for TX39 JMR3904 serial port 0</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TX39_JMR3904_SERIAL0_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name port 0 on the TX39 JMR3904. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-TX39-JMR3904-SERIAL0-BAUD"
+>Option:
+Baud rate for the TX39 JMR3904 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_TX39_JMR3904_SERIAL0_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+TX39 JMR3904 port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8900"
+>Option: Buffer size for the TX39 JMR3904 serial port
+0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_TX39_JMR3904_SERIAL0_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the TX39 JMR3904 port 0. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-TX39-JMR3904-SERIAL1"
+>Component:
+TX39 JMR3904 serial port 1 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_TX39_JMR3904_SERIAL1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for port 1 on
+the TX39 JMR3904. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-TX39-JMR3904-SERIAL1-NAME"
+>Option:
+Device name for TX39 JMR3904 serial port 1</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_TX39_JMR3904_SERIAL1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name port 1 on the TX39 JMR3904. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-TX39-JMR3904-SERIAL1-BAUD"
+>Option:
+Baud rate for the TX39 JMR3904 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_TX39_JMR3904_SERIAL1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+TX39 JMR3904 port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="AEN8932"
+>Option: Buffer size for the TX39 JMR3904 serial port
+1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_TX39_JMR3904_SERIAL1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the TX39 JMR3904 port 1. </P
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="C-CYGPKG-IO-SERIAL-MN10300"
+>Component: MN10300
+serial device drivers</A
+></H2
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_MN10300</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option enables the serial device drivers for the MN10300. </P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-MN10300-POLLED-MODE"
+>Component:
+MN10300 polled mode serial drivers</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_MN10300_POLLED_MODE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>If asserted, this option specifies that the serial device
+drivers for the MN10300 should be polled-mode instead of interrupt
+driven. </P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-MN10300-SERIAL0"
+>Component:
+MN10300 serial port 0 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_MN10300_SERIAL0</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for port 0 on
+the MN10300. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-MN10300-SERIAL0-NAME"
+>Option:
+Device name for MN10300 serial port 0</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_MN10300_SERIAL0_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name port 0 on the MN10300. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL0-BAUD"
+>Option:
+Baud rate for the MN10300 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL0_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+MN10300 port 0. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL0-BUFSIZE"
+>Option:
+Buffer size for the MN10300 serial port 0 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL0_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the MN10300 port 0. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-MN10300-SERIAL1"
+>Component:
+MN10300 serial port 1 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_MN10300_SERIAL1</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for port 1 on
+the MN10300. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-MN10300-SERIAL1-NAME"
+>Option:
+Device name for MN10300 serial port 1</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_MN10300_SERIAL1_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name port 1 on the MN10300. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL1-BAUD"
+>Option:
+Baud rate for the MN10300 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL1_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+MN10300 port 1. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL1-BUFSIZE"
+>Option:
+Buffer size for the MN10300 serial port 1 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL1_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the MN10300 port 1. </P
+></DIV
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="C-CYGPKG-IO-SERIAL-MN10300-SERIAL2"
+>Component:
+MN10300 serial port 2 driver</A
+></H3
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGPKG_IO_SERIAL_MN10300_SERIAL2</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Boolean</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option includes the serial device driver for port 2 on
+the MN10300. </P
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGDAT-IO-SERIAL-MN10300-SERIAL2-NAME"
+>Option:
+Device name for MN10300 serial port 2</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGDAT_IO_SERIAL_MN10300_SERIAL2_NAME</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>String</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the device name port 2 on the MN10300. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL2-BAUD"
+>Option:
+Baud rate for the MN10300 serial port 2 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL2_BAUD</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Enum</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the default baud rate (speed) for the
+MN10300 port 2. </P
+></DIV
+><DIV
+CLASS="SECT4"
+><H4
+CLASS="SECT4"
+><A
+NAME="O-CYGNUM-IO-SERIAL-MN10300-SERIAL2-BUFSIZE"
+>Option:
+Buffer size for the MN10300 serial port 2 driver</A
+></H4
+><H4
+CLASS="BRIDGEHEAD"
+>Macro name</H4
+><P
+>CYGNUM_IO_SERIAL_MN10300_SERIAL2_BUFSIZE</P
+><H4
+CLASS="BRIDGEHEAD"
+>Type</H4
+><P
+>Count</P
+><H4
+CLASS="BRIDGEHEAD"
+>Description</H4
+><P
+>This option specifies the size of the internal buffers used
+for the MN10300 port 2. </P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="p-cygpkg-io.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="p-cygpkg-devices-wallclock.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Package: I/O sub-system</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="p-cygpkg-io.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Package: Wallclock device</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

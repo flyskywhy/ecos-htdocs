@@ -1,0 +1,533 @@
+<HTML
+><HEAD
+><TITLE
+>Configuration Tool Views</TITLE
+><META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.33"><LINK
+REL="HOME"
+TITLE="eCos Users
+Guide"
+HREF="user-guides.html"><LINK
+REL="UP"
+TITLE="The eCos Configuration Tool"
+HREF="the-ecos-configuration-tool.html"><LINK
+REL="PREVIOUS"
+TITLE="Graphical Components"
+HREF="graphical-components.html"><LINK
+REL="NEXT"
+TITLE="Rules Help"
+HREF="rules-help.html"></HEAD
+><BODY
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+><SPAN
+CLASS="TRADEMARK"
+>eCos</SPAN
+><SUP
+><FONT
+SIZE="-4"
+>TM</FONT
+></SUP
+> User&#8217;s
+Guide</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="graphical-components.html"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="rules-help.html"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="THE-FOUR-PANES"
+>Chapter 2. Configuration Tool Views</A
+></H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="the-four-panes.html#CONFIGURATION-PANE"
+>Configuration Pane</A
+></DT
+><DT
+><A
+HREF="rules-help.html"
+>Rules Help</A
+></DT
+><DT
+><A
+HREF="properties-table.html"
+>Properties Table</A
+></DT
+><DT
+><A
+HREF="documentation-pane.html"
+>Documentation Pane</A
+></DT
+><DT
+><A
+HREF="output-pane.html"
+>Output Pane</A
+></DT
+><DT
+><A
+HREF="memory-layout.html"
+>Memory layout</A
+></DT
+></DL
+></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="CONFIGURATION-PANE"
+>Configuration Pane</A
+></H1
+><P
+><IMG
+SRC="../Image51.gif"
+ALIGN="CENTER"></P
+><P
+>The 
+<I
+CLASS="FIRSTTERM"
+>Configuration Pane</I
+> presents a hierarchical
+view of the configuration.</P
+><P
+>It behaves as other tree-based views do (such as the desktop
+explorer). For example, nodes may be expanded or collapsed by double-clicking
+the node label or by clicking on the left-hand button:</P
+><P
+><IMG
+SRC="../Image25.gif"
+ALIGN="CENTER"></P
+><P
+>The Configuration Pane includes controls to change the configuration.
+Each configurable
+item is represented by one of the following controls:</P
+><P
+></P
+><UL
+><LI
+><P
+>Boolean control</P
+><P
+>A Boolean item may be set or unset (like a C++ bool):</P
+><P
+><IMG
+SRC="../Image26.gif"
+ALIGN="CENTER"> </P
+></LI
+><LI
+><P
+>Radio control</P
+><P
+>A radio item is similar to Boolean item. However, you can
+select only one radio item within each branch of the tree.</P
+><P
+><IMG
+SRC="../Image27.gif"
+ALIGN="CENTER"></P
+></LI
+><LI
+><P
+>Integer control</P
+><P
+>An integer item may be set to an integer value (like a C int):</P
+><P
+> <IMG
+SRC="../Image28.gif"
+ALIGN="CENTER"></P
+></LI
+><LI
+><P
+>String control</P
+><P
+>A string item may be set to a string value (like a C string
+literal):</P
+><P
+><IMG
+SRC="../Image29.gif"
+ALIGN="CENTER"></P
+></LI
+><LI
+><P
+>Enumeration control</P
+><P
+>An enumeration item may be set to one of a defined set of
+values (like a C enum value):</P
+><P
+> <IMG
+SRC="../Image30.gif"
+ALIGN="CENTER"></P
+></LI
+><LI
+><P
+>Group controls</P
+><P
+>Group items are used solely to group child items. They do
+not correspond to any preprocessor macros, and are not configurable:</P
+><P
+> <IMG
+SRC="../Image31.gif"
+ALIGN="CENTER"></P
+><P
+></P
+></LI
+></UL
+><P
+><I
+CLASS="FIRSTTERM"
+>Configurable items</I
+> correspond to preprocessor
+macros in output header files. The two important attributes of a
+configurable item are whether the item is defined, and if so, what
+its value is. </P
+><P
+>An item is defined (will result in a <TT
+CLASS="LITERAL"
+>#define
+output</TT
+>) if it is enabled. Enabled items are displayed
+normally; disabled items, and descendants of disabled items, are
+grayed.</P
+><P
+>The value of an enabled configurable item is shown in <A
+HREF="the-four-panes.html#CJADJIDG"
+>Table 2-1</A
+>.</P
+><DIV
+CLASS="TABLE"
+><P
+><B
+><A
+NAME="CJADJIDG"
+>Table 2-1. Types
+of configurable items</A
+></B
+></P
+><TABLE
+BORDER="0"
+CLASS="CALSTABLE"
+><TR
+><TH
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Type</TH
+><TH
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Header File Output</TH
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Boolean</TD
+><TD
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>#define MacroName or #undef
+MacroName</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Radio</TD
+><TD
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>#define MacroName or #undef
+MacroName</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Integer</TD
+><TD
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>#define MacroName Value</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>String</TD
+><TD
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>#define MacroName Value</TD
+></TR
+><TR
+><TD
+WIDTH="120"
+ALIGN="LEFT"
+VALIGN="TOP"
+>Enumeration</TD
+><TD
+WIDTH="288"
+ALIGN="LEFT"
+VALIGN="TOP"
+>#define MacroName Value</TD
+></TR
+></TABLE
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CHILD-ITEMS"
+>Child Items</A
+></H2
+><P
+>Each boolean, radio and group item can be the ancestor of
+other items. The state of descendants of Boolean and Radio items
+depends on their ancestor &#8212; if the ancestor item is unset
+then descendants will be disabled. Disabled descendants are displayed using
+gray text:</P
+><P
+><IMG
+SRC="../Image32.gif"
+ALIGN="CENTER"></P
+><P
+>Although the values of grayed items are still visible, they
+may not be changed unless you first enable the Boolean or Radio
+ancestor item.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="CHANGING-CONFIGURABLE-ITEM-VALUES"
+>Changing
+Configurable Item Values</A
+></H2
+><P
+>You can change the value of configurable items in two ways &#8212; by
+clicking on the tree control, or by clicking on the cells to the
+right of the tree.</P
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="AEN225"
+>Using the Tree Control</A
+></H3
+><P
+></P
+><UL
+><LI
+><P
+>Boolean and radio items</P
+><P
+>You may change values by clicking the associated checkbox
+or radio button (the keyboard
+shortcut is the space bar). </P
+></LI
+><LI
+><P
+>Integer and enumeration items</P
+><P
+>You may increment values by clicking the associated icon (the keyboard shortcuts <B
+CLASS="KEYCAP"
+>+</B
+> and 
+<B
+CLASS="KEYCAP"
+>-</B
+> also increment and decrement the values). Wrap-around
+occurs when a boundary value is reached; a new value may only be
+set using in-cell editing (see below).</P
+></LI
+><LI
+><P
+>String items</P
+><P
+>You may only change string values using in-cell editing (see
+below).</P
+></LI
+></UL
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="IN-CELL-EDITING"
+>In-Cell Editing</A
+></H3
+><P
+>On the right side of the Configuration Pane is a vertical
+gray dividing line which divides the item values from the rest of
+the tree. This line acts as thin splitter bar and may be dragged
+left or right as desired. To the right of the divider is a cell
+for each configurable item.</P
+><P
+><IMG
+SRC="../Image33.gif"
+ALIGN="CENTER"></P
+><P
+>Clicking on a cell allows you to edit its contents; after
+choosing or typing a value, click outside of the cell to enter your
+change.</P
+><P
+>Boolean, radio and enumeration items are edited using a combo
+box:</P
+><P
+><IMG
+SRC="../Image34.gif"
+ALIGN="CENTER"></P
+><P
+>Integer items are edited using an edit box:</P
+><P
+><IMG
+SRC="../Image35.gif"
+ALIGN="CENTER"></P
+><P
+>String items are of two types: multi-line and single-line
+strings (see below). Multi-line strings are edited using a pop-up
+dialog that is invoked by clicking the &#8220;edit&#8221; button: </P
+><P
+><IMG
+SRC="../Image36.gif"
+ALIGN="CENTER"></P
+><P
+><IMG
+SRC="../Image52.gif"
+ALIGN="CENTER"></P
+><P
+>Single-line strings are edited using an edit box, as for integer
+items:</P
+><P
+><IMG
+SRC="../Image37.gif"
+ALIGN="CENTER"></P
+><P
+>Integer items" values may be specified in hexadecimal
+or decimal format. Hexadecimal format values may be specified using
+a leading &#8220;0x&#8221;. </P
+><P
+>The manner in which integer items are specified using in-cell
+editing does not affect the header file output format, which is
+always decimal. All items are assumed to be 32 bits in width, although
+maximum and minimum values may be used to constrain the range.</P
+></DIV
+></DIV
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="graphical-components.html"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="user-guides.html"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="rules-help.html"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Graphical Components</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="the-ecos-configuration-tool.html"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Rules Help</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>
