@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version cosmetic-update/Tue Feb  6 11:21:19  2001-->
+<HEAD><!--version 1.3.net/Thu Jul 12 15:27:41  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Release Overview</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Release Overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Release Overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1671761">
  </A>
@@ -265,50 +265,66 @@ I/O library can be configured to use them as a transport layer.</P>
 <A NAME="monitor image">
  </A>
 Monitor Image</H3>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2806378">
+ </A>
+RedBoot</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2693237">
+<A NAME="pgfId=2806379">
+ </A>
+The new standard bootstrap and debugging environment for Red Hat embedded systems is RedBoot, a configurable and extensible command line application which provides serial and network debugging and FLASH management. Based on the eCos HAL, RedBoot supports eCos, GNUPro applications and embedded Linux systems on a wide range of platforms, including ARM, MIPS, MN10300, PowerPC, SHx, v850 and x86.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2806380">
+ </A>
+RedBoot is recommended for the i386 PC, ARM PID/EPI Dev7/EPI Dev9, ARM Evaluator-7T, Cirrus Logic EP72xx, Intel StrongARM, Intel XScale, PMC-Sierra Ocelot, and Motorola PPC MBX860 platforms.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2806381">
+ </A>
+Redboot provides a GDB stub allowing debugging with the GDB debugger, and is supplied as a standalone application with the eCos distribution. See also the <EM CLASS="Emphasis">
+RedBoot User's Guide.</EM>
+</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2830733">
+ </A>
+CygMon</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2830734">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2830739">
  </A>
 eCos ships with a <SPAN CLASS="Bold">
 </SPAN>
-<A NAME="marker=2693235">
+<A NAME="marker=2830737">
  </A>
-CygMon <A NAME="marker=2693236">
+CygMon <A NAME="marker=2830738">
  </A>
-ROM monitor for the MN10300, TX39, SPARClite, EDB7211, EDB7212 and EP7211 Development Boards. This includes a <A NAME="marker=2693238">
+ROM monitor for the MN10300, TX39, SPARClite, EP7209, EP7211 and EP7212 Development Boards. This includes a <A NAME="marker=2830740">
  </A>
 GDB stub, thus allowing GDB to be used to debug eCos applications on these evaluation boards. For the Brutus board, two stubs are provided: one with the high FLASH portion and the other with the low FLASH portion. In addition to shipping the actual ROM, the image of that ROM is provided in case you need to burn identical copies for additional boards (see <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
  Target Setup</A>
 ). </P>
 <P CLASS="Body">
-<A NAME="pgfId=2628676">
+<A NAME="pgfId=2830746">
+ </A>
+For the MN10300, TX39 and SPARClite port of CygMon, the source code to it is included as part of the GNUPro package, so that you may recompile it as described in the GNUPro documentation. </P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2830751">
+ </A>
+Please note that releases of CygMon previous to the one currently supplied with eCos are incompatible with eCos.GDB Stubs</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2830752">
  </A>
 For the VRC4373, and TX39 jmr3904 targets, the ROM images include a GDB stub. This allows GDB to connect to the board and download eCos programs. </P>
 <P CLASS="Body">
-<A NAME="pgfId=2693320">
+<A NAME="pgfId=2830753">
  </A>
 For the TX49 REF4955, eCos ships with a GDB stub image in SREC format which must be programmed into the board's FLASH memory.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2603211">
+<A NAME="pgfId=2806413">
  </A>
 No monitor image is required for the synthetic Linux target.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2693343">
- </A>
-For the MN10300, TX39 and SPARClite port of CygMon, the source code to it is included as part of the GNUPro package, so that you may recompile it as described in the GNUPro documentation. </P>
-<P CLASS="Body">
-<A NAME="pgfId=2599835">
- </A>
-Please note that releases of CygMon previous to the one currently supplied with eCos are incompatible with eCos.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2677718">
- </A>
-The new standard bootstrap and debugging environment for Red Hat embedded systems is Redboot, a configurable and extensible command line application which provides serial and network debugging and FLASH management. Based on the eCos HAL, Redboot suports eCos, GNUPro applications and embedded Linux systems on a wide range of platforms, including ARM, MIPS, MN10300, PowerPC, SHx, v850 and x86.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2677737">
- </A>
-Redboot provides a GDB stub, and is supplied as a standalone application with the eCos distribution. See also the <EM CLASS="Emphasis">
-RedBoot User's Guide.</EM>
-</P>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
@@ -356,7 +372,7 @@ Developer's Kit, and is also available on the <A NAME="marker=1415547">
  </A>
 net at </P>
 <PRE CLASS="CodeExample2"><A NAME="pgfId=2443180"> </A>
-<TT CLASS="Code"><A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">http://sourceware.cygnus.com/ecos/</A>
+<TT CLASS="Code"><A HREF="http://sources.redhat.com/ecos/" CLASS="URL">http://sources.redhat.com/ecos/</A>
 </TT>
 </PRE>
 <P CLASS="Body">
@@ -368,11 +384,11 @@ Online HTML versions of the full GNUPro documentation are included with eCos, as
 </TT>
 </PRE>
 <H3 CLASS="Label">
-<A NAME="pgfId=1996752">
+<A NAME="pgfId=2806418">
  </A>
 NOTE</H3>
 <P CLASS="Note">
-<A NAME="pgfId=2345215">
+<A NAME="pgfId=2806419">
  </A>
 The Linux synthetic i386 target is an exception, as there is (currently) no GNUPro manual. However, the GNUPro source archive contains documentation for the tools. This documentation is usually also included as part of a default Red Hat Linux installation, accessible with the <EM CLASS="ProductName">
 info</EM>
@@ -412,7 +428,7 @@ For users of the eCos Net releases, these are available online in HTML format at
 </TT>
 </P>
 <PRE CLASS="CodeExample2"><A NAME="pgfId=2012849"> </A>
-<TT CLASS="Code"><A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">http://sourceware.cygnus.com/ecos/</A>
+<TT CLASS="Code"><A HREF="http://sources.redhat.com/ecos/" CLASS="URL">http://sources.redhat.com/ecos/</A>
 </TT>
 </PRE>
 <TABLE>
@@ -422,5 +438,5 @@ For users of the eCos Net releases, these are available online in HTML format at
 </TR>
 </TABLE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Release Overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Release Overview</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.6.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:11 BST 2001-->
+<HEAD><!--version 1.3.net/Wed Jul 11 18:10:25  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Building and Running Sample Applications</TITLE></HEAD>
@@ -118,10 +118,10 @@ NOTE</H3>
  </A>
 Some target systems require special options to be passed to gcc to compile correctly for that system. Please examine the Makefile in the examples directory to see if this applies to your target.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2336827">
+<A NAME="pgfId=2823127">
  </A>
 You can now run the resulting program in the simulator using GDB the way you ran the test case. The procedure will be the same, but this time run &quot;gdb&quot; specifying &quot;-nw a.out&quot; on the command line:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2336828"> </A>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2823128"> </A>
 $ gdb -nw a.out</PRE>
 <P CLASS="Body">
 <A NAME="pgfId=2040251">
@@ -242,13 +242,13 @@ Thread 1: and now a delay of 202 clock ticks
 Thread 0: and now a delay of 235 clock ticks 
 </PRE>
 <H3 CLASS="Label">
-<A NAME="pgfId=2336833">
+<A NAME="pgfId=2823133">
  </A>
 NOTE</H3>
 <P CLASS="Note">
-<A NAME="pgfId=2336835">
+<A NAME="pgfId=2823135">
  </A>
-When running in a simulator the <A NAME="marker=2336834">
+When running in a simulator the <A NAME="marker=2823134">
  </A>
 delays might be quite long. On a hardware board (where the clock speed is 100 ticks/second) the delays should average to about 2.25 seconds. In simulation, the delay will depend on the speed of the processor and will almost always be much slower than the actual board. You might want to reduce the delay parameter when running in simulation. </P>
 <P CLASS="Body">

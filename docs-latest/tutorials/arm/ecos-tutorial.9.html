@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.11/Tue Jun 27 11:05:40 BST 2000-->
+<HEAD><!--version 1.3.net/Wed Jul 11 18:11:07  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> System Requirements</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1415994">
  </A>
@@ -23,11 +23,10 @@ System Requirements<DIV>
 Required</H3>
 <UL>
 <P><LI>
-<A NAME="pgfId=1999533">
+<A NAME="pgfId=2806505">
  </A>
-Standard Intel<EM CLASS="FmSymbol">
-&#153</EM>
- architecture PC running Linux (tested on Red Hat Linux distributions 5.0-6.1). Other versions of Red Hat distributions, or Linux distributions from other vendors should work as well. Also, English or Japanese versions of Microsoft Windows NT version 4.0 (service pack 3 or above must be installed), Windows 95, Windows 98, or Windows 2000.</LI>
+Standard Intel<EM CLASS="FmSymbol">&#153</EM>
+ architecture PC running Linux (tested on Red Hat Linux distributions 5.0-7.0), and English or Japanese versions of Microsoft Windows NT version 4.0 (service pack 3 or above must be installed), Windows 95, Windows 98, or Windows 2000. Other versions of Red Hat distributions, or Linux distributions from other vendors should work as well. </LI>
 <P><LI>
 <A NAME="pgfId=2459986">
  </A>
@@ -38,15 +37,13 @@ Configuration Tool.</SPAN>
 <P CLASS="BodyListFollow">
 <A NAME="pgfId=1999534">
  </A>
-Sun<EM CLASS="FmSymbol">
-&#153</EM>
- workstation running Solaris 2.5.1 or later for the SPARC<EM CLASS="FmSymbol">
-&#153.</EM>
+Sun<EM CLASS="FmSymbol">&#153</EM>
+ workstation running Solaris 2.5.1 or later for the SPARC<EM CLASS="FmSymbol">&#153.</EM>
 </P>
 <P CLASS="BodyListFollow">
 <A NAME="pgfId=1999541">
  </A>
-Support for any platform except for Windows NT 4.0, Solaris 2.5.1 and Linux is beta. In particular, it is only possible to rebuild the GNUPro compiler toolchain on Windows NT 4.0,  Solaris 2.5.1, and Red Hat Linux 6.x. </P>
+Support for any platform except for Windows NT 4.0, Solaris 2.5.1 and Linux is beta. In particular, rebuilding the GNUPro compiler toolchain is only supported and tested on Windows NT 4.0,  Solaris 2.5.1, and Red Hat Linux. </P>
 <UL>
 <P><LI>
 <A NAME="pgfId=1999543">
@@ -62,182 +59,52 @@ disk space for the installed distribution. The eCos installation process will de
 <P CLASS="BodyListFollow">
 <A NAME="pgfId=1999545">
  </A>
-If you are downloading the eCos Net Release distribution from Red Hat's Sourceware site, you will also need space to store that image and to compile GNUPro and eCos from source.</P>
+If you are downloading the eCos Net Release distribution from Red Hat's sources.redhat.com site, you will also need space to store that image and to compile GNUPro and eCos from source.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2605453">
+<A NAME="pgfId=2829070">
  </A>
-If you will be using the <A NAME="marker=2605452">
- </A>
-ARM PID evaluation board, you will also need: </P>
+If you will be using an x86 board, you will also need:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2605454">
+<A NAME="pgfId=2829071">
  </A>
-One (16550 based) serial port on the PC</LI>
-<P><LI>
-<A NAME="pgfId=2605455">
- </A>
-ARM PID evaluation board with eCos<SPAN CLASS="Bold">
- </SPAN>
-GDB stubs ROM installed, or GDB stubs programmed in the flash ROM (see <A HREF="ecos-tutorial.d.html#42063" CLASS="XRef">
- ARM PID Hardware Setup</A>
-). </LI>
-<P><LI>
-<A NAME="pgfId=2605459">
- </A>
-Null modem cable to connect the serial port on the PC to the SerialA serial I/O connector on the evaluation board.</LI>
+A standard PC motherboard with an i386 or better processor and a 3.5&quot; floppy disk drive. Optionally, a color text-mode-only display card with monitor or keyboard may also be provided. Any standard PC will provide all the hardware required to run eCos. </LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2605461">
+<A NAME="pgfId=2829072">
  </A>
-If you will be using the <A NAME="marker=2605460">
- </A>
-ARM AEB-1 evaluation board, you will also need: </P>
+If serial debugging is to be used:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2605462">
+<A NAME="pgfId=2829073">
  </A>
-One (16550 based) serial port on the PC</LI>
-<P><LI>
-<A NAME="pgfId=2605463">
- </A>
-ARM AEB-1 evaluation board with eCos<SPAN CLASS="Bold">
- </SPAN>
-GDB stubs ROM image installed in the flash ROM. </LI>
-<P><LI>
-<A NAME="pgfId=2605464">
- </A>
-Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board.</LI>
+A null modem cable to connect the COM1 port on the target motherboard to a serial port on the host system.</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2605466">
+<A NAME="pgfId=2829074">
  </A>
-If you will be using the <A NAME="marker=2605465">
- </A>
-Cogent CMA230 evaluation board, you will also need: </P>
+If network debugging is to be used:</P>
 <UL>
 <P><LI>
-<A NAME="pgfId=2605467">
+<A NAME="pgfId=2829075">
  </A>
-One (16550 based) serial port on the PC</LI>
+Suitable network interface card on the development PC and connecting cables</LI>
 <P><LI>
-<A NAME="pgfId=2605468">
+<A NAME="pgfId=2829076">
  </A>
-Cogent CMA101/102 evaluation board with a CMA (ARM7tdmi) daughterboard and eCos<SPAN CLASS="Bold">
- </SPAN>
-GDB stubs ROM  installed. Information and online manuals for the Cogent board can be found at http://www.cogcomp.com/.</LI>
-<P><LI>
-<A NAME="pgfId=2605469">
- </A>
-Serial cable to connect the serial port on the PC to the RJ-11 serial I/O connector, P11 (CMA101) or P3 (CMA102), on the evaluation board.</LI>
+An Intel i82559 based PCI ethernet card (for example an Intel EtherExpress Pro 10/100) may be installed for use by the eCos network stack or for network debugging.</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=2605471">
+<A NAME="pgfId=2806673">
  </A>
-If you will be using the <A NAME="marker=2605470">
- </A>
-Cirrus Logic CL-PS7111 Evaluation Board, you will also need:</P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2605472">
- </A>
-One 16550-based serial port on the PC.</LI>
-<P><LI>
-<A NAME="pgfId=2605473">
- </A>
-A Cirrus Logic CL-PS7111 Evaluation Board with an eCos<SPAN CLASS="Bold">
- </SPAN>
-GDB stubs ROM image installed in the flash ROM.</LI>
-<P><LI>
-<A NAME="pgfId=2605474">
- </A>
-Custom cable that is supplied with the CL-PS7111 Evaluation Board connected from a serial port on the PC to the serial I/O connector labelled &quot;Serial Port 1&quot;.</LI>
-</UL>
-<P CLASS="Body">
-<A NAME="pgfId=2605476">
- </A>
-If you will be using the <A NAME="marker=2605475">
- </A>
-Cirrus Logic EP7209, EP7211 or EP7212 Development Boards, you will also need:</P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2605477">
- </A>
-One 16550-based serial port on the PC.</LI>
-<P><LI>
-<A NAME="pgfId=2605478">
- </A>
-A Cirrus Logic ARM EP7211 or EP7212 Development Board, with either a CygMon ROM Monitor image or a GDB stub ROM image installed in the flash ROM.</LI>
-<P><LI>
-<A NAME="pgfId=2605479">
- </A>
-If connecting with a serial cable, use a null modem cable to connect the serial port on the PC to the serial I/O connector labelled &quot;UART 1&quot; on the EP7211 Development Board, and &quot;Serial Port 0&quot; on the EP7209 and EP7212 Development Boards. A gender changer may also be required.</LI>
-<P><LI>
-<A NAME="pgfId=2605480">
- </A>
-If connecting using the ARM Multi-ICE Interface Unit, in the interests of stability it may be a useful precautionary measure to run the ARM Multi-ICE server on a separate Windows 9x/NT machine.</LI>
-</UL>
-<P CLASS="Body">
-<A NAME="pgfId=2605482">
- </A>
-If you will be using the <A NAME="marker=2605481">
- </A>
-Intel StrongARM EBSA-285 evaluation board, you will also need: </P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2605483">
- </A>
-One (16550 based) serial port on the PC</LI>
-<P><LI>
-<A NAME="pgfId=2605484">
- </A>
-Intel StrongARM EBSA-285 evaluation board with eCos<EM CLASS="ProductName">
- </EM>
-GDB stubs ROM image installed in the flash ROM. </LI>
-<P><LI>
-<A NAME="pgfId=2611374">
- </A>
-Null modem cable to connect the serial port on the PC to the serial I/O connector on the evaluation board. A gender changer may also be required.</LI>
-</UL>
-<P CLASS="Body">
-<A NAME="pgfId=2612903">
- </A>
-If you will be using the Intel  SA1100 board, you will need:</P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2612904">
- </A>
-One 16550-based serial port on the PC</LI>
-<P><LI>
-<A NAME="pgfId=2612905">
- </A>
-Intel 1100 board with eCos GDB stubs programmed into the flash</LI>
-</UL>
-<P CLASS="Body">
-<A NAME="pgfId=2612915">
- </A>
-If you will be using the Intel SA1110 board, you will need:</P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2612916">
- </A>
-One 16550-based serial port on the PC</LI>
-<P><LI>
-<A NAME="pgfId=2612917">
- </A>
-Intel SA1110 board with eCos GDB stubs programmed into the flash</LI>
-</UL>
-<P CLASS="Body">
-<A NAME="pgfId=2612901">
- </A>
-If you will be using the <A NAME="marker=2611377">
+If you will be using the <A NAME="marker=2806672">
  </A>
 Linux synthetic target, you will also need: </P>
 <UL>
 <P><LI>
-<A NAME="pgfId=1996981">
+<A NAME="pgfId=2806674">
  </A>
-An x86 PC with an installed Linux distribution (tested with Red Hat Linux distributions 5.0 - 6.1). </LI>
+An x86 PC with an installed Linux distribution (tested with Red Hat Linux distributions 5.0 - 7.0). </LI>
 </UL>
 </DIV>
 <DIV>
@@ -262,5 +129,5 @@ The system has been tested only in the recommended configuration above, although
 </TR>
 </TABLE>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">System Requirements</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.8.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.a.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

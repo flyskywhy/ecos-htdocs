@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 2001-05-11-v1_4_13/Fri May 11 04:55:16 BST 2001-->
+<HEAD><!--version 1.3.net/Wed Jul 11 18:11:19  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Target Setup</TITLE></HEAD>
@@ -109,32 +109,32 @@ Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
-<A NAME="pgfId=2336728">
+<A NAME="pgfId=2822872">
  </A>
-<A NAME="marker=2490505">
+<A NAME="marker=2822871">
  </A>
 Connecting To A Simulator Target</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2336729">
+<A NAME="pgfId=2822873">
  </A>
 GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
 <P CLASS="Body">
-<A NAME="pgfId=2336730">
+<A NAME="pgfId=2822874">
  </A>
 Connect to the target by issuing the following command in GDB console mode:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2822875"> </A>
 (gdb) target sim [target specific options]</PRE>
 <P CLASS="Body">
-<A NAME="pgfId=2336732">
+<A NAME="pgfId=2822876">
  </A>
 In Insight, connect by opening the <SPAN CLASS="Bold">
 File<IMG SRC="../pix/arrow.gif">Target Settings</SPAN>
  window and enter:</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2822877"> </A>
 Target: Simulator     
 Options: [target specific options]</PRE>
 <P CLASS="Body">
-<A NAME="pgfId=2336734">
+<A NAME="pgfId=2822878">
  </A>
 Set other options according to preference, close the window and select <BR>
 <SPAN CLASS="BOLD">
@@ -161,13 +161,13 @@ Run</SPAN>
 </DIV>
 <DIV>
 <H3 CLASS="Heading1">
-<A NAME="pgfId=2807350">
+<A NAME="pgfId=2829472">
  </A>
-<A NAME="marker=2807349">
+<A NAME="marker=2829471">
  </A>
 i386 PC Hardware Setup</H3>
 <P CLASS="Body">
-<A NAME="pgfId=2807351">
+<A NAME="pgfId=2829473">
  </A>
 For information about setting up the PC to run with RedBoot, consult the RedBoot User's Guide. If using serial debugging, the serial line runs at 38400 baud 8-N-1 and should be connected to the debug host using a null modem cable. If ethernet debugging is required, an i82559 compatible network interface card, such as an Intel EtherExpress Pro 10/100,  should be installed on the target PC and connected to the development PC running GDB. When RedBoot is configured appropriately to have an IP address set, then GDB will be able to debug directly over TCP/IP to the target PC.</P>
 </DIV>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.11/Tue Jun 27 11:05:35 BST 2000-->
+<HEAD><!--version 1.3.net/Wed Jul 11 18:10:16  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Programming with eCos</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=2297977">
  </A>
@@ -17,7 +17,7 @@ Programming with eCos<DIV>
 <P CLASS="Body">
 <A NAME="pgfId=2297979">
  </A>
-The remaining chapters of this document comprise a simple tutorial for configuring and building eCos, building and running eCos tests, and finally building three stand-alone example programs which use the  eCos API to perform some simple tasks.</P>
+The remaining chapters of this manual comprise a simple tutorial for configuring and building eCos, building and running eCos tests, and finally building three stand-alone example programs which use the  eCos API to perform some simple tasks.</P>
 <P CLASS="Body">
 <A NAME="pgfId=2297784">
  </A>
@@ -37,7 +37,7 @@ eCos Configuration</H4>
 <P CLASS="Body">
 <A NAME="pgfId=2297788">
  </A>
-eCos is configured to provide the desired API (the inclusion of libc, uitron, and the disabling certain undesired funtions, etc.), and semantics (selecting scheduler, mutex behavior, etc.). See <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
+eCos is configured to provide the desired API (the inclusion of libc, uitron, and the disabling of certain undesired funtions, etc.), and semantics (selecting scheduler, mutex behavior, etc.). See <A HREF="ecos-tutorial.11.html#12948" CLASS="XRef">
  Configuring and Building eCos from Source</A>
 .</P>
 <P CLASS="Body">
@@ -47,7 +47,7 @@ It would normally make sense to enable eCos assertion checking at this time as w
 <P CLASS="Body">
 <A NAME="pgfId=2297790">
  </A>
-Note that it should not be necessary to spend much time on eCos configuration initially. It may be important to perform fine tuning to reduce the memory footprint and to improve performance when the product reaches a testable state.</P>
+Note that it should not be necessary to spend much time on eCos configuration initially. It may be important to perform fine tuning to reduce the memory footprint and to improve performance later when the product reaches a testable state.</P>
 <H4 CLASS="Heading3">
 <A NAME="pgfId=2297791">
  </A>
@@ -55,11 +55,7 @@ Note that it should not be necessary to spend much time on eCos configuration in
 <P CLASS="Body">
 <A NAME="pgfId=2297792">
  </A>
-While Red Hat strive to thoroughly test eCos, the vast number of configuration permutations mean that the particular configuration parameters used for your project may not have been tested.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2297793">
- </A>
-Therefore, we advise running all the eCos tests after the project's eCos configuration has been determined. See <A HREF="ecos-tutorial.12.html#14697" CLASS="XRef">
+While Red Hat strive to thoroughly test eCos, the vast number of configuration permutations mean that the particular configuration parameters used for your project may not have been tested. Therefore, we advise running all the eCos tests after the project's eCos configuration has been determined. See <A HREF="ecos-tutorial.12.html#14697" CLASS="XRef">
  Test Suites</A>
 .</P>
 <P CLASS="Body">
@@ -73,7 +69,7 @@ Obviously, this should be repeated if the configuration changes later on in the 
 <P CLASS="Body">
 <A NAME="pgfId=2297796">
  </A>
-While your project is probably targeting a specific architecture and platform, possibly custom hardware, part of the application development may be possible to do using simulated or synthetic targets.</P>
+While your project is probably targeting a specific architecture and platform, possibly custom hardware, part of the application development may be possible to perform using simulated or synthetic targets.</P>
 <P CLASS="Body">
 <A NAME="pgfId=2297797">
  </A>
@@ -82,16 +78,16 @@ There are two primary reasons for doing this:</P>
 <P><LI>
 <A NAME="pgfId=2297798">
  </A>
-It may be possible (to some extent) to perform application development in parallel with the design/implementation of the target hardware, thus providing more time for developing and testing functionality, and reducing time-to-market.</LI>
+It may be possible by this means to perform application development in parallel with the design/implementation of the target hardware, thus providing more time for developing and testing functionality, and reducing time-to-market.</LI>
 <P><LI>
 <A NAME="pgfId=2297799">
  </A>
-The build-run-debug-cycle may be faster when the application does not have to be downloaded to a target via a serial interface. Debugging is also likely to be more responsive when not having to communicate with a stub via serial. And finally, it also removes the need for manually or automatically resetting the target hardware.</LI>
+The build-run-debug-cycle may be faster when the application does not have to be downloaded to a target via a serial interface. Debugging is also likely to be more responsive when you do not have to to communicate with a stub via serial. It also removes the need for manually or automatically resetting the target hardware.</LI>
 </UL>
 <P CLASS="Body">
 <A NAME="pgfId=2297800">
  </A>
-This is possible to do since all targets (including simulators and synthetic ones) provide the same basic API: that is, kernel, libc, libm, uitron, infra, and to some extent, HAL and IO.</P>
+This is approach is possible because all targets (including simulators and synthetic ones) provide the same basic API: that is, kernel, libc, libm, uitron, infra, and to some extent, HAL and IO.</P>
 <P CLASS="Body">
 <A NAME="pgfId=2297801">
  </A>
@@ -122,5 +118,5 @@ It may be useful to switch between this and the previous step repeatedly through
 </TD>
 </TR>
 </TABLE>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

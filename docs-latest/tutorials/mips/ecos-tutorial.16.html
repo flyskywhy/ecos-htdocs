@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version cosmetic-update/Tue Feb  6 11:21:01  2001-->
+<HEAD><!--version 1.3.net/Thu Jul 12 15:27:15  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Appendix 1: Real-time characterization</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1100125">
  </A>
@@ -29,35 +29,17 @@ Users' Guide.</EM>
 <A NAME="marker=1092404">
  </A>
 Sample numbers:</H3>
-<P CLASS="Body">
-<A NAME="pgfId=1098129">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1098162">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119364">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119366">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1119365">
- </A>
-</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1135397"> </A>
+</PRE>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127700">
+<A NAME="pgfId=1135398">
  </A>
 Board: Toshiba JMR3904 Evaluation Board</H3>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127701">
+<A NAME="pgfId=1135399">
  </A>
 CPU  : TMPR3904F 50MHz</H3>
-<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1127702"> </A>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1135400"> </A>
 
 eCOS Kernel Timings
 Note: all times are in microseconds (.000001) unless otherwise stated
@@ -166,267 +148,144 @@ Timing complete - 23540 ms total
 PASS:&lt;Basic timing OK&gt;
 EXIT:&lt;done&gt;
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1119367">
- </A>
-</P>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127731">
+<A NAME="pgfId=1135401">
  </A>
 Board: Toshiba REF 4955</H3>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127732">
+<A NAME="pgfId=1135402">
  </A>
 CPU  : Toshiba TX4955 66MHz</H3>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127733"> </A>
-Startup, main stack             : stack used   960 size  2936</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127734"> </A>
-Startup              :  Interrupt stack used   168 size  4096</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127735"> </A>
-Startup              : Idlethread stack used   372 size  2048</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127736"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127737"> </A>
-eCos Kernel Timings</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127738"> </A>
-Notes: all times are in microseconds (.000001) unless otherwise stated</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127739"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127740"> </A>
-Reading the hardware clock takes 3 'ticks' overhead</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127741"> </A>
-... this value will be factored out of all other measurements</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127742"> </A>
-Clock interrupt took    4.00 microseconds (264 raw clock ticks)</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127743"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127744"> </A>
-Testing parameters:</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127745"> </A>
-   Clock samples:            32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127746"> </A>
-   Threads:                  64</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127747"> </A>
-   Thread switches:         128</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127748"> </A>
-   Mutexes:                  32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127749"> </A>
-   Mailboxes:                32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127750"> </A>
-   Semaphores:               32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127751"> </A>
-   Scheduler operations:    128</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127752"> </A>
-   Counters:                 32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127753"> </A>
-   Alarms:                   32</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127754"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127755"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127756"> </A>
-                                 Confidence</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127757"> </A>
-     Ave     Min     Max     Var  Ave  Min  Function</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127758"> </A>
-  ======  ======  ======  ====== ========== ========</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127759"> </A>
-   11.21    9.58   14.11    0.95   48%  34% Create thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127760"> </A>
-    0.66    0.65    1.29    0.02   98%  98% Yield thread [all suspended]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127761"> </A>
-    0.63    0.53    3.06    0.17   82%  82% Suspend [suspended] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127762"> </A>
-    0.54    0.53    1.06    0.02   98%  98% Resume thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127763"> </A>
-    0.78    0.74    1.39    0.05   93%  93% Set priority</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127764"> </A>
-    0.05    0.05    0.36    0.01   98%  98% Get priority</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127765"> </A>
-    2.06    1.89    6.65    0.25   95%  79% Kill [suspended] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127766"> </A>
-    0.65    0.65    0.68    0.00   98%  98% Yield [no other] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127767"> </A>
-    1.15    1.02    3.03    0.20   81%  81% Resume [suspended low prio] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127768"> </A>
-    0.54    0.52    1.18    0.03   96%  96% Resume [runnable low prio] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127769"> </A>
-    0.94    0.88    1.27    0.01   95%   1% Suspend [runnable] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127770"> </A>
-    0.65    0.65    0.68    0.00   98%  98% Yield [only low prio] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127771"> </A>
-    0.54    0.53    0.86    0.01   98%  96% Suspend [runnable<IMG SRC="../pix/arrow.gif">not runnable]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127772"> </A>
-    1.97    1.89    2.98    0.12   84%  84% Kill [runnable] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127773"> </A>
-    1.03    0.92    4.94    0.17   89%  89% Destroy [dead] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127774"> </A>
-    2.55    2.33    4.38    0.24   89%  70% Destroy [runnable] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127775"> </A>
-    5.62    4.11   13.23    0.99   65%  40% Resume [high priority] thread</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127776"> </A>
-    1.84    1.83    2.79    0.02   98%  98% Thread switch</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127777"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127778"> </A>
-    0.12    0.02    0.65    0.15   74%  74% Scheduler lock</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127779"> </A>
-    0.35    0.35    0.35    0.00  100% 100% Scheduler unlock [0 threads]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127780"> </A>
-    0.35    0.35    0.35    0.00  100% 100% Scheduler unlock [1 suspended]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127781"> </A>
-    0.43    0.35    1.17    0.13   78%  78% Scheduler unlock [many suspended]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127782"> </A>
-    0.45    0.35    1.17    0.15   75%  75% Scheduler unlock [many low prio]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127783"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127784"> </A>
-    0.46    0.15    3.38    0.30   62%  50% Init mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127785"> </A>
-    0.73    0.64    3.27    0.16   96%  96% Lock [unlocked] mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127786"> </A>
-    0.77    0.65    4.50    0.23   96%  96% Unlock [locked] mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127787"> </A>
-    0.58    0.55    1.42    0.05   96%  96% Trylock [unlocked] mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127788"> </A>
-    0.51    0.50    0.83    0.02   96%  96% Trylock [locked] mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127789"> </A>
-    0.12    0.11    0.41    0.02   96%  96% Destroy mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127790"> </A>
-    4.72    4.70    5.58    0.05   96%  96% Unlock/Lock mutex</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127791"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127792"> </A>
-    1.01    0.67    3.48    0.40   71%  71% Create mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127793"> </A>
-    0.02    0.00    0.53    0.03   96%  96% Peek [empty] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127794"> </A>
-    0.89    0.68    4.20    0.29   96%  71% Put [first] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127795"> </A>
-    0.02    0.00    0.33    0.02   96%  96% Peek [1 msg] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127796"> </A>
-    0.69    0.68    0.76    0.01   50%  46% Put [second] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127797"> </A>
-    0.02    0.00    0.30    0.02   96%  96% Peek [2 msgs] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127798"> </A>
-    0.81    0.71    3.83    0.19   96%  96% Get [first] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127799"> </A>
-    0.72    0.71    1.02    0.02   96%  96% Get [second] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127800"> </A>
-    0.81    0.65    2.74    0.22   96%  71% Tryput [first] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127801"> </A>
-    0.67    0.62    2.27    0.10   96%  96% Peek item [non-empty] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127802"> </A>
-    0.77    0.71    2.41    0.10   96%  96% Tryget [non-empty] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127803"> </A>
-    0.59    0.58    0.88    0.02   96%  96% Peek item [empty] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127804"> </A>
-    0.62    0.62    0.67    0.00   96%  96% Tryget [empty] mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127805"> </A>
-    0.03    0.02    0.32    0.02   96%  96% Waiting to get mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127806"> </A>
-    0.02    0.02    0.06    0.01   50%  46% Waiting to put mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127807"> </A>
-    0.75    0.65    3.59    0.18   96%  96% Delete mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127808"> </A>
-    2.80    2.77    3.59    0.05   96%  96% Put/Get mbox</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127809"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127810"> </A>
-    0.37    0.18    0.88    0.28   71%  71% Init semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127811"> </A>
-    0.48    0.47    0.80    0.02   96%  96% Post [0] semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127812"> </A>
-    0.60    0.59    0.67    0.01   50%  46% Wait [1] semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127813"> </A>
-    0.53    0.50    1.41    0.06   96%  96% Trywait [0] semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127814"> </A>
-    0.51    0.50    0.71    0.01   96%  50% Trywait [1] semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127815"> </A>
-    0.09    0.09    0.15    0.00   96%  96% Peek semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127816"> </A>
-    0.12    0.11    0.41    0.02   96%  96% Destroy semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127817"> </A>
-    3.05    3.05    3.05    0.00  100% 100% Post/Wait semaphore</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127818"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127819"> </A>
-    0.57    0.17    2.76    0.24   59%  25% Create counter</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127820"> </A>
-    0.06    0.05    0.58    0.03   96%  96% Get counter value</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127821"> </A>
-    0.06    0.03    0.64    0.04   96%  96% Set counter value</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127822"> </A>
-    0.73    0.71    1.02    0.02   96%  96% Tick counter</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127823"> </A>
-    0.12    0.11    0.15    0.01   50%  46% Delete counter</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127824"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127825"> </A>
-    0.89    0.64    3.15    0.34   84%  71% Create alarm</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127826"> </A>
-    1.00    0.95    2.41    0.09   96%  96% Initialize alarm</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127827"> </A>
-    0.09    0.06    0.68    0.04   96%  96% Disable alarm</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127828"> </A>
-    1.05    1.00    2.48    0.09   96%  96% Enable alarm</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127829"> </A>
-    0.18    0.17    0.50    0.02   96%  96% Delete alarm</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127830"> </A>
-    0.90    0.89    1.11    0.01   96%  96% Tick counter [1 alarm]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127831"> </A>
-    5.60    5.59    5.88    0.02   96%  96% Tick counter [many alarms]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127832"> </A>
-    1.53    1.52    2.11    0.04   96%  96% Tick &amp; fire counter [1 alarm]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127833"> </A>
-   25.48   25.47   25.76    0.02   96%  96% Tick &amp; fire counters [&gt;1 together]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127834"> </A>
-    6.22    6.21    6.44    0.01   96%  96% Tick &amp; fire counters [&gt;1 separately]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127835"> </A>
-    2.59    2.56    6.17    0.07   98%  98% Alarm latency [0 threads]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127836"> </A>
-    4.06    3.95    6.24    0.08   78%  57% Alarm latency [2 threads]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127837"> </A>
-    5.03    2.56    9.03    0.89   59%  10% Alarm latency [many threads]</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127838"> </A>
-    5.68    5.59   15.45    0.15   99%  99% Alarm <IMG SRC="../pix/arrow.gif"> thread resume latency</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127839"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127840"> </A>
-    2.52    1.41    8.12    0.00            Clock/interrupt latency</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127841"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127842"> </A>
-    2.05    1.17    6.00    0.00            Clock DSR latency</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127843"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127844"> </A>
-   34       0    1072  (main stack:  1320)  Thread stack used (1912 total)</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127845"> </A>
-All done, main stack            : stack used  1320 size  2936</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127846"> </A>
-All done             :  Interrupt stack used   136 size  4096</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127847"> </A>
-All done             : Idlethread stack used   996 size  2048</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127848"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127849"> </A>
-Timing complete - 30360 ms total</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127850"> </A>
-</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127851"> </A>
-PASS:&lt;Basic timing OK&gt;</PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1127852"> </A>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1135403"> </A>
+Startup, main stack             : stack used   960 size  2936
+Startup              :  Interrupt stack used   168 size  4096
+Startup              : Idlethread stack used   372 size  2048
+
+eCos Kernel Timings
+Notes: all times are in microseconds (.000001) unless otherwise stated
+
+Reading the hardware clock takes 3 'ticks' overhead
+... this value will be factored out of all other measurements
+Clock interrupt took    4.00 microseconds (264 raw clock ticks)
+
+Testing parameters:
+   Clock samples:            32
+   Threads:                  64
+   Thread switches:         128
+   Mutexes:                  32
+   Mailboxes:                32
+   Semaphores:               32
+   Scheduler operations:    128
+   Counters:                 32
+   Alarms:                   32
+
+
+                                 Confidence
+     Ave     Min     Max     Var  Ave  Min  Function
+  ======  ======  ======  ====== ========== ========
+   11.21    9.58   14.11    0.95   48%  34% Create thread
+    0.66    0.65    1.29    0.02   98%  98% Yield thread [all suspended]
+    0.63    0.53    3.06    0.17   82%  82% Suspend [suspended] thread
+    0.54    0.53    1.06    0.02   98%  98% Resume thread
+    0.78    0.74    1.39    0.05   93%  93% Set priority
+    0.05    0.05    0.36    0.01   98%  98% Get priority
+    2.06    1.89    6.65    0.25   95%  79% Kill [suspended] thread
+    0.65    0.65    0.68    0.00   98%  98% Yield [no other] thread
+    1.15    1.02    3.03    0.20   81%  81% Resume [suspended low prio] thread
+    0.54    0.52    1.18    0.03   96%  96% Resume [runnable low prio] thread
+    0.94    0.88    1.27    0.01   95%   1% Suspend [runnable] thread
+    0.65    0.65    0.68    0.00   98%  98% Yield [only low prio] thread
+    0.54    0.53    0.86    0.01   98%  96% Suspend [runnable<IMG SRC="../pix/arrow.gif">not runnable]
+    1.97    1.89    2.98    0.12   84%  84% Kill [runnable] thread
+    1.03    0.92    4.94    0.17   89%  89% Destroy [dead] thread
+    2.55    2.33    4.38    0.24   89%  70% Destroy [runnable] thread
+    5.62    4.11   13.23    0.99   65%  40% Resume [high priority] thread
+    1.84    1.83    2.79    0.02   98%  98% Thread switch
+
+    0.12    0.02    0.65    0.15   74%  74% Scheduler lock
+    0.35    0.35    0.35    0.00  100% 100% Scheduler unlock [0 threads]
+    0.35    0.35    0.35    0.00  100% 100% Scheduler unlock [1 suspended]
+    0.43    0.35    1.17    0.13   78%  78% Scheduler unlock [many suspended]
+    0.45    0.35    1.17    0.15   75%  75% Scheduler unlock [many low prio]
+
+    0.46    0.15    3.38    0.30   62%  50% Init mutex
+    0.73    0.64    3.27    0.16   96%  96% Lock [unlocked] mutex
+    0.77    0.65    4.50    0.23   96%  96% Unlock [locked] mutex
+    0.58    0.55    1.42    0.05   96%  96% Trylock [unlocked] mutex
+    0.51    0.50    0.83    0.02   96%  96% Trylock [locked] mutex
+    0.12    0.11    0.41    0.02   96%  96% Destroy mutex
+    4.72    4.70    5.58    0.05   96%  96% Unlock/Lock mutex
+
+    1.01    0.67    3.48    0.40   71%  71% Create mbox
+    0.02    0.00    0.53    0.03   96%  96% Peek [empty] mbox
+    0.89    0.68    4.20    0.29   96%  71% Put [first] mbox
+    0.02    0.00    0.33    0.02   96%  96% Peek [1 msg] mbox
+    0.69    0.68    0.76    0.01   50%  46% Put [second] mbox
+    0.02    0.00    0.30    0.02   96%  96% Peek [2 msgs] mbox
+    0.81    0.71    3.83    0.19   96%  96% Get [first] mbox
+    0.72    0.71    1.02    0.02   96%  96% Get [second] mbox
+    0.81    0.65    2.74    0.22   96%  71% Tryput [first] mbox
+    0.67    0.62    2.27    0.10   96%  96% Peek item [non-empty] mbox
+    0.77    0.71    2.41    0.10   96%  96% Tryget [non-empty] mbox
+    0.59    0.58    0.88    0.02   96%  96% Peek item [empty] mbox
+    0.62    0.62    0.67    0.00   96%  96% Tryget [empty] mbox
+    0.03    0.02    0.32    0.02   96%  96% Waiting to get mbox
+    0.02    0.02    0.06    0.01   50%  46% Waiting to put mbox
+    0.75    0.65    3.59    0.18   96%  96% Delete mbox
+    2.80    2.77    3.59    0.05   96%  96% Put/Get mbox
+
+    0.37    0.18    0.88    0.28   71%  71% Init semaphore
+    0.48    0.47    0.80    0.02   96%  96% Post [0] semaphore
+    0.60    0.59    0.67    0.01   50%  46% Wait [1] semaphore
+    0.53    0.50    1.41    0.06   96%  96% Trywait [0] semaphore
+    0.51    0.50    0.71    0.01   96%  50% Trywait [1] semaphore
+    0.09    0.09    0.15    0.00   96%  96% Peek semaphore
+    0.12    0.11    0.41    0.02   96%  96% Destroy semaphore
+    3.05    3.05    3.05    0.00  100% 100% Post/Wait semaphore
+
+    0.57    0.17    2.76    0.24   59%  25% Create counter
+    0.06    0.05    0.58    0.03   96%  96% Get counter value
+    0.06    0.03    0.64    0.04   96%  96% Set counter value
+    0.73    0.71    1.02    0.02   96%  96% Tick counter
+    0.12    0.11    0.15    0.01   50%  46% Delete counter
+
+    0.89    0.64    3.15    0.34   84%  71% Create alarm
+    1.00    0.95    2.41    0.09   96%  96% Initialize alarm
+    0.09    0.06    0.68    0.04   96%  96% Disable alarm
+    1.05    1.00    2.48    0.09   96%  96% Enable alarm
+    0.18    0.17    0.50    0.02   96%  96% Delete alarm
+    0.90    0.89    1.11    0.01   96%  96% Tick counter [1 alarm]
+    5.60    5.59    5.88    0.02   96%  96% Tick counter [many alarms]
+    1.53    1.52    2.11    0.04   96%  96% Tick &amp; fire counter [1 alarm]
+   25.48   25.47   25.76    0.02   96%  96% Tick &amp; fire counters [&gt;1 together]
+    6.22    6.21    6.44    0.01   96%  96% Tick &amp; fire counters [&gt;1 separately]
+    2.59    2.56    6.17    0.07   98%  98% Alarm latency [0 threads]
+    4.06    3.95    6.24    0.08   78%  57% Alarm latency [2 threads]
+    5.03    2.56    9.03    0.89   59%  10% Alarm latency [many threads]
+    5.68    5.59   15.45    0.15   99%  99% Alarm <IMG SRC="../pix/arrow.gif"> thread resume latency
+
+    2.52    1.41    8.12    0.00            Clock/interrupt latency
+
+    2.05    1.17    6.00    0.00            Clock DSR latency
+
+   34       0    1072  (main stack:  1320)  Thread stack used (1912 total)
+All done, main stack            : stack used  1320 size  2936
+All done             :  Interrupt stack used   136 size  4096
+All done             : Idlethread stack used   996 size  2048
+
+Timing complete - 30360 ms total
+
+PASS:&lt;Basic timing OK&gt;
 EXIT:&lt;done&gt;</PRE>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127862">
+<A NAME="pgfId=1135412">
  </A>
 Board: NEC VR4373</H3>
 <H3 CLASS="Heading2">
-<A NAME="pgfId=1127863">
+<A NAME="pgfId=1135413">
  </A>
 CPU  : NEC VR4300 133MHz</H3>
-<PRE CLASS="CodeExample"><A NAME="pgfId=1118941"> </A>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1133041"> </A>
 
 Startup, main stack             : stack used  1304 size  3576
 Startup              :  Interrupt stack used   980 size  4096
@@ -545,17 +404,7 @@ Timing complete - 23810 ms total
 
 PASS:&lt;Basic timing OK&gt;
 EXIT:&lt;done&gt;
-
-
 </PRE>
-<P CLASS="Body">
-<A NAME="pgfId=1119988">
- </A>
-</P>
-<P CLASS="Body">
-<A NAME="pgfId=1125068">
- </A>
-</P>
 </DIV>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version cosmetic-update/Tue Feb  6 11:20:49  2001-->
+<HEAD><!--version 1.3.net/Thu Jul 12 15:26:58  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Programming with eCos</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=2297977">
  </A>
@@ -112,176 +112,11 @@ Repeat the build-run-debug-cycle while performing final tuning and debugging of 
 <A NAME="pgfId=2297806">
  </A>
 It may be useful to switch between this and the previous step repeatedly through the development process; use the simulator/synthetic target for actual development, and use the target hardware to continually check memory footprint and performance. There should be little cost in switching between the two targets when using two separate build trees. </P>
-<H3 CLASS="Heading2">
-<A NAME="pgfId=2680514">
- </A>
-Using the SUBSETROMRAM startup type </H3>
-<H3 CLASS="Label">
-<A NAME="pgfId=2680702">
- </A>
-NOTE</H3>
-<P CLASS="Note">
-<A NAME="pgfId=2680703">
- </A>
-This facility is not available for all boards.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2680516">
- </A>
-The SUBSETROMRAM startup type combines the ROM and ROMRAM startup types, allowing named functions/rodata to be copied to RAM during system initialization. This provides for a user configurable trade off between RAM footprint and performance.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2680520">
- </A>
-This startup type works by putting named sections in a special .rom2ram section at link-time. This means that both eCos and application functions/rodata can be relocated to RAM.</P>
-<P CLASS="Body">
-<A NAME="pgfId=2680523">
- </A>
-Configure the system with CYG_HAL_STARTUP set to SUBSETROMRAM and build eCos as usual. Before it's possible to link eCos to the application (or eCos tests) you have to create the file <TT CLASS="Code">
-install/include/subsetromram.spec</TT>
- (and run make again to get the linker script updated). </P>
-<P CLASS="Body">
-<A NAME="pgfId=2680528">
- </A>
-The file subsetromram.spec is included by the linker script and must contain a single definition of the macro SUBSETROMRAM_SPEC. It is basically a space separated list of section names that should be put in the .rom2ram section (see the ld manual for details about how to write the match expressions):</P>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680533"> </A>
-#define SUBSETROMRAM_SPEC *(.text.name1 .text.name2 .rodata.name3 \ 
-                         .rodata.name5)</PRE>
-<P CLASS="Body">
-<A NAME="pgfId=2680535">
- </A>
-These section names are the result of the compiler options -ffunction-sections and -fdata-sections, and are constructed by prefixing the function/variable name with '.text.' or '.rodata.'. Note that for C++ member functions, the mangled name is used (use the c++filt tool to demangle the names).</P>
-<P CLASS="Body">
-<A NAME="pgfId=2680540">
- </A>
-You can find these section names by running objdump with the -h option, listing the hunks (sections) in either the eCos library file (<TT CLASS="Code">
-libtarget.a</TT>
-) or the application object(s).</P>
-<P CLASS="Body">
-<A NAME="pgfId=2680543">
- </A>
-As an example, move some of the functions of the kernel/dhrystone test into RAM:</P>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680545">
- </A>
-Configure eCos, and build the library [CLI tool approach]</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680546"> </A>
-$ ecosconfig new mpc 
-&lt;edit ecos.ecc, changing CYG_HAL_STARTUP to SUBSETROMRAM&gt;
-$ ecosconfig tree 
-$ make -j</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680550">
- </A>
-Create the subsetromram.spec file with an empty list:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680551"> </A>
-#define SUBSETROMRAM_SPEC</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680552">
- </A>
-Build the dhrystone test:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680553"> </A>
-$ make &amp;&amp; make -C kernel/current/ tests TESTS=tests/dhrystone </PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680554">
- </A>
-Observe that the .rom2ram section is empty:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680555"> </A>
-$ sh-elf-objdump -h install/tests/kernel/current/tests/dhrystone 
-  [...] 
-    0 .rom2ram 00000000 8c000200 8c000200 0000c228 2**0 
-               CONTENTS 
-    1 .vectors 000009e0 80000000 80000000 00000094 2**2 
-               CONTENTS, ALLOC, LOAD, CODE 
-    2 .text 0000a6d0 800009e0 800009e0 00000a74 2**4 
-  [...]</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680563">
- </A>
-Then find the section names of interest:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680939"> </A>
-$ sh-elf-objdump -h kernel/current/tests/dhrystone.o|grep text 
-  0 .text 00000000 00000000 00000000 00000034 2**0 
-  3 .text.dtime 00000074 00000000 00000000 00000040 2**4 
-  6 .text.main 000006a0 00000000 00000000 000006f0 2**4 
-  7 .text.Proc_1 000000d0 00000000 00000000 00000d90 2**4 
-  8 .text.Proc_2 00000034 00000000 00000000 00000e60 2**4 
-  9 .text.Proc_3 00000034 00000000 00000000 00000ea0 2**4 
- 10 .text.Proc_4 0000002c 00000000 00000000 00000ee0 2**4 
- 11 .text.Proc_5 00000020 00000000 00000000 00000f10 2**4 
- 12 .text.Proc_6 00000084 00000000 00000000 00000f30 2**4
- 13 .text.Proc_7 00000010 00000000 00000000 00000fc0 2**4 
- 14 .text.Proc_8 00000078 00000000 00000000 00000fd0 2**4
- 15 .text.Func_1 00000020 00000000 00000000 00001050 2**4
- 16 .text.Func_2 00000088 00000000 00000000 00001070 2**4 
- 17 .text.Func_3 00000016 00000000 00000000 00001100 2**4
-</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680943">
- </A>
-And create the subsetromram.spec file with the list of functions that should be moved to RAM (a random subset of the functions):</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680581"> </A>
-#define SUBSETROMRAM_SPEC *(.text.Proc_4 .text.Proc_5 .text.Proc_6\  
-                           .text.Func_2 .text.Func_3)
-</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680952">
- </A>
-Rebuild the test.</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680584"> </A>
-$ make &amp;&amp; make -C kernel/current/ tests TESTS=tests/dhrystone
-</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680585">
- </A>
-Observe that the .rom2ram section is now non-empty:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680586"> </A>
-$ sh-elf-objdump -h install/tests/kernel/current/tests/dhrystone 
-  [...] 
-    0 .rom2ram 00000190 8c000200 800009e0 00000ad4 2**4 
-               CONTENTS, ALLOC, LOAD, CODE 
-    1 .vectors 000009e0 80000000 80000000 000000f4 2**2 
-              CONTENTS, ALLOC, LOAD, CODE </PRE>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680592"> </A>
-    2 .text 0000a540 80000b70 80000b70 00000c64 2**4 
-  [...]
-</PRE>
-<UL>
-<P><LI>
-<A NAME="pgfId=2680594">
- </A>
-And that the desired functions appear in RAM:</LI>
-</UL>
-<PRE CLASS="CodeExample"><A NAME="pgfId=2680595"> </A>
-$ sh-elf-nm install/tests/kernel/current/tests/dhrystone 
-  [...] 
-    8c000200 A __rom2ram_start 
-    8c000200 ? _Proc_4 
-    8c000230 ? _Proc_5 
-    8c000250 ? _Proc_6 
-    8c0002e0 ? _Func_2 
-    8c000370 ? _Func_3 
-    8c000390 ? __rom2ram_end 
-  [...] </PRE>
 <TABLE>
 <TR>
 <TD ROWSPAN="1" COLSPAN="1">
 </TD>
 </TR>
 </TABLE>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Programming with eCos</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.11.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>

@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
 <HTML>
-<HEAD><!--version 1.3.11/Tue Jun 27 11:05:38 BST 2000-->
+<HEAD><!--version 1.3.net/Wed Jul 11 18:10:50  2001-->
 <META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
 <LINK REL="STYLESHEET" HREF="../cygnus.css">
 <TITLE> Foreword</TITLE></HEAD>
 <BODY BGCOLOR="#ffffff">
 <DIV>
-<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Foreword</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Foreword</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
 <H2 CLASS="ChapterTitle">
 <A NAME="pgfId=1065235">
  </A>
@@ -25,11 +25,11 @@ What's New?</H3>
 <P CLASS="Body">
 <A NAME="pgfId=1132359">
  </A>
-In the third major public release of eCos, starting with version 1.3, we have added a wealth of new features, enhancements, and have further extended the target platform coverage.</P>
+In the fourth major public release of eCos, starting with version 1.4, we have added a wealth of new features, enhancements, and have further extended the target platform coverage.</P>
 <P CLASS="Body">
 <A NAME="pgfId=1132360">
  </A>
-The configuration system has been completely revised and updated. Major new elements include: </P>
+Major new elements include: </P>
 <UL>
 <P><LI>
 <A NAME="pgfId=1132400">
@@ -57,15 +57,49 @@ Template support for straightforward control of multiple configuration elements,
 Best of all, the source of the new configuration tools and underlying libCDL technology has been open sourced under the GNU Public License (GPL).</LI>
 </UL>
 <P CLASS="Body">
-<A NAME="pgfId=1132361">
+<A NAME="pgfId=1132643">
  </A>
-A companion beta version of the eCos TCP/IP stack has been released in conjunction with 1.3.1. The stack is derived from the OpenBSD source base and provides UDP, TCP, ICMP and BOOTP protocol support on an IPv4 standards base. Device driver support for Cirrus Logic EP72xx evaluation boards and Motorola MBX is included. The stack, ethernet core support, and device drivers are all distributed as configurable eCos packages.</P>
+A companion beta version of the eCos TCP/IP stack has been released in conjunction with this release. The stack is derived from the OpenBSD source base and provides UDP, TCP, ICMP, BOOTP and DHCP protocol support on an IPv4 standards base. Device driver support for Cirrus Logic EP72xx evaluation boards, Motorola MBX, and StrongARM EBSA285 with Intel 82559 is included. The stack and ethernet core support are distributed as configurable eCos packages. Platform ethernet device drivers are distributed with the associated platform HAL, but are naturally not useful without the ethernet core support package.</P>
 <P CLASS="Body">
 <A NAME="pgfId=1132362">
  </A>
 A PCI bus support library has also been added that provides generic PCI bus based device initialization, discovery, and configuration. The library has been ported to both the VR4300 DDB-VRC4373 and StrongARM EBSA285 development boards.</P>
 <P CLASS="Body">
-<A NAME="pgfId=1132363">
+<A NAME="pgfId=1132613">
+ </A>
+eCos also contains support for the POSIX Specification (ISO/IEC 9945-1)[POSIX]. This support follows EL/IX level 1 in the functionality supplied [ELIX].</P>
+<P CLASS="Body">
+<A NAME="pgfId=1132614">
+ </A>
+POSIX support is divided between the POSIX and the FILEIO packages. The POSIX package provides support for threads, signals, synchronization, timers and message queues. The FILEIO package provides support for file and device I/O. The two packages may be used together or separately, depending on configuration.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1132619">
+ </A>
+Also supplied with eCos is RedBoot; the standard bootstrap and debugging environment for embedded systems from Red Hat.  It provides a wide set of tools for downloading and executing programs on embedded target systems, as well as tools for manipulating the target system's environment.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1132620">
+ </A>
+RedBoot's capabilities include:   </P>
+<UL>
+<P><LI>
+<A NAME="pgfId=1132621">
+ </A>
+Serial and network (Ethernet) based debugging   </LI>
+<P><LI>
+<A NAME="pgfId=1132622">
+ </A>
+FLASH management   </LI>
+<P><LI>
+<A NAME="pgfId=1132623">
+ </A>
+Simple command line interface, available via serial or Ethernet   </LI>
+<P><LI>
+<A NAME="pgfId=1132624">
+ </A>
+Configurable and extensible, specifically adapted to the target environment</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1132611">
  </A>
 New architectures and platforms added in this release include: </P>
 <UL>
@@ -121,21 +155,17 @@ For further details of all the changes see the NEWS file in the eCos sources.</P
 <P CLASS="Body">
 <A NAME="pgfId=1132439">
  </A>
-This is the first release of eCos since the merger of Red Hat and Cygnus Solutions was completed. Red Hat is dedicated to continued enhancement and maintenance of the eCos system. Developers can look forward to upcoming releases that further expand the architectural and board coverage, extend the functionality of the TCP/IP stack, add a Linux version of the GUI configuration tool, and add major new features such as a Linux/Posix compatibility layer based on the upcoming EL/IX standard - see</P>
+Red Hat is dedicated to continued enhancement and maintenance of the eCos system. Developers can look forward to upcoming releases that further expand the architectural and board coverage, extend the functionality of the TCP/IP stack, add a Linux version of the GUI configuration tool, and add major new features such as a Linux/Posix compatibility layer based on the upcoming EL/IX standard - see</P>
 <P CLASS="Body">
 <A NAME="pgfId=1132510">
  </A>
-<A HREF="http://sourceware.cygnus.com/elix/" CLASS="URL">
-		http://sourceware.cygnus.com/elix/</A>
+<A HREF="http://sources.redhat.com/elix/" CLASS="URL">
+		http://sources.redhat.com/elix/</A>
 </P>
 <P CLASS="Body">
 <A NAME="pgfId=1132511">
  </A>
 for more details.</P>
-<P CLASS="Body">
-<A NAME="pgfId=1132366">
- </A>
-The merger has brought about some minor changes to eCos's Mozilla-derived public license, the most fundamental of which is simply the change of name from Cygnus eCos Public License (CEPL) to Red Hat eCos Public License (RHEPL). The license terms themselves have not changed in any material way other than alterations necessary to accommodate the change in company details.</P>
 <H3 CLASS="Heading2">
 <A NAME="pgfId=1132367">
  </A>
@@ -159,7 +189,7 @@ The royalty-free nature of eCos means that you can develop and deploy your appli
 <P CLASS="Body">
 <A NAME="pgfId=1132372">
  </A>
-eCos is designed to be portable to a wide range of target architectures and target platforms including 16, 32, and 64 bit architectures, MPUs, MCUs and DSPs. The eCos kernel, libraries and runtime components are layered on the Hardware Abstraction Layer (HAL), and thus will run on any target once the HAL and relevant device drivers have been ported to the target's processor architecture and board. Currently eCos supports seven different target architectures (ARM, Hitachi SH3, Intel x86, MIPS, Matsushita AM3x, PowerPC and SPARC) including many of the popular variants of these architectures and evaluation boards. Many new ports are in development and will be released as they become available.</P>
+eCos is designed to be portable to a wide range of target architectures and target platforms including 16, 32, and 64 bit architectures, MPUs, MCUs and DSPs. The eCos kernel, libraries and runtime components are layered on the Hardware Abstraction Layer (HAL), and thus will run on any target once the HAL and relevant device drivers have been ported to the target's processor architecture and board. Currently eCos supports a large range of different target architectures (ARM, Hitachi SH3, Intel x86, MIPS, Matsushita AM3x, Intel StrongARM, NEC V850, Motorola PowerPC, and SPARC) including many of the popular variants of these architectures and evaluation boards. Many new ports are in development and will be released as they become available.</P>
 <P CLASS="Body">
 <A NAME="pgfId=1132373">
  </A>
@@ -171,8 +201,8 @@ To get the most out of eCos you should visit the eCos open source developers sit
 <P CLASS="Body">
 <A NAME="pgfId=1132499">
  </A>
-<A HREF="http://sourceware.cygnus.com/ecos/" CLASS="URL">
-	http://sourceware.cygnus.com/ecos/</A>
+<A HREF="http://sources.redhat.com/ecos/" CLASS="URL">
+	http://sources.redhat.com/ecos/</A>
 </P>
 <P CLASS="Body">
 <A NAME="pgfId=1132500">
@@ -181,8 +211,8 @@ The site is dedicated to the eCos developer community and contains a rich set of
 <P CLASS="Body">
 <A NAME="pgfId=1132498">
  </A>
-<A HREF="http://www.redhat.com/services/ecos/" CLASS="URL">
-	http://www.redhat.com/products/ecos/</A>
+<A HREF="http://www.redhat.com/embedded/technologies/ecos/" CLASS="URL">
+	http://www.redhat.com/embedded/technologies/ecos/</A>
 </P>
 <P CLASS="Body">
 <A NAME="pgfId=1132375">
@@ -216,7 +246,7 @@ On behalf of the eCos team, welcome to the eCos developer community.</P>
 <SPAN CLASS="Bold">
 Paul Beskeen, <BR>
 Director of Engineering, <BR>
-eCos March 2000 </SPAN>
+eCos November 2000 </SPAN>
 </P>
 <TABLE>
 <TR>
@@ -224,5 +254,5 @@ eCos March 2000 </SPAN>
 </TD>
 </TR>
 </TABLE>
-<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Foreword</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Foreword</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.html">Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.4.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
 </HTML>
