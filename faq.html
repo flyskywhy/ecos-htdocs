@@ -984,17 +984,16 @@ of each line which is confusing <tt>make</tt>. This happens most frequently
 when using Cygwin v1.1.1. You may determine the version of the installed Cygwin
 DLL by executing the command "<tt>uname&nbsp;-r</tt>" at the Cygwin bash prompt.
 <p>
-<p>The most complete solution is to upgrade your Cygwin DLL to the latest version.
+<p>The most complete solution is to upgrade your Cygwin DLL to at least
+version 1.1.2.
 Instructions for this may be found in the <A HREF="http://sourceware.cygnus.com/cygwin/faq">
-Cygwin FAQ</A>.
+Cygwin FAQ</A> or in <A HREF="http://sourceware.cygnus.com/ml/cygwin-announce/2000/msg00023.html">this mail message</A>.
 
 <p>
 <h5>My gcc build fails with the message "<tt>conflicting types for `strsignal'</tt>"</h5>
 <p>
-This problem is also fixed in Cygwin v1.1.2, so update your cygwin installation as
-above. If you are using a development snapshot to resolve this problem,
-you will need to ensure the "winsup" package is updated, not just the Cygwin DLL
-itself. You will also need to use a development snapshot dated after 3rd June.
+This problem is also fixed in Cygwin v1.1.2, so update your cygwin 
+nstallation as above.
 
 <h5>My build fails with the message "<tt>tinfo2.cc:31:33: stdlib.h: No such file or directory</tt>"</h5>
 <p>
