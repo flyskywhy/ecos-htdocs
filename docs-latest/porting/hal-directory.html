@@ -325,9 +325,71 @@ provide the definitions, those override the variant definitions.</p>
 <p>Extras files for platform specific serial drivers. Extra files
 for handling interrupts/exceptions if it makes sense.
 
+<table cellspacing=2 cellpadding=7 border=0 width=100%>
+<tr valign=top bgcolor=#999999>
+  <td><b>File</b></td>
+  <td><b>Description</b></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/hal_diag.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/platform.inc</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/plf_cache.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/plf_intr.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/plf_io.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>include/plf_stub.h</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/hal_stub.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/platform.S</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/plf_misc.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/plf_mk_defs.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/plf_stub.c</tt></td>
+  <td></td>
+</tr>
+<tr valign=top bgcolor=#dddddd>
+<td><tt>src/</tt></td>
+  <td></td>
+</tr>
+</table>
+
+<p>The platform HAL also contains files specifying the platform's <a
+href="hal-memory.html">memory layout</a>. These files are located in
+<tt>include/pkgconf</tt>.</p>
+
+
 <h4>Auxiliary HAL</h4>
 
-<p>Extras files for platform specific serial drivers. Extra files
-for handling interrupts/exceptions if it makes sense.
+<p>Auxiliary HALs contain whatever files are necessary to provide the
+required functionality. There are no predefined set of files required
+in an auxiliary HAL.</p>
+
 
 <!--#include virtual="../../include/footer.html"-->
