@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Installing eCos under Linux</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>Installing eCos under Linux</H2>
+<HR SIZE=3>
+
+<h3>Downloading</h3>
+
+The eCos 1.1 distrubution for Linux is provided as a tar.bz2 archive
+file. Click on the following link to download:
+
+<ul>
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.bz2">eCos 1.1 sourceware for Linux</A> (4MB tar.bz2 file)
+</ul>
+
+In order to build the eCos sources, you will require the a cross-compiler
+and related development tools. The necessary tools are designated
+<i>ecosSWtools-981021</i> and are available in source form only. Click
+on the following link to download:
+
+<ul>
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.zip">eCos development tools</a> (33MB zip file)
+</ul>
+
+<h3>Installing</h3>
+
+<ol>
+<li>Build the eCos development tools (ecosSWtools-981021)
+    by following these steps at a <i>sh</i>, <i>ksh</i> or <i>bash</i>
+    prompt. Users of the <i>csh</i> and <i>tcsh</i> shells should
+    replace <nobr>"<tt>&gt; <i>filename</i>.out
+    2&gt;&amp;1</tt>"</nobr> with <nobr>"<tt>&gt;&amp;
+    <i>filename</i>.out</tt>"</nobr> throughout:<p>
+
+  <ul>
+  <li>Extract the eCos development tool sources from the
+      downloaded distribution file to
+      <nobr><tt>/usr/cygnus</tt></nobr> using the <i>unzip</i> utility
+      or similar. You should ensure that the utility is configured to
+      preserve the directory structure within the zip file during
+      extraction. The directory
+      <nobr><tt>/usr/cygnus/ecosSWtools-981021/src</tt></nobr> should
+      be generated and populated during the extraction process.<p>
+
+  <li>Create an object directory for your builds:<p>
+  <nobr><tt>mkdir /tmp/build</nobr><br>
+  <nobr>cd /tmp/build</tt></nobr><p>
+
+   <li>Configure the tools, saving the output to configure.out:<p>
+   <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/configure -v \</nobr><br>
+       <nobr>&nbsp;&nbsp;--prefix=/usr/cygnus/ecosSWtools-981021 \</nobr><br>
+       <nobr>&nbsp;&nbsp;--exec-prefix=/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i> \</nobr><br>
+       <nobr>&nbsp;&nbsp;--target=<i>target-triplet</i> &gt; configure.out 2&gt;&amp;1</tt></nobr><p>
+
+   You should replace <i><tt>target-triplet</tt></i> in the
+   above command with one of the supported target triplets:
+   <nobr><tt>mn10300-elf</tt></nobr>, <nobr><tt>mips-tx39-elf</tt></nobr>
+   or <nobr><tt>powerpc-eabi</tt></nobr>. You should replace
+   <i><tt>host-triplet</tt></i> with the host triplet for your
+   build system. You can determine the host triplet by running
+   <nobr><tt>/usr/cygnus/ecosSWtools-981021/src/config.guess</tt></nobr>.<p>
+
+  <li>Build and install the tools, saving the output to make.out:<p>
+  <nobr><tt>make -w all install &gt; make.out 2&gt;&amp;1</tt></nobr><p>
+  </ul>
+
+When the build is complete, the executable files of
+the eCos development tools may be found in the directory
+<nobr><tt>/usr/cygnus/ecosSWtools-981021/H-<i>host-triplet</i>/bin</tt></nobr>.
+You should add this directory to your path.<p>
+
+<li>Extract the eCos repository using the following commands:<p>
+
+   <nobr><tt>cd /usr/local</nobr><br>
+   <nobr>bunzip2 < ecos-1.1.tar.bz2 | tar xvf -</tt></nobr><p>
+
+On completion, the eCos repository may be found in the directory
+<nobr><tt>/usr/local/ecos-1.1</tt></nobr>.
+
+</ol>
+
+<!--#include virtual="include/footer.html"-->
