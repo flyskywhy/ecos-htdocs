@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,28 +85,28 @@ NAME="USBS-START-RX"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12046"
+NAME="AEN12603"
 ></A
 ><H2
 >Name</H2
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 >&nbsp;--&nbsp;Receiving Data from the Host</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN12050"
+NAME="AEN12607"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN12051"
-></A
 ><P
 ></P
+><A
+NAME="AEN12608"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -140,25 +140,25 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12071"
+NAME="AEN12628"
 ></A
 ><H2
-><TT
+><CODE
 CLASS="FUNCTION"
->Description</TT
+>Description</CODE
 ></H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > is a USB-specific function
 to accept a transfer from host to peripheral. It can be used for bulk,
 interrupt or isochronous transfers, but not for control messages.
 Instead those involve manipulating the <A
 HREF="usbs-control.html"
-><SPAN
+><CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 ></A
 >
 data structure directly. The function takes five arguments:</P
@@ -176,16 +176,12 @@ endpoints are available.</P
 ></LI
 ><LI
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->buffer</I
-></TT
-> and <TT
+>buffer</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->length</I
-></TT
+>length</CODE
 >
 arguments control the actual transfer. USB device drivers are not
 expected to perform any buffering or to support partial transfers, so
@@ -193,7 +189,7 @@ the length specified should correspond to the maximum transfer that is
 currently possible and the buffer should be at least this large. For
 isochronous transfers the USB specification imposes an upper bound of
 1023 bytes, and a smaller limit may be set in the <A
-HREF="usbs-enum.html#AEN11911"
+HREF="usbs-enum.html#AEN12468"
 >enumeration data</A
 >. Interrupt
 transfers are similarly straightforward with an upper bound of 64
@@ -216,9 +212,9 @@ technique should be avoided.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > is non-blocking. It merely
 starts the receive operation, and does not wait for completion. At
 some later point the USB device driver will invoke the completion
@@ -229,11 +225,9 @@ CLASS="LITERAL"
 >0</TT
 > indicates a successful transfer of that many
 bytes, which may be less than the upper bound imposed by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->length</I
-></TT
+>length</CODE
 > argument. A result &lt;
 <TT
 CLASS="LITERAL"
@@ -280,9 +274,9 @@ memory. The kernel documentation should be consulted for more details
 of DSR's and interrupt handling generally.</P
 ><P
 >It is possible that the completion function will be invoked before
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > returns. Such an event would
 be unusual because the transfer cannot happen until the next time the
 host tries to send data to this peripheral, but it may happen if for
@@ -295,27 +289,27 @@ CLASS="LITERAL"
 >: typically this will happen in the current
 thread rather than in a separate DSR. The completion function is
 allowed to start another transfer immediately by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > again.</P
 ><P
 >USB device drivers are not expected to perform any locking. It is the
 responsibility of higher-level code to ensure that there is only one
 receive operation for a given endpoint in progress at any one time. If
 there are concurrent calls to
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > then the resulting behaviour
 is undefined. For typical USB applications this does not present any
 problems, because only one piece of code will access a given endpoint
 at any particular time.</P
 ><P
 >The following code fragment illustrates a very simple use of
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > to implement a blocking
 receive, using a semaphore to synchronise between the foreground
 thread and the DSR. For a simple example like this no completion data
@@ -350,41 +344,33 @@ blocking_receive(usbs_rx_endpoint* ep, unsigned char* buf, int len)
 ></TR
 ></TABLE
 ><P
->There is also a utility function <TT
+>There is also a utility function <CODE
 CLASS="FUNCTION"
->usbs_start_rx</TT
+>usbs_start_rx</CODE
 >. This
 can be used by code that wants to manipulate <A
 HREF="usbs-data.html"
 >data endpoints</A
 > directly, specifically the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_fn</I
-></TT
+>complete_fn</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_data</I
-></TT
+>complete_data</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > fields.
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_tx</TT
+>usbs_start_tx</CODE
 > just invokes a function
 supplied by the device driver.</P
 ></DIV

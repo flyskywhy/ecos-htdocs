@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -286,9 +286,9 @@ CLASS="VARIABLELIST"
 >Create thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_create()</TT
+>cyg_thread_create()</CODE
 > call.
 Each call creates a totally new thread. The set of threads created by
 this test will be reused in the subsequent thread primitive tests.
@@ -298,9 +298,9 @@ this test will be reused in the subsequent thread primitive tests.
 >Yield thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call.
 For this test, there are no other runnable threads, thus the test
 should just measure the overhead of trying to give up the CPU.
@@ -310,9 +310,9 @@ should just measure the overhead of trying to give up the CPU.
 >Suspend &#0091;suspended&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_suspend()</TT
+>cyg_thread_suspend()</CODE
 > call.
 A thread may be suspended multiple times; each thread is already
 suspended from its initial creation, and is suspended again.
@@ -322,9 +322,9 @@ suspended from its initial creation, and is suspended again.
 >Resume thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_resume()</TT
+>cyg_thread_resume()</CODE
 > call.
 All of the threads have a suspend count of 2, thus this call does not
 make them runnable. This test just measures the overhead of resuming a
@@ -335,9 +335,9 @@ thread.
 >Set priority</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_set_priority()</TT
+>cyg_thread_set_priority()</CODE
 >
 call. Each thread, currently suspended, has its priority set to a new
 value.
@@ -347,9 +347,9 @@ value.
 >Get priority</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_get_priority()</TT
+>cyg_thread_get_priority()</CODE
 >
 call.
                 </P
@@ -358,9 +358,9 @@ call.
 >Kill &#0091;suspended&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_kill()</TT
+>cyg_thread_kill()</CODE
 > call.
 Each thread in the set is killed. All threads are known to be
 suspended before being killed.
@@ -370,14 +370,14 @@ suspended before being killed.
 >Yield &#0091;no other&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call
 again. This is to demonstrate that the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call has a fixed overhead,
 regardless of whether there are other threads in the system.
                 </P
@@ -386,9 +386,9 @@ regardless of whether there are other threads in the system.
 >Resume &#0091;suspended low priority&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_resume()</TT
+>cyg_thread_resume()</CODE
 > call
 again. In this case, the thread being resumed is lower priority than
 the main thread, thus it will simply become ready to run but not be
@@ -400,9 +400,9 @@ to run.
 >Resume &#0091;runnable low priority&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_resume()</TT
+>cyg_thread_resume()</CODE
 > call
 again. In this case, the thread being resumed is lower priority than
 the main thread and has already been made runnable, so in fact the
@@ -413,9 +413,9 @@ resume call has no effect.
 >Suspend &#0091;runnable&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_suspend()</TT
+>cyg_thread_suspend()</CODE
 > call
 again. In this case, each thread has already been made runnable (by
 previous tests).
@@ -425,9 +425,9 @@ previous tests).
 >Yield &#0091;only low priority&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call.
 In this case, there are many other runnable threads, but they are all
 lower priority than the main thread, thus no thread switches will take
@@ -438,9 +438,9 @@ place.
 >Suspend &#0091;runnable-&gt;not runnable&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_suspend()</TT
+>cyg_thread_suspend()</CODE
 > call
 again. The thread being suspended will become non-runnable by this
 action.
@@ -450,9 +450,9 @@ action.
 >Kill &#0091;runnable&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_kill()</TT
+>cyg_thread_kill()</CODE
 > call
 again. In this case, the thread being killed is currently runnable,
 but lower priority than the main thread.
@@ -462,9 +462,9 @@ but lower priority than the main thread.
 >Resume &#0091;high priority&#0093; thread</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_thread_resume()</TT
+>cyg_thread_resume()</CODE
 > call.
 The thread being resumed is higher priority than the main thread, thus
 a thread switch will take place on each call. In fact there will be
@@ -480,9 +480,9 @@ second back to the test thread. The test thread exits immediately.
 another. Two equal priority threads are started and they will each
 yield to the other for a number of iterations. A time stamp is
 gathered in one thread before the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call and after the call in the
 other thread.
                 </P
@@ -506,9 +506,9 @@ CLASS="VARIABLELIST"
 >Scheduler lock</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock()</TT
+>cyg_scheduler_lock()</CODE
 > call.
                 </P
 ></DD
@@ -516,9 +516,9 @@ CLASS="FUNCTION"
 >Scheduler unlock &#0091;0 threads&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >
 call. There are no other threads in the system and the unlock happens
 immediately after a lock so there will be no pending DSR&#8217;s to
@@ -529,9 +529,9 @@ run.
 >Scheduler unlock &#0091;1 suspended thread&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >
 call. There is one other thread in the system which is currently
 suspended.
@@ -541,16 +541,16 @@ suspended.
 >Scheduler unlock &#0091;many suspended threads&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >
 call. There are many other threads in the system which are currently
 suspended. The purpose of this test is to determine the cost of having
 additional threads in the system when the scheduler is activated by
-way of <TT
+way of <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >.
                 </P
 ></DD
@@ -558,17 +558,17 @@ CLASS="FUNCTION"
 >Scheduler unlock &#0091;many low priority threads&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >
 call. There are many other threads in the system which are runnable
 but are lower priority than the main thread. The purpose of this test
 is to determine the cost of having additional threads in the system
 when the scheduler is activated by way of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >.
                 </P
 ></DD
@@ -591,9 +591,9 @@ CLASS="VARIABLELIST"
 >Init mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_init()</TT
+>cyg_mutex_init()</CODE
 > call. A
 number of separate mutex variables are created. The purpose of this
 test is to measure the cost of creating a new mutex and introducing it
@@ -604,9 +604,9 @@ to the system.
 >Lock &#0091;unlocked&#0093; mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock()</TT
+>cyg_mutex_lock()</CODE
 > call. The
 purpose of this test is to measure the cost of locking a mutex which
 is currently unlocked. There are no other threads executing in the
@@ -617,9 +617,9 @@ system while this test runs.
 >Unlock &#0091;locked&#0093; mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_unlock()</TT
+>cyg_mutex_unlock()</CODE
 > call.
 The purpose of this test is to measure the cost of unlocking a mutex
 which is currently locked. There are no other threads executing in the
@@ -630,9 +630,9 @@ system while this test runs.
 >Trylock &#0091;unlocked&#0093; mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_trylock()</TT
+>cyg_mutex_trylock()</CODE
 > call.
 The purpose of this test is to measure the cost of locking a mutex
 which is currently unlocked. There are no other threads executing in
@@ -643,9 +643,9 @@ the system while this test runs.
 >Trylock &#0091;locked&#0093; mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_trylock()</TT
+>cyg_mutex_trylock()</CODE
 > call.
 The purpose of this test is to measure the cost of locking a mutex
 which is currently locked. There are no other threads executing in the
@@ -656,9 +656,9 @@ system while this test runs.
 >Destroy mutex</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mutex_destroy()</TT
+>cyg_mutex_destroy()</CODE
 > call.
 The purpose of this test is to measure the cost of deleting a mutex
 from the system. There are no other threads executing in the system
@@ -696,9 +696,9 @@ CLASS="VARIABLELIST"
 >Create mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_create()</TT
+>cyg_mbox_create()</CODE
 > call. A
 number of separate mailboxes is created. The purpose of this test is
 to measure the cost of creating a new mailbox and introducing it to
@@ -709,9 +709,9 @@ the system.
 >Peek &#0091;empty&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_peek()</TT
+>cyg_mbox_peek()</CODE
 > call. An
 attempt is made to peek the value in each mailbox, which is currently
 empty. The purpose of this test is to measure the cost of checking a
@@ -722,9 +722,9 @@ mailbox for a value without blocking.
 >Put &#0091;first&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_put()</TT
+>cyg_mbox_put()</CODE
 > call. One
 item is added to a currently empty mailbox. The purpose of this test
 is to measure the cost of adding an item to a mailbox. There are no
@@ -735,9 +735,9 @@ other threads currently waiting for mailbox items to arrive.
 >Peek &#0091;1 msg&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_peek()</TT
+>cyg_mbox_peek()</CODE
 > call. An
 attempt is made to peek the value in each mailbox, which contains a
 single item. The purpose of this test is to measure the cost of
@@ -748,9 +748,9 @@ checking a mailbox which has data to deliver.
 >Put &#0091;second&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_put()</TT
+>cyg_mbox_put()</CODE
 > call. A
 second item is added to a mailbox. The purpose of this test is to
 measure the cost of adding an additional item to a mailbox. There are
@@ -761,9 +761,9 @@ no other threads currently waiting for mailbox items to arrive.
 >Peek &#0091;2 msgs&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_peek()</TT
+>cyg_mbox_peek()</CODE
 > call. An
 attempt is made to peek the value in each mailbox, which contains two
 items. The purpose of this test is to measure the cost of checking a
@@ -774,9 +774,9 @@ mailbox which has data to deliver.
 >Get &#0091;first&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_get()</TT
+>cyg_mbox_get()</CODE
 > call. The
 first item is removed from a mailbox that currently contains two
 items. The purpose of this test is to measure the cost of obtaining an
@@ -787,9 +787,9 @@ item from a mailbox without blocking.
 >Get &#0091;second&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_get()</TT
+>cyg_mbox_get()</CODE
 > call. The
 last item is removed from a mailbox that currently contains one item.
 The purpose of this test is to measure the cost of obtaining an item
@@ -800,9 +800,9 @@ from a mailbox without blocking.
 >Tryput &#0091;first&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_tryput()</TT
+>cyg_mbox_tryput()</CODE
 > call. A
 single item is added to a currently empty mailbox. The purpose of this
 test is to measure the cost of adding an item to a mailbox.
@@ -812,9 +812,9 @@ test is to measure the cost of adding an item to a mailbox.
 >Peek item &#0091;non-empty&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_peek_item()</TT
+>cyg_mbox_peek_item()</CODE
 > call.
 A single item is fetched from a mailbox that contains a single item.
 The purpose of this test is to measure the cost of obtaining an item
@@ -825,9 +825,9 @@ without disturbing the mailbox.
 >Tryget &#0091;non-empty&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_tryget()</TT
+>cyg_mbox_tryget()</CODE
 > call. A
 single item is removed from a mailbox that contains exactly one item.
 The purpose of this test is to measure the cost of obtaining one item
@@ -838,9 +838,9 @@ from a non-empty mailbox.
 >Peek item &#0091;empty&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_peek_item()</TT
+>cyg_mbox_peek_item()</CODE
 > call.
 An attempt is made to fetch an item from a mailbox that is empty. The
 purpose of this test is to measure the cost of trying to obtain an
@@ -851,9 +851,9 @@ item when the mailbox is empty.
 >Tryget &#0091;empty&#0093; mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_tryget()</TT
+>cyg_mbox_tryget()</CODE
 > call. An
 attempt is made to fetch an item from a mailbox that is empty. The
 purpose of this test is to measure the cost of trying to obtain an
@@ -864,9 +864,9 @@ item when the mailbox is empty.
 >Waiting to get mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_waiting_to_get()</TT
+>cyg_mbox_waiting_to_get()</CODE
 >
 call. The purpose of this test is to measure the cost of determining
 how many threads are waiting to obtain a message from this mailbox.
@@ -876,9 +876,9 @@ how many threads are waiting to obtain a message from this mailbox.
 >Waiting to put mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_waiting_to_put()</TT
+>cyg_mbox_waiting_to_put()</CODE
 >
 call. The purpose of this test is to measure the cost of determining
 how many threads are waiting to put a message into this mailbox.
@@ -888,9 +888,9 @@ how many threads are waiting to put a message into this mailbox.
 >Delete mbox</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_mbox_delete()</TT
+>cyg_mbox_delete()</CODE
 > call.
 The purpose of this test is to measure the cost of destroying a
 mailbox and removing it from the system.
@@ -925,9 +925,9 @@ CLASS="VARIABLELIST"
 >Init semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_init()</TT
+>cyg_semaphore_init()</CODE
 > call.
 A number of separate semaphore objects are created and introduced to
 the system. The purpose of this test is to measure the cost of
@@ -938,9 +938,9 @@ creating a new semaphore.
 >Post &#0091;0&#0093; semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_post()</TT
+>cyg_semaphore_post()</CODE
 > call.
 Each semaphore currently has a value of 0 and there are no other
 threads in the system. The purpose of this test is to measure the
@@ -952,9 +952,9 @@ there is a thread waiting for the semaphore.
 >Wait &#0091;1&#0093; semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait()</TT
+>cyg_semaphore_wait()</CODE
 > call.
 The semaphore has a current value of 1 so the call is non-blocking.
 The purpose of the test is to measure the overhead of
@@ -965,9 +965,9 @@ The purpose of the test is to measure the overhead of
 >Trywait &#0091;0&#0093; semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_trywait()</TT
+>cyg_semaphore_trywait()</CODE
 >
 call. The semaphore has a value of 0 when the call is made. The
 purpose of this test is to measure the cost of seeing if a semaphore
@@ -979,9 +979,9 @@ would be no.
 >Trywait &#0091;1&#0093; semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_trywait()</TT
+>cyg_semaphore_trywait()</CODE
 >
 call. The semaphore has a value of 1 when the call is made. The
 purpose of this test is to measure the cost of seeing if a semaphore
@@ -993,9 +993,9 @@ would be yes.
 >Peek semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_peek()</TT
+>cyg_semaphore_peek()</CODE
 > call.
 The purpose of this test is to measure the cost of obtaining the
 current semaphore count value.
@@ -1005,9 +1005,9 @@ current semaphore count value.
 >Destroy semaphore</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_semaphore_destroy()</TT
+>cyg_semaphore_destroy()</CODE
 >
 call. The purpose of this test is to measure the cost of deleting a
 semaphore from the system.
@@ -1019,13 +1019,13 @@ semaphore from the system.
 ><P
 >In this round-trip test, two threads are passing control back and
 forth by using a semaphore. The time from when one thread calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post()</TT
+>cyg_semaphore_post()</CODE
 > until the other thread
-completes its <TT
+completes its <CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait()</TT
+>cyg_semaphore_wait()</CODE
 > is measured.
 Note that each iteration of this test will involve a thread switch.
                 </P
@@ -1049,9 +1049,9 @@ CLASS="VARIABLELIST"
 >Create counter</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_create()</TT
+>cyg_counter_create()</CODE
 > call.
 A number of separate counters are created. The purpose of this test is
 to measure the cost of creating a new counter and introducing it to
@@ -1063,9 +1063,9 @@ the system.
 ><DD
 ><P
 >This test measures the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_current_value()</TT
+>cyg_counter_current_value()</CODE
 > call. The current
 value of each counter is obtained.
                 </P
@@ -1074,9 +1074,9 @@ value of each counter is obtained.
 >Set counter value</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_set_value()</TT
+>cyg_counter_set_value()</CODE
 >
 call. Each counter is set to a new value.
                 </P
@@ -1085,9 +1085,9 @@ call. Each counter is set to a new value.
 >Tick counter</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_tick()</TT
+>cyg_counter_tick()</CODE
 > call.
 Each counter is &#8220;ticked&#8221; once.
                 </P
@@ -1096,9 +1096,9 @@ Each counter is &#8220;ticked&#8221; once.
 >Delete counter</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_delete()</TT
+>cyg_counter_delete()</CODE
 > call.
 Each counter is deleted from the system. The purpose of this test is
 to measure the cost of deleting a counter object.
@@ -1123,9 +1123,9 @@ CLASS="VARIABLELIST"
 >Create alarm</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_alarm_create()</TT
+>cyg_alarm_create()</CODE
 > call. A
 number of separate alarms are created, all attached to the same
 counter object. The purpose of this test is to measure the cost of
@@ -1136,9 +1136,9 @@ creating a new counter and introducing it to the system.
 >Initialize alarm</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize()</TT
+>cyg_alarm_initialize()</CODE
 >
 call. Each alarm is initialized to a small value.
                 </P
@@ -1147,9 +1147,9 @@ call. Each alarm is initialized to a small value.
 >Disable alarm</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_alarm_disable()</TT
+>cyg_alarm_disable()</CODE
 > call.
 Each alarm is explicitly disabled.
                 </P
@@ -1158,9 +1158,9 @@ Each alarm is explicitly disabled.
 >Enable alarm</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_alarm_enable()</TT
+>cyg_alarm_enable()</CODE
 > call.
 Each alarm is explicitly enabled.
                 </P
@@ -1169,9 +1169,9 @@ Each alarm is explicitly enabled.
 >Delete alarm</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_alarm_delete()</TT
+>cyg_alarm_delete()</CODE
 > call.
 Each alarm is destroyed. The purpose of this test is to measure the
 cost of deleting an alarm and removing it from the system.
@@ -1181,9 +1181,9 @@ cost of deleting an alarm and removing it from the system.
 >Tick counter &#0091;1 alarm&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_tick()</TT
+>cyg_counter_tick()</CODE
 > call. A
 counter is created that has a single alarm attached to it. The purpose
 of this test is to measure the cost of &#8220;ticking&#8221; a counter
@@ -1195,9 +1195,9 @@ activated (fired).
 >Tick counter &#0091;many alarms&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_tick()</TT
+>cyg_counter_tick()</CODE
 > call. A
 counter is created that has multiple alarms attached to it. The
 purpose of this test is to measure the cost of &#8220;ticking&#8221; a
@@ -1209,9 +1209,9 @@ not activated (fired).
 >Tick &amp; fire counter &#0091;1 alarm&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_tick()</TT
+>cyg_counter_tick()</CODE
 > call. A
 counter is created that has a single alarm attached to it. The purpose
 of this test is to measure the cost of &#8220;ticking&#8221; a counter
@@ -1224,9 +1224,9 @@ calling the alarm callback function.
 >Tick &amp; fire counter &#0091;many alarms&#0093;</DT
 ><DD
 ><P
->This test measures the <TT
+>This test measures the <CODE
 CLASS="FUNCTION"
->cyg_counter_tick()</TT
+>cyg_counter_tick()</CODE
 > call. A
 counter is created that has multiple alarms attached to it. The
 purpose of this test is to measure the cost of &#8220;ticking&#8221; a
@@ -1255,9 +1255,9 @@ function. The time from the clock interrupt until the alarm function
 is called is measured. In this test, there are exactly two threads
 which are running when the clock interrupt occurs. They are simply
 passing back and forth by way of the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call. The purpose of this test
 is to measure the variations in the latency when there are executing
 threads.
@@ -1272,9 +1272,9 @@ function. The time from the clock interrupt until the alarm function
 is called is measured. In this test, there are a number of threads
 which are running when the clock interrupt occurs. They are simply
 passing back and forth by way of the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_yield()</TT
+>cyg_thread_yield()</CODE
 > call. The purpose of this test
 is to measure the variations in the latency when there are many
 executing threads.

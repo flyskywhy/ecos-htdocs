@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-TTY-DRIVER"
-></A
->TTY driver</H1
+>TTY driver</A
+></H1
 ><P
 >Use the include file <TT
 CLASS="FILENAME"
@@ -102,17 +102,17 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5535"
-></A
->Runtime configuration</H2
+>Runtime configuration</A
+></H2
 ><P
 >Runtime configuration is achieved by exchanging data structures with
-the driver via the <TT
+the driver via the <CODE
 CLASS="FUNCTION"
->cyg_io_set_config()</TT
+>cyg_io_set_config()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_io_get_config()</TT
+>cyg_io_get_config()</CODE
 > functions.</P
 ><TABLE
 BORDER="5"
@@ -130,11 +130,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_out_flags</I
-></TT
+>tty_out_flags</CODE
 >
 is used to control what happens to data as it is send to the serial
 port. It contains a bitmap comprised of the bits as defined by the
@@ -155,21 +153,17 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If this bit is set in <TT
+>If this bit is set in <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_out_flags</I
-></TT
+>tty_out_flags</CODE
 >,
 any occurrence of the character &quot;\n&quot; will
 be replaced by the sequence &quot;\r\n&quot; before
 being sent to the device.</P
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_in_flags</I
-></TT
+>tty_in_flags</CODE
 >
 is used to control how data is handled as it comes from the serial
 port. It contains a bitmap comprised of the bits as defined by the
@@ -190,11 +184,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If this bit is set in <TT
+>If this bit is set in <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_in_flags</I
-></TT
+>tty_in_flags</CODE
 >, the
 character &quot;\r&quot; (&#8220;return&#8221; or &#8220;enter&#8221; on
 most keyboards) will be mapped to &quot;\n&quot;.</P
@@ -211,11 +203,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If this bit is set in <TT
+>If this bit is set in <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_in_flags</I
-></TT
+>tty_in_flags</CODE
 >, the
 character sequence &quot;\r\n&quot; (often sent by DOS/Windows
 based terminals) will be mapped to &quot;\n&quot;. </P
@@ -227,19 +217,16 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->#define CYG_TTY_IN_FLAGS_BINARY 0x0004 // No input processing</PRE
+>#define CYG_TTY_IN_FLAGS_ECHO 0x0004 // Echo characters as processed</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
->If this bit is set in <TT
+>If this bit is set in <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_in_flags</I
-></TT
->, the
-input will not be manipulated in any way before being placed in
-the user&#8217;s buffer. </P
+>tty_in_flags</CODE
+>, characters
+will be echoed back to the serial port as they are processed. </P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -248,18 +235,17 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->#define CYG_TTY_IN_FLAGS_ECHO 0x0008 // Echo characters as processed</PRE
+>#define CYG_TTY_IN_FLAGS_BINARY 0x0008 // No input processing</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
->If this bit is set in <TT
+>If this bit is set in <CODE
 CLASS="STRUCTFIELD"
-><I
->tty_in_flags</I
-></TT
->, characters
-will be echoed back to the serial port as they are processed. </P
+>tty_in_flags</CODE
+>, the
+input will not be manipulated in any way before being placed in
+the user&#8217;s buffer. </P
 ></DIV
 ><DIV
 CLASS="SECTION"
@@ -267,8 +253,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5562"
-></A
->API details</H2
+>API details</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

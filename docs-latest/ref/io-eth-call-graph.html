@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 50. Generic Ethernet Device Driver</TD
+>Chapter 51. Generic Ethernet Device Driver</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-CALL-GRAPH"
-></A
->Calling graph for Transmission and Reception</H1
+>Calling graph for Transmission and Reception</A
+></H1
 ><P
 >It may be worth clarifying further the flow of control in the transmit and
 receive cases, where the hardware driver does use interrupts and so DSRs to
@@ -95,8 +95,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-CALL-GRAPH-TX"
-></A
->Transmission</H2
+>Transmission</A
+></H2
 ><P
 ></P
 ><OL
@@ -106,35 +106,35 @@ TYPE="1"
 >Some foreground task such as the application, SNMP &#8220;daemon&#8221;,
 DHCP management thread or whatever, calls into network stack to send a
 packet, or the stack decides to send a packet in response to incoming
-traffic such as a &#8220;ping&#8221; or <SPAN
+traffic such as a &#8220;ping&#8221; or <ACRONYM
 CLASS="ACRONYM"
->ARP</SPAN
+>ARP</ACRONYM
 > request.</P
 ></LI
 ><LI
 ><P
 >The driver calls the
-<TT
+<CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_can_send()</TT
+>_can_send()</CODE
 >
 function in the hardware driver.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_can_send()</TT
+>_can_send()</CODE
 >
 returns the number of available "slots" in which it
 can store a pending transmit packet.
@@ -151,14 +151,14 @@ CLASS="REPLACEABLE"
 >HRDWR</I
 ></TT
 >_send() is called.
-<TT
+<CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_send()</TT
+>_send()</CODE
 > copies the
 data into special hardware buffers, or instructs the hardware to
 &#8220;send that.&#8221; It also remembers the key that is associated with
@@ -184,16 +184,16 @@ CLASS="EMPHASIS"
 >is</I
 ></SPAN
 >) the
-<TT
+<CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > function in the generic driver.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > in the generic driver awakens the
 &#8220;Network Delivery Thread&#8221; which calls the deliver function
 <TT
@@ -207,9 +207,9 @@ CLASS="REPLACEABLE"
 ><P
 >The deliver function realizes that a transmit request has completed,
 and calls the callback tx-done function
-<TT
+<CODE
 CLASS="FUNCTION"
->(sc-&#62;funs-&#62;eth_drv-&#62;tx_done)()</TT
+>(sc-&#62;funs-&#62;eth_drv-&#62;tx_done)()</CODE
 >
 with the same key that it remembered for this tx.</P
 ></LI
@@ -254,8 +254,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-CALL-GRAPH-RX"
-></A
->Receive</H2
+>Receive</A
+></H2
 ><P
 ></P
 ><OL
@@ -276,16 +276,16 @@ CLASS="EMPHASIS"
 >is</I
 ></SPAN
 >) the
-<TT
+<CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > function in the generic driver.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > in the generic driver awakens the
 &#8220;Network Delivery Thread&#8221; which calls the deliver function
 <TT
@@ -299,9 +299,9 @@ CLASS="REPLACEABLE"
 ><P
 >The deliver function realizes that there is data ready and calls
 the callback receive function
-<TT
+<CODE
 CLASS="FUNCTION"
->(sc-&#62;funs-&#62;eth_drv-&#62;recv)()</TT
+>(sc-&#62;funs-&#62;eth_drv-&#62;recv)()</CODE
 >
 to tell it how many bytes to prepare for.</P
 ></LI

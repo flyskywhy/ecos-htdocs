@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBSETH-DATA"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13177"
+NAME="AEN13734"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN13177"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN13180"
+NAME="AEN13737"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN13181"
-></A
 ><P
 ></P
+><A
+NAME="AEN13738"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -137,7 +137,7 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13205"
+NAME="AEN13762"
 ></A
 ><H2
 >Description</H2
@@ -166,13 +166,13 @@ peripheral. For example, a simple USB-ethernet converter has an
 ethernet chip and a USB port: ethernet packets received by the
 ethernet chip need to be forwarded to the USB host, and ethernet
 packets sent by the USB host need to be sent out of the ethernet chip.
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > allow for this lower-level
 access to the USB-ethernet package.</P
 ><P
@@ -184,9 +184,9 @@ functions, and it assumes that it has exclusive access. The package
 does not perform any locking.</P
 ><P
 >The transmit and receive functions work in much the same way. The
-first argument identifies the <SPAN
+first argument identifies the <CODE
 CLASS="STRUCTNAME"
->usbs_eth</SPAN
+>usbs_eth</CODE
 >
 structure that should be used. For the majority of applications this
 will be <TT
@@ -194,13 +194,13 @@ CLASS="LITERAL"
 >usbs_eth0</TT
 >. The second argument specifies
 the location of the ethernet packet; outgoing for
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > and incoming for
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 >. This buffer should correspond
 to the <A
 HREF="usbseth-protocol.html"
@@ -234,29 +234,29 @@ least significant byte first.</P
 ></LI
 ></OL
 ><P
->Both <TT
+>Both <CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 > are asynchronous: the transfer
 is started and, some time later, a completion function will be invoked.
 The third and fourth arguments to both
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 > supply the completion function
 and an argument to that function respectively. The completion function
 will be invoked with three arguments: a pointer to the
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_eth</SPAN
+>usbs_eth</CODE
 > data structure, usually
 <TT
 CLASS="LITERAL"
@@ -285,21 +285,21 @@ block such as locking a mutex or allocating memory. The kernel
 documentation should be consulted for more details of DSR's and
 interrupt handling generally. Note that if the transfer finishes
 quickly then the completion function may be invoked before
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > returns. This is especially
 likely to happen if the current thread is descheduled after starting
 the data transfer but before returning from these functions.</P
 ><P
 >For transmit operations, it is possible for
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 > to invoke the completion
 function immediately. If there is no current connection between host
 and target then the transmit will fail immediately with
@@ -311,9 +311,9 @@ check the destination MAC address and make sure that the ethernet
 frame really is intended for the host: either it must be for the
 address specified in the initialization call <A
 HREF="usbseth-init.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 ></A
 >, or
 it must be a broadcast packet, or the host must have enabled

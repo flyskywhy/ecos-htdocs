@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 46. Installing and Configuring PPP</TD
+>Chapter 47. Installing and Configuring PPP</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PPP-CONFIG-CONFIG"
-></A
->Configuring PPP</H1
+>Configuring PPP</A
+></H1
 ><P
 >The PPP package contains a number of configuration options that may be
 changed to affect its behaviour.
@@ -120,9 +120,9 @@ CLASS="LITERAL"
 >CYGPKG_PPP_DEBUG_WARN_ONLY</DT
 ><DD
 ><P
->    The runtime <TT
+>    The runtime <CODE
 CLASS="VARNAME"
->debug</TT
+>debug</CODE
 > option enables logging of
     high level debug messages. Too many of these can interfere with
     the PPP device and may result in missed messages.  This is because
@@ -143,11 +143,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >    This option gives the default value for the user name used to
-    initialize the <TT
+    initialize the <CODE
 CLASS="STRUCTFIELD"
-><I
->user</I
-></TT
+>user</CODE
 > field in the PPP
     options.
     </P
@@ -163,11 +161,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >    This option gives the default value for the password used to
-    initialize the <TT
+    initialize the <CODE
 CLASS="STRUCTFIELD"
-><I
->passwd</I
-></TT
+>passwd</CODE
 > field in the PPP
     options.
     </P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="PPP-CHAT-FN"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN9973"
+NAME="AEN10394"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN9973"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN9976"
+NAME="AEN10397"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN9977"
-></A
 ><P
 ></P
+><A
+NAME="AEN10398"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -131,7 +131,7 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN9986"
+NAME="AEN10407"
 ></A
 ><H2
 >Description</H2
@@ -149,18 +149,16 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >"/dev/ser1"</TT
 >. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->script</I
-></TT
+>script</CODE
 > argument is a pointer to a zero
 terminated array of strings that comprise the chat script. See <A
 HREF="ppp-using.html"
->Chapter 44</A
+>Chapter 45</A
 > for an example script, and <A
 HREF="ppp-chat.html"
->Chapter 47</A
+>Chapter 48</A
 > for full detail of the script used.</P
 ><P
 >The return value of this function will be zero if the chat script
@@ -168,15 +166,13 @@ fails for any reason, such as an ABORT or a timeout. If the end of the
 script is reached, then the return value will be non-zero.</P
 ><P
 >Under normal use this function is called from the PPP subsystem if the
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_ppp_options_t</SPAN
+>cyg_ppp_options_t</CODE
 >
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->script</I
-></TT
+>script</CODE
 > field is set to a
 non-<TT
 CLASS="LITERAL"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN954"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN955"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -190,39 +190,39 @@ source.
 >In a default configuration the kernel provides a single clock
 instance, the real-time clock. This gets used for timeslicing and for
 operations that involve a timeout, for example
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_timed_wait</TT
+>cyg_semaphore_timed_wait</CODE
 >. If this functionality
 is not required it can be removed from the system using the
-configuration option <TT
+configuration option <CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_COUNTERS_CLOCK</TT
+>CYGVAR_KERNEL_COUNTERS_CLOCK</CODE
 >.
 Otherwise the real-time clock can be accessed by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_real_time_clock</TT
+>cyg_real_time_clock</CODE
 >, allowing applications to
 attach alarms, and the current counter value can be obtained using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_current_time</TT
+>cyg_current_time</CODE
 >.
       </P
 ><P
 >Applications can create and destroy additional clocks if desired,
-using <TT
+using <CODE
 CLASS="FUNCTION"
->cyg_clock_create</TT
+>cyg_clock_create</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_delete</TT
+>cyg_clock_delete</CODE
 >. The first argument to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_create</TT
+>cyg_clock_create</CODE
 > specifies the
 <A
 HREF="kernel-clocks.html#KERNEL-CLOCKS-RESOLUTION"
@@ -234,14 +234,14 @@ memory needed to hold this object. This clock will not actually tick
 by itself. Instead it is the responsibility of application code to
 initialize a suitable hardware timer to generate interrupts at the
 appropriate frequency, install an interrupt handler for this, and
-call <TT
+call <CODE
 CLASS="FUNCTION"
->cyg_counter_tick</TT
+>cyg_counter_tick</CODE
 > from inside the DSR.
 Associated with each clock is a kernel counter, a handle for which can
-be obtained using <TT
+be obtained using <CODE
 CLASS="FUNCTION"
->cyg_clock_to_counter</TT
+>cyg_clock_to_counter</CODE
 >.
       </P
 ></DIV
@@ -262,28 +262,28 @@ ticks.
       </P
 ><P
 >The main reason for this is that it accurately reflects the
-hardware: calling something like <TT
+hardware: calling something like <CODE
 CLASS="FUNCTION"
->nanosleep</TT
+>nanosleep</CODE
 > with a
 delay of ten nanoseconds will not work as intended on any real
 hardware because timer interrupts simply will not happen that
-frequently; instead calling <TT
+frequently; instead calling <CODE
 CLASS="FUNCTION"
->cyg_thread_delay</TT
+>cyg_thread_delay</CODE
 > with
 the equivalent delay of 0 ticks gives a much clearer indication that
 the application is attempting something inappropriate for the target
 hardware. Similarly, passing a delay of five ticks to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_delay</TT
+>cyg_thread_delay</CODE
 > makes it fairly obvious that
 the current thread will be suspended for somewhere between four and
 five clock periods, as opposed to passing 50000000 to
-<TT
+<CODE
 CLASS="FUNCTION"
->nanosleep</TT
+>nanosleep</CODE
 > which suggests a granularity that is
 not actually provided.
       </P
@@ -322,20 +322,20 @@ usually about 100Hz, but platform-specific documentation should be
 consulted for this information. Usually it is possible to override
 this default by configuration options, but again this depends on the
 capabilities of the underlying hardware. The resolution for any clock
-can be obtained using <TT
+can be obtained using <CODE
 CLASS="FUNCTION"
->cyg_clock_get_resolution</TT
+>cyg_clock_get_resolution</CODE
 >.
 For clocks created by application code, there is also a function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_set_resolution</TT
+>cyg_clock_set_resolution</CODE
 >. This does not affect
 the underlying hardware timer in any way, it merely updates the
 information that will be returned in subsequent calls to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_get_resolution</TT
+>cyg_clock_get_resolution</CODE
 >: changing the actual
 underlying clock frequency will require appropriate manipulation of
 the timer hardware.
@@ -349,25 +349,25 @@ NAME="KERNEL-CLOCKS-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_clock_create</TT
+>cyg_clock_create</CODE
 > is usually only called during
 system initialization (if at all), but may also be called from thread
-context. The same applies to <TT
+context. The same applies to <CODE
 CLASS="FUNCTION"
->cyg_clock_delete</TT
+>cyg_clock_delete</CODE
 >.
 The remaining functions may be called during initialization, from
 thread context, or from DSR context, although it should be noted that
 there is no locking between
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_get_resolution</TT
+>cyg_clock_get_resolution</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_set_resolution</TT
+>cyg_clock_set_resolution</CODE
 > so theoretically it is
 possible that the former returns an inconsistent data structure.
       </P

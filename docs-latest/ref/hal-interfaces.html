@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -146,8 +146,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-BASE-DEFINITIONS"
-></A
->Base Definitions</H1
+>Base Definitions</A
+></H1
 ><P
 >These are definitions that characterize the properties of the base
 architecture that are used to compile the portable parts of the
@@ -170,27 +170,27 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2543"
-></A
->Byte order</H2
+>Byte order</A
+></H2
 ><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->CYG_BYTEORDER</TT
+>CYG_BYTEORDER</CODE
 ></DT
 ><DD
 ><P
 >      This defines the byte order of the target and must be set to either
-      <TT
+      <CODE
 CLASS="VARNAME"
->CYG_LSBFIRST</TT
-> or <TT
+>CYG_LSBFIRST</CODE
+> or <CODE
 CLASS="VARNAME"
->CYG_MSBFIRST</TT
+>CYG_MSBFIRST</CODE
 >.
       </P
 ></DD
@@ -203,17 +203,17 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2553"
-></A
->Label Translation</H2
+>Label Translation</A
+></H2
 ><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="FUNCTION"
->CYG_LABEL_NAME(name)</TT
+>CYG_LABEL_NAME(name)</CODE
 ></DT
 ><DD
 ><P
@@ -225,16 +225,16 @@ CLASS="FILENAME"
 >cyg/infra/cyg_type.h</TT
 >, which passes the name
       argument unaltered, is inadequate. It should be paired with
-      <TT
+      <CODE
 CLASS="FUNCTION"
->CYG_LABEL_DEFN()</TT
+>CYG_LABEL_DEFN()</CODE
 >.
       </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="FUNCTION"
->CYG_LABEL_DEFN(name)</TT
+>CYG_LABEL_DEFN(name)</CODE
 ></DT
 ><DD
 ><P
@@ -259,8 +259,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2569"
-></A
->Base types</H2
+>Base types</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -304,8 +304,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2576"
-></A
->Atomic types</H2
+>Atomic types</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -78,7 +78,7 @@ NAME="DEVS-WATCHDOG-SYNTH"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14800"
+NAME="AEN15357"
 ></A
 ><H2
 >Name</H2
@@ -86,7 +86,7 @@ NAME="AEN14800"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14803"
+NAME="AEN15360"
 ></A
 ><H2
 >Overview</H2
@@ -205,9 +205,9 @@ CLASS="FILENAME"
 >README.host</TT
 > file can be consulted for more
 details. It is essential that the watchdog support be configured with
-the same <TT
+the same <CODE
 CLASS="OPTION"
->--prefix</TT
+>--prefix</CODE
 > option as other eCos host-side
 software, especially the I/O auxiliary provided by the architectural
 synthetic target HAL package, otherwise the I/O auxiliary will be
@@ -224,9 +224,9 @@ NAME="SYNTH-WATCHDOG-TARGET-CONFIG"
 Configuration</H2
 ><P
 >The watchdog device depends on the generic watchdog support,
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_IO_WATCHDOG</TT
+>CYGPKG_IO_WATCHDOG</CODE
 >: if the generic support is
 absent then the watchdog device will be inactive. Some templates
 include this generic package by default, but not all. If the
@@ -334,21 +334,21 @@ the application makes blocking system calls then it is not using cpu
 time. Interaction with the I/O auxiliary involves system calls, but
 these should take only a short amount of time so their effects can be
 ignored. If the application makes direct system calls such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_sys_read</TT
+>cyg_hal_sys_read</CODE
 > then the system behaviour
 becomes undefined. In addition by default the idle thread will make
-blocking <TT
+blocking <CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > system calls, effectively waiting
 until an interrupt occurs. If an application spends much of its time
 idle then the watchdog device may take much longer to trigger than
 expected. It may be desirable to enable the synthetic target HAL
-configuration option <TT
+configuration option <CODE
 CLASS="VARNAME"
->CYGIMP_HAL_IDLE_THREAD_SPIN</TT
+>CYGIMP_HAL_IDLE_THREAD_SPIN</CODE
 >,
 causing the idle thread to spin rather than block, at the cost of
 wasted cpu cycles.
@@ -392,11 +392,11 @@ of the watchdog. Initially the watchdog is asleep:
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN14856"
-></A
 ><P
 ></P
+><A
+NAME="AEN15413"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -413,11 +413,11 @@ keep an eye on things (or occasionally both eyes).
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN14861"
-></A
 ><P
 ></P
+><A
+NAME="AEN15418"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -113,8 +113,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SIMPLE-SERIAL-DRIVER"
-></A
->Raw Serial Driver</H1
+>Raw Serial Driver</A
+></H1
 ><P
 >Use the include file <TT
 CLASS="FILENAME"
@@ -140,17 +140,17 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5295"
-></A
->Runtime Configuration</H2
+>Runtime Configuration</A
+></H2
 ><P
 >Runtime configuration is achieved by exchanging data structures with
-the driver via the <TT
+the driver via the <CODE
 CLASS="FUNCTION"
->cyg_io_set_config()</TT
+>cyg_io_set_config()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_io_get_config()</TT
+>cyg_io_get_config()</CODE
 > functions.</P
 ><TABLE
 BORDER="5"
@@ -171,11 +171,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->word_length</I
-></TT
+>word_length</CODE
 > contains the number of data bits per word
 (character). This must be one of the values:</P
 ><TABLE
@@ -194,11 +192,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->baud</I
-></TT
+>baud</CODE
 > contains a baud rate selection.  This must be
 one of the values:</P
 ><TABLE
@@ -234,11 +230,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->stop</I
-></TT
+>stop</CODE
 > contains the number of stop bits. This must be
 one of the values:</P
 ><TABLE
@@ -267,11 +261,9 @@ if the word (character) length is 5.</P
 ></BLOCKQUOTE
 ></DIV
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->parity</I
-></TT
+>parity</CODE
 > contains the parity mode.  This must be one of
 the values: </P
 ><TABLE
@@ -291,11 +283,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->flags</I
-></TT
+>flags</CODE
 > is a bitmask which controls the behavior of the
 serial device driver. It should be built from the values
 <TT
@@ -338,39 +328,31 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->rx_bufsize</I
-></TT
+>rx_bufsize</CODE
 > contains
 the total size of the incoming data buffer. This is set to zero on
 devices that do not support buffering (i.e. polled devices).</P
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->rx_count</I
-></TT
+>rx_count</CODE
 > contains the
 number of bytes currently occupied in the incoming data buffer.
 This is set to zero on devices that do not support buffering (i.e. polled
 devices).</P
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->tx_bufsize</I
-></TT
+>tx_bufsize</CODE
 > contains the
 total size of the transmit data buffer. This is set to zero on devices
 that do not support buffering (i.e. polled devices).</P
 ><P
->The field <TT
+>The field <CODE
 CLASS="STRUCTFIELD"
-><I
->tx_count</I
-></TT
+>tx_count</CODE
 > contains the
 number of bytes currently occupied in the transmit data buffer.  This
 is set to zero on devices that do not support buffering (i.e. polled
@@ -382,16 +364,16 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5330"
-></A
->API Details</H2
+>API Details</A
+></H2
 ><DIV
 CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
 NAME="IO-SERIAL-CYG-IO-WRITE"
-></A
->cyg_io_write</H3
+>cyg_io_write</A
+></H3
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -405,20 +387,16 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->Send the data from <TT
+>Send the data from <CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 > to the device. The
 driver maintains a buffer to hold the data. The size of the
 intermediate buffer is configurable within the interface module. The
 data is not modified at all while it is being buffered. On return,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > contains the amount of characters actually
 consumed .</P
 ><P
@@ -429,46 +407,38 @@ CLASS="LITERAL"
 >CYGOPT_IO_SERIAL_SUPPORT_NONBLOCKING</TT
 >
 to be enabled, and the specific device to be set to non-blocking
-mode for writes (see <TT
+mode for writes (see <CODE
 CLASS="FUNCTION"
->cyg_io_set_config()</TT
+>cyg_io_set_config()</CODE
 >).</P
 ><P
 >In blocking mode, the call will not return until there is space in the
-buffer and the entire contents of <TT
+buffer and the entire contents of <CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 > have been
 consumed.</P
 ><P
 >In non-blocking mode, as much as possible gets consumed from
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 >. If everything was consumed, the call
 returns <TT
 CLASS="LITERAL"
 >ENOERR</TT
 >. If only part of the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 > contents was consumed,
 <TT
 CLASS="LITERAL"
 >-EAGAIN</TT
 > is returned and the caller must try
-again. On return, <TT
+again. On return, <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > contains the number of characters actually
 consumed .</P
 ><P
@@ -476,9 +446,9 @@ consumed .</P
 CLASS="LITERAL"
 >-EINTR</TT
 > if interrupted
-via the <TT
+via the <CODE
 CLASS="FUNCTION"
->cyg_io_get_config()</TT
+>cyg_io_get_config()</CODE
 >/<TT
 CLASS="LITERAL"
 >ABORT</TT
@@ -490,8 +460,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERIAL-CYG-IO-READ"
-></A
->cyg_io_read</H3
+>cyg_io_read</A
+></H3
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -505,21 +475,17 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->Receive data into the buffer, <TT
+>Receive data into the buffer, <CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 >, from the
 device. No manipulation of the data is performed before being
 transferred.  An interrupt driven interface module will support data
 arriving when no read is pending by buffering the data in the serial
 driver.  Again, this buffering is completely configurable. On return,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > contains the number of characters actually
 received.</P
 ><P
@@ -530,20 +496,18 @@ CLASS="LITERAL"
 >CYGOPT_IO_SERIAL_SUPPORT_NONBLOCKING</TT
 >
 to be enabled, and the specific device to be set to non-blocking
-mode for reads (see <TT
+mode for reads (see <CODE
 CLASS="FUNCTION"
->cyg_io_set_config()</TT
+>cyg_io_set_config()</CODE
 >).</P
 ><P
 >In blocking mode, the call will not return until the requested
 amount of data has been read.</P
 ><P
 >In non-blocking mode, data waiting in the device buffer is copied to
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 >, and the call returns immediately. If there
 was enough data in the buffer to fulfill the request,
 <TT
@@ -554,11 +518,9 @@ could be fulfilled, <TT
 CLASS="LITERAL"
 >-EAGAIN</TT
 > is returned and the
-caller must try again. On return, <TT
+caller must try again. On return, <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > contains
 the number of characters actually received.</P
 ><P
@@ -566,9 +528,9 @@ the number of characters actually received.</P
 CLASS="LITERAL"
 >-EINTR</TT
 > if interrupted via
-the <TT
+the <CODE
 CLASS="FUNCTION"
->cyg_io_get_config()</TT
+>cyg_io_get_config()</CODE
 >/<TT
 CLASS="LITERAL"
 >ABORT</TT
@@ -581,8 +543,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERIAL-CYG-GET-CONFIG"
-></A
->cyg_io_get_config</H3
+>cyg_io_get_config</A
+></H3
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -855,8 +817,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERIAL-CYG-SET-CONFIG"
-></A
->cyg_io_set_config</H3
+>cyg_io_set_config</A
+></H3
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

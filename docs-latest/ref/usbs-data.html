@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-DATA"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12392"
+NAME="AEN12949"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN12392"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN12395"
+NAME="AEN12952"
 ></A
 ><H2
 >Synopsis</H2
@@ -133,14 +133,14 @@ typedef struct usbs_tx_endpoint {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12397"
+NAME="AEN12954"
 ></A
 ><H2
 >Receive and Transmit Data Structures</H2
 ><P
->In addition to a single <SPAN
+>In addition to a single <CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 >
 data structure per USB slave device, the USB device driver should also
 provide receive and transmit data structures corresponding to the
@@ -159,9 +159,9 @@ CLASS="LITERAL"
 number of utility routines to manipulate data endpoints. For example
 <A
 HREF="usbs-start-rx.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 ></A
 >
 can be used to receive data from the host into a buffer. In addition
@@ -173,80 +173,62 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >/dev/usbs2w</TT
 >, so
-higher-level code can <TT
+higher-level code can <CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > these devices and then
-perform blocking <TT
+perform blocking <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > operations.</P
 ><P
 >However, the operation of data endpoints and the various
 endpoint-related functions is relatively straightforward. First
-consider a <SPAN
+consider a <CODE
 CLASS="STRUCTNAME"
->usbs_rx_endpoint</SPAN
+>usbs_rx_endpoint</CODE
 > structure. The
 device driver will provide the members
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->start_rx_fn</I
-></TT
+>start_rx_fn</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->set_halted_fn</I
-></TT
+>set_halted_fn</CODE
 >, and it will maintain the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->halted</I
-></TT
+>halted</CODE
 > field. To receive data, higher-level
-code sets the <TT
+code sets the <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_fn</I
-></TT
+>complete_fn</CODE
 > and optionally the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_data</I
-></TT
+>complete_data</CODE
 > fields. Next the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->start_rx_fn</I
-></TT
+>start_rx_fn</CODE
 > member should be called. When
 the transfer has finished the device driver will invoke the completion
-function, using <TT
+function, using <CODE
 CLASS="STRUCTFIELD"
-><I
->complete_data</I
-></TT
+>complete_data</CODE
 > as the first
 argument and a size field for the second argument. A negative size
 indicates an error of some sort: <TT
@@ -262,23 +244,17 @@ host and the peripheral has been broken. Certain device drivers may
 generate other error codes.</P
 ><P
 >If higher-level code needs to halt or unhalt an endpoint then it can
-invoke the <TT
+invoke the <CODE
 CLASS="STRUCTFIELD"
-><I
->set_halted_fn</I
-></TT
+>set_halted_fn</CODE
 > member. When an
-endpoint is halted, invoking <TT
+endpoint is halted, invoking <CODE
 CLASS="STRUCTFIELD"
-><I
->start_rx_fn</I
-></TT
+>start_rx_fn</CODE
 >
-wit <TT
+wit <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > set to 0 indicates that
 higher-level code wants to block until the endpoint is no longer
 halted; at that point the completion function will be invoked.</P
@@ -292,23 +268,17 @@ the resulting behaviour is undefined.</P
 ><P
 >Transmit endpoints work in essentially the same way as receive
 endpoints. Higher-level code should set the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > fields to point at the data to
-be transferred, then call <TT
+be transferred, then call <CODE
 CLASS="STRUCTFIELD"
-><I
->start_tx_fn</I
-></TT
+>start_tx_fn</CODE
 >, and
 the device driver will invoked the completion function when the
 transfer has completed.</P

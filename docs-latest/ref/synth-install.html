@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-INSTALL"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13433"
+NAME="AEN13990"
 ></A
 ><H2
 >Name</H2
@@ -179,17 +179,17 @@ CLASS="FILENAME"
 >/usr</TT
 >. If a different, more recent Tcl
 installation should be used then its location can be specified using
-the options <TT
+the options <CODE
 CLASS="OPTION"
->--with-tcl=&lt;path&gt;</TT
+>--with-tcl=&lt;path&gt;</CODE
 >,
-<TT
+<CODE
 CLASS="OPTION"
->--with-tcl-header=&lt;path&gt;</TT
+>--with-tcl-header=&lt;path&gt;</CODE
 > and
-<TT
+<CODE
 CLASS="OPTION"
->--with-tcl-lib=&lt;path&gt;</TT
+>--with-tcl-lib=&lt;path&gt;</CODE
 >. For more information on these options
 see the <TT
 CLASS="FILENAME"
@@ -199,9 +199,9 @@ eCos repository.
     </P
 ><P
 >Some users may also want to specify the install location using a
-<TT
+<CODE
 CLASS="OPTION"
->--prefix=&lt;path&gt;</TT
+>--prefix=&lt;path&gt;</CODE
 > option. The default install
 location is <TT
 CLASS="FILENAME"
@@ -212,9 +212,9 @@ CLASS="FILENAME"
 >bin</TT
 >
 subdirectory of the install location is on the user's search
-<TT
+<CODE
 CLASS="ENVAR"
->PATH</TT
+>PATH</CODE
 >, otherwise the eCos application will be unable to
 locate and execute the I/O auxiliary ecosynth.
     </P
@@ -234,13 +234,13 @@ it is usually possible to specify an alternative location for
 CLASS="FILENAME"
 >libexec</TT
 > using
-<TT
+<CODE
 CLASS="OPTION"
->--exec-prefix=&lt;path&gt;</TT
+>--exec-prefix=&lt;path&gt;</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--libexecdir=&lt;path&gt;</TT
+>--libexecdir=&lt;path&gt;</CODE
 >. These options should not
 be used for this package because the eCos application is built
 completely separately and does not know how the host-side was
@@ -270,9 +270,9 @@ will not support debugging of eCos threads on the synthetic target. As
 far as gdb is concerned a synthetic target application is
 indistinguishable from a normal Linux application, so it assumes that
 any threads will be created by calls to the Linux
-<TT
+<CODE
 CLASS="FUNCTION"
->pthread_create</TT
+>pthread_create</CODE
 > function provided by the C
 library. Obviously this is not the case since the application is never
 linked with that library. Therefore gdb never notices the eCos thread
@@ -289,11 +289,9 @@ reason it is necessary or desirable to build on another machine then
 this requires a suitable cross-compiler and related tools. If the
 application will be running on a typical PC with an x86 processor then
 a suitable configure triplet would be
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->i686-pc-linux-gnu</B
-></TT
+>i686-pc-linux-gnu</KBD
 >. The installation
 instructions for the various GNU tools should be consulted for further
 information. 

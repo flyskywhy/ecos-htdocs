@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -25,8 +25,8 @@ REL="PREVIOUS"
 TITLE="The eCos PCI Library"
 HREF="ecos-pci-library.html"><LINK
 REL="NEXT"
-TITLE="eCos POSIX compatibility layer"
-HREF="posix-compatibility.html"></HEAD
+TITLE="FLASH Library"
+HREF="io-flash.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -68,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="posix-compatibility.html"
+HREF="io-flash.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PCI-LIBRARY-REFERENCE"
-></A
->PCI Library reference</H1
+>PCI Library reference</A
+></H1
 ><P
 >This document defines the PCI Support Library for eCos.</P
 ><P
@@ -107,8 +107,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7621"
-></A
->PCI Library API</H2
+>PCI Library API</A
+></H2
 ><P
 >The PCI library provides the following routines and types
 for accessing the PCI configuration space.</P
@@ -125,8 +125,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7626"
-></A
->Definitions</H2
+>Definitions</A
+></H2
 ><P
 >The header file contains definitions for the common configuration
 structure offsets and specimen values for device, vendor and class
@@ -138,8 +138,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7629"
-></A
->Types and data structures</H2
+>Types and data structures</A
+></H2
 ><P
 >The following types are defined:</P
 ><TABLE
@@ -156,29 +156,29 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >This is comprised of the bus number, device number and functional
-unit numbers packed into a single word. The macro <TT
+unit numbers packed into a single word. The macro <CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_MAKE_ID()</TT
->, in conjunction with the <TT
+>CYG_PCI_DEV_MAKE_ID()</CODE
+>, in conjunction with the <CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_MAKE_DEVFN()</TT
+>CYG_PCI_DEV_MAKE_DEVFN()</CODE
 >
 macro, may be used to construct a device id from the bus, device and functional
-unit numbers. Similarly the macros <TT
+unit numbers. Similarly the macros <CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_GET_BUS()</TT
+>CYG_PCI_DEV_GET_BUS()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_GET_DEVFN()</TT
+>CYG_PCI_DEV_GET_DEVFN()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_GET_DEV()</TT
+>CYG_PCI_DEV_GET_DEV()</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->CYG_PCI_DEV_GET_FN()</TT
+>CYG_PCI_DEV_GET_FN()</CODE
 > may be used to extract the
 constituent parts of a device id. It should not be necessary to use these
 macros under normal circumstances. The following code fragment demonstrates
@@ -218,9 +218,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >This structure is used to contain data read from a PCI device's
-configuration header by <TT
+configuration header by <CODE
 CLASS="FUNCTION"
->cyg_pci_get_device_info()</TT
+>cyg_pci_get_device_info()</CODE
 >.
 It is also used to record the resource allocations made to the device.</P
 ><TABLE
@@ -240,9 +240,9 @@ typedef CYG_WORD32 CYG_PCI_ADDRESS32;</PRE
 >Pointers in the PCI address space are 32 bit (IO space) or
 32/64 bit (memory space). In most platform and device configurations
 all of PCI memory will be linearly addressable using only 32 bit
-pointers as read from <TT
+pointers as read from <CODE
 CLASS="VARNAME"
->base_map[]</TT
+>base_map[]</CODE
 >.</P
 ><P
 >The 64 bit type is used to allow handling 64 bit devices in
@@ -255,8 +255,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7648"
-></A
->Functions</H2
+>Functions</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -290,39 +290,31 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >Searches the PCI bus configuration space for a device with
-the given <TT
+the given <CODE
 CLASS="PARAMETER"
-><I
->vendor</I
-></TT
-> and <TT
+>vendor</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->device</I
-></TT
+>device</CODE
 >
-ids. The search starts at the device pointed to by <TT
+ids. The search starts at the device pointed to by <CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 >,
 or at the first slot if it contains <TT
 CLASS="LITERAL"
 >CYG_PCI_NULL_DEVID</TT
 >.
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*devid</I
-></TT
+>*devid</CODE
 > will be updated with the ID of the next device
-found. Returns <TT
+found. Returns <CODE
 CLASS="CONSTANT"
->true</TT
-> if one is found and <TT
+>true</CODE
+> if one is found and <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 > if not.</P
 ><TABLE
 BORDER="5"
@@ -339,36 +331,30 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >Searches the PCI bus configuration space for a device with
-the given <TT
+the given <CODE
 CLASS="PARAMETER"
-><I
->dev_class</I
-></TT
+>dev_class</CODE
 > class code.  The search starts at the
-device pointed to by <TT
+device pointed to by <CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 >, or at the first slot if it
 contains <TT
 CLASS="LITERAL"
 >CYG_PCI_NULL_DEVID</TT
 >.</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->*devid</I
-></TT
+>*devid</CODE
 > will be updated with the ID of the next
-device found. Returns <TT
+device found. Returns <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 > if one is found and
-<TT
+<CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 > if not.</P
 ><TABLE
 BORDER="5"
@@ -385,39 +371,31 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >Searches the PCI configuration space for the next valid device
-after <TT
+after <CODE
 CLASS="PARAMETER"
-><I
->cur_devid</I
-></TT
->. If <TT
+>cur_devid</CODE
+>. If <CODE
 CLASS="PARAMETER"
-><I
->cur_devid</I
-></TT
+>cur_devid</CODE
 >
 is given the value <TT
 CLASS="LITERAL"
 >CYG_PCI_NULL_DEVID</TT
 >, then the search starts
-at the first slot. It is permitted for <TT
+at the first slot. It is permitted for <CODE
 CLASS="PARAMETER"
-><I
->next_devid</I
-></TT
+>next_devid</CODE
 > to
-point to <TT
+point to <CODE
 CLASS="PARAMETER"
-><I
->cur_devid</I
-></TT
->.  Returns <TT
+>cur_devid</CODE
+>.  Returns <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 >
-if another device is found and <TT
+if another device is found and <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 > if not.</P
 ><TABLE
 BORDER="5"
@@ -435,35 +413,29 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >Searches the PCI bus configuration space for a device whose properties
-match those required by the caller supplied <TT
+match those required by the caller supplied <CODE
 CLASS="PARAMETER"
-><I
->cyg_pci_match_func</I
-></TT
+>cyg_pci_match_func</CODE
 >.
-The search starts at the device pointed to by <TT
+The search starts at the device pointed to by <CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 >, or
-at the first slot if it contains <TT
+at the first slot if it contains <CODE
 CLASS="CONSTANT"
->CYG_PCI_NULL_DEVID</TT
+>CYG_PCI_NULL_DEVID</CODE
 >. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 > will be updated with the ID of the next device found.
-This function returns <TT
+This function returns <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 > if a matching device is found
-and <TT
+and <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 > if not.</P
 ><P
 >The match_func has a type declared as:</P
@@ -483,31 +455,23 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->vendor</I
-></TT
->, <TT
+>vendor</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->device</I
-></TT
+>device</CODE
 >, and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->class</I
-></TT
+>class</CODE
 > are from the device configuration space. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->user_data</I
-></TT
-> is the callback data passed to <TT
+>user_data</CODE
+> is the callback data passed to <CODE
 CLASS="FUNCTION"
->cyg_pci_find_matching</TT
+>cyg_pci_find_matching</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -524,23 +488,21 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >This function gets the PCI configuration information for the
-device indicated in <TT
+device indicated in <CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 >. The common fields of the
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_pci_device</SPAN
+>cyg_pci_device</CODE
 > structure, and the appropriate fields
 of the relevant header union member are filled in from the device's
 configuration space.
 If the device has not been enabled, then this function will also fetch
 the size and type information from the base address registers and
-place it in the <TT
+place it in the <CODE
 CLASS="VARNAME"
->base_size[]</TT
+>base_size[]</CODE
 > array.</P
 ><TABLE
 BORDER="5"
@@ -557,18 +519,14 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >This function sets the PCI configuration information for the
-device indicated in <TT
+device indicated in <CODE
 CLASS="PARAMETER"
-><I
->devid</I
-></TT
+>devid</CODE
 >. Only the configuration space
 registers that are writable are actually written. Once all the fields have
-been written, the device info will be read back into <TT
+been written, the device info will be read back into <CODE
 CLASS="PARAMETER"
-><I
->*dev_info</I
-></TT
+>*dev_info</CODE
 >, so that it reflects the true state of the hardware.</P
 ><TABLE
 BORDER="5"
@@ -591,9 +549,9 @@ void cyg_pci_read_config_uint32( cyg_pci_device_id devid,
 >These functions read registers of the appropriate size from
 the configuration space of the given device. They should mainly
 be used to access registers that are device specific. General PCI
-registers are best accessed through <TT
+registers are best accessed through <CODE
 CLASS="FUNCTION"
->cyg_pci_get_device_info()</TT
+>cyg_pci_get_device_info()</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -616,13 +574,13 @@ void cyg_pci_write_config_uint32( cyg_pci_device_id devid,
 >These functions write registers of the appropriate size to
 the configuration space of the given device. They should mainly
 be used to access registers that are device specific. General PCI
-registers are best accessed through <TT
+registers are best accessed through <CODE
 CLASS="FUNCTION"
->cyg_pci_get_device_info()</TT
+>cyg_pci_get_device_info()</CODE
 >. Writing the general registers this way may render the contents of
-a <SPAN
+a <CODE
 CLASS="STRUCTNAME"
->cyg_pci_device</SPAN
+>cyg_pci_device</CODE
 > structure invalid.</P
 ></DIV
 ><DIV
@@ -631,8 +589,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7711"
-></A
->Resource allocation</H2
+>Resource allocation</A
+></H2
 ><P
 >These routines allocate memory and I/O space to PCI devices.</P
 ><TABLE
@@ -651,31 +609,27 @@ CLASS="PROGRAMLISTING"
 >Allocate memory and IO space to all base address registers
 using the current memory and IO base addresses in the library. The
 allocated base addresses, translated into directly usable values,
-will be put into the matching <TT
+will be put into the matching <CODE
 CLASS="VARNAME"
->base_map[]</TT
+>base_map[]</CODE
 > entries
-in <TT
+in <CODE
 CLASS="PARAMETER"
-><I
->*dev_info</I
-></TT
->. If <TT
+>*dev_info</CODE
+>. If <CODE
 CLASS="PARAMETER"
-><I
->*dev_info</I
-></TT
+>*dev_info</CODE
 > does
-not contain valid <TT
+not contain valid <CODE
 CLASS="VARNAME"
->base_size[]</TT
+>base_size[]</CODE
 > entries, then the result is
-<TT
+<CODE
 CLASS="CONSTANT"
->false</TT
->. This function will also call <TT
+>false</CODE
+>. This function will also call <CODE
 CLASS="FUNCTION"
->cyg_pci_translate_interrupt()</TT
+>cyg_pci_translate_interrupt()</CODE
 > to put the interrupt vector into the
 HAL vector entry.</P
 ><TABLE
@@ -693,29 +647,25 @@ CLASS="PROGRAMLISTING"
 ><P
 >Allocate memory and IO space to all base address registers on all devices
 on the given bus and all subordinate busses. If a PCI-PCI bridge is found on
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
+>bus</CODE
 >, this function will call itself recursively in order
 to configure the bus on the other side of the bridge. Because of the nature of
 bridge devices, all devices on the secondary side of a bridge must be allocated
 memory and IO space before the memory and IO windows on the bridge device can be
-properly configured. The <TT
+properly configured. The <CODE
 CLASS="PARAMETER"
-><I
->next_bus</I
-></TT
+>next_bus</CODE
 > argument points to the
 bus number to assign to the next subordinate bus found. The number will be
-incremented as new busses are discovered. If successful, <TT
+incremented as new busses are discovered. If successful, <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 >
-is returned. Otherwise, <TT
+is returned. Otherwise, <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 > is returned.</P
 ><TABLE
 BORDER="5"
@@ -734,18 +684,16 @@ CLASS="PROGRAMLISTING"
 >Translate the device's PCI interrupt (INTA#-INTD#)
 to the associated HAL vector. This may also depend on which slot
 the device occupies. If the device may generate interrupts, the
-translated vector number will be stored in <TT
+translated vector number will be stored in <CODE
 CLASS="PARAMETER"
-><I
->vec</I
-></TT
+>vec</CODE
 > and the
-result is <TT
+result is <CODE
 CLASS="CONSTANT"
->true</TT
->. Otherwise the result is <TT
+>true</CODE
+>. Otherwise the result is <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -766,36 +714,30 @@ cyg_bool cyg_pci_allocate_io( cyg_pci_device *dev_info,
 ></TABLE
 ><P
 >These routines allocate memory or I/O space to the base address
-register indicated by <TT
+register indicated by <CODE
 CLASS="PARAMETER"
-><I
->bar</I
-></TT
+>bar</CODE
 >. The base address in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*base</I
-></TT
+>*base</CODE
 > will be correctly aligned and the address of the
 next free location will be written back into it if the allocation succeeds. If
 the base address register is of the wrong type for this allocation, or
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->dev_info</I
-></TT
-> does not contain valid <TT
+>dev_info</CODE
+> does not contain valid <CODE
 CLASS="VARNAME"
->base_size[]</TT
-> entries, the result is <TT
+>base_size[]</CODE
+> entries, the result is <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 >. These functions
 allow a device driver to set up its own mappings if it wants. Most devices
-should probably use <TT
+should probably use <CODE
 CLASS="FUNCTION"
->cyg_pci_configure_device()</TT
+>cyg_pci_configure_device()</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -822,8 +764,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7743"
-></A
->PCI Library Hardware API</H2
+>PCI Library Hardware API</A
+></H2
 ><P
 >This API is used by the PCI library to access the PCI bus
 configuration space. Although it should not normally be necessary,
@@ -863,21 +805,15 @@ void cyg_pcihw_read_config_uint32( cyg_uint8 bus,
 ></TABLE
 ><P
 >These functions read a register of the appropriate size from
-the PCI configuration space at an address composed from the <TT
+the PCI configuration space at an address composed from the <CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
->, <TT
+>bus</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->devfn</I
-></TT
-> and <TT
+>devfn</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->offset</I
-></TT
+>offset</CODE
 >
 arguments.</P
 ><TABLE
@@ -900,22 +836,16 @@ void cyg_pcihw_write_config_uint32( cyg_uint8 bus,
 ><P
 >These functions write a register of the appropriate size to
 the PCI configuration space at an address composed from the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
->, <TT
+>bus</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->devfn</I
-></TT
+>devfn</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->offset</I
-></TT
+>offset</CODE
 > arguments.</P
 ><TABLE
 BORDER="5"
@@ -941,8 +871,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7760"
-></A
->HAL PCI support</H2
+>HAL PCI support</A
+></H2
 ><P
 >HAL support consists of a set of C macros that provide the
 implementation of the low level PCI API.</P
@@ -976,21 +906,15 @@ HAL_PCI_READ_UINT32( bus, devfn, offset, val )</PRE
 ></TABLE
 ><P
 >Read a value from the PCI configuration space of the appropriate
-size at an address composed from the <TT
+size at an address composed from the <CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
->, <TT
+>bus</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->devfn</I
-></TT
-> and <TT
+>devfn</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->offset</I
-></TT
+>offset</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -1008,21 +932,15 @@ HAL_PCI_WRITE_UINT32( bus, devfn, offset, val )</PRE
 ></TABLE
 ><P
 >Write a value to the PCI configuration space of the appropriate
-size at an address composed from the <TT
+size at an address composed from the <CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
->, <TT
+>bus</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->devfn</I
-></TT
-> and <TT
+>devfn</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->offset</I
-></TT
+>offset</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -1104,13 +1022,40 @@ CLASS="PROGRAMLISTING"
 ><P
 >This macro, if defined, may be used to limit the devices which are
 found by the bus scanning functions. This is sometimes necessary for
-devices which need special handling. If this macro evaluates to <TT
+devices which need special handling. If this macro evaluates to <CODE
 CLASS="CONSTANT"
->true</TT
->, the given device will not be found by <TT
+>true</CODE
+>, the given device will not be found by <CODE
 CLASS="FUNCTION"
->cyg_pci_find_next</TT
+>cyg_pci_find_next</CODE
 > or other bus scanning functions.</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>HAL_PCI_IGNORE_BAR( dev_info, bar_num )</PRE
+></TD
+></TR
+></TABLE
+><P
+>This macro, if defined, may be used to limit which BARs are discovered
+and configured. This is sometimes necessary for platforms with limited PCI
+windows. If this macro evaluates to <CODE
+CLASS="CONSTANT"
+>true</CODE
+>, the given BAR
+will not be discovered by <CODE
+CLASS="FUNCTION"
+>cyg_pci_get_device_info</CODE
+> and
+therefore not configured by <CODE
+CLASS="FUNCTION"
+>cyg_pci_configure_device</CODE
+>.</P
 ></DIV
 ></DIV
 ><DIV
@@ -1147,7 +1092,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="posix-compatibility.html"
+HREF="io-flash.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -1171,7 +1116,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->eCos POSIX compatibility layer</TD
+>FLASH Library</TD
 ></TR
 ></TABLE
 ></DIV

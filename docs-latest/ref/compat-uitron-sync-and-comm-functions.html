@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,13 +14,12 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Task-Dependent Synchronization Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-SYNC-AND-COMM-FUNCTIONS"
-></A
->Synchronization and Communication Functions</H1
+>Synchronization and Communication Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->sig_sem</TT
+>sig_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -117,9 +117,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->wai_sem</TT
+>wai_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -139,9 +139,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->preq_sem</TT
+>preq_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -161,9 +161,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->twai_sem</TT
+>twai_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -189,9 +189,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_sem</TT
+>ref_sem</CODE
 >( 
     T_RSEM *<SPAN
 CLASS="emphasis"
@@ -217,9 +217,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->set_flg</TT
+>set_flg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -245,9 +245,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->clr_flg</TT
+>clr_flg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -273,9 +273,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->wai_flg</TT
+>wai_flg</CODE
 >( 
     UINT *<SPAN
 CLASS="emphasis"
@@ -314,9 +314,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->pol_flg</TT
+>pol_flg</CODE
 >( 
     UINT *<SPAN
 CLASS="emphasis"
@@ -355,9 +355,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->twai_flg</TT
+>twai_flg</CODE
 >( 
     UINT *<SPAN
 CLASS="emphasis"
@@ -402,9 +402,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_flg</TT
+>ref_flg</CODE
 >( 
     T_RFLG *<SPAN
 CLASS="emphasis"
@@ -430,9 +430,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->snd_msg</TT
+>snd_msg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -458,9 +458,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rcv_msg</TT
+>rcv_msg</CODE
 >( 
     T_MSG **<SPAN
 CLASS="emphasis"
@@ -486,9 +486,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->prcv_msg</TT
+>prcv_msg</CODE
 >( 
     T_MSG **<SPAN
 CLASS="emphasis"
@@ -514,9 +514,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->trcv_msg</TT
+>trcv_msg</CODE
 >( 
     T_MSG **<SPAN
 CLASS="emphasis"
@@ -548,9 +548,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_mbx</TT
+>ref_mbx</CODE
 >( 
     T_RMBX *<SPAN
 CLASS="emphasis"
@@ -584,9 +584,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_sem</TT
+>cre_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -612,9 +612,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_sem</TT
+>del_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -634,9 +634,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_flg</TT
+>cre_flg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -662,9 +662,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_flg</TT
+>del_flg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -684,9 +684,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_mbx</TT
+>cre_mbx</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -712,9 +712,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_mbx</TT
+>del_mbx</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -765,9 +765,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8536"
-></A
->Error checking</H2
+NAME="AEN8957"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -800,18 +800,18 @@ E_CTX</P
 ><LI
 ><P
 >pk_cxxx pointers in 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
  must be valid pointers, or E_PAR</P
 ></LI
 ><LI
 ><P
 >return value pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->ref_xxx()</TT
+>ref_xxx()</CODE
 >
  is valid pointer, or E_PAR</P
 ></LI
@@ -840,14 +840,14 @@ CLASS="LITERAL"
 ><LI
 ><P
 >When create and delete functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->del_xxx()</TT
+>del_xxx()</CODE
 >
  are supported, all calls which use a valid object ID number check
 that the object exists. If not, E_NOEXS is returned.</P
@@ -855,18 +855,18 @@ that the object exists. If not, E_NOEXS is returned.</P
 ><LI
 ><P
 >In create functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
 , when supported, if the object already exists, then E_OBJ</P
 ></LI
 ><LI
 ><P
 >In any call which can sleep, such as 
-<TT
+<CODE
 CLASS="FUNCTION"
->twai_sem()</TT
+>twai_sem()</CODE
 >
 : return codes E_TMOUT, E_RLWAI, E_DLT
 or of course E_OK are returned depending on the reason
@@ -875,9 +875,9 @@ for terminating the sleep</P
 ><LI
 ><P
 >In polling functions such as 
-<TT
+<CODE
 CLASS="FUNCTION"
->preq_sem()</TT
+>preq_sem()</CODE
 >
 return codes E_TMOUT or E_OK are returned depending
 on the state of the synchronization object</P
@@ -886,9 +886,9 @@ on the state of the synchronization object</P
 ><P
 >In creation functions, the attributes must be compatible
 with the selected underlying kernel configuration: in 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_sem()</TT
+>cre_sem()</CODE
 >
  <TT
 CLASS="LITERAL"
@@ -904,35 +904,35 @@ CLASS="LITERAL"
 ><LI
 ><P
 >In 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_flg()</TT
+>cre_flg()</CODE
 >
  <TT
 CLASS="LITERAL"
 >pk_cflg-&gt;flgatr</TT
 >
  must be either 
-<TT
+<CODE
 CLASS="VARNAME"
->TA_WMUL</TT
+>TA_WMUL</CODE
 >
  or 
-<TT
+<CODE
 CLASS="VARNAME"
->TA_WSGL</TT
+>TA_WSGL</CODE
 >
- else <TT
+ else <CODE
 CLASS="VARNAME"
->E_RSATR</TT
+>E_RSATR</CODE
 >.</P
 ></LI
 ><LI
 ><P
 >In 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mbx()</TT
+>cre_mbx()</CODE
 >
  
 <TT

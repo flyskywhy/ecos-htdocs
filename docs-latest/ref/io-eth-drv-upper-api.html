@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 50. Generic Ethernet Device Driver</TD
+>Chapter 51. Generic Ethernet Device Driver</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-DRV-UPPER-API"
-></A
->Upper Layer Functions</H1
+>Upper Layer Functions</A
+></H1
 ><P
 >Upper layer functions are called by drivers to deliver received packets
 or transmission completion status back up into the network stack.</P
@@ -107,8 +107,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-UPPER-INIT"
-></A
->Callback Init function</H2
+>Callback Init function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -149,8 +149,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-TX-DONE"
-></A
->Callback Tx-Done function</H2
+>Callback Tx-Done function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -168,27 +168,23 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 >
 This function is called when a packet completes transmission on the
-interface.  The <TT
+interface.  The <CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >
 value must be one of the keys provided to
-<TT
+<CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_send()</TT
+>_send()</CODE
 >
-above.  The value <TT
+above.  The value <CODE
 CLASS="PARAMETER"
-><I
->status</I
-></TT
+>status</CODE
 > should be non-zero
 (details currently undefined) to indicate that an error occurred during the
 transmission, and zero if all was well.</P
@@ -214,8 +210,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-UPPER-RECV"
-></A
->Callback Receive function</H2
+>Callback Receive function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -231,22 +227,20 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 >
 This function is called to indicate that a packet of length
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 > has
 arrived at the interface.
 The callback
-<TT
+<CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_recv()</TT
+>_recv()</CODE
 > function
 described above will be used to actually unload the data from the
 interface into buffers used by the device independent layers.</P

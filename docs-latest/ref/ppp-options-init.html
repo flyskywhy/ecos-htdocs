@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="PPP-OPTIONS-INIT"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN9712"
+NAME="AEN10133"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN9712"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN9715"
+NAME="AEN10136"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN9716"
-></A
 ><P
 ></P
+><A
+NAME="AEN10137"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -131,31 +131,27 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN9723"
+NAME="AEN10144"
 ></A
 ><H2
 >Description</H2
 ><P
 >This function initializes the PPP options, pointed to by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->options</I
-></TT
+>options</CODE
 > parameter, to the default state. Once
 the defaults have been initialized, application code may adjust them
 by assigning new values to the the fields of the
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_ppp_options_t</SPAN
+>cyg_ppp_options_t</CODE
 > structure.</P
 ><P
 >This function returns zero if the options were initialized
-successfully. It returns -1 if the <TT
+successfully. It returns -1 if the <CODE
 CLASS="PARAMETER"
-><I
->options</I
-></TT
+>options</CODE
 >
 argument is NULL, or the options could not be initialized.</P
 ><P
@@ -171,13 +167,13 @@ CLASS="VARIABLELIST"
 ><P
 > If set to 1 this enables the reporting of debug messages
     from the PPP system. These will be generated using
-    <TT
+    <CODE
 CLASS="FUNCTION"
->diag_printf()</TT
+>diag_printf()</CODE
 > and will appear on the standard
-    debug channel. Note that <TT
+    debug channel. Note that <CODE
 CLASS="FUNCTION"
->diag_printf()</TT
+>diag_printf()</CODE
 >
     disables interrupts during output: this may cause the PPP link
     device to overrun and miss characters. It is quite possible for
@@ -194,110 +190,74 @@ CLASS="FUNCTION"
 ><P
 > This five bit field enables low level debugging messages from
     the PPP device layer in the TCP/IP stack. As with the
-    <TT
+    <CODE
 CLASS="STRUCTFIELD"
-><I
->debug</I
-></TT
+>debug</CODE
 > option, this may result in missed
     characters and cause errors. The bits of the field have the
     following meanings:
     </P
 ><DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN9744"
-></A
 ><P
 ></P
+><A
+NAME="AEN10165"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Bit</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >BSD Name</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Description</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >0x01</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >SC_DEBUG</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Enable debug messages</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >0x02</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >SC_LOG_INPKT</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Log contents of good packets received</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >0x04</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >SC_LOG_OUTPKT</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Log contents of packets sent</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >0x08</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >SC_LOG_RAWIN</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Log all characters received</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >0x10</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >SC_LOG_FLUSH</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Log all characters flushed</TD
 ></TR
 ></TBODY
@@ -427,17 +387,13 @@ CLASS="LITERAL"
     straightforward login mechanism via the CHAT script, with the
     Password Authentication Protocol (PAP), or with the Challenge
     Handshake Authentication Protocol (CHAP). For PAP to work the
-    <TT
+    <CODE
 CLASS="STRUCTFIELD"
-><I
->user</I
-></TT
+>user</CODE
 > and
-    <TT
+    <CODE
 CLASS="STRUCTFIELD"
-><I
->passwd</I
-></TT
+>passwd</CODE
 > options must be set to the
     expected values. If they are not, then this option should be set
     to force CHAP authentication.
@@ -453,27 +409,21 @@ CLASS="STRUCTFIELD"
 > If this option is set to 1, then the PPP subsystem will not
     agree to authenticate itself to the peer with CHAP. CHAP
     authentication will only work if the
-    <TT
+    <CODE
 CLASS="STRUCTFIELD"
-><I
->passwd</I
-></TT
+>passwd</CODE
 > option has been set to the
     required CHAP secret for the destination server. Otherwise this
     option should be disabled.
     </P
 ><P
->    If both <TT
+>    If both <CODE
 CLASS="STRUCTFIELD"
-><I
->refuse_pap</I
-></TT
+>refuse_pap</CODE
 > and
-    <TT
+    <CODE
 CLASS="STRUCTFIELD"
-><I
->refuse_chap</I
-></TT
+>refuse_chap</CODE
 > are set, then either no
     authentication will be carried out, or it is the responsibility of
     the <B
@@ -578,12 +528,12 @@ CLASS="LITERAL"
 ><DD
 ><P
 > This is a pointer to a CHAT script suitable for passing to
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_ppp_chat()</TT
+>cyg_ppp_chat()</CODE
 >. See <A
 HREF="ppp-chat.html"
->Chapter 47</A
+>Chapter 48</A
 >
     for details of the format and contents of this script.
     </P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-DEVICE-DRIVER-MODELS"
-></A
->Device Driver Models</H1
+>Device Driver Models</A
+></H1
 ><P
 >There are several ways in which device drivers
 may be built. The exact model chosen will depend on the properties of
@@ -94,48 +94,48 @@ may be adopted.</P
 >The first model is to do all device processing in the ISR.  When it is
 invoked the ISR programs the device hardware directly and accesses
 data to be transferred directly in memory. The ISR should also call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_acknowledge()</TT
+>cyg_drv_interrupt_acknowledge()</CODE
 >.  When it is
 finished it may optionally request that its DSR be invoked.  The DSR
-does nothing but call <TT
+does nothing but call <CODE
 CLASS="FUNCTION"
->cyg_drv_cond_signal()</TT
+>cyg_drv_cond_signal()</CODE
 > to
 cause a thread to be woken up. Thread level code must call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_isr_lock()</TT
+>cyg_drv_isr_lock()</CODE
 >, or
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_mask()</TT
+>cyg_drv_interrupt_mask()</CODE
 > to prevent ISRs running
 while it manipulates shared memory.</P
 ><P
 >The second model is to defer device processing to the DSR.  The ISR
 simply prevents further delivery of interrupts by either programming
 the device, or by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_mask()</TT
+>cyg_drv_interrupt_mask()</CODE
 >.  It must then call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_acknowledge()</TT
+>cyg_drv_interrupt_acknowledge()</CODE
 > to allow other
 interrupts to be delivered and then request that its DSR be
 called. When the DSR runs it does the majority of the device handling,
 optionally signals a condition variable to wake a thread, and finishes
-by calling <TT
+by calling <CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_unmask()</TT
+>cyg_drv_interrupt_unmask()</CODE
 > to re-allow
 device interrupts. Thread level code uses
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_lock()</TT
+>cyg_drv_dsr_lock()</CODE
 > to prevent DSRs running while
 it manipulates shared memory.  The eCos serial device drivers use this
 approach.</P
@@ -144,15 +144,15 @@ approach.</P
 thread. The ISR behaves exactly as in the previous model and simply
 blocks and acknowledges the interrupt before request that the DSR
 run. The DSR itself only calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_cond_signal()</TT
+>cyg_drv_cond_signal()</CODE
 > to wake the thread. When
 the thread awakens it performs all device processing, and has full
 access to all kernel facilities while it does so. It should finish by
-calling <TT
+calling <CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_unmask()</TT
+>cyg_drv_interrupt_unmask()</CODE
 > to re-allow
 device interrupts.  The eCos ethernet device drivers are written to
 this model.</P

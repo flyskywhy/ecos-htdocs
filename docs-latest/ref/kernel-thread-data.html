@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN690"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN691"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -168,42 +168,42 @@ NAME="AEN719"
 is specific to each thread. For example, many of the functions in the
 POSIX compatibility package return -1 to indicate an error and store
 additional information in what appears to be a global variable
-<TT
+<CODE
 CLASS="VARNAME"
->errno</TT
+>errno</CODE
 >. However, if multiple threads make concurrent
-calls into the POSIX library and if <TT
+calls into the POSIX library and if <CODE
 CLASS="VARNAME"
->errno</TT
+>errno</CODE
 > were
 really a global variable then a thread would have no way of knowing
-whether the current <TT
+whether the current <CODE
 CLASS="VARNAME"
->errno</TT
+>errno</CODE
 > value really corresponded
 to the last POSIX call it made, or whether some other thread had run
 in the meantime and made a different POSIX call which updated the
-variable. To avoid such confusion <TT
+variable. To avoid such confusion <CODE
 CLASS="VARNAME"
->errno</TT
+>errno</CODE
 > is instead
 implemented as a per-thread variable, and each thread has its own
 instance.
       </P
 ><P
 >The support for per-thread data can be disabled via the configuration
-option <TT
+option <CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 >. If enabled, each
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_thread</SPAN
+>cyg_thread</CODE
 > data structure holds a small array
 of words. The size of this array is determined by the configuration
-option <TT
+option <CODE
 CLASS="VARNAME"
->CYGNUM_KERNEL_THREADS_DATA_MAX</TT
+>CYGNUM_KERNEL_THREADS_DATA_MAX</CODE
 >. When a
 thread is created the array is filled with zeroes.
       </P
@@ -211,42 +211,42 @@ thread is created the array is filled with zeroes.
 >If an application needs to use per-thread data then it needs an index
 into this array which has not yet been allocated to other code. This
 index can be obtained by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_new_data_index</TT
+>cyg_thread_new_data_index</CODE
 >, and then used in
-subsequent calls to <TT
+subsequent calls to <CODE
 CLASS="FUNCTION"
->cyg_thread_get_data</TT
+>cyg_thread_get_data</CODE
 >.
 Typically indices are allocated during system initialization and
 stored in static variables. If for some reason a slot in the array is
 no longer required and can be re-used then it can be released by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_free_data_index</TT
+>cyg_thread_free_data_index</CODE
 >, 
       </P
 ><P
 >The current per-thread data in a given slot can be obtained using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_get_data</TT
+>cyg_thread_get_data</CODE
 >. This implicitly operates on
 the current thread, and its single argument should be an index as
-returned by <TT
+returned by <CODE
 CLASS="FUNCTION"
->cyg_thread_new_data_index</TT
+>cyg_thread_new_data_index</CODE
 >. The
 per-thread data can be updated using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_set_data</TT
+>cyg_thread_set_data</CODE
 >. If a particular item of
 per-thread data is needed repeatedly then
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_get_data_ptr</TT
+>cyg_thread_get_data_ptr</CODE
 > can be used to obtain the
 address of the data, and indirecting through this pointer allows the
 data to be examined and updated efficiently.
@@ -256,16 +256,16 @@ data to be examined and updated efficiently.
 pre-allocated slots in the array of per-thread data. These slots
 should not normally be used by application code, and instead slots
 should be allocated during initialization by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_new_data_index</TT
+>cyg_thread_new_data_index</CODE
 >. If it is known that,
 for example, the configuration will never include the POSIX
 compatibility package then application code may instead decide to
 re-use the slot allocated to that package,
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_KERNEL_THREADS_DATA_POSIX</TT
+>CYGNUM_KERNEL_THREADS_DATA_POSIX</CODE
 >, but obviously
 this does involve a risk of strange and subtle bugs if the
 application's requirements ever change.
@@ -279,27 +279,27 @@ NAME="KERNEL-THREAD-DATA-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
->Typically <TT
+>Typically <CODE
 CLASS="FUNCTION"
->cyg_thread_new_data_index</TT
+>cyg_thread_new_data_index</CODE
 > is only
 called during initialization, but may also be called at any time in
-thread context. <TT
+thread context. <CODE
 CLASS="FUNCTION"
->cyg_thread_free_data_index</TT
+>cyg_thread_free_data_index</CODE
 >, if
 used at all, can also be called during initialization or from thread
-context. <TT
+context. <CODE
 CLASS="FUNCTION"
->cyg_thread_get_data</TT
+>cyg_thread_get_data</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_get_data_ptr</TT
+>cyg_thread_get_data_ptr</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_set_data</TT
+>cyg_thread_set_data</CODE
 > may only be called from
 thread context because they implicitly operate on the current thread.
       </P

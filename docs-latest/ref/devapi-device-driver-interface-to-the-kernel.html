@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -138,8 +138,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-INTERRUPT-MODEL"
-></A
->Interrupt Model</H1
+>Interrupt Model</A
+></H1
 ><P
 ><SPAN
 CLASS="emphasis"
@@ -165,9 +165,9 @@ the scheduler. Most of the time the DSR will run immediately after the
 ISR, but if the current thread is in the scheduler, it will be delayed
 until the thread is finished. A DSR is allowed to make a larger set of
 driver API calls, including, in particular, being able to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_cond_signal()</TT
+>cyg_drv_cond_signal()</CODE
 > to wake up waiting
 threads.</P
 ><P
@@ -176,14 +176,14 @@ allowed to wait on mutexes and condition variables. </P
 ><P
 >For a device driver to receive interrupts it must first define ISR and
 DSR routines as shown below, and then call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_create()</TT
+>cyg_drv_interrupt_create()</CODE
 >.  Using the handle
 returned, the driver must then call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_attach()</TT
+>cyg_drv_interrupt_attach()</CODE
 > to actually attach the
 interrupt to the hardware vector.</P
 ></DIV

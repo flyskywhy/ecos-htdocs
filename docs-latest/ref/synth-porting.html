@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-PORTING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14437"
+NAME="AEN14994"
 ></A
 ><H2
 >Name</H2
@@ -142,13 +142,13 @@ entry for the new HAL package, and a new target entry will be needed.
 ><P
 >Obviously a different processor will have different register sets and
 calling conventions, so the code for saving and restoring thread
-contexts and for implementing <TT
+contexts and for implementing <CODE
 CLASS="FUNCTION"
->setjmp</TT
+>setjmp</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->longjmp</TT
+>longjmp</CODE
 > will need to be updated. The exact way of
 performing Linux system calls will vary: on x86 linux this usually
 involves pushing some registers on the stack and then executing an
@@ -160,9 +160,9 @@ processor the arguments might be passed in registers instead and
 certainly a different trap instruction will be used. The startup code
 is written in assembler, but needs to do little more than extract the
 process' argument and environment variables and then jump to the main
-<TT
+<CODE
 CLASS="FUNCTION"
->linux_entry</TT
+>linux_entry</CODE
 > function provided by the
 architectural synthetic target HAL package.
     </P
@@ -244,9 +244,9 @@ changing, and it may well be appropriate to implement variant HAL
 packages for the different operating systems where this information
 can be separated out. Another possible problem is that the generic
 code assumes that system calls such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_sys_write</TT
+>cyg_hal_sys_write</CODE
 > are available. On an operating
 system other than Linux it is possible that some of these are not
 simple system calls, and instead wrapper functions will need to be
@@ -301,9 +301,9 @@ executables to be in PE format.
 >Under Linux a synthetic target application is not linked with the
 system's C library or any other standard system library. That would
 cause confusion, for example both eCos and the system's C library
-might try to define the <TT
+might try to define the <CODE
 CLASS="FUNCTION"
->printf</TT
+>printf</CODE
 > function, and
 introduce complications such as working with shared libraries. For
 much the same reasons, a synthetic target application under Windows

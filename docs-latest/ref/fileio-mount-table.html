@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -94,14 +94,14 @@ components) may export static entries to the table using the
 CLASS="LITERAL"
 >MTAB_ENTRY()</TT
 > macro. Alternatively, new entries may
-be installed at run time using the <TT
+be installed at run time using the <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 >
 function. Both types of entry may be unmounted with the
-<TT
+<CODE
 CLASS="FUNCTION"
->umount()</TT
+>umount()</CODE
 > function.</P
 ><P
 >A mount table entry has the following structure:</P
@@ -127,30 +127,24 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field identifies the mount
 point. This is used to direct rooted filenames (filenames that
 begin with &quot;/&quot;) to the correct filesystem. When a file
 name that begins with &quot;/&quot; is submitted, it is matched
-against the <TT
+against the <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > fields of all valid mount
 table entries. The entry that yields the longest match terminating
 before a &quot;/&quot;, or end of string, wins and the appropriate
 function from the filesystem table entry is then passed the remainder
 of the file name together with a pointer to the table entry and the
-value of the <TT
+value of the <CODE
 CLASS="STRUCTFIELD"
-><I
->root</I
-></TT
+>root</CODE
 > field as the directory
 pointer.</P
 ><P
@@ -184,100 +178,78 @@ straight to the filesystem that contains the current directory. The
 current directory is represented by a pair consisting of a mount table
 entry and a directory pointer.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 > field points to a string that
-should match the <TT
+should match the <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field of the
 implementing filesystem. During initialization the mount table is
-scanned and the <TT
+scanned and the <CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 > entries looked up in
 the filesystem table. For each match, the filesystem's _mount_
 function is called and if successful the mount table entry is marked
-as valid and the <TT
+as valid and the <CODE
 CLASS="STRUCTFIELD"
-><I
->fs</I
-></TT
+>fs</CODE
 > pointer installed.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->devname</I
-></TT
+>devname</CODE
 > field contains the name of the
 device that this filesystem is to use. This may match an entry in the
 device table (see later) or may be a string that is specific to the
 filesystem if it has its own internal device drivers.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->data</I
-></TT
+>data</CODE
 > field is a private data value. This
 may be installed either statically when the table entry is defined, or
-may be installed during the <TT
+may be installed during the <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > operation.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->valid</I
-></TT
+>valid</CODE
 > field indicates whether this mount
 point has actually been mounted successfully. Entries with a false
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->valid</I
-></TT
+>valid</CODE
 > field are ignored when searching for a
 name match.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->fs</I
-></TT
+>fs</CODE
 > field is installed after a successful
-<TT
+<CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > operation to point to the implementing
 filesystem.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->root</I
-></TT
+>root</CODE
 > field contains a directory pointer
 value that the filesystem can interpret as the root of its directory
-tree. This is passed as the <TT
+tree. This is passed as the <CODE
 CLASS="PARAMETER"
-><I
->dir</I
-></TT
+>dir</CODE
 > argument of
 filesystem functions that operate on rooted filenames. This field must
-be initialized by the filesystem's <TT
+be initialized by the filesystem's <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 >
 function.</P
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -117,44 +117,36 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_flag</I
-></TT
+>f_flag</CODE
 > field contains some FILEIO
 control bits and some bits propagated from the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->flags</I
-></TT
+>flags</CODE
 > argument of the
-<TT
+<CODE
 CLASS="FUNCTION"
->open()</TT
+>open()</CODE
 > call (defined by
 <TT
 CLASS="LITERAL"
 >CYG_FILE_MODE_MASK</TT
 >).</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_ucount</I
-></TT
+>f_ucount</CODE
 > field contains a use count that
 controls when a file will be closed. Each duplicate in the file
 descriptor array counts for one reference here. It is also
 incremented around each I/O operation to ensure that the file cannot
 be closed while it has current I/O operations.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_type</I
-></TT
+>f_type</CODE
 > field indicates the type of the
 underlying file object. Some of the possible values here are
 <TT
@@ -169,67 +161,53 @@ CLASS="LITERAL"
 >CYG_FILE_TYPE_DEVICE</TT
 >.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_syncmode</I
-></TT
+>f_syncmode</CODE
 > field is copied from the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->syncmode</I
-></TT
+>syncmode</CODE
 > field of the implementing
 filesystem. Its use is described in <A
 HREF="fileio-synchronization.html"
 >Chapter 19</A
 >.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_offset</I
-></TT
+>f_offset</CODE
 > field records the current file
 position. It is the responsibility of the file operation functions to
 keep this field up to date.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_data</I
-></TT
+>f_data</CODE
 > field contains private data
 placed here by the underlying filesystem. Normally this will be a
 pointer to, or handle on, the filesystem object that implements this
 file.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_xops</I
-></TT
+>f_xops</CODE
 > field contains a pointer to any
 extra type specific operation functions. For example, the socket I/O
 system installs a pointer to a table of functions that implement the
 standard socket operations.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_mte</I
-></TT
+>f_mte</CODE
 > field contains a pointer to the
 parent mount table entry for this file. It is used mainly to implement
 the synchronization protocol. This may contain a pointer to some other
 data structure in file objects not derived from a filesystem.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->f_ops</I
-></TT
+>f_ops</CODE
 > field contains a pointer to a
 table of file I/O operations. This has the following structure:</P
 ><TABLE
@@ -259,27 +237,27 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >It should be obvious from the names of most of these functions what
-their responsibilities are. The <TT
+their responsibilities are. The <CODE
 CLASS="FUNCTION"
->fo_getinfo()</TT
+>fo_getinfo()</CODE
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->fo_setinfo()</TT
+>fo_setinfo()</CODE
 > function pointers, like their
 counterparts in the filesystem structure, implement minor control and
-info functions such as <TT
+info functions such as <CODE
 CLASS="FUNCTION"
->fpathconf()</TT
+>fpathconf()</CODE
 >.</P
 ><P
->The second argument to the <TT
+>The second argument to the <CODE
 CLASS="FUNCTION"
->fo_read()</TT
+>fo_read()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->fo_write()</TT
+>fo_write()</CODE
 > function pointers is a pointer to a
 UIO structure:</P
 ><TABLE
@@ -315,37 +293,29 @@ records the progress of any data transfer. It is also compatible with
 the I/O operations of any BSD-derived network stacks and filesystems.</P
 ><P
 >When a file is opened (or a file object created by some other means,
-such as <TT
+such as <CODE
 CLASS="FUNCTION"
->socket()</TT
-> or <TT
+>socket()</CODE
+> or <CODE
 CLASS="FUNCTION"
->accept()</TT
+>accept()</CODE
 >) it is the
 responsibility of the filesystem open operation to initialize all the
-fields of the object except the <TT
+fields of the object except the <CODE
 CLASS="STRUCTFIELD"
-><I
->f_ucount</I
-></TT
+>f_ucount</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->f_syncmode</I
-></TT
+>f_syncmode</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->f_mte</I
-></TT
+>f_mte</CODE
 > fields. Since the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->f_flag</I
-></TT
+>f_flag</CODE
 > field will already contain bits belonging to the FILEIO
 infrastructure, any changes to it must be made with the appropriate
 logical operations.</P

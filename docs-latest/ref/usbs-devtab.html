@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-DEVTAB"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11969"
+NAME="AEN12526"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN11969"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN11972"
+NAME="AEN12529"
 ></A
 ><H2
 >Synopsis</H2
@@ -115,7 +115,7 @@ CLASS="SYNOPSIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11974"
+NAME="AEN12531"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -124,26 +124,26 @@ NAME="AEN11974"
 and peripheral. The first involves USB-specific functionality such as
 <A
 HREF="usbs-start-rx.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 ></A
 >.
 This provides non-blocking I/O: a transfer is started, and some time
 later the device driver will call a supplied completion function. The
 second uses the conventional I/O model: there are entries in the
 device table corresponding to the various endpoints. Standard calls
-such as <TT
+such as <CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > can then be used to get a suitable
-handle. Actual I/O happens via blocking <TT
+handle. Actual I/O happens via blocking <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > calls. In practice the blocking operations
 are simply implemented using the underlying non-blocking
 functionality.</P
@@ -184,17 +184,17 @@ any I/O operations. </P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN11990"
+NAME="AEN12547"
 ></A
 ><H3
-><TT
+><CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > operations</H3
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_io_write</TT
+>cyg_io_write</CODE
 > and similar functions in
 higher-level packages can be used to perform a transfer from
 peripheral to host. Successive write operations will not be coalesced.
@@ -205,9 +205,9 @@ to do any locking, and if higher-level code performs multiple
 concurrent write operations on a single endpoint then the resulting
 behaviour is undefined.</P
 ><P
->A USB <TT
+>A USB <CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > operation will never transfer less
 data than specified. It is the responsibility of higher-level code to
 ensure that the amount of data being transferred is acceptable to the
@@ -230,24 +230,24 @@ inside the peripheral.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12000"
+NAME="AEN12557"
 ></A
 ><H3
-><TT
+><CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > operations</H3
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_io_read</TT
+>cyg_io_read</CODE
 > and similar functions in higher-level
 packages can be used to perform a transfer from host to peripheral.
 This should be a complete transfer: higher-level protocols should
 define an upper bound on the amount of data being transferred, and the
-<TT
+<CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > operation should involve at least this
 amount of data. The return value will indicate the actual transfer
 size, which may be less than requested.</P
@@ -256,16 +256,16 @@ size, which may be less than requested.</P
 are not expected to perform any buffering because that involves both
 memory and code overheads. One technique that may work for bulk
 transfers is to exploit the fact that such transfers happen in 64-byte
-packets. It is possible to <TT
+packets. It is possible to <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > an initial 64
 bytes, corresponding to the first packet in the transfer. These 64
 bytes can then be examined to determine the total transfer size, and
 the remaining data can be transferred in another
-<TT
+<CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > operation. This technique is not guaranteed
 to work with all USB hardware. Also, if the delay between accepting
 the first packet and the remainder of the transfer is excessive then
@@ -291,27 +291,27 @@ then the resulting behaviour is undefined.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12013"
+NAME="AEN12570"
 ></A
 ><H3
-><TT
+><CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > operations</H3
 ><P
 >Typical USB device drivers will not provide any support for
-<TT
+<CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 >. Consider bulk transfers from the host to
 the peripheral. At the USB device driver level there is no way of
 knowing in advance how large a transfer will be, so it is not feasible
 for the device driver to buffer the entire transfer. It may be
 possible to buffer part of the transfer, for example the first 64-byte
 packet, and copy this into application space at the start of a
-<TT
+<CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 >, but this adds code and memory overheads.
 Worse, it means that there is an unknown but potentially long delay
 between a peripheral accepting the first packet of a transfer and the
@@ -320,57 +320,57 @@ software.</P
 ><P
 >With some USB hardware it may be possible for the device driver to
 detect OUT tokens from the host without actually accepting the data,
-and this would indicate that a  <TT
+and this would indicate that a  <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > is likely to
 succeed. However, it would not be reliable since the host-side I/O
 operation could time out. A similar mechanism could be used to
-implement <TT
+implement <CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > for outgoing data, but again
 this would not be reliable.</P
 ><P
 >Some device drivers may provide partial support for
-<TT
+<CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > anyway, possibly under the control of a
 configuration option. The device driver's documentation should be
 consulted for further information. It is also worth noting that the
 USB-specific non-blocking API can often be used as an alternative to
-<TT
+<CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 >.</P
 ></DIV
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12025"
+NAME="AEN12582"
 ></A
 ><H3
-><TT
+><CODE
 CLASS="FUNCTION"
->get_config</TT
+>get_config</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->set_config</TT
+>set_config</CODE
 > operations</H3
 ><P
->There are no <TT
+>There are no <CODE
 CLASS="FUNCTION"
->set_config</TT
+>set_config</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->get_config</TT
+>get_config</CODE
 > (also known as
-<TT
+<CODE
 CLASS="FUNCTION"
->ioctl</TT
+>ioctl</CODE
 >) operations defined for USB devices.
 Some device drivers may provide hardware-specific facilities this way. </P
 ><DIV
@@ -385,17 +385,17 @@ HREF="usbs-halt.html"
 >halted endpoints</A
 > cannot be accessed readily
 via devtab entries. This functionality should probably be made
-available via <TT
+available via <CODE
 CLASS="FUNCTION"
->set_config</TT
+>set_config</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->get_config</TT
+>get_config</CODE
 >. It may also prove useful to provide
-a <TT
+a <CODE
 CLASS="FUNCTION"
->get_config</TT
+>get_config</CODE
 > operation that maps from the
 devtab entries to the underlying endpoint data structures.</P
 ></BLOCKQUOTE
@@ -404,7 +404,7 @@ devtab entries to the underlying endpoint data structures.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12039"
+NAME="AEN12596"
 ></A
 ><H3
 >Presence</H3

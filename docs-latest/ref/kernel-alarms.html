@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1046"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1047"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -172,19 +172,19 @@ a certain period of time.
       </P
 ><P
 >Setting up an alarm involves a two-step process. First the alarm must
-be created with a call to <TT
+be created with a call to <CODE
 CLASS="FUNCTION"
->cyg_alarm_create</TT
+>cyg_alarm_create</CODE
 >. This
 takes five arguments. The first identifies the counter to which the
 alarm should be attached. If the alarm should be attached to the
-system's real-time clock then <TT
+system's real-time clock then <CODE
 CLASS="FUNCTION"
->cyg_real_time_clock</TT
+>cyg_real_time_clock</CODE
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->cyg_clock_to_counter</TT
+>cyg_clock_to_counter</CODE
 > can be used to get hold
 of the appropriate handle. The next two arguments specify the action
 to be taken when the alarm is triggered, in the form of a function
@@ -209,13 +209,13 @@ alarm_handler(cyg_handle_t alarm, cyg_addrword_t data)
 ></TABLE
 ><P
 >The data argument passed to the alarm function corresponds to the
-third argument passed to <TT
+third argument passed to <CODE
 CLASS="FUNCTION"
->cyg_alarm_create</TT
+>cyg_alarm_create</CODE
 >.
-The fourth argument to <TT
+The fourth argument to <CODE
 CLASS="FUNCTION"
->cyg_alarm_create</TT
+>cyg_alarm_create</CODE
 > is used
 to return a handle to the newly-created alarm object, and the final
 argument provides the memory needed for the alarm object and thus
@@ -223,9 +223,9 @@ avoids any need for dynamic memory allocation within the kernel.
       </P
 ><P
 >Once an alarm has been created a further call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize</TT
+>cyg_alarm_initialize</CODE
 > is needed to activate it.
 The first argument specifies the alarm. The second argument indicates
 the number of events, for example clock ticks, that need to occur
@@ -236,30 +236,30 @@ events.
       </P
 ><P
 >Alarms can be temporarily disabled and reenabled using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_disable</TT
+>cyg_alarm_disable</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_enable</TT
+>cyg_alarm_enable</CODE
 >. Alternatively another call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize</TT
+>cyg_alarm_initialize</CODE
 > can be used to modify the
 behaviour of an existing alarm. If an alarm is no longer required then
 the associated resources can be released using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_delete</TT
+>cyg_alarm_delete</CODE
 >. 
       </P
 ><P
 >The alarm function is invoked when a counter tick occurs, in other
-words when there is a call to <TT
+words when there is a call to <CODE
 CLASS="FUNCTION"
->cyg_counter_tick</TT
+>cyg_counter_tick</CODE
 >,
 and will happen in the same context. If the alarm is associated with
 the system's real-time clock then this will be DSR context, following
@@ -280,39 +280,39 @@ NAME="KERNEL-ALARMS-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_alarm_create</TT
+>cyg_alarm_create</CODE
 >
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize</TT
+>cyg_alarm_initialize</CODE
 > is typically called during
 system initialization but may also be called in thread context. The
-same applies to <TT
+same applies to <CODE
 CLASS="FUNCTION"
->cyg_alarm_delete</TT
+>cyg_alarm_delete</CODE
 >.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize</TT
+>cyg_alarm_initialize</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_disable</TT
+>cyg_alarm_disable</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_enable</TT
+>cyg_alarm_enable</CODE
 > may be called during
 initialization or from thread or DSR context, but
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_enable</TT
+>cyg_alarm_enable</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize</TT
+>cyg_alarm_initialize</CODE
 > may be expensive operations
 and should only be called when necessary.
       </P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-DIAGNOSTIC-SUPPORT"
-></A
->Diagnostic Support</H1
+>Diagnostic Support</A
+></H1
 ><P
 >The HAL provides support for low level diagnostic IO. This is
 particularly useful during early development as an aid to bringing up
@@ -94,24 +94,24 @@ buffer, a simulator supported output channel, a ROM emulator virtual
 UART, and LCD panel, a memory mapped video buffer or any other output
 device.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_DIAG_INIT()</TT
+>HAL_DIAG_INIT()</CODE
 > performs any initialization
 required on the device being used to generate diagnostic output. This
 may include, for a UART, setting baud rate, and stop, parity and
 character bits. For other devices it may include initializing a
 controller or establishing contact with a remote device.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_DIAG_WRITE_CHAR(c)</TT
+>HAL_DIAG_WRITE_CHAR(c)</CODE
 > writes
 the character supplied to the diagnostic output device.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_DIAG_READ_CHAR(c)</TT
+>HAL_DIAG_READ_CHAR(c)</CODE
 > reads a character from the
 diagnostic device into the supplied variable. This is not supported
 for all diagnostic devices.</P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-CONSOLE"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13823"
+NAME="AEN14380"
 ></A
 ><H2
 >Name</H2
@@ -99,19 +99,19 @@ NAME="SYNTH-CONSOLE-DESCRIPTION"
 >Description</H2
 ><P
 >The eCos application can generate text output in a variety of ways,
-including calling <TT
+including calling <CODE
 CLASS="FUNCTION"
->printf</TT
+>printf</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->diag_printf</TT
+>diag_printf</CODE
 >. When the I/O auxiliary is enabled
 the eCos startup code will instantiate a console device to process all
 such output. If operating in text mode the output will simply go to
-standard output, or to a logfile if the <TT
+standard output, or to a logfile if the <CODE
 CLASS="OPTION"
->-l</TT
+>-l</CODE
 > command
 line option is specified. If operating in graphical mode the output
 will go to the central text window, and optionally to a logfile as
@@ -122,13 +122,13 @@ certain types of text.
 ><P
 >It should be noted that the console device is line-oriented, not
 character-oriented. This means that outputting partial lines is not
-supported, and some functions such as <TT
+supported, and some functions such as <CODE
 CLASS="FUNCTION"
->fflush</TT
+>fflush</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->setvbuf</TT
+>setvbuf</CODE
 > will not operate as expected. This
 limitation prevents much possible confusion when using filters to
 control the appearance of the text window, and has some performance
@@ -159,9 +159,9 @@ CLASS="FILENAME"
 >synth_diag.c</TT
 >, rather than in a separate device
 package. Similarly the host-side implementation,
-<TT
+<CODE
 CLASS="FUNCTION"
->console.tcl</TT
+>console.tcl</CODE
 >, is part of the architectural HAL's
 host-side support. It gets installed automatically alongside the I/O
 auxiliary itself, so no separate installation procedure is required.
@@ -306,7 +306,7 @@ NAME="SYNTH-CONSOLE-HOOKS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13865"
+NAME="AEN14422"
 ></A
 ><H2
 >Additional Tcl Procedures</H2

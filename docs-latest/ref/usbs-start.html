@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,28 +85,28 @@ NAME="USBS-START"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11942"
+NAME="AEN12499"
 ></A
 ><H2
 >Name</H2
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 >&nbsp;--&nbsp;Starting up a USB Device</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN11946"
+NAME="AEN12503"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN11947"
-></A
 ><P
 ></P
+><A
+NAME="AEN12504"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -133,7 +133,7 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11954"
+NAME="AEN12511"
 ></A
 ><H2
 >Description</H2
@@ -142,9 +142,9 @@ NAME="AEN11954"
 code, typically the application, in the form of enumeration data.
 Hence it is not possible for the low-level USB driver to activate a
 USB device itself. Instead the higher-level code has to take care of
-this by invoking <TT
+this by invoking <CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 >. This function takes
 a pointer to a USB control endpoint data structure. USB device drivers
 should provide exactly one such data structure for every USB device,
@@ -173,36 +173,36 @@ main(int argc, char** argv)
 ></TR
 ></TABLE
 ><P
->The exact behaviour of <TT
+>The exact behaviour of <CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 > depends on the
 USB hardware and the device driver. A typical implementation would
 change the USB data pins from tristated to active. If the peripheral
 is already plugged into a host then the latter should detect this
 change and start interacting with the peripheral, including requesting
 the enumeration data. Some of this may happen before
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 > returns, but given that multiple
 interactions between USB host and peripheral are required it is likely
 that the function will return before the peripheral is fully
 configured. Control endpoints provide a <A
-HREF="usbs-control.html#AEN12284"
+HREF="usbs-control.html#AEN12841"
 >mechanism</A
 > for informing
 higher-level code of USB state changes.
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 > will return even if the peripheral is
 not currently connected to a host: it will not block until the
 connection is established.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 > should only be called once for a given
 USB device. There are no defined error conditions. Note that the
 function affects the entire USB device and not just the control

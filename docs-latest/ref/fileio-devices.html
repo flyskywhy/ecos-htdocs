@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -87,15 +87,13 @@ NAME="FILEIO-DEVICES"
 ><P
 >Devices are accessed by means of a pseudo-filesystem, &quot;devfs&quot;, that is
 mounted on &quot;/dev&quot;. Open operations are translated into calls to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_io_lookup()</TT
+>cyg_io_lookup()</CODE
 > and if successful result in a file object whose
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->f_ops</I
-></TT
+>f_ops</CODE
 > functions translate filesystem API functions into calls into
 the device API.</P
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -148,9 +148,9 @@ by a device table entry, using the <SPAN
 CLASS="TYPE"
 >cyg_devtab_entry_t</SPAN
 > type.
-The entry should be created using the <TT
+The entry should be created using the <CODE
 CLASS="FUNCTION"
->DEVTAB_ENTRY()</TT
+>DEVTAB_ENTRY()</CODE
 > macro,
 like this:</P
 ><TABLE
@@ -161,9 +161,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><TT
+><CODE
 CLASS="FUNCTION"
->DEVTAB_ENTRY</TT
+>DEVTAB_ENTRY</CODE
 >(l, name, dep_name, handlers, init, lookup, priv)</PRE
 ></TD
 ></TR
@@ -178,33 +178,27 @@ CLASS="VARIABLELIST"
 ></P
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->l</I
-></TT
+>l</CODE
 ></DT
 ><DD
 ><P
 >The "C" label for this device table entry.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->name</I
-></TT
+>name</CODE
 ></DT
 ><DD
 ><P
 >The "C" string name for the device.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->dep_name</I
-></TT
+>dep_name</CODE
 ></DT
 ><DD
 ><P
@@ -212,22 +206,18 @@ CLASS="PARAMETER"
     device this device is built upon.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->handlers</I
-></TT
+>handlers</CODE
 ></DT
 ><DD
 ><P
 >A pointer to the I/O function "handlers" (see below).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->init</I
-></TT
+>init</CODE
 ></DT
 ><DD
 ><P
@@ -235,26 +225,22 @@ CLASS="PARAMETER"
     function can query the device, setup hardware, etc.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lookup</I
-></TT
+>lookup</CODE
 ></DT
 ><DD
 ><P
->A function called when <TT
+>A function called when <CODE
 CLASS="FUNCTION"
->cyg_io_lookup()</TT
+>cyg_io_lookup()</CODE
 > is called
     for this device. </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->priv</I
-></TT
+>priv</CODE
 ></DT
 ><DD
 ><P
@@ -264,15 +250,13 @@ CLASS="PARAMETER"
 ></DL
 ></DIV
 ><P
->The interface to the driver is through the <TT
+>The interface to the driver is through the <CODE
 CLASS="STRUCTFIELD"
-><I
->handlers</I
-></TT
+>handlers</CODE
 > field.  This is a pointer to
-a set of functions which implement the various <TT
+a set of functions which implement the various <CODE
 CLASS="FUNCTION"
->cyg_io_XXX()</TT
+>cyg_io_XXX()</CODE
 >
 routines. This table is defined by the macro:</P
 ><TABLE
@@ -297,11 +281,9 @@ CLASS="VARIABLELIST"
 ></P
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->l</I
-></TT
+>l</CODE
 ></DT
 ><DD
 ><P
@@ -312,9 +294,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >The function called as a result of
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_io_write()</TT
+>cyg_io_write()</CODE
 >.</P
 ></DD
 ><DT
@@ -322,9 +304,9 @@ CLASS="FUNCTION"
 ><DD
 ><P
 >The function called as a result of
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_io_read()</TT
+>cyg_io_read()</CODE
 >. </P
 ></DD
 ><DT
@@ -332,9 +314,9 @@ CLASS="FUNCTION"
 ><DD
 ><P
 >The function called as a result of
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_io_get_config()</TT
+>cyg_io_get_config()</CODE
 >.</P
 ></DD
 ><DT
@@ -342,9 +324,9 @@ CLASS="FUNCTION"
 ><DD
 ><P
 >The function called as a result of
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_io_set_config()</TT
+>cyg_io_set_config()</CODE
 >. </P
 ></DD
 ></DL
@@ -357,25 +339,25 @@ CLASS="EMPHASIS"
 >eCos</I
 ></SPAN
 > is initialized (sometimes called
-&#8220;boot&#8221; time), the <TT
+&#8220;boot&#8221; time), the <CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 > function is called
-for all devices in the system. The <TT
+for all devices in the system. The <CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 > function is
 allowed to return an error in which case the device will be placed
 &#8220;off line&#8221; and all I/O requests to that device will be
 considered in error.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->lookup()</TT
+>lookup()</CODE
 > function is called whenever
-the <TT
+the <CODE
 CLASS="FUNCTION"
->cyg_io_lookup()</TT
+>cyg_io_lookup()</CODE
 > function
 is called with this device name. The lookup function may cause the device
 to come &#8220;on line&#8221; which would then allow I/O
@@ -388,8 +370,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-HOW-TO-WRITE-SERIAL-INTERFACE-DRIVER"
-></A
->How to Write a Serial Hardware Interface Driver</H1
+>How to Write a Serial Hardware Interface Driver</A
+></H1
 ><P
 >The standard serial driver supplied with
 <SPAN
@@ -427,8 +409,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5701"
-></A
->DevTab Entry</H2
+>DevTab Entry</A
+></H2
 ><P
 >The interface module contains the devtab entry (or entries
 if a single module supports more than one interface). This entry
@@ -462,22 +444,18 @@ CLASS="VARIABLELIST"
 ></P
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->module_name</I
-></TT
+>module_name</CODE
 ></DT
 ><DD
 ><P
 >The "C" label for this devtab entry</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->device_name</I
-></TT
+>device_name</CODE
 ></DT
 ><DD
 ><P
@@ -488,11 +466,9 @@ CLASS="FILENAME"
 >.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->serial_devio</I
-></TT
+>serial_devio</CODE
 ></DT
 ><DD
 ><P
@@ -500,22 +476,18 @@ CLASS="PARAMETER"
     the hardware independent serial driver and should be used.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->module_init</I
-></TT
+>module_init</CODE
 ></DT
 ><DD
 ><P
 >The module initialization function.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->module_lookup</I
-></TT
+>module_lookup</CODE
 ></DT
 ><DD
 ><P
@@ -524,11 +496,9 @@ CLASS="PARAMETER"
     interrupts, configuring the port, etc.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->serial_channel</I
-></TT
+>serial_channel</CODE
 ></DT
 ><DD
 ><P
@@ -544,8 +514,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5738"
-></A
->Serial Channel Structure</H2
+>Serial Channel Structure</A
+></H2
 ><P
 >Each serial device must have a &#8220;serial channel&#8221;.
 This is a set of data which describes all operations on the device.
@@ -574,33 +544,27 @@ CLASS="VARIABLELIST"
 ></P
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->l</I
-></TT
+>l</CODE
 ></DT
 ><DD
 ><P
 >The "C" label for this structure.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->funs</I
-></TT
+>funs</CODE
 ></DT
 ><DD
 ><P
 >The set of interface functions (see below).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->dev_priv</I
-></TT
+>dev_priv</CODE
 ></DT
 ><DD
 ><P
@@ -608,11 +572,9 @@ CLASS="STRUCTFIELD"
     this channel.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->baud</I
-></TT
+>baud</CODE
 ></DT
 ><DD
 ><P
@@ -623,11 +585,9 @@ CLASS="TYPE"
 >).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->stop</I
-></TT
+>stop</CODE
 ></DT
 ><DD
 ><P
@@ -638,11 +598,9 @@ CLASS="TYPE"
 >).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->parity</I
-></TT
+>parity</CODE
 ></DT
 ><DD
 ><P
@@ -653,11 +611,9 @@ CLASS="TYPE"
 >).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->word_length</I
-></TT
+>word_length</CODE
 ></DT
 ><DD
 ><P
@@ -668,22 +624,18 @@ CLASS="TYPE"
 >).</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->flags</I
-></TT
+>flags</CODE
 ></DT
 ><DD
 ><P
 >The initial driver flags value.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->out_buf</I
-></TT
+>out_buf</CODE
 ></DT
 ><DD
 ><P
@@ -694,22 +646,18 @@ CLASS="LITERAL"
 > if none required.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->out_buflen</I
-></TT
+>out_buflen</CODE
 ></DT
 ><DD
 ><P
 >The length of the output buffer.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->in_buf</I
-></TT
+>in_buf</CODE
 ></DT
 ><DD
 ><P
@@ -720,11 +668,9 @@ CLASS="LITERAL"
 > if none required.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->in_buflen</I
-></TT
+>in_buflen</CODE
 ></DT
 ><DD
 ><P
@@ -737,11 +683,9 @@ CLASS="STRUCTFIELD"
 in that direction and only polled mode functions will be used.</P
 ><P
 >The interface from the hardware independent driver into the
-hardware interface module is contained in the <TT
+hardware interface module is contained in the <CODE
 CLASS="STRUCTFIELD"
-><I
->funs</I
-></TT
+>funs</CODE
 > table.
 This is defined by the macro:</P
 ></DIV
@@ -751,8 +695,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5813"
-></A
->Serial Functions Structure</H2
+>Serial Functions Structure</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -775,22 +719,18 @@ CLASS="VARIABLELIST"
 ></P
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->l</I
-></TT
+>l</CODE
 ></DT
 ><DD
 ><P
 >The "C" label for this structure.</P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->putc</I
-></TT
+>putc</CODE
 ></DT
 ><DD
 ><P
@@ -812,11 +752,9 @@ CLASS="LITERAL"
       </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->getc</I
-></TT
+>getc</CODE
 ></DT
 ><DD
 ><P
@@ -831,11 +769,9 @@ CLASS="LITERAL"
       </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->set_config</I
-></TT
+>set_config</CODE
 ></DT
 ><DD
 ><P
@@ -860,11 +796,9 @@ CLASS="LITERAL"
       </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->start_xmit</I
-></TT
+>start_xmit</CODE
 ></DT
 ><DD
 ><P
@@ -878,11 +812,9 @@ CLASS="LITERAL"
       </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->stop_xmit</I
-></TT
+>stop_xmit</CODE
 ></DT
 ><DD
 ><P
@@ -902,8 +834,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN5862"
-></A
->Callbacks</H2
+>Callbacks</A
+></H2
 ><P
 >The device interface module can execute functions in the
 hardware independent driver via <TT
@@ -942,9 +874,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >This function would be called from an interrupt handler after a
 transmit interrupt indicating that additional characters may be
-sent. The upper driver will call the <TT
+sent. The upper driver will call the <CODE
 CLASS="FUNCTION"
->putc</TT
+>putc</CODE
 >
 function as appropriate to send more data to the device.</P
 ><TABLE
@@ -986,20 +918,18 @@ void (*data_xmt_done)(serial_channel *chan)</PRE
 ></TR
 ></TABLE
 ><P
->Instead of calling <TT
+>Instead of calling <CODE
 CLASS="FUNCTION"
->xmt_char()</TT
+>xmt_char()</CODE
 > to get a single
 character for transmission at a time, the driver should call
-<TT
+<CODE
 CLASS="FUNCTION"
->data_xmt_req()</TT
+>data_xmt_req()</CODE
 > in a loop, requesting character
-blocks for transfer. Call with a <TT
+blocks for transfer. Call with a <CODE
 CLASS="PARAMETER"
-><I
->space</I
-></TT
+>space</CODE
 > argument of how much space
 there is available in the FIFO.</P
 ><P
@@ -1007,17 +937,13 @@ there is available in the FIFO.</P
 CLASS="LITERAL"
 >true</TT
 >, the driver can read
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->chars_avail</I
-></TT
+>chars_avail</CODE
 > characters from
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->chars</I
-></TT
+>chars</CODE
 > and copy them into the FIFO.</P
 ><P
 >If the call returns <TT
@@ -1028,9 +954,9 @@ no more buffered characters and the driver should continue without
 filling up the FIFO.</P
 ><P
 >When all data has been unloaded, the
-driver must call <TT
+driver must call <CODE
 CLASS="FUNCTION"
->data_xmt_done()</TT
+>data_xmt_done()</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -1049,20 +975,18 @@ void (*data_rcv_done)(serial_channel *chan)</PRE
 ></TR
 ></TABLE
 ><P
->Instead of calling <TT
+>Instead of calling <CODE
 CLASS="FUNCTION"
->rcv_char()</TT
+>rcv_char()</CODE
 > with a single
 character at a time, the driver should call
-<TT
+<CODE
 CLASS="FUNCTION"
->data_rcv_req()</TT
+>data_rcv_req()</CODE
 > in a loop, requesting space to
-unload the FIFO to. <TT
+unload the FIFO to. <CODE
 CLASS="PARAMETER"
-><I
->avail</I
-></TT
+>avail</CODE
 > is the number of
 characters the driver wishes to unload.</P
 ><P
@@ -1070,17 +994,13 @@ characters the driver wishes to unload.</P
 CLASS="LITERAL"
 >true</TT
 >, the driver can copy
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->space_avail</I
-></TT
+>space_avail</CODE
 > characters to
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->space</I
-></TT
+>space</CODE
 >. </P
 ><P
 >If the call returns <TT
@@ -1092,9 +1012,9 @@ full. It is up to the driver to decide what to do in that case
 later versions of the serial driver).</P
 ><P
 >When all data has been unloaded, the driver must call
-<TT
+<CODE
 CLASS="FUNCTION"
->data_rcv_done()</TT
+>data_rcv_done()</CODE
 >.</P
 ></DIV
 ></DIV

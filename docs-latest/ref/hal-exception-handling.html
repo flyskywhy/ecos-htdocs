@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -167,8 +167,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-STARTUP"
-></A
->HAL Startup</H1
+>HAL Startup</A
+></H1
 ><P
 >Execution normally begins at the reset vector with
 the machine in a minimal startup state. From here the HAL needs to get
@@ -275,13 +275,13 @@ of these will not be needed in some configurations.</P
     that C function calls can be made and code can be run. More
     complex initializations that cannot be done in assembly code may
     be postponed until calls to
-    <TT
+    <CODE
 CLASS="FUNCTION"
->hal_variant_init()</TT
+>hal_variant_init()</CODE
 > or
-    <TT
+    <CODE
 CLASS="FUNCTION"
->hal_platform_init()</TT
+>hal_platform_init()</CODE
 > are made.
     </P
 ><P
@@ -337,13 +337,13 @@ CLASS="FILENAME"
 ></LI
 ><LI
 ><P
->    Call <TT
+>    Call <CODE
 CLASS="FUNCTION"
->hal_variant_init()</TT
+>hal_variant_init()</CODE
 > and
-    <TT
+    <CODE
 CLASS="FUNCTION"
->hal_platform_init()</TT
+>hal_platform_init()</CODE
 >. These will perform any
     additional initialization needed by the variant and platform. This
     typically includes further initialization of the interrupt
@@ -353,22 +353,22 @@ CLASS="FUNCTION"
 ></LI
 ><LI
 ><P
->    Call <TT
+>    Call <CODE
 CLASS="FUNCTION"
->cyg_hal_invoke_constructors()</TT
+>cyg_hal_invoke_constructors()</CODE
 > to run any
     static constructors.
     </P
 ></LI
 ><LI
 ><P
->    Call <TT
+>    Call <CODE
 CLASS="FUNCTION"
->cyg_start()</TT
+>cyg_start()</CODE
 >. If
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_start()</TT
+>cyg_start()</CODE
 > returns, drop into an infinite
     loop.
     </P

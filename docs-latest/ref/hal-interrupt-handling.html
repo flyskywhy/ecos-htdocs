@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-INTERRUPT-HANDLING"
-></A
->Interrupt Handling</H1
+>Interrupt Handling</A
+></H1
 ><P
 >These interfaces contain definitions related to interrupt
 handling. They include definitions of exception and interrupt numbers,
@@ -116,8 +116,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2721"
-></A
->Vector numbers</H2
+>Vector numbers</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -215,8 +215,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2739"
-></A
->Interrupt state control</H2
+>Interrupt state control</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -244,62 +244,56 @@ CLASS="LITERAL"
 >CYG_INTERRUPT_STATE</TT
 > is a data type that should be
 used to store the interrupt state returned by
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_DISABLE_INTERRUPTS()</TT
+>HAL_DISABLE_INTERRUPTS()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_QUERY_INTERRUPTS()</TT
+>HAL_QUERY_INTERRUPTS()</CODE
 > and passed to
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_RESTORE_INTERRUPTS()</TT
+>HAL_RESTORE_INTERRUPTS()</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_DISABLE_INTERRUPTS()</TT
+>HAL_DISABLE_INTERRUPTS()</CODE
 > disables the delivery of
 interrupts and stores the original state of the interrupt mask in the
-variable passed in the <TT
+variable passed in the <CODE
 CLASS="PARAMETER"
-><I
->old</I
-></TT
+>old</CODE
 > argument.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_RESTORE_INTERRUPTS()</TT
+>HAL_RESTORE_INTERRUPTS()</CODE
 > restores the state of
-the interrupt mask to that recorded in <TT
+the interrupt mask to that recorded in <CODE
 CLASS="PARAMETER"
-><I
->old</I
-></TT
+>old</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_ENABLE_INTERRUPTS()</TT
+>HAL_ENABLE_INTERRUPTS()</CODE
 > simply enables interrupts
 regardless of the current state of the mask.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_QUERY_INTERRUPTS()</TT
+>HAL_QUERY_INTERRUPTS()</CODE
 > stores the state of the
-interrupt mask in the variable passed in the <TT
+interrupt mask in the variable passed in the <CODE
 CLASS="PARAMETER"
-><I
->state</I
-></TT
+>state</CODE
 > argument. The state stored here should also be
 capable of being passed to
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_RESTORE_INTERRUPTS()</TT
+>HAL_RESTORE_INTERRUPTS()</CODE
 > at a later point.</P
 ><P
 >It is at the HAL implementer&#8217;s discretion exactly
@@ -315,8 +309,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2761"
-></A
->ISR and VSR management</H2
+>ISR and VSR management</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -338,77 +332,67 @@ HAL_VSR_SET_TO_ECOS_HANDLER( vector, poldvsr )</PRE
 >These macros manage the attachment of interrupt and vector service
 routines to interrupt and exception vectors respectively.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_IN_USE()</TT
+>HAL_INTERRUPT_IN_USE()</CODE
 > tests the state of the
 supplied interrupt vector and sets the value of the state parameter to
 either 1 or 0 depending on whether there is already an ISR attached to
 the vector. The HAL will only allow one ISR to be attached to each
 vector, so it is a good idea to use this function before using
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_ATTACH()</TT
+>HAL_INTERRUPT_ATTACH()</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_ATTACH()</TT
+>HAL_INTERRUPT_ATTACH()</CODE
 > attaches
 the ISR, data pointer and object pointer to the given
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 >. When an interrupt occurs on this
 vector the ISR is called using the C calling convention and the vector
 number and data pointer are passed to it as the first and second
 arguments respectively.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_DETACH()</TT
+>HAL_INTERRUPT_DETACH()</CODE
 > detaches the ISR from the
 vector.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_VSR_SET()</TT
+>HAL_VSR_SET()</CODE
 > replaces the VSR attached to the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > with the replacement supplied in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->vsr</I
-></TT
+>vsr</CODE
 >. The old VSR is returned in the location
-pointed to by <TT
+pointed to by <CODE
 CLASS="PARAMETER"
-><I
->pvsr</I
-></TT
+>pvsr</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_VSR_GET()</TT
+>HAL_VSR_GET()</CODE
 > assigns
-a copy of the VSR to the location pointed to by <TT
+a copy of the VSR to the location pointed to by <CODE
 CLASS="PARAMETER"
-><I
->pvsr</I
-></TT
+>pvsr</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_VSR_SET_TO_ECOS_HANDLER()</TT
+>HAL_VSR_SET_TO_ECOS_HANDLER()</CODE
 > ensures that the
 VSR for a specific exception is pointing at the eCos exception VSR and
 not one for RedBoot or some other ROM monitor. The default when
@@ -424,8 +408,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2783"
-></A
->Interrupt controller management</H2
+>Interrupt controller management</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -480,21 +464,21 @@ CLASS="PROGRAMLISTING"
 ></BLOCKQUOTE
 ></DIV
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_MASK()</TT
+>HAL_INTERRUPT_MASK()</CODE
 > causes the interrupt
 associated with the given vector to be blocked.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_UNMASK()</TT
+>HAL_INTERRUPT_UNMASK()</CODE
 > causes the interrupt
 associated with the given vector to be unblocked.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_ACKNOWLEDGE()</TT
+>HAL_INTERRUPT_ACKNOWLEDGE()</CODE
 > acknowledges the
 current interrupt from the given vector. This is usually executed from
 the ISR for this vector when it is prepared to allow further
@@ -504,9 +488,9 @@ macro may cause another interrupt to be delivered. Whether this
 interrupts the current code depends on the state of the CPU interrupt
 mask.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_CONFIGURE()</TT
+>HAL_INTERRUPT_CONFIGURE()</CODE
 > provides
 control over how an interrupt signal is detected. The arguments
 are:</P
@@ -525,13 +509,13 @@ CLASS="VARIABLELIST"
 >level</DT
 ><DD
 ><P
->      Set to <TT
+>      Set to <CODE
 CLASS="VARNAME"
->true</TT
+>true</CODE
 > if the interrupt is detected by
-      level, and <TT
+      level, and <CODE
 CLASS="VARNAME"
->false</TT
+>false</CODE
 > if it is edge triggered.
       </P
 ></DD
@@ -540,31 +524,31 @@ CLASS="VARNAME"
 ><DD
 ><P
 >      If the interrupt is set to level detect, then if this is
-      <TT
+      <CODE
 CLASS="VARNAME"
->true</TT
+>true</CODE
 > it is detected by a high signal level,
-      and if <TT
+      and if <CODE
 CLASS="VARNAME"
->false</TT
+>false</CODE
 > by a low signal level. If the
       interrupt is set to edge triggered, then if this is
-      <TT
+      <CODE
 CLASS="VARNAME"
->true</TT
+>true</CODE
 > it is triggered by a rising edge and if
-      <TT
+      <CODE
 CLASS="VARNAME"
->false</TT
+>false</CODE
 > by a falling edge.
       </P
 ></DD
 ></DL
 ></DIV
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_SET_LEVEL()</TT
+>HAL_INTERRUPT_SET_LEVEL()</CODE
 > provides control over
 the hardware priority of the interrupt. The arguments are:</P
 ><P
@@ -585,13 +569,13 @@ CLASS="VARIABLELIST"
 >      The priority level to which the interrupt is to set. In some
       architectures the masking of an interrupt is achieved by
       changing its priority level. Hence this function,
-      <TT
+      <CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_MASK()</TT
+>HAL_INTERRUPT_MASK()</CODE
 > and
-      <TT
+      <CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_UNMASK()</TT
+>HAL_INTERRUPT_UNMASK()</CODE
 > may interfere with
       each other.
       </P

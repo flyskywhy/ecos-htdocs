@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-NEW-TARGET"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13912"
+NAME="AEN14469"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN13912"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN13915"
+NAME="AEN14472"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN13916"
-></A
 ><P
 ></P
+><A
+NAME="AEN14473"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -146,26 +146,26 @@ NAME="SYNTH-NEW-TARGET-DESCRIPTION"
 >In some ways writing a device driver for the synthetic target is very
 similar to writing one for a real target. Obviously it has to provide
 the standard interface for that class of device, so for example an
-ethernet device has to provide <TT
+ethernet device has to provide <CODE
 CLASS="FUNCTION"
->can_send</TT
+>can_send</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->send</TT
->, <TT
+>send</CODE
+>, <CODE
 CLASS="FUNCTION"
->recv</TT
+>recv</CODE
 > and similar
 functions. Many devices will involve interrupts, so the driver
 contains ISR and DSR functions and will call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_create</TT
+>cyg_drv_interrupt_create</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_acknowledge</TT
+>cyg_drv_interrupt_acknowledge</CODE
 >, and related
 functions.
     </P
@@ -177,9 +177,9 @@ real hardware, instead everything is emulated by widgets on the
 graphical display. Therefore the driver cannot just peek and poke
 device registers, instead it must interact with host-side code by
 exchanging message. The synthetic target HAL provides a function
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 > for this purpose.
     </P
 ><P
@@ -187,9 +187,9 @@ CLASS="FUNCTION"
 different. On real targets the device hardware already exists when the
 driver's initialization routine runs. On the synthetic target it is
 first necessary to instantiate the device inside the I/O auxiliary, by
-a call to <TT
+a call to <CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 >. That
 function performs a special message exchange with the I/O auxiliary,
 causing it to load a Tcl script for the desired type of device and run
@@ -197,16 +197,16 @@ an instantiation procedure within that script.
     </P
 ><P
 >Use of the I/O auxiliary is optional: if the user does not specify
-<TT
+<CODE
 CLASS="OPTION"
->--io</TT
+>--io</CODE
 > on the command line then the auxiliary will not
 be started and hence most I/O operations will not be possible. Device
 drivers should allow for this possibility, for example by just
 discarding any data that gets written. The HAL exports a flag
-<TT
+<CODE
 CLASS="VARNAME"
->synth_auxiliary_running</TT
+>synth_auxiliary_running</CODE
 > which should be checked.
     </P
 ></DIV
@@ -220,9 +220,9 @@ NAME="SYNTH-NEW-TARGET-INSTANTIATE"
 ><P
 >Device instantiation should happen during the C++ prioritized static
 constructor phase of system initialization, before control switches to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_user_start</TT
+>cyg_user_start</CODE
 > and general application code. This
 ensures that there is a clearly defined point at which the I/O
 auxiliary knows that all required devices have been loaded. It can
@@ -236,9 +236,9 @@ visible.
 ><P
 >For standard devices generic eCos I/O code will call the device
 initialization routines at the right time, iterating through the
-<TT
+<CODE
 CLASS="VARNAME"
->DEVTAB</TT
+>DEVTAB</CODE
 > table in a static constructor. The same
 holds for network devices and file systems. For more custom devices
 code like the following can be used:
@@ -264,9 +264,9 @@ static mydev_init mydev_init_object CYGBLD_ATTRIB_INIT_PRI(CYG_INIT_IO);</PRE
 ></TABLE
 ><P
 >Some care has to be taken because the object
-<TT
+<CODE
 CLASS="VARNAME"
->mydev_init_object</TT
+>mydev_init_object</CODE
 > will typically not be referenced
 by other code, and hence may get eliminated at link-time. If the code
 is part of an eCos package then problems can be avoided by putting the
@@ -303,9 +303,9 @@ CLASS="FILENAME"
     </P
 ><P
 >In the device initialization routine the main operation is a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 >. This takes five
 arguments, all of which should be strings:
     </P
@@ -315,9 +315,9 @@ arguments, all of which should be strings:
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->package</TT
+>package</CODE
 ></DT
 ><DD
 ><P
@@ -339,9 +339,9 @@ instead.
         </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->version</TT
+>version</CODE
 ></DT
 ><DD
 ><P
@@ -351,18 +351,18 @@ CLASS="LITERAL"
 >current</TT
 >. A simple
 way to get this version is to use the
-<TT
+<CODE
 CLASS="FUNCTION"
->SYNTH_MAKESTRING</TT
+>SYNTH_MAKESTRING</CODE
 > macro on the package name.
 If the device is application-specific then a NULL pointer should be
 used. 
         </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->device</TT
+>device</CODE
 ></DT
 ><DD
 ><P
@@ -383,9 +383,9 @@ device instance.
         </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->instance</TT
+>instance</CODE
 ></DT
 ><DD
 ><P
@@ -402,9 +402,9 @@ pointer can be used.
         </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->data</TT
+>data</CODE
 ></DT
 ><DD
 ><P
@@ -447,9 +447,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The return value will be a device identifier which can be used for
-subsequent calls to <TT
+subsequent calls to <CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 >. If
 the device could not be instantiated then <TT
 CLASS="LITERAL"
@@ -488,9 +488,9 @@ then exchange one or more messages with the host.
     </P
 ><P
 >There is a single function to perform I/O operations,
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 >. This takes the following
 arguments: 
     </P
@@ -500,24 +500,24 @@ arguments:
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->device_id</TT
+>device_id</CODE
 ></DT
 ><DD
 ><P
 >This should be one of the identifiers returned by a previous
-call to <TT
+call to <CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 >, specifying the
 particular device which should perform some I/O.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->request</TT
+>request</CODE
 ></DT
 ><DD
 ><P
@@ -527,61 +527,61 @@ each type of device can define its own.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->arg1</TT
->, <TT
+>arg1</CODE
+>, <CODE
 CLASS="VARNAME"
->arg2</TT
+>arg2</CODE
 ></DT
 ><DD
 ><P
 >For some requests it is convenient to pass one or two additional
 parameters alongside the request code. For example an ethernet device
-could define a multicast-all request, with <TT
+could define a multicast-all request, with <CODE
 CLASS="VARNAME"
->arg1</TT
+>arg1</CODE
 >
 controlling whether this mode should be enabled or disabled. Both
-<TT
+<CODE
 CLASS="VARNAME"
->arg1</TT
-> and <TT
+>arg1</CODE
+> and <CODE
 CLASS="VARNAME"
->arg2</TT
+>arg2</CODE
 > should be signed
 32-bit integers, and their values are interpreted only by the
 device-specific Tcl script.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->txdata</TT
->, <TT
+>txdata</CODE
+>, <CODE
 CLASS="VARNAME"
->txlen</TT
+>txlen</CODE
 ></DT
 ><DD
 ><P
 >Some I/O operations may involve sending additional data, for example
 an ethernet packet. Alternatively a control operation may require many
-more parameters than can easily be encoded in <TT
+more parameters than can easily be encoded in <CODE
 CLASS="VARNAME"
->arg1</TT
+>arg1</CODE
 >
-and <TT
+and <CODE
 CLASS="VARNAME"
->arg2</TT
+>arg2</CODE
 >, so those parameters have to be placed in
 a suitable buffer and extracted at the other end.
-<TT
+<CODE
 CLASS="VARNAME"
->txdata</TT
+>txdata</CODE
 > is an arbitrary buffer of
-<TT
+<CODE
 CLASS="VARNAME"
->txlen</TT
+>txlen</CODE
 > bytes that should be sent to the host-side.
 There is no specific upper bound on the number of bytes that can be
 sent, but usually it is a good idea to allocate the transmit buffer
@@ -589,75 +589,75 @@ statically and keep transfers down to at most several kilobytes.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 ></DT
 ><DD
 ><P
 >If the host-side is expected to send a reply message then
-<TT
+<CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 > should be a pointer to an integer variable
 and will be updated with a reply code, a simple 32-bit integer. The
 synthetic target HAL code assumes that the host-side and target-side
 agree on the protocol being used: if the host-side will not send a
-reply to this message then the <TT
+reply to this message then the <CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 > argument
 should be a NULL pointer; otherwise the host-side must always send
-a reply code and the <TT
+a reply code and the <CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 > argument must be valid.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->rxdata</TT
->, <TT
+>rxdata</CODE
+>, <CODE
 CLASS="VARNAME"
->rxlen</TT
+>rxlen</CODE
 ></DT
 ><DD
 ><P
 >Some operations may involve additional data coming from the host-side,
-for example an incoming ethernet packet. <TT
+for example an incoming ethernet packet. <CODE
 CLASS="VARNAME"
->rxdata</TT
+>rxdata</CODE
 >
-should be a suitably-sized buffer, and <TT
+should be a suitably-sized buffer, and <CODE
 CLASS="VARNAME"
->rxlen</TT
+>rxlen</CODE
 > a
 pointer to an integer variable that will end up containing the number
 of bytes that were actually received. These arguments will only be
 used if the host-side is expected to send a reply and hence the
-<TT
+<CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 > argument was not NULL.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->max_rxlen</TT
+>max_rxlen</CODE
 ></DT
 ><DD
 ><P
 >If a reply to this message is expected and that reply may involve
-additional data, <TT
+additional data, <CODE
 CLASS="VARNAME"
->max_rxlen</TT
+>max_rxlen</CODE
 > limits the size of that
 reply. In other words, it corresponds to the size of the
-<TT
+<CODE
 CLASS="VARNAME"
->rxdata</TT
+>rxdata</CODE
 > buffer.
          </P
 ></DD
@@ -666,55 +666,55 @@ CLASS="VARNAME"
 ><P
 >Most I/O operations involve only some of the arguments. For example
 transmitting an ethernet packet would use the
-<TT
+<CODE
 CLASS="VARNAME"
->request</TT
->, <TT
+>request</CODE
+>, <CODE
 CLASS="VARNAME"
->txdata</TT
+>txdata</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->txlen</TT
+>txlen</CODE
 > fields (in addition to
-<TT
+<CODE
 CLASS="VARNAME"
->device_id</TT
+>device_id</CODE
 > which is always required), but would not
-involve <TT
+involve <CODE
 CLASS="VARNAME"
->arg1</TT
-> or <TT
+>arg1</CODE
+> or <CODE
 CLASS="VARNAME"
->arg2</TT
+>arg2</CODE
 > and no
 reply would be expected. Receiving an ethernet packet would involve
-<TT
+<CODE
 CLASS="VARNAME"
->request</TT
->, <TT
+>request</CODE
+>, <CODE
 CLASS="VARNAME"
->rxdata</TT
+>rxdata</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->rxlen</TT
-> and <TT
+>rxlen</CODE
+> and <CODE
 CLASS="VARNAME"
->max_rxlen</TT
+>max_rxlen</CODE
 >; in addition
-<TT
+<CODE
 CLASS="VARNAME"
->reply</TT
+>reply</CODE
 > is needed to get any reply from the host-side
 at all, and could be used to indicate whether or not any more packets
 are buffered up. A control operation such as enabling multicast mode
-would involve <TT
+would involve <CODE
 CLASS="VARNAME"
->request</TT
-> and <TT
+>request</CODE
+> and <CODE
 CLASS="VARNAME"
->arg1</TT
+>arg1</CODE
 >,
 but none of the remaining arguments.
     </P
@@ -729,9 +729,9 @@ NAME="SYNTH-NEW-TARGET-INTERRUPTS"
 ><P
 >Interrupt handling in the synthetic target is much the same as on a
 real target. An interrupt object is created using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_create</TT
+>cyg_drv_interrupt_create</CODE
 >, attached, and unmasked.
 The emulated device - in other words the Tcl script running inside the
 I/O auxiliary - can raise an interrupt. Subject to interrupts being
@@ -749,9 +749,9 @@ be rather different for a synthetic target device driver. For real
 hardware the device driver will interact with the device by reading
 and writing device registers, managing DMA engines, and the like. A
 synthetic target driver will instead call
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 > to perform the I/O
 operations.
     </P

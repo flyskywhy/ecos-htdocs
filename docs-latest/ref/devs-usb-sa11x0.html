@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="DEVS-USB-SA11X0"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14486"
+NAME="AEN15043"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN14486"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14489"
+NAME="AEN15046"
 ></A
 ><H2
 >SA11X0 USB Hardware</H2
@@ -159,32 +159,32 @@ existing ones that understand the standard protocol.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14495"
+NAME="AEN15052"
 ></A
 ><H2
 >Endpoint Data Structures</H2
 ><P
 >The SA11x0 USB device driver can provide up to three data structures
 corresponding to the three endpoints: a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > structure
 <TT
 CLASS="LITERAL"
 >usbs_sa11x0_ep0</TT
 >; a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_rx_endpoint</SPAN
+>usbs_rx_endpoint</CODE
 >
 <TT
 CLASS="LITERAL"
 >usbs_sa11x0_ep1</TT
 >; and a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_tx_endpoint</SPAN
+>usbs_tx_endpoint</CODE
 >
 <TT
 CLASS="LITERAL"
@@ -266,7 +266,7 @@ driver, needs to be aware of this and adapt accordingly.</P
 value should be used in the endpoint descriptors in the enumeration
 data provided by application code. There is experimental code
 for running with <A
-HREF="devs-usb-sa11x0.html#AEN14540"
+HREF="devs-usb-sa11x0.html#AEN15097"
 >DMA disabled</A
 >,
 in which case the packet size will be 16 bytes rather than 64.</P
@@ -274,7 +274,7 @@ in which case the packet size will be 16 bytes rather than 64.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14521"
+NAME="AEN15078"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -282,20 +282,20 @@ NAME="AEN14521"
 >In addition to the endpoint data structures the SA11X0 USB device
 driver can also provide devtab entries for each endpoint. This allows
 higher-level code to use traditional I/O operations such as
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
->/<TT
+>open</CODE
+>/<CODE
 CLASS="FUNCTION"
->read</TT
->/<TT
+>read</CODE
+>/<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 >
 rather than the USB-specific non-blocking functions like
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 >. These devtab entries are
 optional since they are not always required. The relevant
 configuration options are
@@ -355,7 +355,7 @@ developers may have to change the base name to prevent a name clash.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14540"
+NAME="AEN15097"
 ></A
 ><H2
 >DMA Engines</H2

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,7 +83,7 @@ CLASS="CHAPTER"
 ><A
 NAME="PPP-CHAT"
 ></A
->Chapter 47. CHAT Scripts</H1
+>Chapter 48. CHAT Scripts</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -137,9 +137,9 @@ CLASS="COMMAND"
 <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
-> <TT
+> <CODE
 CLASS="FUNCTION"
->cyg_ppp_chat()</TT
+>cyg_ppp_chat()</CODE
 >
 function takes as a parameter a zero-terminated array of pointers to
 strings. In most programs this will be defined by means of an
@@ -178,8 +178,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PPP-CHAT-SCRIPT"
-></A
->Chat Script</H1
+>Chat Script</A
+></H1
 ><P
 >       A script consists of one or more "expect-send" pairs of
        strings, separated by spaces, with an optional "subexpect-
@@ -201,9 +201,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >       This script fragment indicates that the
-       <TT
+       <CODE
 CLASS="FUNCTION"
->cyg_ppp_chat()</TT
+>cyg_ppp_chat()</CODE
 > function should expect the
        string "ogin:". If it fails to receive a login prompt within
        the time interval allotted, it is to send a carriage return
@@ -212,9 +212,9 @@ CLASS="FUNCTION"
        generated.</P
 ><P
 >       Once it received the login prompt the
-       <TT
+       <CODE
 CLASS="FUNCTION"
->cyg_ppp_chat()</TT
+>cyg_ppp_chat()</CODE
 > function will send the
        string "ppp" and then expect the prompt "ssword:".  When it
        receives the prompt for the password, it will send the password

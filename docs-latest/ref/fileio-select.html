@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -89,32 +89,30 @@ NAME="FILEIO-SELECT"
 mechanism. This is modeled on the mechanism in the BSD kernel, but has
 been modified to make it implementation independent.</P
 ><P
->The main part of the mechanism is the <TT
+>The main part of the mechanism is the <CODE
 CLASS="FUNCTION"
->select()</TT
+>select()</CODE
 >
 API call. This processes its arguments and calls the
-<TT
+<CODE
 CLASS="FUNCTION"
->fo_select()</TT
+>fo_select()</CODE
 > function pointer on all file objects
 referenced by the file descriptor sets passed to it. If the same
 descriptor appears in more than one descriptor set, the
-<TT
+<CODE
 CLASS="FUNCTION"
->fo_select()</TT
+>fo_select()</CODE
 > function will be called separately
 for each appearance.</P
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->which</I
-></TT
+>which</CODE
 > argument of the
-<TT
+<CODE
 CLASS="FUNCTION"
->fo_select()</TT
+>fo_select()</CODE
 > function will either be
 <TT
 CLASS="LITERAL"
@@ -127,37 +125,35 @@ CLASS="LITERAL"
 test for exceptions. For each of these options the function should
 test whether the condition is satisfied and if so return true. If it
 is not satisfied then it should call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_selrecord()</TT
+>cyg_selrecord()</CODE
 > with the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->info</I
-></TT
+>info</CODE
 > argument that was passed to the function
-and a pointer to a <SPAN
+and a pointer to a <CODE
 CLASS="STRUCTNAME"
->cyg_selinfo</SPAN
+>cyg_selinfo</CODE
 > structure.</P
 ><P
->The <SPAN
+>The <CODE
 CLASS="STRUCTNAME"
->cyg_selinfo</SPAN
+>cyg_selinfo</CODE
 > structure is used to record information about current
 select operations. Any object that needs to support select must
-contain an instance of this structure.  Separate <SPAN
+contain an instance of this structure.  Separate <CODE
 CLASS="STRUCTNAME"
->cyg_selinfo</SPAN
+>cyg_selinfo</CODE
 >
 structures should be kept for each of the options that the object can
 select on - read, write or exception.</P
 ><P
 >If none of the file objects report that the select condition is
-satisfied, then the <TT
+satisfied, then the <CODE
 CLASS="FUNCTION"
->select()</TT
+>select()</CODE
 > API function puts
 the calling thread to sleep waiting either for a condition to become
 satisfied, or for the optional timeout to expire.</P
@@ -165,25 +161,25 @@ satisfied, or for the optional timeout to expire.</P
 >A selectable object must have some asynchronous activity that may
 cause a select condition to become true - either via interrupts or the
 activities of other threads. Whenever a selectable condition is
-satisfied, the object should call <TT
+satisfied, the object should call <CODE
 CLASS="FUNCTION"
->cyg_selwakeup()</TT
+>cyg_selwakeup()</CODE
 > with a pointer to
-the appropriate <SPAN
+the appropriate <CODE
 CLASS="STRUCTNAME"
->cyg_selinfo</SPAN
+>cyg_selinfo</CODE
 > structure. If the thread is still waiting,
 this will cause it to wake up and repeat its poll of the file
 descriptors. This time around, the object that caused the wakeup
 should indicate that the select condition is satisfied, and the
-<TT
+<CODE
 CLASS="FUNCTION"
->select()</TT
+>select()</CODE
 > API call will return.</P
 ><P
->Note that <TT
+>Note that <CODE
 CLASS="FUNCTION"
->select()</TT
+>select()</CODE
 > does not exhibit real time
 behaviour: the iterative poll of the descriptors, and the wakeup
 mechanism mitigate against this. If real time response to device or

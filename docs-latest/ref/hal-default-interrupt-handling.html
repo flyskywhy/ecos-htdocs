@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-DEFAULT-INTERRUPT-HANDLING"
-></A
->Default Interrupt Handling</H1
+>Default Interrupt Handling</A
+></H1
 ><P
 >Most asynchronous external interrupt vectors will point to a default
 interrupt VSR which decodes the actual interrupt being delivered from
@@ -163,9 +163,9 @@ CLASS="LITERAL"
     whether more interrupts will occur at this point, or whether they
     will only be delivered after the current interrupt has been
     acknowledged (by a call to
-    <TT
+    <CODE
 CLASS="FUNCTION"
->HAL_INTERRUPT_ACKNOWLEDGE()</TT
+>HAL_INTERRUPT_ACKNOWLEDGE()</CODE
 > in the ISR).
     </P
 ></LI
@@ -205,9 +205,9 @@ CLASS="FUNCTION"
 ></LI
 ><LI
 ><P
->    Call <TT
+>    Call <CODE
 CLASS="FUNCTION"
->interrupt_end()</TT
+>interrupt_end()</CODE
 > passing it the return
     value from the ISR, the interrupt object pointer and a pointer to
     the saved CPU state. This function is implemented by the Kernel
@@ -220,9 +220,9 @@ CLASS="FUNCTION"
 ></LI
 ><LI
 ><P
->    The return from <TT
+>    The return from <CODE
 CLASS="FUNCTION"
->interrupt_end()</TT
+>interrupt_end()</CODE
 > may occur
     some time after the call. Many other threads may have executed in
     the meantime. So here all we may do is restore the machine state

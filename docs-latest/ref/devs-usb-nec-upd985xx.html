@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="DEVS-USB-NEC-UPD985XX"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14551"
+NAME="AEN15108"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN14551"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14554"
+NAME="AEN15111"
 ></A
 ><H2
 >NEC uPD985xx USB Hardware</H2
@@ -111,40 +111,40 @@ endpoint 5 are supported.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14557"
+NAME="AEN15114"
 ></A
 ><H2
 >Endpoint Data Structures</H2
 ><P
 >The uPD985xx USB device driver can provide up to four data structures
 corresponding to the four supported endpoints: a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > structure
-<TT
+<CODE
 CLASS="VARNAME"
->usbs_upd985xx_ep0</TT
+>usbs_upd985xx_ep0</CODE
 >;
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_tx_endpoint</SPAN
+>usbs_tx_endpoint</CODE
 > structures
-<TT
+<CODE
 CLASS="VARNAME"
->usbs_upd985xx_ep3</TT
+>usbs_upd985xx_ep3</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->usbs_upd985xx_ep5</TT
+>usbs_upd985xx_ep5</CODE
 >; and a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_rx_endpoint</SPAN
+>usbs_rx_endpoint</CODE
 >
-<TT
+<CODE
 CLASS="VARNAME"
->usbs_upd985xx_ep4</TT
+>usbs_upd985xx_ep4</CODE
 >. The header file
 <TT
 CLASS="FILENAME"
@@ -244,7 +244,7 @@ limited to 64 bytes by the USB standard.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14587"
+NAME="AEN15144"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -252,20 +252,20 @@ NAME="AEN14587"
 >In addition to the endpoint data structures the uPD985xx USB device
 driver can also provide devtab entries for each endpoint. This allows
 higher-level code to use traditional I/O operations such as
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
->/<TT
+>open</CODE
+>/<CODE
 CLASS="FUNCTION"
->read</TT
->/<TT
+>read</CODE
+>/<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 >
 rather than the USB-specific non-blocking functions like
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 >. These devtab entries are
 optional since they are not always required. The relevant
 configuration options are
@@ -333,7 +333,7 @@ with other USB device drivers.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14608"
+NAME="AEN15165"
 ></A
 ><H2
 >Restrictions</H2
@@ -350,7 +350,7 @@ fixed-size transfers.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14611"
+NAME="AEN15168"
 ></A
 ><H2
 >Optional Hardware Workarounds</H2
@@ -390,7 +390,7 @@ CLASS="LITERAL"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14618"
+NAME="AEN15175"
 ></A
 ><H2
 >Platform Dependencies</H2
@@ -407,9 +407,9 @@ it would fail to get the expected responses and conclude that the
 target was not a functional USB peripheral.</P
 ><P
 >Platform-specific initialization code can be provided via a macro
-<TT
+<CODE
 CLASS="FUNCTION"
->UPD985XX_USB_PLATFORM_INIT</TT
+>UPD985XX_USB_PLATFORM_INIT</CODE
 >. Typically this macro
 would be defined in the platform HAL's header file
 <TT

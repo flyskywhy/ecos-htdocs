@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,28 +85,28 @@ NAME="USBSETH-INIT"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13130"
+NAME="AEN13687"
 ></A
 ><H2
 >Name</H2
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 >&nbsp;--&nbsp;Initializing the USB-ethernet Package</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN13134"
+NAME="AEN13691"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN13135"
-></A
 ><P
 ></P
+><A
+NAME="AEN13692"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -133,7 +133,7 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13150"
+NAME="AEN13707"
 ></A
 ><H2
 >Description</H2
@@ -154,15 +154,15 @@ supports multiple configurations, with the ethernet support active in
 only some of those configurations. The USB-ethernet package has no
 knowledge about any of this, so it relies on higher-level code to tell
 it which endpoints should be used and other information. This is the
-purpose of the <TT
+purpose of the <CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 > function.</P
 ><P
 >The first argument identifies the specific
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_eth</SPAN
+>usbs_eth</CODE
 > data structure that is affected. It
 is expected that the vast majority of affected applications will only
 provide a single USB-ethernet device to a single host, and the package
@@ -171,15 +171,15 @@ automatically provides a suitable data structure
 CLASS="LITERAL"
 >usbs_eth0</TT
 > to support this. If multiple
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_eth</SPAN
+>usbs_eth</CODE
 > structures are needed for some
 reason then these need to be instantiated by other code, and each one
 needs to be initialised by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_init()</TT
+>usbs_eth_init()</CODE
 >. </P
 ><P
 >The next three arguments identify the endpoints that should be used
@@ -189,57 +189,57 @@ transmit endpoint for ethernet packets going in the other direction.
 Obviously all three endpoints should be provided by the same USB
 hardware. The USB-ethernet package assumes that it has sole access to
 the receive and transmit endpoints, subject to the use of
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_disable</TT
+>usbs_eth_disable</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_enable</TT
+>usbs_eth_enable</CODE
 > control functions. The package
 also assumes that no other code is interested in USB state changes or
 class control messages: it installs handlers
 <A
 HREF="usbseth-control.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_state_change_handler</TT
+>usbs_eth_state_change_handler</CODE
 ></A
 >
 and
 <A
 HREF="usbseth-control.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_class_control_handler</TT
+>usbs_eth_class_control_handler</CODE
 ></A
 >
 in the control endpoint. If any other code does need to handle USB
 state changes or class control messages then replacement handlers
 should be installed after the call to
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 >, and those replacements should
 invoke the USB-ethernet ones when appropriate.</P
 ><P
->The final argument to <TT
+>The final argument to <CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 > specifies 
 the MAC address (or Ethernet Station Address) that should be provided
 to the host-side device driver. Since the USB-ethernet package does not
 interact directly with a real ethernet device it cannot obtain the MAC
 address from any hardware. Instead, it must be supplied by higher-level
 code. The details depend on the <A
-HREF="usbseth-intro.html#AEN13109"
+HREF="usbseth-intro.html#AEN13666"
 >scenario</A
 > in which the
 USB-ethernet package is being used.</P
 ><P
->The call to <TT
+>The call to <CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 > should normally happen
 after the enumeration data has been provided but before the underlying
 USB device driver has been started. If the USB device were to be

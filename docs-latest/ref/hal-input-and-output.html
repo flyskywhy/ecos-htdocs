@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-INPUT-AND-OUTPUT"
-></A
->HAL I/O</H1
+>HAL I/O</A
+></H1
 ><P
 >This section contains definitions for supporting access
 to device control registers in an architecture neutral
@@ -124,8 +124,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2877"
-></A
->Register address</H2
+>Register address</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -154,8 +154,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2882"
-></A
->Register read</H2
+>Register read</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -189,33 +189,27 @@ CLASS="LITERAL"
 >UINT32</TT
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_READ_XXX()</TT
+>HAL_READ_XXX()</CODE
 > reads the appropriately sized
 value from the register and stores it in the variable passed as the
 second argument.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_READ_XXX_VECTOR()</TT
+>HAL_READ_XXX_VECTOR()</CODE
 > reads
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->count</I
-></TT
+>count</CODE
 > values of the appropriate size into
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->buffer</I
-></TT
->. The <TT
+>buffer</CODE
+>. The <CODE
 CLASS="PARAMETER"
-><I
->stride</I
-></TT
+>stride</CODE
 >
 controls how the pointer advances through the register space. A stride
 of zero will read the same register repeatedly, and a stride of one
@@ -229,8 +223,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2897"
-></A
->Register write</H2
+>Register write</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -264,32 +258,26 @@ CLASS="LITERAL"
 >UINT32</TT
 >.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_WRITE_XXX()</TT
+>HAL_WRITE_XXX()</CODE
 > writes
 the appropriately sized value from the variable passed as the second argument
 stored it in the register.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_WRITE_XXX_VECTOR()</TT
+>HAL_WRITE_XXX_VECTOR()</CODE
 > writes
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->count</I
-></TT
-> values of the appropriate size from <TT
+>count</CODE
+> values of the appropriate size from <CODE
 CLASS="PARAMETER"
-><I
->buffer</I
-></TT
->. The <TT
+>buffer</CODE
+>. The <CODE
 CLASS="PARAMETER"
-><I
->stride</I
-></TT
+>stride</CODE
 > controls
 how the pointer advances through the register space. A stride of
 zero will write the same register repeatedly, and a stride of one

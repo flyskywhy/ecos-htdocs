@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="POWER-POLICY"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11568"
+NAME="AEN12125"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN11568"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN11571"
+NAME="AEN12128"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN11572"
-></A
 ><P
 ></P
+><A
+NAME="AEN12129"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -174,14 +174,14 @@ policy module to perform some sort of polling, in general that is
 undesirable.</P
 ><P
 >To avoid such problems the policy module can install a callback
-function using <TT
+function using <CODE
 CLASS="FUNCTION"
->power_set_policy_callback</TT
+>power_set_policy_callback</CODE
 >. The
 current callback function can be retrieved using
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_policy_callback</TT
+>power_get_policy_callback</CODE
 >. If a callback function
 has been installed then it will be called by the power management
 package whenever a power controller has been invoked to perform a mode
@@ -216,13 +216,13 @@ decided for some reason that this was inappropriate.</P
 ><P
 >The current desired mode. This will differ from the previous argument
 only if there has was another call to
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > while the power
 controller was being invoked, probably by the power controller itself.</P
 ></LI
@@ -265,9 +265,9 @@ main(int argc, char** argv)
 ></TR
 ></TABLE
 ><P
->If <TT
+>If <CODE
 CLASS="FUNCTION"
->power_set_controller_mode_now</TT
+>power_set_controller_mode_now</CODE
 > is used to
 manipulate an individual controller the policy callback will not be
 invoked. This function may get called from any context including DSRs,
@@ -276,13 +276,13 @@ in some other context, so invoking the callback would usually be
 unsafe.</P
 ><P
 >If the power management package has not been configured to use a
-separate thread then <TT
+separate thread then <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > will manipulate the
 power controllers immediately and invoke the policy callback
 afterwards. Therefore the policy callback will typically run in the
@@ -302,9 +302,9 @@ maintaining a hash table or similar data structure, but for
 convenience the power management package allows higher-level code,
 typically the policy module, to store and retrieve one word of data in
 each power controller. The function
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_policy_data</TT
+>power_set_controller_policy_data</CODE
 > takes two
 arguments, a pointer to a power controller and a
 <SPAN
@@ -313,9 +313,9 @@ CLASS="TYPE"
 > of data: by appropriate use of casts this
 word could be an integer or a pointer to some data structure. The
 matching function
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_controller_policy_data</TT
+>power_get_controller_policy_data</CODE
 > retrieves the
 word previously installed, and can be cast back to an integer or
 pointer. The default value for the policy data is 0.</P
@@ -345,9 +345,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >Not all policy modules will require per-controller data. The
 configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGIMP_POWER_PROVIDE_POLICY_DATA</TT
+>CYGIMP_POWER_PROVIDE_POLICY_DATA</CODE
 > can be used to
 control this functionality, thus avoiding wasting a small amount of
 memory inside each power controller structure.</P

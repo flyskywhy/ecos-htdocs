@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,13 +14,12 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Interrupt management functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-MEMORY-POOL-MGMT-FUNCTIONS"
-></A
->Memory pool Management Functions</H1
+>Memory pool Management Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->get_blf</TT
+>get_blf</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -123,9 +123,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->pget_blf</TT
+>pget_blf</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -151,9 +151,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->tget_blf</TT
+>tget_blf</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -185,9 +185,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rel_blf</TT
+>rel_blf</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -213,9 +213,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_mpf</TT
+>ref_mpf</CODE
 >( 
     T_RMPF *<SPAN
 CLASS="emphasis"
@@ -241,9 +241,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->get_blk</TT
+>get_blk</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -275,9 +275,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->pget_blk</TT
+>pget_blk</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -309,9 +309,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->tget_blk</TT
+>tget_blk</CODE
 >( 
     VP *<SPAN
 CLASS="emphasis"
@@ -349,9 +349,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rel_blk</TT
+>rel_blk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -377,9 +377,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_mpl</TT
+>ref_mpl</CODE
 >( 
     T_RMPL *<SPAN
 CLASS="emphasis"
@@ -424,9 +424,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_mpl</TT
+>cre_mpl</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -452,9 +452,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_mpl</TT
+>del_mpl</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -474,9 +474,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_mpf</TT
+>cre_mpf</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -502,9 +502,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_mpf</TT
+>del_mpf</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -527,12 +527,12 @@ blocks (pk_cmpf-&gt;mpfcnt) times the block size
 (pk_cmpf-&gt;blfsz) are checked for fitting within
 the statically allocated memory area, so if a create call succeeds,
 the resulting pool will be at least as large as that requested.
-For this reason <TT
+For this reason <CODE
 CLASS="FUNCTION"
->del_mpl()</TT
-> and <TT
+>del_mpl()</CODE
+> and <CODE
 CLASS="FUNCTION"
->del_mpf()</TT
+>del_mpf()</CODE
 > do
 not in any sense free the memory that was managed by the deleted
 pool for use by other pools; it may only be managed by a pool of
@@ -554,9 +554,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8733"
-></A
->Error checking</H2
+NAME="AEN9154"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -589,18 +589,18 @@ E_CTX</P
 ><LI
 ><P
 >pk_cxxx pointers in 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
  must be valid pointers, or E_PAR</P
 ></LI
 ><LI
 ><P
 >return value pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->ref_xxx()</TT
+>ref_xxx()</CODE
 >
  is a valid pointer, or E_PAR</P
 ></LI
@@ -628,14 +628,14 @@ CLASS="LITERAL"
 ><LI
 ><P
 >When create and delete functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->del_xxx()</TT
+>del_xxx()</CODE
 >
  are supported, all calls which use a valid object ID number check
 that the object exists. If not, E_NOEXS is returned.</P
@@ -643,18 +643,18 @@ that the object exists. If not, E_NOEXS is returned.</P
 ><LI
 ><P
 >When create functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_xxx()</TT
+>cre_xxx()</CODE
 >
  are supported, if the object already exists, then E_OBJ</P
 ></LI
 ><LI
 ><P
 >In any call which can sleep, such as 
-<TT
+<CODE
 CLASS="FUNCTION"
->get_blk()</TT
+>get_blk()</CODE
 >
 : return codes E_TMOUT, E_RLWAI, E_DLT
 or of course E_OK are returned depending on the reason
@@ -663,9 +663,9 @@ for terminating the sleep</P
 ><LI
 ><P
 >In polling functions such as 
-<TT
+<CODE
 CLASS="FUNCTION"
->pget_blk()</TT
+>pget_blk()</CODE
 >
 return codes E_TMOUT or E_OK are returned depending
 on the state of the synchronization object</P
@@ -674,9 +674,9 @@ on the state of the synchronization object</P
 ><P
 >In creation functions, the attributes must be compatible
 with the selected underlying kernel configuration: in 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mpl()</TT
+>cre_mpl()</CODE
 >
  
 <TT
@@ -693,9 +693,9 @@ CLASS="LITERAL"
 ><LI
 ><P
 >In 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mpf()</TT
+>cre_mpf()</CODE
 >
  
 <TT
@@ -716,9 +716,9 @@ pool must not be larger than that statically configured for the
 pool else E_RSATR; see the configuration option
 &#8220;Option: Static initializers&#8221;.
  In 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mpl()</TT
+>cre_mpl()</CODE
 >
  
 <TT
@@ -730,9 +730,9 @@ CLASS="LITERAL"
 ><LI
 ><P
 >In 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mpf()</TT
+>cre_mpf()</CODE
 >
  the product of 
 <TT
@@ -750,14 +750,14 @@ else E_RSATR</P
 ><LI
 ><P
 >In functions which return memory to the pool 
-<TT
+<CODE
 CLASS="FUNCTION"
->rel_blk()</TT
+>rel_blk()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->rel_blf()</TT
+>rel_blf()</CODE
 >
 , if the free fails, for example because the memory did not come
 from that pool originally, then E_PAR is returned</P

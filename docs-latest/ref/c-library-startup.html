@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="C-LIBRARY-STARTUP"
-></A
->C library startup</H1
+>C library startup</A
+></H1
 ><P
 >The C library includes a function declared as:</P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start</TT
+>cyg_iso_c_start</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -106,26 +106,26 @@ CLASS="FUNCTION"
 >This function is used to start an environment in which an
 ISO C style program can run in the most compatible way.</P
 ><P
->What this function does is to create a thread which will invoke <TT
+>What this function does is to create a thread which will invoke <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > &#8212; normally
 considered a program's entry point. In particular, it can
-supply arguments to <TT
+supply arguments to <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > using the CYGDAT_LIBC_ARGUMENTS
-configuration option, and when returning from <TT
+configuration option, and when returning from <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 >,
-or calling <TT
+or calling <CODE
 CLASS="FUNCTION"
->exit()</TT
+>exit()</CODE
 >, pending stdio file output
-is flushed and any functions registered with <TT
+is flushed and any functions registered with <CODE
 CLASS="FUNCTION"
->atexit()</TT
+>atexit()</CODE
 > are
 invoked. This is all compliant with the ISO C standard in this respect. </P
 ><P
@@ -143,23 +143,23 @@ CLASS="EMPHASIS"
 >eCos</I
 ></SPAN
 > kernel package is not
-available (and hence there is no scheduler), then <TT
+available (and hence there is no scheduler), then <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start()</TT
+>cyg_iso_c_start()</CODE
 > will
-invoke the <TT
+invoke the <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > function directly, i.e.
-it will not return until the <TT
+it will not return until the <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > function
 returns. </P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > function should be defined
 as the following, and if defined in a C&#0043;&#0043; file,
 should have &#8220;C&#8221; linkage: </P
@@ -171,9 +171,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->extern int <TT
+>extern int <CODE
 CLASS="FUNCTION"
->main</TT
+>main</CODE
 >( 
   int <SPAN
 CLASS="emphasis"
@@ -193,9 +193,9 @@ CLASS="EMPHASIS"
 ></TR
 ></TABLE
 ><P
->The thread that is started by <TT
+>The thread that is started by <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start()</TT
+>cyg_iso_c_start()</CODE
 > can
 be manipulated directly, if you wish. For example you can suspend
 it. The kernel C API needs a handle to do this, which is available
@@ -227,27 +227,27 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If you call <TT
+>If you call <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start()</TT
+>cyg_iso_c_start()</CODE
 > and
-do not provide your own <TT
+do not provide your own <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > function,
-the system will provide a <TT
+the system will provide a <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > for you
 which will simply return immediately.</P
 ><P
->In the default configuration, <TT
+>In the default configuration, <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start()</TT
+>cyg_iso_c_start()</CODE
 > is
-invoked automatically by the <TT
+invoked automatically by the <CODE
 CLASS="FUNCTION"
->cyg_package_start()</TT
+>cyg_package_start()</CODE
 > function
 in the infrastructure configuration. This means that in the simplest
 case, your program can indeed consist of simply:</P
@@ -267,22 +267,22 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If you override <TT
+>If you override <CODE
 CLASS="FUNCTION"
->cyg_package_start()</TT
-> or <TT
+>cyg_package_start()</CODE
+> or <CODE
 CLASS="FUNCTION"
->cyg_start()</TT
+>cyg_start()</CODE
 >,
 or disable the infrastructure configuration option CYGSEM_START_ISO_C_COMPATIBILITY
-then you must ensure that you call <TT
+then you must ensure that you call <CODE
 CLASS="FUNCTION"
->cyg_iso_c_start()</TT
+>cyg_iso_c_start()</CODE
 > yourself
 if you want to be able to have your program start at the entry point
-of <TT
+of <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > automatically.</P
 ></DIV
 ><DIV

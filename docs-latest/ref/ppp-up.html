@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="PPP-UP"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN9884"
+NAME="AEN10305"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN9884"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN9887"
+NAME="AEN10308"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN9888"
-></A
 ><P
 ></P
+><A
+NAME="AEN10309"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -131,17 +131,15 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN9897"
+NAME="AEN10318"
 ></A
 ><H2
 >Description</H2
 ><P
 >This function starts up a PPP connection. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->devnam</I
-></TT
+>devnam</CODE
 > argument is the name of the device to be
 used for the connection, typically <TT
 CLASS="LITERAL"
@@ -150,16 +148,14 @@ CLASS="LITERAL"
 <TT
 CLASS="LITERAL"
 >"/dev/ser1"</TT
->. The <TT
+>. The <CODE
 CLASS="STRUCTFIELD"
-><I
->options</I
-></TT
+>options</CODE
 >
 argument should point to an initialized
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_ppp_options_t</SPAN
+>cyg_ppp_options_t</CODE
 > object.</P
 ><P
 >The return value will either be zero, indicating a failure, or a

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13394"
+NAME="AEN13951"
 ></A
 ><H2
 >Name</H2
@@ -196,11 +196,11 @@ hardware for the application being developed.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13413"
-></A
 ><P
 ></P
+><A
+NAME="AEN13970"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -216,16 +216,16 @@ ALIGN="CENTER"></P
 application must not be linked with any of the standard Linux
 libraries such as the GNU C library: that would lead to a confusing
 situation where both eCos and the Linux libraries attempted to provide
-functions such as <TT
+functions such as <CODE
 CLASS="FUNCTION"
->printf</TT
+>printf</CODE
 >. Instead the synthetic
 target support must be implemented directly on top of the Linux
 kernels' system call interface. For example, the kernel provides a
 system call for write operations. The actual function
-<TT
+<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > is implemented in the system's C library,
 but all it does is move its arguments on to the stack or into certain
 registers and then execute a special trap instruction such as
@@ -236,13 +236,13 @@ CLASS="LITERAL"
 control transfers into the kernel, which will validate the arguments
 and perform the appropriate operation. Now, a synthetic target
 application cannot be linked with the system's C library. Instead it
-contains a function <TT
+contains a function <CODE
 CLASS="FUNCTION"
->cyg_hal_sys_write</TT
+>cyg_hal_sys_write</CODE
 > which, like
-the C library's <TT
+the C library's <CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > function, pushes its
 arguments on to the stack and executes the trap instruction. The Linux
 kernel cannot tell the difference, so it will perform the I/O
@@ -250,28 +250,26 @@ operation requested by the synthetic target. With appropriate
 knowledge of what system calls are available, this makes it possible
 to emulate the required I/O facilities. For example, spawning the
 ecosynth I/O auxiliary involves system calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_sys_fork</TT
+>cyg_hal_sys_fork</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_sys_execve</TT
+>cyg_hal_sys_execve</CODE
 >, and sending a request to the
-auxiliary uses <TT
+auxiliary uses <CODE
 CLASS="FUNCTION"
->cyg_hal_sys_write</TT
+>cyg_hal_sys_write</CODE
 >.
     </P
 ><P
 >In many ways developing for the synthetic target is no different from
 developing for real embedded targets. eCos must be configured
 appropriately: selecting a suitable target such as
-<TT
+<KBD
 CLASS="USERINPUT"
-><B
->i386linux</B
-></TT
+>i386linux</KBD
 > will cause the configuration system
 to load the appropriate packages for this hardware; this includes an
 architectural HAL package and a platform-specific package; the

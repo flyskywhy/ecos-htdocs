@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,7 +83,7 @@ CLASS="CHAPTER"
 ><A
 NAME="NET-COMMON-SUPPORT"
 ></A
->Chapter 32. Support Features</H1
+>Chapter 33. Support Features</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -109,8 +109,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-COMMON-TFTP"
-></A
->TFTP</H1
+>TFTP</A
+></H1
 ><P
 >The TFTP client and server are described in
 <TT
@@ -150,14 +150,14 @@ int tftp_client_put(char *filename,
 ></TR
 ></TABLE
 ><P
->Currently <TT
+>Currently <CODE
 CLASS="VARNAME"
->server</TT
+>server</CODE
 > can only be a numeric IPv4 or
 IPv6 address. The resolver is currently not used, but it is planned to
-add this feature (patches welcome). If <TT
+add this feature (patches welcome). If <CODE
 CLASS="VARNAME"
->port</TT
+>port</CODE
 > is zero
 the client connects to the default TFTP port on the server. Otherwise
 the specified port is used.</P
@@ -190,21 +190,21 @@ int tftp_client_put(char *filename,
 ></TABLE
 ></P
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->server</TT
+>server</CODE
 > should contain the address of the
-server to contact. If the <TT
+server to contact. If the <CODE
 CLASS="VARNAME"
->sin_port</TT
+>sin_port</CODE
 > member of the
 structure is zero the default TFTP port is used. Otherwise the
 specified port is used.</P
 ><P
 >Both API's report errors in the same way. The functions return a value
-of -1 and <TT
+of -1 and <CODE
 CLASS="VARNAME"
->*err</TT
+>*err</CODE
 > will be set to one of the
 following values:</P
 ><TABLE
@@ -256,9 +256,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >These functions have the obvious semantics.  The structure
-describing the filesystem is an argument to the <TT
+describing the filesystem is an argument to the <CODE
 CLASS="FUNCTION"
->tftpd_start</TT
+>tftpd_start</CODE
 >:
 <TABLE
 BORDER="5"
@@ -277,24 +277,24 @@ CLASS="PROGRAMLISTING"
 ><P
 >The first argument is the port to use for the server. If this
 port number is zero, the default TFTP port number will be used. The
-return value from <TT
+return value from <CODE
 CLASS="FUNCTION"
->tftpd_start</TT
+>tftpd_start</CODE
 > is a handle which
-can be passed to <TT
+can be passed to <CODE
 CLASS="FUNCTION"
->tftpd_stop</TT
+>tftpd_stop</CODE
 >. This will kill the
 tftpd thread. Note that this is not a clean shutdown. The thread will
-simply be killed. <TT
+simply be killed. <CODE
 CLASS="FUNCTION"
->tftpd_stop</TT
+>tftpd_stop</CODE
 > will attempt to
 close the sockets the thread was listening on and free some of its
 allocated memory. But if the thread was actively transferreing data at
-the time <TT
+the time <CODE
 CLASS="FUNCTION"
->tftpd_stop</TT
+>tftpd_stop</CODE
 > is called, it is quite likely
 some memory and a socket will be leaked. Use this function with
 caution (or implement a clean shutdown and please contribute the code

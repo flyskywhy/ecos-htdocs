@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-NEW-HOST"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14114"
+NAME="AEN14671"
 ></A
 ><H2
 >Name</H2
@@ -116,9 +116,9 @@ perhaps even matching the colour scheme, the shapes, and the relative
 sizes. With other devices it may be necessary for the Tcl script to
 interact with an external program, because the required functionality
 cannot easily be accessed from a Tcl script. For example interacting
-with a raw ethernet device involves some <TT
+with a raw ethernet device involves some <CODE
 CLASS="FUNCTION"
->ioctl</TT
+>ioctl</CODE
 >
 calls, which is easier to do in a C program. Therefore the
 <TT
@@ -147,14 +147,14 @@ namespace, so for example the <TT
 CLASS="FILENAME"
 >ethernet.tcl</TT
 > script
-creates a namespace <TT
+creates a namespace <CODE
 CLASS="VARNAME"
->ethernet::</TT
+>ethernet::</CODE
 > and all variables
 and procedures reside in this namespace. Similarly the I/O auxiliary
-itself makes use of a <TT
+itself makes use of a <CODE
 CLASS="VARNAME"
->synth::</TT
+>synth::</CODE
 > namespace.
     </P
 ></DIV
@@ -168,9 +168,9 @@ NAME="SYNTH-NEW-HOST-BUILD"
 ><P
 >When an eCos device driver or application code instantiates a device,
 the I/O auxiliary will attempt to load a matching Tcl script. The
-third argument to <TT
+third argument to <CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 >
 specifies the type of device, for example <TT
 CLASS="LITERAL"
@@ -237,9 +237,9 @@ to adjust the path to the root of the repository.
 CLASS="FILENAME"
 >configure.in</TT
 > may require a similar change, and
-the <TT
+the <CODE
 CLASS="FUNCTION"
->AC_INIT</TT
+>AC_INIT</CODE
 > macro invocation will have to be
 changed to match one of the files in the new package. A critical macro
 in this file is <TT
@@ -282,9 +282,9 @@ CLASS="FILENAME"
     </P
 ><P
 >To assist developers, if the environment variable
-<TT
+<CODE
 CLASS="ENVAR"
->ECOSYNTH_DEVEL</TT
+>ECOSYNTH_DEVEL</CODE
 > is set then a slightly different
 algorithm is used for locating device Tcl scripts. Instead of looking
 only in the install tree the I/O auxiliary will also look in the
@@ -298,9 +298,9 @@ install</B
     </P
 ><P
 >If a script needs to know where it has been installed it can examine
-the Tcl variable <TT
+the Tcl variable <CODE
 CLASS="VARNAME"
->synth::device_install_dir</TT
+>synth::device_install_dir</CODE
 > . This
 variable gets updated whenever a  script is loaded, so if the
 value may be needed later it should be saved away in a device-specific
@@ -343,39 +343,39 @@ return ethernet::instantiate</PRE
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->id</TT
+>id</CODE
 > argument is a unique identifier for this
 device instance. It will also be supplied on subsequent calls to the
 request handler, and will match the return value of
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 > on the target side. A
 common use for this value is as an array index to support multiple
-instances of this types of device. The <TT
+instances of this types of device. The <CODE
 CLASS="VARNAME"
->instance</TT
+>instance</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->data</TT
+>data</CODE
 > arguments match the corresponding arguments to
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 > on the target side, so
-a typical value for <TT
+a typical value for <CODE
 CLASS="VARNAME"
->instance</TT
+>instance</CODE
 > would be
 <TT
 CLASS="LITERAL"
 >eth0</TT
->, and <TT
+>, and <CODE
 CLASS="VARNAME"
->data</TT
+>data</CODE
 > is used to pass
 arbitrary initialization parameters from target to host.
     </P
@@ -394,9 +394,9 @@ the above.
 >If the device is successfully instantiated then the return value
 should be a handler for subsequent I/O requests. Otherwise the return
 value should be an empty string, and on the target-side the
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_instantiate</TT
+>synth_auxiliary_instantiate</CODE
 > call will return
 <TT
 CLASS="LITERAL"
@@ -418,9 +418,9 @@ NAME="SYNTH-NEW-HOST-REQUESTS"
 >Handling Requests</H2
 ><P
 >When the target-side calls
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 >, the I/O auxiliary will
 end up calling the request handler for the appropriate device instance
 returned during instantiation:
@@ -450,34 +450,34 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->id</TT
+>id</CODE
 > argument is the same device id that was
 passed to the instantiate function, and is typically used as an array
-index to access per-device data. The <TT
+index to access per-device data. The <CODE
 CLASS="VARNAME"
->request</TT
+>request</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->arg1</TT
->, <TT
+>arg1</CODE
+>, <CODE
 CLASS="VARNAME"
->arg2</TT
+>arg2</CODE
 >, and
-<TT
+<CODE
 CLASS="VARNAME"
->max_rxlen</TT
+>max_rxlen</CODE
 > are the same values that were passed to
-<TT
+<CODE
 CLASS="FUNCTION"
->synth_auxiliary_xchgmsg</TT
+>synth_auxiliary_xchgmsg</CODE
 > on the target-side,
 although since this is a Tcl script obviously the numbers have been
-converted to strings. The <TT
+converted to strings. The <CODE
 CLASS="VARNAME"
->txdata</TT
+>txdata</CODE
 > buffer is raw data
 as transmitted by the target, or an empty string if the I/O operation
 does not involve any additional data. The Tcl procedures
@@ -492,9 +492,9 @@ CLASS="COMMAND"
 CLASS="COMMAND"
 >string range</B
 > may be found especially useful when
-manipulating this buffer. <TT
+manipulating this buffer. <CODE
 CLASS="VARNAME"
->txlen</TT
+>txlen</CODE
 > is provided for
 convenience, although <B
 CLASS="COMMAND"
@@ -671,9 +671,9 @@ these should be checked by device-specific scripts.
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->synth::flag_gui</TT
+>synth::flag_gui</CODE
 ></DT
 ><DD
 ><P
@@ -697,9 +697,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->synth::flag_verbose</TT
+>synth::flag_verbose</CODE
 ></DT
 ><DD
 ><P
@@ -709,19 +709,19 @@ should be produced.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->synth::flag_keep_going</TT
+>synth::flag_keep_going</CODE
 ></DT
 ><DD
 ><P
->The user has specified <TT
+>The user has specified <CODE
 CLASS="OPTION"
->-k</TT
+>-k</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--keep-going</TT
+>--keep-going</CODE
 >, so even if an error occurs the I/O
 auxiliary and the various device driver scripts should continue running
 if at all possible. Diagnostics should still be generated.
@@ -833,22 +833,22 @@ CLASS="COMMAND"
 >.
 At present there is no support for some advanced forms of command line
 argument processing. For example it is not possible to repeat a
-certain option such as <TT
+certain option such as <CODE
 CLASS="OPTION"
->-v</TT
+>-v</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--verbose</TT
+>--verbose</CODE
 >, with each occurrence increasing the level
 of verbosity. 
     </P
 ><P
 >If a script is going to have its own set of command-line arguments
 then it should give appropriate details if the user specifies
-<TT
+<CODE
 CLASS="OPTION"
->--help</TT
+>--help</CODE
 >. This involves a hook function:
     </P
 ><TABLE
@@ -991,9 +991,9 @@ CLASS="COMMAND"
 >lindex</B
 >. Some
 options can occur multiple times in one entry, for example
-<TT
+<CODE
 CLASS="OPTION"
->filter</TT
+>filter</CODE
 > in the <TT
 CLASS="LITERAL"
 >console</TT
@@ -1013,12 +1013,12 @@ well.
 ><P
 >The I/O auxiliary will not issue warnings about entries in the target
 definition file for devices which were not loaded, unless the
-<TT
+<CODE
 CLASS="OPTION"
->-v</TT
-> or <TT
+>-v</CODE
+> or <CODE
 CLASS="OPTION"
->--verbose</TT
+>--verbose</CODE
 > command line
 argument was used. This makes it easier to use a single target
 definition file for different applications. However the auxiliary will
@@ -1198,9 +1198,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >This hook is called just before the I/O auxiliary exits. Hence it
-provides much the same functionality as <TT
+provides much the same functionality as <CODE
 CLASS="FUNCTION"
->atexit</TT
+>atexit</CODE
 > in
 C programs. The argument list passed to the callback function will be
 empty. 
@@ -1250,13 +1250,13 @@ CLASS="LITERAL"
 ><DD
 ><P
 >This hook is also invoked once static constructors have been run, but
-only if the user specified <TT
+only if the user specified <CODE
 CLASS="OPTION"
->-h</TT
+>-h</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--help</TT
+>--help</CODE
 >. Any scripts that add their own command line
 arguments should add a callback to this hook which outputs details of
 the additional arguments. The callback argument list will be empty.
@@ -1298,9 +1298,9 @@ CLASS="COMMAND"
 >puts</B
 > or directly
 manipulating the central text widget
-<TT
+<CODE
 CLASS="VARNAME"
->.main.centre.text</TT
+>.main.centre.text</CODE
 >. However in nearly all cases it
 is better to use output facilities provided by the I/O auxiliary
 itself: 
@@ -1327,22 +1327,22 @@ CLASS="COMMAND"
 >synth::report</B
 > is intended for messages related to
 the operation of the I/O auxiliary itself, especially additional
-output resulting from <TT
+output resulting from <CODE
 CLASS="OPTION"
->-v</TT
+>-v</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--verbose</TT
+>--verbose</CODE
 >. If running in text mode the output will go
 to standard output. If running in graphical mode the output will go to
-the central text window. In both modes, use of <TT
+the central text window. In both modes, use of <CODE
 CLASS="OPTION"
->-l</TT
+>-l</CODE
 > or
-<TT
+<CODE
 CLASS="OPTION"
->--logfile</TT
+>--logfile</CODE
 > will modify the behaviour.
     </P
 ><P
@@ -1372,12 +1372,12 @@ CLASS="COMMAND"
 >synth::error</B
 > then the
 I/O auxiliary will exit. This can be suppressed with command line
-arguments <TT
+arguments <CODE
 CLASS="OPTION"
->-k</TT
-> or <TT
+>-k</CODE
+> or <CODE
 CLASS="OPTION"
->--keep-going</TT
+>--keep-going</CODE
 >.
 <B
 CLASS="COMMAND"
@@ -1416,9 +1416,9 @@ CLASS="LITERAL"
 >console</TT
 > filter. If running in graphical mode the
 default appearance of this text can be modified with the
-<TT
+<CODE
 CLASS="OPTION"
->appearance</TT
+>appearance</CODE
 > option in the
 <B
 CLASS="COMMAND"
@@ -1508,18 +1508,18 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->On success <TT
+>On success <CODE
 CLASS="VARNAME"
->parsed_options</TT
+>parsed_options</CODE
 > will be updated with an
 internal representation of the desired appearance, which can then be
 used in a call to <B
 CLASS="COMMAND"
 >synth::filter_add_parsed</B
 >. On
-failure <TT
+failure <CODE
 CLASS="VARNAME"
->message</TT
+>message</CODE
 > will be updated with details of the
 parsing error that occurred.
     </P
@@ -1549,11 +1549,11 @@ update the widget hierarchy directly.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN14406"
-></A
 ><P
 ></P
+><A
+NAME="AEN14963"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -1574,47 +1574,47 @@ CLASS="COMMAND"
 >.menubar.help&nbsp;add</B
 > operation with suitable
 arguments. Adding a new button to the toolbar involves creating a
-child window in <TT
+child window in <CODE
 CLASS="VARNAME"
->.toolbar</TT
+>.toolbar</CODE
 > and packing it
 appropriately. Scripts can create their own subwindows and then pack
-it into one of <TT
+it into one of <CODE
 CLASS="VARNAME"
->.main.nw</TT
+>.main.nw</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.n</TT
->, <TT
+>.main.n</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.ne</TT
+>.main.ne</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.w</TT
->, <TT
+>.main.w</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.e</TT
+>.main.e</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.sw</TT
->, <TT
+>.main.sw</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.s</TT
+>.main.s</CODE
 > or
-<TT
+<CODE
 CLASS="VARNAME"
->.main.se</TT
+>.main.se</CODE
 >. Normally the user should be allowed to
 <A
 HREF="synth-gui.html#SYNTH-GUI-LAYOUT"
 >control</A
 > this via the target
-definition file. The central window <TT
+definition file. The central window <CODE
 CLASS="VARNAME"
->.main.centre</TT
+>.main.centre</CODE
 >
 should normally be left alone by other scripts since it gets used for
 text output.

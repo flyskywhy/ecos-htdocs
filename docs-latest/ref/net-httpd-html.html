@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 53. Embedded HTTP Server</TD
+>Chapter 54. Embedded HTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,18 +83,18 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-HTTPD-HTML"
-></A
->Support Functions and Macros</H1
+>Support Functions and Macros</A
+></H1
 ><P
 >The emphasis of this server is on dynamically generated content,
 rather than fetching it from a filesystem. To do this the handler
-functions make calls to <TT
+functions make calls to <CODE
 CLASS="FUNCTION"
->fprintf()</TT
+>fprintf()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->fputs()</TT
+>fputs()</CODE
 >. Such handler functions would end up a
 mass of print calls, with the actual structure of the HTML page hidden
 in the format strings and arguments, making maintenance and debugging
@@ -109,11 +109,9 @@ CLASS="FILENAME"
 >cyg/httpd/httpd.h</TT
 > header file defines a set of
 helper functions and macros. Most of these are wrappers for predefined
-print calls on the <TT
+print calls on the <CODE
 CLASS="PARAMETER"
-><I
->client</I
-></TT
+>client</CODE
 > stream passed to the
 hander function. For examples of their use, see the System Monitor
 example.</P
@@ -126,16 +124,12 @@ CLASS="NOTE"
 >Note: </B
 >All arguments to macros are pointers to strings, unless otherwise
 stated. In general, wherever a function or macro has an
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->attr</I
-></TT
-> or <TT
+>attr</CODE
+> or <CODE
 CLASS="PARAMETER"
-><I
->__attr</I
-></TT
+>__attr</CODE
 >
 parameter, then the contents of this string will be inserted into the
 tag being defined as HTML attributes. If it is a NULL or empty string
@@ -147,9 +141,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN11001"
-></A
->HTTP Support</H2
+NAME="AEN11422"
+>HTTP Support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -166,31 +160,27 @@ void cyg_http_finish( FILE *client );
 ></TR
 ></TABLE
 ><P
->The function <TT
+>The function <CODE
 CLASS="FUNCTION"
->cyg_http_start()</TT
+>cyg_http_start()</CODE
 > generates a simple
 HTTP response header containing the value of
 <TT
 CLASS="LITERAL"
 >CYGDAT_HTTPD_SERVER_ID</TT
 > in the &quot;Server&quot; field, and the
-values of <TT
+values of <CODE
 CLASS="PARAMETER"
-><I
->content_type</I
-></TT
+>content_type</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->content_length</I
-></TT
+>content_length</CODE
 > in the &quot;Content-type&quot;
 and &quot;Content-length&quot; field respectively. The function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_http_finish()</TT
+>cyg_http_finish()</CODE
 > just adds an extra newline to
 the end of the output and then flushes it to force the data out to the
 client.</P
@@ -205,9 +195,9 @@ CLASS="LITERAL"
 >html_end()</TT
 > generates
 a closing &quot;&lt;/html&gt;&quot; tag and calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_http_finish()</TT
+>cyg_http_finish()</CODE
 >.</P
 ></DIV
 ><DIV
@@ -215,9 +205,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN11014"
-></A
->General HTML Support</H2
+NAME="AEN11435"
+>General HTML Support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -241,14 +231,14 @@ void cyg_html_tag_end( FILE *client, char *tag );
 ></TR
 ></TABLE
 ><P
->The function <TT
+>The function <CODE
 CLASS="FUNCTION"
->cyg_html_tag_begin()</TT
+>cyg_html_tag_begin()</CODE
 > generates an
 opening tag with the given name. The function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_html_tag_end()</TT
+>cyg_html_tag_end()</CODE
 > generates a closing tag with
 the given name. The macros <TT
 CLASS="LITERAL"
@@ -263,17 +253,13 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >html_head()</TT
 > generates an HTML header
-section with <TT
+section with <CODE
 CLASS="PARAMETER"
-><I
->__title</I
-></TT
+>__title</CODE
 > as the title. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__meta</I
-></TT
+>__meta</CODE
 > argument defines any meta tags that will
 be inserted into the header. <TT
 CLASS="LITERAL"
@@ -289,17 +275,13 @@ tags.</P
 CLASS="LITERAL"
 >html_heading()</TT
 > generates a complete HTML header
-where <TT
+where <CODE
 CLASS="PARAMETER"
-><I
->__level</I
-></TT
+>__level</CODE
 > is a numerical level, between 1
-and 6, and <TT
+and 6, and <CODE
 CLASS="PARAMETER"
-><I
->__heading</I
-></TT
+>__heading</CODE
 > is the heading
 text. <TT
 CLASS="LITERAL"
@@ -311,33 +293,25 @@ break.</P
 CLASS="LITERAL"
 >html_url()</TT
 > inserts a URL where
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__text</I
-></TT
+>__text</CODE
 > is the displayed text and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__link</I
-></TT
+>__link</CODE
 > is the URL of the linked
 page. <TT
 CLASS="LITERAL"
 >html_image()</TT
 > inserts an image tag where
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__source</I
-></TT
+>__source</CODE
 > is the URL of the image to be
-included and <TT
+included and <CODE
 CLASS="PARAMETER"
-><I
->__alt</I
-></TT
+>__alt</CODE
 > is the alternative text for
 when the image is not displayed.</P
 ></DIV
@@ -346,9 +320,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN11040"
-></A
->Table Support</H2
+NAME="AEN11461"
+>Table Support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -380,11 +354,9 @@ it. <TT
 CLASS="LITERAL"
 >html_table_header()</TT
 > generates a simple table
-column header containg the string <TT
+column header containg the string <CODE
 CLASS="PARAMETER"
-><I
->__content</I
-></TT
+>__content</CODE
 >. </P
 ><P
 ><TT
@@ -410,9 +382,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN11053"
-></A
->Forms Support</H2
+NAME="AEN11474"
+>Forms Support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -440,11 +412,9 @@ char *cyg_formlist_find( char *list[], char *name );</PRE
 CLASS="LITERAL"
 >html_form_begin()</TT
 > begins a form, the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__url</I
-></TT
+>__url</CODE
 > argument is the value for the
 <TT
 CLASS="LITERAL"
@@ -464,11 +434,9 @@ value. <TT
 CLASS="LITERAL"
 >html_form_input_radio</TT
 > creates a radio button
-with the given name and value; the <TT
+with the given name and value; the <CODE
 CLASS="PARAMETER"
-><I
->__checked</I
-></TT
+>__checked</CODE
 >
 argument is a boolean expression that is used to determine whether the
 <TT
@@ -497,11 +465,9 @@ end it. <TT
 CLASS="LITERAL"
 >html_form_option()</TT
 > defines a menu entry
-with the given value and label; the <TT
+with the given value and label; the <CODE
 CLASS="PARAMETER"
-><I
->__selected</I
-></TT
+>__selected</CODE
 >
 argument is a boolean expression controlling whether the
 <TT
@@ -509,48 +475,40 @@ CLASS="LITERAL"
 >selected</TT
 > attribute is added to the tag.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_formdata_parse()</TT
+>cyg_formdata_parse()</CODE
 > converts a form response
 string into an <TT
 CLASS="LITERAL"
 >NULL</TT
 >-terminated array of
-&quot;name=value&quot; entries. The <TT
+&quot;name=value&quot; entries. The <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 >
 argument is the string as passed to the handler function; note that
 this string is not copied and will be updated in place to form the
-list entries.  <TT
+list entries.  <CODE
 CLASS="PARAMETER"
-><I
->list</I
-></TT
+>list</CODE
 > is a pointer to an array of
-character pointers, and is <TT
+character pointers, and is <CODE
 CLASS="PARAMETER"
-><I
->size</I
-></TT
+>size</CODE
 > elements long.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_formlist_find()</TT
+>cyg_formlist_find()</CODE
 > searches a list generated by
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_formdata_parse()</TT
+>cyg_formdata_parse()</CODE
 > and returns a pointer to the
 value part of the string whose name part matches
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->name</I
-></TT
+>name</CODE
 >; if there is no match it will return
 <TT
 CLASS="LITERAL"
@@ -562,9 +520,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN11084"
-></A
->Predefined Handlers</H2
+NAME="AEN11505"
+>Predefined Handlers</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -591,9 +549,9 @@ cyg_bool cyg_httpd_send_data( FILE *client, char *filename, char *request, void 
 >The HTTP server defines a couple of predefined handers to make it
 easier to deliver simple, static content.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_httpd_send_html()</TT
+>cyg_httpd_send_html()</CODE
 > takes a
 <TT
 CLASS="LITERAL"
@@ -620,9 +578,9 @@ CYG_HTTPD_TABLE_ENTRY( cyg_html_message_entry,
 ></TR
 ></TABLE
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_httpd_send_data()</TT
+>cyg_httpd_send_data()</CODE
 > Sends arbitrary data to the
 client. The argument is a pointer to a <SPAN
 CLASS="TYPE"

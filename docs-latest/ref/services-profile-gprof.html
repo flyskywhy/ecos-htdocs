@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,15 +6,15 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->Application profiling</TITLE
+>gprof Profiling Support</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -22,8 +22,8 @@ REL="PREVIOUS"
 TITLE="CPU Load Measurements"
 HREF="cpuload-functions.html"><LINK
 REL="NEXT"
-TITLE="Profiling functions"
-HREF="profile-functions.html"></HEAD
+TITLE="Profiling"
+HREF="gprof.html"></HEAD
 ><BODY
 CLASS="PART"
 BGCOLOR="#FFFFFF"
@@ -65,7 +65,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="profile-functions.html"
+HREF="gprof.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -83,77 +83,7 @@ NAME="SERVICES-PROFILE-GPROF"
 CLASS="TITLEPAGE"
 ><H1
 CLASS="TITLE"
->XXIII. Application profiling</H1
-><DIV
-CLASS="PARTINTRO"
-><A
-NAME="AEN11270"
-></A
-><P
->The profile_gprof package provides a mechanism to measure the
-runtime performance of an application.  This is done by gathering
-an execution histogram.</P
-><P
->When profiling is started on the target device, a 
-<TT
-CLASS="FUNCTION"
->TFTP</TT
-> 
-server will be started
-which exports the single file
-<TT
-CLASS="FILENAME"
->PROFILE.DAT</TT
->
-This analysis data can then be fetched
-by connecting to the target with a <TT
-CLASS="FUNCTION"
->TFTP</TT
-> 
-client program
-and then be processed by the 
-<TT
-CLASS="FUNCTION"
->gprof</TT
->
-utility program.
-<DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
-><P
-><B
->NOTE: </B
->Be sure and specify binary mode transfers for this data file,
-which may not be the default with on some <TT
-CLASS="FUNCTION"
->TFTP</TT
->
-client programs.</P
-></BLOCKQUOTE
-></DIV
->
-<DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
-><P
-><B
->NOTE: </B
->The port used for this <TT
-CLASS="FUNCTION"
->TFTP</TT
-> server is
-configurable.  The default will be the IETF standard port
-of 69/UDP, but it may be changed to any UDP port via the
-<TT
-CLASS="LITERAL"
->CYGNUM_PROFILE_TFTP_PORT</TT
-> CDL option.</P
-></BLOCKQUOTE
-></DIV
-></P
-></DIV
+>XXV. gprof Profiling Support</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -162,10 +92,10 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->58. <A
-HREF="profile-functions.html"
->Profiling functions</A
-></DT
+><A
+HREF="gprof.html"
+>Profiling</A
+>&nbsp;--&nbsp;eCos Support for the gprof profiling tool</DT
 ></DL
 ></DIV
 ></DIV
@@ -204,7 +134,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="profile-functions.html"
+HREF="gprof.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -224,7 +154,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Profiling functions</TD
+>Profiling</TD
 ></TR
 ></TABLE
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LIBC-THREAD-SAFETY"
-></A
->Thread safety</H1
+>Thread safety</A
+></H1
 ><P
 >The ISO C library has configuration options that control thread
 safety, i.e. working behavior if multiple threads call the same
@@ -97,110 +97,110 @@ or used carefully in a multi-threaded environment:</P
 ><UL
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->mblen()</TT
+>mblen()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->mbtowc()</TT
+>mbtowc()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->wctomb()</TT
+>wctomb()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->printf()</TT
+>printf()</CODE
 >
  (and all standard I/O functions except for 
-<TT
+<CODE
 CLASS="FUNCTION"
->sprintf()</TT
+>sprintf()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->sscanf()</TT
+>sscanf()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->strtok()</TT
+>strtok()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->rand()</TT
+>rand()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->srand()</TT
+>srand()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->signal()</TT
+>signal()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->raise()</TT
+>raise()</CODE
 ></P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->asctime()</TT
+>asctime()</CODE
 >
 , 
-<TT
+<CODE
 CLASS="FUNCTION"
->ctime()</TT
+>ctime()</CODE
 >
 , 
-<TT
+<CODE
 CLASS="FUNCTION"
->gmtime()</TT
+>gmtime()</CODE
 >
 , and 
-<TT
+<CODE
 CLASS="FUNCTION"
->localtime()</TT
+>localtime()</CODE
 ></P
 ></LI
 ><LI
 ><P
 >the 
-<TT
+<CODE
 CLASS="FUNCTION"
->errno</TT
+>errno</CODE
 >
  variable</P
 ></LI
 ><LI
 ><P
 >the 
-<TT
+<CODE
 CLASS="FUNCTION"
->environ</TT
+>environ</CODE
 >
  variable</P
 ></LI
@@ -218,31 +218,31 @@ CLASS="EMPHASIS"
 ></SPAN
 > development
 easier, functions are provided (as specified by POSIX 1003.1) that define
-re-entrant alternatives, i.e. <TT
+re-entrant alternatives, i.e. <CODE
 CLASS="FUNCTION"
->rand_r()</TT
->, <TT
+>rand_r()</CODE
+>, <CODE
 CLASS="FUNCTION"
->strtok_r()</TT
->, <TT
+>strtok_r()</CODE
+>, <CODE
 CLASS="FUNCTION"
->asctime_r()</TT
->, <TT
+>asctime_r()</CODE
+>, <CODE
 CLASS="FUNCTION"
->ctime_r()</TT
->, <TT
+>ctime_r()</CODE
+>, <CODE
 CLASS="FUNCTION"
->gmtime_r()</TT
+>gmtime_r()</CODE
 >,
-and <TT
+and <CODE
 CLASS="FUNCTION"
->localtime_r()</TT
+>localtime_r()</CODE
 >. In other cases,
 configuration options are provided that control either locking of functions
 or their shared data, such as with standard I/O streams,
-or by using per-thread data, such as with the <TT
+or by using per-thread data, such as with the <CODE
 CLASS="FUNCTION"
->errno</TT
+>errno</CODE
 > variable.</P
 ><P
 >In some other cases, like the setting of date and time, no

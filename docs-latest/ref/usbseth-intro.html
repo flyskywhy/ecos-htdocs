@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBSETH-INTRO"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13093"
+NAME="AEN13650"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN13093"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13096"
+NAME="AEN13653"
 ></A
 ><H2
 >Introduction</H2
@@ -166,7 +166,7 @@ peripheral. </P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13109"
+NAME="AEN13666"
 ></A
 ><H2
 >Usage Scenarios</H2
@@ -176,11 +176,11 @@ a simple scenario, the peripheral serves only to connect the USB host
 to a suitable network:</P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13112"
-></A
 ><P
 ></P
+><A
+NAME="AEN13669"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -195,14 +195,14 @@ ALIGN="CENTER"></P
 >After initialization, and once the USB connection between host and
 peripheral has been established, higher-level code needs to detect
 packets that are intended for the host, and to forward these. This can
-be achieved by the low-level <TT
+be achieved by the low-level <CODE
 CLASS="FUNCTION"
->usbs_eth_start_tx</TT
+>usbs_eth_start_tx</CODE
 >
 function. Similarly, higher-level code needs to detect packets coming
-from the host, using <TT
+from the host, using <CODE
 CLASS="FUNCTION"
->usbs_eth_start_rx</TT
+>usbs_eth_start_rx</CODE
 >, and to
 forward these using the real network. As far as the host is concerned
 it is connected directly to the network. In this scenario there is no
@@ -218,11 +218,11 @@ HREF="usbseth-init.html"
 the peripheral.</P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13121"
-></A
 ><P
 ></P
+><A
+NAME="AEN13678"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P

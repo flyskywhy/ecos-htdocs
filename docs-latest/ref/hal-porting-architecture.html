@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-ARCHITECTURE"
-></A
->Architecture HAL Porting</H1
+>Architecture HAL Porting</A
+></H1
 ><P
 >A new architecture HAL is the most complex HAL to write, and it the
 least easily described. Hence this section is presently nothing more
@@ -95,8 +95,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4613"
-></A
->HAL Architecture Porting Process</H2
+>HAL Architecture Porting Process</A
+></H2
 ><P
 >The easiest way to make a new architecture HAL is simply to copy an
 existing architecture HAL of an, if possible, closely matching
@@ -168,9 +168,9 @@ HAL. Within this file you need to change or define the following:</P
 ><UL
 ><LI
 ><P
->Define the <SPAN
+>Define the <CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure. This
 may need to reflect the save order of any group register save/restore
 instructions, the interrupt and exception save and restore formats,
@@ -210,9 +210,9 @@ CLASS="LITERAL"
 > will execute it
 correctly. This macro needs to take account of the same optional
 features of the architecture as the definition of
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 >.</P
 ></LI
 ><LI
@@ -248,11 +248,9 @@ CLASS="LITERAL"
 >HAL_BREAKPOINT(label)</TT
 > needs to be an inline assembly
 fragment that invokes a breakpoint. The breakpoint instruction should
-be labeled with the <TT
+be labeled with the <CODE
 CLASS="PARAMETER"
-><I
->label</I
-></TT
+>label</CODE
 >
 argument. <TT
 CLASS="LITERAL"
@@ -269,9 +267,9 @@ instruction for debugging purposes.</P
 >Define GDB support. GDB views the registers of the target as a linear
 array, with each register having a well defined offset. This array may
 differ from the ordering defined in
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 >. The macros
 <TT
 CLASS="LITERAL"
@@ -281,18 +279,18 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >HAL_SET_GDB_REGISTERS()</TT
 > translate between the GDB
-array and the <SPAN
+array and the <CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure.
 The <TT
 CLASS="LITERAL"
 >HAL_THREAD_GET_SAVED_REGISTERS()</TT
 > translates a
 stack pointer saved by the context switch macros into a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure. Usually this is
 a one-to-one translation, but this macro allows it to differ if
 necessary.</P
@@ -303,21 +301,21 @@ necessary.</P
 CLASS="TYPE"
 >hal_jmp_buf</SPAN
 > and the
-functions <TT
+functions <CODE
 CLASS="FUNCTION"
->hal_setjmp()</TT
+>hal_setjmp()</CODE
 > and
 <TT
 CLASS="LITERAL"
 >hal_longjmp()</TT
 > provide the underlying implementation
-of the C library <TT
+of the C library <CODE
 CLASS="FUNCTION"
->setjmp()</TT
+>setjmp()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->longjmp()</TT
+>longjmp()</CODE
 >.</P
 ></LI
 ><LI
@@ -613,17 +611,17 @@ CLASS="FILENAME"
 overridden in the variant or platform HALs. Other jobs that this code
 should do are: initialize stack pointer; copy the data section from
 ROM to RAM if necessary; zero the BSS; call variant and platform
-initializers; call <TT
+initializers; call <CODE
 CLASS="FUNCTION"
->cyg_hal_invoke_constructors()</TT
+>cyg_hal_invoke_constructors()</CODE
 >;
-call <TT
+call <CODE
 CLASS="FUNCTION"
->initialize_stub()</TT
+>initialize_stub()</CODE
 > if necessary. Finally it
-should call <TT
+should call <CODE
 CLASS="FUNCTION"
->cyg_start()</TT
+>cyg_start()</CODE
 >. See <A
 HREF="hal-exception-handling.html#HAL-STARTUP"
 >the Section called <I
@@ -656,9 +654,9 @@ what this VSR does.</P
 ><LI
 ><P
 >Write
-<TT
+<CODE
 CLASS="FUNCTION"
->hal_interrupt_stack_call_pending_dsrs()</TT
+>hal_interrupt_stack_call_pending_dsrs()</CODE
 >. If this
 function is defined in <TT
 CLASS="FILENAME"
@@ -692,9 +690,9 @@ register) to locations in the interrupt stack.</P
 ></LI
 ><LI
 ><P
->Call <TT
+>Call <CODE
 CLASS="FUNCTION"
->cyg_interrupt_call_pending_DSRs()</TT
+>cyg_interrupt_call_pending_DSRs()</CODE
 >. This is a
 kernel functions that actually calls any pending DSRs.</P
 ></LI
@@ -740,13 +738,13 @@ HREF="hal-architecture-characterization.html#HAL-CONTEXT-SWITCH"
 > in Chapter 4</A
 > for details of
 how these functions operate. This file may also contain the
-implementation of <TT
+implementation of <CODE
 CLASS="FUNCTION"
->hal_setjmp()</TT
+>hal_setjmp()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->hal_longjmp()</TT
+>hal_longjmp()</CODE
 >.</P
 ></LI
 ><LI
@@ -761,9 +759,9 @@ data and functions needed by the HAL. These might include:</P
 ><UL
 ><LI
 ><P
-><TT
+><CODE
 CLASS="VARNAME"
->hal_interrupt_*[]</TT
+>hal_interrupt_*[]</CODE
 >. In some HALs, if these arrays
 are not defined in <TT
 CLASS="FILENAME"
@@ -773,33 +771,33 @@ defined here.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_hal_exception_handler()</TT
+>cyg_hal_exception_handler()</CODE
 >. This function is
 called from the exception VSR. It usually does extra decoding of the
 exception and invokes any special handlers for things like FPU traps,
 bus errors or memory exceptions. If there is nothing special to be
 done for an exception, then it either calls into the GDB stubs, by
-calling <TT
+calling <CODE
 CLASS="FUNCTION"
->__handle_exception()</TT
+>__handle_exception()</CODE
 >, or
 invokes the kernel by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_deliver_exception()</TT
+>cyg_hal_deliver_exception()</CODE
 >.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->hal_arch_default_isr()</TT
+>hal_arch_default_isr()</CODE
 >. The
-<TT
+<CODE
 CLASS="VARNAME"
->hal_interrupt_handlers[]</TT
+>hal_interrupt_handlers[]</CODE
 > array is usually
 initialized with pointers to <TT
 CLASS="FILENAME"
@@ -807,17 +805,17 @@ CLASS="FILENAME"
 >,
 which is defined in the common HAL. This function handles things like
 Ctrl-C processing, but if that is not relevant, then it will call
-<TT
+<CODE
 CLASS="FUNCTION"
->hal_arch_default_isr()</TT
+>hal_arch_default_isr()</CODE
 >. Normally this function
 should just return zero.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_hal_invoke_constructors()</TT
+>cyg_hal_invoke_constructors()</CODE
 >. This calls the
 constructors for all static objects before the program starts. eCos
 relies on these being called in the correct order for it to function
@@ -854,9 +852,9 @@ implementations can be found in several HALs (MIPS for example).</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->hal_delay_us()</TT
+>hal_delay_us()</CODE
 >. If the macro
 <TT
 CLASS="LITERAL"
@@ -872,9 +870,9 @@ function should take care to avoid overflow in any calculations.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->hal_idle_thread_action()</TT
+>hal_idle_thread_action()</CODE
 >. This function is called
 from the idle thread via the
 <TT
@@ -984,8 +982,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-ARCHITECTURE-CDL"
-></A
->CDL Requirements</H2
+>CDL Requirements</A
+></H2
 ><P
 >The CDL needed for any particular architecture HAL depends to a large
 extent on the needs of that architecture. This includes issues such as
@@ -1247,9 +1245,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >Finally, this interface indicates whether the platform supplied an
 implementation of the
-<TT
+<CODE
 CLASS="FUNCTION"
->hal_i386_mem_real_region_top()</TT
+>hal_i386_mem_real_region_top()</CODE
 > function. If it
 does then it will contain a line of the form: <TT
 CLASS="LITERAL"

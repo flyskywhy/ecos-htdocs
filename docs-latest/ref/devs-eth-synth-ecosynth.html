@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="DEVS-ETH-SYNTH-ECOSYNTH"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14629"
+NAME="AEN15186"
 ></A
 ><H2
 >Name</H2
@@ -93,25 +93,25 @@ NAME="AEN14629"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14632"
+NAME="AEN15189"
 ></A
 ><H2
 >Overview</H2
 ><P
 >The synthetic target ethernet package can provide up to four network
-devices, <TT
+devices, <CODE
 CLASS="VARNAME"
->eth0</TT
-> to <TT
+>eth0</CODE
+> to <CODE
 CLASS="VARNAME"
->eth3</TT
+>eth3</CODE
 >. These can
 be used directly by the eCos application or, more commonly, by a
 TCP/IP stack that is linked with the eCos application. Each eCos
 device can be mapped on to a real Linux network device. For example,
-if the Linux PC has two ethernet cards and <TT
+if the Linux PC has two ethernet cards and <CODE
 CLASS="VARNAME"
->eth1</TT
+>eth1</CODE
 > is
 not currently being used by Linux itself, then one of the eCos devices
 can be mapped on to this Linux device. Alternatively, it is possible
@@ -141,11 +141,11 @@ CLASS="COMMAND"
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN14642"
-></A
 ><P
 ></P
+><A
+NAME="AEN15199"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -297,9 +297,9 @@ CLASS="FILENAME"
 >README.host</TT
 > file can be consulted for more
 details. It is essential that the ethernet support be configured with
-the same <TT
+the same <CODE
 CLASS="OPTION"
->--prefix</TT
+>--prefix</CODE
 > option as other eCos host-side
 software, especially the I/O auxiliary provided by the architectural
 synthetic target HAL package, otherwise the I/O auxiliary will be
@@ -315,16 +315,16 @@ NAME="DEVS-ETH-ECOSYNTH-OPTIONS"
 >Target-side Configuration Options</H2
 ><P
 >The target-side code can be configured to support up to four ethernet
-devices, <TT
+devices, <CODE
 CLASS="VARNAME"
->eth0</TT
-> to <TT
+>eth0</CODE
+> to <CODE
 CLASS="VARNAME"
->eth3</TT
+>eth3</CODE
 >. By
-default <TT
+default <CODE
 CLASS="VARNAME"
->eth0</TT
+>eth0</CODE
 > is enabled if the configuration
 includes a TCP/IP stack, otherwise it is disabled. The other three
 devices are always disabled by default. If any of the devices are
@@ -371,13 +371,13 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->For example, to map the eCos network device <TT
+>For example, to map the eCos network device <CODE
 CLASS="VARNAME"
->eth0</TT
+>eth0</CODE
 > to
-the Linux device <TT
+the Linux device <CODE
 CLASS="VARNAME"
->eth1</TT
+>eth1</CODE
 >:
     </P
 ><TABLE
@@ -406,9 +406,9 @@ CLASS="COMMAND"
 >rawether</B
 > program will
 refuse to access any ethernet device already in use. On a typical
-Linux system <TT
+Linux system <CODE
 CLASS="VARNAME"
->eth0</TT
+>eth0</CODE
 > will be used for Linux
 networking, and the PC will have to be equipped with additional
 ethernet devices for use by eCos.
@@ -446,9 +446,9 @@ device <TT
 CLASS="FILENAME"
 >/dev/net/tun</TT
 >, perform various
-<TT
+<CODE
 CLASS="FUNCTION"
->ioctl</TT
+>ioctl</CODE
 > calls, and then <TT
 CLASS="FILENAME"
 >write</TT
@@ -458,9 +458,9 @@ CLASS="FILENAME"
 >read</TT
 > ethernet packets. When the device is
 opened the Linux kernel automatically creates a new network interface,
-for example <TT
+for example <CODE
 CLASS="VARNAME"
->tap0</TT
+>tap0</CODE
 >. The Linux TCP/IP stack can be
 made to use this network interface like any other interface, receiving
 and transmitting ethernet packets. The net effect is a virtual network
@@ -525,9 +525,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The Linux kernel will automatically allocate the next available tap
-network interface. Usually this will be <TT
+network interface. Usually this will be <CODE
 CLASS="VARNAME"
->tap0</TT
+>tap0</CODE
 > but if
 other software is using the ethertap facility, for example to
 implement a VPN, then a different number may be allocated. Usually it
@@ -588,9 +588,9 @@ CLASS="FILENAME"
 CLASS="COMMAND"
 >rawether</B
 > processes, which in turn will
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > <TT
 CLASS="FILENAME"
 >/dev/net/tun</TT
@@ -600,9 +600,9 @@ CLASS="FILENAME"
 >ioctl</TT
 > calls. On the Linux
 side there will now be new network interfaces such as
-<TT
+<CODE
 CLASS="VARNAME"
->tap3</TT
+>tap3</CODE
 >, and these can be configured like any other
 network interface using commands such as <B
 CLASS="COMMAND"
@@ -646,31 +646,31 @@ CLASS="LITERAL"
 >10.2.2.0</TT
 >. The eCos network device
 should be configured with a compatible address. One way of doing this
-would be to enable <TT
+would be to enable <CODE
 CLASS="VARNAME"
->CYGHWR_NET_DRIVER_ETH0_ADDRS</TT
+>CYGHWR_NET_DRIVER_ETH0_ADDRS</CODE
 >,
-set <TT
+set <CODE
 CLASS="VARNAME"
->CYGHWR_NET_DRIVER_ETH0_ADDRS_IP</TT
+>CYGHWR_NET_DRIVER_ETH0_ADDRS_IP</CODE
 > to
 <TT
 CLASS="LITERAL"
 >10.2.2.2</TT
 >, and similarly update the
-<TT
+<CODE
 CLASS="VARNAME"
->NETMASK</TT
->, <TT
+>NETMASK</CODE
+>, <CODE
 CLASS="VARNAME"
->BROADCAST</TT
+>BROADCAST</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->GATEWAY</TT
-> and <TT
+>GATEWAY</CODE
+> and <CODE
 CLASS="VARNAME"
->SERVER</TT
+>SERVER</CODE
 > configuration
 options. 
     </P
@@ -754,13 +754,13 @@ bridge, using commands like <B
 CLASS="COMMAND"
 >brctl</B
 > to connect the
-virtual network interface <TT
+virtual network interface <CODE
 CLASS="VARNAME"
->tap3</TT
+>tap3</CODE
 > to a physical
-network interface such as <TT
+network interface such as <CODE
 CLASS="VARNAME"
->eth0</TT
+>eth0</CODE
 >. Any packets sent by
 the eCos application will get forwarded automatically to the real
 network, and some packets on the real network will get forwarded over
@@ -1004,9 +1004,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The global arrays <TT
+>The global arrays <CODE
 CLASS="VARNAME"
->my_ethernet_tx_packets</TT
+>my_ethernet_tx_packets</CODE
 > etc. will
 now be updated whenever there is ethernet traffic. Other code,
 probably running at regular intervals by use of the Tcl

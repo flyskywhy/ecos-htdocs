@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1596"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1597"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -215,33 +215,31 @@ of condition variable broadcasts, not signals.
       </P
 ><P
 >Before an event flag can be used it must be initialized by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_init</TT
+>cyg_flag_init</CODE
 >. This takes a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_flag_t</SPAN
+>cyg_flag_t</CODE
 > data structure, which can be part of a
 larger structure. All 32 bits in the event flag will be set to 0,
 indicating that no events have yet occurred. If an event flag is no
 longer required it can be cleaned up with a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_destroy</TT
+>cyg_flag_destroy</CODE
 >, allowing the memory for the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->cyg_flag_t</I
-></TT
+>cyg_flag_t</CODE
 > structure to be re-used.
       </P
 ><P
 >A consumer thread can wait for one or more events by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 >. This takes three arguments. The
 first identifies a particular event flag. The second is some
 combination of bits, indicating which events are of interest. The
@@ -259,9 +257,9 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->The call to <TT
+>The call to <CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 > will block until all
 the specified event bits are set. The event flag is not cleared when
 the wait succeeds, in other words all the bits remain set.
@@ -307,56 +305,56 @@ set, and the entire flag is cleared when the call succeeds.
 ></DL
 ></DIV
 ><P
->A call to <TT
+>A call to <CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 > normally blocks until the
 required condition is satisfied. It will return the value of the event
 flag at the point that the operation succeeded, which may be a
 superset of the requested events. If
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_release</TT
+>cyg_thread_release</CODE
 > is used to unblock a thread
 that is currently in a wait operation, the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 > call will instead return 0.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_flag_timed_wait</TT
+>cyg_flag_timed_wait</CODE
 > is a variant of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 > which adds a timeout: the wait
 operation must succeed within the specified number of ticks, or it
 will fail with a return value of 0. The number of ticks is specified
 as an absolute, not relative tick count, and so in order to wait for a
 relative number of ticks, the return value of the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_current_time()</TT
+>cyg_current_time()</CODE
 > function should be added to
 determine the absolute number of ticks.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_poll</TT
+>cyg_flag_poll</CODE
 > is a non-blocking variant: if the
 wait operation can succeed immediately it acts like
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 >, otherwise it returns immediately
 with a value of 0.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_flag_setbits</TT
+>cyg_flag_setbits</CODE
 > is called by a producer thread
 or from inside a DSR when an event occurs. The specified bits are or'd
 into the current event flag value. This may cause one or more waiting 
@@ -383,9 +381,9 @@ passed by threads with fulfilled conditions, the number of awoken threads
 will depend on the order the threads are in the queue.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_flag_maskbits</TT
+>cyg_flag_maskbits</CODE
 > can be used to clear one or
 more bits in the event flag. This can be called from a producer when a
 particular condition is no longer satisfied, for example when the user
@@ -397,22 +395,22 @@ CLASS="LITERAL"
 used as part of the wait operation, to indicate that some but not all
 of the active events have been consumed. If there are multiple
 consumer threads performing wait operations without using
-<TT
+<CODE
 CLASS="FUNCTION"
->CYG_FLAG_WAITMODE_CLR</TT
+>CYG_FLAG_WAITMODE_CLR</CODE
 > then typically some
 additional synchronization such as a mutex is needed to prevent
 multiple threads consuming the same event.
       </P
 ><P
 >Two additional functions are provided to query the current state of an
-event flag. <TT
+event flag. <CODE
 CLASS="FUNCTION"
->cyg_flag_peek</TT
+>cyg_flag_peek</CODE
 > returns the current
-value of the event flag, and <TT
+value of the event flag, and <CODE
 CLASS="FUNCTION"
->cyg_flag_waiting</TT
+>cyg_flag_waiting</CODE
 > can
 be used to find out whether or not there are any threads currently
 blocked on the event flag. Both of these functions must be used with
@@ -427,22 +425,22 @@ NAME="KERNEL-FLAGS-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_flag_init</TT
+>cyg_flag_init</CODE
 > is typically called during system
 initialization but may also be called in thread context. The same
-applies to <TT
+applies to <CODE
 CLASS="FUNCTION"
->cyg_flag_destroy</TT
+>cyg_flag_destroy</CODE
 >.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_wait</TT
+>cyg_flag_wait</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_timed_wait</TT
+>cyg_flag_timed_wait</CODE
 > may only be called from
 thread context. The remaining functions may be called from thread or
 DSR context.

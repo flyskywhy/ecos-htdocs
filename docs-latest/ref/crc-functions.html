@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,15 +83,15 @@ CLASS="CHAPTER"
 ><A
 NAME="CRC-FUNCTIONS"
 ></A
->Chapter 56. CRC Functions</H1
+>Chapter 57. CRC Functions</H1
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
 NAME="SERVICES-CRC-API"
-></A
->CRC API</H1
+>CRC API</A
+></H1
 ><P
 >The package implements a number of CRC functions as described below.
 The API to these functions is in the include file
@@ -105,8 +105,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CRC-API-CYG-POSIX-CRC32"
-></A
->cyg_posix_crc32</H2
+>cyg_posix_crc32</A
+></H2
 ><P
 >This function implements a 32 bit CRC which is compliant to the POSIX
 1008.2 Standard. This is the same as the Linux cksum program.</P
@@ -124,16 +124,12 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The CRC calculation is run over the data pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->s</I
-></TT
->, of length <TT
+>s</CODE
+>, of length <CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 >. The
 CRC is returned as an unsigned long.</P
 ></DIV
@@ -143,8 +139,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CRC-API-CYG-CRC32"
-></A
->cyg_crc32</H2
+>cyg_crc32</A
+></H2
 ><P
 >These functions implement a 32 bit CRC by Gary S. Brown. They use the
 polynomial
@@ -164,30 +160,22 @@ cyg_uint32 cyg_crc32_accumulate(cyg_uint32 crc, unsigned char &#0042; s, int len
 ></TABLE
 ><P
 >The CRC calculation is run over the data pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->s</I
-></TT
->, of length <TT
+>s</CODE
+>, of length <CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 >. The
 CRC is returned as an unsigned long.</P
 ><P
 > The CRC can be calculated over data separated into multiple
-buffers by using the function <TT
+buffers by using the function <CODE
 CLASS="PARAMETER"
-><I
-> cyg_crc32_accumulate()</I
-></TT
->. The parameter <TT
+> cyg_crc32_accumulate()</CODE
+>. The parameter <CODE
 CLASS="PARAMETER"
-><I
->crc</I
-></TT
+>crc</CODE
 > should be the
 result from the previous CRC calculation.</P
 ></DIV
@@ -197,8 +185,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CRC-API-CYG-ETHER-CRC32"
-></A
->cyg_ether_crc32</H2
+>cyg_ether_crc32</A
+></H2
 ><P
 >These functions implement the 32 bit CRC used by the Ethernet FCS word.</P
 ><TABLE
@@ -216,30 +204,22 @@ cyg_uint32 cyg_ether_crc32_accumulate(cyg_uint32 crc, unsigned char &#0042; s, i
 ></TABLE
 ><P
 >The CRC calculation is run over the data pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->s</I
-></TT
->, of length <TT
+>s</CODE
+>, of length <CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 >. The
 CRC is returned as an unsigned long.</P
 ><P
 > The CRC can be calculated over data separated into multiple
-buffers by using the function <TT
+buffers by using the function <CODE
 CLASS="PARAMETER"
-><I
-> cyg_ether_crc32_accumulate()</I
-></TT
->. The parameter <TT
+> cyg_ether_crc32_accumulate()</CODE
+>. The parameter <CODE
 CLASS="PARAMETER"
-><I
->crc</I
-></TT
+>crc</CODE
 > should be the
 result from the previous CRC calculation.</P
 ></DIV
@@ -249,8 +229,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CRC-API-CYG-CRC16"
-></A
->cyg_crc16</H2
+>cyg_crc16</A
+></H2
 ><P
 >This function implements a 16 bit CRC. It uses the polynomial
 x^16+x^12+x^5+1.</P
@@ -268,16 +248,12 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The CRC calculation is run over the data pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->s</I
-></TT
->, of length <TT
+>s</CODE
+>, of length <CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 >. The
 CRC is returned as an unsigned short.</P
 ></DIV

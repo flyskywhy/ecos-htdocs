@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,15 +83,15 @@ CLASS="CHAPTER"
 ><A
 NAME="NET-FTPCLIENT-FEATURES"
 ></A
->Chapter 54. FTP Client Features</H1
+>Chapter 55. FTP Client Features</H1
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
 NAME="NET-FTPCLIENT-FEATURES-API"
-></A
->FTP Client API</H1
+>FTP Client API</A
+></H1
 ><P
 >This package implements an FTP client.  The API is in include file
 <TT
@@ -119,8 +119,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-FTPCLIENT-FEATURES-API-GET"
-></A
->ftp_get</H2
+>ftp_get</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -144,22 +144,16 @@ CLASS="PROGRAMLISTING"
 mode is supported. The filename can include a directory name. Only
 use unix style &#8216;/&#8217; file separators,
 not &#8216;\&#8217;.
-The file is placed into <TT
+The file is placed into <CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 >.
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
-> has maximum size <TT
+>buf</CODE
+> has maximum size <CODE
 CLASS="PARAMETER"
-><I
->buf_size</I
-></TT
+>buf_size</CODE
 >.
 If the file is bigger than this, the
 transfer fails and <SPAN
@@ -175,8 +169,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-FTPCLIENT-FEATURES-API-PUT"
-></A
->ftp_put</H2
+>ftp_put</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -201,11 +195,9 @@ Only binary
 mode is supported. The filename can include a directory name. Only
 use unix style &#8216;/&#8217; file separators,
 not &#8216;\&#8217;.
-The contents of <TT
+The contents of <CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 > are placed into the file on the
 server. If an error occurs one of the codes listed will be returned. If the
 transfer is successful zero is returned.</P
@@ -216,8 +208,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-FTPCLIENT-FEATURES-API-PRINTF"
-></A
->ftpclient_printf</H2
+>ftpclient_printf</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -231,22 +223,20 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->ftp_get()</TT
-> and <TT
+>ftp_get()</CODE
+> and <CODE
 CLASS="FUNCTION"
->ftp_put</TT
+>ftp_put</CODE
 >
 take a pointer to a function to use for printing
 out diagnostic and error messages. This is a sample implementation
 which can be used if you don't want to implement the function
 yourself.
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->error</I
-></TT
+>error</CODE
 > will be true when the message to print is an
 error message. Otherwise the message is diagnostic, eg. the commands sent
 and received from the server.</P

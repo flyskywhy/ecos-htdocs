@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="PPP-WAIT-DOWN"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN9953"
+NAME="AEN10374"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN9953"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN9956"
+NAME="AEN10377"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN9957"
-></A
 ><P
 ></P
+><A
+NAME="AEN10378"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -131,23 +131,23 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN9964"
+NAME="AEN10385"
 ></A
 ><H2
 >Description</H2
 ><P
 >This function waits for the PPP connection to terminate. The link may
-be terminated with a call to <TT
+be terminated with a call to <CODE
 CLASS="FUNCTION"
->cyg_ppp_down()</TT
+>cyg_ppp_down()</CODE
 >, by
 the remote end, or by the telephone line being dropped or lost. </P
 ><P
 >This function has no return value. If the PPP connection is not
 running, or has terminated, it will return. Applications should use
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_ppp_wait_up()</TT
+>cyg_ppp_wait_up()</CODE
 > to test the link state.</P
 ></DIV
 ><DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="NEXT"
 TITLE="The eCos Kernel"
 HREF="kernel.html"></HEAD
@@ -36,11 +36,11 @@ CLASS="TITLEPAGE"
 CLASS="TITLE"
 ><A
 NAME="AEN2"
-></A
->eCos Reference Manual</H1
+>eCos Reference Manual</A
+></H1
 ><P
 CLASS="COPYRIGHT"
->Copyright &copy; 1998, 1999, 2000, 2001, 2002, 2003 by Red Hat, Inc., Nick Garnett (eCosCentric), Jonathan Larmour (eCosCentric), Andrew Lunn (Ascom), Gary Thomas (MLB Associates), Bart Veer (eCosCentric)</P
+>Copyright &copy; 1998, 1999, 2000, 2001, 2002, 2003 Red Hat, Inc., Nick Garnett (eCosCentric), Jonathan Larmour (eCosCentric), Andrew Lunn (Ascom), Gary Thomas (MLB Associates), Bart Veer (eCosCentric)</P
 ><DIV
 CLASS="LEGALNOTICE"
 ><A
@@ -695,13 +695,60 @@ HREF="pci-library-reference.html"
 ></DD
 ><DT
 >VII. <A
+HREF="io-flash.html"
+>FLASH Library</A
+></DT
+><DD
+><DL
+><DT
+>26. <A
+HREF="ecos-flash-library.html"
+>The eCos FLASH Library</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ecos-flash-library.html#FLASH-LIBRARY"
+>FLASH Library</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>VIII. <A
+HREF="io-spi.html"
+>SPI Support</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="spi.html"
+>Overview</A
+>&nbsp;--&nbsp;eCos Support for SPI, the Serial Peripheral Interface</DT
+><DT
+><A
+HREF="spi-api.html"
+>SPI Interface</A
+>&nbsp;--&nbsp;allow applications and other packages to access SPI devices</DT
+><DT
+><A
+HREF="spi-porting.html"
+>Porting to New Hardware</A
+>&nbsp;--&nbsp;Adding SPI support to new hardware</DT
+></DL
+></DD
+><DT
+>IX. <A
 HREF="posix-compatibility.html"
 >eCos POSIX compatibility layer</A
 ></DT
 ><DD
 ><DL
 ><DT
->26. <A
+>27. <A
 HREF="posix-standard-support.html"
 >POSIX Standard Support</A
 ></DT
@@ -802,14 +849,14 @@ HREF="posix-compatibility.html#POSIX-REFERENCES-AND-BIBLIOGRAPHY"
 ></DL
 ></DD
 ><DT
->VIII. <A
+>X. <A
 HREF="compat-uitron.html"
 >&micro;ITRON</A
 ></DT
 ><DD
 ><DL
 ><DT
->27. <A
+>28. <A
 HREF="compat-uitron-microitron-api.html"
 >&micro;ITRON API</A
 ></DT
@@ -886,29 +933,29 @@ HREF="compat-uitron-configuration-faq.html"
 ></DL
 ></DD
 ><DT
->IX. <A
+>XI. <A
 HREF="net-common-tcpip.html"
 >TCP/IP Stack Support for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->28. <A
+>29. <A
 HREF="net-common-ethernet-driver-design.html"
 >Ethernet Driver Design</A
 ></DT
 ><DT
->29. <A
+>30. <A
 HREF="net-common-sample-code.html"
 >Sample Code</A
 ></DT
 ><DT
->30. <A
+>31. <A
 HREF="net-common-configuring-ip-addresses.html"
 >Configuring IP Addresses</A
 ></DT
 ><DT
->31. <A
+>32. <A
 HREF="net-common-tests-and-demonstrations.html"
 >Tests and Demonstrations</A
 ></DT
@@ -947,7 +994,7 @@ HREF="net-common-maintenance-tools.html"
 ></DL
 ></DD
 ><DT
->32. <A
+>33. <A
 HREF="net-common-support.html"
 >Support Features</A
 ></DT
@@ -966,7 +1013,7 @@ HREF="net-common-dhcp.html"
 ></DL
 ></DD
 ><DT
->33. <A
+>34. <A
 HREF="tcpip-library-reference.html"
 >TCP/IP Library Reference</A
 ></DT
@@ -1157,19 +1204,19 @@ HREF="net-common-tcpip-manpages-socketpair.html"
 ></DL
 ></DD
 ><DT
->X. <A
+>XII. <A
 HREF="tcpip-freebsd.html"
 >FreeBSD TCP/IP Stack port for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->34. <A
+>35. <A
 HREF="tcpip-freebsd-networking-stack-features.html"
 >Networking Stack Features</A
 ></DT
 ><DT
->35. <A
+>36. <A
 HREF="tcpip-freebsd-stack-port.html"
 >Freebsd TCP/IP stack port</A
 ></DT
@@ -1188,7 +1235,7 @@ HREF="tcpip-freebsd-building-the-network-stack.html"
 ></DL
 ></DD
 ><DT
->36. <A
+>37. <A
 HREF="tcpip-freebsd-tcpip-apis.html"
 >APIs</A
 ></DT
@@ -1209,14 +1256,14 @@ HREF="tcpip-freebsd-enhanced-select.html"
 ></DL
 ></DD
 ><DT
->XI. <A
+>XIII. <A
 HREF="tcpip-openbsd.html"
 >OpenBSD TCP/IP Stack port for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->37. <A
+>38. <A
 HREF="tcpip-openbsd-networking-stack-features.html"
 >Networking Stack Features</A
 ></DT
@@ -1230,7 +1277,7 @@ HREF="tcpip-openbsd-networking-stack-features.html#TCPIP-OPENBSD-TCPIP-FEATURES"
 ></DL
 ></DD
 ><DT
->38. <A
+>39. <A
 HREF="tcpip-openbsd-stack-port.html"
 >OpenBSD TCP/IP stack port</A
 ></DT
@@ -1254,7 +1301,7 @@ HREF="tcpip-openbsd-building-the-bridge-code.html"
 ></DL
 ></DD
 ><DT
->39. <A
+>40. <A
 HREF="tcpip-openbsd-tcpip-apis.html"
 >APIs</A
 ></DT
@@ -1290,14 +1337,14 @@ HREF="openbsd-manpages-stp.html"
 ></DL
 ></DD
 ><DT
->XII. <A
+>XIV. <A
 HREF="net-ns-dns.html"
 >DNS for eCos and RedBoot</A
 ></DT
 ><DD
 ><DL
 ><DT
->40. <A
+>41. <A
 HREF="net-ns-dns-api.html"
 >DNS</A
 ></DT
@@ -1318,19 +1365,19 @@ HREF="net-ns-dns-testing.html"
 ></DL
 ></DD
 ><DT
->XIII. <A
+>XV. <A
 HREF="net-ipsec-common.html"
 >IPSEC for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->41. <A
+>42. <A
 HREF="net-ipsec-common-installation.html"
 >Installation and Configuration</A
 ></DT
 ><DT
->42. <A
+>43. <A
 HREF="libipsec-library-reference.html"
 >libipsec Reference</A
 ></DT
@@ -1351,7 +1398,7 @@ HREF="net-ipsec-libipsec-man-ipsec-strerror.html"
 ></DL
 ></DD
 ><DT
->XIV. <A
+>XVI. <A
 HREF="ppp.html"
 ><SPAN
 CLASS="PRODUCTNAME"
@@ -1361,17 +1408,17 @@ CLASS="PRODUCTNAME"
 ><DD
 ><DL
 ><DT
->43. <A
+>44. <A
 HREF="ppp-features.html"
 >Features</A
 ></DT
 ><DT
->44. <A
+>45. <A
 HREF="ppp-using.html"
 >Using PPP</A
 ></DT
 ><DT
->45. <A
+>46. <A
 HREF="ppp-interface.html"
 >PPP Interface</A
 ></DT
@@ -1410,7 +1457,7 @@ HREF="ppp-chat-fn.html"
 ></DL
 ></DD
 ><DT
->46. <A
+>47. <A
 HREF="ppp-config.html"
 >Installing and Configuring PPP</A
 ></DT
@@ -1429,7 +1476,7 @@ HREF="ppp-config-config.html"
 ></DL
 ></DD
 ><DT
->47. <A
+>48. <A
 HREF="ppp-chat.html"
 >CHAT Scripts</A
 ></DT
@@ -1463,12 +1510,12 @@ HREF="ppp-chat-escape.html"
 ></DL
 ></DD
 ><DT
->48. <A
+>49. <A
 HREF="ppp-drivers.html"
 >PPP Enabled Device Drivers</A
 ></DT
 ><DT
->49. <A
+>50. <A
 HREF="ppp-tests.html"
 >Testing</A
 ></DT
@@ -1476,7 +1523,7 @@ HREF="ppp-tests.html"
 ><DL
 ><DT
 ><A
-HREF="ppp-tests.html#AEN10231"
+HREF="ppp-tests.html#AEN10652"
 >Test Programs</A
 ></DT
 ><DT
@@ -1489,14 +1536,14 @@ HREF="ppp-test-script.html"
 ></DL
 ></DD
 ><DT
->XV. <A
+>XVII. <A
 HREF="io-eth-drv-generic.html"
 >Ethernet Device Drivers</A
 ></DT
 ><DD
 ><DL
 ><DT
->50. <A
+>51. <A
 HREF="io-eth-drv-generic1.html"
 >Generic Ethernet Device Driver</A
 ></DT
@@ -1527,14 +1574,14 @@ HREF="io-eth-call-graph.html"
 ></DL
 ></DD
 ><DT
->XVI. <A
+>XVIII. <A
 HREF="io-eth-phy-generic.html"
 >Ethernet PHY Device Support</A
 ></DT
 ><DD
 ><DL
 ><DT
->51. <A
+>52. <A
 HREF="io-eth-phy-generic1.html"
 >Ethernet PHY Device Support</A
 ></DT
@@ -1550,14 +1597,14 @@ HREF="io-eth-phy-generic1.html#IO-ETH-PHY-API"
 ></DL
 ></DD
 ><DT
->XVII. <A
+>XIX. <A
 HREF="net-snmp.html"
 >SNMP</A
 ></DT
 ><DD
 ><DL
 ><DT
->52. <A
+>53. <A
 HREF="net-snmp-ecos-port.html"
 >SNMP for <SPAN
 CLASS="emphasis"
@@ -1635,14 +1682,14 @@ HREF="net-snmp-agent-manpages-snmpd.conf.html"
 ></DL
 ></DD
 ><DT
->XVIII. <A
+>XX. <A
 HREF="net-httpd.html"
 >Embedded HTTP Server</A
 ></DT
 ><DD
 ><DL
 ><DT
->53. <A
+>54. <A
 HREF="net-httpd-chapter.html"
 >Embedded HTTP Server</A
 ></DT
@@ -1678,14 +1725,14 @@ HREF="net-httpd-monitor.html"
 ></DL
 ></DD
 ><DT
->XIX. <A
+>XXI. <A
 HREF="net-ftpclient.html"
 >FTP Client for eCos TCP/IP Stack</A
 ></DT
 ><DD
 ><DL
 ><DT
->54. <A
+>55. <A
 HREF="net-ftpclient-features.html"
 >FTP Client Features</A
 ></DT
@@ -1701,14 +1748,14 @@ HREF="net-ftpclient-features.html#NET-FTPCLIENT-FEATURES-API"
 ></DL
 ></DD
 ><DT
->XX. <A
+>XXII. <A
 HREF="net-sntp-client.html"
 >Simple Network Time Protocol Client</A
 ></DT
 ><DD
 ><DL
 ><DT
->55. <A
+>56. <A
 HREF="net-sntp.html"
 >The SNTP Client</A
 ></DT
@@ -1744,14 +1791,14 @@ HREF="net-sntp-testing.html"
 ></DL
 ></DD
 ><DT
->XXI. <A
+>XXIII. <A
 HREF="services-crc.html"
 >CRC Algorithms</A
 ></DT
 ><DD
 ><DL
 ><DT
->56. <A
+>57. <A
 HREF="crc-functions.html"
 >CRC Functions</A
 ></DT
@@ -1767,14 +1814,14 @@ HREF="crc-functions.html#SERVICES-CRC-API"
 ></DL
 ></DD
 ><DT
->XXII. <A
+>XXIV. <A
 HREF="services-cpuload.html"
 >CPU load measurements</A
 ></DT
 ><DD
 ><DL
 ><DT
->57. <A
+>58. <A
 HREF="cpuload-functions.html"
 >CPU Load Measurements</A
 ></DT
@@ -1790,30 +1837,21 @@ HREF="cpuload-functions.html#SERVICES-CPULOAD-API"
 ></DL
 ></DD
 ><DT
->XXIII. <A
+>XXV. <A
 HREF="services-profile-gprof.html"
->Application profiling</A
-></DT
-><DD
-><DL
-><DT
->58. <A
-HREF="profile-functions.html"
->Profiling functions</A
+>gprof Profiling Support</A
 ></DT
 ><DD
 ><DL
 ><DT
 ><A
-HREF="profile-functions.html#SERVICES-PROFILE-API"
->API</A
-></DT
-></DL
-></DD
+HREF="gprof.html"
+>Profiling</A
+>&nbsp;--&nbsp;eCos Support for the gprof profiling tool</DT
 ></DL
 ></DD
 ><DT
->XXIV. <A
+>XXVI. <A
 HREF="services-power.html"
 >eCos Power Management Support</A
 ></DT
@@ -1853,7 +1891,7 @@ other packages</DT
 ></DL
 ></DD
 ><DT
->XXV. <A
+>XXVII. <A
 HREF="io-usb-slave.html"
 >eCos USB Slave Support</A
 ></DT
@@ -1917,7 +1955,7 @@ HREF="usbs-testing.html"
 ></DL
 ></DD
 ><DT
->XXVI. <A
+>XXVIII. <A
 HREF="io-usb-slave-eth.html"
 >eCos Support for Developing USB-ethernet Peripherals</A
 ></DT
@@ -1962,7 +2000,7 @@ USB-ethernet package </DT
 ></DL
 ></DD
 ><DT
->XXVII. <A
+>XXIX. <A
 HREF="hal-synth-arch.html"
 >eCos Synthetic Target</A
 ></DT
@@ -2016,7 +2054,7 @@ HREF="synth-porting.html"
 ></DL
 ></DD
 ><DT
->XXVIII. <A
+>XXX. <A
 HREF="devs-usb-sa11x0-ref.html"
 >SA11X0 USB Device Driver</A
 ></DT
@@ -2030,7 +2068,7 @@ HREF="devs-usb-sa11x0.html"
 ></DL
 ></DD
 ><DT
->XXIX. <A
+>XXXI. <A
 HREF="devs-usb-nec-upd985xx-ref.html"
 >NEC uPD985xx USB Device Driver</A
 ></DT
@@ -2044,7 +2082,7 @@ HREF="devs-usb-nec-upd985xx.html"
 ></DL
 ></DD
 ><DT
->XXX. <A
+>XXXII. <A
 HREF="devs-eth-synth-ecosynth-ref.html"
 >Synthetic Target Ethernet Driver</A
 ></DT
@@ -2058,7 +2096,7 @@ HREF="devs-eth-synth-ecosynth.html"
 ></DL
 ></DD
 ><DT
->XXXI. <A
+>XXXIII. <A
 HREF="devs-watchdog-synth-ref.html"
 >Synthetic Target Watchdog Device</A
 ></DT

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-INTRO"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11775"
+NAME="AEN12332"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN11775"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11778"
+NAME="AEN12335"
 ></A
 ><H2
 >Introduction</H2
@@ -152,7 +152,7 @@ not USB hosts.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11791"
+NAME="AEN12348"
 ></A
 ><H2
 >USB Concepts</H2
@@ -238,13 +238,13 @@ Endpoint 0 is generally used only for control messages.</P
 ><P
 >In practice, many of these details are irrelevant to application code
 or to class packages. Instead, such higher-level code usually just
-performs blocking <TT
+performs blocking <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 >, or non-blocking USB-specific calls, to
 transfer data between host and target via a specific endpoint. Control
 messages are more complicated but are usually handled by existing
@@ -296,7 +296,7 @@ wakeups, since again it is not supported by the hardware.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11807"
+NAME="AEN12364"
 ></A
 ><H2
 >eCos USB I/O Facilities</H2
@@ -311,40 +311,40 @@ CLASS="LITERAL"
 ></A
 >,
 with one entry per endpoint per USB device. It is possible to
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > these devices and use conventional blocking
-I/O functions such as <TT
+I/O functions such as <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 > to exchange data between host and
 peripheral.</P
 ><P
 >There is also a lower-level USB-specific API, consisting of functions
 such as <A
 HREF="usbs-start-rx.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 ></A
 >.
 A USB device driver will supply a data structure for each endpoint,
 for example a <A
 HREF="usbs-data.html"
-><SPAN
+><CODE
 CLASS="STRUCTNAME"
->usbs_rx_endpoint</SPAN
+>usbs_rx_endpoint</CODE
 ></A
 >
 structure for every receive endpoint. The first argument to
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 > should be a pointer to such
 a data structure. The USB-specific API is non-blocking: the initial
 call merely starts the transfer; some time later, once the transfer
@@ -354,22 +354,22 @@ completion function.</P
 >Control messages are different. With four different categories of
 control messages including application and vendor specific ones, the
 conventional
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
->/<TT
+>open</CODE
+>/<CODE
 CLASS="FUNCTION"
->read</TT
->/<TT
+>read</CODE
+>/<CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 >
 model of I/O cannot easily be applied. Instead, a USB device driver
 will supply a <A
 HREF="usbs-control.html"
-><SPAN
+><CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 ></A
 >
 data structure which can be manipulated appropriately. In practice the
@@ -387,7 +387,7 @@ HREF="usbs-start.html"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11829"
+NAME="AEN12386"
 ></A
 ><H2
 >Enabling the USB code</H2

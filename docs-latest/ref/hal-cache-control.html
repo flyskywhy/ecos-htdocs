@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-CACHE-CONTROL"
-></A
->Cache Control</H1
+>Cache Control</A
+></H1
 ><P
 >This section contains definitions for supporting control
 of the caches on the CPU.</P
@@ -164,13 +164,13 @@ during an interrupt). Otherwise it is necessary to disable interrupts
 while manipulating the cache which may take a long time.</P
 ><P
 >Some platform HALs now support a pair of cache state query
-macros: <TT
+macros: <CODE
 CLASS="FUNCTION"
->HAL_ICACHE_IS_ENABLED( x )</TT
+>HAL_ICACHE_IS_ENABLED( x )</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_DCACHE_IS_ENABLED( x )</TT
+>HAL_DCACHE_IS_ENABLED( x )</CODE
 > which set the argument
 to true if the instruction or data cache is enabled,
 respectively. Like most cache control macros, these are optional,
@@ -192,8 +192,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2935"
-></A
->Cache Dimensions</H2
+>Cache Dimensions</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -255,8 +255,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2956"
-></A
->Global Cache Control</H2
+>Global Cache Control</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -298,9 +298,9 @@ CLASS="VARIABLELIST"
 >      Causes the entire contents of the cache to be invalidated.
       Depending on the hardware, this may require the cache to be disabled
       during the invalidation process. If so, the implementation must
-      use <TT
+      use <CODE
 CLASS="FUNCTION"
->HAL_XCACHE_IS_ENABLED()</TT
+>HAL_XCACHE_IS_ENABLED()</CODE
 > to save and
       restore the previous state.
       </P
@@ -312,9 +312,9 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >	If this macro is called after
-	<TT
+	<CODE
 CLASS="FUNCTION"
->HAL_XCACHE_SYNC()</TT
+>HAL_XCACHE_SYNC()</CODE
 > with the intention of clearing
 	the cache (invalidating the cache after writing dirty data back to
 	memory), you must prevent interrupts from happening between the two
@@ -352,9 +352,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >      Causes the contents of the cache to be brought into synchronization
       with the contents of memory. In some implementations this may be
-      equivalent to <TT
+      equivalent to <CODE
 CLASS="FUNCTION"
->HAL_XCACHE_INVALIDATE_ALL()</TT
+>HAL_XCACHE_INVALIDATE_ALL()</CODE
 >.
       </P
 ></DD
@@ -426,8 +426,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3002"
-></A
->Cache Line Control</H2
+>Cache Line Control</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -166,21 +166,21 @@ optional one.
 ><P
 >The kernel functionality can be used in one of two ways. The kernel
 provides its own C API, with functions like
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_create</TT
+>cyg_thread_create</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 >. These can be called directly from
 application code or from other packages. Alternatively there are a
 number of packages which provide compatibility with existing API's,
 for example POSIX threads or &micro;ITRON. These allow application
 code to call standard functions such as
-<TT
+<CODE
 CLASS="FUNCTION"
->pthread_create</TT
+>pthread_create</CODE
 >, and those functions are
 implemented using the basic functionality provided by the eCos kernel.
 Using compatibility packages in an eCos application can make it much
@@ -201,9 +201,9 @@ First, it is not usually possible to have two different compatibility
 packages in one eCos configuration because they will have conflicting
 requirements on the underlying kernel. Second, the semantics of the
 kernel's own API are only loosely defined because of the many
-configuration options. For example <TT
+configuration options. For example <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 >
 will always attempt to lock a mutex, but various configuration options
 determine the behaviour when the mutex is already locked and there is
@@ -218,15 +218,15 @@ handling, which should be implemented differently in multi-threaded
 environments containing the eCos kernel and in single-threaded
 environments without the kernel. To cope with both scenarios the
 common HAL package provides a driver API, with functions such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_attach</TT
+>cyg_drv_interrupt_attach</CODE
 >. When the kernel package
 is present these driver API functions map directly on to the
 equivalent kernel functions such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_attach</TT
+>cyg_interrupt_attach</CODE
 >, using macros to avoid any
 overheads. When the kernel is absent the common HAL package implements
 the driver API directly, but this implementation is simpler than the
@@ -254,9 +254,9 @@ packages.
 >Both the bitmap and the MLQ scheduler use a simple numerical priority
 to determine which thread should be running. The number of priority
 levels is configurable via the option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_KERNEL_SCHED_PRIORITIES</TT
+>CYGNUM_KERNEL_SCHED_PRIORITIES</CODE
 >, but a typical
 system will have up to 32 priority levels. Therefore thread priorities
 will be in the range 0 to 31, with 0 being the highest priority and 31
@@ -294,13 +294,13 @@ will not be preempted by another thread of the same priority, and will
 continue running until either it explicitly yields the processor or
 until it blocks by, for example, waiting on a synchronization
 primitive. The configuration options
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_TIMESLICE</TT
+>CYGSEM_KERNEL_SCHED_TIMESLICE</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_KERNEL_SCHED_TIMESLICE_TICKS</TT
+>CYGNUM_KERNEL_SCHED_TIMESLICE_TICKS</CODE
 > control
 timeslicing. The bitmap scheduler does not provide timeslicing
 support. It only allows one thread per priority level, so it is not
@@ -309,18 +309,18 @@ the same priority.
       </P
 ><P
 >Another important configuration option that affects the MLQ scheduler
-is <TT
+is <CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_SCHED_SORTED_QUEUES</TT
+>CYGIMP_KERNEL_SCHED_SORTED_QUEUES</CODE
 >. This
 determines what happens when a thread blocks, for example by waiting
 on a semaphore which has no pending events. The default behaviour of
 the system is last-in-first-out queuing. For example if several
 threads are waiting on a semaphore and an event is posted, the thread
 that gets woken up is the last one that called
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 >. This allows for a simple and
 fast implementation of both the queue and dequeue operations. However
 if there are several queued threads with different priorities, it may
@@ -329,9 +329,9 @@ is rarely a problem: usually there will be at most one thread waiting
 on a queue, or when there are several threads they will be of the same
 priority. However if the application does require strict priority
 queueing then the option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_SCHED_SORTED_QUEUES</TT
+>CYGIMP_KERNEL_SCHED_SORTED_QUEUES</CODE
 > should be
 enabled. There are disadvantages: more work is needed whenever a
 thread is queued, and the scheduler needs to be locked for this
@@ -524,13 +524,13 @@ pending until interrupts are reenabled.
 ><P
 >Analogous to interrupts being disabled or enabled, the kernel has a
 scheduler lock. The various kernel functions such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > will claim the scheduler lock,
 manipulate the kernel data structures, and then release the scheduler
 lock. If an interrupt results in a DSR being requested and the
@@ -561,9 +561,9 @@ interrupt occurs, and then the corresponding ISR is run. This ISR
 manipulates the hardware as appropriate, determines that there is now
 data available, and wants to wake up thread A by posting to the
 semaphore. However ISR's are not allowed to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > directly, so instead the ISR
 requests that its associated DSR be run and returns. There are no more
 interrupts to be processed, so the kernel next checks for DSR's. One
@@ -582,37 +582,37 @@ calculations and wanted to write the results to the display. It would
 claim the appropriate mutex and manipulate the display. Now suppose
 that thread B was timesliced in favour of thread C, and that thread C
 also finished its calculations and wanted to write the results to the
-display. It would call <TT
+display. It would call <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 >. This
 kernel call locks the scheduler, examines the current state of the
 mutex, discovers that the mutex is already owned by another thread,
 suspends the current thread, and switches control to another runnable
 thread. Another interrupt happens in the middle of this
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > call, causing the ISR to run
 immediately. The ISR decides that thread A should be woken up so it
 requests that its DSR be run and returns back to the kernel. At this
 point there is a pending DSR, but the scheduler is still locked by the
-call to <TT
+call to <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > so the DSR cannot run
-immediately. Instead the call to <TT
+immediately. Instead the call to <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 >
 is allowed to continue, which at some point involves unlocking the
 scheduler. The pending DSR can now run, safely post the semaphore, and
 thus wake up thread A.
       </P
 ><P
->If the ISR had called <TT
+>If the ISR had called <CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > directly
 rather than leaving it to a DSR, it is likely that there would have
 been some sort of corruption of a kernel data structure. For example
@@ -642,18 +642,18 @@ this time interrupts are disabled and the scheduler is locked. When a
 configuration includes the kernel package the final operation is a
 call to <A
 HREF="kernel-schedcontrol.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 ></A
 >.
 At this point interrupts are enabled, the scheduler is unlocked, and
 control is transferred to the highest priority runnable thread. If the
 configuration also includes the C library package then usually the C
 library startup package will have created a thread which will call the
-application's <TT
+application's <CODE
 CLASS="FUNCTION"
->main</TT
+>main</CODE
 > entry point.
       </P
 ><P
@@ -661,9 +661,9 @@ CLASS="FUNCTION"
 and this code runs in initialization context. If the application is
 written partly or completely in C++ then the constructors for any
 static objects will be run. Alternatively application code can define
-a function <TT
+a function <CODE
 CLASS="FUNCTION"
->cyg_user_start</TT
+>cyg_user_start</CODE
 > which gets called after
 any C++ static constructors. This allows applications to be written
 entirely in C.
@@ -687,17 +687,17 @@ cyg_user_start(void)
 ></TABLE
 ><P
 >It is not necessary for applications to provide a
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_user_start</TT
+>cyg_user_start</CODE
 > function since the system will
 provide a default implementation which does nothing.
       </P
 ><P
 >Typical operations that are performed from inside static constructors
-or <TT
+or <CODE
 CLASS="FUNCTION"
->cyg_user_start</TT
+>cyg_user_start</CODE
 > include creating threads,
 synchronization primitives, setting up alarms, and registering
 application-specific interrupt handlers. In fact for many applications
@@ -711,9 +711,9 @@ and the scheduler locked. It is not permitted to reenable interrupts
 or unlock the scheduler because the system is not guaranteed to be in
 a totally consistent state at this point. A consequence is that
 initialization code cannot use synchronization primitives such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > to wait for an external event.
 It is permitted to lock and unlock a mutex: there are no other threads
 running so it is guaranteed that the mutex is not yet locked, and
@@ -722,9 +722,9 @@ making library calls that may use a mutex internally.
       </P
 ><P
 >At the end of the startup sequence the system will call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 > and the various threads will
 start running. In thread context nearly all of the kernel functions
 are available. There may be some restrictions on interrupt-related
@@ -760,38 +760,38 @@ switch temporarily to DSR context by locking the scheduler. Only
 certain kernel functions can be called from DSR context, although more
 than in ISR context. In particular it is possible to use any
 synchronization primitives which cannot block.  These include
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 >,
 <TT
 CLASS="FILENAME"
 >cyg_cond_signal</TT
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_broadcast</TT
+>cyg_cond_broadcast</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_flag_setbits</TT
+>cyg_flag_setbits</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mbox_tryput</TT
+>cyg_mbox_tryput</CODE
 >. It is not possible to use any
 primitives that may block such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 >, or
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mbox_put</TT
+>cyg_mbox_put</CODE
 >. Calling such functions from inside
 a DSR may cause the system to hang.
       </P
@@ -814,9 +814,9 @@ is supposed to ensure that each function is used correctly, and that
 application code is not attempting to perform a semaphore operation on
 a mutex or anything like that. If an error is detected then a suitable
 error code is returned, for example the POSIX function
-<TT
+<CODE
 CLASS="FUNCTION"
->pthread_mutex_lock</TT
+>pthread_mutex_lock</CODE
 > can return various error codes
 including <TT
 CLASS="LITERAL"
@@ -877,9 +877,9 @@ then all it could do is abort the application somehow.
 ></OL
 ><P
 >The approach taken within the eCos kernel is different. Functions such
-as <TT
+as <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > will not return an error code.
 Instead they contain various assertions, which can be enabled or
 disabled. During the development process assertions are normally left
@@ -937,25 +937,25 @@ code did not check for an error code.
 ><P
 >Although none of the kernel functions return an error code, many of
 them do return a status condition. For example the function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_timed_wait</TT
+>cyg_semaphore_timed_wait</CODE
 > waits until either an
 event has been posted to a semaphore, or until a certain number of
 clock ticks have occurred. Usually the calling code will need to know
 whether the wait operation succeeded or whether a timeout occurred.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_timed_wait</TT
+>cyg_semaphore_timed_wait</CODE
 > returns a boolean: a
 return value of zero or false indicates a timeout, a non-zero return
 value indicates that the wait succeeded.
       </P
 ><P
 >In conventional APIs one common error conditions is lack of memory.
-For example the POSIX function <TT
+For example the POSIX function <CODE
 CLASS="FUNCTION"
->pthread_create</TT
+>pthread_create</CODE
 >
 usually has to allocate some memory dynamically for the thread stack
 and other per-thread data. If the target hardware does not have enough
@@ -965,13 +965,13 @@ and the function call would fail. The eCos kernel avoids such problems
 by never performing any dynamic memory allocation. Instead it is the
 responsibility of the application code to provide all the memory
 required for kernel data structures and other needs. In the case of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_create</TT
+>cyg_thread_create</CODE
 > this means a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_thread</SPAN
+>cyg_thread</CODE
 > data structure to hold the thread
 details, and a <SPAN
 CLASS="TYPE"
@@ -987,9 +987,9 @@ at run-time, making the problem much easier to diagnose. Static
 allocation does not involve any of the usual overheads associated with
 dynamic allocation, for example there is no need to keep track of the
 various free blocks in the system, and it may be possible to eliminate
-<TT
+<CODE
 CLASS="FUNCTION"
->malloc</TT
+>malloc</CODE
 > from the system completely. Problems such
 as fragmentation and memory leaks cannot occur if all data is
 allocated statically. However, some applications are sufficiently

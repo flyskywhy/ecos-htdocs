@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,23 +6,23 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->ÂµITRON and eCos</TITLE
+>µITRON and eCos</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="NEXT"
 TITLE="Task Management Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,13 +83,13 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-OVER-ECOS"
-></A
 >&micro;ITRON and <SPAN
 CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >eCos</I
 ></SPAN
+></A
 ></H1
 ><P
 >The <SPAN
@@ -105,13 +105,13 @@ programs.</P
 ><P
 >In particular, the default configuration has time slicing
 (also known as round-robin scheduling) switched on; this means that
-a task can be moved from <TT
+a task can be moved from <CODE
 CLASS="VARNAME"
->RUN</TT
+>RUN</CODE
 > state
-to <TT
+to <CODE
 CLASS="VARNAME"
->READY</TT
+>READY</CODE
 > state at any time, in
 order that one of its peers may run. This is not strictly conformant
 to the &micro;ITRON specification, which
@@ -124,9 +124,9 @@ within a periodic task or cyclic handler; otherwise it is expected
 that a task runs until it is pre-empted in consequence of synchronization
 or communication calls it makes, or the effects of an interrupt
 or other external event on a higher priority task cause that task
-to become <TT
+to become <CODE
 CLASS="VARNAME"
->READY</TT
+>READY</CODE
 >. To disable timeslicing
 functionality in the kernel and &micro;ITRON
 compatibility environment, please disable the 
@@ -157,30 +157,30 @@ depends on the kernel. </P
 ><P
 >In this version of the &micro;ITRON
 compatibility layer, the calls to disable and enable scheduling
-and interrupts (<TT
+and interrupts (<CODE
 CLASS="FUNCTION"
->dis_dsp()</TT
+>dis_dsp()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->ena_dsp()</TT
->, <TT
+>ena_dsp()</CODE
+>, <CODE
 CLASS="FUNCTION"
->loc_cpu()</TT
+>loc_cpu()</CODE
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->unl_cpu()</TT
+>unl_cpu()</CODE
 >)
-call underlying kernel functions; in particular, the <TT
+call underlying kernel functions; in particular, the <CODE
 CLASS="FUNCTION"
->xxx_dsp()</TT
+>xxx_dsp()</CODE
 > functions
 lock the scheduler entirely, which prevents dispatching of DSRs; functions
 implemented by DSRs include clock counters and alarm timers. Thus time &#8220;stops&#8221; while
-dispatching is disabled with <TT
+dispatching is disabled with <CODE
 CLASS="FUNCTION"
->dis_dsp()</TT
+>dis_dsp()</CODE
 >. </P
 ><P
 >Like all parts of the <SPAN

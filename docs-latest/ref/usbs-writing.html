@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-WRITING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12437"
+NAME="AEN12994"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN12437"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12440"
+NAME="AEN12997"
 ></A
 ><H2
 >Introduction</H2
@@ -125,16 +125,16 @@ written.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12445"
+NAME="AEN13002"
 ></A
 ><H2
 >The Control Endpoint</H2
 ><P
 >A USB device driver should provide a single <A
 HREF="usbs-control.html"
-><SPAN
+><CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 ></A
 >
 data structure for every USB device. Typical peripherals will have
@@ -160,46 +160,34 @@ the USB driver will be enabled automatically if higher-level code does
 require USB support, while leaving ultimate control to the user.</P
 ><P
 >The USB device driver is responsible for filling in the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->start_fn</I
-></TT
+>start_fn</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->poll_fn</I
-></TT
+>poll_fn</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->interrupt_vector</I
-></TT
+>interrupt_vector</CODE
 > fields. Usually this can
 be achieved by static initialization. The driver is also largely
-responsible for maintaining the <TT
+responsible for maintaining the <CODE
 CLASS="STRUCTFIELD"
-><I
->state</I
-></TT
+>state</CODE
 >
-field. The <TT
+field. The <CODE
 CLASS="STRUCTFIELD"
-><I
->control_buffer</I
-></TT
+>control_buffer</CODE
 > array should be
 used to hold the first packet of a control message. The
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > and other fields related to data
 transfers will be managed <A
-HREF="usbs-control.html#AEN12347"
+HREF="usbs-control.html#AEN12904"
 >jointly</A
 > by higher-level code and
 the device driver. The remaining fields are generally filled in by
@@ -207,34 +195,28 @@ higher-level code, although the driver should initialize them to NULL
 values.</P
 ><P
 >Hardware permitting, the USB device should be inactive until the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->start_fn</I
-></TT
+>start_fn</CODE
 > is invoked, for example by
 tristating the appropriate pins. This prevents the host from
 interacting with the peripheral before all other parts of the system
 have initialized. It is expected that the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->start_fn</I
-></TT
+>start_fn</CODE
 > will only be invoked once, shortly
 after power-up.</P
 ><P
 >Where possible the device driver should detect state changes, such as
 when the connection between host and peripheral is established, and
 <A
-HREF="usbs-control.html#AEN12284"
+HREF="usbs-control.html#AEN12841"
 >report</A
 > these to higher-level
-code via the <TT
+code via the <CODE
 CLASS="STRUCTFIELD"
-><I
->state_change_fn</I
-></TT
+>state_change_fn</CODE
 > callback, if
 any. The state change to and from configured state cannot easily be
 handled by the device driver itself, instead higher-level code such as
@@ -248,27 +230,23 @@ within 50ms. The USB specification provides more information on these
 constraints. The device driver is responsible for receiving the
 initial packet of a control message. This packet will always be eight
 bytes and should be stored in the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->control_buffer</I
-></TT
+>control_buffer</CODE
 > field. Certain standard
 control messages should be detected and handled by the device driver
 itself. The most important is set-address, but usually the get-status,
 set-feature and clear-feature requests when applied to halted
 endpoints should also be handled by the driver. Other standard control
 messages should first be passed on to the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->standard_control_fn</I
-></TT
+>standard_control_fn</CODE
 > callback (if any), and
 finally to the default handler
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_handle_standard_control</TT
+>usbs_handle_standard_control</CODE
 > provided by the
 common USB slave package. Class, vendor and reserved control messages
 should always be dispatched to the appropriate callback and there is
@@ -277,7 +255,7 @@ no default handler for these.</P
 >Some control messages will involve further data transfer, not just the
 initial packet. The device driver must handle this in accordance with
 the USB specification and the <A
-HREF="usbs-control.html#AEN12347"
+HREF="usbs-control.html#AEN12904"
 >buffer management strategy</A
 >. The
 driver is also responsible for keeping track of whether or not the
@@ -293,7 +271,7 @@ the same code that the interrupt handler would.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12473"
+NAME="AEN13030"
 ></A
 ><H2
 >Data Endpoints</H2
@@ -318,64 +296,54 @@ data transfers and another to control the halted condition. These
 implement the functionality for
 <A
 HREF="usbs-start-rx.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 ></A
 >,
 <A
 HREF="usbs-start-tx.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start_tx_buffer</TT
+>usbs_start_tx_buffer</CODE
 ></A
 >,
 <A
 HREF="usbs-halt.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_set_rx_endpoint_halted</TT
+>usbs_set_rx_endpoint_halted</CODE
 ></A
 > and
 <A
 HREF="usbs-halt.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_set_tx_endpoint_halted</TT
+>usbs_set_tx_endpoint_halted</CODE
 ></A
 >.
 The device driver is also responsible for maintaining the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->halted</I
-></TT
+>halted</CODE
 > status.</P
 ><P
 >For data transfers, higher-level code will have filled in the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_fn</I
-></TT
+>complete_fn</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_data</I
-></TT
+>complete_data</CODE
 > fields. The transfer function
 should arrange for the transfer to start, allowing the host to send or
 receive packets. Typically this will result in an interrupt at the end
@@ -396,23 +364,21 @@ CLASS="LITERAL"
 >. If the
 endpoint is stalled during the transfer, either because of a standard
 control message or because higher-level code calls the appropriate
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->set_halted_fn</I
-></TT
+>set_halted_fn</CODE
 >, then again the completion
 function should be invoked with <TT
 CLASS="LITERAL"
 >-EAGAIN</TT
 >. Finally,
-the &#60;<TT
+the &#60;<CODE
 CLASS="FUNCTION"
->usbs_start_rx_endpoint_wait</TT
+>usbs_start_rx_endpoint_wait</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_start_tx_endpoint_wait</TT
+>usbs_start_tx_endpoint_wait</CODE
 > functions involve
 calling the device driver's data transfer function with a buffer size
 of 0 bytes.</P
@@ -436,7 +402,7 @@ devtab entries as well as via low-level accesses.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12500"
+NAME="AEN13057"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -484,20 +450,18 @@ CLASS="LITERAL"
 >, and appending an
 endpoint-specific string. This gives the application developer
 sufficient control to eliminate any name clashes. The common USB slave
-package provides functions <TT
+package provides functions <CODE
 CLASS="FUNCTION"
->usbs_devtab_cwrite</TT
+>usbs_devtab_cwrite</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_devtab_cread</TT
+>usbs_devtab_cread</CODE
 >, which can be used in the
 function tables for transmit and receive endpoints respectively. The
-private field <TT
+private field <CODE
 CLASS="STRUCTFIELD"
-><I
->priv</I
-></TT
+>priv</CODE
 > of the devtab entry
 should be a pointer to the underlying endpoint data structure.</P
 ><P
@@ -522,7 +486,7 @@ provided, to avoid unnecessary memory overheads.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12513"
+NAME="AEN13070"
 ></A
 ><H2
 >Interrupt Handling</H2
@@ -553,7 +517,7 @@ be invoked at DSR or thread level.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12517"
+NAME="AEN13074"
 ></A
 ><H2
 >Support for USB Testing</H2
@@ -568,9 +532,9 @@ generic test code to work out just what the hardware is capable of and
 hence what testing can be performed.</P
 ><P
 >The key data structure is
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_testing_endpoint</SPAN
+>usbs_testing_endpoint</CODE
 >, defined in <TT
 CLASS="FILENAME"
 >cyg/io/usb/usbs.h</TT
@@ -580,9 +544,9 @@ commonly required constants are provided by the common USB package in
 CLASS="FILENAME"
 >cyg/io/usb/usb.h</TT
 >. One
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_testing_endpoint</SPAN
+>usbs_testing_endpoint</CODE
 > structure should be
 defined for each supported endpoint. The following fields need to be
 filled in:</P
@@ -592,11 +556,9 @@ filled in:</P
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->endpoint_type</I
-></TT
+>endpoint_type</CODE
 ></DT
 ><DD
 ><P
@@ -619,11 +581,9 @@ CLASS="LITERAL"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->endpoint_number</I
-></TT
+>endpoint_number</CODE
 ></DT
 ><DD
 ><P
@@ -634,11 +594,9 @@ CLASS="STRUCTFIELD"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->endpoint_direction</I
-></TT
+>endpoint_direction</CODE
 ></DT
 ><DD
 ><P
@@ -657,36 +615,32 @@ CLASS="LITERAL"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->endpoint</I
-></TT
+>endpoint</CODE
 ></DT
 ><DD
 ><P
 >    This should be a pointer to the appropriate
-    <SPAN
+    <CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 >,
-    <SPAN
+    <CODE
 CLASS="STRUCTNAME"
->usbs_rx_endpoint</SPAN
+>usbs_rx_endpoint</CODE
 > or
-    <SPAN
+    <CODE
 CLASS="STRUCTNAME"
->usbs_tx_endpoint</SPAN
+>usbs_tx_endpoint</CODE
 > structure, allowing the
     generic testing code to perform low-level I/O.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->devtab_entry</I
-></TT
+>devtab_entry</CODE
 ></DT
 ><DD
 ><P
@@ -697,21 +651,19 @@ CLASS="LITERAL"
 >&quot;/dev/usbs1r&quot;</TT
 >. This allows the
     generic testing code to access the device via higher-level
-    calls like <TT
+    calls like <CODE
 CLASS="FUNCTION"
->open</TT
-> and <TT
+>open</CODE
+> and <CODE
 CLASS="FUNCTION"
->read</TT
+>read</CODE
 >. 
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->min_size</I
-></TT
+>min_size</CODE
 ></DT
 ><DD
 ><P
@@ -736,11 +688,9 @@ CLASS="NOTE"
 ></DIV
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->max_size</I
-></TT
+>max_size</CODE
 ></DT
 ><DD
 ><P
@@ -763,11 +713,9 @@ CLASS="LITERAL"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->max_in_padding</I
-></TT
+>max_in_padding</CODE
 ></DT
 ><DD
 ><P
@@ -796,11 +744,9 @@ CLASS="LITERAL"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="STRUCTFIELD"
-><I
->alignment</I
-></TT
+>alignment</CODE
 ></DT
 ><DD
 ><P
@@ -820,17 +766,17 @@ CLASS="STRUCTFIELD"
 ></DIV
 ><P
 >The device driver should provide an array of these structures
-<TT
+<CODE
 CLASS="VARNAME"
->usbs_testing_endpoints[]</TT
+>usbs_testing_endpoints[]</CODE
 >. The USB testing code
 examines this array and uses the information to perform appropriate
 tests. Because different USB devices support different numbers of
 endpoints the number of entries in the array is not known in advance,
 so instead the testing code looks for a special terminator
-<TT
+<CODE
 CLASS="VARNAME"
->USBS_TESTING_ENDPOINTS_TERMINATOR</TT
+>USBS_TESTING_ENDPOINTS_TERMINATOR</CODE
 >. An example
 array, showing just the control endpoint and the terminator, might
 look like this:</P
@@ -867,9 +813,9 @@ CLASS="NOTE"
 ><P
 ><B
 >Note: </B
->The use of a single array <TT
+>The use of a single array <CODE
 CLASS="VARNAME"
->usbs_testing_endpoints</TT
+>usbs_testing_endpoints</CODE
 >
 limits USB testing to platforms with a single USB device: if there
 were multiple devices, each defining their own instance of this array,

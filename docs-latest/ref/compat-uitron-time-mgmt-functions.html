@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,13 +14,12 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="	  Memory pool Management Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-TIME-MGMT-FUNCTIONS"
-></A
->Time Management Functions</H1
+>Time Management Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->set_tim</TT
+>set_tim</CODE
 >( 
     SYSTIME *<SPAN
 CLASS="emphasis"
@@ -143,9 +143,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->get_tim</TT
+>get_tim</CODE
 >( 
     SYSTIME *<SPAN
 CLASS="emphasis"
@@ -165,9 +165,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->dly_tsk</TT
+>dly_tsk</CODE
 >( 
     DLYTIME <SPAN
 CLASS="emphasis"
@@ -187,9 +187,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->def_cyc</TT
+>def_cyc</CODE
 >( 
     HNO <SPAN
 CLASS="emphasis"
@@ -215,9 +215,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->act_cyc</TT
+>act_cyc</CODE
 >( 
     HNO <SPAN
 CLASS="emphasis"
@@ -243,9 +243,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_cyc</TT
+>ref_cyc</CODE
 >( 
     T_RCYC *<SPAN
 CLASS="emphasis"
@@ -271,9 +271,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->def_alm</TT
+>def_alm</CODE
 >( 
     HNO <SPAN
 CLASS="emphasis"
@@ -299,9 +299,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_alm</TT
+>ref_alm</CODE
 >( 
     T_RALM *<SPAN
 CLASS="emphasis"
@@ -327,9 +327,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->ret_tmr</TT
+>ret_tmr</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -339,9 +339,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8830"
-></A
->Error checking</H2
+NAME="AEN9251"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -365,9 +365,9 @@ as appropriate, or E_PAR</P
 ><LI
 ><P
 >dispatching is enabled in 
-<TT
+<CODE
 CLASS="FUNCTION"
->dly_tsk()</TT
+>dly_tsk()</CODE
 >
 , or E_CTX</P
 ></LI
@@ -378,9 +378,9 @@ CLASS="FUNCTION"
 ><LI
 ><P
 >return value pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->ref_xxx()</TT
+>ref_xxx()</CODE
 >
  is a valid pointer, or E_PAR</P
 ></LI
@@ -392,37 +392,37 @@ be valid, or E_PAR</P
 ><LI
 ><P
 >cycact in 
-<TT
+<CODE
 CLASS="FUNCTION"
->act_cyc()</TT
+>act_cyc()</CODE
 >
  must be valid, or E_PAR</P
 ></LI
 ><LI
 ><P
 >handler must be defined in 
-<TT
+<CODE
 CLASS="FUNCTION"
->ref_xxx()</TT
+>ref_xxx()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->act_cyc()</TT
+>act_cyc()</CODE
 >
 , or E_NOEXS</P
 ></LI
 ><LI
 ><P
 >parameter pointer must be a good pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->get_tim()</TT
+>get_tim()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->set_tim()</TT
+>set_tim()</CODE
 >
 , otherwise E_PAR is returned</P
 ></LI
@@ -440,9 +440,9 @@ CLASS="LITERAL"
 ><UL
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->dly_tsk()</TT
+>dly_tsk()</CODE
 >
 : return code E_RLWAI is returned depending on the reason
 for terminating the sleep</P

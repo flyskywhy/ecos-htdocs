@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1363"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1364"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -208,14 +208,14 @@ variables</A
 this.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_init</TT
+>cyg_semaphore_init</CODE
 > is used to initialize a
 semaphore. It takes two arguments, a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_sem_t</SPAN
+>cyg_sem_t</CODE
 > structure and an initial value for
 the counter. Note that semaphore operations, unlike some other parts
 of the kernel API, use pointers to data structures rather than
@@ -225,121 +225,121 @@ or negative, but typically a value of zero is used to indicate that no
 events have occurred yet.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > is used by a consumer thread
 to wait for an event. If the current counter is greater than 0, in
 other words if the event has already occurred in the past, then the
 counter will be decremented and the call will return immediately.
 Otherwise the current thread will be blocked until there is a
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > call.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > is called when an event has
 occurs. This increments the counter and wakes up the first thread
 waiting on the semaphore (if any). Usually that thread will then
-continue running inside <TT
+continue running inside <CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > and
 decrement the counter again. However other scenarioes are possible.
-For example the thread calling <TT
+For example the thread calling <CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 >
 may be running at high priority, some other thread running at medium
-priority may be about to call <TT
+priority may be about to call <CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 >
 when it next gets a chance to run, and a low priority thread may be
 waiting on the semaphore. What will happen is that the current high
 priority thread continues running until it is descheduled for some
 reason, then the medium priority thread runs and its call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > succeeds immediately, and
 later on the low priority thread runs again, discovers a counter value
 of 0, and blocks until another event is posted. If there are multiple
 threads blocked on a semaphore then the configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_SCHED_SORTED_QUEUES</TT
+>CYGIMP_KERNEL_SCHED_SORTED_QUEUES</CODE
 > determines which
 one will be woken up by a post operation.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > returns a boolean. Normally it
 will block until it has successfully decremented the counter, retrying
 as necessary, and return success. However the wait operation may be
 aborted by a call to <A
 HREF="kernel-thread-control.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_thread_release</TT
+>cyg_thread_release</CODE
 ></A
 >,
-and <TT
+and <CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > will then return false.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_timed_wait</TT
+>cyg_semaphore_timed_wait</CODE
 > is a variant of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 >. It can be used to wait until
 either an event has occurred or a number of clock ticks have happened.
 The number of ticks is specified as an absolute, not relative tick
 count, and so in order to wait for a relative number of ticks, the
-return value of the <TT
+return value of the <CODE
 CLASS="FUNCTION"
->cyg_current_time()</TT
+>cyg_current_time()</CODE
 > function
 should be added to determine the absolute number of ticks. The
 function returns success if the semaphore wait operation succeeded, or
 false if the operation timed out or was aborted by
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_release</TT
+>cyg_thread_release</CODE
 >.
 If support for the real-time
 clock has been removed from the current configuration then this
 function will not be available.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_trywait</TT
+>cyg_semaphore_trywait</CODE
 > is another variant which
 will always return immediately rather than block, again returning
-success or failure. If <TT
+success or failure. If <CODE
 CLASS="FUNCTION"
->cyg_semaphore_timedwait</TT
+>cyg_semaphore_timedwait</CODE
 >
 is given a timeout in the past, it operates like
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_trywait</TT
+>cyg_semaphore_trywait</CODE
 >.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_peek</TT
+>cyg_semaphore_peek</CODE
 > can be used to get hold of the
 current counter value. This function is rarely useful except for
 debugging purposes since the counter value may change at any time if
@@ -354,31 +354,31 @@ NAME="KERNEL-SEMAPHORES-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_semaphore_init</TT
+>cyg_semaphore_init</CODE
 > is normally called during
 initialization but may also be called from thread context.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_timed_wait</TT
+>cyg_semaphore_timed_wait</CODE
 > may only be called from
 thread context because these operations may block.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_trywait</TT
+>cyg_semaphore_trywait</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_peek</TT
+>cyg_semaphore_peek</CODE
 > may be called from thread or
 DSR context.
       </P

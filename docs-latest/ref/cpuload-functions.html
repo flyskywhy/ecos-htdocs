@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -25,7 +25,7 @@ REL="PREVIOUS"
 TITLE="CPU load measurements"
 HREF="services-cpuload.html"><LINK
 REL="NEXT"
-TITLE="Application profiling"
+TITLE="gprof Profiling Support"
 HREF="services-profile-gprof.html"></HEAD
 ><BODY
 CLASS="CHAPTER"
@@ -83,15 +83,15 @@ CLASS="CHAPTER"
 ><A
 NAME="CPULOAD-FUNCTIONS"
 ></A
->Chapter 57. CPU Load Measurements</H1
+>Chapter 58. CPU Load Measurements</H1
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
 NAME="SERVICES-CPULOAD-API"
-></A
->CPU Load API</H1
+>CPU Load API</A
+></H1
 ><P
 >The package allows the CPU load to be estimated. The measurement code
 must first be calibrated to the target it is running on. Once this
@@ -120,8 +120,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CPULOAD-API-CYG-CPULOAD-CALIBRATE"
-></A
->cyg_cpuload_calibrate</H2
+>cyg_cpuload_calibrate</A
+></H2
 ><P
 >This function is used to calibrate the cpu load measurement code. It
 makes a measurement to determine the CPU properties while idle.</P
@@ -139,11 +139,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The function returns the calibration value at the location pointed to
-by <TT
+by <CODE
 CLASS="PARAMETER"
-><I
->calibration</I
-></TT
+>calibration</CODE
 >.</P
 ><P
 >This function is quite unusual. For it to work correctly a few
@@ -159,8 +157,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CPULOAD-API-CYG-CPULOAD-CREATE"
-></A
->cyg_cpuload_create</H2
+>cyg_cpuload_create</A
+></H2
 ><P
 >This function starts the CPU load measurments.</P
 ><TABLE
@@ -179,11 +177,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The measurement process is started and a handle to it is returned in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*handle</I
-></TT
+>*handle</CODE
 >. This handle is used to access the
 results and the stop the measurement process. </P
 ></DIV
@@ -193,8 +189,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CPULOAD-API-CYG-CPULOAD-DELETE"
-></A
->cyg_cpuload_delete</H2
+>cyg_cpuload_delete</A
+></H2
 ><P
 >This function stops the measurement process. </P
 ><TABLE
@@ -210,11 +206,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 > should be the value returned by the create function.</P
 ></DIV
 ><DIV
@@ -223,8 +217,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CPULOAD-API-CYG-CPULOAD-GET"
-></A
->cyg_cpuload_get</H2
+>cyg_cpuload_get</A
+></H2
 ><P
 >This function returns the latest measurements.</P
 ><TABLE
@@ -243,30 +237,22 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 > should be the value returned by the
 create function. The load measurements for the last 100ms, 1s and 10s
 are returned in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*average_point1s</I
-></TT
->,<TT
+>*average_point1s</CODE
+>,<CODE
 CLASS="PARAMETER"
-><I
->*average_1s</I
-></TT
+>*average_1s</CODE
 >
-and <TT
+and <CODE
 CLASS="PARAMETER"
-><I
->*average_10s</I
-></TT
+>*average_10s</CODE
 > respectively.</P
 ></DIV
 ><DIV
@@ -275,8 +261,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="SERVICES-CPULOAD-API-IMPLEMENTATION"
-></A
->Implementation details</H2
+>Implementation details</A
+></H2
 ><P
 >This section gives a few details of how the measurements are
 made. This should help to understand what the results mean.</P
@@ -394,7 +380,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Application profiling</TD
+>gprof Profiling Support</TD
 ></TR
 ></TABLE
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-SMP-SUPPORT"
-></A
->SMP Support</H1
+>SMP Support</A
+></H1
 ><P
 >eCos contains support for limited Symmetric Multi-Processing
 (SMP). This is only available on selected architectures and platforms.</P
@@ -94,8 +94,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3095"
-></A
->Target Hardware Limitations</H2
+>Target Hardware Limitations</A
+></H2
 ><P
 >To allow a reasonable implementation of SMP, and to reduce the
 disruption to the existing source base, a number of assumptions have
@@ -186,8 +186,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3115"
-></A
->HAL Support</H2
+>HAL Support</A
+></H2
 ><P
 >SMP support in any platform depends on the HAL supplying the
 appropriate operations. All HAL SMP support is defined in the
@@ -213,8 +213,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3122"
-></A
->CPU Control</H3
+>CPU Control</A
+></H3
 ><P
 >This group consists of descriptive and control macros for managing the
 CPUs in an SMP system.</P
@@ -288,9 +288,9 @@ CLASS="LITERAL"
 >Starts the given CPU executing at a defined
 HAL entry point. After performing any HAL
 level initialization, the CPU calls up into
-the kernel at <TT
+the kernel at <CODE
 CLASS="FUNCTION"
->cyg_kernel_cpu_startup()</TT
+>cyg_kernel_cpu_startup()</CODE
 >.</P
 ></DD
 ><DT
@@ -301,16 +301,14 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Sends the CPU a reschedule interrupt, and if
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->wait</I
-></TT
+>wait</CODE
 > is non-zero, waits for an
 acknowledgment. The interrupted CPU should call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_set_need_reschedule()</TT
+>cyg_scheduler_set_need_reschedule()</CODE
 > in its DSR to
 cause the reschedule to occur.</P
 ></DD
@@ -322,16 +320,14 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Sends the CPU a timeslice interrupt, and if
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->wait</I
-></TT
+>wait</CODE
 > is non-zero, waits for an
 acknowledgment. The interrupted CPU should call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_timeslice_cpu()</TT
+>cyg_scheduler_timeslice_cpu()</CODE
 > to cause the
 timeslice event to be processed.</P
 ></DD
@@ -344,8 +340,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3171"
-></A
->Test-and-set Support</H3
+>Test-and-set Support</A
+></H3
 ><P
 >Test-and-set is the foundation of the SMP synchronization
 mechanisms.</P
@@ -375,16 +371,12 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Performs a test and set operation on the
-location <TT
+location <CODE
 CLASS="PARAMETER"
-><I
->tas</I
-></TT
->. <TT
+>tas</CODE
+>. <CODE
 CLASS="PARAMETER"
-><I
->oldb</I
-></TT
+>oldb</CODE
 > will contain <TT
 CLASS="LITERAL"
 >true</TT
@@ -403,16 +395,12 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Performs a test and clear operation on the
-location <TT
+location <CODE
 CLASS="PARAMETER"
-><I
->tas</I
-></TT
->. <TT
+>tas</CODE
+>. <CODE
 CLASS="PARAMETER"
-><I
->oldb</I
-></TT
+>oldb</CODE
 > will contain <TT
 CLASS="LITERAL"
 >true</TT
@@ -432,8 +420,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3198"
-></A
->Spinlocks</H3
+>Spinlocks</A
+></H3
 ><P
 >Spinlocks provide inter-CPU locking. Normally they will be implemented
 on top of the test-and-set mechanism above, but may also be
@@ -503,11 +491,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Attempts to set the lock. The value put in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->val</I
-></TT
+>val</CODE
 > will be <TT
 CLASS="LITERAL"
 >true</TT
@@ -526,11 +512,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Tests the current value of the lock. The value
-put in <TT
+put in <CODE
 CLASS="PARAMETER"
-><I
->val</I
-></TT
+>val</CODE
 > will be <TT
 CLASS="LITERAL"
 >true</TT
@@ -549,8 +533,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3243"
-></A
->Scheduler Lock</H3
+>Scheduler Lock</A
+></H3
 ><P
 >The scheduler lock is the main protection for all kernel data
 structures. By default the kernel implements the scheduler lock itself
@@ -583,18 +567,14 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->Initialize the scheduler lock. The <TT
+>Initialize the scheduler lock. The <CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 >
 argument is the scheduler lock counter and the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > argument is a variable of
 HAL_SMP_SCHEDLOCK_DATA_TYPE type.</P
 ></DD
@@ -631,11 +611,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Set the lock to a different value, in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->new</I
-></TT
+>new</CODE
 >. This is only called when the lock is
 already known to be owned by the current CPU. It is never called to
 zero the lock, or to increment it from zero.</P
@@ -649,8 +627,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3275"
-></A
->Interrupt Routing</H3
+>Interrupt Routing</A
+></H3
 ><P
 >The routing of interrupts to different CPUs is supported by two new
 interfaces in hal_intr.h.</P
@@ -672,17 +650,13 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->Route the interrupt for the given <TT
+>Route the interrupt for the given <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > to
-the given <TT
+the given <CODE
 CLASS="PARAMETER"
-><I
->cpu</I
-></TT
+>cpu</CODE
 >. </P
 ></DD
 ><DT
@@ -692,11 +666,9 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->Set <TT
+>Set <CODE
 CLASS="PARAMETER"
-><I
->cpu</I
-></TT
+>cpu</CODE
 > to the id of the CPU to which this
 vector is routed.</P
 ></DD

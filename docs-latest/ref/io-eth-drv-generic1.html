@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,7 +83,7 @@ CLASS="CHAPTER"
 ><A
 NAME="IO-ETH-DRV-GENERIC1"
 ></A
->Chapter 50. Generic Ethernet Device Driver</H1
+>Chapter 51. Generic Ethernet Device Driver</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -119,8 +119,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-DRV-API"
-></A
->Generic Ethernet API</H1
+>Generic Ethernet API</A
+></H1
 ><P
 >This section provides a simple description of how to write a low-level,
 hardware dependent ethernet driver.</P
@@ -136,9 +136,9 @@ CLASS="PRODUCTNAME"
 >eCos</SPAN
 >
 supported
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->TCP/IP</SPAN
+>TCP/IP</ACRONYM
 >
 stack,
 <SPAN
@@ -299,9 +299,9 @@ CLASS="TYPE"
 >struct eth_drv_sc</SPAN
 >
 using the
-<TT
+<CODE
 CLASS="FUNCTION"
->ETH_DRV_SC()</TT
+>ETH_DRV_SC()</CODE
 >
 macro which
 sets up the structure, including the prototypes for the functions, etc.
@@ -315,9 +315,9 @@ themselves and have them be (quietly) broken if the interfaces change.</P
 which gets the drivers started (and indeed, linked) is
 similar to what is used for the I/O subsystem.
 This is done using the
-<TT
+<CODE
 CLASS="FUNCTION"
->NETDEVTAB_ENTRY()</TT
+>NETDEVTAB_ENTRY()</CODE
 >
 macro, which defines an initialization function
 and the basic data structures for the low-level driver.</P
@@ -340,9 +340,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 >
-The <TT
+The <CODE
 CLASS="VARNAME"
->device_instance</TT
+>device_instance</CODE
 >
 entry here would point to the <SPAN
 CLASS="TYPE"
@@ -350,14 +350,14 @@ CLASS="TYPE"
 >
 entry previously defined.  This allows the network driver
 setup to work with any class of driver, not just ethernet drivers.  In
-the future, there will surely be serial <SPAN
+the future, there will surely be serial <ACRONYM
 CLASS="ACRONYM"
->PPP</SPAN
+>PPP</ACRONYM
 >
 drivers, etc.  These will
-use the <TT
+use the <CODE
 CLASS="FUNCTION"
->NETDEVTAB_ENTRY()</TT
+>NETDEVTAB_ENTRY()</CODE
 >
 setup to create the basic driver, but they will
 most likely be built on top of other high-level device driver layers.</P
@@ -484,12 +484,12 @@ CLASS="NOTE"
 >If one needed the same low-level driver to handle
 multiple similar hardware interfaces, you would need multiple invocations
 of the
-<TT
+<CODE
 CLASS="FUNCTION"
->ETH_DRV_SC()</TT
->/<TT
+>ETH_DRV_SC()</CODE
+>/<CODE
 CLASS="FUNCTION"
->NETDEVTAB_ENTRY()</TT
+>NETDEVTAB_ENTRY()</CODE
 >
 macros.  You would add a pointer
 to some instance specific data, e.g. containing base addresses, interrupt

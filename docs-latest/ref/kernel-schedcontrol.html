@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1826"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1827"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -157,16 +157,16 @@ NAME="KERNEL-SCHEDCONTROL-DESCRIPTION"
 ><H2
 >Description</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 > should only be called once,
 to mark the end of system initialization. In typical configurations it
 is called automatically by the system startup, but some applications
 may bypass the standard startup in which case
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 > will have to be called
 explicitly. The call will enable system interrupts, allowing I/O
 operations to commence. Then the scheduler will be invoked and control
@@ -176,9 +176,9 @@ will never return.
 ><P
 >The various data structures inside the eCos kernel must be protected
 against concurrent updates. Consider a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > which causes a thread to be
 woken up: the semaphore data structure must be updated to remove the
 thread from its queue; the scheduler data structure must also be
@@ -193,9 +193,9 @@ an inconsistent state and the system will fail.
 ><P
 >To prevent such problems the kernel contains a special lock known as
 the scheduler lock. A typical kernel function such as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_post</TT
+>cyg_semaphore_post</CODE
 > will claim the scheduler lock,
 do all its manipulation of kernel data structures, and then release
 the scheduler lock. The current thread cannot be preempted while it
@@ -206,20 +206,20 @@ of kernel data structures.
       </P
 ><P
 >The kernel exports three routines for manipulating the scheduler lock.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock</TT
+>cyg_scheduler_lock</CODE
 > can be called to claim the
 lock. On return it is guaranteed that the current thread will not be
 preempted, and that no other code is manipulating any kernel data
-structures. <TT
+structures. <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock</TT
+>cyg_scheduler_unlock</CODE
 > can be used to
 release the lock, which may cause the current thread to be preempted.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_read_lock</TT
+>cyg_scheduler_read_lock</CODE
 > can be used to query the
 current state of the scheduler lock. This function should never be
 needed because well-written code should always know whether or not the
@@ -227,14 +227,14 @@ scheduler is currently locked, but may prove useful during debugging.
       </P
 ><P
 >The implementation of the scheduler lock involves a simple counter.
-Code can call <TT
+Code can call <CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock</TT
+>cyg_scheduler_lock</CODE
 > multiple times,
 causing the counter to be incremented each time, as long as
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock</TT
+>cyg_scheduler_unlock</CODE
 > is called the same number of
 times. This behaviour is different from mutexes where an attempt by a
 thread to lock a mutex multiple times will result in deadlock or an
@@ -266,9 +266,9 @@ NAME="KERNEL-SCHEDCONTROL-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 > can only be called during
 system initialization, since it marks the end of that phase. The
 remaining functions may be called from thread or DSR context. Locking

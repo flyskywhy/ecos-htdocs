@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 53. Embedded HTTP Server</TD
+>Chapter 54. Embedded HTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-HTTPD-ORGANIZATION"
-></A
->Server Organization</H1
+>Server Organization</A
+></H1
 ><P
 >The server consists of one or more threads running in parallel to any
 application threads and which serve web pages to clients. Apart from
@@ -94,9 +94,9 @@ start the HTTP server.</P
 >The HTTP server is, by default, started by a static constructor. This
 simply creates an initial thread and sets it running. Since this is
 called before the scheduler is started, nothing will happen until the
-application calls <TT
+application calls <CODE
 CLASS="FUNCTION"
->cyg_scheduler_start()</TT
+>cyg_scheduler_start()</CODE
 >. The
 server thread can also be started explicitly by the application, see
 the <TT
@@ -143,32 +143,24 @@ CYG_HTTPD_TABLE_ENTRY( __name, __pattern, __handler, __arg )&#13;</PRE
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->__name</I
-></TT
+>__name</CODE
 > argument is a variable name for the
 table entry since C does not allow us to define anonymous data
 structures. This name should be chosen so that it is unique and does
-not pollute the name space. The <TT
+not pollute the name space. The <CODE
 CLASS="PARAMETER"
-><I
->__pattern</I
-></TT
+>__pattern</CODE
 >
-argument is the match pattern. The <TT
+argument is the match pattern. The <CODE
 CLASS="PARAMETER"
-><I
->__handler</I
-></TT
+>__handler</CODE
 >
 argument is a pointer to the handler function and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->__arg</I
-></TT
+>__arg</CODE
 > the user defined value.</P
 ><P
 >The link-time table building means that several different pieces of
@@ -206,31 +198,23 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->client</I
-></TT
+>client</CODE
 > argument is the TCP connection to
 the client: anything output through this stream will be returned to
-the browser. The <TT
+the browser. The <CODE
 CLASS="PARAMETER"
-><I
->filename</I
-></TT
+>filename</CODE
 > argument is the
-filename from the HTTP request and the <TT
+filename from the HTTP request and the <CODE
 CLASS="PARAMETER"
-><I
->formdata</I
-></TT
+>formdata</CODE
 >
 argument is any form response data, or NULL if none was sent. The
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->arg</I
-></TT
+>arg</CODE
 > argument is the user defined value from the
 table entry.</P
 ><P

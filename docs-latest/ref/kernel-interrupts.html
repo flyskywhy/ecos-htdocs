@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1887"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1888"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -267,9 +267,9 @@ from many of the details of the underlying hardware, thus simplifying
 application development. However this is not always successful. For
 example, if some hardware does not provide any support at all for
 masking specific interrupts then calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_mask</TT
+>cyg_interrupt_mask</CODE
 > may not behave as intended:
 instead of masking just the one interrupt source it might disable all
 interrupts, because that is as close to the desired behaviour as is
@@ -290,9 +290,9 @@ NAME="KERNEL-INTERRUPTS-HANDLERS"
 >Interrupt Handlers</H2
 ><P
 >Interrupt handlers are created by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_create</TT
+>cyg_interrupt_create</CODE
 >. This takes the following
 arguments: 
       </P
@@ -302,11 +302,9 @@ arguments:
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->cyg_vector_t <TT
+>cyg_vector_t <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 ></DT
 ><DD
 ><P
@@ -317,11 +315,9 @@ which device.
           </P
 ></DD
 ><DT
->cyg_priority_t <TT
+>cyg_priority_t <CODE
 CLASS="PARAMETER"
-><I
->priority</I
-></TT
+>priority</CODE
 ></DT
 ><DD
 ><P
@@ -332,35 +328,29 @@ about what the valid interrupt priority levels are.
           </P
 ></DD
 ><DT
->cyg_addrword_t <TT
+>cyg_addrword_t <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 ></DT
 ><DD
 ><P
 >When an interrupt occurs eCos will first call the associated
 interrupt service routine or ISR, then optionally a deferred service
-routine or DSR. The <TT
+routine or DSR. The <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > argument to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_create</TT
+>cyg_interrupt_create</CODE
 > will be passed to both these
 functions. Typically it will be a pointer to some data structure.
           </P
 ></DD
 ><DT
->cyg_ISR_t <TT
+>cyg_ISR_t <CODE
 CLASS="PARAMETER"
-><I
->isr</I
-></TT
+>isr</CODE
 ></DT
 ><DD
 ><P
@@ -396,15 +386,13 @@ isr_function(cyg_vector_t vector, cyg_addrword_t data)
 >The first argument identifies the particular interrupt source,
 especially useful if there multiple instances of a given device and a
 single ISR can be used for several different interrupt vectors. The
-second argument is the <TT
+second argument is the <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > field passed to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_create</TT
+>cyg_interrupt_create</CODE
 >, usually a pointer to some
 data structure. The exact conditions under which an ISR runs will
 depend partly on the hardware and partly on configuration options.
@@ -418,9 +406,9 @@ interrupt happened.
 ><P
 >A typical ISR will do as little work as possible, just enough to meet
 the needs of the hardware and then acknowledge the interrupt by
-calling <TT
+calling <CODE
 CLASS="FUNCTION"
->cyg_interrupt_acknowledge</TT
+>cyg_interrupt_acknowledge</CODE
 >. This ensures
 that interrupts will be quickly reenabled, so higher priority devices
 can be serviced. For some applications there may be one device which
@@ -452,11 +440,9 @@ improves interrupt latency.
           </P
 ></DD
 ><DT
->cyg_DSR_t <TT
+>cyg_DSR_t <CODE
 CLASS="PARAMETER"
-><I
->dsr</I
-></TT
+>dsr</CODE
 ></DT
 ><DD
 ><P
@@ -501,24 +487,20 @@ CLASS="LITERAL"
 >1</TT
 >, unless the system is
 suffering from a very heavy load. The third argument is the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > field passed to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_create</TT
+>cyg_interrupt_create</CODE
 >. 
           </P
 ></DD
 ><DT
->cyg_handle_t* <TT
+>cyg_handle_t* <CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 ></DT
 ><DD
 ><P
@@ -528,11 +510,9 @@ as attaching it to the interrupt source will use this handle.
           </P
 ></DD
 ><DT
->cyg_interrupt* <TT
+>cyg_interrupt* <CODE
 CLASS="PARAMETER"
-><I
->intr</I
-></TT
+>intr</CODE
 ></DT
 ><DD
 ><P
@@ -543,29 +523,29 @@ interrupt handler and associated data.
 ></DL
 ></DIV
 ><P
->The call to <TT
+>The call to <CODE
 CLASS="FUNCTION"
->cyg_interrupt_create</TT
+>cyg_interrupt_create</CODE
 > simply fills in
 a kernel data structure. A typical next step is to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_attach</TT
+>cyg_interrupt_attach</CODE
 > using the handle returned by
 the create operation. This makes it possible to have several different
 interrupt handlers for a given vector, attaching whichever one is
 currently appropriate. Replacing an interrupt handler requires a call
-to <TT
+to <CODE
 CLASS="FUNCTION"
->cyg_interrupt_detach</TT
+>cyg_interrupt_detach</CODE
 >, followed by another call
-to <TT
+to <CODE
 CLASS="FUNCTION"
->cyg_interrupt_attach</TT
+>cyg_interrupt_attach</CODE
 > for the replacement
-handler. <TT
+handler. <CODE
 CLASS="FUNCTION"
->cyg_interrupt_delete</TT
+>cyg_interrupt_delete</CODE
 > can be used if an
 interrupt handler is no longer required.
       </P
@@ -573,21 +553,17 @@ interrupt handler is no longer required.
 >Some hardware may allow for further control over specific interrupts,
 for example whether an interrupt is level or edge triggered. Any such
 hardware functionality can be accessed using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_configure</TT
+>cyg_interrupt_configure</CODE
 >: the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->level</I
-></TT
+>level</CODE
 > argument selects between level versus
-edge triggered; the <TT
+edge triggered; the <CODE
 CLASS="PARAMETER"
-><I
->up</I
-></TT
+>up</CODE
 > argument selects between
 high and low level, or between rising and falling edges.
       </P
@@ -595,9 +571,9 @@ high and low level, or between rising and falling edges.
 >Usually interrupt handlers are created, attached and configured during
 system initialization, while global interrupts are still disabled. On
 most hardware it will also be necessary to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_unmask</TT
+>cyg_interrupt_unmask</CODE
 >, since the sensible default
 for interrupt masking is to ignore any interrupts for which no handler
 is installed.
@@ -613,13 +589,13 @@ NAME="KERNEL-INTERRUPTS-ENABLE"
 ><P
 >eCos provides two ways of controlling whether or not interrupts
 happen. It is possible to disable and reenable all interrupts
-globally, using <TT
+globally, using <CODE
 CLASS="FUNCTION"
->cyg_interrupt_disable</TT
+>cyg_interrupt_disable</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_enable</TT
+>cyg_interrupt_enable</CODE
 >. Typically this works by
 manipulating state inside the cpu itself, for example setting a flag
 in a status register or executing special instructions. Alternatively
@@ -646,34 +622,34 @@ by that device.
       </P
 ><P
 >There are two functions for masking a specific interrupt source,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_mask</TT
+>cyg_interrupt_mask</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_mask_intunsafe</TT
+>cyg_interrupt_mask_intunsafe</CODE
 >. On typical hardware
 masking an interrupt is not an atomic operation, so if two threads
 were to perform interrupt masking operations at the same time there
-could be problems. <TT
+could be problems. <CODE
 CLASS="FUNCTION"
->cyg_interrupt_mask</TT
+>cyg_interrupt_mask</CODE
 > disables
 all interrupts while it manipulates the interrupt mask. In situations
 where interrupts are already know to be disabled,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_mask_intunsafe</TT
+>cyg_interrupt_mask_intunsafe</CODE
 > can be used
 instead. There are matching functions
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_unmask</TT
+>cyg_interrupt_unmask</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_unmask_intsafe</TT
+>cyg_interrupt_unmask_intsafe</CODE
 >.
       </P
 ></DIV
@@ -686,18 +662,18 @@ NAME="KERNEL-INTERRUPTS-SMP"
 >SMP Support</H2
 ><P
 >On SMP systems the kernel provides an additional two functions related
-to interrupt handling. <TT
+to interrupt handling. <CODE
 CLASS="FUNCTION"
->cyg_interrupt_set_cpu</TT
+>cyg_interrupt_set_cpu</CODE
 >
 specifies that a particular hardware interrupt should always be
 handled on one specific processor in the system. In other words when
 the interrupt triggers it is only that processor which detects it, and
 it is only on that processor that the VSR and ISR will run. If a DSR
 is requested then it will also run on the same CPU. The
-function <TT
+function <CODE
 CLASS="FUNCTION"
->cyg_interrupt_get_cpu</TT
+>cyg_interrupt_get_cpu</CODE
 > can be used to
 find out which interrupts are handled on which processor. 
       </P
@@ -725,21 +701,19 @@ VSR and handle some interrupts directly. This minimizes interrupt
 latency, but it requires application developers to program at a lower
 level. Usually the best way to write a custom VSR is to copy the
 existing one supplied by eCos and then make appropriate modifications.
-The function <TT
+The function <CODE
 CLASS="FUNCTION"
->cyg_interrupt_get_vsr</TT
+>cyg_interrupt_get_vsr</CODE
 > can be used to
 get hold of the current VSR for a given interrupt vector, allowing it
 to be restored if the custom VSR is no longer required.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_set_vsr</TT
+>cyg_interrupt_set_vsr</CODE
 > can be used to install a
-replacement VSR. Usually the <TT
+replacement VSR. Usually the <CODE
 CLASS="PARAMETER"
-><I
->vsr</I
-></TT
+>vsr</CODE
 > argument will
 correspond to an exported label in an assembler source file.
       </P
@@ -755,26 +729,26 @@ NAME="KERNEL-INTERRUPTS-CONTEXT"
 >In a typical configuration interrupt handlers are created and attached
 during system initialization, and never detached or deleted. However
 it is possible to perform these operations at thread level, if
-desired. Similarly <TT
+desired. Similarly <CODE
 CLASS="FUNCTION"
->cyg_interrupt_configure</TT
+>cyg_interrupt_configure</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_set_vsr</TT
+>cyg_interrupt_set_vsr</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_set_cpu</TT
+>cyg_interrupt_set_cpu</CODE
 > are usually called only
 during system initialization, but on typical hardware may be called at
-any time. <TT
+any time. <CODE
 CLASS="FUNCTION"
->cyg_interrupt_get_vsr</TT
+>cyg_interrupt_get_vsr</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_get_cpu</TT
+>cyg_interrupt_get_cpu</CODE
 > may be called at any time.
       </P
 ><P

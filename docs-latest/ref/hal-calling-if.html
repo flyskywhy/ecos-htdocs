@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,28 +83,32 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-CALLING-IF"
-></A
->Virtual Vectors (eCos/ROM Monitor Calling Interface)</H1
+>Virtual Vectors (eCos/ROM Monitor Calling Interface)</A
+></H1
 ><P
->Some eCos platforms have supported full debugging capabilities via
-CygMon since day one. Platforms of the architectures PowerPC, ARM, and
-SH do not provide those features unless a GDB stub is included in the
-application.</P
-><P
->This is going to change. All platforms will (eventually) support
-all the debugging features by relying on a ROM/RAM calling interface
-(also referred to as virtual vector table) provided by the ROM
-monitor. This calling interface is based on the tables used by libbsp
-and is thus backwards compatible with the existing CygMon supported
-platforms.</P
+>Virtually all eCos platforms provide full debugging capabilities
+via RedBoot.  This enviroment contains not only debug stubs based
+on GDB, but also rich I/O support which can be exported to loaded
+programs.  Such programs can take advantage of the I/O capabilities
+using a special ROM/RAM calling interface
+(also referred to as virtual vector table).
+eCos programs make use of the virtual vector mechanism implicitly.
+Non-eCos programs can access these functions using the support from
+the <SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>newlib</I
+></SPAN
+> library.</P
 ><DIV
 CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-VIRTUAL-VECTORS"
-></A
->Virtual Vectors</H2
+>Virtual Vectors</A
+></H2
 ><P
 >What are virtual vectors, what do they do, and why are they
 needed?</P
@@ -148,8 +152,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3791"
-></A
->Initialization (or Mechanism vs. Policy)</H3
+>Initialization (or Mechanism vs. Policy)</A
+></H3
 ><P
 >Virtual vectors are a <SPAN
 CLASS="emphasis"
@@ -209,8 +213,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3805"
-></A
->Pros and Cons of Virtual Vectors</H3
+>Pros and Cons of Virtual Vectors</A
+></H3
 ><P
 >There are pros and cons associated with the use of virtual
 vectors. We do believe that the pros generally outweigh the cons by a
@@ -319,8 +323,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3838"
-></A
->Available services</H3
+>Available services</A
+></H3
 ><P
 >The <TT
 CLASS="FILENAME"
@@ -353,8 +357,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3849"
-></A
->The COMMS channels</H2
+>The COMMS channels</A
+></H2
 ><P
 >As all HAL IO happens via the COMMS channels these deserve to be
 described in a little more detail. In particular the controls of where
@@ -366,17 +370,17 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3852"
-></A
->Console and Debugging Channels</H3
+>Console and Debugging Channels</A
+></H3
 ><P
 >There are two COMMS channels - one for console IO and one for
 debugging IO. They can be individually configured to use any of the
 actual IO ports (serial or Ethernet) available on the platform.</P
 ><P
 >The console channel is used for any IO initiated by calling the
-<TT
+<CODE
 CLASS="FUNCTION"
->diag_*()</TT
+>diag_*()</CODE
 > functions. Note that these should only be used during
 development for debugging, assertion and possibly tracing
 messages. All proper IO should happen via proper devices. This means
@@ -398,8 +402,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3859"
-></A
->Mangling</H3
+>Mangling</A
+></H3
 ><P
 >As debuggers usually have a protocol using specialized commands
 when communicating with the stub on the target, sending out text as
@@ -422,8 +426,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3864"
-></A
->Controlling the Console Channel</H3
+>Controlling the Console Channel</A
+></H3
 ><P
 >Console output configuration is either inherited from the ROM
 monitor launching the application, or it is specified by the
@@ -456,9 +460,9 @@ two mangler types:</P
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><SPAN
+><ACRONYM
 CLASS="ACRONYM"
->GDB</SPAN
+>GDB</ACRONYM
 ></DT
 ><DD
 ><P
@@ -567,8 +571,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3906"
-></A
->Footnote: Design Reasoning for Control of Console Channel</H3
+>Footnote: Design Reasoning for Control of Console Channel</A
+></H3
 ><P
 >The current code for controlling the console channel is a
 replacement for an older implementation which had some shortcomings
@@ -624,8 +628,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3920"
-></A
->The calling Interface API</H2
+>The calling Interface API</A
+></H2
 ><P
 >The calling interface API is defined by hal_if.h and hal_if.c in
 hal/common.</P
@@ -679,8 +683,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN3933"
-></A
->Implemented Services</H3
+>Implemented Services</A
+></H3
 ><P
 >This is a brief description of the services, some of which are
 described in further detail below.</P
@@ -857,8 +861,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4009"
-></A
->Compatibility</H3
+>Compatibility</A
+></H3
 ><P
 >When a platform is changed to support the calling interface,
 applications will use it if so configured. That means that if an
@@ -885,8 +889,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4015"
-></A
->Implementation details</H3
+>Implementation details</A
+></H3
 ><P
 >During the startup of a ROM monitor, the calling table will be
 initialized. This also happens if eCos is configured <SPAN
@@ -924,28 +928,28 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4024"
-></A
->New Platform Ports</H3
+>New Platform Ports</A
+></H3
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->hal_platform_init()</TT
+>hal_platform_init()</CODE
 > function must call
-<TT
+<CODE
 CLASS="FUNCTION"
->hal_if_init()</TT
+>hal_if_init()</CODE
 >.</P
 ><P
 >The HAL serial driver must, when called via
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_plf_comms_init()</TT
+>cyg_hal_plf_comms_init()</CODE
 > must initialize the
 communication channels.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->reset()</TT
+>reset()</CODE
 > function defined in
 <TT
 CLASS="FILENAME"
@@ -969,8 +973,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4036"
-></A
->New architecture ports</H3
+>New architecture ports</A
+></H3
 ><P
 >There are no specific requirements for a new architecture port in
 order to support the calling interface, but the basic debugging
@@ -983,8 +987,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-PORTING-IO-CHANNELS"
-></A
->IO channels</H2
+>IO channels</A
+></H2
 ><P
 >The calling interface provides procedure tables for all IO channels on
 the platform. These are used for console (diagnostic) and debugger IO,
@@ -1003,8 +1007,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4043"
-></A
->Available Procedures</H3
+>Available Procedures</A
+></H3
 ><P
 >This is a brief description of the procedures</P
 ><P
@@ -1188,8 +1192,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4133"
-></A
->Usage</H3
+>Usage</A
+></H3
 ><P
 >The standard eCos diagnostics IO functions use the channel
 procedure table when <TT
@@ -1247,8 +1251,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4141"
-></A
->Compatibility</H3
+>Compatibility</A
+></H3
 ><P
 >The use of this service is controlled by the option
 <TT
@@ -1264,8 +1268,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4145"
-></A
->Implementation Details</H3
+>Implementation Details</A
+></H3
 ><P
 >There is an array of procedure tables (raw comm channels) for each
 IO device of the platform which get initialized by the ROM monitor, or
@@ -1295,9 +1299,9 @@ selected raw channel, thus overriding any mangler provided by the ROM
 monitor.</P
 ><P
 >See hal_if_diag_* routines in hal_if.c for more details of the stream
-path of diagnostic output. See <TT
+path of diagnostic output. See <CODE
 CLASS="FUNCTION"
->cyg_hal_gdb_diag_*()</TT
+>cyg_hal_gdb_diag_*()</CODE
 > routines in
 <TT
 CLASS="FILENAME"
@@ -1310,8 +1314,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN4155"
-></A
->New Platform Ports</H3
+>New Platform Ports</A
+></H3
 ><P
 >Define CDL options <TT
 CLASS="LITERAL"

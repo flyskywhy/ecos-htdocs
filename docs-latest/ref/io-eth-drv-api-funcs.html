@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 50. Generic Ethernet Device Driver</TD
+>Chapter 51. Generic Ethernet Device Driver</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-DRV-API-FUNCS"
-></A
->Review of the functions</H1
+>Review of the functions</A
+></H1
 ><P
 >Now a brief review of the functions.  This discussion will use generic
 names for the functions &#8212; your driver should use hardware-specific
@@ -95,8 +95,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-INIT"
-></A
->Init function</H2
+>Init function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -146,11 +146,9 @@ CLASS="REPLACEABLE"
 ></TR
 ></TABLE
 >
-where <TT
+where <CODE
 CLASS="PARAMETER"
-><I
->enaddr</I
-></TT
+>enaddr</CODE
 >
 is a pointer to the ethernet station address for this unit, to inform
 the stack of this device's readiness and availability.</P
@@ -162,49 +160,49 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >The ethernet station address
-(<SPAN
+(<ACRONYM
 CLASS="ACRONYM"
->ESA</SPAN
+>ESA</ACRONYM
 >)
 is supposed to be a
 world-unique, 48 bit address for this particular ethernet interface.
 Typically it is provided by the board/hardware manufacturer in ROM.</P
 ><P
 >In many packages it is possible for the
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->ESA</SPAN
+>ESA</ACRONYM
 >
 to be set from RedBoot,
 (perhaps from 'fconfig' data), hard-coded from
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->CDL</SPAN
->, or from an <SPAN
+>CDL</ACRONYM
+>, or from an <ACRONYM
 CLASS="ACRONYM"
->EPROM</SPAN
+>EPROM</ACRONYM
 >.
 A driver should choose a run-time specified
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->ESA</SPAN
+>ESA</ACRONYM
 >
 (e.g. from RedBoot)
-preferentially, otherwise (in order) it should use a <SPAN
+preferentially, otherwise (in order) it should use a <ACRONYM
 CLASS="ACRONYM"
->CDL</SPAN
+>CDL</ACRONYM
 > specified
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->ESA</SPAN
+>ESA</ACRONYM
 >
-if one has been set, otherwise an <SPAN
+if one has been set, otherwise an <ACRONYM
 CLASS="ACRONYM"
->EPROM</SPAN
+>EPROM</ACRONYM
 > set
-<SPAN
+<ACRONYM
 CLASS="ACRONYM"
->ESA</SPAN
+>ESA</ACRONYM
 >, or otherwise
 fail. See the <TT
 CLASS="FILENAME"
@@ -220,8 +218,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-START"
-></A
->Start function</H2
+>Start function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -258,9 +256,9 @@ CLASS="NOTE"
 >This function will be called whenever the
 up/down state of the logical interface changes, e.g. when the IP address
 changes, or when promiscuous mode is selected by means of an
-<TT
+<CODE
 CLASS="FUNCTION"
->ioctl()</TT
+>ioctl()</CODE
 > call in the application.
 This may occur more than once, so this function needs to
 be prepared for that case.</P
@@ -273,11 +271,9 @@ CLASS="NOTE"
 ><P
 ><B
 >Note: </B
->In future, the <TT
+>In future, the <CODE
 CLASS="PARAMETER"
-><I
->flags</I
-></TT
+>flags</CODE
 >
 field (currently unused) may be used to tell the
 function how to start up, e.g. whether interrupts will be used,
@@ -291,8 +287,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-STOP"
-></A
->Stop function</H2
+>Stop function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -322,8 +318,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-CONTROL"
-></A
->Control function</H2
+>Control function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -349,30 +345,24 @@ CLASS="REPLACEABLE"
 This function is used to perform low-level &#8220;control&#8221;
 operations on the
 interface.  These operations would typically be initiated via
-<TT
+<CODE
 CLASS="FUNCTION"
->ioctl()</TT
+>ioctl()</CODE
 > calls in the BSD
 stack, and would be anything that might require the hardware setup to
 change (i.e. cannot be performed totally by the
 platform-independent layers).</P
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 > parameter selects the operation, and the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
-> and <TT
+>data</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 > params point describe,
 as required, some data for the operation in question.</P
 ><P
@@ -398,11 +388,9 @@ use the new address.  It may also update the NVM as appropriate.</P
 ><DD
 ><P
 >These acquire a set of statistical counters from the interface, and write
-the information into the memory pointed to by <TT
+the information into the memory pointed to by <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 >.
 The &#8220;UD&#8221; variant explicitly instructs the driver to acquire
 up-to-date values.  This is a separate option because doing so may take
@@ -416,7 +404,7 @@ CLASS="FILENAME"
 ><P
 >This call is typically made by SNMP, see <A
 HREF="net-snmp-ecos-port.html"
->Chapter 52</A
+>Chapter 53</A
 >.</P
 ></DD
 ><DT
@@ -425,11 +413,9 @@ HREF="net-snmp-ecos-port.html"
 ><P
 >This entry instructs the device to set up multicast packet filtering
 to receive only packets addressed to the multicast ESAs in the list pointed
-to by <TT
+to by <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 >.</P
 ><P
 >The format of the data is a 32-bit count of the ESAs in the list, followed
@@ -472,8 +458,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-CAN-SEND"
-></A
->Can-send function</H2
+>Can-send function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -507,8 +493,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-SEND"
-></A
->Send function</H2
+>Send function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -556,20 +542,18 @@ sections of data to move (in the order given by the array), as in the
 CLASS="TYPE"
 >struct eth_drv_sg</SPAN
 > defined above and pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->sg_list</I
-></TT
+>sg_list</CODE
 >.</P
 ></BLOCKQUOTE
 ></DIV
 ><P
 >Once the data has been successfully sent by the interface (or if an
 error occurs), the driver should call
-<TT
+<CODE
 CLASS="FUNCTION"
->(sc-&#62;funs-&#62;eth_drv-&#62;tx_done)()</TT
+>(sc-&#62;funs-&#62;eth_drv-&#62;tx_done)()</CODE
 >
 (see <A
 HREF="io-eth-drv-upper-api.html#IO-ETH-DRV-TX-DONE"
@@ -577,11 +561,9 @@ HREF="io-eth-drv-upper-api.html#IO-ETH-DRV-TX-DONE"
 >Callback Tx-Done function</I
 ></A
 >)
-using the specified <TT
+using the specified <CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >.
 Only then will the upper layers release the resources
 for that packet and start another transmission.</P
@@ -605,8 +587,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-DELIVER"
-></A
->Deliver function</H2
+>Deliver function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -652,9 +634,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 >
 to alert the system that &#8220;something requires attention.&#8221;
-This <TT
+This <CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > call must occur from within the
 interrupt handler's DSR (not the ISR) or actually <SPAN
 CLASS="emphasis"
@@ -665,15 +647,13 @@ CLASS="EMPHASIS"
 >
 the DSR, whenever it is determined that
 the device needs attention from the foreground.  The third parameter
-(<TT
+(<CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > in the prototype of
-<TT
+<CODE
 CLASS="FUNCTION"
->eth_drv_dsr()</TT
+>eth_drv_dsr()</CODE
 > <SPAN
 CLASS="emphasis"
 ><I
@@ -684,9 +664,9 @@ CLASS="EMPHASIS"
 be a valid <SPAN
 CLASS="TYPE"
 >struct eth_drv_sc</SPAN
-> pointer <TT
+> pointer <CODE
 CLASS="VARNAME"
->sc</TT
+>sc</CODE
 >.</P
 ><P
 >The reason for this slightly convoluted train of events is to keep the DSR
@@ -723,8 +703,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-RECV"
-></A
->Receive function</H2
+>Receive function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -764,20 +744,20 @@ CLASS="PROGRAMLISTING"
 >
 has been called itself from your deliver function when it knows that a
 packet of data is available on the
-interface.  The <TT
+interface.  The <CODE
 CLASS="FUNCTION"
->(sc-&#62;funs-&#62;eth_drv-&#62;recv)()</TT
+>(sc-&#62;funs-&#62;eth_drv-&#62;recv)()</CODE
 >
 function then arranges network buffers
 and structures for the data and then calls
-<TT
+<CODE
 CLASS="FUNCTION"
 ><TT
 CLASS="REPLACEABLE"
 ><I
 >HRDWR</I
 ></TT
->_recv()</TT
+>_recv()</CODE
 > to actually
 move the data from the interface.</P
 ><P
@@ -793,8 +773,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-POLL"
-></A
->Poll function</H2
+>Poll function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"
@@ -866,8 +846,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="IO-ETH-DRV-API-INT-VECTOR"
-></A
->Interrupt-vector function</H2
+>Interrupt-vector function</A
+></H2
 ><P
 ><TABLE
 BORDER="5"

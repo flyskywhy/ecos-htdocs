@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-CLOCKS-AND-TIMERS"
-></A
->Clocks and Timers</H1
+>Clocks and Timers</A
+></H1
 ><P
 >These interfaces contain definitions related to clock and timer
 handling. They include interfaces to initialize and read a clock for
@@ -96,8 +96,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2833"
-></A
->Clock Control</H2
+>Clock Control</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -119,35 +119,33 @@ services. The clock is assumed to be implemented by some form of
 counter that is incremented or decremented by some external source and
 which raises an interrupt when it reaches a predetermined value.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_CLOCK_INITIALIZE()</TT
+>HAL_CLOCK_INITIALIZE()</CODE
 > initializes the timer
 device to interrupt at the given period. The period is essentially the
 value used to initialize the timer counter and must be calculated from
 the timer frequency and the desired interrupt rate. The timer device
-should generate an interrupt every <TT
+should generate an interrupt every <CODE
 CLASS="VARNAME"
->period</TT
+>period</CODE
 > cycles.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_CLOCK_RESET()</TT
+>HAL_CLOCK_RESET()</CODE
 > re-initializes the timer to
 provoke the next interrupt. This macro is only really necessary when
 the timer device needs to be reset in some way after each interrupt.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_CLOCK_READ()</TT
+>HAL_CLOCK_READ()</CODE
 > reads the current value of the
 timer counter and puts the value in the location pointed to by
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->pvalue</I
-></TT
+>pvalue</CODE
 >. The value stored will always be the
 number of timer cycles since the last interrupt, and hence ranges
 between zero and the initial period value. If this is a count-down
@@ -159,8 +157,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2845"
-></A
->Microsecond Delay</H2
+>Microsecond Delay</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -192,8 +190,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2850"
-></A
->Clock Frequency Definition</H2
+>Clock Frequency Definition</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

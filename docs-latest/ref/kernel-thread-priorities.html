@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN644"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN645"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -157,29 +157,29 @@ small integer in the range 0 to 31, with 0 being the highest priority.
 Usually only the idle thread will run at the lowest priority. The
 exact number of priority levels available depends on the
 configuration, typically the option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_KERNEL_SCHED_PRIORITIES</TT
+>CYGNUM_KERNEL_SCHED_PRIORITIES</CODE
 >.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_thread_get_priority</TT
+>cyg_thread_get_priority</CODE
 > can be used to determine
 the priority of a thread, or more correctly the value last used in a
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_set_priority</TT
+>cyg_thread_set_priority</CODE
 > call or when the thread
 was first created. In some circumstances it is possible that the
 thread is actually running at a higher priority. For example, if it
 owns a mutex and priority ceilings or inheritance is being used to
 prevent priority inversion problems, then the thread's priority may
 have been boosted temporarily.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_get_current_priority</TT
+>cyg_thread_get_current_priority</CODE
 > returns the real
 current priority.
       </P
@@ -187,9 +187,9 @@ current priority.
 >In many applications appropriate thread priorities can be determined
 and allocated statically. However, if it is necessary for a thread's
 priority to change at run-time then the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_set_priority</TT
+>cyg_thread_set_priority</CODE
 > function provides this
 functionality. 
       </P
@@ -202,18 +202,18 @@ NAME="KERNEL-THREAD-PRIORITIES-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_thread_get_priority</TT
+>cyg_thread_get_priority</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_get_current_priority</TT
+>cyg_thread_get_current_priority</CODE
 > can be called
 from thread or DSR context, although the latter is rarely useful.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_set_priority</TT
+>cyg_thread_set_priority</CODE
 > should also only be
 called from thread context.
       </P

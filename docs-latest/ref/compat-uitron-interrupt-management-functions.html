@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,13 +14,12 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Extended Synchronization and Communication Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-INTERRUPT-MANAGEMENT-FUNCTIONS"
-></A
->Interrupt management functions</H1
+>Interrupt management functions</A
+></H1
 ><P
 >These functions are fully supported in this release:</P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void	<TT
+>void	<CODE
 CLASS="FUNCTION"
-> ret_int</TT
+> ret_int</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -110,9 +110,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->loc_cpu</TT
+>loc_cpu</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -125,9 +125,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->unl_cpu</TT
+>unl_cpu</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -140,9 +140,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->dis_int</TT
+>dis_int</CODE
 >( 
     UINT <SPAN
 CLASS="emphasis"
@@ -162,9 +162,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ena_int</TT
+>ena_int</CODE
 >( 
     UINT <SPAN
 CLASS="emphasis"
@@ -184,9 +184,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void	<TT
+>void	<CODE
 CLASS="FUNCTION"
->ret_wup</TT
+>ret_wup</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -206,9 +206,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->iwup_tsk</TT
+>iwup_tsk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -228,9 +228,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->isig_sem</TT
+>isig_sem</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -250,9 +250,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->iset_flg</TT
+>iset_flg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -279,9 +279,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->isend_msg</TT
+>isend_msg</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -301,35 +301,35 @@ CLASS="EMPHASIS"
 ></TR
 ></TABLE
 ><P
->Note that <TT
+>Note that <CODE
 CLASS="FUNCTION"
->ret_int()</TT
+>ret_int()</CODE
 > and
-the <TT
+the <CODE
 CLASS="FUNCTION"
->ret_wup()</TT
+>ret_wup()</CODE
 > are  implemented
 as macros, containing a &#8220;return&#8221; statement.</P
 ><P
->Also note that <TT
+>Also note that <CODE
 CLASS="FUNCTION"
->ret_wup()</TT
+>ret_wup()</CODE
 > and
-the <TT
+the <CODE
 CLASS="FUNCTION"
->ixxx_yyy()</TT
+>ixxx_yyy()</CODE
 > style functions
-will only work when called from an ISR whose associated DSR is <TT
+will only work when called from an ISR whose associated DSR is <CODE
 CLASS="FUNCTION"
->cyg_uitron_dsr()</TT
+>cyg_uitron_dsr()</CODE
 >,
 as specified in include file <TT
 CLASS="FILENAME"
 >&lt;cyg/compat/uitron/uit_ifnc.h&gt;</TT
 >,
-which defines the <TT
+which defines the <CODE
 CLASS="FUNCTION"
->ixxx_yyy()</TT
+>ixxx_yyy()</CODE
 > style
 functions also.</P
 ><P
@@ -342,9 +342,9 @@ CLASS="EMPHASIS"
 ></SPAN
 > style, with separate ISR and DSR routines both of
 your own devising, do not use these special functions from a DSR: use plain
-<TT
+<CODE
 CLASS="FUNCTION"
->xxx_yyy()</TT
+>xxx_yyy()</CODE
 > style functions (with no &#8216;i&#8217; prefix)
 instead, and do not call any &micro;ITRON functions from the ISR at
 all.</P
@@ -358,9 +358,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->def_int</TT
+>def_int</CODE
 >( 
     UINT <SPAN
 CLASS="emphasis"
@@ -387,9 +387,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->chg_iXX</TT
+>chg_iXX</CODE
 >( 
     UINT <SPAN
 CLASS="emphasis"
@@ -410,9 +410,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_iXX</TT
+>ref_iXX</CODE
 >( 
     UINT * <SPAN
 CLASS="emphasis"
@@ -439,9 +439,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8651"
-></A
->Error checking</H2
+NAME="AEN9072"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -455,18 +455,18 @@ is enabled:</P
 ><UL
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->loc/unl_cpu()</TT
+>loc/unl_cpu()</CODE
 >
 : these must only be called in a 
 &micro;ITRON task context, else E_CTX.</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->dis/ena_int()</TT
+>dis/ena_int()</CODE
 >
 : the interrupt number must be in range as specified by the platform
 HAL in qustion, else E_PAR.</P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,16 +14,15 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
-TITLE="ÂµITRON and eCos"
+TITLE="µITRON and eCos"
 HREF="compat-uitron-over-ecos.html"><LINK
 REL="NEXT"
 TITLE="Task-Dependent Synchronization Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-TASK-MANAGEMENT-FUNCTIONS"
-></A
->Task Management Functions</H1
+>Task Management Functions</A
+></H1
 ><P
 >The following functions are fully supported in this release: </P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->sta_tsk</TT
+>sta_tsk</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -124,9 +124,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->ext_tsk</TT
+>ext_tsk</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -139,9 +139,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->exd_tsk</TT
+>exd_tsk</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -154,9 +154,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->dis_dsp</TT
+>dis_dsp</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -169,9 +169,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ena_dsp</TT
+>ena_dsp</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -184,9 +184,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->chg_pri</TT
+>chg_pri</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -213,9 +213,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rot_rdq</TT
+>rot_rdq</CODE
 >( 
   PRI <SPAN
 CLASS="emphasis"
@@ -235,9 +235,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->get_tid</TT
+>get_tid</CODE
 >( 
   ID *<SPAN
 CLASS="emphasis"
@@ -257,9 +257,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ref_tsk</TT
+>ref_tsk</CODE
 >( 
   T_RTSK *<SPAN
 CLASS="emphasis"
@@ -286,9 +286,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->ter_tsk</TT
+>ter_tsk</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -308,9 +308,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rel_wai</TT
+>rel_wai</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -338,9 +338,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->cre_tsk</TT
+>cre_tsk</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -367,9 +367,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->del_tsk</TT
+>del_tsk</CODE
 >( 
   ID <SPAN
 CLASS="emphasis"
@@ -388,15 +388,15 @@ CLASS="EMPHASIS"
 system objects, a task is allocated stack space statically in the
 configuration. So while tasks can be created and deleted, the same
 stack space is used for that task (task ID number) each time. Thus
-the stack size (pk_ctsk-&gt;stksz) requested in <TT
+the stack size (pk_ctsk-&gt;stksz) requested in <CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 > is
 checked for being less than that which was statically allocated,
 and otherwise ignored. This ensures that the new task will have
-enough stack to run. For this reason <TT
+enough stack to run. For this reason <CODE
 CLASS="FUNCTION"
->del_tsk()</TT
+>del_tsk()</CODE
 > does
 not in any sense free the memory that was in use for the task's
 stack. </P
@@ -419,9 +419,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8310"
-></A
->Error checking</H2
+NAME="AEN8731"
+>Error checking</A
+></H2
 ><P
 >For all these calls, an invalid task id (tskid) (less than
 1 or greater than the number of configured tasks) only returns E_ID
@@ -445,64 +445,64 @@ is enabled:</P
 ><LI
 ><P
 >pk_crtk in 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 >
  is a valid pointer, otherwise return E_PAR</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->ter_tsk()</TT
+>ter_tsk()</CODE
 >
  or 
-<TT
+<CODE
 CLASS="FUNCTION"
->rel_wai()</TT
+>rel_wai()</CODE
 >
  on the calling task returns E_OBJ</P
 ></LI
 ><LI
 ><P
 >the CPU is not locked already in 
-<TT
+<CODE
 CLASS="FUNCTION"
->dis_dsp()</TT
+>dis_dsp()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->ena_dsp()</TT
+>ena_dsp()</CODE
 >
 ; returns E_CTX</P
 ></LI
 ><LI
 ><P
 >priority level in 
-<TT
+<CODE
 CLASS="FUNCTION"
->chg_pri()</TT
+>chg_pri()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->rot_rdq()</TT
+>rot_rdq()</CODE
 >
  is checked for validity, E_PAR</P
 ></LI
 ><LI
 ><P
 >return value pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->get_tid()</TT
+>get_tid()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->ref_tsk()</TT
+>ref_tsk()</CODE
 >
  is a valid pointer, or E_PAR</P
 ></LI
@@ -521,14 +521,14 @@ CLASS="LITERAL"
 ><LI
 ><P
 >When create and delete functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->del_tsk()</TT
+>del_tsk()</CODE
 >
  are supported, all calls which use a valid task ID number check
 that the task exists; if not, E_NOEXS is returned</P
@@ -536,18 +536,18 @@ that the task exists; if not, E_NOEXS is returned</P
 ><LI
 ><P
 >When supported, 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 >
 : the task must not already exist; otherwise E_OBJ</P
 ></LI
 ><LI
 ><P
 >When supported, 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 >
 : the requested stack size must not be larger than that statically
 configured for the task; see the configuration options
@@ -557,9 +557,9 @@ Else E_NOMEM</P
 ><LI
 ><P
 >When supported, 
-<TT
+<CODE
 CLASS="FUNCTION"
->del_tsk()</TT
+>del_tsk()</CODE
 >
 : the underlying 
 <SPAN
@@ -576,41 +576,41 @@ E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->sta_tsk()</TT
+>sta_tsk()</CODE
 >
 : the task must be dormant, else E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->ter_tsk()</TT
+>ter_tsk()</CODE
 >
 : the task must not be dormant, else E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->chg_pri()</TT
+>chg_pri()</CODE
 >
 : the task must not be dormant, else E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->rel_wai()</TT
+>rel_wai()</CODE
 >
 : the task must be in 
-<TT
+<CODE
 CLASS="VARNAME"
->WAIT</TT
-> or <TT
+>WAIT</CODE
+> or <CODE
 CLASS="VARNAME"
->WAIT-SUSPEND</TT
+>WAIT-SUSPEND</CODE
 >
  state, else E_OBJ</P
 ></LI

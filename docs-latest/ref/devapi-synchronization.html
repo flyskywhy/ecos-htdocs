@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-SYNCHRONIZATION"
-></A
->Synchronization</H1
+>Synchronization</A
+></H1
 ><P
 >There are three levels of synchronization supported:</P
 ><P
@@ -98,13 +98,13 @@ TYPE="1"
     section. In an SMP environment, this will also require the use of
     a spinlock to synchronize with ISRs, DSRs or threads running on
     other CPUs.  This is implemented by the
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_drv_isr_lock()</TT
+>cyg_drv_isr_lock()</CODE
 > and
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_drv_isr_unlock()</TT
+>cyg_drv_isr_unlock()</CODE
 > functions. This
     mechanism should be used sparingly and for short periods only.
     For finer grained synchronization, individual spinlocks are also
@@ -117,13 +117,13 @@ CLASS="FUNCTION"
     by taking the scheduler lock to prevent DSRs running during
     critical sections. In non-kernel configurations it will be
     implemented by non-kernel code. This is implemented by the
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_lock()</TT
+>cyg_drv_dsr_lock()</CODE
 > and
-    <TT
+    <CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_unlock()</TT
+>cyg_drv_dsr_unlock()</CODE
 > functions. As with ISR
     synchronization, this mechanism should be used sparingly. Only
     DSRs and threads may use this synchronization mechanism, ISRs are

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -124,83 +124,71 @@ CLASS="PROGRAMLISTING"
 >This table is analogous to a combination of the filesystem and mount
 tables.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->valid</I
-></TT
+>valid</CODE
 > field is set
 <TT
 CLASS="LITERAL"
 >true</TT
-> if the stack's <TT
+> if the stack's <CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 >
 function returned successfully and the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->syncmode</I
-></TT
+>syncmode</CODE
 > field contains the
 <TT
 CLASS="LITERAL"
 >CYG_SYNCMODE_SOCK_*</TT
 > bits described above.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field contains the name of the
 protocol stack.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->devname</I
-></TT
+>devname</CODE
 > field names the device that the stack is using. This may
 reference a device under &quot;/dev&quot;, or may be a name that is only
 meaningful to the stack itself.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 > function pointer is called during
 system initialization to start the protocol stack running. If it
-returns non-zero the <TT
+returns non-zero the <CODE
 CLASS="STRUCTFIELD"
-><I
->valid</I
-></TT
+>valid</CODE
 > field is set
 false and the stack will be ignored subsequently.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->socket()</TT
+>socket()</CODE
 > function is called to attempt to create a socket in the
-stack. When the <TT
+stack. When the <CODE
 CLASS="FUNCTION"
->socket()</TT
+>socket()</CODE
 > API function is called the netstack table is
-scanned and for each valid entry the <TT
+scanned and for each valid entry the <CODE
 CLASS="FUNCTION"
->socket()</TT
+>socket()</CODE
 >
 function pointer is called. If
 this returns non-zero then the scan continues to the next valid stack,
 or terminates with an error if the end of the table is reached.</P
 ><P
 >The result of a successful socket call is an initialized file object
-with the <TT
+with the <CODE
 CLASS="STRUCTFIELD"
-><I
->f_xops</I
-></TT
+>f_xops</CODE
 > field pointing to the
 following structure:</P
 ><TABLE
@@ -234,46 +222,46 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >It should be obvious from the names of these functions which API calls
-they provide support for. The <TT
+they provide support for. The <CODE
 CLASS="FUNCTION"
->getname()</TT
+>getname()</CODE
 > function
-pointer provides support for both <TT
+pointer provides support for both <CODE
 CLASS="FUNCTION"
->getsockname()</TT
+>getsockname()</CODE
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->getpeername()</TT
+>getpeername()</CODE
 > while the
-<TT
+<CODE
 CLASS="FUNCTION"
->sendmsg()</TT
-> and <TT
+>sendmsg()</CODE
+> and <CODE
 CLASS="FUNCTION"
->recvmsg()</TT
+>recvmsg()</CODE
 >
-function pointers provide support for <TT
+function pointers provide support for <CODE
 CLASS="FUNCTION"
->send()</TT
+>send()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->sendto()</TT
->, <TT
+>sendto()</CODE
+>, <CODE
 CLASS="FUNCTION"
->sendmsg()</TT
+>sendmsg()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->recv()</TT
->, <TT
+>recv()</CODE
+>, <CODE
 CLASS="FUNCTION"
->recvfrom()</TT
+>recvfrom()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->recvmsg()</TT
+>recvmsg()</CODE
 > as appropriate.</P
 ></DIV
 ><DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1737"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1738"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -219,9 +219,9 @@ owns a spinlock does not get preempted because that might cause
 another processor to spin for a whole timeslice period, or longer. One
 way of achieving this is to disable interrupts on the current
 processor, and the function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_spin_intsave</TT
+>cyg_spinlock_spin_intsave</CODE
 > is provided to
 facilitate this.
       </P
@@ -240,30 +240,30 @@ running on a different processor.
       </P
 ><P
 >Before a spinlock can be used it must be initialized by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_init</TT
+>cyg_spinlock_init</CODE
 >. This takes two arguments, a
-pointer to a <TT
+pointer to a <CODE
 CLASS="FUNCTION"
->cyg_spinlock_t</TT
+>cyg_spinlock_t</CODE
 > data structure, and
 a flag to specify whether the spinlock starts off locked or unlocked.
 If a spinlock is no longer required then it can be destroyed by a call
-to <TT
+to <CODE
 CLASS="FUNCTION"
->cyg_spinlock_destroy</TT
+>cyg_spinlock_destroy</CODE
 >.
       </P
 ><P
 >There are two routines for claiming a spinlock:
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_spin</TT
+>cyg_spinlock_spin</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_spin_intsave</TT
+>cyg_spinlock_spin_intsave</CODE
 >. The former can be used
 when it is known the current code will not be preempted, for example
 because it is running in an interrupt handler or because interrupts
@@ -271,49 +271,49 @@ are disabled. The latter will disable interrupts in addition to
 claiming the spinlock, so is safe to use in all circumstances. The
 previous interrupt state is returned via the second argument, and
 should be used in a subsequent call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_clear_intsave</TT
+>cyg_spinlock_clear_intsave</CODE
 >. 
       </P
 ><P
 >Similarly there are two routines for releasing a spinlock:
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_clear</TT
+>cyg_spinlock_clear</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_clear_intsave</TT
+>cyg_spinlock_clear_intsave</CODE
 >. Typically
 the former will be used if the spinlock was claimed by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_spin</TT
+>cyg_spinlock_spin</CODE
 >, and the latter when
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_intsave</TT
+>cyg_spinlock_intsave</CODE
 > was used.
       </P
 ><P
 >There are two additional routines.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_try</TT
+>cyg_spinlock_try</CODE
 > is a non-blocking version of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_spin</TT
+>cyg_spinlock_spin</CODE
 >: if possible the lock will be
 claimed and the function will return <TT
 CLASS="LITERAL"
 >true</TT
 >; otherwise the function
 will return immediately with failure.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_test</TT
+>cyg_spinlock_test</CODE
 > can be used to find out whether
 or not the spinlock is currently locked. This function must be used
 with care because, especially on a multiprocessor system, the state of
@@ -337,9 +337,9 @@ NAME="KERNEL-SPINLOCKS-CONTEXT"
 ><P
 >All of the spinlock functions can be called from any context,
 including ISR and DSR context. Typically
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_spinlock_init</TT
+>cyg_spinlock_init</CODE
 > is only called during system
 initialization. 
       </P

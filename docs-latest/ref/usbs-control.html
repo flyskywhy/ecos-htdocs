@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-CONTROL"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12258"
+NAME="AEN12815"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN12258"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN12261"
+NAME="AEN12818"
 ></A
 ><H2
 >Synopsis</H2
@@ -117,7 +117,7 @@ typedef struct usbs_control_endpoint {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12263"
+NAME="AEN12820"
 ></A
 ><H2
 ><TT
@@ -126,9 +126,9 @@ CLASS="LITERAL"
 > Data Structure</H2
 ><P
 >The device driver for a USB slave device should supply one
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > data structure per USB
 device. This corresponds to endpoint 0 which will be used for all
 control message interaction between the host and that device. The data
@@ -184,14 +184,14 @@ should be consulted for more details of DSR handling.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12273"
+NAME="AEN12830"
 ></A
 ><H3
 >Initialization</H3
 ><P
->The <SPAN
+>The <CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > data structure
 contains the following fields related to initialization.</P
 ><TABLE
@@ -227,17 +227,15 @@ However, the enumeration data cannot change while the peripheral is
 connected to a host: the peripheral cannot easily claim to be a
 keyboard one second and a printer the next.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->start_fn</I
-></TT
+>start_fn</CODE
 > member is normally accessed
 via the utility <A
 HREF="usbs-start.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_start</TT
+>usbs_start</CODE
 ></A
 > rather
 than directly. It is provided by the device driver and should be
@@ -251,14 +249,14 @@ data.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12284"
+NAME="AEN12841"
 ></A
 ><H3
 >State</H3
 ><P
->There are three <SPAN
+>There are three <CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > fields
 related to the current state of a USB slave device, plus some state
 constants and an enumeration of the possible state changes:</P
@@ -427,11 +425,9 @@ CLASS="EMPHASIS"
 ><P
 >The USB device driver and the common USB slave package will maintain
 the current state in the control endpoint's
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->state</I
-></TT
+>state</CODE
 > field. There should be no need for
 any other code to change this field, but it can be examined whenever
 appropriate. In addition whenever a state change occurs the generic
@@ -449,33 +445,27 @@ responsible for chaining into the package's handler.</P
 >The state change callback function is invoked with four arguments. The
 first identifies the control endpoint. The second is an arbitrary
 pointer: higher-level code can fill in the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->state_change_data</I
-></TT
+>state_change_data</CODE
 > field to set this. The
 third argument specifies the state change that has occurred, and the
 last argument supplies the previous state (the new state is readily
 available from the control endpoint structure).</P
 ><P
 >eCos does not provide any utility functions for updating or examining
-the <TT
+the <CODE
 CLASS="STRUCTFIELD"
-><I
->state_change_fn</I
-></TT
+>state_change_fn</CODE
 > or
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->state_change_data</I
-></TT
+>state_change_data</CODE
 > fields. Instead, it is
 expected that the fields in the
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->usbs_control_endpoint</SPAN
+>usbs_control_endpoint</CODE
 > data structure will be
 manipulated directly. Any utility functions would do just this, but
 at the cost of increased code and cpu overheads.</P
@@ -483,7 +473,7 @@ at the cost of increased code and cpu overheads.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12314"
+NAME="AEN12871"
 ></A
 ><H3
 >Standard Control Messages</H3
@@ -520,21 +510,19 @@ consist of an initial eight-byte header, containing fields such as a
 request type. This may be followed by a further data transfer, either
 from host to peripheral or from peripheral to host. The way this is
 handled is described in the <A
-HREF="usbs-control.html#AEN12347"
+HREF="usbs-control.html#AEN12904"
 >Buffer Management</A
 > section below.</P
 ><P
 >The USB device driver will always accept the initial eight-byte
-header, storing it in the <TT
+header, storing it in the <CODE
 CLASS="STRUCTFIELD"
-><I
->control_buffer</I
-></TT
+>control_buffer</CODE
 >
 field. Then it determines the request type: standard, class, vendor,
 or reserved. The way in which the last three of these are processed is
 described in the section <A
-HREF="usbs-control.html#AEN12339"
+HREF="usbs-control.html#AEN12896"
 >Other
 Control Messages</A
 >. Some
@@ -569,20 +557,16 @@ CLASS="EMPHASIS"
 ><P
 >If a standard control message cannot be handled by the device driver
 itself, the driver checks the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->standard_control_fn</I
-></TT
+>standard_control_fn</CODE
 > field in the control
 endpoint data structure. If higher-level code has installed a suitable
 callback function then this will be invoked with two argument, the
 control endpoint data structure itself and the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->standard_control_data</I
-></TT
+>standard_control_data</CODE
 > field. The latter
 allows the higher level code to associate arbitrary data with the
 control endpoint. The callback function can return one of three
@@ -616,9 +600,9 @@ CLASS="EMPHASIS"
 >UNKNOWN</I
 ></SPAN
 > then the device driver will invoke a
-default handler, <TT
+default handler, <CODE
 CLASS="FUNCTION"
->usbs_handle_standard_control</TT
+>usbs_handle_standard_control</CODE
 >
 provided by the common USB slave package.</P
 ><P
@@ -661,7 +645,7 @@ since the information is also relevant to USB hosts.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12339"
+NAME="AEN12896"
 ></A
 ><H3
 >Other Control Messages</H3
@@ -692,11 +676,9 @@ higher-level code. This could be class-specific packages. For example,
 the USB-ethernet package will handle requests for getting the MAC
 address and for enabling or disabling promiscuous mode. In all cases
 the device driver will store the initial request in the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->control_buffer</I
-></TT
+>control_buffer</CODE
 > field, check for an
 appropriate handler, and invoke it with details of the control
 endpoint and any handler-specific data that has been installed
@@ -718,7 +700,7 @@ install an appropriate handler and process the requests appropriately. </P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12347"
+NAME="AEN12904"
 ></A
 ><H3
 >Buffer Management</H3
@@ -756,17 +738,13 @@ ensure that the transfer happens correctly.</P
 the header and provide a single buffer for all the data. A
 class-specific protocol would typically impose an upper bound on the
 amount of data, allowing the buffer to be allocated statically.
-The handler should update the <TT
+The handler should update the <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_fn</I
-></TT
+>complete_fn</CODE
 > fields. When all the data has
 been transferred the completion callback will be invoked, and its
 return value determines the response sent back to the host. The USB
@@ -797,71 +775,53 @@ TYPE="1"
 ><P
 >When the host requests another chunk of data (typically eight bytes),
 the USB device driver will examine the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > field. If non-zero then
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > contains at least one more byte of
-data, and then <TT
+data, and then <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > is decremented.</P
 ></LI
 ><LI
 ><P
->When <TT
+>When <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > has dropped to 0, the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fill_buffer_fn</I
-></TT
+>fill_buffer_fn</CODE
 > field will be examined. If
 non-null it will be invoked to refill the buffer.</P
 ></LI
 ><LI
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->fill_data</I
-></TT
+>fill_data</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fill_index</I
-></TT
+>fill_index</CODE
 > fields are not used by the
 device driver. Instead these fields are available to the refill
 function to keep track of the current state of the transfer.</P
 ></LI
 ><LI
 ><P
->When <TT
+>When <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 > is 0 and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fill_buffer_fn</I
-></TT
+>fill_buffer_fn</CODE
 > is NULL, no more data is
 available and the transfer has completed.</P
 ></LI
@@ -875,30 +835,22 @@ messsage. </P
 ></OL
 ><P
 >If the requested data is contiguous then the only fields that need
-to be manipulated are <TT
+to be manipulated are <CODE
 CLASS="STRUCTFIELD"
-><I
->buffer</I
-></TT
+>buffer</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->buffer_size</I
-></TT
+>buffer_size</CODE
 >, and optionally
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->complete_fn</I
-></TT
+>complete_fn</CODE
 >. If the requested data is not
 contiguous then the initial control message handler should update
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fill_buffer_fn</I
-></TT
+>fill_buffer_fn</CODE
 > and some or all of the other
 fields, as required. An example of this is the handling of the
 standard <SPAN
@@ -908,15 +860,15 @@ CLASS="EMPHASIS"
 >get-descriptor</I
 ></SPAN
 > control message by
-<TT
+<CODE
 CLASS="FUNCTION"
->usbs_handle_standard_control</TT
+>usbs_handle_standard_control</CODE
 >.</P
 ></DIV
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12384"
+NAME="AEN12941"
 ></A
 ><H3
 >Polling Support</H3
@@ -941,11 +893,9 @@ CLASS="PROGRAMLISTING"
 However, there are special environments such as RedBoot where polled
 operation may be appropriate. If the device driver can operate in
 polled mode then it will provide a suitable function via the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->poll_fn</I
-></TT
+>poll_fn</CODE
 > field, and higher-level code can
 invoke this regularly. This polling function will take care of all
 endpoints associated with the device, not just the control endpoint.

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -92,75 +92,67 @@ within the filesystem. For example, it may be a pointer to the data
 structure that represents that directory (such as an inode), or a
 pointer to a pathname for the directory.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->chdir()</TT
+>chdir()</CODE
 > filesystem function pointer has two
 modes of use. When passed a pointer in the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->dir_out</I
-></TT
+>dir_out</CODE
 > argument, it should locate the named
 directory and place a directory pointer there. If the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->dir_out</I
-></TT
+>dir_out</CODE
 > argument is NULL then the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->dir</I
-></TT
+>dir</CODE
 > argument is a previously generated
 directory pointer that can now be disposed of. When the infrastructure
-is implementing the <TT
+is implementing the <CODE
 CLASS="FUNCTION"
->chdir()</TT
+>chdir()</CODE
 > function it makes two
-calls to filesystem <TT
+calls to filesystem <CODE
 CLASS="FUNCTION"
->chdir()</TT
+>chdir()</CODE
 > functions. The first
 is to get a directory pointer for the new current directory. If this
 succeeds the second is to dispose of the old current directory
 pointer.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->opendir()</TT
+>opendir()</CODE
 > function is used to open a
 directory for reading. This results in an open file object that can be
-read to return a sequence of <SPAN
+read to return a sequence of <CODE
 CLASS="STRUCTNAME"
->struct dirent</SPAN
+>struct dirent</CODE
 >
 objects. The only operations that are allowed on this file are
-<TT
+<CODE
 CLASS="FUNCTION"
->read</TT
->, <TT
+>read</CODE
+>, <CODE
 CLASS="FUNCTION"
->lseek</TT
+>lseek</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->close</TT
+>close</CODE
 >. Each read operation on this file should
-return a single <SPAN
+return a single <CODE
 CLASS="STRUCTNAME"
->struct dirent</SPAN
+>struct dirent</CODE
 > object. When
 the end of the directory is reached, zero should be returned. The only
 seek operation allowed is a rewind to the start of the directory, by
-supplying an offset of zero and a <TT
+supplying an offset of zero and a <CODE
 CLASS="PARAMETER"
-><I
->whence</I
-></TT
+>whence</CODE
 >
 specifier of <TT
 CLASS="LITERAL"
@@ -169,21 +161,21 @@ CLASS="LITERAL"
 ><P
 >Most of these considerations are invisible to clients of a filesystem
 since they will access directories via the POSIX
-<TT
+<CODE
 CLASS="FUNCTION"
->opendir()</TT
->, <TT
+>opendir()</CODE
+>, <CODE
 CLASS="FUNCTION"
->readdir()</TT
+>readdir()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->closedir()</TT
+>closedir()</CODE
 > functions.</P
 ><P
->Support for the <TT
+>Support for the <CODE
 CLASS="FUNCTION"
->getcwd()</TT
+>getcwd()</CODE
 > function is provided by
 three mechanisms.  The first is to use the
 <TT
@@ -196,9 +188,9 @@ on one of the two other mechanisms. If
 CLASS="LITERAL"
 >CYGPKG_IO_FILEIO_TRACK_CWD</TT
 > is set then the current
-directory is tracked textually in <TT
+directory is tracked textually in <CODE
 CLASS="FUNCTION"
->chdir()</TT
+>chdir()</CODE
 > and the result of that is
 reported in getcwd(). Otherwise an attempt is made to traverse the
 directory tree to its root using &quot;..&quot; entries.</P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -174,22 +174,22 @@ HREF="c-library-startup.html"
 >C library startup</I
 ></A
 >)
-and it provides (among other things) a <TT
+and it provides (among other things) a <CODE
 CLASS="FUNCTION"
->main()</TT
+>main()</CODE
 > entry
-point function, an <TT
+point function, an <CODE
 CLASS="FUNCTION"
->exit()</TT
+>exit()</CODE
 > function that
 does the cleanup required by the standard (including handlers registered
-using the <TT
+using the <CODE
 CLASS="FUNCTION"
->atexit()</TT
+>atexit()</CODE
 > function), and an environment
-that can be read with <TT
+that can be read with <CODE
 CLASS="FUNCTION"
->getenv()</TT
+>getenv()</CODE
 >. </P
 ><P
 >The description in this manual focuses on the <SPAN
@@ -218,8 +218,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="INCLUDE-NON-ISO-FUNCTIONS"
-></A
->Included non-ISO functions</H1
+>Included non-ISO functions</A
+></H1
 ><P
 >The following functions from the POSIX specification
 are included for convenience: </P
@@ -234,44 +234,44 @@ CLASS="EMPHASIS"
 >environ</I
 ></SPAN
 > variable
-(for setting up the environment for use with <TT
+(for setting up the environment for use with <CODE
 CLASS="FUNCTION"
->getenv()</TT
+>getenv()</CODE
 >)</P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->_exit()</TT
+>_exit()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->strtok_r()</TT
+>strtok_r()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->rand_r()</TT
+>rand_r()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->asctime_r()</TT
+>asctime_r()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->ctime_r()</TT
+>ctime_r()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->localtime_r()</TT
+>localtime_r()</CODE
 > </P
 ><P
->	<TT
+>	<CODE
 CLASS="FUNCTION"
->gmtime_r()</TT
+>gmtime_r()</CODE
 > </P
 ><P
 ><SPAN
@@ -291,9 +291,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->cyg_libc_time_setdst</TT
+>cyg_libc_time_setdst</CODE
 >( 
   cyg_libc_time_dst state
 );</PRE
@@ -325,9 +325,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void <TT
+>void <CODE
 CLASS="FUNCTION"
->cyg_libc_time_setzoneoffsets</TT
+>cyg_libc_time_setzoneoffsets</CODE
 >( 
   time_t stdoffset, time_t dstoffset
 );</PRE
@@ -346,9 +346,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><TT
+><CODE
 CLASS="FUNCTION"
->Cyg_libc_time_dst cyg_libc_time_getzoneoffsets</TT
+>Cyg_libc_time_dst cyg_libc_time_getzoneoffsets</CODE
 >( 
   time_t *stdoffset, time_t *dstoffset
 );</PRE
@@ -368,9 +368,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_bool cyg_libc_time_settime</TT
+>cyg_bool cyg_libc_time_settime</CODE
 >( 
   time_t utctime
 );</PRE

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN810"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN811"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -172,9 +172,9 @@ hardware.
       </P
 ><P
 >Exception handling is optional, and can be disabled through the
-configuration option <TT
+configuration option <CODE
 CLASS="VARNAME"
->CYGPKG_KERNEL_EXCEPTIONS</TT
+>CYGPKG_KERNEL_EXCEPTIONS</CODE
 >. If
 an application has been exhaustively tested and is trusted never to
 raise a hardware exception then this option can be disabled and code
@@ -185,16 +185,16 @@ is ignored, so there is no point in attempting to decode this and
 distinguish between say a divide-by-zero and an unaligned access.
 If the application installs its own handlers and wants details of the
 specific exception being raised then the configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_EXCEPTIONS_DECODE</TT
+>CYGSEM_KERNEL_EXCEPTIONS_DECODE</CODE
 > has to be enabled.
       </P
 ><P
 >An alternative handler can be installed using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_set_handler</TT
+>cyg_exception_set_handler</CODE
 >. This requires a code
 for the exception, a function pointer for the new exception handler,
 and a parameter to be passed to this handler. Details of the
@@ -221,29 +221,25 @@ my_exception_handler(cyg_addrword_t data, cyg_code_t exception, cyg_addrword_t i
 ></TR
 ></TABLE
 ><P
->The data argument corresponds to the <TT
+>The data argument corresponds to the <CODE
 CLASS="PARAMETER"
-><I
->new_data</I
-></TT
+>new_data</CODE
 > 
-parameter supplied to <TT
+parameter supplied to <CODE
 CLASS="FUNCTION"
->cyg_exception_set_handler</TT
+>cyg_exception_set_handler</CODE
 >.
 The exception code is provided as well, in case a single handler is
-expected to support multiple exceptions. The <TT
+expected to support multiple exceptions. The <CODE
 CLASS="PARAMETER"
-><I
->info</I
-></TT
+>info</CODE
 > 
 argument will depend on the hardware and on the specific exception.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_exception_clear_handler</TT
+>cyg_exception_clear_handler</CODE
 > can be used to
 restore the default handler, if desired. It is also possible for
 software to raise an exception and cause the current handler to be
@@ -255,18 +251,18 @@ handlers. However, since exceptions occur synchronously it is
 sometimes useful to handle them on a per-thread basis, and have a
 different set of handlers for each thread. This behaviour can be
 obtained by disabling the configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_EXCEPTIONS_GLOBAL</TT
+>CYGSEM_KERNEL_EXCEPTIONS_GLOBAL</CODE
 >. If per-thread
 exception handlers are being used then
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_set_handler</TT
+>cyg_exception_set_handler</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_clear_handler</TT
+>cyg_exception_clear_handler</CODE
 > apply to the current
 thread. Otherwise they apply to the global set of handlers.
       </P
@@ -290,9 +286,9 @@ ALIGN="CENTER"
 ALIGN="LEFT"
 ><P
 >In the current implementation
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_call_handler</TT
+>cyg_exception_call_handler</CODE
 > can only be used on
 the current thread. There is no support for delivering an exception to
 another thread.
@@ -333,21 +329,21 @@ NAME="KERNEL-EXCEPTIONS-CONTEXT"
 ><P
 >If the system is configured with a single set of global exception
 handlers then
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_set_handler</TT
+>cyg_exception_set_handler</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_exception_clear_handler</TT
+>cyg_exception_clear_handler</CODE
 > may be called during
 initialization or from thread context. If instead per-thread exception
 handlers are being used then it is not possible to install new
 handlers during initialization because the functions operate
 implicitly on the current thread, so they can only be called from
-thread context. <TT
+thread context. <CODE
 CLASS="FUNCTION"
->cyg_exception_call_handler</TT
+>cyg_exception_call_handler</CODE
 > should
 only be called from thread context.
       </P

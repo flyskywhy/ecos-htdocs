@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="POWER-INFO"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11410"
+NAME="AEN11967"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN11410"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN11413"
+NAME="AEN11970"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN11414"
-></A
 ><P
 ></P
+><A
+NAME="AEN11971"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -176,13 +176,13 @@ NAME="POWER-INFO-ACCESS"
 >Accessing Power Controllers</H2
 ><P
 >All the power controllers in a system are held in a table, filled in
-at link-time. The symbols <TT
+at link-time. The symbols <CODE
 CLASS="VARNAME"
->__POWER__</TT
+>__POWER__</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->__POWER_END</TT
+>__POWER_END</CODE
 > can be used to iterate through this
 table, for example:</P
 ><TABLE
@@ -217,9 +217,9 @@ to a higher-powered mode the power management package will iterate
 through this table from back to front.</P
 ><P
 >In most systems there will be one special controller,
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 >, which should be provided by
 one of the architectural, variant or platform HAL packages. This
 controller will always be the last entry in the table. It is
@@ -240,9 +240,9 @@ NAME="POWER-INFO-GLOBAL"
 ><H2
 >Global Power Modes</H2
 ><P
->The function <TT
+>The function <CODE
 CLASS="FUNCTION"
->power_get_mode</TT
+>power_get_mode</CODE
 > can be called at any
 time to determine the current power mode for the system as a whole.
 The return value will be one of <TT
@@ -266,32 +266,32 @@ CLASS="LITERAL"
 > would be returned since
 that mode generally means that the cpu is no longer running.</P
 ><P
->The function <TT
+>The function <CODE
 CLASS="FUNCTION"
->power_get_desired_mode</TT
+>power_get_desired_mode</CODE
 > returns the
 power mode that the system should be running at. Most of the time this
 will be the same value as returned by
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_mode</TT
+>power_get_mode</CODE
 >. However a different value may be
 returned when in the middle of changing power modes. For example, if
 the current thread runs at a higher priority than the power management
 thread then the latter may have been pre-empted in the middle of a
-mode change: <TT
+mode change: <CODE
 CLASS="FUNCTION"
->power_get_mode</TT
+>power_get_mode</CODE
 > will return the mode
 the system was running at before the mode change started, and
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_desired_mode</TT
+>power_get_desired_mode</CODE
 > will return the mode the
 system should end up in when the mode change completes, barring
-further calls to <TT
+further calls to <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >.</P
 ></DIV
 ><DIV
@@ -304,15 +304,15 @@ NAME="POWER-INFO-INDIVIDUAL"
 ><P
 >The power management package keeps track of the current and desired
 modes for each power controller, as well as the modes for the system as
-a whole. The function <TT
+a whole. The function <CODE
 CLASS="FUNCTION"
->power_get_controller_mode</TT
+>power_get_controller_mode</CODE
 >
 takes a single argument, a pointer to a power controller, and returns
 the power mode that controller is currently running at. Similarly
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_controller_desired_mode</TT
+>power_get_controller_desired_mode</CODE
 > returns the
 power mode that controller should be running at. Most of the time the
 current and desired modes for a given controller will be the same, and
@@ -350,15 +350,15 @@ application is expected to provide some sort of user interface that
 gives control over which parts of the system are enabled or disabled,
 a string identifier for each controller would be useful. To cope with
 these scenarios the power management package provides a configuration
-option <TT
+option <CODE
 CLASS="VARNAME"
->CYGIMP_POWER_PROVIDE_STRINGS</TT
+>CYGIMP_POWER_PROVIDE_STRINGS</CODE
 >. When enabled,
 each power controller will contain a pointer to a constant string
 which can be accessed via a function
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_controller_id</TT
+>power_get_controller_id</CODE
 >. When disabled the system
 will not contain these strings, and the function will not be provided.
 The following code illustrates how to use this function.</P
@@ -423,9 +423,9 @@ NAME="POWER-INFO-THREAD"
 ><P
 >If the power management package is configured to use a separate thread
 then a handle for that thread is made available to higher-level code
-via the variable <TT
+via the variable <CODE
 CLASS="VARNAME"
->power_thread_handle</TT
+>power_thread_handle</CODE
 >. This handle
 can be used for a variety of purposes, including manipulating that
 thread's priority.</P

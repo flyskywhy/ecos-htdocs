@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -100,9 +100,9 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >At present we do not support dynamic addition or removal of table
-entries. However, an API similar to <TT
+entries. However, an API similar to <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > would
 allow new entries to be added to the table.</P
 ></BLOCKQUOTE
@@ -149,28 +149,22 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field points to a string that
 identifies this filesystem implementation. Typical values might be
 &quot;romfs&quot;, &quot;msdos&quot;, &quot;ext2&quot; etc.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->data</I
-></TT
+>data</CODE
 > field contains any private data
 that the filesystem needs, perhaps the root of its data structures.</P
 ><P
->The <TT
+>The <CODE
 CLASS="STRUCTFIELD"
-><I
->syncmode</I
-></TT
+>syncmode</CODE
 > field contains a description of
 the locking protocol to be used when accessing this filesystem. It
 will be described in more detail in <A
@@ -183,39 +177,39 @@ filesystem operations that apply to files and directories as whole
 objects. The operation implemented by each function should be obvious
 from the names, with a few exceptions:</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->opendir()</TT
+>opendir()</CODE
 > function pointer opens a directory
 for reading. See <A
 HREF="fileio-directories.html"
 >Chapter 18</A
 > for details.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->getinfo()</TT
+>getinfo()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->setinfo()</TT
+>setinfo()</CODE
 > function pointers provide support for
 various minor control and information functions such as
-<TT
+<CODE
 CLASS="FUNCTION"
->pathconf()</TT
-> and <TT
+>pathconf()</CODE
+> and <CODE
 CLASS="FUNCTION"
->access()</TT
+>access()</CODE
 >.</P
 ><P
->With the exception of the <TT
+>With the exception of the <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->umount()</TT
+>umount()</CODE
 > functions, all of these functions
 take three standard arguments, a pointer to a mount table entry (see
 later) a directory pointer (also see later) and a file name relative

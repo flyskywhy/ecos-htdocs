@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-API"
-></A
->The API</H1
+>The API</A
+></H1
 ><P
 >This section details the Driver Kernel
 Interface. Note that most of these functions are identical to Kernel C
@@ -103,8 +103,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6130"
-></A
->cyg_drv_isr_lock</H2
+>cyg_drv_isr_lock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -162,8 +162,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6153"
-></A
->cyg_drv_isr_unlock</H2
+>cyg_drv_isr_unlock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -209,9 +209,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >Re-enables delivery of interrupts, allowing ISRs to
       run. This function decrements the counter maintained by
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_isr_lock()</TT
+>cyg_drv_isr_lock()</CODE
 >, and only re-allows
       interrupts when it goes to zero. </P
 ></DD
@@ -224,8 +224,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6177"
-></A
->cyg_drv_spinlock_init</H2
+>cyg_drv_spinlock_init</A
+></H2
 ><P
 ></P
 ><DIV
@@ -251,18 +251,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to initialize</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->locked</I
-></TT
+>locked</CODE
 > - initial state of lock</P
 ></DD
 ><DT
@@ -281,11 +277,9 @@ CLASS="PARAMETER"
 >Description:</DT
 ><DD
 ><P
->      Initialize a spinlock. The <TT
+>      Initialize a spinlock. The <CODE
 CLASS="PARAMETER"
-><I
->locked</I
-></TT
+>locked</CODE
 >
       argument indicates how the spinlock should be initialized:
       <TT
@@ -307,8 +301,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6206"
-></A
->cyg_drv_spinlock_destroy</H2
+>cyg_drv_spinlock_destroy</A
+></H2
 ><P
 ></P
 ><DIV
@@ -334,11 +328,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock destroy</P
 ></DD
 ><DT
@@ -371,8 +363,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6230"
-></A
->cyg_drv_spinlock_spin</H2
+>cyg_drv_spinlock_spin</A
+></H2
 ><P
 ></P
 ><DIV
@@ -398,11 +390,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to claim</P
 ></DD
 ><DT
@@ -426,9 +416,9 @@ CLASS="PARAMETER"
       effectively pauses the CPU until it succeeds. This operations
       should therefore be used sparingly, and in situations where
       deadlocks/livelocks cannot occur. Also see
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_spin_intsave()</TT
+>cyg_drv_spinlock_spin_intsave()</CODE
 >.
       </P
 ></DD
@@ -441,8 +431,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6255"
-></A
->cyg_drv_spinlock_clear</H2
+>cyg_drv_spinlock_clear</A
+></H2
 ><P
 ></P
 ><DIV
@@ -468,11 +458,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to clear </P
 ></DD
 ><DT
@@ -493,9 +481,9 @@ CLASS="PARAMETER"
 ><P
 >      Clear a spinlock. This clears the spinlock and allows another
       CPU to claim it. If there is more than one CPU waiting in
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_spin()</TT
+>cyg_drv_spinlock_spin()</CODE
 > then just one of
       them will be allowed to proceed.
       </P
@@ -509,8 +497,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6280"
-></A
->cyg_drv_spinlock_try</H2
+>cyg_drv_spinlock_try</A
+></H2
 ><P
 ></P
 ><DIV
@@ -536,11 +524,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to try</P
 ></DD
 ><DT
@@ -587,8 +573,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6308"
-></A
->cyg_drv_spinlock_test</H2
+>cyg_drv_spinlock_test</A
+></H2
 ><P
 ></P
 ><DIV
@@ -614,11 +600,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to test</P
 ></DD
 ><DT
@@ -664,8 +648,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6336"
-></A
->cyg_drv_spinlock_spin_intsave</H2
+>cyg_drv_spinlock_spin_intsave</A
+></H2
 ><P
 ></P
 ><DIV
@@ -692,18 +676,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to claim</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->istate</I
-></TT
+>istate</CODE
 > - pointer to interrupt state save location</P
 ></DD
 ><DT
@@ -723,30 +703,28 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >      This function behaves exactly like
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_spin()</TT
+>cyg_drv_spinlock_spin()</CODE
 > except that it also
       disables interrupts before attempting to claim the lock. The
       current interrupt enable state is saved in
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->*istate</I
-></TT
+>*istate</CODE
 >. Interrupts remain disabled once
       the spinlock had been claimed and must be restored by calling
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_clear_intsave()</TT
+>cyg_drv_spinlock_clear_intsave()</CODE
 >.
       </P
 ><P
 >      In general, device drivers should use this function to claim and
       release spinlocks rather than the
-      non-<TT
+      non-<CODE
 CLASS="FUNCTION"
->_intsave()</TT
+>_intsave()</CODE
 > variants, to ensure proper
       exclusion with code running on both other CPUs and this CPU.
       </P
@@ -760,8 +738,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6367"
-></A
->cyg_drv_spinlock_clear_intsave</H2
+>cyg_drv_spinlock_clear_intsave</A
+></H2
 ><P
 ></P
 ><DIV
@@ -788,18 +766,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->lock</I
-></TT
+>lock</CODE
 > - pointer to spinlock to clear </P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->istate</I
-></TT
+>istate</CODE
 > - interrupt state to restore </P
 ></DD
 ><DT
@@ -819,25 +793,23 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >      This function behaves exactly like
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_clear()</TT
+>cyg_drv_spinlock_clear()</CODE
 > except that it
       also restores an interrupt state saved by
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_spin_intsave()</TT
+>cyg_drv_spinlock_spin_intsave()</CODE
 >. The
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->istate</I
-></TT
+>istate</CODE
 > argument must have been
       initialized by a previous call to
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_spin_intsave()</TT
+>cyg_drv_spinlock_spin_intsave()</CODE
 >.
       </P
 ></DD
@@ -850,8 +822,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6397"
-></A
->cyg_drv_dsr_lock</H2
+>cyg_drv_dsr_lock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -907,8 +879,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6420"
-></A
->cyg_drv_dsr_unlock</H2
+>cyg_drv_dsr_unlock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -956,9 +928,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >Re-enables scheduling of DSRs. This function decrements
       the counter incremented by
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_lock()</TT
+>cyg_drv_dsr_lock()</CODE
 >.  DSRs are only allowed
       to be delivered when the counter goes to zero. </P
 ></DD
@@ -971,8 +943,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6445"
-></A
->cyg_drv_mutex_init</H2
+>cyg_drv_mutex_init</A
+></H2
 ><P
 ></P
 ><DIV
@@ -989,7 +961,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_mutex_init(cyg_drv_mutex *mutex)</PRE
+>void cyg_drv_mutex_init(cyg_drv_mutex_t *mutex)</PRE
 ></TD
 ></TR
 ></TABLE
@@ -998,11 +970,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - pointer to mutex to initialize</P
 ></DD
 ><DT
@@ -1036,8 +1006,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6470"
-></A
->cyg_drv_mutex_destroy</H2
+>cyg_drv_mutex_destroy</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1054,7 +1024,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_mutex_destroy( cyg_drv_mutex *mutex )</PRE
+>void cyg_drv_mutex_destroy( cyg_drv_mutex_t *mutex )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1063,11 +1033,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - pointer to mutex to destroy</P
 ></DD
 ><DT
@@ -1087,11 +1055,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Destroy the mutex pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument. The mutex should be unlocked
       and there should be no threads waiting to lock it when this call
       in made.</P
@@ -1105,8 +1071,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6495"
-></A
->cyg_drv_mutex_lock</H2
+>cyg_drv_mutex_lock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1123,7 +1089,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->cyg_bool cyg_drv_mutex_lock( cyg_drv_mutex *mutex )</PRE
+>cyg_bool cyg_drv_mutex_lock( cyg_drv_mutex_t *mutex )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1132,11 +1098,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - pointer to mutex to lock</P
 ></DD
 ><DT
@@ -1163,11 +1127,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Attempt to lock the mutex pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument.  If the mutex is already
       locked by another thread then this thread will wait until that
       thread is finished. If the result from this function is
@@ -1187,8 +1149,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6523"
-></A
->cyg_drv_mutex_trylock</H2
+>cyg_drv_mutex_trylock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1206,7 +1168,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->cyg_bool cyg_drv_mutex_trylock( cyg_drv_mutex *mutex )</PRE
+>cyg_bool cyg_drv_mutex_trylock( cyg_drv_mutex_t *mutex )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1216,11 +1178,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - pointer to mutex to lock</P
 ></DD
 ><DT
@@ -1247,11 +1207,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Attempt to lock the mutex pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument without waiting. If the
       mutex is already locked by some other thread then this function
       returns <TT
@@ -1273,8 +1231,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6553"
-></A
->cyg_drv_mutex_unlock</H2
+>cyg_drv_mutex_unlock</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1291,7 +1249,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_mutex_unlock( cyg_drv_mutex *mutex )</PRE
+>void cyg_drv_mutex_unlock( cyg_drv_mutex_t *mutex )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1300,11 +1258,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - pointer to mutex to unlock</P
 ></DD
 ><DT
@@ -1324,11 +1280,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Unlock the mutex pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument. If there are any threads
       waiting to claim the lock, one of them is woken up to try and
       claim it. </P
@@ -1342,8 +1296,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6578"
-></A
->cyg_drv_mutex_release</H2
+>cyg_drv_mutex_release</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1360,7 +1314,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_mutex_release( cyg_drv_mutex *mutex )</PRE
+>void cyg_drv_mutex_release( cyg_drv_mutex_t *mutex )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1391,15 +1345,13 @@ CLASS="LITERAL"
 ><DD
 ><P
 >Release all threads waiting on the mutex pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument. These threads will return
-      from <TT
+      from <CODE
 CLASS="FUNCTION"
->cyg_drv_mutex_lock()</TT
+>cyg_drv_mutex_lock()</CODE
 > with a
       <TT
 CLASS="LITERAL"
@@ -1417,8 +1369,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6605"
-></A
->cyg_drv_cond_init</H2
+>cyg_drv_cond_init</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1435,7 +1387,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-> void cyg_drv_cond_init( cyg_drv_cond *cond, cyg_drv_mutex *mutex )
+> void cyg_drv_cond_init( cyg_drv_cond_t *cond, cyg_drv_mutex_t *mutex )
 	      </PRE
 ></TD
 ></TR
@@ -1445,18 +1397,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > - condition variable to initialize</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > - mutex to associate with this condition variable</P
 ></DD
 ><DT
@@ -1476,17 +1424,13 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Initialize the condition variable pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > argument.  The
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->mutex</I
-></TT
+>mutex</CODE
 > argument must point to a mutex with
       which this condition variable is associated. A thread may only
       wait on this condition variable when it has already locked the
@@ -1503,8 +1447,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6633"
-></A
->cyg_drv_cond_destroy</H2
+>cyg_drv_cond_destroy</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1521,7 +1465,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
-> void cyg_drv_cond_destroy( cyg_drv_cond *cond )</PRE
+> void cyg_drv_cond_destroy( cyg_drv_cond_t *cond )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1530,11 +1474,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > - condition variable to destroy</P
 ></DD
 ><DT
@@ -1554,11 +1496,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Destroy the condition variable pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > argument. </P
 ></DD
 ></DL
@@ -1570,8 +1510,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6658"
-></A
->cyg_drv_cond_wait</H2
+>cyg_drv_cond_wait</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1588,7 +1528,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_cond_wait( cyg_drv_cond *cond )</PRE
+>void cyg_drv_cond_wait( cyg_drv_cond_t *cond )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1597,11 +1537,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > - condition variable to wait on</P
 ></DD
 ><DT
@@ -1621,16 +1559,14 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Wait for a signal on the condition variable pointed to by
-      the <TT
+      the <CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > argument. The thread must have
       locked the associated mutex, supplied in
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_cond_init()</TT
+>cyg_drv_cond_init()</CODE
 >, before waiting on this
       condition variable. While the thread waits, the mutex will be
       unlocked, and will be re-locked before this function returns. It
@@ -1655,8 +1591,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6685"
-></A
->cyg_drv_cond_signal</H2
+>cyg_drv_cond_signal</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1673,7 +1609,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_cond_signal( cyg_drv_cond *cond )</PRE
+>void cyg_drv_cond_signal( cyg_drv_cond_t *cond )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1682,11 +1618,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > - condition variable to signal</P
 ></DD
 ><DT
@@ -1705,18 +1639,16 @@ CLASS="PARAMETER"
 >Description:</DT
 ><DD
 ><P
->Signal the condition variable pointed to by the <TT
+>Signal the condition variable pointed to by the <CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 >
       argument.  If there are any threads waiting on this variable at
       least one of them will be awakened. Note that in some
       configurations there may not be any difference between this
-      function and <TT
+      function and <CODE
 CLASS="FUNCTION"
->cyg_drv_cond_broadcast()</TT
+>cyg_drv_cond_broadcast()</CODE
 >.
       </P
 ></DD
@@ -1729,8 +1661,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6711"
-></A
->cyg_drv_cond_broadcast</H2
+>cyg_drv_cond_broadcast</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1747,7 +1679,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void cyg_drv_cond_broadcast( cyg_drv_cond *cond )</PRE
+>void cyg_drv_cond_broadcast( cyg_drv_cond_t *cond )</PRE
 ></TD
 ></TR
 ></TABLE
@@ -1756,11 +1688,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > - condition variable to broadcast to</P
 ></DD
 ><DT
@@ -1780,11 +1710,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Signal the condition variable pointed to by the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->cond</I
-></TT
+>cond</CODE
 > argument.  If there are any threads
       waiting on this variable they will all be awakened. </P
 ></DD
@@ -1797,8 +1725,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6736"
-></A
->cyg_drv_interrupt_create</H2
+>cyg_drv_interrupt_create</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1831,53 +1759,39 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to attach to</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->priority</I
-></TT
+>priority</CODE
 > - queuing priority</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > - data pointer</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->isr</I
-></TT
+>isr</CODE
 > - interrupt service routine</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->dsr</I
-></TT
+>dsr</CODE
 > - deferred service routine</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 > - returned handle</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->intr</I
-></TT
+>intr</CODE
 > - put interrupt object here</P
 ></DD
 ><DT
@@ -1901,16 +1815,14 @@ CLASS="PARAMETER"
       and the ISR and DSR that will be called after the interrupt
       object is attached to the vector. The interrupt object will be
       allocated in the memory passed in the
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->intr</I
-></TT
+>intr</CODE
 > parameter. The interrupt object is
       not immediately attached; it must be attached with the
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_interrupt_attach()</TT
+>cyg_interrupt_attach()</CODE
 > call. </P
 ></DD
 ></DL
@@ -1922,8 +1834,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6774"
-></A
->cyg_drv_interrupt_delete</H2
+>cyg_drv_interrupt_delete</A
+></H2
 ><P
 ></P
 ><DIV
@@ -1949,11 +1861,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->interrupt</I
-></TT
+>interrupt</CODE
 > - interrupt to delete</P
 ></DD
 ><DT
@@ -1973,15 +1883,13 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Detach the interrupt from the vector and free the memory
-      passed in the <TT
+      passed in the <CODE
 CLASS="PARAMETER"
-><I
->intr</I
-></TT
+>intr</CODE
 > argument to
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_create()</TT
+>cyg_drv_interrupt_create()</CODE
 > for
       reuse. </P
 ></DD
@@ -1994,8 +1902,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6800"
-></A
->cyg_drv_interrupt_attach</H2
+>cyg_drv_interrupt_attach</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2021,11 +1929,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->interrupt</I
-></TT
+>interrupt</CODE
 > - interrupt to attach</P
 ></DD
 ><DT
@@ -2056,8 +1962,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6824"
-></A
->cyg_drv_interrupt_detach</H2
+>cyg_drv_interrupt_detach</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2083,11 +1989,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->interrupt</I
-></TT
+>interrupt</CODE
 > - interrupt to detach</P
 ></DD
 ><DT
@@ -2118,8 +2022,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6848"
-></A
->cyg_drv_interrupt_mask</H2
+>cyg_drv_interrupt_mask</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2145,11 +2049,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to mask</P
 ></DD
 ><DT
@@ -2182,8 +2084,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6872"
-></A
->cyg_drv_interrupt_mask_intunsafe</H2
+>cyg_drv_interrupt_mask_intunsafe</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2209,11 +2111,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to mask</P
 ></DD
 ><DT
@@ -2236,9 +2136,9 @@ CLASS="PARAMETER"
       interrupts on the given vector. On architectures which implement
       interrupt priority levels this may also disable all lower
       priority interrupts. This version differs from
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_mask()</TT
+>cyg_drv_interrupt_mask()</CODE
 > in not being
       interrupt safe. So in situations where, for example, interrupts
       are already known to be disabled, this may be called to avoid
@@ -2253,8 +2153,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6897"
-></A
->cyg_drv_interrupt_unmask</H2
+>cyg_drv_interrupt_unmask</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2280,11 +2180,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to unmask</P
 ></DD
 ><DT
@@ -2304,11 +2202,9 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Program the interrupt controller to re-allow delivery of
-      interrupts on the given <TT
+      interrupts on the given <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 >. </P
 ></DD
 ></DL
@@ -2320,8 +2216,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6922"
-></A
->cyg_drv_interrupt_unmask_intunsafe</H2
+>cyg_drv_interrupt_unmask_intunsafe</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2347,11 +2243,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to unmask</P
 ></DD
 ><DT
@@ -2371,16 +2265,14 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Program the interrupt controller to re-allow delivery of
-      interrupts on the given <TT
+      interrupts on the given <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 >. This
       version differs from
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_drv_interrupt_unmask()</TT
+>cyg_drv_interrupt_unmask()</CODE
 > in not being
       interrupt safe.</P
 ></DD
@@ -2393,8 +2285,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6948"
-></A
->cyg_drv_interrupt_acknowledge</H2
+>cyg_drv_interrupt_acknowledge</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2420,11 +2312,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to acknowledge</P
 ></DD
 ><DT
@@ -2445,11 +2335,9 @@ CLASS="PARAMETER"
 ><P
 >Perform any processing required at the interrupt
       controller and in the CPU to cancel the current interrupt
-      request on the <TT
+      request on the <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 >. An ISR may also
       need to program the hardware of the device to prevent an
       immediate re-triggering of the interrupt. </P
@@ -2463,8 +2351,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN6973"
-></A
->cyg_drv_interrupt_configure</H2
+>cyg_drv_interrupt_configure</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2493,25 +2381,19 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to configure</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->level</I
-></TT
+>level</CODE
 > - level or edge triggered</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->up</I
-></TT
+>up</CODE
 > - rising/falling edge, high/low level</P
 ></DD
 ><DT
@@ -2531,18 +2413,14 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >Program the interrupt controller with the characteristics
-      of the interrupt source. The <TT
+      of the interrupt source. The <CODE
 CLASS="PARAMETER"
-><I
->level</I
-></TT
+>level</CODE
 >
       argument chooses between level- or edge-triggered
-      interrupts. The <TT
+      interrupts. The <CODE
 CLASS="PARAMETER"
-><I
->up</I
-></TT
+>up</CODE
 > argument chooses
       between high and low level for level triggered interrupts or
       rising and falling edges for edge triggered interrupts. This
@@ -2558,8 +2436,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN7003"
-></A
->cyg_drv_interrupt_level</H2
+>cyg_drv_interrupt_level</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2587,18 +2465,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector to configure</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->level</I
-></TT
+>level</CODE
 > - level to set</P
 ></DD
 ><DT
@@ -2631,8 +2505,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN7029"
-></A
->cyg_drv_interrupt_set_cpu</H2
+>cyg_drv_interrupt_set_cpu</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2660,18 +2534,14 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - interrupt vector to route</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->cpu</I
-></TT
+>cpu</CODE
 > - destination CPU</P
 ></DD
 ><DT
@@ -2706,8 +2576,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN7055"
-></A
->cyg_drv_interrupt_get_cpu</H2
+>cyg_drv_interrupt_get_cpu</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2733,11 +2603,9 @@ CLASS="PROGRAMLISTING"
 >Arguments:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - interrupt vector to query</P
 ></DD
 ><DT
@@ -2770,8 +2638,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN7079"
-></A
->cyg_ISR_t</H2
+>cyg_ISR_t</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2799,18 +2667,14 @@ CLASS="PROGRAMLISTING"
 >Fields:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector being delivered</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > - data value supplied by client</P
 ></DD
 ><DT
@@ -2826,15 +2690,15 @@ CLASS="PARAMETER"
 ><P
 >Interrupt Service Routine definition. A pointer to a
       function with this prototype is passed to
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_interrupt_create()</TT
+>cyg_interrupt_create()</CODE
 > when an interrupt
       object is created. When an interrupt is delivered the function
       will be called with the vector number and the data value that
-      was passed to <TT
+      was passed to <CODE
 CLASS="FUNCTION"
->cyg_interrupt_create()</TT
+>cyg_interrupt_create()</CODE
 >.
       </P
 ><P
@@ -2858,9 +2722,9 @@ CLASS="VARIABLELIST"
 ><DD
 ><P
 >causes the DSR that was passed to
-	    <TT
+	    <CODE
 CLASS="FUNCTION"
->cyg_interrupt_create()</TT
+>cyg_interrupt_create()</CODE
 > to be
 	    scheduled to be called.</P
 ></DD
@@ -2876,8 +2740,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN7114"
-></A
->cyg_DSR_t</H2
+>cyg_DSR_t</A
+></H2
 ><P
 ></P
 ><DIV
@@ -2906,25 +2770,19 @@ CLASS="PROGRAMLISTING"
 >Fields:</DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > - vector being delivered</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->count</I
-></TT
+>count</CODE
 > - number of times DSR has been scheduled</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > - data value supplied by client</P
 ></DD
 ><DT
@@ -2939,30 +2797,24 @@ CLASS="PARAMETER"
 ><P
 >Deferred Service Routine prototype. A pointer to a
       function with this prototype is passed to
-      <TT
+      <CODE
 CLASS="FUNCTION"
->cyg_interrupt_create()</TT
+>cyg_interrupt_create()</CODE
 > when an interrupt
       object is created. When the ISR requests the scheduling of its
       DSR, this function will be called at some later point. In
-      addition to the <TT
+      addition to the <CODE
 CLASS="PARAMETER"
-><I
->vector</I
-></TT
+>vector</CODE
 > and
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 > arguments, which will be the same as
       those passed to the ISR, this routine is also passed a
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->count</I
-></TT
+>count</CODE
 > of the number of times the ISR has
       requested that this DSR be scheduled.  This counter is zeroed
       each time the DSR actually runs, so it indicates how many

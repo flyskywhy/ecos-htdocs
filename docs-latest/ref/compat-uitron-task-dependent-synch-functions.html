@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,13 +14,12 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="Task Management Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-TASK-DEPENDENT-SYNCH-FUNCTIONS"
-></A
->Task-Dependent Synchronization Functions</H1
+>Task-Dependent Synchronization Functions</A
+></H1
 ><P
 >These functions are fully supported in this release: </P
 ><TABLE
@@ -95,9 +95,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->sus_tsk</TT
+>sus_tsk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -117,9 +117,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->rsm_tsk</TT
+>rsm_tsk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -139,9 +139,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->frsm_tsk</TT
+>frsm_tsk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -161,9 +161,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->slp_tsk</TT
+>slp_tsk</CODE
 >( void )</PRE
 ></TD
 ></TR
@@ -176,9 +176,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->tslp_tsk</TT
+>tslp_tsk</CODE
 >( 
     TMO <SPAN
 CLASS="emphasis"
@@ -198,9 +198,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->wup_tsk</TT
+>wup_tsk</CODE
 >( 
     ID <SPAN
 CLASS="emphasis"
@@ -220,9 +220,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->ER <TT
+>ER <CODE
 CLASS="FUNCTION"
->can_wup</TT
+>can_wup</CODE
 >( 
     INT *<SPAN
 CLASS="emphasis"
@@ -245,9 +245,9 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN8391"
-></A
->Error checking</H2
+NAME="AEN8812"
+>Error checking</A
+></H2
 ><P
 >The following conditions are only checked for, and only return
 errors if 
@@ -271,38 +271,38 @@ returns E_ID</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->wup_tsk()</TT
+>wup_tsk()</CODE
 >
 , 
-<TT
+<CODE
 CLASS="FUNCTION"
->sus_tsk()</TT
+>sus_tsk()</CODE
 >
 , 
-<TT
+<CODE
 CLASS="FUNCTION"
->rsm_tsk()</TT
+>rsm_tsk()</CODE
 >
 , 
-<TT
+<CODE
 CLASS="FUNCTION"
->frsm_tsk()</TT
+>frsm_tsk()</CODE
 >
  on the calling task returns E_OBJ</P
 ></LI
 ><LI
 ><P
 >dispatching is enabled in 
-<TT
+<CODE
 CLASS="FUNCTION"
->tslp_tsk()</TT
+>tslp_tsk()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->slp_tsk()</TT
+>slp_tsk()</CODE
 >
 , or E_CTX</P
 ></LI
@@ -313,9 +313,9 @@ CLASS="FUNCTION"
 ><LI
 ><P
 >return value pointer in 
-<TT
+<CODE
 CLASS="FUNCTION"
->can_wup()</TT
+>can_wup()</CODE
 >
  is a valid pointer, or E_PAR</P
 ></LI
@@ -333,53 +333,53 @@ CLASS="LITERAL"
 ><LI
 ><P
 >When create and delete functions 
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->del_tsk()</TT
+>del_tsk()</CODE
 >
  are supported, all calls which use a valid task ID number check
 that the task exists; if not, E_NOEXS is returned</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->sus_tsk()</TT
+>sus_tsk()</CODE
 >
 : the task must not be dormant, else E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->frsm/rsm_tsk()</TT
+>frsm/rsm_tsk()</CODE
 >
 : the task must be suspended, else E_OBJ</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->tslp/slp_tsk()</TT
+>tslp/slp_tsk()</CODE
 >
 : return codes E_TMOUT, E_RLWAI and E_DLT
 are returned depending on the reason for terminating the sleep</P
 ></LI
 ><LI
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->wup_tsk()</TT
+>wup_tsk()</CODE
 >
  and 
-<TT
+<CODE
 CLASS="FUNCTION"
->can_wup()</TT
+>can_wup()</CODE
 >
 : the task must not be dormant, or E_OBJ is returned</P
 ></LI

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-RUNNING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13483"
+NAME="AEN14040"
 ></A
 ><H2
 >Name</H2
@@ -134,9 +134,9 @@ Starting program: ecos_hello &lt;options&gt;</PRE
 ></TABLE
 ><P
 >By default use of the I/O auxiliary is disabled. If its I/O facilities
-are required then the option <TT
+are required then the option <CODE
 CLASS="OPTION"
->--io</TT
+>--io</CODE
 > must be used.
     </P
 ><DIV
@@ -147,9 +147,9 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >In future the default behaviour may change, with the I/O auxiliary
-being started by default. The option <TT
+being started by default. The option <CODE
 CLASS="OPTION"
->--nio</TT
+>--nio</CODE
 > can be
 used to prevent the auxiliary from being run.
     </P
@@ -179,20 +179,20 @@ CLASS="SCREEN"
 ></TR
 ></TABLE
 ><P
->Command line options up to the <TT
+>Command line options up to the <CODE
 CLASS="OPTION"
->--</TT
+>--</CODE
 > are passed on to
 the I/O auxiliary. Subsequent arguments are not passed on to the
 auxiliary, and hence can be used by the eCos application itself. The
 full set of arguments can be accessed through the variables
-<TT
+<CODE
 CLASS="VARNAME"
->cyg_hal_sys_argc</TT
+>cyg_hal_sys_argc</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->cyg_hal_sys_argv</TT
+>cyg_hal_sys_argv</CODE
 >. 
     </P
 ><P
@@ -204,9 +204,9 @@ CLASS="VARNAME"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->--io</TT
+>--io</CODE
 ></DT
 ><DD
 ><P
@@ -216,9 +216,9 @@ be available.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->--nio</TT
+>--nio</CODE
 ></DT
 ><DD
 ><P
@@ -227,111 +227,111 @@ auxiliary. In the current version of the software this is the default.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-nw</TT
->, <TT
+>-nw</CODE
+>, <CODE
 CLASS="OPTION"
->--no-windows</TT
+>--no-windows</CODE
 ></DT
 ><DD
 ><P
 >The I/O auxiliary can either provide a graphical user interface, or it
 can run in a text-only mode. The default is to provide the graphical
-interface, but this can be disabled with <TT
+interface, but this can be disabled with <CODE
 CLASS="OPTION"
->-nw</TT
+>-nw</CODE
 >.
 Emulation of some devices, for example buttons connected to digital
 inputs, requires the graphical interface.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-w</TT
->, <TT
+>-w</CODE
+>, <CODE
 CLASS="OPTION"
->--windows</TT
+>--windows</CODE
 ></DT
 ><DD
 ><P
->The <TT
+>The <CODE
 CLASS="OPTION"
->-w</TT
+>-w</CODE
 > causes the I/O auxiliary to provide a
 graphical user interface. This is the default.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-v</TT
->, <TT
+>-v</CODE
+>, <CODE
 CLASS="OPTION"
->--version</TT
+>--version</CODE
 ></DT
 ><DD
 ><P
->The <TT
+>The <CODE
 CLASS="OPTION"
->-v</TT
+>-v</CODE
 > option can be used to determine the version of
 the I/O auxiliary being used and where it has been installed. Both the
 auxiliary and the eCos application will exit immediately.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-h</TT
->, <TT
+>-h</CODE
+>, <CODE
 CLASS="OPTION"
->--help</TT
+>--help</CODE
 ></DT
 ><DD
 ><P
-><TT
+><CODE
 CLASS="OPTION"
->-h</TT
+>-h</CODE
 > causes the I/O auxiliary to list all accepted
 command-line arguments. This happens after all devices have been
 initialized, since the host-side support for some of the devices may
 extend the list of recognised options. After this both the auxiliary
 and the eCos application will exit immediately. This option implies
-<TT
+<CODE
 CLASS="OPTION"
->-nw</TT
+>-nw</CODE
 >. 
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-k</TT
->, <TT
+>-k</CODE
+>, <CODE
 CLASS="OPTION"
->--keep-going</TT
+>--keep-going</CODE
 ></DT
 ><DD
 ><P
 >If an error occurs in the I/O auxiliary while reading in any of the
 configuration files or initializing devices, by default both the 
-auxiliary and the eCos application will exit. The <TT
+auxiliary and the eCos application will exit. The <CODE
 CLASS="OPTION"
->-k</TT
+>-k</CODE
 >
 option can be used to make the auxiliary continue in spite of errors,
 although obviously it may not be fully functional.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-nr</TT
->, <TT
+>-nr</CODE
+>, <CODE
 CLASS="OPTION"
->--no-rc</TT
+>--no-rc</CODE
 ></DT
 ><DD
 ><P
@@ -347,65 +347,65 @@ CLASS="FILENAME"
 CLASS="FILENAME"
 >mainrc.tcl</TT
 >. This can be suppressed using the
-<TT
+<CODE
 CLASS="OPTION"
->-nr</TT
+>-nr</CODE
 > option.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-x</TT
->, <TT
+>-x</CODE
+>, <CODE
 CLASS="OPTION"
->--exit</TT
+>--exit</CODE
 ></DT
 ><DD
 ><P
 >When providing a graphical user interface the I/O auxiliary will
 normally continue running even after the eCos application has exited.
 This allows the user to take actions such as saving the current
-contents of the main text window. If run with <TT
+contents of the main text window. If run with <CODE
 CLASS="OPTION"
->-x</TT
+>-x</CODE
 > then
 the auxiliary will exit as soon the application exits.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-nx</TT
->, <TT
+>-nx</CODE
+>, <CODE
 CLASS="OPTION"
->--no-exit</TT
+>--no-exit</CODE
 ></DT
 ><DD
 ><P
 >When the graphical user interface is disabled with
-<TT
+<CODE
 CLASS="OPTION"
->-nw</TT
+>-nw</CODE
 > the I/O auxiliary will normally exit immediately
 when the eCos application exits. Without the graphical frontend there
 is usually no way for the user to interact directly with the
 auxiliary, so there is no point in continuing to run once the eCos
 application will no longer request any I/O operations. Specifying the
-<TT
+<CODE
 CLASS="OPTION"
->-nx</TT
+>-nx</CODE
 > option causes the auxiliary to continue running
 even after the application has exited.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-V</TT
->, <TT
+>-V</CODE
+>, <CODE
 CLASS="OPTION"
->--verbose</TT
+>--verbose</CODE
 ></DT
 ><DD
 ><P
@@ -414,35 +414,35 @@ information, especially during initialization.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-l &lt;file&gt;</TT
->, <TT
+>-l &lt;file&gt;</CODE
+>, <CODE
 CLASS="OPTION"
->--logfile &lt;file&gt;</TT
+>--logfile &lt;file&gt;</CODE
 ></DT
 ><DD
 ><P
 >Much of the output of the eCos application and the I/O auxiliary is
 simple text, for example resulting from eCos
-<TT
+<CODE
 CLASS="FUNCTION"
->printf</TT
-> or <TT
+>printf</CODE
+> or <CODE
 CLASS="FUNCTION"
->diag_printf</TT
+>diag_printf</CODE
 > calls.
 When running in graphical mode this output goes to a central text
 window, and can be saved to a file or edited via menus. The
-<TT
+<CODE
 CLASS="OPTION"
->-l</TT
+>-l</CODE
 > can be used to automatically generate an
 additional logfile containing all the text. If graphical
 mode is disabled then by default all the text just goes to the current
-standard output. Specifying <TT
+standard output. Specifying <CODE
 CLASS="OPTION"
->-l</TT
+>-l</CODE
 > causes most of the
 text to go into a logfile instead, although some messages such as
 errors generated by the auxiliary itself will still go to stdout as
@@ -450,20 +450,20 @@ well.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-t &lt;file&gt;</TT
->, <TT
+>-t &lt;file&gt;</CODE
+>, <CODE
 CLASS="OPTION"
->--target &lt;file&gt;</TT
+>--target &lt;file&gt;</CODE
 ></DT
 ><DD
 ><P
 >During initialization the I/O auxiliary reads in a target definition
 file. This file holds information such as which Linux devices should
-be used to emulate the various eCos devices. The <TT
+be used to emulate the various eCos devices. The <CODE
 CLASS="OPTION"
->-t</TT
+>-t</CODE
 >
 option can be used to specify which target definition should be used
 for the current run, defaulting to <TT
@@ -478,9 +478,9 @@ this will be appended automatically if necessary.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-geometry &lt;geometry&gt;</TT
+>-geometry &lt;geometry&gt;</CODE
 ></DT
 ><DD
 ><P
@@ -493,9 +493,9 @@ window, as per X conventions.
 ><P
 >The I/O auxiliary loads support for the various devices dynamically
 and some devices may accept additional command line arguments. Details
-of these can be obtained using the <TT
+of these can be obtained using the <CODE
 CLASS="OPTION"
->-h</TT
+>-h</CODE
 > option or by
 consulting the device-specific documentation. If an unrecognised
 command line argument is used then a warning will be issued.
@@ -510,29 +510,29 @@ NAME="SYNTH-RUNNING-TDF"
 >The Target Definition File</H2
 ><P
 >The eCos application will want to access devices such as
-<TT
+<CODE
 CLASS="VARNAME"
->eth0</TT
-> or <TT
+>eth0</CODE
+> or <CODE
 CLASS="VARNAME"
->/dev/ser0</TT
+>/dev/ser0</CODE
 >. These need to
 be mapped on to Linux devices. For example some users may all traffic
-on the eCos <TT
+on the eCos <CODE
 CLASS="VARNAME"
->/dev/ser0</TT
+>/dev/ser0</CODE
 > serial device to go via the
-Linux serial device <TT
+Linux serial device <CODE
 CLASS="VARNAME"
->/dev/ttyS1</TT
+>/dev/ttyS1</CODE
 >, while ethernet I/O
-for the eCos <TT
+for the eCos <CODE
 CLASS="VARNAME"
->eth0</TT
+>eth0</CODE
 > device should be mapped to the
-Linux ethertap device <TT
+Linux ethertap device <CODE
 CLASS="VARNAME"
->tap3</TT
+>tap3</CODE
 >. Some devices may need
 additional configuration information, for example to limit the
 number of packets that should be buffered within the I/O auxiliary.
@@ -544,9 +544,9 @@ The target definition file provides all this information.
 CLASS="FILENAME"
 >default.tdf</TT
 >. An alternative target definition can
-be specified on the command line using <TT
+be specified on the command line using <CODE
 CLASS="OPTION"
->-t</TT
+>-t</CODE
 >, for
 example:
     </P
@@ -662,18 +662,18 @@ types of option are common to many devices.
 ><P
 >A good example of this is filters, which control the appearance of
 text output. The above target definition file defines a filter
-<TT
+<CODE
 CLASS="VARNAME"
->trace</TT
+>trace</CODE
 > for output from the eCos application. The
 regular expression will match output from the infrastructure package's
-tracing facilities when <TT
+tracing facilities when <CODE
 CLASS="VARNAME"
->CYGDBG_USE_TRACING</TT
+>CYGDBG_USE_TRACING</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDBG_INFRA_DEBUG_TRACE_ASSERT_SIMPLE</TT
+>CYGDBG_INFRA_DEBUG_TRACE_ASSERT_SIMPLE</CODE
 > are enabled.
 With the current settings this output will not be visible by default,
 but can be made visible using the menu item <SPAN
@@ -690,9 +690,9 @@ from other text. All filters accept the following options:
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-hide [0|1]</TT
+>-hide [0|1]</CODE
 ></DT
 ><DD
 ><P
@@ -706,9 +706,9 @@ menu item.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-foreground &lt;colour&gt;</TT
+>-foreground &lt;colour&gt;</CODE
 ></DT
 ><DD
 ><P
@@ -730,16 +730,16 @@ about the available colours.
          </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="OPTION"
->-background &lt;colour&gt;</TT
+>-background &lt;colour&gt;</CODE
 ></DT
 ><DD
 ><P
 >This specifies the background colour for all text matching the filter.
-As with <TT
+As with <CODE
 CLASS="OPTION"
->-foreground</TT
+>-foreground</CODE
 > the colour can be specified using
 a symbolic name or an RGB value.
          </P
@@ -766,9 +766,9 @@ for devices that are not actually needed by the current eCos
 application. This makes it easier to use a single file for several
 different applications. However it can lead to confusion if an entry
 is spelled incorrectly and hence does not actually get used. The
-<TT
+<CODE
 CLASS="OPTION"
->-V</TT
+>-V</CODE
 > command line option can be used to get warnings
 about unused device entries in the target definition file.
     </P
@@ -844,9 +844,9 @@ CLASS="FILENAME"
 > script is run after eCos has
 performed all its device initialization and after C++ static
 constructors have run, and just before the call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_start</TT
+>cyg_start</CODE
 > which will end up transferring control
 to the application itself. A typical <TT
 CLASS="FILENAME"

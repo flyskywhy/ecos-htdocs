@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="DEVAPI-SMP-SUPPORT"
-></A
->SMP Support</H1
+>SMP Support</A
+></H1
 ><P
 >Some eCos targets contain support for Symmetric Multi-Processing (SMP)
 configurations, where more than one CPU may be present. This option
@@ -96,13 +96,13 @@ device driver to execute on different CPUs, it is important that
 SMP-compatible device drivers use the driver API routines correctly.</P
 ><P
 >Synchronization between threads and DSRs continues to require that the
-thread-side code use <TT
+thread-side code use <CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_lock()</TT
+>cyg_drv_dsr_lock()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_dsr_unlock()</TT
+>cyg_drv_dsr_unlock()</CODE
 > to protect access to shared
 data. While it is not strictly necessary for DSR code to claim the DSR
 lock, since DSRs are run with it claimed already, it is good practice
@@ -110,13 +110,13 @@ to do so.</P
 ><P
 >Synchronization between ISRs and DSRs or threads requires that access
 to sensitive data be protected, in all places, by calls to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_isr_lock()</TT
+>cyg_drv_isr_lock()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_isr_unlock()</TT
+>cyg_drv_isr_unlock()</CODE
 >. Disabling or masking
 interrupts is not adequate, since the thread or DSR may be running on
 a different CPU and interrupt enable/disable only work on the current
@@ -131,9 +131,9 @@ components of the device driver.</P
 >The ISR lock provided by the driver API is just a shared spinlock that
 is available for use by all drivers. If a driver needs to implement a
 finer grain of locking, it can use private spinlocks, accessed via the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_drv_spinlock_*()</TT
+>cyg_drv_spinlock_*()</CODE
 > functions.</P
 ></DIV
 ><DIV

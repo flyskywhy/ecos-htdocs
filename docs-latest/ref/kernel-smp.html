@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -129,47 +129,47 @@ at reset, or are captured by the HAL and put into a spin as they start
 up. The primary CPU is responsible for copying the DATA segment and
 zeroing the BSS (if required), calling HAL variant and platform
 initialization routines and invoking constructors. It then calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_start</TT
+>cyg_start</CODE
 > to enter the application. The
 application may then create extra threads and other objects.
       </P
 ><P
 >It is only when the application calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_start</TT
+>cyg_scheduler_start</CODE
 > that the secondary CPUs are
 initialized. This routine scans the list of available secondary CPUs
-and invokes <TT
+and invokes <CODE
 CLASS="FUNCTION"
->HAL_SMP_CPU_START</TT
+>HAL_SMP_CPU_START</CODE
 > to start each
 CPU. Finally it calls an internal function
-<TT
+<CODE
 CLASS="FUNCTION"
->Cyg_Scheduler::start_cpu</TT
+>Cyg_Scheduler::start_cpu</CODE
 > to enter the scheduler
 for the primary CPU.
       </P
 ><P
 >Each secondary CPU starts in the HAL, where it completes any per-CPU
 initialization before calling into the kernel at
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_kernel_cpu_startup</TT
+>cyg_kernel_cpu_startup</CODE
 >. Here it claims the
 scheduler lock and calls
-<TT
+<CODE
 CLASS="FUNCTION"
->Cyg_Scheduler::start_cpu</TT
+>Cyg_Scheduler::start_cpu</CODE
 >.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->Cyg_Scheduler::start_cpu</TT
+>Cyg_Scheduler::start_cpu</CODE
 > is common to both the
 primary and secondary CPUs. The first thing this code does is to
 install an interrupt object for this CPU's inter-CPU interrupt. From
@@ -324,13 +324,13 @@ to do <A
 HREF="kernel-interrupts.html#KERNEL-INTERRUPTS-SMP"
 >interrupt
 routing</A
->: <TT
+>: <CODE
 CLASS="FUNCTION"
->cyg_interrupt_set_cpu</TT
+>cyg_interrupt_set_cpu</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_interrupt_get_cpu</TT
+>cyg_interrupt_get_cpu</CODE
 >. Although not currently
 supported, special values for the cpu argument may be used in future
 to indicate that the interrupt is being routed dynamically or is

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="POWER-ATTACHED"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11634"
+NAME="AEN12191"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN11634"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN11637"
+NAME="AEN12194"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN11638"
-></A
 ><P
 ></P
+><A
+NAME="AEN12195"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -142,14 +142,14 @@ CLASS="FUNCDEF"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11652"
+NAME="AEN12209"
 ></A
 ><H2
 >Detaching Power Controllers</H2
 ><P
->By default the global operation <TT
+>By default the global operation <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >
 affects all power controllers. There may be circumstances when this is
 not desirable. For example if a particular device is not currently
@@ -169,32 +169,32 @@ controller for the unused device. To support this the power management
 package supports the concept of attached and detached controllers. By
 default all controllers are attached, and hence will be affected by
 global mode changes. A specific controller can be detached using the
-function <TT
+function <CODE
 CLASS="FUNCTION"
->power_set_controller_attached</TT
+>power_set_controller_attached</CODE
 >. This
 function takes two arguments, one to specify a particular controller
 and another to specify the desired new state.
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_controller_attached</TT
+>power_get_controller_attached</CODE
 > can be used to
 determine whether or not a specific controller is currently attached.</P
 ><P
 >The attached or detached state of a controller only affects what
 happens during a global mode change, in other words following a call
-to <TT
+to <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >. It is still possible to
 manipulate a detached controller using
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode_now</TT
+>power_set_controller_mode_now</CODE
 >.</P
 ></DIV
 ><DIV

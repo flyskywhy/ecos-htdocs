@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -150,17 +150,13 @@ static int ramfs_fo_dirlseek     (struct CYG_FILE_TAG *fp, off_t *pos, int whenc
 ><P
 >We define all of the fstab entries and all of the file IO
 operations. We also define alternatives for the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fo_read</I
-></TT
+>fo_read</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fo_lseek</I
-></TT
+>fo_lseek</CODE
 > file IO operations.</P
 ><P
 >We can now define the filesystem table entry. There is a macro,
@@ -239,32 +235,26 @@ static cyg_fileops ramfs_fileops =
 ></TABLE
 ><P
 >These all point to functions supplied by the filesystem except the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fo_select</I
-></TT
+>fo_select</CODE
 > field which is filled with a
-pointer to <TT
+pointer to <CODE
 CLASS="FUNCTION"
->cyg_fileio_seltrue()</TT
+>cyg_fileio_seltrue()</CODE
 >. This is provided
 by the FILEIO package and is a select function that always returns
 true to all operations.</P
 ><P
 >Finally, we need to define a set of file operations for use when
 reading directories. This table only defines the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fo_read</I
-></TT
+>fo_read</CODE
 > and
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fo_lseek</I
-></TT
+>fo_lseek</CODE
 > operations. The rest are filled
 with stub functions supplied by the FILEIO package that just return an
 error code.</P
@@ -325,27 +315,19 @@ CLASS="PROGRAMLISTING"
 ><P
 >The first argument provides a name for the table entry. The following
 arguments provide initialization for the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
->, <TT
+>name</CODE
+>, <CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 >,
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->devname</I
-></TT
-> and <TT
+>devname</CODE
+> and <CODE
 CLASS="STRUCTFIELD"
-><I
->data</I
-></TT
+>data</CODE
 >
 fields respectively.</P
 ><P

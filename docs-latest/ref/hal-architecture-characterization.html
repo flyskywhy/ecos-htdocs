@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,8 +83,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-ARCHITECTURE-CHARACTERIZATION"
-></A
->Architecture Characterization</H1
+>Architecture Characterization</A
+></H1
 ><P
 >These are definition that are related to the basic architecture of the
 CPU. These include the CPU context save format, context switching, bit
@@ -112,8 +112,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2587"
-></A
->Register Save Format</H2
+>Register Save Format</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -145,8 +145,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2591"
-></A
->Thread Context Initialization</H2
+>Thread Context Initialization</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -161,9 +161,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >This macro initializes a thread's context so that
-it may be switched to by <TT
+it may be switched to by <CODE
 CLASS="FUNCTION"
->HAL_THREAD_SWITCH_CONTEXT()</TT
+>HAL_THREAD_SWITCH_CONTEXT()</CODE
 >.
 The arguments are:</P
 ><P
@@ -195,16 +195,14 @@ CLASS="VARIABLELIST"
 ><P
 >      The address of an entry point function. This will be called
       according the C calling conventions, and the value of
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->arg</I
-></TT
+>arg</CODE
 > will be passed as the first
       argument. This function should have the following type signature
-      <TT
+      <CODE
 CLASS="FUNCTION"
->void entry(CYG_ADDRWORD arg)</TT
+>void entry(CYG_ADDRWORD arg)</CODE
 >.
       </P
 ></DD
@@ -228,8 +226,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="HAL-CONTEXT-SWITCH"
-></A
->Thread Context Switching</H2
+>Thread Context Switching</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -269,31 +267,27 @@ CLASS="VARIABLELIST"
 ></DL
 ></DIV
 ><P
->For <TT
+>For <CODE
 CLASS="FUNCTION"
->HAL_THREAD_LOAD_CONTEXT()</TT
+>HAL_THREAD_LOAD_CONTEXT()</CODE
 > the current CPU
 state is discarded and the state of the destination thread is
 loaded. This is only used once, to load the first thread when the
 scheduler is started.</P
 ><P
->For <TT
+>For <CODE
 CLASS="FUNCTION"
->HAL_THREAD_SWITCH_CONTEXT()</TT
+>HAL_THREAD_SWITCH_CONTEXT()</CODE
 > the state of the
 current thread is saved onto its stack, using the current value of the
 stack pointer, and the address of the saved state placed in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*from</I
-></TT
+>*from</CODE
 >.  The value in
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*to</I
-></TT
+>*to</CODE
 > is then read and the state of the new
 thread is loaded from it.</P
 ><P
@@ -305,9 +299,9 @@ the saved context. Second, the calling conventions mean that the
 compiler will have already saved the caller-saved registers before the
 call, so the HAL need only save the callee-saved registers.</P
 ><P
->The implementation of <TT
+>The implementation of <CODE
 CLASS="FUNCTION"
->HAL_THREAD_SWITCH_CONTEXT()</TT
+>HAL_THREAD_SWITCH_CONTEXT()</CODE
 >
 saves the current CPU state on the stack, including the current
 interrupt state (or at least the register that contains it). For
@@ -320,15 +314,15 @@ CLASS="LITERAL"
 > controls
 how many registers are saved.</P
 ><P
->The implementation of <TT
+>The implementation of <CODE
 CLASS="FUNCTION"
->HAL_THREAD_LOAD_CONTEXT()</TT
+>HAL_THREAD_LOAD_CONTEXT()</CODE
 >
 loads a thread context, destroying the current context. With a little
 care this can be implemented by sharing code with
-<TT
+<CODE
 CLASS="FUNCTION"
->HAL_THREAD_SWITCH_CONTEXT()</TT
+>HAL_THREAD_SWITCH_CONTEXT()</CODE
 >. To load a thread
 context simply requires the saved registers to be restored from the
 stack and a jump or return made back to the saved PC.</P
@@ -350,8 +344,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2642"
-></A
->Bit indexing</H2
+>Bit indexing</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -366,17 +360,13 @@ HAL_MSBIT_INDEX( index, mask )</PRE
 ></TR
 ></TABLE
 ><P
->These macros place in <TT
+>These macros place in <CODE
 CLASS="PARAMETER"
-><I
->index</I
-></TT
+>index</CODE
 > the bit index of
-the least significant bit in <TT
+the least significant bit in <CODE
 CLASS="PARAMETER"
-><I
->mask</I
-></TT
+>mask</CODE
 >. Some
 architectures have instruction level support for one or other of these
 operations. If no architectural support is available, then these
@@ -388,8 +378,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2648"
-></A
->Idle thread activity</H2
+>Idle thread activity</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -416,8 +406,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2652"
-></A
->Reorder barrier</H2
+>Reorder barrier</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -444,8 +434,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2656"
-></A
->Breakpoint support</H2
+>Breakpoint support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -463,9 +453,9 @@ HAL_BREAKINST_SIZE</PRE
 ><P
 >These macros provide support for breakpoints.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_BREAKPOINT()</TT
+>HAL_BREAKPOINT()</CODE
 > executes a breakpoint
 instruction. The label is defined at the breakpoint instruction so
 that exception code can detect which breakpoint was executed.</P
@@ -487,8 +477,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2665"
-></A
->GDB support</H2
+>GDB support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -506,67 +496,59 @@ HAL_SET_GDB_REGISTERS( regs, regval )</PRE
 ><P
 >These macros provide support for interfacing GDB to the HAL.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_THREAD_GET_SAVED_REGISTERS()</TT
+>HAL_THREAD_GET_SAVED_REGISTERS()</CODE
 > extracts a
-pointer to a <SPAN
+pointer to a <CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure
 from a stack pointer value. The stack pointer passed in should be the
 value saved by the thread context macros. The macro will assign a
-pointer to the <SPAN
+pointer to the <CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure
 to the variable passed as the second argument.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_GET_GDB_REGISTERS()</TT
+>HAL_GET_GDB_REGISTERS()</CODE
 > translates a register
 state as saved by the HAL and into a register dump in the format
 expected by GDB. It takes a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure in the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->regs</I
-></TT
+>regs</CODE
 > argument and a pointer to the memory to
-contain the GDB register dump in the <TT
+contain the GDB register dump in the <CODE
 CLASS="PARAMETER"
-><I
->regval</I
-></TT
+>regval</CODE
 >
 argument.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->HAL_SET_GDB_REGISTERS()</TT
+>HAL_SET_GDB_REGISTERS()</CODE
 > translates a GDB format
 register dump into a the format expected by the HAL.  It takes a
 pointer to the memory containing the GDB register dump in the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->regval</I
-></TT
+>regval</CODE
 > argument and a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->HAL_SavedRegisters</SPAN
+>HAL_SavedRegisters</CODE
 > structure
-in the <TT
+in the <CODE
 CLASS="PARAMETER"
-><I
->regs</I
-></TT
+>regs</CODE
 > argument.</P
 ></DIV
 ><DIV
@@ -575,8 +557,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2683"
-></A
->Setjmp and longjmp support</H2
+>Setjmp and longjmp support</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -594,12 +576,12 @@ hal_longjmp( hal_jmp_buf env, int val )</PRE
 ></TABLE
 ><P
 >These functions provide support for the C
-<TT
+<CODE
 CLASS="FUNCTION"
->setjmp()</TT
-> and <TT
+>setjmp()</CODE
+> and <CODE
 CLASS="FUNCTION"
->longjmp()</TT
+>longjmp()</CODE
 >
 functions.  Refer to the C library for further information.</P
 ></DIV
@@ -609,8 +591,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2689"
-></A
->Stack Sizes</H2
+>Stack Sizes</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -663,8 +645,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2699"
-></A
->Address Translation</H2
+>Address Translation</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -687,25 +669,25 @@ possible that the MMU or some other address translation unit in the
 CPU presents memory to the program at a different virtual address to
 its physical address on the bus.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->CYGARC_CACHED_ADDRESS()</TT
+>CYGARC_CACHED_ADDRESS()</CODE
 > translates the given
 address to its location in cached memory. This is typically where the
 application will access the memory.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->CYGARC_UNCACHED_ADDRESS()</TT
+>CYGARC_UNCACHED_ADDRESS()</CODE
 > translates the given
 address to its location in uncached memory. This is typically where
 device drivers will access the memory to avoid cache problems. It may
 additionally be necessary for the cache to be flushed before the
 contents of this location is fully valid.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->CYGARC_PHYSICAL_ADDRESS()</TT
+>CYGARC_PHYSICAL_ADDRESS()</CODE
 > translates the given
 address to its location in the physical address space. This is
 typically the address that needs to be passed to device hardware such
@@ -719,8 +701,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="AEN2709"
-></A
->Global Pointer</H2
+>Global Pointer</A
+></H2
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"

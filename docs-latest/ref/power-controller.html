@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="POWER-CONTROLLER"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11668"
+NAME="AEN12225"
 ></A
 ><H2
 >Name</H2
@@ -94,16 +94,16 @@ other packages</DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN11671"
+NAME="AEN12228"
 ></A
 ><H2
 >Implementing a Power Controller</H2
 ><P
 >A system will have some number of power controllers. Usually there
 will be one power controller for the cpu,
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 >, typically provided by one of
 the HAL packages and responsible for managing the processor itself and
 associated critical components such as memory. Some or all of the
@@ -112,16 +112,16 @@ consumption of the associated devices to be controlled. There may be
 some arbitrary number of other controllers present in the system. The
 power management package does not impose any restrictions on the
 number or nature of the power controllers in the system, other than
-insisting that at most one <TT
+insisting that at most one <CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 > be
 provided.</P
 ><P
 >Each power controller involves a single data structure of type
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->PowerController</SPAN
+>PowerController</CODE
 >, defined in the header file
 <TT
 CLASS="FILENAME"
@@ -162,9 +162,9 @@ directly, as well as via the table.</P
 ><P
 >A priority. The table of power controllers is sorted, such that power
 controllers with a numerically lower priority come earlier in the
-table. The special controller <TT
+table. The special controller <CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 >
 always comes at the end of the table. When moving from a high-power
 mode to a lower-powered mode, the power management package iterates
@@ -208,15 +208,15 @@ the table will quickly eliminate any confusion.</P
 ><P
 >A constant string identifier. If the system has been configured
 without support for such identifiers
-(<TT
+(<CODE
 CLASS="VARNAME"
->CYGIMP_POWER_PROVIDE_STRINGS</TT
+>CYGIMP_POWER_PROVIDE_STRINGS</CODE
 >) then this identifer
 will be discarded at compile-time. Otherwise it will be made available
 to higher-level code using the function
-<TT
+<CODE
 CLASS="FUNCTION"
->power_get_controller_id</TT
+>power_get_controller_id</CODE
 >. </P
 ></LI
 ><LI
@@ -262,9 +262,9 @@ static POWER_CONTROLLER(xyzzy_power_controller, \
 ></TR
 ></TABLE
 ><P
->This creates a variable <TT
+>This creates a variable <CODE
 CLASS="VARNAME"
->xyzzy_power_controller</TT
+>xyzzy_power_controller</CODE
 >,
 which is a power controller data structure that will end up near the
 end of the table of power controllers. Higher-level code can
@@ -274,9 +274,9 @@ CLASS="LITERAL"
 device"</TT
 > to the user. Whenever there is a mode change
 operation that affects this controller, the function
-<TT
+<CODE
 CLASS="FUNCTION"
->xyzzy_device_power_mode_change</TT
+>xyzzy_device_power_mode_change</CODE
 > will be invoked.
 The variable is declared static so this controller cannot be
 manipulated by name in any other code. Alternatively, if the variable
@@ -297,9 +297,9 @@ CLASS="LITERAL"
 > only takes two
 arguments, a string identifier and a mode change function pointer.
 This macro always instantiates a variable
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 > so there is no need to provide
 a variable name. The resulting power controller structure always
 appears at the end of the table, so there is no need to specify a
@@ -332,9 +332,9 @@ POWER_CONTROLLER_CPU("wumpus processor", \
 ></TABLE
 ><P
 >This defines a power controller structure
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 >. It should not be declared
 static since higher-level code may well want to manipulate the cpu's
 power mode directly, and the variable is declared by the power
@@ -397,32 +397,32 @@ function. If the power management package has been configured to use a
 separate thread then this mode change function will be invoked by that
 thread (except for the special case of <A
 HREF="power-change.html#POWER-CHANGE-CONTROLLER-NOW"
-><TT
+><CODE
 CLASS="FUNCTION"
->power_set_controller_mode_now</TT
+>power_set_controller_mode_now</CODE
 ></A
 >). 
 If no separate thread is used then the mode change function will be
-invoked directly by <TT
+invoked directly by <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 >.</P
 ><P
 >The mode change function will be invoked with three arguments. The
 first argument identifies the power controller. Usually this argument
 is not actually required since a given mode change function will only
 ever be invoked for a single power controller. For example,
-<TT
+<CODE
 CLASS="FUNCTION"
->xyzzy_device_power_mode_change</TT
+>xyzzy_device_power_mode_change</CODE
 > will only ever be
-used in conjunction with <TT
+used in conjunction with <CODE
 CLASS="VARNAME"
->xyzzy_power_controller</TT
+>xyzzy_power_controller</CODE
 >.
 However there may be some packages which contain multiple controllers,
 all of which can share a single mode change function, and in that case
@@ -453,9 +453,9 @@ CLASS="LITERAL"
 >PowerModeChange_Global</TT
 >, and identifies the call
 that caused this invocation. For example, if the mode change function
-was invoked because of a call to <TT
+was invoked because of a call to <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >
 then this argument will be <TT
 CLASS="LITERAL"
@@ -470,15 +470,13 @@ CLASS="TYPE"
 if the request was aimed specifically at this controller then it could
 instead abort any current I/O operations and switch off the device.</P
 ><P
->The <SPAN
+>The <CODE
 CLASS="STRUCTNAME"
->PowerController</SPAN
+>PowerController</CODE
 > data structure contains
-one field, <TT
+one field, <CODE
 CLASS="STRUCTFIELD"
-><I
->mode</I
-></TT
+>mode</CODE
 >, that needs to be updated
 by the power mode change function. At all times it should indicate the
 current mode for this controller. When a mode change is requested the
@@ -493,11 +491,9 @@ TYPE="1"
 ><LI
 ><P
 >If the request can be satisfied without obvious detriment, do so and
-update the <TT
+update the <CODE
 CLASS="STRUCTFIELD"
-><I
->mode</I
-></TT
+>mode</CODE
 > field. Reducing the power
 consumption of a device that is not currently being used is generally
 harmless.</P
@@ -531,11 +527,9 @@ TYPE="a"
 ><LI
 ><P
 >If the request cannot be satisfied immediately but may be feasible in
-a short while, leave the <TT
+a short while, leave the <CODE
 CLASS="STRUCTFIELD"
-><I
->mode</I
-></TT
+>mode</CODE
 > field
 unchanged. Higher-level code in the policy module can interpret this
 as a hint to retry the operation a little bit later. This approach is
@@ -547,9 +541,9 @@ additional processing will be needed later on.</P
 ><P
 >If the request is felt to be inappropriate, for example switching off
 a device that is still in use, the mode change function can
-call <TT
+call <CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > to reset the
 desired mode for this controller back to the current mode.
 Higher-level code can then interpret this as a hint that there is more
@@ -558,9 +552,9 @@ activity in the system than had been apparent.</P
 ><LI
 ><P
 >For a global mode change, if the new mode is felt to be inappropriate
-then the power controller can call <TT
+then the power controller can call <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >
 to indicate this. An example of this would be the policy module
 deciding to switch off the whole unit while there is still I/O
@@ -571,9 +565,9 @@ activity.</P
 ></OL
 ><P
 >Mode change functions should not directly manipulate any other fields
-in the <SPAN
+in the <CODE
 CLASS="STRUCTNAME"
->PowerController</SPAN
+>PowerController</CODE
 > data structure. If it
 is necessary to keep track of additional data then static variables
 can be used.</P

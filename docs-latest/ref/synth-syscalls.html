@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-SYSCALLS"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13871"
+NAME="AEN14428"
 ></A
 ><H2
 >Name</H2
@@ -93,17 +93,17 @@ NAME="AEN13871"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN13874"
+NAME="AEN14431"
 ></A
 ><H2
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
-><A
-NAME="AEN13875"
-></A
 ><P
 ></P
+><A
+NAME="AEN14432"
+></A
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -143,9 +143,9 @@ Instead I/O and other operations are emulated by making appropriate
 Linux system calls. The HAL package exports a number of functions
 which allow other packages, or even application code, to make these
 same system calls. However this facility must be used with care: any
-code which calls, for example, <TT
+code which calls, for example, <CODE
 CLASS="FUNCTION"
->cyg_hal_sys_write</TT
+>cyg_hal_sys_write</CODE
 >
 will only ever run on the synthetic target; that functionality is
 obviously not provided on any real hardware because there is no
@@ -161,34 +161,34 @@ CLASS="FILENAME"
 >cyg/hal/hal_io.h</TT
 >. There is a simple
 convention: given a Linux system call such as
-<TT
+<CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 >, the synthetic target will prefix
 <TT
 CLASS="LITERAL"
 >cyg_hal_sys</TT
 > and provide a function with that name.
-The second argument to the <TT
+The second argument to the <CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > system call is
-a set of flags such as <TT
+a set of flags such as <CODE
 CLASS="CONSTANT"
->O_RDONLY</TT
+>O_RDONLY</CODE
 >, and the header
 file will define a matching constant
-<TT
+<CODE
 CLASS="CONSTANT"
->CYG_HAL_SYS_O_RDONLY</TT
+>CYG_HAL_SYS_O_RDONLY</CODE
 >. There are also data
-structures such as <SPAN
+structures such as <CODE
 CLASS="STRUCTNAME"
->cyg_hal_sys_sigset_t</SPAN
+>cyg_hal_sys_sigset_t</CODE
 >,
-matching the Linux data structure <SPAN
+matching the Linux data structure <CODE
 CLASS="STRUCTNAME"
->sigset_t</SPAN
+>sigset_t</CODE
 >.
     </P
 ><P
@@ -200,14 +200,14 @@ function returns <TT
 CLASS="LITERAL"
 >-1</TT
 > to indicate an error, with the
-actual error code held in <TT
+actual error code held in <CODE
 CLASS="VARNAME"
->errno</TT
+>errno</CODE
 >; the actual
 underlying system call and hence the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_hal_sys_xyz</TT
+>cyg_hal_sys_xyz</CODE
 > provided by eCos instead returns
 a negative number to indicate an error, with the absolute value of
 that number corresponding to the error code; usually it is the C
@@ -218,24 +218,24 @@ synthetic target applications are not linked with that Linux library.
 >However, there are some exceptions. The Linux kernel has evolved over
 the years, and some of the original system call interfaces are no
 longer appropriate. For example the original
-<TT
+<CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > system call has been superseded by
-<TT
+<CODE
 CLASS="FUNCTION"
->_newselect</TT
+>_newselect</CODE
 >, and that is what the
-<TT
+<CODE
 CLASS="FUNCTION"
->select</TT
+>select</CODE
 > function in the C library actually uses.
 The old call is still available to preserve binary compatibility but,
 like the C library, eCos makes use of the new one because it provides
 the appropriate functionality. In an attempt to reduce confusion the
-eCos function is called <TT
+eCos function is called <CODE
 CLASS="FUNCTION"
->cyg_hal_sys__newselect</TT
+>cyg_hal_sys__newselect</CODE
 >,
 in other words it matches the official system call naming scheme. The
 authoritive source of information on such matters is the Linux kernel

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1263"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1264"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -227,14 +227,14 @@ void res_free(res_t res)
 ></TR
 ></TABLE
 ><P
->These routines use the variable <TT
+>These routines use the variable <CODE
 CLASS="VARNAME"
->res_count</TT
+>res_count</CODE
 > to keep
 track of the resources available. If there are none then
-<TT
+<CODE
 CLASS="FUNCTION"
->res_allocate</TT
+>res_allocate</CODE
 > returns <TT
 CLASS="LITERAL"
 >RES_NONE</TT
@@ -304,56 +304,56 @@ void res_free(res_t res)
 ></TR
 ></TABLE
 ><P
->In this version of the code, when <TT
+>In this version of the code, when <CODE
 CLASS="FUNCTION"
->res_allocate</TT
+>res_allocate</CODE
 >
 detects that there are no resources it calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 >. This does two things: it unlocks
 the mutex, and puts the calling thread to sleep on the condition
-variable. When <TT
+variable. When <CODE
 CLASS="FUNCTION"
->res_free</TT
+>res_free</CODE
 > is eventually called, it
 puts a resource back into the pool and calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_signal</TT
+>cyg_cond_signal</CODE
 > to wake up any thread waiting on
 the condition variable. When the waiting thread eventually gets to run again,
 it will re-lock the mutex before returning from
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 >.
       </P
 ><P
 >There are two important things to note about the way in which this
 code works. The first is that the mutex unlock and wait in
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 > are atomic: no other thread can run
 between the unlock and the wait. If this were not the case then a call
-to <TT
+to <CODE
 CLASS="FUNCTION"
->res_free</TT
+>res_free</CODE
 > by that thread would release the
-resource but the call to <TT
+resource but the call to <CODE
 CLASS="FUNCTION"
->cyg_cond_signal</TT
+>cyg_cond_signal</CODE
 > would be
 lost, and the first thread would end up waiting when there were
 resources available.
       </P
 ><P
 >The second feature is that the call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 > is in a <TT
 CLASS="LITERAL"
 >while</TT
@@ -362,9 +362,9 @@ loop and not a simple <TT
 CLASS="LITERAL"
 >if</TT
 > statement. This is because
-of the need to re-lock the mutex in <TT
+of the need to re-lock the mutex in <CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 >
 when the signalled thread reawakens. If there are other threads
 already queued to claim the lock then this thread must wait. Depending
@@ -377,36 +377,36 @@ waiting.
       </P
 ><P
 >Before a condition variable can be used it must be initialized with a
-call to <TT
+call to <CODE
 CLASS="FUNCTION"
->cyg_cond_init</TT
+>cyg_cond_init</CODE
 >. This requires two
 arguments, memory for the data structure and a pointer to an existing
 mutex. This mutex will not be initialized by
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_init</TT
+>cyg_cond_init</CODE
 >, instead a separate call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_init</TT
+>cyg_mutex_init</CODE
 > is required. If a condition
 variable is no longer required and there are no threads waiting on it
-then <TT
+then <CODE
 CLASS="FUNCTION"
->cyg_cond_destroy</TT
+>cyg_cond_destroy</CODE
 > can be used.
       </P
 ><P
 >When a thread needs to wait for a condition to be satisfied it can
-call <TT
+call <CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 >. The thread must have already
 locked the mutex that was specified in the
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_init</TT
+>cyg_cond_init</CODE
 > call. This mutex will be unlocked
 and the current thread will be suspended in an atomic operation. When
 some other thread performs a signal or broadcast operation the current
@@ -416,29 +416,29 @@ not the condition is now satisfied.
       </P
 ><P
 >The kernel supplies a variant of this function,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_timed_wait</TT
+>cyg_cond_timed_wait</CODE
 >, which can be used to wait on
 the condition variable or until some number of clock ticks have
 occurred. The number of ticks is specified as an absolute, not
 relative tick count, and so in order to wait for a relative number of
-ticks, the return value of the <TT
+ticks, the return value of the <CODE
 CLASS="FUNCTION"
->cyg_current_time()</TT
+>cyg_current_time()</CODE
 >
 function should be added to determine the absolute number of ticks.
 The mutex will always be reclaimed before
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_timed_wait</TT
+>cyg_cond_timed_wait</CODE
 > returns, regardless of
 whether it was a result of a signal operation or a timeout.
       </P
 ><P
->There is no <TT
+>There is no <CODE
 CLASS="FUNCTION"
->cyg_cond_trywait</TT
+>cyg_cond_trywait</CODE
 > function because
 this would not serve any purpose. If a thread has locked the mutex and
 determined that the condition is satisfied, it can just release the
@@ -448,13 +448,13 @@ condition variable.
 ><P
 >When a thread changes shared state that may affect some other thread
 blocked on a condition variable, it should call either
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_signal</TT
+>cyg_cond_signal</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_broadcast</TT
+>cyg_cond_broadcast</CODE
 >. These calls do not require
 ownership of the mutex, but usually the mutex will have been claimed
 before updating the shared state. A signal operation only wakes up the
@@ -477,30 +477,30 @@ NAME="KERNEL-CONDITION-VARIABLES-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_cond_init</TT
+>cyg_cond_init</CODE
 > is typically called during system
 initialization but may also be called in thread context. The same
-applies to <TT
+applies to <CODE
 CLASS="FUNCTION"
->cyg_cond_delete</TT
+>cyg_cond_delete</CODE
 >.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_wait</TT
+>cyg_cond_wait</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_timedwait</TT
+>cyg_cond_timedwait</CODE
 > may only be called from thread
-context since they may block. <TT
+context since they may block. <CODE
 CLASS="FUNCTION"
->cyg_cond_signal</TT
+>cyg_cond_signal</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_cond_broadcast</TT
+>cyg_cond_broadcast</CODE
 > may be called from thread or
 DSR context.
       </P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN884"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN885"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -176,73 +176,73 @@ to be called when some number of events have occurred.
       </P
 ><P
 >A new counter is initialized by a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_create</TT
+>cyg_counter_create</CODE
 >. The first argument is used to
 return a handle to the new counter which can be used for subsequent
 operations. The second argument allows the application to provide the
 memory needed for the object, thus eliminating any need for dynamic
 memory allocation within the kernel. If a counter is no longer
 required and does not have any alarms attached then
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_delete</TT
+>cyg_counter_delete</CODE
 > can be used to release the
-resources, allowing the <SPAN
+resources, allowing the <CODE
 CLASS="STRUCTNAME"
->cyg_counter</SPAN
+>cyg_counter</CODE
 > data
 structure to be re-used.
       </P
 ><P
 >Initializing a counter does not automatically attach it to any source
 of events. Instead some other code needs to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_tick</TT
+>cyg_counter_tick</CODE
 > whenever a suitable event
 occurs, which will cause the counter to be incremented and may cause
 alarms to trigger. The current value associated with the counter can
-be retrieved using <TT
+be retrieved using <CODE
 CLASS="FUNCTION"
->cyg_counter_current_value</TT
+>cyg_counter_current_value</CODE
 > and
-modified with <TT
+modified with <CODE
 CLASS="FUNCTION"
->cyg_counter_set_value</TT
+>cyg_counter_set_value</CODE
 >. Typically
 the latter function is only used during initialization, for example to
 set a clock to wallclock time, but it can be used to reset a counter
-if necessary. However <TT
+if necessary. However <CODE
 CLASS="FUNCTION"
->cyg_counter_set_value</TT
+>cyg_counter_set_value</CODE
 > will
 never trigger any alarms. A newly initialized counter has a starting
 value of 0.
       </P
 ><P
 >The kernel provides two different implementations of counters. The
-default is <TT
+default is <CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_COUNTERS_SINGLE_LIST</TT
+>CYGIMP_KERNEL_COUNTERS_SINGLE_LIST</CODE
 > which
 stores all alarms attached to the counter on a single list. This is
 simple and usually efficient. However when a tick occurs the kernel
 code has to traverse this list, typically at DSR level, so if there
 are a significant number of alarms attached to a single counter this
 will affect the system's dispatch latency. The alternative
-implementation, <TT
+implementation, <CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_COUNTERS_MULTI_LIST</TT
+>CYGIMP_KERNEL_COUNTERS_MULTI_LIST</CODE
 >,
 stores each alarm in one of an array of lists such that at most one of
 the lists needs to be searched per clock tick. This involves extra
 code and data, but can improve real-time responsiveness in some
 circumstances. Another configuration option that is relevant here
-is <TT
+is <CODE
 CLASS="VARNAME"
->CYGIMP_KERNEL_COUNTERS_SORT_LIST</TT
+>CYGIMP_KERNEL_COUNTERS_SORT_LIST</CODE
 >, which is
 disabled by default. This provides a trade off between doing work
 whenever a new alarm is added to a counter and doing work whenever a
@@ -258,32 +258,32 @@ NAME="KERNEL-COUNTERS-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_counter_create</TT
+>cyg_counter_create</CODE
 > is typically called during
 system initialization but may also be called in thread context.
-Similarly <TT
+Similarly <CODE
 CLASS="FUNCTION"
->cyg_counter_delete</TT
+>cyg_counter_delete</CODE
 > may be called during
 initialization or in thread context.
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_current_value</TT
+>cyg_counter_current_value</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_set_value</TT
+>cyg_counter_set_value</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_tick</TT
+>cyg_counter_tick</CODE
 > may be called during
 initialization or from thread or DSR context. In fact,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_counter_tick</TT
+>cyg_counter_tick</CODE
 > is usually called from inside a
 DSR in response to an external event of some sort.
       </P

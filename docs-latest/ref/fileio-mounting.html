@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -92,41 +92,31 @@ CLASS="LITERAL"
 >MTAB_ENTRY()</TT
 > macro. Such entries will be
 automatically mounted on system startup.  For each entry in the mount
-table that has a non-null <TT
+table that has a non-null <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field the
 filesystem table is searched for a match with the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 > field. If a match is found the
-filesystem's <TT
+filesystem's <CODE
 CLASS="STRUCTFIELD"
-><I
->mount</I
-></TT
+>mount</CODE
 > entry is called and if
 successful the mount table entry marked valid and the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fs</I
-></TT
+>fs</CODE
 > field initialized. The
-<TT
+<CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > function is responsible for initializing
-the <TT
+the <CODE
 CLASS="STRUCTFIELD"
-><I
->root</I
-></TT
+>root</CODE
 > field.</P
 ><P
 >The size of the mount table is defined by the configuration value
@@ -136,9 +126,9 @@ CLASS="LITERAL"
 >. Any entries that have not
 been statically defined are available for use by dynamic mounts.</P
 ><P
->A filesystem may be mounted dynamically by calling <TT
+>A filesystem may be mounted dynamically by calling <CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 >. This
 function has the following prototype:</P
 ><TABLE
@@ -156,86 +146,68 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->devname</I
-></TT
+>devname</CODE
 > argument identifies a device that
 will be used by this filesystem and will be assigned to the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->devname</I
-></TT
+>devname</CODE
 > field of the mount table entry.</P
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->dir</I
-></TT
+>dir</CODE
 > argument is the mount point name, it
-will be assigned to the <TT
+will be assigned to the <CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field of the
 mount table entry.</P
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->fsname</I
-></TT
+>fsname</CODE
 > argument is the name of the
 implementing filesystem, it will be assigned to the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 > entry of the mount table entry.</P
 ><P
 >The process of mounting a filesystem dynamically is as follows. First
 a search is made of the mount table for an entry with a NULL
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field to be used for the new mount
 point. The filesystem table is then searched for an entry whose name
-matches <TT
+matches <CODE
 CLASS="STRUCTFIELD"
-><I
->fsname</I
-></TT
+>fsname</CODE
 >. If this is successful then
 the mount table entry is initialized and the filesystem's
-<TT
+<CODE
 CLASS="FUNCTION"
->mount()</TT
+>mount()</CODE
 > operation called. If this is successful,
 the mount table entry is marked valid and the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->fs</I
-></TT
+>fs</CODE
 > field initialized.</P
 ><P
->Unmounting a filesystem is done by the <TT
+>Unmounting a filesystem is done by the <CODE
 CLASS="FUNCTION"
->umount()</TT
+>umount()</CODE
 >
 function. This can unmount filesystems whether they were mounted
 statically or dynamically.</P
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->umount()</TT
+>umount()</CODE
 > function has the following prototype:</P
 ><TABLE
 BORDER="5"
@@ -251,34 +223,26 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The mount table is searched for a match between the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->name</I
-></TT
+>name</CODE
 > argument and the entry
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field. When a match is found the
-filesystem's <TT
+filesystem's <CODE
 CLASS="FUNCTION"
->umount()</TT
+>umount()</CODE
 > operation is called and if
 successful, the mount table entry is invalidated by setting its
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->valid</I
-></TT
+>valid</CODE
 > field false and the
-<TT
+<CODE
 CLASS="STRUCTFIELD"
-><I
->name</I
-></TT
+>name</CODE
 > field to NULL.</P
 ></DIV
 ><DIV

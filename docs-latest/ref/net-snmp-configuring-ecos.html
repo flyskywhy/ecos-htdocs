@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 52. SNMP for <SPAN
+>Chapter 53. SNMP for <SPAN
 CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
@@ -89,8 +89,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="NET-SNMP-CONFIGURING-ECOS"
-></A
->Configuring eCos</H1
+>Configuring eCos</A
+></H1
 ><P
 >To use the SNMP agent, the SNMP library and agent packages must be
 included in your configuration. To incorporate the stack into your
@@ -104,11 +104,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->ecosconfig add snmplib snmpagent</B
-></TT
+>ecosconfig add snmplib snmpagent</KBD
 ></PRE
 ></TD
 ></TR
@@ -135,8 +133,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-SNMP-VERSION-USAGE"
-></A
->Version usage (v1, v2 or v3)</H2
+>Version usage (v1, v2 or v3)</A
+></H2
 ><P
 >The default build supports all three versions of the SNMP protocol, but without
 any dispatcher functionality (rfc 2571, section 3.1.1.2). This has the
@@ -169,8 +167,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="TRAPS"
-></A
->Traps</H2
+>Traps</A
+></H2
 ><P
 >The support of the <TT
 CLASS="LITERAL"
@@ -228,11 +226,11 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="NET-SNMP-SNMPD-CONF"
-></A
 ><TT
 CLASS="LITERAL"
 >snmpd.conf</TT
-> file</H2
+> file</A
+></H2
 ><P
 >Using snmpd.conf requires the inclusion of one of the file-system packages
 (eg. CYGPKG_RAMFS) and CYGPKG_FILEIO. With these two packages included, the

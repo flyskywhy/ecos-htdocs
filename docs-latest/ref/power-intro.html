@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="POWER-INTRO"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11319"
+NAME="AEN11876"
 ></A
 ><H2
 >Name</H2
@@ -259,9 +259,9 @@ TYPE="1"
 ><LI
 ><P
 >Usually there will be one power controller
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 > associated with the processor
 or with the target platform, and provided by the corresponding HAL
 package. It is this controller which is responsible for switching off
@@ -280,9 +280,9 @@ higher-power mode it will be invoked first.</P
 hard requirement when porting eCos to a new processor or platform, and
 many eCos ports predate the availability of power management support.
 Therefore for any given platform it is distinctly possible that
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 > is not yet provided, and if
 full power management functionality is desired then the appropriate
 HAL package would have to be extended first. System developers should
@@ -295,9 +295,9 @@ is actually available.</P
 controllers, as part of the device driver package. It is not required
 that all device drivers provide power controllers. In some cases,
 especially for devices that are integrated with the processor,
-<TT
+<CODE
 CLASS="VARNAME"
->power_controller_cpu</TT
+>power_controller_cpu</CODE
 > will take care of the
 integrated devices as a side effect. In other cases the hardware may
 not provide any functionality that allows power consumption to be
@@ -338,13 +338,13 @@ such a thread, for example in configurations which do not include a
 full kernel, and this alternative is described below. When a separate
 thread is used the stacksize and priority for this thread can be
 controlled by configuration options
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_POWER_THREAD_STACKSIZE</TT
+>CYGNUM_POWER_THREAD_STACKSIZE</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_POWER_THREAD_PRIORITY</TT
+>CYGNUM_POWER_THREAD_PRIORITY</CODE
 >. Typically the thread
 will just wait on a semaphore internal to the package, and will do
 nothing until some other part of the system requests a change to the
@@ -352,9 +352,9 @@ power mode.</P
 ><P
 >At some point the policy module will decide that the system should
 move into a lower-power mode, for example from active to idle. This is
-achieved by calling the function <TT
+achieved by calling the function <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 >,
 provided by the power management package and declared in <TT
 CLASS="FILENAME"
@@ -407,9 +407,9 @@ operations.</P
 ></BLOCKQUOTE
 ></DIV
 ><P
->Although usually calls to <TT
+>Although usually calls to <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > will
 come from just one place in the policy module, this is not a hard
 requirement. It is possible for multiple threads to call this
@@ -421,9 +421,9 @@ with the new mode. This check happens between every power controller
 invocation. Usefully this makes it possible for power controllers
 themselves to manipulate power modes: a power controller is invoked to
 change mode; for some reason it determines that the new mode is
-inappropriate; it calls <TT
+inappropriate; it calls <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > to move
 the system back to another mode; when the power controller returns
 this event will be detected; the power management thread will abort
@@ -431,9 +431,9 @@ the current mode change, and start the new one.</P
 ><P
 >In addition to changing the power mode for the system as a whole,
 individual controllers can be manipulated using the function
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 >. For example, while the
 system as a whole might be in <SPAN
 CLASS="TYPE"
@@ -444,18 +444,18 @@ CLASS="TYPE"
 >sleep</SPAN
 > mode until they are explicitly
 activated. It is possible to mix concurrent calls to
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 >, and when a power
 controller is invoked it may use
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > to request further
 changes to its own or to another controller's mode as required.</P
 ><P
@@ -466,32 +466,32 @@ Another scenario is if the policy module already involves a separate
 thread: it may make more sense if the various power management
 operations are synchronous with respect to the calling thread. The use
 of a separate thread inside the power management package is controlled
-by the configuration option <TT
+by the configuration option <CODE
 CLASS="VARNAME"
->CYGPKG_POWER_THREAD</TT
+>CYGPKG_POWER_THREAD</CODE
 >,
 which is active only if the kernel package is present and enabled by
 default.</P
 ><P
 >If no separate power management thread is used then obviously the
-implementations of <TT
+implementations of <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > will be somewhat
 different: instead of waking up a separate thread to do the work,
 these functions will now manipulate the power controllers directly. If
 the system does still involve multiple threads then only one thread
-may call <TT
+may call <CODE
 CLASS="FUNCTION"
->power_set_mode</TT
+>power_set_mode</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->power_set_controller_mode</TT
+>power_set_controller_mode</CODE
 > at a time: the power
 management package will not provide any synchronization, that must
 happen at a higher level. However when a power controller is invoked

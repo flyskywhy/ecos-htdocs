@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,20 +6,20 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
->ÂµITRON Configuration FAQ</TITLE
+>µITRON Configuration FAQ</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="UP"
-TITLE="ÂµITRON API"
+TITLE="µITRON API"
 HREF="compat-uitron-microitron-api.html"><LINK
 REL="PREVIOUS"
 TITLE="	  Network Support Functions"
@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 27. &micro;ITRON API</TD
+>Chapter 28. &micro;ITRON API</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -83,8 +83,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="COMPAT-UITRON-CONFIGURATION-FAQ"
-></A
->&micro;ITRON Configuration FAQ</H1
+>&micro;ITRON Configuration FAQ</A
+></H1
 ><P
 ><SPAN
 CLASS="emphasis"
@@ -141,14 +141,14 @@ CLASS="LITERAL"
 >CYGPKG_UITRON_MBOXES_CREATE_DELETE</TT
 >
 controls whether the functions
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mbx()</TT
+>cre_mbx()</CODE
 >
 and
-<TT
+<CODE
 CLASS="FUNCTION"
->del_mbx()</TT
+>del_mbx()</CODE
 >
 exist in the API.  If not, then the maximum number of
 mboxes is the same as the initial number of mboxes, and so on for all
@@ -168,9 +168,9 @@ CLASS="LITERAL"
 is the total number of mboxes that you can have in the
 system.  By default this is 4, so you can use mboxes 1,2,3 and 4.  You
 cannot create mboxes outside this range; trying to
-<TT
+<CODE
 CLASS="FUNCTION"
->cre_mbx(5,...)</TT
+>cre_mbx(5,...)</CODE
 >
 will return an error.</P
 ></LI
@@ -183,9 +183,9 @@ CLASS="LITERAL"
 is the number of mboxes created
 automatically for you, during startup.  By default this is 4, so all 4
 mboxes exist already, and an attempt to create one of these
-eg. <TT
+eg. <CODE
 CLASS="FUNCTION"
->cre_mbx(3,...)</TT
+>cre_mbx(3,...)</CODE
 >
 will return an error because the mbox in quesion already
 exists.  You can delete a pre-existing mbox, and then re-create it.</P
@@ -200,14 +200,14 @@ CLASS="LITERAL"
 for example to 0, no mboxes
 are created automatically for you during startup.  Any attempt to use an
 mbox without creating it will return E_NOEXS because the mbox does not
-exist.  You can create an mbox, say <TT
+exist.  You can create an mbox, say <CODE
 CLASS="FUNCTION"
->cre_mbx(3,...)</TT
+>cre_mbx(3,...)</CODE
 >
 and then use it, say
-<TT
+<CODE
 CLASS="FUNCTION"
->snd_msg(3,&amp;foo)</TT
+>snd_msg(3,&amp;foo)</CODE
 >, and all will be well.</P
 ><P
 ><SPAN
@@ -383,9 +383,9 @@ static char stack1[ CYGNUM_UITRON_STACK_SIZE ], \
 ><P
 >So this example has all four tasks statically configured to exist, ready to
 run, from the start of time.  The &#8220;main task&#8221; runs a routine
-called <TT
+called <CODE
 CLASS="FUNCTION"
->startup()</TT
+>startup()</CODE
 > at priority 8.  Two
 &#8220;worker&#8221; tasks run both a priority 9, and a &#8220;low
 priority&#8221; task runs at priority 20 to do useful non-urgent background
@@ -453,13 +453,13 @@ static char stack1[ CYGNUM_UITRON_STACK_SIZE ], \
 ></TABLE
 ><P
 >So tasks numbered 2,3 and 4 have been given their stacks during startup,
-though they do not yet exist in terms of <TT
+though they do not yet exist in terms of <CODE
 CLASS="FUNCTION"
->cre_tsk()</TT
+>cre_tsk()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->del_tsk()</TT
+>del_tsk()</CODE
 > so you can create tasks 2&#8211;4 at
 runtime.</P
 ><TABLE

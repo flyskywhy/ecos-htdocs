@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,9 +85,9 @@ NAME="IO-USER-API"
 ></A
 >Chapter 10. User API</H1
 ><P
->All functions, except <TT
+>All functions, except <CODE
 CLASS="FUNCTION"
->cyg_io_lookup()</TT
+>cyg_io_lookup()</CODE
 >
 require an I/O &#8220;handle&#8221;.</P
 ><P
@@ -101,9 +101,9 @@ absolute value indicates the actual error, as specified in
 CLASS="FILENAME"
 >cyg/error/codes.h</TT
 >. The only other legal return
-value will be <TT
+value will be <CODE
 CLASS="VARNAME"
->ENOERR</TT
+>ENOERR</CODE
 >. All other function arguments
 are pointers (references). This allows the drivers to pass information
 efficiently, both into and out of the driver. The most striking
@@ -120,21 +120,17 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >// Lookup a device and return its handle 
-  Cyg_ErrNo <TT
+  Cyg_ErrNo <CODE
 CLASS="FUNCTION"
->cyg_io_lookup</TT
+>cyg_io_lookup</CODE
 >( 
-    const char <TT
+    const char <CODE
 CLASS="PARAMETER"
-><I
->*name</I
-></TT
+>*name</CODE
 >,
-    cyg_io_handle_t <TT
+    cyg_io_handle_t <CODE
 CLASS="PARAMETER"
-><I
->*handle</I
-></TT
+>*handle</CODE
 > )</PRE
 ></TD
 ></TR
@@ -142,16 +138,14 @@ CLASS="PARAMETER"
 ><P
 >This function maps a device name onto an appropriate handle. If the
 named device is not in the system, then the error
-<TT
+<CODE
 CLASS="VARNAME"
->-ENOENT</TT
+>-ENOENT</CODE
 > is returned. If the device is found, then
 the handle for the device is returned by way of the handle pointer
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->*handle</I
-></TT
+>*handle</CODE
 >.</P
 ><TABLE
 BORDER="5"
@@ -162,38 +156,30 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >// Write data to a device 
-Cyg_ErrNo <TT
+Cyg_ErrNo <CODE
 CLASS="FUNCTION"
->cyg_io_write</TT
+>cyg_io_write</CODE
 >( 
-    cyg_io_handle_t <TT
+    cyg_io_handle_t <CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 >,
-    const void <TT
+    const void <CODE
 CLASS="PARAMETER"
-><I
->*buf</I
-></TT
+>*buf</CODE
 >,
-    cyg_uint32 <TT
+    cyg_uint32 <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > )</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >This function sends data to a device. The size of data to send is
-contained in <TT
+contained in <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > and the actual size sent will
 be returned in the same place.</P
 ><TABLE
@@ -205,38 +191,30 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >// Read data from a device 
-Cyg_ErrNo <TT
+Cyg_ErrNo <CODE
 CLASS="FUNCTION"
->cyg_io_read</TT
+>cyg_io_read</CODE
 >( 
-    cyg_io_handle_t <TT
+    cyg_io_handle_t <CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 >,
-    void <TT
+    void <CODE
 CLASS="PARAMETER"
-><I
->*buf</I
-></TT
+>*buf</CODE
 >,
-    cyg_uint32 <TT
+    cyg_uint32 <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > )</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >This function receives data from a device. The desired size of data to
-receive is contained in <TT
+receive is contained in <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > and the actual
 size obtained will be returned in the same place.</P
 ><TABLE
@@ -248,33 +226,25 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >// Get the configuration of a device 
-Cyg_ErrNo <TT
+Cyg_ErrNo <CODE
 CLASS="FUNCTION"
->cyg_io_get_config</TT
+>cyg_io_get_config</CODE
 >( 
-    cyg_io_handle_t <TT
+    cyg_io_handle_t <CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 >,
-    cyg_uint32 <TT
+    cyg_uint32 <CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >,
-    void *<TT
+    void *<CODE
 CLASS="PARAMETER"
-><I
->buf</I
-></TT
+>buf</CODE
 >,
-    cyg_uint32 *<TT
+    cyg_uint32 *<CODE
 CLASS="PARAMETER"
-><I
->len</I
-></TT
+>len</CODE
 > )</PRE
 ></TD
 ></TR
@@ -282,25 +252,19 @@ CLASS="PARAMETER"
 ><P
 >This function is used to obtain run-time configuration about a
 device. The type of information retrieved is specified by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >. The data will be returned in the given
-buffer. The value of <TT
+buffer. The value of <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > should contain the
 amount of data requested, which must be at least as large as the size
 appropriate to the selected key. The actual size of data retrieved is
-placed in <TT
+placed in <CODE
 CLASS="PARAMETER"
-><I
-> *len</I
-></TT
+> *len</CODE
 >. The appropriate key values
 differ for each driver and are all listed in the file
 <TT
@@ -316,33 +280,25 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >// Change the configuration of a device 
-Cyg_ErrNo <TT
+Cyg_ErrNo <CODE
 CLASS="FUNCTION"
->cyg_io_set_config</TT
+>cyg_io_set_config</CODE
 >( 
-    cyg_io_handle_t <TT
+    cyg_io_handle_t <CODE
 CLASS="PARAMETER"
-><I
->handle</I
-></TT
+>handle</CODE
 >,
-    cyg_uint32 <TT
+    cyg_uint32 <CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >,
-    const void <TT
+    const void <CODE
 CLASS="PARAMETER"
-><I
->*buf</I
-></TT
+>*buf</CODE
 >,
-    cyg_uint32 <TT
+    cyg_uint32 <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > )</PRE
 ></TD
 ></TR
@@ -350,17 +306,13 @@ CLASS="PARAMETER"
 ><P
 >This function is used to manipulate or change the run-time
 configuration of a device. The type of information is specified by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->key</I
-></TT
+>key</CODE
 >. The data will be obtained from the given
-buffer. The value of <TT
+buffer. The value of <CODE
 CLASS="PARAMETER"
-><I
->*len</I
-></TT
+>*len</CODE
 > should contain the
 amount of data provided, which must match the size appropriate to the
 selected key.  The appropriate key values differ for each driver and

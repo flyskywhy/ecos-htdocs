@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBSETH-PROTOCOL"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13364"
+NAME="AEN13921"
 ></A
 ><H2
 >Name</H2
@@ -94,7 +94,7 @@ USB-ethernet package </DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13367"
+NAME="AEN13924"
 ></A
 ><H2
 >Description</H2
@@ -124,9 +124,9 @@ a 28-byte payload. The destination is the broadcast address
 0xFFFFFFFFFFFF. The source depends on the MAC address specified for
 the host in the call to <A
 HREF="usbseth-init.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 ></A
 >, e.g.
 0x405D90A9BC02. The remaining data is as specified by the appropriate
@@ -155,9 +155,9 @@ CLASS="SCREEN"
 host to endpoint 0, the control endpoint, and by default they will
 be handled by <A
 HREF="usbseth-control.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_class_control_handler</TT
+>usbs_eth_class_control_handler</CODE
 ></A
 >. If class-specific
 control messages are intercepted by other code then it is the
@@ -189,9 +189,9 @@ message will be ignored by the USB-ethernet package. The response
 consists of the 6-byte MAC address supplied by the initialization call
 <A
 HREF="usbseth-init.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->usbs_eth_init</TT
+>usbs_eth_init</CODE
 ></A
 >.</P
 ><P

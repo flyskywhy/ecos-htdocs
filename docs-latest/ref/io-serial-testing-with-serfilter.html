@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,16 +83,16 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERIAL-TESTING-WITH-SERFILTER"
-></A
->Serial testing with ser_filter</H1
+>Serial testing with ser_filter</A
+></H1
 ><DIV
 CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-RATIONALE"
-></A
->Rationale</H2
+>Rationale</A
+></H2
 ><P
 >Since some targets only have one serial connection, a serial testing harness
 needs to be able to share the connection with <SPAN
@@ -149,8 +149,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-PROTOCOL"
-></A
->The Protocol</H2
+>The Protocol</A
+></H2
 ><P
 >The protocol commands are prefixed with an <TT
 CLASS="LITERAL"
@@ -287,8 +287,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-SERIAL-TESTS"
-></A
->The Serial Tests</H2
+>The Serial Tests</A
+></H2
 ><P
 >The serial tests are built as any other eCos test. After running the
 <B
@@ -369,8 +369,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-USAGE"
-></A
->Serial Filter Usage</H2
+>Serial Filter Usage</A
+></H2
 ><P
 >Running the ser_filter program with no (or wrong) arguments results in
 the following output:</P
@@ -401,11 +401,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->ser_filter -t 9000 com1 38400</B
-></TT
+>ser_filter -t 9000 com1 38400</KBD
 ></PRE
 ></TD
 ></TR
@@ -425,9 +423,9 @@ CLASS="FILENAME"
 >/dev/ttyS0</TT
 >".</P
 ><P
->The <TT
+>The <CODE
 CLASS="OPTION"
->-t</TT
+>-t</CODE
 > option enables tracing which will cause the
 filter to describe its actions on the console.</P
 ><P
@@ -444,11 +442,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->mips-tx39-elf-gdb -nw install/tests/io_serial/serial3</B
-></TT
+>mips-tx39-elf-gdb -nw install/tests/io_serial/serial3</KBD
 ></PRE
 ></TD
 ></TR
@@ -463,11 +459,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->(gdb) <TT
+>(gdb) <KBD
 CLASS="USERINPUT"
-><B
->target remote localhost:9000</B
-></TT
+>target remote localhost:9000</KBD
 ></PRE
 ></TD
 ></TR
@@ -483,11 +477,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->(gdb) <TT
+>(gdb) <KBD
 CLASS="USERINPUT"
-><B
->c</B
-></TT
+>c</KBD
 ></PRE
 ></TD
 ></TR
@@ -524,9 +516,9 @@ EXIT: &lt;done&gt;</PRE
 ></TABLE
 ><P
 >If any of the individual tests fail the testing will terminate with a 
-<TT
+<SAMP
 CLASS="COMPUTEROUTPUT"
->FAIL</TT
+>FAIL</SAMP
 >.</P
 ><P
 >With tracing enabled, you would also see the filter's status output:</P
@@ -574,9 +566,9 @@ CLASS="SCREEN"
 CLASS="APPLICATION"
 >GDB</SPAN
 > which will display the tracing text. By using the
-<TT
+<CODE
 CLASS="OPTION"
->-c </TT
+>-c </CODE
 > option, the tracing text can be redirected to the
 console from which ser_filter was started.</P
 ></DIV
@@ -586,8 +578,8 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-FAILURES"
-></A
->A Note on Failures</H2
+>A Note on Failures</A
+></H2
 ><P
 >A serial connection (especially when driven at a high baud rate) can garble the
 transmitted data because of noise from the environment. It is not the job of
@@ -596,13 +588,13 @@ layering on top of the serial driver. </P
 ><P
 >In the current implementation the serial tests and the serial filter are
 not resilient to such data errors. This means that the test may crash or hang
-(possibly without reporting a <TT
+(possibly without reporting a <SAMP
 CLASS="COMPUTEROUTPUT"
->FAIL</TT
+>FAIL</SAMP
 >). It also
-means that you should be aware of random errors - a <TT
+means that you should be aware of random errors - a <SAMP
 CLASS="COMPUTEROUTPUT"
->FAIL</TT
+>FAIL</SAMP
 > is not necessarily caused by a bug in the serial driver.</P
 ><P
 >Ideally, the serial testing infrastructure should be able to distinguish
@@ -617,13 +609,13 @@ CLASS="SECTION"
 CLASS="SECTION"
 ><A
 NAME="IO-SERFILTER-DEBUGGING"
-></A
->Debugging</H2
+>Debugging</A
+></H2
 ><P
 >If a test fails, the serial filter's output may provide some hints about
-what the problem is. If the option <TT
+what the problem is. If the option <CODE
 CLASS="OPTION"
->-S</TT
+>-S</CODE
 > is used when starting
 the filter, data received from the target is printed out: </P
 ><TABLE

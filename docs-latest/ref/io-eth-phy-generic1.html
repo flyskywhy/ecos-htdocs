@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -83,15 +83,15 @@ CLASS="CHAPTER"
 ><A
 NAME="IO-ETH-PHY-GENERIC1"
 ></A
->Chapter 51. Ethernet PHY Device Support</H1
+>Chapter 52. Ethernet PHY Device Support</H1
 ><DIV
 CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
 NAME="IO-ETH-PHY-API"
-></A
->Ethernet PHY Device API</H1
+>Ethernet PHY Device API</A
+></H1
 ><P
 >Modern ethernet subsystems are often separated into two pieces, the
 media access controller (sometimes known as a MAC) and the physical
@@ -161,14 +161,14 @@ struct _eth_phy_dev_entry {
 ></TR
 ></TABLE
 >
-The <TT
+The <CODE
 CLASS="VARNAME"
->dev</TT
+>dev</CODE
 > element points to the PHY speficic support
 functions.  
-Currently, the only function which must be defined is <TT
+Currently, the only function which must be defined is <CODE
 CLASS="FUNCTION"
->stat()</TT
+>stat()</CODE
 >.</P
 ><P
 >The MAC-MII-PHY interface is a narrow connection, with commands and status
@@ -179,87 +179,87 @@ provide access to the MII data lines (or even still, this may be considered
 completely separate from the MAC).  In these cases, the PHY support layer 
 must handle the serial protocol.
 The choice between the access methods is in the 
-<TT
+<CODE
 CLASS="VARNAME"
->ops_type</TT
+>ops_type</CODE
 > field.  
 If it has the value
-<TT
+<CODE
 CLASS="VARNAME"
->PHY_BIT_LEVEL_ACCESS_TYPE</TT
+>PHY_BIT_LEVEL_ACCESS_TYPE</CODE
 >, then the PHY device layer will
 run the protocol, using the access functions
-<TT
+<CODE
 CLASS="FUNCTION"
->set_data()</TT
+>set_data()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->get_data()</TT
+>get_data()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->set_clock()</TT
+>set_clock()</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->set_dir()</TT
+>set_dir()</CODE
 > are used to control the MII signals and run
 the protocol.
-If <TT
+If <CODE
 CLASS="VARNAME"
->ops_type</TT
+>ops_type</CODE
 > has the value
-<TT
+<CODE
 CLASS="VARNAME"
->PHY_REG_LEVEL_ACCESS_TYPE</TT
+>PHY_REG_LEVEL_ACCESS_TYPE</CODE
 >,
 then the routines
-<TT
+<CODE
 CLASS="FUNCTION"
->put_reg()</TT
+>put_reg()</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->get_reg()</TT
+>get_reg()</CODE
 >
 are used to access the PHY registers.</P
 ><P
 >Two additional functions may be defined.
 These are
-<TT
+<CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 >, and
-<TT
+<CODE
 CLASS="FUNCTION"
->reset()</TT
+>reset()</CODE
 >.
 The purpose of these functions is for gross-level management of the 
 MII interface.
 The 
-<TT
+<CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 >
 function will be called once, at system initialization time.
 It should do whatever operations are necessary to prepare the
 MII channel.
 In the case of 
-<TT
+<CODE
 CLASS="VARNAME"
->PHY_BIT_LEVEL_ACCESS_TYPE</TT
+>PHY_BIT_LEVEL_ACCESS_TYPE</CODE
 > devices,
-<TT
+<CODE
 CLASS="FUNCTION"
->init()</TT
+>init()</CODE
 > 
 should prepare the signals for use, i.e. set up the appropriate
 parallel port registers, etc.
 The 
-<TT
+<CODE
 CLASS="FUNCTION"
->reset()</TT
+>reset()</CODE
 >
 function may be called by a driver to cause the PHY device to
 be reset to a known state.
@@ -267,9 +267,9 @@ Not all drivers will require this and this function may not even
 be possible, so it's use and behaviour is somewhat target specific.</P
 ><P
 >Currently, the only function required of device specific drivers is
-<TT
+<CODE
 CLASS="FUNCTION"
->stat()</TT
+>stat()</CODE
 >.
 This routine should query appropriate registers in the PHY and return
 a status bitmap indicating the state of the physical connection.
@@ -294,9 +294,9 @@ CLASS="PROGRAMLISTING"
 >
 Note: the usage here is that if the bit is set, then the condition
 exists.  For example, if the 
-<TT
+<CODE
 CLASS="VARNAME"
->ETH_PHY_STAT_LINK</TT
+>ETH_PHY_STAT_LINK</CODE
 >
 is set, then a physical link has been established.</P
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -99,11 +99,11 @@ NAME="AEN1131"
 >Synopsis</H2
 ><DIV
 CLASS="FUNCSYNOPSIS"
+><P
+></P
 ><A
 NAME="AEN1132"
 ></A
-><P
-></P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -215,24 +215,24 @@ process_event(void)
 ></TR
 ></TABLE
 ><P
->Assume that after a certain period of time <TT
+>Assume that after a certain period of time <CODE
 CLASS="VARNAME"
->counter</TT
+>counter</CODE
 >
 has a value of 42, and two threads A and B running at the same
-priority call <TT
+priority call <CODE
 CLASS="FUNCTION"
->process_event</TT
+>process_event</CODE
 >. Typically thread A
-will read the value of <TT
+will read the value of <CODE
 CLASS="VARNAME"
->counter</TT
+>counter</CODE
 > into a register,
 increment this register to 43, and write this updated value back to
 memory. Thread B will do the same, so usually
-<TT
+<CODE
 CLASS="VARNAME"
->counter</TT
+>counter</CODE
 > will end up with a value of 44. However if
 thread A is timesliced after reading the old value 42 but before
 writing back 43, thread B will still read back the old value and will
@@ -272,61 +272,61 @@ process_event(void)
 ></TABLE
 ><P
 >A mutex must be initialized before it can be used, by calling
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_init</TT
+>cyg_mutex_init</CODE
 >. This takes a pointer to a
-<SPAN
+<CODE
 CLASS="STRUCTNAME"
->cyg_mutex_t</SPAN
+>cyg_mutex_t</CODE
 > data structure which is typically
 statically allocated, and may be part of a larger data structure. If a
 mutex is no longer required and there are no threads waiting on it
-then <TT
+then <CODE
 CLASS="FUNCTION"
->cyg_mutex_destroy</TT
+>cyg_mutex_destroy</CODE
 > can be used.
       </P
 ><P
 >The main functions for using a mutex are
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_unlock</TT
+>cyg_mutex_unlock</CODE
 >. In normal operation
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > will return success after claiming
 the mutex lock, blocking if another thread currently owns the mutex.
 However the lock operation may fail if other code calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_release</TT
+>cyg_mutex_release</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_thread_release</TT
+>cyg_thread_release</CODE
 >, so if these functions may get
 used then it is important to check the return value. The current owner
-of a mutex should call <TT
+of a mutex should call <CODE
 CLASS="FUNCTION"
->cyg_mutex_unlock</TT
+>cyg_mutex_unlock</CODE
 > when a
 lock is no longer required. This operation must be performed by the
 owner, not by another thread.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_mutex_trylock</TT
+>cyg_mutex_trylock</CODE
 > is a variant of
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > that will always return
 immediately, returning success or failure as appropriate. This
 function is rarely useful. Typical code locks a mutex just before
@@ -339,14 +339,14 @@ preventing the owner from getting any cpu time, completing the
 critical region, and releasing the mutex.
       </P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_mutex_release</TT
+>cyg_mutex_release</CODE
 > can be used to wake up all
 threads that are currently blocked inside a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > for a specific mutex. These lock
 calls will return failure. The current mutex owner is not affected.
       </P
@@ -389,13 +389,13 @@ two techniques: priority ceilings and priority inheritance.
 >Priority ceilings involve associating a priority with each mutex.
 Usually this will match the highest priority thread that will ever
 lock the mutex. When a thread running at a lower priority makes a
-successful call to <TT
+successful call to <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > or
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_trylock</TT
+>cyg_mutex_trylock</CODE
 > its priority will be boosted to
 that of the mutex. For example, given the previous example the
 priority associated with the mutex would be that of thread A, so for
@@ -403,9 +403,9 @@ as long as it owns the mutex thread C will run in preference to thread
 B. When C releases the mutex its priority drops to the normal value
 again, allowing A to run and claim the mutex. Setting the
 priority for a mutex involves a call to
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_set_ceiling</TT
+>cyg_mutex_set_ceiling</CODE
 >, which is typically called
 during initialization. It is possible to change the ceiling
 dynamically but this will only affect subsequent lock operations, not
@@ -423,18 +423,18 @@ so it will have no way of setting suitable ceilings for its internal
 mutexes. If those mutexes are not exported to application code then 
 using priority ceilings may not be viable. The kernel does provide a
 configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_DEFAULT_PRIORITY</TT
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_DEFAULT_PRIORITY</CODE
 >
 that can be used to set the default priority ceiling for all mutexes,
 which may prove sufficient.
       </P
 ><P
 >The alternative approach is to use priority inheritance: if a thread
-calls <TT
+calls <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > for a mutex that it
 currently owned by a lower-priority thread, then the owner will have
 its priority raised to that of the current thread. Often this is more
@@ -451,20 +451,20 @@ ceilings.
 >There are a number of configuration options associated with priority
 inversion. First, if after careful analysis it is known that priority
 inversion cannot arise then the component
-<TT
+<CODE
 CLASS="FUNCTION"
->CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL</TT
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL</CODE
 >
 can be disabled. More commonly this component will be enabled, and one
 of either
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_INHERIT</TT
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_INHERIT</CODE
 >
 or
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_CEILING</TT
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_CEILING</CODE
 >
 will be selected, so that one of the two protocols is available for
 all mutexes. It is possible to select multiple protocols, so that some
@@ -472,14 +472,14 @@ mutexes can have priority ceilings while others use priority
 inheritance or no priority inversion protection at all. Obviously this
 flexibility will add to the code size and to the cost of mutex
 operations. The default for all mutexes will be controlled by
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_DEFAULT</TT
+>CYGSEM_KERNEL_SYNCH_MUTEX_PRIORITY_INVERSION_PROTOCOL_DEFAULT</CODE
 >,
 and can be changed at run-time using
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_set_protocol</TT
+>cyg_mutex_set_protocol</CODE
 >. 
       </P
 ><P
@@ -583,19 +583,19 @@ to use some other means of locking.
 scheduler, thus ensuring that no other thread can run until the
 scheduler is unlocked again. This is achieved with calls to <A
 HREF="kernel-schedcontrol.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock</TT
+>cyg_scheduler_lock</CODE
 ></A
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock</TT
+>cyg_scheduler_unlock</CODE
 >. If the critical region
 is sufficiently small then this can actually improve both performance
-and dispatch latency because <TT
+and dispatch latency because <CODE
 CLASS="FUNCTION"
->cyg_mutex_lock</TT
+>cyg_mutex_lock</CODE
 > also
 locks the scheduler for a brief period of time. This approach will not
 work on SMP systems because another thread may already be running on a
@@ -605,17 +605,17 @@ different processor and accessing the critical region.
 >Another way of avoiding the use of mutexes is to make sure that all
 threads that access a particular critical region run at the same
 priority and configure the system with timeslicing disabled
-(<TT
+(<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_TIMESLICE</TT
+>CYGSEM_KERNEL_SCHED_TIMESLICE</CODE
 >). Without
 timeslicing a thread can only be preempted by a higher-priority one,
 or if it performs some operation that can block. This approach
 requires that none of the operations in the critical region can block,
 so for example it is not legal to call
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_semaphore_wait</TT
+>cyg_semaphore_wait</CODE
 >. It is also vulnerable to
 any changes in the configuration or to the various thread priorities:
 any such changes may now have unexpected side effects. It will not
@@ -654,17 +654,17 @@ NAME="KERNEL-MUTEXES-CONTEXT"
 ><H2
 >Valid contexts</H2
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_mutex_init</TT
+>cyg_mutex_init</CODE
 >,
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_set_ceiling</TT
+>cyg_mutex_set_ceiling</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_set_protocol</TT
+>cyg_mutex_set_protocol</CODE
 > are normally called during
 initialization but may also be called from thread context. The
 remaining functions should only be called from thread context. Mutexes
@@ -673,14 +673,14 @@ used to synchronize between threads and the interrupt handling
 subsystem. If a critical region is shared between a thread and a DSR
 then it must be protected using <A
 HREF="kernel-schedcontrol.html"
-><TT
+><CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock</TT
+>cyg_scheduler_lock</CODE
 ></A
 >
-and <TT
+and <CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock</TT
+>cyg_scheduler_unlock</CODE
 >. If a critical region is
 shared between a thread and an ISR, it must be protected by disabling
 or masking interrupts. Obviously these operations must be used with

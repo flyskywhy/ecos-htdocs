@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="USBS-TESTING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12600"
+NAME="AEN13157"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN12600"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12603"
+NAME="AEN13160"
 ></A
 ><H2
 >Introduction</H2
@@ -107,9 +107,9 @@ machine must be running appropriate software for the test code to
 interact with. This is very different from say a kernel test which
 typically will have no external dependencies. Another important
 difference between USB testing and say a C library
-<TT
+<CODE
 CLASS="FUNCTION"
->strcmp</TT
+>strcmp</CODE
 > test is sensitivity to timing and to
 hardware boundary conditions: although a simple test case that just
 performs a small number of USB transfers is better than no testing at
@@ -152,9 +152,9 @@ CLASS="APPLICATION"
     to endpoint 12 if the target hardware does not support an endpoint
     12. Therefore each USB device driver should supply information about
     what the hardware is actually capable of, in the form of an array of
-    <SPAN
+    <CODE
 CLASS="STRUCTNAME"
->usbs_testing_endpoint</SPAN
+>usbs_testing_endpoint</CODE
 > data structures.
   </P
 ></LI
@@ -232,9 +232,9 @@ are attached to the bus, and will then access the device by opening
 CLASS="FILENAME"
 >/proc/bus/usb/xxx/yyy</TT
 > and performing
-<TT
+<CODE
 CLASS="FUNCTION"
->ioctl</TT
+>ioctl</CODE
 > operations. This allows USB testing to take
 place without having to write a new host-side device driver, but
 getting the code working on host machines not running Linux would
@@ -243,7 +243,7 @@ obviously be problematical.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12636"
+NAME="AEN13193"
 ></A
 ><H2
 >Building and Running the Target-side Code</H2
@@ -298,7 +298,7 @@ connect to the target-side software, and testing can now commence.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12647"
+NAME="AEN13204"
 ></A
 ><H2
 >Building and Running the Host-side Code</H2
@@ -419,11 +419,9 @@ HREF="usbs-testing.html#ARGS"
 CLASS="COMMAND"
 >configure</B
 > script takes the usual arguments such
-as <TT
+as <CODE
 CLASS="PARAMETER"
-><I
->--prefix=</I
-></TT
+>--prefix=</CODE
 > to specify where the executables
 and support files should be installed. The only other parameter that
 some users may wish to specify is the location of a suitable Tcl
@@ -437,29 +435,21 @@ CLASS="FILENAME"
 >,
 as provided by your Linux distribution. An alternative Tcl
 installation can be specified using the parameter
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->--with-tcl=</I
-></TT
+>--with-tcl=</CODE
 >, or alternatively using some
-combination of <TT
+combination of <CODE
 CLASS="PARAMETER"
-><I
->--with-tcl-include</I
-></TT
+>--with-tcl-include</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->--with-tcl-lib</I
-></TT
+>--with-tcl-lib</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->--with-tcl-version</I
-></TT
+>--with-tcl-version</CODE
 >. </DD
 ><DT
 ><A
@@ -532,11 +522,9 @@ CLASS="FILENAME"
 >bin</TT
 > directory if
 the default location is changed at configure-time using a
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->--prefix=</I
-></TT
+>--prefix=</CODE
 > or similar option. It will be
 installed as the executable
 <SPAN
@@ -689,16 +677,12 @@ CLASS="SCREEN"
 TYPE="1"
 ><LI
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->-v</I
-></TT
-> or <TT
+>-v</CODE
+> or <CODE
 CLASS="PARAMETER"
-><I
->--version</I
-></TT
+>--version</CODE
 >
 option will display version information for
 <SPAN
@@ -709,31 +693,23 @@ slave package that was used to build the executable.</P
 ></LI
 ><LI
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->-h</I
-></TT
-> or <TT
+>-h</CODE
+> or <CODE
 CLASS="PARAMETER"
-><I
->--help</I
-></TT
+>--help</CODE
 > option
 will display usage information.</P
 ></LI
 ><LI
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->-V</I
-></TT
-> or <TT
+>-V</CODE
+> or <CODE
 CLASS="PARAMETER"
-><I
->--verbose</I
-></TT
+>--verbose</CODE
 >
 option can be used to obtain more information at run-time, for example
 some output for every USB transfer. This option can be repeated
@@ -743,11 +719,9 @@ multiple times to increase the amount of output.</P
 ><P
 >The first argument that does not begin with a hyphen specifies a test
 that should be run, in the form of a Tcl script. For example an
-argument of <TT
+argument of <CODE
 CLASS="PARAMETER"
-><I
->list.tcl</I
-></TT
+>list.tcl</CODE
 > will cause
 <SPAN
 CLASS="APPLICATION"
@@ -779,7 +753,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12752"
+NAME="AEN13309"
 ></A
 ><H2
 >Writing a Test</H2
@@ -791,19 +765,19 @@ CLASS="APPLICATION"
 >. In addition to the
 normal Tcl functionality this interpreter provides a number of
 variables and functions related to USB testing. For example there is a
-variable <TT
+variable <CODE
 CLASS="VARNAME"
->bulk_in_endpoints</TT
+>bulk_in_endpoints</CODE
 > that lists all the
 endpoints on the target that can perform bulk IN operations, and a
-related array <TT
+related array <CODE
 CLASS="VARNAME"
->bulk_in</TT
+>bulk_in</CODE
 > which contains information
 such as the minimum and maximum packets sizes. There is a function
-<TT
+<CODE
 CLASS="FUNCTION"
->bulktest</TT
+>bulktest</CODE
 > which can be used to perform bulk tests
 on a particular endpoint. A simple test script aimed at specific
 hardware could ignore the information variables since it would know
@@ -812,9 +786,9 @@ general-purpose script would use the information to adapt to the
 hardware capabilities.</P
 ><P
 >To avoid namespace pollution all USB-related Tcl variables and
-functions live in the <TT
+functions live in the <CODE
 CLASS="VARNAME"
->usbtest::</TT
+>usbtest::</CODE
 > namespace.
 Therefore accessing requires either explicitly including the
 namespace any references, for example
@@ -822,9 +796,9 @@ namespace any references, for example
 CLASS="LITERAL"
 >$usbtest::bulk_in_endpoints</TT
 >, or by using Tcl's
-<TT
+<CODE
 CLASS="FUNCTION"
->namespace import</TT
+>namespace import</CODE
 > facility.</P
 ><P
 >A very simple test script might look like this:</P
@@ -864,7 +838,7 @@ are reported.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12767"
+NAME="AEN13324"
 ></A
 ><H2
 >Available Hardware</H2
@@ -892,9 +866,9 @@ scripts via Tcl variables:</P
 CLASS="VARIABLELIST"
 ><DL
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->bulk_in_endpoints</TT
+>bulk_in_endpoints</CODE
 ></DT
 ><DD
 ><P
@@ -927,9 +901,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->bulk_in()</TT
+>bulk_in()</CODE
 ></DT
 ><DD
 ><P
@@ -1036,13 +1010,13 @@ CLASS="LITERAL"
 >    This is a string indicating whether or not the
     target-side USB device driver supports access to this endpoint
     via entries in the device table, in other words through
-    conventional calls like <TT
+    conventional calls like <CODE
 CLASS="FUNCTION"
->open</TT
+>open</CODE
 > and
-    <TT
+    <CODE
 CLASS="FUNCTION"
->write</TT
+>write</CODE
 >. Some device drivers may only
     support low-level USB access because typically that is what gets
     used by USB class-specific packages such as USB-ethernet.
@@ -1088,32 +1062,32 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->bulk_out_endpoint</TT
+>bulk_out_endpoint</CODE
 ></DT
 ><DD
 ><P
 >    This is a simple list of the endpoints which can support bulk OUT
     transfers. It is analogous to
-    <TT
+    <CODE
 CLASS="VARNAME"
->bulk_in_endpoints</TT
+>bulk_in_endpoints</CODE
 >.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->bulk_out()</TT
+>bulk_out()</CODE
 ></DT
 ><DD
 ><P
 >  This array holds additional information about each bulk OUT
   endpoint. It can be accessed in the same way as
-  <TT
+  <CODE
 CLASS="VARNAME"
->bulk_in()</TT
+>bulk_in()</CODE
 >, except that there is no
   <TT
 CLASS="LITERAL"
@@ -1123,9 +1097,9 @@ CLASS="LITERAL"
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->control()</TT
+>control()</CODE
 ></DT
 ><DD
 ><P
@@ -1138,105 +1112,105 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >max_size</TT
 >. Note that there is no variable
-  <TT
+  <CODE
 CLASS="VARNAME"
->control_endpoints</TT
+>control_endpoints</CODE
 > because a USB target always
   supports a single control endpoint <TT
 CLASS="LITERAL"
 >0</TT
 >. Similarly
-  the <TT
+  the <CODE
 CLASS="VARNAME"
->control</TT
+>control</CODE
 > array does not use an endpoint number
   as the first index because that would be redundant.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->isochronous_in_endpoints</TT
+>isochronous_in_endpoints</CODE
 > and
-        <TT
+        <CODE
 CLASS="VARNAME"
->isochronous_in()</TT
+>isochronous_in()</CODE
 ></DT
 ><DD
 ><P
 >  These variables provide the same information as
-  <TT
+  <CODE
 CLASS="VARNAME"
->bulk_in_endpoints</TT
-> and <TT
+>bulk_in_endpoints</CODE
+> and <CODE
 CLASS="VARNAME"
->bulk_in</TT
+>bulk_in</CODE
 >,
   but for endpoints that support isochronous IN transfers.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->isochronous_out_endpoints</TT
+>isochronous_out_endpoints</CODE
 > and
-        <TT
+        <CODE
 CLASS="VARNAME"
->isochronous_out()</TT
+>isochronous_out()</CODE
 ></DT
 ><DD
 ><P
 >  These variables provide the same information as
-  <TT
+  <CODE
 CLASS="VARNAME"
->bulk_out_endpoints</TT
-> and <TT
+>bulk_out_endpoints</CODE
+> and <CODE
 CLASS="VARNAME"
->bulk_out</TT
+>bulk_out</CODE
 >,
   but for endpoints that support isochronous OUT transfers.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->interrupt_in_endpoints</TT
+>interrupt_in_endpoints</CODE
 > and
-        <TT
+        <CODE
 CLASS="VARNAME"
->interrupt_in()</TT
+>interrupt_in()</CODE
 ></DT
 ><DD
 ><P
 >  These variables provide the same information as
-  <TT
+  <CODE
 CLASS="VARNAME"
->bulk_in_endpoints</TT
-> and <TT
+>bulk_in_endpoints</CODE
+> and <CODE
 CLASS="VARNAME"
->bulk_in</TT
+>bulk_in</CODE
 >,
   but for endpoints that support interrupt IN transfers.
   </P
 ></DD
 ><DT
-><TT
+><CODE
 CLASS="VARNAME"
->interrupt_out_endpoints</TT
+>interrupt_out_endpoints</CODE
 > and
-        <TT
+        <CODE
 CLASS="VARNAME"
->interrupt_out()</TT
+>interrupt_out()</CODE
 ></DT
 ><DD
 ><P
 >  These variables provide the same information as
-  <TT
+  <CODE
 CLASS="VARNAME"
->bulk_out_endpoints</TT
-> and <TT
+>bulk_out_endpoints</CODE
+> and <CODE
 CLASS="VARNAME"
->bulk_out</TT
+>bulk_out</CODE
 >,
   but for endpoints that support interrupt OUT transfers.
   </P
@@ -1247,15 +1221,15 @@ CLASS="VARNAME"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12874"
+NAME="AEN13431"
 ></A
 ><H2
 >Testing Bulk Transfers</H2
 ><P
 >The main function for initiating a bulk test is
-<TT
+<CODE
 CLASS="FUNCTION"
->usbtest::bulktest</TT
+>usbtest::bulktest</CODE
 >. This takes three compulsory
 arguments, and can be given a number of additional arguments to
 control the exact behaviour. The compulsory arguments are:</P
@@ -1270,13 +1244,13 @@ CLASS="VARIABLELIST"
 ><P
 >    This specifies the endpoint to use. It should correspond to
     one of the entries in
-    <TT
+    <CODE
 CLASS="VARNAME"
->usbtest::bulk_in_endpoints</TT
+>usbtest::bulk_in_endpoints</CODE
 > or
-    <TT
+    <CODE
 CLASS="VARNAME"
->usbtest::bulk_out_endpoints</TT
+>usbtest::bulk_out_endpoints</CODE
 >, depending on the
     transfer direction.
   </P
@@ -1314,11 +1288,9 @@ CLASS="LITERAL"
 ></DIV
 ><P
 >Additional arguments can be used to control the exact transfer. For
-example a <TT
+example a <CODE
 CLASS="PARAMETER"
-><I
->txdelay+</I
-></TT
+>txdelay+</CODE
 > argument can be used to
 slowly increase the delay between transfers. All such arguments involve
 a value which can be passed either as part of the argument itself,
@@ -1335,17 +1307,15 @@ receive size, transmit delay, and receive delay.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12899"
+NAME="AEN13456"
 ></A
 ><H3
 >Data</H3
 ><P
 >An obvious parameter to control is the actual data that gets sent.
-This can be controlled by the argument <TT
+This can be controlled by the argument <CODE
 CLASS="PARAMETER"
-><I
->data</I
-></TT
+>data</CODE
 >
 which can take one of five values: <TT
 CLASS="LITERAL"
@@ -1395,9 +1365,9 @@ CLASS="LITERAL"
 ><DD
 ><P
 >  The entire buffer will be filled with a single byte, as per
-  <TT
+  <CODE
 CLASS="FUNCTION"
->memset</TT
+>memset</CODE
 >. 
   </P
 ></DD
@@ -1434,18 +1404,18 @@ CLASS="LITERAL"
   incrementing bytes can be achieved by setting both the multiplier
   and the increment to 1. Alternatively a pseudo-random number
   sequence can be achieved using values 1103515245 and 12345, as
-  per the standard C library <TT
+  per the standard C library <CODE
 CLASS="FUNCTION"
->rand</TT
+>rand</CODE
 > function.
   For convenience these two constants are available as Tcl
-  variables <TT
+  variables <CODE
 CLASS="VARNAME"
->usbtest::MULTIPLIER</TT
+>usbtest::MULTIPLIER</CODE
 > and
-  <TT
+  <CODE
 CLASS="VARNAME"
->usbtest::INCREMENT</TT
+>usbtest::INCREMENT</CODE
 >.
   </P
 ></DD
@@ -1469,43 +1439,31 @@ CLASS="LITERAL"
 ></DIV
 ><P
 >The above requires three additional parameters
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data1</I
-></TT
->, <TT
+>data1</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->data*</I
-></TT
+>data*</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data+</I
-></TT
->. <TT
+>data+</CODE
+>. <CODE
 CLASS="PARAMETER"
-><I
->data1</I
-></TT
+>data1</CODE
 > specifies
 the value to be used for byte or word fills, or the first number when
 calculating a sequence. The default value is <TT
 CLASS="LITERAL"
 >0</TT
 >.
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data*</I
-></TT
-> and <TT
+>data*</CODE
+> and <CODE
 CLASS="PARAMETER"
-><I
->data+</I
-></TT
+>data+</CODE
 > specify
 the multiplier and increment for a sequence, and have default values
 of <TT
@@ -1535,50 +1493,36 @@ CLASS="PROGRAMLISTING"
 transfer, but a test can involve multiple transfers. The data format
 will be the same for all transfers, but it is possible to adjust the
 current value, the multiplier, and the increment between each
-transfer. This is achieved with parameters <TT
+transfer. This is achieved with parameters <CODE
 CLASS="PARAMETER"
-><I
->data1*</I
-></TT
+>data1*</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data1+</I
-></TT
->, <TT
+>data1+</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->data**</I
-></TT
+>data**</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data*+</I
-></TT
->, <TT
+>data*+</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->data+*</I
-></TT
+>data+*</CODE
 >, and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data++</I
-></TT
+>data++</CODE
 >, with default values of 1 for each
 multiplier and 0 for each increment. For example, if the multiplier
 for the first transfer is set to <TT
 CLASS="LITERAL"
 >2</TT
 > using
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->data*</I
-></TT
+>data*</CODE
 >, and arguments
 <TT
 CLASS="LITERAL"
@@ -1623,96 +1567,74 @@ returned correctly.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12969"
+NAME="AEN13526"
 ></A
 ><H3
 >I/O Mechanism</H3
 ><P
 >On the target side USB transfers can happen using either low-level
-USB calls such as <TT
+USB calls such as <CODE
 CLASS="FUNCTION"
->usbs_start_rx_buffer</TT
+>usbs_start_rx_buffer</CODE
 >, or by
 higher-level calls which go through the device table. By default the
 target-side code will use the low-level calls. If it is desired to
 test the higher-level calls instead, for example because those are
 what the application uses, then that can be achieved with an
-argument <TT
+argument <CODE
 CLASS="PARAMETER"
-><I
->mechanism=devtab</I
-></TT
+>mechanism=devtab</CODE
 >.</P
 ></DIV
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12974"
+NAME="AEN13531"
 ></A
 ><H3
 >Transmit Size</H3
 ><P
 >The next set of arguments can be used to control the size of the
-transmitted buffer: <TT
+transmitted buffer: <CODE
 CLASS="PARAMETER"
-><I
->txsize1</I
-></TT
+>txsize1</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize&gt;=</I
-></TT
->, <TT
+>txsize&gt;=</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->txsize&lt;=</I
-></TT
+>txsize&lt;=</CODE
 >
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize*</I
-></TT
->, <TT
+>txsize*</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->txsize/</I
-></TT
+>txsize/</CODE
 >,
-and <TT
+and <CODE
 CLASS="PARAMETER"
-><I
->txsize+</I
-></TT
+>txsize+</CODE
 >.</P
 ><P
-><TT
+><CODE
 CLASS="PARAMETER"
-><I
->txsize1</I
-></TT
+>txsize1</CODE
 > determines the size of the first
 transfer, and has a default value of 32 bytes. The size of the next
 transfer is calculated by first multiplying by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize*</I
-></TT
+>txsize*</CODE
 > value, then dividing by the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize/</I
-></TT
+>txsize/</CODE
 > value, and finally adding the
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize+</I
-></TT
+>txsize+</CODE
 > value. The defaults for these are
 <TT
 CLASS="LITERAL"
@@ -1739,17 +1661,13 @@ CLASS="LITERAL"
 >txsize+&nbsp;1</TT
 >. </P
 ><P
->The <TT
+>The <CODE
 CLASS="PARAMETER"
-><I
->txsize&gt;=</I
-></TT
+>txsize&gt;=</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txsize&lt;=</I
-></TT
+>txsize&lt;=</CODE
 > arguments can be used to impose
 lower and upper bounds on the transfer. By default the
 <TT
@@ -1765,7 +1683,7 @@ current size falls outside the bounds then it will be normalized.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12999"
+NAME="AEN13556"
 ></A
 ><H3
 >Receive Size</H3
@@ -1773,40 +1691,28 @@ NAME="AEN12999"
 >The receive size, in other words the number of bytes that either host
 or target will expect to receive as opposed to the number of bytes
 that actually get sent, can be adjusted using a similar set of
-arguments: <TT
+arguments: <CODE
 CLASS="PARAMETER"
-><I
->rxsize1</I
-></TT
+>rxsize1</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize&gt;=</I
-></TT
+>rxsize&gt;=</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize&lt;=</I
-></TT
+>rxsize&lt;=</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize*</I
-></TT
->, <TT
+>rxsize*</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->rxsize/</I
-></TT
+>rxsize/</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize+</I
-></TT
+>rxsize+</CODE
 >. The current receive size will be
 adjusted between transfers just like the transmit size. However when
 communicating over USB it is not a good idea to attempt to receive
@@ -1817,28 +1723,20 @@ receive size is less than the transmit size, the actual receive will
 be for the exact number of bytes that will get transmitted. However
 this will not affect the calculations for the next receive size.</P
 ><P
->The default values for <TT
+>The default values for <CODE
 CLASS="PARAMETER"
-><I
->rxsize1</I
-></TT
+>rxsize1</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize*</I
-></TT
->, <TT
+>rxsize*</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->rxsize/</I
-></TT
+>rxsize/</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxsize+</I
-></TT
+>rxsize+</CODE
 > are <TT
 CLASS="LITERAL"
 >0</TT
@@ -1875,7 +1773,7 @@ be added automatically to the receive size if necessary.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN13020"
+NAME="AEN13577"
 ></A
 ><H3
 >Transmit and Receive Delays</H3
@@ -1891,39 +1789,27 @@ for example to make sure that the target behaves correctly even if the
 target is not yet ready to receive data from the host.</P
 ><P
 >The transmit delay is controlled by six parameters:
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txdelay1</I
-></TT
->, <TT
+>txdelay1</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->txdelay*</I
-></TT
+>txdelay*</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txdelay/</I
-></TT
->, <TT
+>txdelay/</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->txdelay+</I
-></TT
+>txdelay+</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txdelay&gt;=</I
-></TT
+>txdelay&gt;=</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->txdelay&lt;=</I
-></TT
+>txdelay&lt;=</CODE
 >. The default values for these are
 <TT
 CLASS="LITERAL"
@@ -1956,39 +1842,27 @@ an upper bound of one second. Between transfers the transmit delay is
 updated in much the same was as the transfer sizes.</P
 ><P
 >The receive delay is controlled by a similar set of six parameters:
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxdelay1</I
-></TT
->, <TT
+>rxdelay1</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->rxdelay*</I
-></TT
+>rxdelay*</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxdelay/</I
-></TT
->, <TT
+>rxdelay/</CODE
+>, <CODE
 CLASS="PARAMETER"
-><I
->rxdelay+</I
-></TT
+>rxdelay+</CODE
 >,
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxdelay&gt;=</I
-></TT
+>rxdelay&gt;=</CODE
 > and
-<TT
+<CODE
 CLASS="PARAMETER"
-><I
->rxdelay&lt;=</I
-></TT
+>rxdelay&lt;=</CODE
 >. The default values for these are
 the same as for transmit delays.</P
 ><P
@@ -2007,7 +1881,7 @@ depend on the kernel clock speed.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13046"
+NAME="AEN13603"
 ></A
 ><H2
 >Other Types of Transfer</H2
@@ -2018,28 +1892,28 @@ transfers is not yet implemented.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13049"
+NAME="AEN13606"
 ></A
 ><H2
 >Starting a Test and Collecting Results</H2
 ><P
 >A USB test script should prepare one or more transfers using
-appropriate functions such as <TT
+appropriate functions such as <CODE
 CLASS="FUNCTION"
->usbtest::bulktest</TT
+>usbtest::bulktest</CODE
 >.
 Once all the individual tests have been prepared they can be started
-by a call to <TT
+by a call to <CODE
 CLASS="FUNCTION"
->usbtest::start</TT
+>usbtest::start</CODE
 >. This takes a single
 argument, a maximum duration measured in seconds. If all transfers
 have not been completed in the specified time then any remaining
 transfers will be aborted.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->usbtest::start</TT
+>usbtest::start</CODE
 > will return <TT
 CLASS="LITERAL"
 >1</TT
@@ -2049,16 +1923,16 @@ CLASS="LITERAL"
 >0</TT
 > if any of
 them have failed. More detailed reports will be stored in the
-Tcl variable <TT
+Tcl variable <CODE
 CLASS="VARNAME"
->usbtests::results</TT
+>usbtests::results</CODE
 >, which will be a
 list of string messages.</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13059"
+NAME="AEN13616"
 ></A
 ><H2
 >Existing Test Scripts</H2
@@ -2115,25 +1989,21 @@ CLASS="FILENAME"
       circumstances it may prove useful. Since an eCos application
       cannot easily be given command-line arguments the target-side
       verbosity level cannot be controlled using
-      <TT
+      <CODE
 CLASS="PARAMETER"
-><I
->-V</I
-></TT
-> or <TT
+>-V</CODE
+> or <CODE
 CLASS="PARAMETER"
-><I
->--verbose</I
-></TT
+>--verbose</CODE
 >
       options. Instead it can be controlled from inside
       <SPAN
 CLASS="APPLICATION"
 >gdb</SPAN
 > by changing the integer
-      variable <TT
+      variable <CODE
 CLASS="VARNAME"
->verbose</TT
+>verbose</CODE
 >. Alternatively it can
       be manipulated by running the test script
       <TT
@@ -2155,7 +2025,7 @@ CLASS="COMMAND"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13082"
+NAME="AEN13639"
 ></A
 ><H2
 >Possible Problems</H2

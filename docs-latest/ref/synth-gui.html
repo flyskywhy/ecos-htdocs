@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -85,7 +85,7 @@ NAME="SYNTH-GUI"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13692"
+NAME="AEN14249"
 ></A
 ><H2
 >Name</H2
@@ -117,11 +117,11 @@ being run. However the overall layout is likely to remain the same.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13698"
-></A
 ><P
 ></P
+><A
+NAME="AEN14255"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -180,11 +180,11 @@ CLASS="GUIMENU"
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13712"
-></A
 ><P
 ></P
+><A
+NAME="AEN14269"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -237,9 +237,9 @@ own <B
 CLASS="COMMAND"
 >kill</B
 > command. Alternatively the eCos
-application itself can use the <TT
+application itself can use the <CODE
 CLASS="FUNCTION"
->CYG_TEST_EXIT</TT
+>CYG_TEST_EXIT</CODE
 > or
 <TT
 CLASS="FILENAME"
@@ -252,9 +252,9 @@ CLASS="GUIMENUITEM"
 >. A clean shutdown will be
 attempted, but that can fail if the application is currently halted
 inside gdb or if it has crashed completely. As a last resort
-<TT
+<CODE
 CLASS="CONSTANT"
->SIGKILL</TT
+>SIGKILL</CODE
 > will be used.
     </P
 ><P
@@ -269,16 +269,16 @@ CLASS="GUIMENUITEM"
 auxiliary. Note that this behaviour can be changed with command line
 arguments <A
 HREF="synth-running.html#SYNTH-RUNNING-ARGUMENTS"
-><TT
+><CODE
 CLASS="OPTION"
->--exit</TT
+>--exit</CODE
 ></A
 > and
 <A
 HREF="synth-running.html#SYNTH-RUNNING-ARGUMENTS"
-><TT
+><CODE
 CLASS="OPTION"
->--no-exit</TT
+>--no-exit</CODE
 ></A
 >.
     </P
@@ -292,11 +292,11 @@ terminate the application cleanly, and then exit.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13737"
-></A
 ><P
 ></P
+><A
+NAME="AEN14294"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -354,11 +354,11 @@ viewer.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13751"
-></A
 ><P
 ></P
+><A
+NAME="AEN14308"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -385,11 +385,11 @@ HREF="synth-gui.html#SYNTH-GUI-TEXT"
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13759"
-></A
 ><P
 ></P
+><A
+NAME="AEN14316"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -411,11 +411,11 @@ dialog can be used to select the browser that will be used.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13765"
-></A
 ><P
 ></P
+><A
+NAME="AEN14322"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -437,9 +437,9 @@ CLASS="NOTE"
 for all eCos documentation. Hence the relevant menu item is disabled.
 Documentation for the synthetic target and the supported devices
 is stored as part of the package itself so can usually be found fairly
-easily. It may be necessary to set the <TT
+easily. It may be necessary to set the <CODE
 CLASS="ENVAR"
->ECOS_REPOSITORY</TT
+>ECOS_REPOSITORY</CODE
 >
 environment variable.
     </P
@@ -456,9 +456,9 @@ NAME="SYNTH-GUI-TEXT"
 ><P
 >The central text window holds the console output from the eCos
 application: the screen shot above shows DHCP initialization data from
-the TCP/IP stack, and some output from the <TT
+the TCP/IP stack, and some output from the <CODE
 CLASS="FUNCTION"
->main</TT
+>main</CODE
 >
 thread at the bottom. Some devices can insert text of their own, for
 example the ethernet device support can be configured to show details
@@ -513,11 +513,11 @@ the following:
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13783"
-></A
 ><P
 ></P
+><A
+NAME="AEN14340"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -572,11 +572,11 @@ the display.
     </P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN13795"
-></A
 ><P
 ></P
+><A
+NAME="AEN14352"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
@@ -589,34 +589,34 @@ ALIGN="CENTER"></P
 ></DIV
 ><P
 >Subwindows are generally packed in one of eight frames surrounding the
-central text window: <TT
+central text window: <CODE
 CLASS="VARNAME"
->.main.nw</TT
+>.main.nw</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.n</TT
->, <TT
+>.main.n</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.ne</TT
+>.main.ne</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.w</TT
->, <TT
+>.main.w</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.e</TT
+>.main.e</CODE
 >,
-<TT
+<CODE
 CLASS="VARNAME"
->.main.sw</TT
->, <TT
+>.main.sw</CODE
+>, <CODE
 CLASS="VARNAME"
->.main.s</TT
+>.main.s</CODE
 >, and
-<TT
+<CODE
 CLASS="VARNAME"
->.main.se</TT
+>.main.se</CODE
 >. To position a row of LED's above the text
 window and towards the left, a target definition file could contain an
 entry such as:
@@ -656,19 +656,19 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >Often it will be sufficient to specify a container frame and one of
-<TT
+<CODE
 CLASS="CONSTANT"
->left</TT
->, <TT
+>left</CODE
+>, <CODE
 CLASS="CONSTANT"
->right</TT
+>right</CODE
 >,
-<TT
+<CODE
 CLASS="CONSTANT"
->top</TT
-> or <TT
+>top</CODE
+> or <CODE
 CLASS="CONSTANT"
->bottom</TT
+>bottom</CODE
 >. Full control
 over the positioning requires an understanding of Tcl/Tk and in
 particular the packing algorithm, and an appropriate reference work

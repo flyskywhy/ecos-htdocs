@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
@@ -112,8 +112,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PCI-LIBRARY"
-></A
->PCI Library</H1
+>PCI Library</A
+></H1
 ><P
 >The eCos PCI library provides the following functionality:</P
 ><P
@@ -161,8 +161,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7511"
-></A
->PCI Overview</H2
+>PCI Overview</A
+></H2
 ><P
 >The PCI bus supports several address spaces: memory, IO, and configuration. All PCI
 devices must support mandatory configuration space registers. Some devices may also present
@@ -189,8 +189,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7515"
-></A
->Initializing the bus</H2
+>Initializing the bus</A
+></H2
 ><P
 >The PCI bus needs to be initialized before it can be used.
 This only needs to be done once - some HALs may do it as part of
@@ -217,8 +217,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7519"
-></A
->Scanning for devices</H2
+>Scanning for devices</A
+></H2
 ><P
 >After the bus has been initialized, it is possible to scan
 it for devices. This is done using the function:</P
@@ -236,19 +236,15 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->It will scan the bus for devices starting at <TT
+>It will scan the bus for devices starting at <CODE
 CLASS="PARAMETER"
-><I
->cur_devid</I
-></TT
->. If a device is found, its devid is stored in <TT
+>cur_devid</CODE
+>. If a device is found, its devid is stored in <CODE
 CLASS="PARAMETER"
-><I
->next_devid</I
-></TT
-> and the function returns <TT
+>next_devid</CODE
+> and the function returns <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 >.</P
 ><P
 >The <TT
@@ -277,27 +273,27 @@ CLASS="PROGRAMLISTING"
 started. <TT
 CLASS="LITERAL"
 >CYG_PCI_NULL_DEVID</TT
-> causes <TT
+> causes <CODE
 CLASS="FUNCTION"
->cyg_pci_find_next()</TT
+>cyg_pci_find_next()</CODE
 > to restart its scan. If the bus does not
-contain any devices, the first call to <TT
+contain any devices, the first call to <CODE
 CLASS="FUNCTION"
->cyg_pci_find_next()</TT
+>cyg_pci_find_next()</CODE
 >
-will return <TT
+will return <CODE
 CLASS="CONSTANT"
->false</TT
+>false</CODE
 >.</P
 ><P
->If the call returns <TT
+>If the call returns <CODE
 CLASS="CONSTANT"
->true</TT
+>true</CODE
 >, a loop is entered where
 the found devid is used. After devid processing has completed, the next device
-on the bus is searched for; <TT
+on the bus is searched for; <CODE
 CLASS="FUNCTION"
->cyg_pci_find_next()</TT
+>cyg_pci_find_next()</CODE
 >
 continues its scan from the current devid. The loop terminates when
 no more devices are found on the bus.</P
@@ -322,9 +318,9 @@ cyg_bool cyg_pci_find_device(  cyg_uint16 vendor, cyg_uint16 device,
 ></TR
 ></TABLE
 ><P
->They work just like <TT
+>They work just like <CODE
 CLASS="FUNCTION"
->cyg_pci_find_next()</TT
+>cyg_pci_find_next()</CODE
 >,
 but only return true when the dev_class or vendor/device
 qualifiers match those of a device on the bus. The devid serves
@@ -356,8 +352,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7546"
-></A
->Generic config information</H2
+>Generic config information</A
+></H2
 ><P
 >When a valid device ID (devid) is found using one of the above
 functions, the associated device can be queried and controlled using
@@ -378,9 +374,9 @@ void cyg_pci_set_device_info (  cyg_pci_device_id devid,
 ></TR
 ></TABLE
 ><P
->The <SPAN
+>The <CODE
 CLASS="STRUCTNAME"
->cyg_pci_device structure</SPAN
+>cyg_pci_device structure</CODE
 > (defined in
 <TT
 CLASS="FILENAME"
@@ -420,8 +416,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7557"
-></A
->Specific config information</H2
+>Specific config information</A
+></H2
 ><P
 >The above functions only allow access to generic PCI config
 registers. A device can have extra config registers not specified
@@ -461,8 +457,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7562"
-></A
->Allocating memory</H2
+>Allocating memory</A
+></H2
 ><P
 >A PCI device ignores all IO and memory access from the PCI
 bus until it has been activated. Activation cannot happen until
@@ -483,28 +479,26 @@ cyg_bool cyg_pci_configure_bus( cyg_uint8 bus, cyg_uint8 *next_bus );</PRE
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="FUNCTION"
->cyg_pci_configure_device</TT
+>cyg_pci_configure_device</CODE
 > handles all IO
 and memory regions that need configuration on non-bridge devices. On
-platforms with multiple busses connected by bridges, the <TT
+platforms with multiple busses connected by bridges, the <CODE
 CLASS="FUNCTION"
->cyg_pci_configure_bus</TT
+>cyg_pci_configure_bus</CODE
 > function should be used. It will recursively
-configure all devices on the given <TT
+configure all devices on the given <CODE
 CLASS="PARAMETER"
-><I
->bus</I
-></TT
+>bus</CODE
 > and all
-subordinate busses. <TT
+subordinate busses. <CODE
 CLASS="FUNCTION"
->cyg_pci_configure_bus</TT
+>cyg_pci_configure_bus</CODE
 > will
-use <TT
+use <CODE
 CLASS="FUNCTION"
->cyg_pci_configure_device</TT
+>cyg_pci_configure_device</CODE
 > to configure
 individual non-bridge devices.</P
 ><P
@@ -559,9 +553,9 @@ structure will contain the physical address in the CPU's
 address space where the device's memory regions can be
 accessed. </P
 ><P
->This information is provided in <TT
+>This information is provided in <CODE
 CLASS="VARNAME"
->base_map[]</TT
+>base_map[]</CODE
 > -
 there is a 32 bit word for each of the device's BARs. For
 32 bit PCI memory regions, each 32 bit word will be an actual pointer
@@ -580,8 +574,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PCI-INTERRUPTS"
-></A
->Interrupts</H2
+>Interrupts</A
+></H2
 ><P
 >A device may generate interrupts. The HAL vector associated
 with a given device on the bus is platform specific. This function
@@ -634,8 +628,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7590"
-></A
->Activating a device</H2
+>Activating a device</A
+></H2
 ><P
 >When the device has been allocated memory space it can be
 activated. This is not done by the library since a driver may have
@@ -647,9 +641,9 @@ CLASS="FILENAME"
 >pci1</TT
 > test which can be
 configured to enable the devices it finds. This allows these to be accessed from
-GDB (if a breakpoint is set on <TT
+GDB (if a breakpoint is set on <CODE
 CLASS="FUNCTION"
->cyg_test_exit</TT
+>cyg_test_exit</CODE
 >):</P
 ><TABLE
 BORDER="5"
@@ -684,13 +678,13 @@ CLASS="NOTE"
 ><B
 >Note: </B
 >The best way to activate a device is actually
-through <TT
+through <CODE
 CLASS="FUNCTION"
->cyg_pci_set_device_info()</TT
+>cyg_pci_set_device_info()</CODE
 >,
-but in this particular case the <SPAN
+but in this particular case the <CODE
 CLASS="STRUCTNAME"
->cyg_pci_device</SPAN
+>cyg_pci_device</CODE
 >
 structure contents from before the activation is required for printout
 further down in the code.</P
@@ -703,8 +697,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="AEN7602"
-></A
->Links</H2
+>Links</A
+></H2
 ><P
 >See these links for more information about PCI:</P
 ><P
