@@ -1920,8 +1920,8 @@ RCS file: /cvs/gcc/egcs/gcc/config/mips/elf.h,v
 retrieving revision 1.11
 diff -u -5 -p -r1.11 elf.h
 --- gcc/config/mips/elf.h	1999/05/10 20:35:32	1.11
-+++ gcc/config/mips/elf.h	2000/03/22 15:30:45
-@@ gcc/config/mips/elf.h									   \
++++ gcc/config/mips/elf.h	2000/04/26 19:20:09
+@@ -252,10 +252,15 @@ do {									   \
     via the SHF_WRITE attribute.)  */
  
  #define CTORS_SECTION_ASM_OP    "\t.section\t.ctors,\"aw\""
