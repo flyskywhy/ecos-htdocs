@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >Intel StrongArm EBSA 285</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -46,7 +47,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,7 +89,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1085"
+NAME="AEN1103"
 >Overview</A
 ></H2
 ><P
@@ -117,7 +118,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1100"
+NAME="AEN1118"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -142,7 +143,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1104"
+NAME="AEN1122"
 >Flash management</A
 ></H2
 ><DIV
@@ -150,7 +151,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1106"
+NAME="AEN1124"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -182,7 +183,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1111"
+NAME="AEN1129"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -216,7 +217,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1116"
+NAME="AEN1134"
 >Communication Channels</A
 ></H2
 ><P
@@ -227,7 +228,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1119"
+NAME="AEN1137"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -238,7 +239,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1122"
+NAME="AEN1140"
 >Memory Maps</A
 ></H2
 ><P
@@ -283,7 +284,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1129"
+NAME="AEN1147"
 >Resource Usage</A
 ></H2
 ><P
@@ -302,14 +303,15 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1133"
+NAME="AEN1151"
 >Building eCos Test Cases to run with old RedBoots</A
 ></H2
 ><P
->If using older versions of RedBoot, the default configuration for
-EBSA-285 will send diagnostic output to the serial line only, not over an ethernet
-connection. To allow eCos programs to use RedBoot to channel diagnostic output to
-GDB whether connected by net or serial, enable the configuration option  <TABLE
+>If using older versions of RedBoot, the default configuration for EBSA-285
+will send diagnostic output to the serial line only, not over an ethernet
+connection. To allow eCos programs to use RedBoot to channel diagnostic output
+to GDB whether connected by net or serial, enable the configuration option
+ <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -352,7 +354,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1139"
+NAME="AEN1157"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -360,9 +362,9 @@ NAME="AEN1139"
 HREF="rebuilding-redboot.html"
 >Chapter 3</A
 > should be followed.
-The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
-&#8220;ebsa285&#8221;, &#8220;arm&#8221; and &#8220;ebsa285&#8221; respectively.
-Note that the configuration export files supplied in the <TT
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are &#8220;ebsa285&#8221;,
+&#8220;arm&#8221; and &#8220;ebsa285&#8221; respectively. Note that the configuration
+export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
 >hal/arm/ebsa285/<TT
 CLASS="REPLACEABLE"
@@ -370,8 +372,8 @@ CLASS="REPLACEABLE"
 >VERSION</I
 ></TT
 >/misc</TT
->
-directory in the RedBoot source tree should be used.</P
+> directory in the RedBoot source
+tree should be used.</P
 ></DIV
 ></DIV
 ><DIV

@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >Common Commands</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -46,7 +47,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -279,12 +280,73 @@ NAME="AEN397"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
+>alias name [value]</DT
+><DD
+><P
+>The <TT
+CLASS="FUNCTION"
+>alias</TT
+> command is used to maintain simple command
+line aliases.  These aliases are shorthand for longer expressions. When the
+pattern %{name} appears in a command line, including a script, the corresponding
+value will be substituted.</P
+><P
+>Aliases are kept in RedBoot's non-volatile configuration area, i.e.
+Flash memory.</P
+><P
+>This is an example of setting an alias.  Notice the use of a quoted
+string when the value contains spaces. <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot&#62; alias SBUF "-b 0x100000"
+Update RedBoot non-volatile configuration - are you sure (y/n)? y
+... Unlock from 0x50f80000-0x50fc0000: .
+... Erase from 0x50f80000-0x50fc0000: .
+... Program from 0x0000b9e8-0x0000c9e8 at 0x50f80000: .
+... Lock from 0x50f80000-0x50fc0000: .</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>This example shows querying of an alias, as well as how it might be
+used. <TABLE
+BORDER="0"
+BGCOLOR="#E0E0E0"
+WIDTH="90%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>RedBoot&#62; alias SBUF
+'SBUF' = '-b 0x100000'
+RedBoot&#62; d %{SBUF} 
+0x00100000: FE03 00EA 0000 0000  0000 0000 0000 0000   |................|
+0x00100010: 0000 0000 0000 0000  0000 0000 0000 0000   |................|</PRE
+></TD
+></TR
+></TABLE
+></P
+></DD
+></DL
+></DIV
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
 >baudrate [-b value]</DT
 ><DD
 ><P
->This command sets the baud rate for the system serial console.
-If the platform supports non-volatile configuration data, then the new value
-will be saved and used when the system is reset.</P
+>This command sets the baud rate for the system serial console. If the
+platform supports non-volatile configuration data, then the new value will
+be saved and used when the system is reset.</P
 ></DD
 ></DL
 ></DIV
@@ -307,53 +369,51 @@ CLASS="VARIABLELIST"
 ></DL
 ></DIV
 ><P
-><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->version</DT
+>channel [-1|&lt;channel number&#62;]</DT
 ><DD
 ><P
->Display RedBoot version information. </P
+>With no arguments, this command displays the current console channel
+number.</P
 ><P
->This command simply displays version information about RedBoot. <TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="90%"
-><TR
-><TD
-><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; version 
-RedBoot(tm) debug environment - built 09:12:03, Feb 12 2001  
-Platform: XYZ (PowerPC 860)  
-Copyright (C) 2000, 2001, Red Hat, Inc. 
-RAM: 0x00000000-0x00400000  
-RedBoot&#62;</PRE
-></TD
-></TR
-></TABLE
-></P
+>When passed an argument of 0 upwards, this command switches the console
+channel to that channel number. The mapping between channel numbers and physical
+channels is platform specific.</P
+><P
+>When passed an argument of -1, this command reverts RedBoot to responding
+to whatever channel receives input first, as happens when RedBoot initially
+starts execution.</P
 ></DD
 ></DL
 ></DIV
-></P
-><P
 ><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->reset</DT
+>cksum -b &lt;location&#62; -l &lt;length&#62;</DT
 ><DD
 ><P
->Reset the system. </P
+>Computes the POSIX checksum on a range of memory (either RAM or FLASH).
+The value printed can be compared with the output from the Linux program 'chksum'.</P
+></DD
+></DL
+></DIV
 ><P
->This command resets the platform. This should be equivalent to a power-on
-reset.  </P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>disks</DT
+><DD
+><P
+>This command is used to list disk partitions recognized by RedBoot.</P
 ></DD
 ></DL
 ></DIV
@@ -407,45 +467,38 @@ RedBoot&#62; d -b 0xfe00b000 -l 0x80
 ></DD
 ></DL
 ></DIV
->
-<P
+><P
+><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->cksum -b &lt;location&#62; -l &lt;length&#62;</DT
+>reset</DT
 ><DD
 ><P
->Computes the POSIX checksum on a range of memory (either RAM or FLASH).
-The value printed can be compared with the output from the Linux program 'chksum'.</P
+>Reset the system. </P
+><P
+>This command resets the platform. On many targets this is equivalent
+to a power-on reset, but on others it may just cause a jump to the architecture's
+reset entry resulting in a  reinitialization of the system.</P
 ></DD
 ></DL
 ></DIV
->
-<P
+></P
+><P
+><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->alias name [value]</DT
+>version</DT
 ><DD
 ><P
->The <TT
-CLASS="FUNCTION"
->alias</TT
-> command is used to maintain simple command
-line aliases.  These aliases are shorthand for longer expressions.
-When the pattern %{name} appears in a command line, including a script,
-the corresponding value will be substituted.</P
+>Display RedBoot version information. </P
 ><P
->Aliases are kept in RedBoot's non-volatile configuration area, i.e. Flash
-memory.</P
-><P
->This is an example of setting an alias.  Notice the use of a quoted string
-when the value contains spaces.
-<TABLE
+>This command simply displays version information about RedBoot. <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="90%"
@@ -453,31 +506,12 @@ WIDTH="90%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->RedBoot&#62; alias SBUF "-b 0x100000"
-Update RedBoot non-volatile configuration - are you sure (y/n)? y
-... Unlock from 0x50f80000-0x50fc0000: .
-... Erase from 0x50f80000-0x50fc0000: .
-... Program from 0x0000b9e8-0x0000c9e8 at 0x50f80000: .
-... Lock from 0x50f80000-0x50fc0000: .</PRE
-></TD
-></TR
-></TABLE
-></P
-><P
->This example shows querying of an alias, as well as how it might be used.
-<TABLE
-BORDER="0"
-BGCOLOR="#E0E0E0"
-WIDTH="90%"
-><TR
-><TD
-><PRE
-CLASS="PROGRAMLISTING"
->RedBoot&#62; alias SBUF
-'SBUF' = '-b 0x100000'
-RedBoot&#62; d %{SBUF} 
-0x00100000: FE03 00EA 0000 0000  0000 0000 0000 0000   |................|
-0x00100010: 0000 0000 0000 0000  0000 0000 0000 0000   |................|</PRE
+>RedBoot&#62; version 
+RedBoot(tm) debug environment - built 09:12:03, Feb 12 2001  
+Platform: XYZ (PowerPC 860)  
+Copyright (C) 2000, 2001, Red Hat, Inc. 
+RAM: 0x00000000-0x00400000  
+RedBoot&#62;</PRE
 ></TD
 ></TR
 ></TABLE
@@ -492,7 +526,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN456"
+NAME="DOWNLOAD-COMMAND"
 >Download Process</A
 ></H2
 ><P
@@ -512,8 +546,9 @@ CLASS="COMPUTEROUTPUT"
 > command is used to download
 data into the target system. Data can be loaded via a network connection,
 using either the TFTP protocol, or the console serial connection using the
-X/Y modem protocol. Files to be downloaded may either be executable images
-in SREC format or raw data. The format of the command is:  </P
+X/Y modem protocol. Files may also be loaded directly from local filesystems
+on disk. Files to be downloaded may either be executable images in SREC format
+or raw data. The format of the command is:  </P
 ><P
 ><P
 ><B
@@ -529,7 +564,7 @@ CLASS="REPLACEABLE"
 ><I
 >location</I
 ></TT
->] [-r] [-m  {xmodem | ymodem | tftp}] [-h <TT
+>] [-r] [-m  {xmodem | ymodem | tftp | disk}] [-h <TT
 CLASS="REPLACEABLE"
 ><I
 >host_IP_address</I
@@ -561,7 +596,18 @@ WIDTH="100%"
 ALIGN="LEFT"
 VALIGN="TOP"
 >The name of the file on the TFTP
-server. Details of how this is specified are host-specific.</TD
+server or the local disk. Details of how this is specified for TFTP are host-specific.
+For local disk files, the name must be in <I
+CLASS="EMPHASIS"
+>disk</I
+>: <I
+CLASS="EMPHASIS"
+>filename</I
+> format. The disk portion must match one of the disk names
+listed by the <I
+CLASS="EMPHASIS"
+>disks</I
+> command.</TD
 ></TR
 ><TR
 ><TD
@@ -575,7 +621,8 @@ ALIGN="LEFT"
 VALIGN="TOP"
 >Display a small spinner (indicator)
 while the download is in  progress. This is just for feedback, especially
-during long loads.</TD
+during long loads. Note that the option has no effect when using a serial
+download method since it would interfere with the protocol.</TD
 ></TR
 ><TR
 ><TD
@@ -660,6 +707,13 @@ CLASS="EMPHASIS"
 >tftp</I
 > - network based download using the TFTP
 protocol.</TD
+></TR
+><TR
+><TD
+><I
+CLASS="EMPHASIS"
+>disk</I
+> - load a file from local disk.</TD
 ></TR
 ></TBODY
 ></TABLE

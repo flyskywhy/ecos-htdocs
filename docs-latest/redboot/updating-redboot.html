@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >Updating RedBoot</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -43,7 +44,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -84,7 +85,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN871"
+NAME="AEN889"
 >Introduction</A
 ></H1
 ><P
@@ -130,7 +131,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN890"
+NAME="AEN908"
 >Start RedBoot, Running from flash</A
 ></H2
 ><P
@@ -170,10 +171,9 @@ CLASS="USERINPUT"
 ></TD
 ></TR
 ></TABLE
->
-If this image is not available, or does not work,
-then an alternate RAM based image must be loaded. Using the load command:
-<TABLE
+> If this image is not available,
+or does not work, then an alternate RAM based image must be loaded. Using
+the load command: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -196,8 +196,7 @@ CLASS="USERINPUT"
 ></TD
 ></TR
 ></TABLE
->
-<DIV
+> <DIV
 CLASS="NOTE"
 ><BLOCKQUOTE
 CLASS="NOTE"
@@ -215,8 +214,7 @@ RedBoot image in flash using the FIS commands. Some platforms support locking
 (write protecting) certain regions of the flash, while others do not. If your
 platform does not support the lock/unlock commands, simply ignore these steps.
 Again, the details of these commands (in particular the numeric values) differ
-on each target platform, but the ideas are the same:
-<TABLE
+on each target platform, but the ideas are the same: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -269,8 +267,7 @@ flash based version from the host.</P
 >Since the flash version is designed to load and run from flash, the
 image must be relocated into some suitable, available, RAM location. The details
 of this are target platform specific (found in the target appendix), but the
-command will look something like this:
-<TABLE
+command will look something like this: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -287,27 +284,23 @@ CLASS="USERINPUT"
 ></TD
 ></TR
 ></TABLE
->
-This command loads the flash image into RAM at <TT
+> This command loads the flash image into RAM at <TT
 CLASS="USERINPUT"
 ><B
 >flash_source</B
 ></TT
->,
-using the TFTP protocol via a network connection. Other options are available,
-refer to the command section on <TT
+>, using the TFTP protocol via a network connection.
+Other options are available, refer to the command section on <TT
 CLASS="COMPUTEROUTPUT"
 >load</TT
-> for
-more details. </P
+> for more details. </P
 ><P
 >Once the image is loaded into RAM, it must be placed into flash using
 the FIS commands. Some platforms support locking (write protecting) certain
 regions of the flash, while others do not. If your platform does not support
 the lock/unlock commands, simply ignore these steps. Again, the details of
 these commands (in particular the numeric values) differ on each target platform,
-but the ideas are the same:
-<TABLE
+but the ideas are the same: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -360,7 +353,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN928"
+NAME="AEN946"
 >Reboot; run RedBoot from flash</A
 ></H2
 ><P

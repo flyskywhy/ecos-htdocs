@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >Rebuilding RedBoot</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -43,7 +44,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -84,7 +85,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN775"
+NAME="AEN793"
 >Introduction</A
 ></H1
 ><P
@@ -130,9 +131,9 @@ make</PRE
 ></TABLE
 ></P
 ><P
->The simplest version of RedBoot can be built by setting the
-environment variable ECOS_REPOSITORY to point at the eCos/RedBoot source
-tree, and then typing:  <TABLE
+>The simplest version of RedBoot can be built by setting the environment
+variable ECOS_REPOSITORY to point at the eCos/RedBoot source tree, and then
+typing:  <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -147,20 +148,17 @@ make</PRE
 ></TR
 ></TABLE
 >where TARGET is the eCos name for the desired platform,
-for example assabet. You will need to
-have set the environment variable ECOS_REPOSITORY to point at the
-eCos/RedBoot source tree. Values of TARGET for each board are given in the
-specific installation details for each board in
-<A
+for example assabet. You will need to have set the environment variable ECOS_REPOSITORY
+to point at the eCos/RedBoot source tree. Values of TARGET for each board
+are given in the specific installation details for each board in <A
 HREF="installation-and-testing.html"
 >Chapter 5</A
 >.</P
 ><P
->The above command sequence would build a very simple version of
-RedBoot, and would not include, for example, networking, FLASH or Compact Flash
-Ethernet support on targets that supported those. Such features could
-be included with the following commands:
-<TABLE
+>The above command sequence would build a very simple version of RedBoot,
+and would not include, for example, networking, FLASH or Compact Flash Ethernet
+support on targets that supported those. Such features could be included with
+the following commands: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -184,14 +182,13 @@ HREF="rebuilding-redboot.html#CONFIGURATION-EXPORT-FILES"
 >the section called <I
 >Configuration export files</I
 ></A
->, to ensure that
-the correct configuration of RedBoot
-has been chosen to avoid needing to worry about which extra packages
-to add.</P
+>, to ensure that the
+correct configuration of RedBoot has been chosen to avoid needing to worry
+about which extra packages to add.</P
 ><P
->The above commands would build a version of RedBoot
-suitable for testing. In particular, the result will run from RAM. Since RedBoot
-normally needs to be installed in ROM/flash, type the following: </P
+>The above commands would build a version of RedBoot suitable for testing.
+In particular, the result will run from RAM. Since RedBoot normally needs
+to be installed in ROM/flash, type the following: </P
 ><TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
@@ -323,8 +320,7 @@ CLASS="ENVAR"
 ></DT
 ><DD
 ><P
->Full path to where RedBoot will be built,
-e.g. <TT
+>Full path to where RedBoot will be built, e.g. <TT
 CLASS="FILENAME"
 >redboot.RAM</TT
 >.</P
@@ -336,8 +332,7 @@ CLASS="ENVAR"
 ></DT
 ><DD
 ><P
->Full path to the RedBoot package source. Typically, this should
-be <TT
+>Full path to the RedBoot package source. Typically, this should be <TT
 CLASS="FILENAME"
 ><TT
 CLASS="ENVAR"
@@ -376,26 +371,23 @@ CLASS="ENVAR"
 ></DIV
 ><P
 >You must make sure these variables are correctly set in your environment
-before proceeding, or the build will fail. The values for
-<TT
+before proceeding, or the build will fail. The values for <TT
 CLASS="ENVAR"
 >$TARGET</TT
 >, <TT
 CLASS="ENVAR"
 >$ARCH_DIR</TT
-> and
-<TT
+> and <TT
 CLASS="ENVAR"
 >$PLATFORM_DIR</TT
-> for each board are given in the
-specific installation details for each board
-in <A
+> for each board are given
+in the specific installation details for each board in <A
 HREF="installation-and-testing.html"
 >Chapter 5</A
 >.</P
 ><P
->With the environment variables set, use the following sequence of commands to
-build a RedBoot image suitable for loading into RAM:<TABLE
+>With the environment variables set, use the following sequence of commands
+to build a RedBoot image suitable for loading into RAM:<TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -421,7 +413,8 @@ CLASS="FILENAME"
 >redboot_ROM.ecm</TT
 > instead.</P
 ><P
->The resulting files will be, in each of the ROM and RAM startup build places: <TABLE
+>The resulting files will be, in each of the ROM and RAM startup build
+places: <TABLE
 BORDER="0"
 BGCOLOR="#E0E0E0"
 WIDTH="100%"
@@ -454,8 +447,8 @@ NAME="PLATFORM-SPECIFIC-BUILD-INSTRUCTIONS"
 HREF="installation-and-testing.html"
 >Chapter 5</A
 >
-should be consulted, as there may be other special instructions
-required to build RedBoot for particular boards.</P
+should be consulted, as there may be other special instructions required to
+build RedBoot for particular boards.</P
 ></DIV
 ></DIV
 ></DIV

@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >RedBoot Commands and Examples</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -43,7 +44,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -261,11 +262,15 @@ CLASS="USERINPUT"
 ></TT
 >   
 Manage aliases kept in FLASH memory
-   alias name [value]
+      alias name [value]
 Set/Query the system console baud rate
-   baudrate [-b &lt;rate&#62;]
+      baudrate [-b &lt;rate&#62;]
 Manage machine caches
       cache [ON | OFF]   
+Display/switch console channel
+      channel [-1|&lt;channel number&#62;]
+Display disk partitions
+      disks
 Display (hex dump) a range of memory
       dump -b &lt;location&#62; [-l &lt;length&#62;]  
 Manage flash images
@@ -277,7 +282,7 @@ Execute code at a location
 Help about help?
       help [&lt;topic&#62;]   
 Load a file
-      load [-r] [-v] [-d] [-h &lt;host&#62;] [-m {TFTP | xyzMODEM}]
+      load [-r] [-v] [-d] [-h &lt;host&#62;] [-m {TFTP | xyzMODEM | disk}]
       [-b &lt;base_address&#62;] &lt;file_name&#62;   
 Network connectivity test
       ping [-v] [-n &lt;count&#62;] [-t &lt;timeout&#62;] [-i &lt;IP_addr]

@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >Cirrus Logic EP72xx (EDB7211, EDB7212) </TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -46,7 +47,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -88,14 +89,14 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1760"
+NAME="AEN1839"
 >Overview</A
 ></H2
 ><P
 >RedBoot supports both serial ports on the board and
 the ethernet port. The default serial port settings are 38400,8,N,1. RedBoot
 also supports flash management on the EDB72xx for the NOR flash only. Two
-basic RedBoot configurationsare supported: <P
+basic RedBoot configurations are supported: <P
 ></P
 ><UL
 ><LI
@@ -114,7 +115,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1774"
+NAME="AEN1853"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -127,7 +128,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1777"
+NAME="AEN1856"
 >Flash management</A
 ></H2
 ><DIV
@@ -135,7 +136,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1779"
+NAME="AEN1858"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -167,7 +168,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1784"
+NAME="AEN1863"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -201,7 +202,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1789"
+NAME="AEN1868"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -212,11 +213,12 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1792"
+NAME="AEN1871"
 >Memory Maps</A
 ></H2
 ><P
->The MMU page tables are located at the end of DRAM. <DIV
+>The MMU page tables and LCD display buffer, if enabled, are located
+at the end of DRAM. <DIV
 CLASS="NOTE"
 ><BLOCKQUOTE
 CLASS="NOTE"
@@ -271,14 +273,16 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1799"
+NAME="AEN1878"
 >Resource Usage</A
 ></H2
 ><P
 >The RAM based RedBoot image occupies RAM addresses 0x20000 - 0x3ffff.
-RAM addresses from 0x40000 to the end of RAM are available for general use
-such as a temporary scratchpad for downloaded images before they are written
-to flash. </P
+RAM addresses start at 0x40000 and continue up to the top of the installed
+physical RAM size, less the memory reserved for MMU page tables  (0x9000 bytes)
+and the LCD display buffer, if enabled (0x20000 bytes). The RAM is available
+for general use such as a temporary scratchpad for downloaded images before
+they are written to flash. </P
 ><P
 >The EP72xx timer #2 is used as a polled timer to provide timeout support
 for network and XModem file transfers.</P
@@ -288,7 +292,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1803"
+NAME="AEN1882"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -296,21 +300,19 @@ NAME="AEN1803"
 HREF="rebuilding-redboot.html"
 >Chapter 3</A
 > should be followed.
-The values for ARCH_DIR and PLATFORM_DIR on this platform are
-&#8220;arm&#8221; and &#8220;edb7xxx&#8221; respectively.
-The value for TARGET is either &#8220;edb7211&#8221; or &#8220;edb7212&#8221;,
-depending on the desired platform.
-Note that the configuration export files supplied in the <TT
+The values for ARCH_DIR and PLATFORM_DIR on this platform are &#8220;arm&#8221;
+and &#8220;edb7xxx&#8221; respectively. The value for TARGET is either &#8220;edb7211&#8221;
+or &#8220;edb7212&#8221;, depending on the desired platform. Note that the
+configuration export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
->hal/arm/sa11x0/brutus/<TT
+>hal/arm/edb7xxx/<TT
 CLASS="REPLACEABLE"
 ><I
 >VERSION</I
 ></TT
 >/misc</TT
->
-directory in the RedBoot source tree should be used, and the correct
-edb7211 vs. edb7212 variant chosen.</P
+> directory in the RedBoot source
+tree should be used, and the correct edb7211 vs. edb7212 variant chosen.</P
 ></DIV
 ></DIV
 ><DIV

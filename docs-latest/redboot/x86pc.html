@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >x86 Based PC</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.54"><LINK
 REL="HOME"
@@ -24,7 +25,10 @@ TITLE="Installation and Testing"
 HREF="installation-and-testing.html"><LINK
 REL="PREVIOUS"
 TITLE="Bright Star Engineering commEngine and nanoEngine"
-HREF="nano.html"></HEAD
+HREF="nano.html"><LINK
+REL="NEXT"
+TITLE="Atmel AT91 Evaluation Board (EB40)"
+HREF="at91.html"></HEAD
 ><BODY
 CLASS="SECT1"
 BGCOLOR="#FFFFFF"
@@ -43,7 +47,7 @@ CELLSPACING="0"
 ><TH
 COLSPAN="3"
 ALIGN="center"
->RedBoot&#8482; User's Guide: Document Version 1.5g, June 2001</TH
+>RedBoot&#8482; User's Guide: Document Version 1.5m, July 2001</TH
 ></TR
 ><TR
 ><TD
@@ -63,7 +67,10 @@ VALIGN="bottom"
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
->&nbsp;</TD
+><A
+HREF="at91.html"
+>Next</A
+></TD
 ></TR
 ></TABLE
 ><HR
@@ -82,7 +89,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1909"
+NAME="AEN1988"
 >Overview</A
 ></H2
 ><P
@@ -97,7 +104,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1918"
+NAME="AEN1997"
 >Initial Installation</A
 ></H2
 ><P
@@ -199,14 +206,12 @@ CLASS="NOTE"
 ><P
 ><B
 >NOTE: </B
->Unreliable floppy media may cause the write to silently fail. This
-can be determined if the RedBoot image does not correctly
-boot. In such cases, the floppy should be (unconditionally) reformatted
-using the <B
+>Unreliable floppy media may cause the write to silently fail. This can
+be determined if the RedBoot image does not correctly boot. In such cases,
+the floppy should be (unconditionally) reformatted using the <B
 CLASS="COMMAND"
 >fdformat</B
-> command on Linux, or
-<B
+> command on Linux, or <B
 CLASS="COMMAND"
 >format a: /u</B
 > on DOS/Windows.</P
@@ -218,7 +223,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1940"
+NAME="AEN2019"
 >Flash management</A
 ></H2
 ><P
@@ -229,7 +234,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1943"
+NAME="AEN2022"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -240,22 +245,22 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1946"
+NAME="AEN2025"
 >Memory Maps</A
 ></H2
 ><P
 >All selectors are initialized to map the entire 32-bit address space
-in the familiar protected mode flat model. Page translation is not used.
-RAM up to 640K is mapped to 0x0 to 0xa0000. RAM above 640K is mapped
-from address 0x100000 upwards. Space is reserved between 0xa0000 and
-0x100000 for option ROMs and the BIOS.</P
+in the familiar protected mode flat model. Page translation is not used. RAM
+up to 640K is mapped to 0x0 to 0xa0000. RAM above 640K is mapped from address
+0x100000 upwards. Space is reserved between 0xa0000 and 0x100000 for option
+ROMs and the BIOS.</P
 ></DIV
 ><DIV
 CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1949"
+NAME="AEN2028"
 >Resource Usage</A
 ></H2
 ><P
@@ -268,7 +273,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1952"
+NAME="AEN2031"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -276,9 +281,9 @@ NAME="AEN1952"
 HREF="rebuilding-redboot.html"
 >Chapter 3</A
 > should be followed.
-The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are
-&#8220;pc&#8221;, &#8220;i386&#8221; and &#8220;pc&#8221; respectively.
-Note that the configuration export files supplied in the <TT
+The values for TARGET, ARCH_DIR and PLATFORM_DIR on this platform are &#8220;pc&#8221;,
+&#8220;i386&#8221; and &#8220;pc&#8221; respectively. Note that the configuration
+export files supplied in the <TT
 CLASS="COMPUTEROUTPUT"
 >hal/i386/pc/<TT
 CLASS="REPLACEABLE"
@@ -286,13 +291,13 @@ CLASS="REPLACEABLE"
 >VERSION</I
 ></TT
 >/misc</TT
->
-directory in the RedBoot source tree should be used. In particular, the
-<TT
+> directory in the RedBoot source tree
+should be used. In particular, the <TT
 CLASS="FILENAME"
 >redboot_FLOPPY.ecm</TT
-> file is used for building a version
-of RedBoot suitable for booting off a floppy disk.</P
+>
+file is used for building a version of RedBoot suitable for booting off a
+floppy disk.</P
 ></DIV
 ></DIV
 ><DIV
@@ -325,7 +330,10 @@ HREF="redboot.html"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="at91.html"
+>Next</A
+></TD
 ></TR
 ><TR
 ><TD
@@ -345,7 +353,7 @@ HREF="installation-and-testing.html"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->&nbsp;</TD
+>Atmel AT91 Evaluation Board (EB40)</TD
 ></TR
 ></TABLE
 ></DIV
