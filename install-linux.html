@@ -10,23 +10,25 @@
 
 <h3>Downloading</h3>
 
-The eCos 1.1 distribution for Linux is provided as a tar.bz2 archive
-file. Click on the following link to download:
+The eCos 1.1 distribution for Linux is available as an archive
+file in both <a href="http://www.muraroa.demon.co.uk/" target="_top">bzip2</a> (tar.bz2) and <a href="http://www.gzip.org/">gzip</a> (tar.gz) formats. Click on one of the following links to download:
 
 <ul>
-<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.bz2">eCos 1.1 sourceware for Linux</A> (4MB tar.bz2 file)
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.bz2">eCos 1.1 sourceware for Linux</A> (3MB tar.bz2 file)
+<li><A HREF="ftp://sourceware.cygnus.com/pub/ecos/ecos-1.1.tar.gz">eCos 1.1 sourceware for Linux</A> (4MB tar.gz file)
 </ul>
 
-In order to build the eCos sources, you will require the a cross-compiler
+In order to build the eCos sources, you will require a cross-compiler
 and related development tools. The necessary tools are designated
 <i>ecosSWtools-981021</i> and are available in source form only. Click
-on the following link to download:
+on one of the following links to download:
 
 <ul>
 <li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.bz2">eCos development tools</a> (21MB tar.bz2 file)
+<li><a href="ftp://sourceware.cygnus.com/pub/ecos/ecosSWtools-981021-src.tar.bz2">eCos development tools</a> (26MB tar.gz file)
 </ul>
 
-<h3>Installing</h3>
+<h3>Installation</h3>
 
 <ol><li>Build the eCos development tools (ecosSWtools-981021)
     by following these steps at a <i>sh</i>, <i>ksh</i> or <i>bash</i>
@@ -42,13 +44,13 @@ on the following link to download:
       <nobr><tt>
       mkdir /usr/cygnus<br>
       cd /usr/cygnus<br>
-      bunzip2 < ecosSWtools-981021-src.tar.bz2 | tar xvf -
-      </tt></nobr><p>
+      bunzip2 &lt; ecosSWtools-981021-src.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
+      <tt>gunzip &lt; ecosSWtools-981021-src.tar.gz | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)
+      </nobr><p>
 
       The directory
       <nobr><tt>/usr/cygnus/ecosSWtools-981021/src</tt></nobr> should
-      be generated and populated during the extraction process. You may need to download and install the <a href="http://www.muraroa.demon.co.uk"
-target="_top">bzip2</a> compression program prior to extraction.<p>
+      be generated and populated during the extraction process.<p>
 
   <li>Create an object directory for your builds:<p>
   <nobr><tt>mkdir /tmp/build</nobr><br>
@@ -80,7 +82,8 @@ You should add this directory to your path.<p>
 <li>Extract the eCos repository using the following commands:<p>
 
    <nobr><tt>cd /usr/local</nobr><br>
-   <nobr>bunzip2 < ecos-1.1.tar.bz2 | tar xvf -</tt></nobr><p>
+   <nobr>bunzip2 &lt; ecos-1.1.tar.bz2 | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the bzip2 archive)<br>
+   <tt>gunzip &lt; ecos-1.1.tar.gz | tar xvf -</tt> &nbsp;&nbsp;&nbsp;&nbsp;(for the gzip archive)</nobr><p>
 
 On completion, the eCos repository may be found in the directory
 <nobr><tt>/usr/local/ecos-1.1</tt></nobr>.
