@@ -1093,12 +1093,12 @@ archives.
 <h5>When I run the gcc 2.95.2 I just installed I get an error "<tt>cpp: too many input files</tt>"</h5>
 <p>
 <tt>gcc</tt> tends to report the error message "<tt>cpp: too many input files</tt>" when
-it cannot find tools in the places it expects them to be. One cause is if you "configure"d
-with a prefix or an exec-prefix with a trailing slash. You must ensure there are no trailing
-slashes to the arguments to --prefix and --exec-prefix. Another cause is if you have moved
-your gcc installation from the location you originally specified when it was configured.
-This location is determined primarily by the <tt>--exec-prefix</tt> argument to gcc's
-configure script.
+it cannot find tools in the places it expects them to be. One cause is if you <tt>configure</tt>d
+with a <tt>--prefix</tt> or a <tt>--exec-prefix</tt> argument with a trailing slash. You must ensure
+there are no trailing slashes to the arguments to <tt>--prefix</tt> and <tt>--exec-prefix</tt>.
+Another cause is if you have moved your gcc installation from the location you originally
+specified when it was configured. This location is determined primarily by the
+<tt>--exec-prefix</tt> argument to gcc's configure script.
 <p>
 More recent gcc snapshots do not have this limitation, which is specific to gcc 2.95.2
 or earlier. To resolve it, you can: use a more recent gcc snapshot; reconfigure gcc
