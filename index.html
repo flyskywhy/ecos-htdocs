@@ -20,17 +20,83 @@
 
 <!-- paste section from home.html after this comment -->
 
-<H3>Welcome</H3>
+<h3>Introduction</h3>
 
-This web site provides the latest information on eCos for the benefit of the sourceware developer community. eCos was first released to the general public on November 2nd, 1998. You will find sections introducing eCos and describing how to get started with this revolutionary new real-time operating system. You can also browse the full documentation online. We plan to expand this site rapidly, providing detailed information of relevance to all eCos developers.<p>
-
-We welcome your feedback. Please send comments to the webmaster &lt;<a href="mailto:sourcemaster@cygnus.com">sourcemaster@cygnus.com</a>&gt;.
+The embedded Cygnus operating system (eCos) is an open-source,
+configurable, portable, and royalty-free embedded RTOS. The system
+comes with everything necessary to develop eCos based applications,
+including tools, documentation and complete sources. All eCos runtime
+source code is distributed under the Cygnus eCos Public License
+(CEPL), a derivative of the Netscape Public License.
+<P>
+This release is a &quot;Technology Release&quot;. It provides all the
+functionality needed for a wide variety of embedded applications, and
+it has undergone extensive testing. However at this stage it is
+only available for a limited number of target architectures, and there
+is lots of additional functionality that can and will be added. We
+have chosen to release the system at this stage because it can already
+be of great benefit to many embedded system developers, and to
+encourage the development of an eCos open source user community on the
+net which will help to move the system forwards.
+<P>
+<H3>eCos Functionality</H3>
+<UL>
+  <LI>Hardware Abstraction Layer (HAL)</LI>
+  <LI>Real-time kernel</LI>
+      <UL>
+	<LI>Interrupt handling</LI>
+	<LI>Exception handling</LI>
+	<LI>Choice of schedulers</LI>
+	<LI>Thread support</LI>
+	<LI>Rich set of synchronization primitives</LI>
+	<LI>Timers, counters and alarms</LI>
+	<LI>Choice of memory allocators</LI>
+	<LI>Debug and instrumentation support</LI>
+      </UL>
+  <LI>uITRON 3.0 compatible API layered on top of the basic kernel</LI>
+  <LI>ISO C library
+</UL>
+<P>
+<H3>Supported Targets</H3>
+<P>
+<UL>
+  <LI>Matsushita MN10300 processor, stdeval1 evaluation board and
+      simulator</LI>
+  <LI>Toshiba TX39 processor, jmr3904 evaluation board and
+      simulator</LI>
+  <LI>PowerPC MPC860 processor, <A
+      HREF="http://www.cogcomp.com">Cogent</A> evaluation board and <A
+      HREF="http://sourceware.cygnus.com/psim">psim</A>
+      simulator. This target should be considered a beta.</LI>
+</UL>
+<P>
+<H3>Supported Hosts</H3>
+<P>
+The main supported host is Windows NT on an x86-based host. The
+system has also been tested on Red Hat 5.1 Linux using an x86-based
+host, and on both Windows 95 and 98, but these hosts should also be
+considered a beta. The system has not been tested on any other host
+platform.
+<P>
+<H3>Host Software</H3>
+<P>
+The system comes with full support for manual configuration of the
+system on all host platforms. In addition Windows users get a
+graphical configuration tool which simplifies the process of
+configuring a system and validating the resulting system. This tool is
+not yet available for Linux users. It is likely that new host tools,
+including future versions of the graphical configuration tool, will
+only be available as part of the Developer Kit product.
+<P>
+The system comes with a full set of tools needed for embedded systems
+development. This includes the compilers gcc and g++, the assembler
+and linker, the debugger gdb, and simulators for all the target
+architectures.
 
 <!-- paste section from home.html before this comment -->
 
 <h3>Index</h3>
 <UL>
-<LI><A HREF="intro.html">Introduction</A>
 <LI><A HREF="getstart.html">Getting Started</A>
 <LI><A HREF="ecos-docs/index.html">Documentation</A>
 <LI><A HREF="faq.html">FAQ</A>
