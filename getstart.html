@@ -14,9 +14,9 @@
 and Windows versions. The Linux version is tested under recent
 versions of the Red Hat, SuSE and Debian distributions for x86 and should work
 under most Linux variants. The Windows version has been tested under
-Microsoft Windows 2000 Professional and should also work under Windows 95, Windows 98,
-Windows ME and Windows XP. However, building the eCos
-GNU cross toolchains under Windows 95/98/ME has been found to be
+Microsoft Windows NT4.0 + SP6a, Windows 2000 Professional and Windows XP. Please
+note that eCos is no longer tested under Windows 95/98/ME. Building and using
+the eCos GNU cross toolchains under Windows 95/98/ME has been found to be
 unreliable. We recommend that users avoid building the development tools on
 these systems if possible.</p>
 
@@ -43,10 +43,10 @@ architectures are available for download in pre-built form:</p>
 <center><table BORDER=0 CELLSPACING=2 CELLPADDING=7>
 <tr bgcolor=#999999><td><b>Architecture</b></td><td><b><tt>TARGET</tt></b></td></tr>
 <tr bgcolor=#dddddd><td>ARM (including StrongARM, XScale)</td><td><tt>arm-elf</tt></td></tr>
-<tr bgcolor=#dddddd><td>Hitachi SuperH</td><td><tt>sh-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>Intel x86</td><td><tt>i386-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>MIPS32</td><td><tt>mipsisa32-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>PowerPC</td><td><tt>powerpc-eabi</tt></td></tr>
+<tr bgcolor=#dddddd><td>Renesas SuperH</td><td><tt>sh-elf</tt></td></tr>
 </table></center>
 
 <p>Developers targetting one of the other architectures must build a toolchain
@@ -64,50 +64,40 @@ command at a <i>bash</i> prompt:</p>
 <nobr>wget --passive-ftp ftp://sources.redhat.com/pub/ecos/ecos-install.tcl</nobr>
 </tt></ul>
 
-<p>The installation tool may then be invoked by using a command of the form:</p>
+<p>The installation tool may then be invoked as follows:</p>
 
 <ul><tt>
-<nobr>sh ecos-install.tcl INSTALLPATH [ TARGET ... ]</nobr>
+<nobr>sh ecos-install.tcl</nobr>
 </tt></ul>
 
-<p>For example, to download and install eCos with both the ARM and Intel x86
-pre-built toolchains to the <tt>/opt/ecos</tt> directory, use the following command:</p>
-
-<ul><tt>
-<nobr>sh ecos-install.tcl /opt/ecos arm-elf i386-elf</nobr>
-</tt></ul>
-
-<p>The installation tool will present a list of <a href="mirror.html">mirror sites</a> from which eCos may be downloaded.
-For best results, please select a mirror site in your own geographical region.</p>
+<p>The installation tool will first present a list of <a href="mirror.html">mirror sites</a>
+from which the software may be downloaded. For best results, please select a
+mirror site in your own geographical region. The tool will then prompt for an
+installation location. We recommend installation to <tt>/opt/ecos</tt> where the
+software will be accessible by all users. Finally, the tool will present a list
+of pre-built GNU toolchains available for download. Select each toolchain you wish
+to download by entering the corresponding number. When all required toolchains have
+been selected, enter <tt>q</tt>. Downloading and installation of the software will
+then commence.</p>
 
 <p>Windows users should note that POSIX-style paths are relative to the root of their
 Cygwin installation (typically <tt>c:\cygwin</tt>) by default. For example,
 <tt>/opt/ecos</tt> might be located at <tt>c:\cygwin\opt\ecos</tt> in the Windows Explorer.</p>
 
-<p>Following installation, individual users of eCos should extract the default platform information which
-the eCos Configuration Tool uses to run tests. For Windows users, this can be achieved by
-double-clicking on the <tt>platforms.reg</tt> file in the Windows Explorer. This file may be
-found in the <tt>ecos-2.0b1/tools/bin</tt> directory under the location at which eCos was installed.
-Linux users, should execute the following command from the location at which eCos was installed:</p>
-
-<ul><tt>
-<nobr>tar -C $HOME -xf ecos-2.0b1/tools/bin/platforms.tar</nobr>
-</tt></ul>
-
-<p>Users may also wish to create a shortcut to the eCos Configuration Tool on their desktop. Typically,
+<p>Users may wish to create a shortcut to the eCos Configuration Tool on their desktop. Typically,
 this may be achieved by dragging the <tt>configtool</tt> or <tt>configtool.exe</tt> executable file
 from the file manager provided by your operating system onto the desktop. This file is located
-in the <tt>ecos-2.0b1/tools/bin</tt> directory under the location at which eCos was installed.</p>
+in the <tt>ecos-2.0/tools/bin</tt> directory under the location at which eCos was installed.</p>
 
 <h2>Documentation</h2>
 
-<p>Full documentation is available <a href="docs.html">online</a> in HTML format.
-It is included within the eCos net distribution. The
+<p>Full documentation is available <a href="docs.html">online</a>.
+It is included within the eCos net distribution in HTML format only. The
 documentation may also be downloaded separately in multiple archive formats:
 
 <ul>
-<li><a href="ftp://sources.redhat.com/pub/ecos/releases/ecos-2.0b1/eCosDoc20b1.zip">eCos 2.0 beta documentation</A> (eCosDoc20b1.zip - 2.9MB)
-<li><a href="ftp://sources.redhat.com/pub/ecos/releases/ecos-2.0b1/ecos-2.0b1-doc.tar.bz2">eCos 2.0 beta documentation</a> (ecos-2.0b1-doc.tar.bz2 - 1.8MB)
+<li><a href="ftp://sources.redhat.com/pub/ecos/releases/ecos-2.0/eCosDoc20.zip">eCos 2.0 documentation</A> (eCosDoc20.zip - 1.9MB)
+<li><a href="ftp://sources.redhat.com/pub/ecos/releases/ecos-2.0/ecos-2.0-doc.tar.bz2">eCos 2.0 documentation</a> (ecos-2.0-doc.tar.bz2 -  908kB)
 </ul></p>
 
 <p>New users are encouraged to follow the programming
