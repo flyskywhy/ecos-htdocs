@@ -13,7 +13,8 @@
 ><HEAD
 ><TITLE
 >An Introduction to Tcl</TITLE
-><META
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
 NAME="GENERATOR"
 CONTENT="Modular DocBook HTML Stylesheet Version 1.64
 "><LINK
@@ -559,7 +560,13 @@ script. In this case the Tcl interpreter will execute the command
 <TT
 CLASS="LITERAL"
 >expr 6 * 9</TT
->, yielding a result of 42, and then the
+>, yielding a result of 42
+<A
+NAME="AEN1276"
+HREF="#FTN.AEN1276"
+>[1]</A
+>
+and then the
 Tcl interpreter will execute <TT
 CLASS="LITERAL"
 >puts "The answer is 42"</TT
@@ -821,6 +828,40 @@ TARGET="_top"
 web site</A
 >.</P
 ></DIV
+><H3
+CLASS="FOOTNOTES"
+>Notes</H3
+><TABLE
+BORDER="0"
+CLASS="FOOTNOTES"
+WIDTH="100%"
+><TR
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="5%"
+><A
+NAME="FTN.AEN1276"
+HREF="language.tcl.html#AEN1276"
+>[1]</A
+></TD
+><TD
+ALIGN="LEFT"
+VALIGN="TOP"
+WIDTH="95%"
+><P
+>It is possible that some versions of the Tcl interpreter will instead
+produce a result of 54 when asked to multiply six by nine. Appropriate
+<A
+HREF="http://www.douglasadams.com/creations/hhgg.html"
+TARGET="_top"
+>reference
+documentation</A
+> should be consulted for more information on why
+42 is in fact the correct answer.</P
+></TD
+></TR
+></TABLE
 ><DIV
 CLASS="NAVFOOTER"
 ><HR
