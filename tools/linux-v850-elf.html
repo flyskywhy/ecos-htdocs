@@ -233,6 +233,13 @@ are handled correctly:<p>
 <p>
 
 
+If using Insight, download the <a href="patches/insight-v850.pat">
+insight-v850.pat</a> patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; insight-v850.pat | patch -p0
+</tt></nobr><p>
+
 
 If any of the patches fail to apply you should see if there is some
 obvious problem by attempting to apply the patch manually. If this is not

@@ -860,6 +860,14 @@ unset BINUSNAP
 TOOLPREFIX=v850-elf
 TARGETNAME="NEC V850"
 GCCSNAP=
+EXTRAPATCH='
+If using Insight, download the <a href="patches/insight-v850.pat">
+insight-v850.pat</a> patch to a file and apply it:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-5.0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; insight-v850.pat | patch -p0
+</tt></nobr><p>
+'
 
 ###################
 # Windows V850
