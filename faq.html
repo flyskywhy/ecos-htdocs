@@ -958,6 +958,22 @@ Note that under windows, running the configure script will output:
 
 This is normal, and is not an error message.
 
+A common general problem on Windows is that applying patches may inadvertently
+lead to CRLFs getting inserted into source files where they are not wanted.
+Cygwin users should verify that their <tt>/tmp</tt> directory (or
+the directory specified by the <tt>TMPDIR</tt>, <tt>TMP</tt> or <tt>TEMP</tt>
+environment variables) is mounted in binary mode. If this is not the case
+the patches will apply, but the build will later fail. You may verify this
+using the Cygwin <tt>mount</tt> command. If /tmp is not explicitly listed,
+the entry for / will be used. If it says "<tt>textmode</tt>" for this entry,
+use the following command from a Cygwin bash prompt:<p>
+<nobr><tt>
+&nbsp;&nbsp;&nbsp;&nbsp;mount -f -b c:/cygwin/tmp /tmp
+</tt></nobr>
+<p>
+You may need to substitute another path for <tt>c:/cygwin</tt> if Cygwin
+was installed to another directory.
+<p>
 <h5>What if the patches fail to apply?</h5>
 <P>
 Some of the tools patches are against sources that are under continuous development,
