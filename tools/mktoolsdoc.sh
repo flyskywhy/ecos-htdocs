@@ -672,7 +672,7 @@ EXTRAPATCH='
 Download the <a href="patches/ecos-binutils-tx39name.pat">ecos-binutils-tx39name.pat</a> patch
 to a file and apply it:<p>
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-<i>YYMMDD</i><br>
+&nbsp;&nbsp;&nbsp;&nbsp;cd /src/binutils/binutils-2.10<br>
 &nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-binutils-tx39name.pat | patch -p0
 </tt></nobr><p>
 '
