@@ -1,0 +1,61 @@
+Index: ./tcl/generic/tclPosixStr.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/tcl/generic/tclPosixStr.c,v
+retrieving revision 1.9
+retrieving revision 1.10
+diff -p -r1.9 -r1.10
+*** ./tcl/generic/tclPosixStr.c	1999/01/26 03:53:17	1.9
+--- ./tcl/generic/tclPosixStr.c	1999/05/18 23:10:04	1.10
+*************** Tcl_ErrnoId()
+*** 336,342 ****
+  #ifdef ENXIO
+  	case ENXIO: return "ENXIO";
+  #endif
+! #ifdef EOPNOTSUPP
+  	case EOPNOTSUPP: return "EOPNOTSUPP";
+  #endif
+  #ifdef EPERM
+--- 336,342 ----
+  #ifdef ENXIO
+  	case ENXIO: return "ENXIO";
+  #endif
+! #if defined(EOPNOTSUPP) && (!defined(ENOTSUP) || (EOPNOTSUPP != ENOTSUP))
+  	case EOPNOTSUPP: return "EOPNOTSUPP";
+  #endif
+  #ifdef EPERM
+*************** Tcl_ErrnoMsg(err)
+*** 783,789 ****
+  #ifdef ENXIO
+  	case ENXIO: return "no such device or address";
+  #endif
+! #ifdef EOPNOTSUPP
+  	case EOPNOTSUPP: return "operation not supported on socket";
+  #endif
+  #ifdef EPERM
+--- 783,789 ----
+  #ifdef ENXIO
+  	case ENXIO: return "no such device or address";
+  #endif
+! #if defined(EOPNOTSUPP) && (!defined(ENOTSUP) || (EOPNOTSUPP != ENOTSUP))
+  	case EOPNOTSUPP: return "operation not supported on socket";
+  #endif
+  #ifdef EPERM
+Index: ./expect/exp_strf.c
+===================================================================
+RCS file: /cvs/cvsfiles/devo/expect/exp_strf.c,v
+retrieving revision 1.8
+diff -p -r1.8 exp_strf.c
+*** ./expect/exp_strf.c	1998/08/24 23:29:23	1.8
+--- ./expect/exp_strf.c	1999/05/21 17:03:16
+*************** static int weeknumber();
+*** 98,104 ****
+--- 98,106 ----
+  adddecl(static int iso8601wknum();)
+  #else
+  
++ #ifndef strchr
+  extern char *strchr(const char *str, int ch);
++ #endif
+  extern char *getenv(const char *v);
+  static int weeknumber(const struct tm *timeptr, int firstweekday);
+  adddecl(static int iso8601wknum(const struct tm *timeptr);)

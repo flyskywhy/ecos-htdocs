@@ -980,6 +980,28 @@ ncurses-devel packages, and it will be necessary to install these
 first.
 
 <P>
+There is a known problem building the ARM toolchain under Redhat 6.0, where
+it fails with the following errors:
+<P>
+<PRE>
+    ..generic/tclPosixStr.c: In function 'Tcl_ErrnoId':
+    ..generic/tclPosixStr.c:340: duplicate case value
+    ..generic/tclPosixStr.c:328: this is the first entry for that value
+    ..generic/tclPosixStr.c: In function 'Tcl_ErrnoMsg':
+    ..generic/tclPosixStr.c:787: duplicate case value
+    ..generic/tclPosixStr.c:775: this is the first entry for that value
+</PRE>
+<P>
+This problem can be solved using <A HREF="ecos-arm-rh6.patch">this patch</A>.
+Assuming the patch is saved in the <CODE>/tmp</CODE> directory, it can be
+applied by changing directory to <CODE>ecosSWtools-arm-990321/src</CODE>
+and entering the command:
+<P>
+<PRE>
+     patch -p0 < /tmp/ecos-arm-rh6.patch
+</PRE>
+
+<P>
 <h4><A NAME="problems_unix">Toolchain build problems on other Unix systems</A></h4>
 
 <P>
