@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>Submit an eCos Problem Report</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<h1>Submit An eCos Problem Report to Cygnus</h1>
+
+<P>
+Use this form to submit an eCos problem report. Our support staff will
+respond to your problem via E-mail as quickly as possible.
+
+
+<form method="POST" action="/cgi-bin/mailform.pl">
+<input type=hidden name="recipient" value="bugs@cygnus.com">
+<input type=hidden name="page" value="sourceware.cygnus.com/ecos/problemreport.html">
+<input type=hidden name="subject" value="Bug report form">
+<input type=hidden name="required" value="&#62;Originator,email,&#62;Customer-Id,&#62;Organization">
+<input type=hidden name="redirect" value="http://sourceware.cygnus.com/ecos/thanks.html">
+
+<input type=hidden name="Send_PR_form" value="Sent_from_sourceware.cygnus.com">
+
+<input type=hidden name="&#62;Category" value="ecos">
+
+
+
+<P>
+* Required
+</P>
+
+
+<TABLE>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>* Name:</TD> 	
+	<TD ALIGN=LEFT><input text size=40 VALUE="First Name  Last Name" name="&#62;Originator" align=top></TD>
+
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>* E-mail:</TD> 	
+	<TD ALIGN=LEFT><input text size=40 name="email" align=top></TD>
+</TR>
+
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>* Customer-ID:</TD> 	
+	<TD ALIGN=LEFT><input text size=40 name="&#62;Customer-Id" align=top></TD>
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>* Organization:</TD> 
+	<TD ALIGN=LEFT><input text size=40 name="&#62;Organization" align=top></TD>
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Confidential:</TD> 
+	<TD ALIGN=LEFT><SELECT NAME="&#62;Confidential">
+  <OPTION SELECTED>Yes
+  <OPTION>No
+</SELECT></TD>
+</TR>
+
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Synopsis:</TD>	
+	<TD ALIGN=LEFT>
+<TEXTAREA ROWS="2" cols=50 NAME="&#62;Synopsis" WRAP=SOFT></TEXTAREA> <BR><BR></TD>
+</TR>
+
+<TR VALIGN=TOP>
+
+	<TD ALIGN=RIGHT>Severity:</TD>
+	<TD ALIGH=LEFT><INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Non-critical" checked><B>Non-critical</B> - Graphical issue or miscellaneous problem<BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Serious"><B>Serious</B> - Feature misbehaves<BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Severity" VALUE="Critical"><B>Critical</B> - Crash or data loss<BR><BR></TD>
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Class:</TD>
+	<TD ALIGN=LEFT><INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug" checked><B>Target software bug</B><BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Class" VALUE="sw-bug"><B>Host tool bug</B><BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Class" VALUE="doc-bug"><B>Documentation bug</B><BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Class" VALUE="change-request"><B>Enhancement request</B><BR><BR>
+
+<INPUT TYPE="radio" NAME="&#62;Class" VALUE="support"><B>Support</B>
+<BR><BR>
+</TD>
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Release:</TD> 
+	<TD ALIGN=LEFT><SELECT NAME="&#62;Release">
+  <OPTION selected>Select a Release
+  <OPTION>eCos v1.1
+  <OPTION>eCos v1.0
+  <OPTION>ECC March 1998 v0.2
+  <OPTION>ECC June 1998 v0.3
+</SELECT></TD>
+</TR>
+
+
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Host Environment: </TD>
+
+	<TD ALIGN=LEFT><SELECT NAME="&#62;Environment">
+        <OPTION selected>Select an Environment 
+	<OPTION>Windows NT 4.0
+	<OPTION>Windows NT 4.0 Japanese
+</SELECT></TD>
+
+</TR>
+
+<TR VALIGN=TOP>
+	<TD ALIGN=RIGHT>Target Platform:</TD> 
+	<TD ALIGN=LEFT><SELECT NAME="Target">
+  <OPTION selected>Select a Target
+  <OPTION >Matsushita MN10300
+  <OPTION >Matsushita MN10300 Simulator
+  <OPTION >Toshiba TX39
+  <OPTION >Toshiba TX39 Simulator
+  <OPTION >(any target)
+</SELECT></TD>
+
+</TR>
+</TABLE>
+
+<P>
+<B>Description</B> 
+</P>
+
+<P>
+Please take time to describe the problem completely and accurately so
+that we can respond to this<BR> Problem Report most effectively.<br>
+<textarea rows=5 cols=80 name="&#62;Description" WRAP=HARD></textarea>
+<BR></P>
+
+<P>
+<B>How to repeat</B>
+</P>
+
+<P>
+Please take time to describe in detail how to reproduce the bug. <br>
+<textarea  rows=5 cols=80 name="&#62;How-To-Repeat" WRAP=HARD></textarea>
+<BR></P>
+
+<P>
+<B>Fix or work around</B>
+</P>
+
+<P>
+Please describe fixes or workarounds you have discovered. <br>
+<textarea  rows=5 cols=80 name="&#62;Fix" WRAP=HARD></textarea>
+</P>
+
+
+
+<p><INPUT TYPE="submit" VALUE="Submit">
+<INPUT TYPE="reset" VALUE="Reset">
+</form>
+
+<!--#include virtual="include/footer.html"-->
