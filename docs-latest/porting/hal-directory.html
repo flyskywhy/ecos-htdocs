@@ -5,7 +5,7 @@
 
 <!--#include virtual="../../include/header.html"-->
 
-<H2>HAL Layout [TBD]</H2>
+<H2>HAL Layout [TBD / in progress]</H2>
 <HR SIZE=3>
 
 
@@ -72,6 +72,58 @@ tree (specifically to the sub-HALs used by the PowerPC MBX target).
 </tr>
 </table>
 
+
+
+<p><HR SIZE=3>
+<h3>File descriptions</h3>
+
+<p>Below is listed the files found in various HALs, with a short
+description of what the file contains. When looking in existing HALs,
+beware that they do not necessarily follow the below naming scheme -
+but if you are writing a new HAL, please try to follow the below as
+closely as possible.</p>
+
+<h4>Common HAL</h4>
+
+<ld>
+<dt><tt>include/dbg-thread-syscall.h</tt></dt>
+  <dd>Defines the debugging thread syscall function. This is used by
+  the ROM monitor to access the debugging thread API in the RAM
+  application.  [FIXME: link thread debug description].</dd>
+<dt><tt>include/dbg-threads-api.h</tt></dt>
+  <dd>Defines the debugging thread API. [FIXME: link thread
+  debug description].</dd>
+<dt><tt>include/drv_api.h</tt></dt>
+  <dd>Defines the driver API.</dd>
+<dt><tt>include/generic-stub.h</tt></dt>
+  <dd>Defines the generic stub features.</dd>
+<dt><tt>include/hal_if.h</tt></dt>
+  <dd>Defines the ROM/RAM calling interface API.</dd>
+<dt><tt>include/hal_misc.h</tt></dt>
+  <dd>Defines miscellaneous helper functions shared by all HALs.</dd>
+<dt><tt>include/hal_stub.h</tt></dt>
+  <dd>Defines eCos mappings of GDB stub features.</dd>
+<dt><tt>src/dbg-threads-syscall.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/drv_api.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/dummy.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/generic-stub.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/hal_if.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/hal_misc.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/hal_stub.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/stubrom/</tt></dt>
+  <dd></dd>
+<dt><tt>src/thread-packets.c</tt></dt>
+  <dd></dd>
+<dt><tt>src/thread-pkts.h</tt></dt>
+  <dd></dd>
+</dl>
 
 
 <!--#include virtual="../../include/footer.html"-->
