@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot Commands</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot Commands</H2>
+<HR SIZE=3>
+
+
+<p>It's possible to add platform specific RedBoot commands. This is
+done using the macro RedBoot_cmd defined in &lt;redboot.h&gt;. Here's
+an example from the Assabet platform HAL:</p>
+
+<pre>
+ RedBoot_cmd("exec", 
+            "Execute an image - with MMU off", 
+            "[-w timeout] [<entry_point>]",
+            do_exec
+    );
+
+ static void 
+ do_exec(int argc, char *argv[])
+ {
+   ...
+ }
+</pre>
+
+<p>This adds the command 'exec', the associate help strings and a
+pointer to the actual command implementation.</p>
+
+<p>RedBoot provides two commands, init_opts() and scan_opts(), which
+are used to parse the options passed to the command.</p>
+
+<dl>
+<dt><tt>init_opts()</tt>
+
+ <dd>This is used to fill in the option structures - these are only
+ required if there are more than one option though.
+
+ <p>Each option is defined by the character used to identify it, a
+ type, a flag identifying whether it takes an argument, a pointer to
+ the variable which will hold the parsed value, and a pointer to a
+ boolean flag which gets set if the option was used on a parsed
+ command line.</p>
+
+<dt><tt>scan_opts()</tt>
+
+ <dd>This is used to do the actual parsing. It will use information
+ prepared by init_opts() to parse the command line, filling out
+ variables associated with options if these appear on the command
+ line.
+
+ <p>This call also allows for handling of a default argument, which is
+ what remains on the command line after all options are parsed.</p>
+</dl>
+
+<!--#include virtual="../../include/footer.html"-->

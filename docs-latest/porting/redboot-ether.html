@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot Ethernet Support</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot Ethernet Support</H2>
+<HR SIZE=3>
+
+<p>The ethernet drivers are standard eCos ethernet drivers - except
+that they are only used in polled mode from RedBoot. This is done with
+the help of a poll() driver call which will simulate interrupts, and
+thus drive the state machine of the driver.</p>
+
+<p>See [xref] for more details on writing an ethernet driver for
+eCos.</p>
+
+
+
+<!--#include virtual="../../include/footer.html"-->

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot Porting Process</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot Porting Process</H2>
+<HR SIZE=3>
+
+<p>RedBoot runs pretty much like a regular application, starting only
+after all the normal HAL board initialization code has been run.  So
+porting RedBoot to a new target takes about the same effort as a HAL
+port since RedBoot is effectively layered on top of the eCos HAL.</p>
+
+<p>Porting RedBoot can be done by following the eCos porting guide,
+even though it is not necessary to complete all the eCos
+functionality. The important parts are:</p>
+
+<ol>
+<li> redboot CDL
+<li> board initialization
+<li> simple polled serial driver
+<li> GDB stubs support (if debugging functionality is required,
+    otherwise it can be left out).
+<li> timer initialization, allowing RedBoot to provide timeouts in
+    scripts
+<li> optianally add platform specific RedBoot commands
+<li> optionally flash device driver
+<li> optionally ethernet device driver
+
+<p>FIXME: Add links to the above. Steps 2-4 are covered in the eCos
+porting guide. The other steps are described below.</p>
+
+<!--#include virtual="../../include/footer.html"-->

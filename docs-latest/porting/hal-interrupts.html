@@ -72,4 +72,32 @@ order to keep the knowledge of how this works (proper layering) out of the
 VSRs, it has to be in 'interrupt_end', thus the additional complexity.
 </pre>
 
+
+Huge had another nice description (pretty much the same):
+
+<pre>
+eCos interrupt handlers currently tend to go
+	o [all interrupts are masked]
+	o Stash initial regset on app stack [1]
+	o switch to interrupt stack [1]
+	o unmask higher prio interrupts than current source
+	o call ISRs
+	o switch back to app stack [1]
+	o call into scheduler
+	o if scheduler is unlocked, then // not a recursive interrupt
+	o    if there are DSRs to call
+	o       switch to interrupt stack
+	o       run DSRs
+	o       switch back to app stack
+	o    if reschedule is needed
+	o       switch to new thread
+	o       (saves context on interrupted app stack)
+	o       (when this thread resumes, drop out to...)
+	o restore initial regset from app stack
+	o RTI sequence, unmasking all interrupts
+
+[1] recursive interrupts might mean you are already in the interrupt stack,
+    so you don't switch stacks at all in that case.
+</pre>
+
 <!--#include virtual="../../include/footer.html"-->

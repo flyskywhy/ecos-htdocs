@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot Flash Support</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot Flash Support</H2>
+<HR SIZE=3>
+
+<p>The flash driver package must contain the following CDL:</p>
+
+<pre>
+ cdl_package CYGPKG_DEVS_FLASH_INTEL_BOOTBLOCK {
+    display       "Intel boot block flash memory support"
+
+    parent        CYGPKG_IO_FLASH
+    active_if     CYGPKG_IO_FLASH
+
+    implements    CYGHWR_IO_FLASH_DEVICE
+
+    include_dir   .
+    include_files ; # none _exported_ whatsoever
+
+    description "FLASH memory device support for Intel boot block
+                 flash memory " compile bootblock_flash.c
+
+    compile       bootblock_flash.c
+
+    [...]
+ }
+</pre>
+
+<p>Note that the flash functions are copied to RAM before they get
+executed, thus preventing spurious access cycles to the flash device
+while it is modified. These functions cannot contain non-relocatable
+code - in particular they cannot call other functions since this is
+usually done with PC-relative branch instructions.</p>
+
+<p>The relocation is made possible by some special CDL build instructions
+which is why the files are not simply listed by the compile statement
+above. This is an example of a build rule:</p>
+
+<pre>
+   make -priority 1 {
+        flash_erase_block.o: $(REPOSITORY)/$(PACKAGE)/src/flash_erase_block.c
+        $(CC) -S $(INCLUDE_PATH) $(CFLAGS) -fno-function-sections \
+              $(REPOSITORY)/$(PACKAGE)/src/flash_erase_block.c
+        echo "#include <cyg/hal/arch.inc>" &gt; flash_erase_block2.S
+        cat  flash_erase_block.s &gt;&gt; flash_erase_block2.S
+        echo "FUNC_END(flash_erase_block_end)" &gt;&gt; flash_erase_block2.S
+        $(CC) -c $(INCLUDE_PATH) -o flash_erase_block.o flash_erase_block2.S
+        $(AR) rcs $(PREFIX)/lib/libtarget.a flash_erase_block.o
+   }
+</pre>
+
+<p>This ensures that there is a symbol at the end of the function,
+allowing it to be copied to RAM before execution.</p>
+
+
+<p>The flash driver must provide the API described below. Note that this
+API is still being designed, and _will_ change. It will need to
+provide a pointer to a structure describing the flash area, thus
+allowing support of mutiple flash areas on the same platform.</p>
+
+<dl>
+<dt><tt>int flash_hwr_init(void)</tt>
+
+<dd> Ensure that the device is indeed a supported device by querying the
+ manufacturer and/or type codes. Also initialize flash driver data 
+ with flash size, location, number of regions and region sizes.
+
+
+<dt><tt>int flash_hwr_map_error(int err)</tt>
+
+<dd> Translates a flash error code to an eCos flash error code. The error
+ codes are defined in the IO flash driver.
+
+<dt><tt>bool flash_code_overlaps(void *start, void *end)</tt>
+
+<dd> Determines if the specified flash range overlaps with any running
+ code, thus allowing an abort of the operation.
+
+<dt><tt>int flash_query(unsigned short *data)</tt>
+
+<dd> Query the flash device for manufacturer and device identifiers. This
+ is used by the flash_hwr_init() function.
+
+<dt><tt>int flash_erase_block(volatile unsigned short *block)</tt>
+
+<dd> Erase the specified block. Returns flash error code if operation
+ failed.
+
+<dt><tt>int flash_program_buf(volatile unsigned short *addr, 
+                      unsigned short *data, int len)</tt>
+
+<dd> Program the flash starting at 'addr' with the data pointed to by
+ 'data'. 'len' specifies number of bytes to program. Returns flash
+ error code if operation failed.
+
+</dl>
+
+<p>Some drivers may also include functionality to lock and unlock
+areas of the flash device. In that case, the CDL must include a
+'implements CYGHWR_IO_FLASH_BLOCK_LOCKING' statement. These functions
+do not have a consistent interface yet: [FIXME: or is there a reason
+for one taking a single block and the other a range?]</p>
+
+<dl>
+<dt><tt>int flash_lock_block(volatile unsigned short *block)</tt>
+
+ <dd>Locks the block specified. Returns flash error code if operation
+ failed.
+
+<dt><tt>int flash_unlock_block(volatile unsigned short *block,
+                       int block_size, int blocks)</tt>
+
+ <dd>Unlocks specified range of blocks. Returns flash error code if
+ operation failed.
+
+</dl>
+
+<!--#include virtual="../../include/footer.html"-->

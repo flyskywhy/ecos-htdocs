@@ -132,6 +132,16 @@ FIXME:See calling interface
 
 <h4><a name="async_bps">Asynchronous GDB breakpoints</a></h4>
 
+<pre> FIXME:
+What happens is that the stubs enable serial receive interrupts, but
+do not change the vector. When a serial interrupt happens, it causes
+the cyg_hal_default_isr of the application to be run. This calls into
+the stub (via the virtual vectors) which determines if the received
+character was a 0x03. If so, a breakpoint is put at the PC where the
+interrupt happened.
+</pre>
+
+
 <p>GDB allows to asynchronously break execution of a running
 application. This is done by sending a 0x03 character to the
 target. If the serial device has interrupts enabled the interrupt

@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot Timer</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot Timer</H2>
+<HR SIZE=3>
+
+<p>RedBoot requires a microsecond delay function in order to provide
+timeouts in scripts, ethernet driver and elsewhere. Without a properly
+defined delay function, RedBoot may behave erratic.</p>
+
+<p>The platform should define HAL_DELAY_US() so it can be seen in the HAL
+common file hal_if.c. As an example, see the SH architecture HAL's
+definition in hal_intr.h, with the actual function being defined in
+hal_misc.c:</p>
+
+<pre>
+void
+hal_delay_us(int usecs)
+{
+    unsigned char _tstr;  // Current clock control
+    volatile unsigned char *tstr = (volatile unsigned char *)CYGARC_REG_TSTR;
+    volatile unsigned long *tcnt = (volatile unsigned long *)CYGARC_REG_TCNT1;
+    volatile unsigned long *tcor = (volatile unsigned long *)CYGARC_REG_TCOR1;
+    unsigned long clocks_per_us = (CYGHWR_HAL_SH_ONCHIP_PERIPHERAL_SPEED+(CYGHWR_HAL_SH_TMU_PRESCALE_0-1))/CYGHWR_HAL_SH_TMU_PRESCALE_0;  // Rounded up
+    int diff, diff2;
+    cyg_uint32 val1, val2;
+
+    _tstr = *tstr;
+    *tstr |= CYGARC_REG_TSTR_STR1;  // Enable channel 1
+    while (usecs-- &gt; 0) {
+        diff = 0;
+        while (diff &lt; clocks_per_us) {
+            val1 = *tcnt;
+            while ((val2 = *tcnt) == val1) ;
+            diff2 = val2 - val1;
+            if (diff2 &lt; 0) diff2 += *tcor;
+            diff += diff2;
+        }
+    }
+    *tstr = _tstr;                  // Restore timer to previous state
+}
+</pre>
+
+
+<!--#include virtual="../../include/footer.html"-->

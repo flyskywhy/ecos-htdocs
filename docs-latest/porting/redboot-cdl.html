@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<TITLE>RedBoot CDL</TITLE>
+</HEAD>
+
+<!--#include virtual="../../include/header.html"-->
+
+<H2>RedBoot CDL</H2>
+<HR SIZE=3>
+
+<p>In addition to the normal eCos platform CDL, it is necessary to add
+some extra CDL for RedBoot. This is similar to the special GDB stubs
+CDL, providing a last custom build step for RedBoot.</p>
+
+<pre>
+    cdl_component CYGPKG_REDBOOT_HAL_OPTIONS {
+        display       "Redboot HAL options"
+        flavor        none
+        no_define
+        parent        CYGPKG_REDBOOT
+        active_if     CYGPKG_REDBOOT
+        description   "
+            This option lists the target's requirements for a valid Redboot
+            configuration."
+
+        cdl_option CYGBLD_BUILD_REDBOOT_BIN {
+            display       "Build Redboot ROM binary image"
+            active_if     CYGBLD_BUILD_REDBOOT
+            default_value 1
+            no_define
+            description "This option enables the conversion of the Redboot ELF
+                         image to a binary image suitable for ROM programming."
+
+            make -priority 325 {
+                &lt;PREFIX&gt;/bin/redboot.bin : &lt;PREFIX&gt;/bin/redboot.elf
+                $(OBJCOPY) --strip-debug $&lt; $(@:.bin=.img) 
+                $(OBJCOPY) -O srec $&lt; $(@:.bin=.srec)
+                $(OBJCOPY) -O binary $&lt; $@
+            }
+        }
+</pre>
+
+<p>The special build rule takes the final redboot ELF image and
+converts it to both binary and SREC format, in preparation to be put
+into flash or ROM. You may have to tweak those rules, depending on the
+method you use to get the data into the target.</p>
+
+<p>If you are adding additional commands to RedBoot, you need to add a
+compile command to the CDL. For instance, to build the file
+redboot_cmds.c and include it in the RedBoot image, add:</p>
+
+<pre>
+            compile -library=libextras.a redboot_cmds.c
+</pre>
+
+<p>The line should placed after the first description keyword in the
+above CDL.</p>
+
+<!--#include virtual="../../include/footer.html"-->
