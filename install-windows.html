@@ -70,7 +70,9 @@ these steps at the <i>bash</i> prompt:<p>
   <nobr><tt>mount C: /c</tt></nobr><p>
 
   Note that binary mode mounts cannot be used for this purpose. Warnings
-  of the form "<tt>Warning: /c does not exist!</tt>" are normal and can be ignored.<p>
+  of the form "<tt>Warning: /c does not exist!</tt>" are normal and can be ignored.
+  The use of an <i>NTFS</i> file system is strongly recommended due to the large number
+  of small files involved in the build process.<p>
 
   <li>Mount the Cygwin tools as <nobr><tt>/bin</tt></nobr> such that <nobr><tt>/bin/sh</tt></nobr> exists:<p>
   <nobr><tt>mount C:/cygnus/cygwin-b20/H-i586-cygwin32/bin /bin</tt></nobr><p>
