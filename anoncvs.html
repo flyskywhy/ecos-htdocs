@@ -80,14 +80,14 @@ directory for use in subsequent sessions.</p>
 anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P ecos</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P ecos</kbd>
 
 <p>This command should initiate a connection to the CVS server and check out
 the latest version of eCos. In the future, when you want to update your
 repository to the latest version, go to the base of the repository tree and
 use the command:</p>
 
-<kbd>cvs -z 9 update -d -P</kbd>
+<kbd>cvs -z 6 update -d -P</kbd>
 
 <h2>Using the repository</h2>
 
@@ -115,13 +115,13 @@ from the repository by default. The 1.3.1 EPKs are <b>not</b> compatible with
 the code in the anonymous CVS repository. Such support can be added to an
 already checked out tree by executing the following command:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P net</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P net</kbd>
 
 <p>A port of the University of California at Davis (UCD) SNMP stack is also
 available as a separate optional package, and may be checked out by
 additionally executing the following command:</p>
 
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 9 co -P snmp</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P snmp</kbd>
 
 <p>Note that the networking and SNMP package records will be present in the package
 database (<tt>ecos.db</tt>) regardless of whether networking or SNMP support
