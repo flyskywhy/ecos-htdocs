@@ -1,44 +1,92 @@
-<HTML>
-<HEAD>
-<TITLE>Keeping in Touch</TITLE>
-</HEAD>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+  <HTML>
+    <HEAD>
+      <TITLE>Mailing lists</TITLE>
+    </HEAD>
 
-<!--#include virtual="include/header.html"-->
+    <!--#include virtual="include/header.html"-->
 
-<h1>Keeping in Touch</h1>
-<HR noshade SIZE=3>
+    <h1>Mailing lists</h1>
+    <HR noshade SIZE=3>
 
-<h2>Mailing lists</h2>
-
-<p>There are two principal mailing lists relating to eCos. Subscribers to the
-<nobr><i>ecos-announce</i></nobr> list will receive details of all eCos
-developments as they unfold. This is a moderated list intended principally
-for the announcement of new packages, snapshots and patches. Subscribers to
-the <nobr><i>ecos-discuss</i></nobr> list can participate in open discussion
-with others concerning all aspects of eCos. This is an unmoderated list.
-Archives of both the <a HREF="/ml/ecos-announce/">ecos-announce</a> and
-<a href="/ml/ecos-discuss/">ecos-discuss</a> mailing lists are available.</p>
+      <p>There are several mailing lists for the eCos project. Click on the list
+        name to access the mailing list archives:</p>
+      <table border=0 cellpadding=10 cellspacing=0>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-announce/">ecos-announce</a>
+          </td>
+          <td>
+            <p>A read-only low volume list for significant news about eCos
+               and to announce events such as new eCos releases or major new
+               eCos features.</p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-cvs/">ecos-cvs</a>
+          </td>
+          <td>
+            <P>A read-only list that gives notifications of changes made in
+               the <a href="anoncvs.html">eCos CVS repository</a></p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-devel/">ecos-devel</a>
+          </td>
+          <td>
+            <p>A list for discussions among those working on enhancements,
+               new features and new ports of eCos itself. It is <i>not</i>
+               intended for general requests for help, or for information
+               about using eCos.</p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-discuss/">ecos-discuss</a>
+          </td>
+          <td>
+            <p>A list for general open discussion about eCos. Requests for help
+               and information are welcome on this list. This is the
+               best starting place for all eCos users in need of help. All the
+               eCos developers also read this list.</p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-patches/">ecos-patches</a>
+          </td>
+          <td>
+            <p>A list used by developers to submit eCos patches for approval
+               by a maintainer prior to them being committed to the eCos source
+               repository. Discussion of these patches may also take place
+               on this list.</p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#EEEEEE">
+            <a href="/ml/ecos-webpages-cvs/">ecos-webpages-cvs</a>
+          </td>
+          <td>
+            <p>A read-only list giving notifications of changes to the eCos
+               web pages, which are maintained in CVS.</p>
+          </td>
+        </tr>
+      </table>
 
 <p>We strongly recommend you read both the eCos documentation fully
 and search the above mail archives before asking simple questions
-on the discussion list, particularly if they are likely to be problems
+on the discussion lists, particularly if they are likely to be problems
 that people would have encountered before.</p>
 
-<p>There are additional mailing lists specifically for those requiring
-notification of changes at this site. Subscribers to the
-<nobr><i>ecos-cvs</i></nobr> list will receive notification of any changes to
-the eCos anonymous CVS repository.  <a href="/ml/ecos-cvs/">Archives of
-ecos-cvs</a> are also available.  Subscribers to the
-<nobr><i>ecos-webpages-cvs</i></nobr> list will receive notification of any
-changes to the eCos web pages.</p>
+<h2>Subscribing to or unsubscribing from a mailing list</h2>
 
-<p>To subscribe to any of these mailing lists, use the mailing list request
+<p>To subscribe to any of the above mailing lists, use the mailing list request
 form below. Digest versions of each list are also available where messages
-are forwarded on a daily basis. If you are experiencing problems with the use
-of these mailing lists, please refer to the
+are forwarded on an intermittent basis. If you are experiencing problems
+with the use of these mailing lists, please refer to the
 <a href="/lists.html#faqs" target="_top">mailing list FAQ</a>.</p>
-
-<h2>Mailing list request form</h2>
 
 <form method="get" action="/cgi-bin/ml-request">
 <table width="60%" border=0 cellpadding=4 cellspacing=0>
@@ -60,7 +108,9 @@ of these mailing lists, please refer to the
     <select name="listname" size=1>
       <option selected>ecos-announce
       <option>ecos-cvs
+      <option>ecos-devel
       <option>ecos-discuss
+      <option>ecos-patches
       <option>ecos-webpages-cvs
     </select>
   </td>
@@ -78,22 +128,21 @@ of these mailing lists, please refer to the
 </table>
 </form>
 
-<h2>Contacting Red Hat</h2>
+<h2>Contacting the eCos maintainers</h2>
 
-<p>Commercial enquires covering eCos development, porting and support contracts
-should be addressed to the eCos commercial team at
-<nobr>&lt;<a href="mailto:ecos-info@redhat.com">ecos-info@redhat.com</a>&gt;</nobr>.
-Private technical queries concerning eCos development and
-collaboration should be addressed to the eCos maintainers
-<nobr>&lt;<a href="mailto:ecos-maintainers@redhat.com">ecos-maintainers@redhat.com</a>&gt;</nobr>.
-Please note that the eCos maintainers are unable to provide technical
+<p>Although in general the above mailing lists should be used where possible,
+if you wish to contact the eCos maintainers in a less overt way, you may
+e-mail <nobr>&lt;<a href="mailto:ecos-maintainers@sources.redhat.com">
+ecos-maintainers@sources.redhat.com</a>&gt;</nobr>. Note this is not a
+private list - the archives are available <a href="/ml/ecos-maintainers/">
+here</a>.</p>
+
+<p>Please note that the eCos maintainers are unable to provide technical
 support, and general technical queries or requests for help or information
 that would have been more appropriate for
-<nobr>&lt;<a href="mailto:ecos-discuss@sources.redhat.com">ecos-discuss@sources.redhat.com</a>&gt;</nobr>
-may not be answered.</p>
+<nobr>&lt;<a href="mailto:ecos-discuss@sources.redhat.com">
+ecos-discuss@sources.redhat.com</a>&gt;</nobr> will <b>not</b> be answered.</p>
 
-<p>Please use our pre-sale inquiries address
-<nobr>&lt;<a href="mailto:presales@redhat.com">presales@redhat.com</a>&gt;</nobr>
-for information concerning other Red Hat products.</p>
+<HR noshade SIZE=3>
 
 <!--#include virtual="include/footer.html"-->
