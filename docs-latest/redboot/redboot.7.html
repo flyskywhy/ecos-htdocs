@@ -866,19 +866,19 @@ Make sure your parallel port is connected to the 1284 port Of the Atlas board.</
 <A NAME="pgfId=2685168">
  </A>
 Send the deleteall.dl file to the parallel port to erase previous images:</LI>
-</OL>
+
 <PRE CLASS="CodeExample2"><A NAME="pgfId=2685169"> </A>
  % cat deleteall.dl &gt;/dev/lp0</PRE>
 <P CLASS="NumberedFollow">
 <A NAME="pgfId=2685170">
  </A>
  When this is complete, the LED display should read &quot;Deleted.&quot;</P>
-<OL>
+
 <P><P><LI>
 <A NAME="pgfId=2685171">
  </A>
- 5) Send the RedBoot image to the board:</LI>
-</OL>
+ Send the RedBoot image to the board:</LI>
+
 <PRE CLASS="CodeExample2"><A NAME="pgfId=2685172"> </A>
  % cat redboot.dl &gt;/dev/lp0</PRE>
 <P CLASS="NumberedFollow">
@@ -887,7 +887,7 @@ Send the deleteall.dl file to the parallel port to erase previous images:</LI>
 When this is complete, the LED display should show the last address programmed. This will be something like: <TT CLASS="Code">
 1fc17000</TT>
 .</P>
-<OL>
+
 <P><P><LI>
 <A NAME="pgfId=2685174">
  </A>
