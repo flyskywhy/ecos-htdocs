@@ -35,10 +35,13 @@ respond to your problem via E-mail as quickly as possible.
   <TD ALIGN=LEFT><input text size=40 name="email" align=top></TD>
 </TR>
 
+<!--
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>*&nbsp;Customer-ID:</TD> 	
   <TD ALIGN=LEFT><input text size=40 name="&#62;Customer-Id" align=top value="ecos-contrib"></TD>
 </TR>
+all eCos sourceware PRs have customer ID of "ecos-contrib" -->
+<input type=hidden name="&#62;Customer-Id" value="ecos-contrib">
 
 <TR VALIGN=TOP>
   <TD ALIGN=RIGHT>*&nbsp;Organization:</TD> 
@@ -90,9 +93,11 @@ respond to your problem via E-mail as quickly as possible.
   <TD ALIGN=LEFT><SELECT NAME="&#62;Release">
   <OPTION selected>Select a Release
     <OPTION>eCos v1.1
+<!--
     <OPTION>eCos v1.0
     <OPTION>ECC March 1998 v0.2
     <OPTION>ECC June 1998 v0.3
+-->
   </SELECT></TD>
 </TR>
 
@@ -114,6 +119,8 @@ respond to your problem via E-mail as quickly as possible.
     <OPTION selected>Select a Target
     <OPTION >Matsushita MN10300
     <OPTION >Matsushita MN10300 Simulator
+    <OPTION >PowerPC
+    <OPTION >PowerPC Simulator
     <OPTION >Toshiba TX39
     <OPTION >Toshiba TX39 Simulator
     <OPTION >(any target)
