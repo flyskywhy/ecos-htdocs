@@ -135,23 +135,15 @@ still possible to run GDB in command-line mode by using the <tt>-nw</tt>
 command-line option when invoking GDB, so there is nothing to lose by using the Insight
 sources.<p>
 
-At this time, a new GDB release (version 5.0) is imminent. It is recommended
-that a recent <a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/">GDB snapshot</a>
-is used while the release is being finalized. Note that the snapshot
-files mentioning <i>dejagnu</i> are only required if you wish to run the GDB
-testsuite.
-
-Alternatively, click
-on on one of following links to download the files directly:
+The latest release (version 5.0) is recommended and may be downloaded via the GDB home page.
+Alternatively, click on on one of following links to download the files directly:
 
 <ul>
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/insight+dejagnu.tar.bz2">
-  Latest Insight snapshot</a> (insight+dejagnu.tar.bz2 - 15MB)
-<li><a href="ftp://sourceware.cygnus.com/pub/gdb/snapshots/gdb+dejagnu.tar.bz2">
-  Latest GDB snapshot</a> (gdb+dejagnu.tar.bz2 - 11.5MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/insight-5.0.tar.bz2">
+  Insight 5.0 distribution</a> (insight-5.0.tar.bz2 - 14MB)
+<li><a href="ftp://sourceware.cygnus.com/pub/gdb/releases/gdb-5.0.tar.bz2">
+  GDB 5.0 distribution</a> (gdb-5.0.tar.bz2 - 9.1MB)
 </ul>
-
-
 
 <p>
 <h3>Preparing the sources for building</h3>
@@ -198,7 +190,7 @@ ${GCCSNAP+
 &nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; egcs-g++-<i>YYYYMMDD</i>.tar.bz2 | tar xvf -<br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight.tar.bz2 | tar xvf -
+&nbsp;&nbsp;&nbsp;&nbsp;bunzip2 &lt; insight-5.0.tar.bz2 | tar xvf -
 </tt></nobr>
 
 ${GZIP+
@@ -216,7 +208,7 @@ ${GCCSNAP+
 &nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; egcs-g++-<i>YYYYMMDD</i>.tar.gz | tar xvf -<br>
 }
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; insight.tar.gz | tar xvf -
+&nbsp;&nbsp;&nbsp;&nbsp;gunzip &lt; insight-5.0.tar.gz | tar xvf -
 </tt></nobr>
 }
 <p>
@@ -229,34 +221,23 @@ ${GCCSNAP-
 ${GCCSNAP+
 &nbsp;&nbsp;&nbsp;&nbsp;/src/gcc/egcs-<i>YYYYMMDD</i><br>
 }
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-<i>YYYYMMDD</i>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0
 </tt></nobr>
 <p>
 If the standard GDB source distribution was downloaded rather than insight,
-then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-<i>YYYYMMDD</i></tt></nobr> rather than
-<nobr><tt>/src/gdb/insight-<i>YYYYMMDD</i></tt></nobr>.<p>
+then the GDB tools source directory will be <nobr><tt>/src/gdb/gdb-5.0</tt></nobr> rather than
+<nobr><tt>/src/gdb/insight-5.0</tt></nobr>.<p>
 
 <li>You may now need to apply a small number of source patches that are
 required to fix outstanding problems and add eCos support to the tools.
-If you are using a GDB/Insight snapshot dated earlier than 2000-03-30, then
-you must download the <a href="patches/ecos-gdb.pat">ecos-gdb.pat</a> patch to a file.
+Any required patches are detailed below.<p>
+
+${GCCSNAP-
+Download the <a href="patches/ecos-gcc-2952.pat">
+ecos-gcc-2952.pat</a> patch to a file.
 This can be achieved with most browsers by either shift-clicking or right-clicking on the link.
 You must not view the link and cut-and-paste because white space must be preserved exactly.
 Apply the patch:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-${WINDOWS+
-&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\r' &lt; ecos-gdb.pat | patch -p0
-}
-${WINDOWS-
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gdb.pat
-}
-</tt></nobr>
-<p>
-
-${GCCSNAP-
-In a similar manner, download the <a href="patches/ecos-gcc-2952.pat">
-ecos-gcc-2952.pat</a> patch to a file and apply it:<p>
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /src/gcc/gcc-2.95.2<br>
 ${WINDOWS+
@@ -413,7 +394,7 @@ ${GCCSNAP+
 <nobr><tt>
 &nbsp;&nbsp;&nbsp;&nbsp;mkdir -p /tmp/build/gdb<br>
 &nbsp;&nbsp;&nbsp;&nbsp;cd /tmp/build/gdb<br>
-&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-<i>YYYYMMDD</i>/configure --target=$TOOLPREFIX \\<br>
+&nbsp;&nbsp;&nbsp;&nbsp;/src/gdb/insight-5.0/configure --target=$TOOLPREFIX \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--prefix=/tools \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--exec-prefix=/tools/H-$HOSTPREFIX \\<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-v 2&gt;&amp;1 | tee configure.out
@@ -423,7 +404,7 @@ ${GCCSNAP+
 <li>Build and install Insight:<p>
 
 <nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;$ make -w all install 2&gt;&1 | tee make.out
+&nbsp;&nbsp;&nbsp;&nbsp;make -w all install 2&gt;&1 | tee make.out
 </tt></nobr>
 <p>
 </ol>
@@ -976,17 +957,6 @@ to a file and apply it:<p>
 </tt></nobr><p>
 '
 
-EXTRAPATCH='
-Finally, if you are using a GDB snapshot dated earlier than 2000-04-09 you must
-download the <a href="patches/ecos-gdb-vr4300-mipsregsize.pat">ecos-gdb-vr4300-mipsregsize.pat</a> patch
-to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;tr -d '\'\\r\'' &lt; ecos-gdb-vr4300-mipsregsize.pat | patch -p0
-</tt></nobr><p>
-'
-
-
 outputfunc win-vr4300-elf.html
 
 ###################
@@ -1014,17 +984,6 @@ to a file and apply it:<p>
 &nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gcc-snap.pat
 </tt></nobr><p>
 '
-
-EXTRAPATCH='
-Finally, if you are using a GDB snapshot dated earlier than 2000-04-09 you must
-download the <a href="patches/ecos-gdb-vr4300-mipsregsize.pat">ecos-gdb-vr4300-mipsregsize.pat</a> patch
-to a file and apply it:<p>
-<nobr><tt>
-&nbsp;&nbsp;&nbsp;&nbsp;cd /src/gdb/insight-<i>YYYYMMDD</i><br>
-&nbsp;&nbsp;&nbsp;&nbsp;patch -p0 &lt; ecos-gdb-vr4300-mipsregsize.pat
-</tt></nobr><p>
-'
-
 
 outputfunc linux-vr4300-elf.html
 
