@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Contributions</TITLE>
+</HEAD>
+
+<!--#include virtual="include/header.html"-->
+
+<H2>Contributions</H2>
+<HR SIZE=3>
+
+<h3>Introduction</h3>
+Contributions to eCos are always welcome. These may be in the form of
+a new package, enhancements to an existing package or bug fixes. A contribution
+may be from a individual or part of a collaborative project. Information
+on how to contribute is contained within the eCos <a href="faq.html">FAQ</a>.
+
+<h3>External projects</h3>
+
+The following external projects are known to the eCos maintainers. Sources are
+provided <i>as is</i> and are not supported by Cygnus at this time.
+
+<h4>TCP/IP stack</h4>
+
+Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
+FreeBSD-derived TCP/IP stack. The sources are available for download at:<p>
+&nbsp;&nbsp;<a href="ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/">
+ftp://sourceware.cygnus.com/pub/ecos/contrib/io/tcpip/rtems/</a>
+
+<h4>PC platform HAL</h4>
+
+Patrick O'Grady has developed an eCos HAL for the PC platform. A GDB stub
+is provided, allowing the developer to download applications to the target
+PC via a serial port. The sources are available for download at:<p>
+&nbsp;&nbsp;<a href="ftp://sourceware.cygnus.com/pub/ecos/contrib/hal/i386/">
+ftp://sourceware.cygnus.com/pub/ecos/contrib/hal/i386/</a>
+
+<h4>Synthetic Linux platform HAL</h4>
+
+Chris Provenzano has developed the eCos i386/Linux synthetic target. This
+is essentially a port of the eCos HAL to a Linux process and allows the
+developer to run eCos applications under Linux as if they were
+native Linux applications. The sources are included in the eCos net
+distribution as of release 1.2.1.
+
+<h4>Floating point hardware support</h4>
+
+Sergei Organov is working on support for floating point hardware within eCos.
+He is targeting the PowerPC processors initially. Sources are not yet available.
+
+<h4>NEC V850 architecture HAL</h4>
+
+Takayuki Wakabayashi has developed an eCos HAL for the NEC V850 architecture.
+The port was developed using the NEC V850 simulator and has not as yet been
+targetted at a specific hardware platform. The port is completely unsupported 
+and has not been tested at Cygnus. The sources will be available shortly.
+
+<h4>Motorola MPC8xxFADS platform HAL</h4>
+
+Kevin Hester has developed an eCos HAL for the Motorola MPC8xx Family Application
+Development System platform. The sources are included in the eCos net
+distribution as of release 1.2.1.
+
+<h4>Samsung SNDS platform HAL</h4>
+
+Grant Edwards is working on a port to the Samsung KS32C5000 microcontroller
+(ARM7TDMI core) and SNDS development hardware.
+Sources are not yet available (estimated availability - January 2000).
+
+<h3>Individual contributors</h3>
+
+The eCos team recognizes the following individuals who have contributed to
+eCos:
+
+<ul>
+<li>Grant Edwards &lt;<a href="mailto:grante@visi.com">grante@visi.com</a>&gt;
+<li>Tristan Gingold &lt;<a href="mailto:gingold@email.enst.fr">gingold@email.enst.fr</a>&gt;
+<li>Kevin Hester &lt;<a href="mailto:khester@opticalnetworks.com">khester@opticalnetworks.com</a>&gt;
+<li>Andrew Lunn &lt;<a href="mailto:lunn@ma.tech.ascom.ch">lunn@ma.tech.ascom.ch</a>&gt;
+<li>Patrick O'Grady &lt;<a href="mailto:patrick@softprocess.com">patrick@softprocess.com</a>&gt;
+<li>Sergei Organov <!-- &lt;<a href="mailto:osv@javad.ru">osv@javad.ru</a>&gt; -->
+<li>Chris Provenzano <!-- &lt;<a href="mailto:proven@proven.org">proven@proven.org</a>&gt; -->
+<li>Takayuki Wakabayashi <!-- &lt;<a href="mailto:takayuki@ertl.ics.tut.ac.jp">takayuki@ertl.ics.tut.ac.jp</a>&gt; -->
+</ul>
+
+If we have left anyone off the list, please accept our apologies
+and inform the <a href="mailto:ecos-maintainers@cygnus.com">eCos maintainers</a> of 
+the omission.
+
+<!--#include virtual="include/footer.html"-->
