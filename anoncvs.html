@@ -117,6 +117,22 @@ To check out a particular version from scratch, use a command such as:
 As with all such <i>sticky</I> checkouts, a cvs
 update will <i>not</i> update your sources to the latest version.
 <P>
+<h3>eCos Configuration Tool</h3>
+<P>
+The current set of sources in the CVS repository require an updated version
+of the eCos Configuration Tool for Windows. You can download it by clicking on
+<A HREF="ftp://sourceware.cygnus.com/pub/ecos/anoncvs/Configtool.exe.gz">this link</A>.
+<P>
+Unzip it using the command:
+<PRE>
+     gunzip Configtool.exe.gz
+</PRE>
+from the "eCos Developer's Kit" option for Developer's Kit customers, or a
+Cygwin bash shell for Sourceware customers. Then go to the
+<CODE>tools/bin</CODE> subdirectory of your eCos installation. Rename the
+existing <CODE>Configtool.exe</CODE> to <CODE>Configtool.exe.old</CODE> and
+finally copy in the Configtool.exe that you just uncompressed.
+<P>
 <h3>Other notes</h3>
 <P>
 Anonymous CVS access to the repository is read-only. If
