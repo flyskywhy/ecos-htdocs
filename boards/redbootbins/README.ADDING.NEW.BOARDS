@@ -1,0 +1,24 @@
+It's pretty simple: just create a directory to (uniquely!) signify the board
+name.... the ecos.db target is a good first choice of course.
+
+Stick the redboot binaries there - you can use different subdirectories off
+that for different startups (as per nano) or just name the files - up to
+you - whatever will be clearest to the users.
+
+Also include a file in each new directory called "platformname" which
+will be used in the title of the HTML file. If you have sub-subdirectories
+have a look at the nano/ directory for how to do it.
+
+Then just run ./genindex.sh which shouldn't report any problems of
+course.  Check with cvs diff and commit. You don't need to worry about
+cvs adding in binary mode etc. for *.bin, *.elf, *.img and *.srec -
+CVS is already set up to do the right thing for those extensions.
+
+BTW, in future this will all come from ecos/images and be copied into the FTP
+space instead automagically, but that's a low priority thing to do. Don't
+worry so much about checking into both here and ecos/images - when the
+time comes I will ensure the two are merged together with the latest images.
+
+Happy hacking,
+
+Jifl
