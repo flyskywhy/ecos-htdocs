@@ -37,6 +37,16 @@ We also provide a simple but effective way to
 over the web using CVSweb. You can inspect the contents, history and
 differences between versions of all files in the repository in this way.</p>
 
+<h2>eCos v2.0</h2>
+
+An early version of the eCos v2.0 code base has been made available via
+anonymous CVS. This code is now the default, although it is only of alpha
+quality at this time. eCos v2.0 includes a change to the licence from
+the RHEPL to the GPL with a modification that makes it more suitable for
+embedded systems. To retrieve the last revision that was licensed under
+the RHEPL, you need to use the <tt>last-rhepl</tt> CVS tag in your
+CVS checkout as described below.
+
 <h2>The CVS source repository</h2>
 
 <p>The anonymous CVS repository contains the latest version of our master
@@ -81,13 +91,27 @@ anonymous CVS sources and for full releases of eCos. Create a new
 directory for the check out, change to that directory, and type:</p>
 
 <kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P ecos</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P net</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P snmp</kbd>
 
-<p>This command should initiate a connection to the CVS server and check out
-the latest version of eCos. In the future, when you want to update your
+<p>These commands should initiate a connection to the CVS server and check out
+the latest version of eCos, including TCP/IP networking stack and SNMP. For
+those who want the last version of eCos to be released under the RHEPL,
+instead type:</p>
+
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P ecos</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P net</kbd>
+<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -r last-rhepl -P snmp</kbd>
+
+<p>In the future, when you want to update your
 repository to the latest version, go to the base of the repository tree and
 use the command:</p>
 
 <kbd>cvs -z 6 update -d -P</kbd>
+
+<p>or for the older RHEPL'd version of eCos:</p>
+
+<kbd>cvs -z 6 update -r last-rhepl -d -P</kbd>
 
 <h2>Using the repository</h2>
 
@@ -107,49 +131,6 @@ the Build->Repository menu item.</p>
 <p>Use of a new repository with an old build tree is not recommended. Changes
 may have been made to the repository CDL files that will not be present in
 the working versions in your build tree.</p>
-
-<h2>Optional networking support</h2>
-
-<p>Networking support is an optional feature in eCos and is not checked out
-from the repository by default. The 1.3.1 EPKs are <b>not</b> compatible with
-the code in the anonymous CVS repository. Such support can be added to an
-already checked out tree by executing the following command:</p>
-
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P net</kbd>
-
-<p>A port of the University of California at Davis (UCD) SNMP stack is also
-available as a separate optional package, and may be checked out by
-additionally executing the following command:</p>
-
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos -z 6 co -P snmp</kbd>
-
-<p>Note that the networking and SNMP package records will be present in the package
-database (<tt>ecos.db</tt>) regardless of whether networking or SNMP support
-is checked out. Updated configuration tools (see below) are
-required when the networking/SNMP support is not present. The
-eCos 1.3.1 tools will report errors.</p>
-
-<h2>Release tags</h2>
-
-<p>Our public releases have all been tagged in the repository so that you can
-check out the official release of any particular version. More usefully,
-these tags can be used to view the differences between e.g. the last officially
-released version and the latest version in the repository:</p>
-
-<kbd>cvs diff -r ecos-v1_1-release ecos/packages/targets</kbd>
-
-<p>The release tags all take the form
-<CODE>ecos-&lt;version&gt;-release</CODE> (eg
-<CODE>ecos-v1_3_1-release</CODE>). The repository is also tagged every time a
-new snapshot is generated. These tags are of the form <CODE>ecos-sw-&lt;date
-in ISO format&gt;</CODE> (eg <CODE>ecos-sw-1999-05-11</CODE>).</p>
-
-<p>To check out a particular version from scratch, use a command such as:</p>
-
-<kbd>cvs -d :pserver:anoncvs@sources.redhat.com:/cvs/ecos co -r ecos-v1_3_1-release ecos</kbd>
-
-<p>As with all such <i>sticky</I> checkouts, a cvs
-update will <i>not</i> update your sources to the latest version.</p>
 
 <A name="host-tools"></a><h2>Host configuration tools</h2>
 
