@@ -415,13 +415,18 @@ NAME="AEN1614"
 >Restoring Windows/CE</A
 ></H3
 ><P
->To restore Windows/CE from the backup taking in <A
+>To restore Windows/CE from the backup taken in <A
 HREF="ipaq.html#IPAQ-INSTALL-RB-PERMANENTLY"
 >the section called <I
 >Setting up and testing RedBoot</I
 ></A
 >,
-visit http://www.handhelds.org/projects/wincerestoration.html for directions.</P
+visit <A
+HREF="http://www.handhelds.org/projects/wincerestoration.html"
+TARGET="_top"
+>http://www.handhelds.org/projects/wincerestoration.html</A
+>
+for directions.</P
 ></DIV
 ></DIV
 ><DIV
@@ -429,7 +434,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1618"
+NAME="AEN1619"
 >Flash Management</A
 ></H2
 ><DIV
@@ -437,41 +442,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1620"
->Additional config options</A
-></H3
-><P
->The <TT
-CLASS="COMPUTEROUTPUT"
->exec</TT
-> command to run Linux kernels
-is supported for this board (see <A
-HREF="executing-programs.html"
->the section called <I
->Executing Programs from RedBoot</I
-> in Chapter 2</A
->). The <TT
-CLASS="COMPUTEROUTPUT"
->exec</TT
-> parameters used for the iPAQ are:</P
-><P
->-b &lt;addr&#62; - Location Linux kernel was loaded to -l
-&lt;len&#62; - Length of kernel  -c "params" - Parameters passed
-to kernel  -r &lt;addr&#62; - 'initrd' ramdisk location -s
-&lt;len&#62;  - Length of initrd ramdisk </P
-><P
->Linux kernels may be run on the iPAQ using the sources from the anonymous
-CVS repository at the Handhelds project ( http://www.handhelds.org/ ) with
-the elinux.patch file applied. This file can be found in the misc/ subdirectory
-of the iPAQ platform HAL in the RedBoot sources, normally hal/arm/sa11x0/ipaq/VERSION/misc/
-  </P
-></DIV
-><DIV
-CLASS="SECT3"
-><H3
-CLASS="SECT3"
-><A
-NAME="AEN1628"
+NAME="AEN1621"
 >Updating the secondary RedBoot image</A
 ></H3
 ><P
@@ -532,7 +503,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1635"
+NAME="AEN1628"
 >Updating the primary RedBoot image</A
 ></H3
 ><P
@@ -568,7 +539,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->fis unlock -f 0x50000000 -l 0x4000</PRE
+>fis unlock -f 0x50000000 -l 0x40000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -580,7 +551,7 @@ WIDTH="100%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->fis lock -f 0x50000000 -l 0x4000</PRE
+>fis lock -f 0x50000000 -l 0x40000</PRE
 ></TD
 ></TR
 ></TABLE
@@ -592,7 +563,123 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1642"
+NAME="AEN1635"
+>Additional commands</A
+></H2
+><P
+>The <TT
+CLASS="COMPUTEROUTPUT"
+>exec</TT
+> command which allows the loading
+and execution of Linux kernels,
+is supported for this board (see <A
+HREF="executing-programs.html"
+>the section called <I
+>Executing Programs from RedBoot</I
+> in Chapter 2</A
+>). The <TT
+CLASS="COMPUTEROUTPUT"
+>exec</TT
+> parameters used for the iPAQ are:</P
+><P
+></P
+><DIV
+CLASS="VARIABLELIST"
+><DL
+><DT
+>-b <TT
+CLASS="REPLACEABLE"
+><I
+>&lt;addr&#62;</I
+></TT
+></DT
+><DD
+><P
+>Location Linux kernel was loaded to</P
+></DD
+><DT
+>-l <TT
+CLASS="REPLACEABLE"
+><I
+>&lt;len&#62;</I
+></TT
+></DT
+><DD
+><P
+>Length of kernel</P
+></DD
+><DT
+>-c <TT
+CLASS="REPLACEABLE"
+><I
+>"params"</I
+></TT
+></DT
+><DD
+><P
+>Parameters passed to kernel</P
+></DD
+><DT
+>-r <TT
+CLASS="REPLACEABLE"
+><I
+>&lt;addr&#62;</I
+></TT
+></DT
+><DD
+><P
+>'initrd' ramdisk location</P
+></DD
+><DT
+>-s <TT
+CLASS="REPLACEABLE"
+><I
+>&lt;len&#62;</I
+></TT
+></DT
+><DD
+><P
+>Length of initrd ramdisk</P
+></DD
+></DL
+></DIV
+><P
+>Linux kernels may be run on the iPAQ using the sources from the anonymous
+CVS repository at the Handhelds project (<A
+HREF="http://www.handhelds.org/"
+TARGET="_top"
+>http://www.handhelds.org/</A
+>) with
+the <TT
+CLASS="FILENAME"
+>elinux.patch</TT
+> patch file applied. This file can be
+found in the
+<TT
+CLASS="FILENAME"
+>misc/</TT
+> subdirectory of the iPAQ platform HAL in the
+RedBoot sources, normally
+<TT
+CLASS="FILENAME"
+>hal/arm/sa11x0/ipaq/<TT
+CLASS="REPLACEABLE"
+><I
+>VERSION</I
+></TT
+>/misc/</TT
+>
+  </P
+><P
+>On the iPAQ (and indeed all SA11x0 platforms), Linux expects to be loaded
+at address 0xC0008000 and the entry point is also at 0xC0008000.</P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN1674"
 >Memory Maps</A
 ></H2
 ><P
@@ -646,17 +733,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1649"
+NAME="AEN1681"
 >Resource Usage</A
 ></H2
 ><P
 >The flash based RedBoot image occupies flash addresses 0x50000000 -
 0x5003fff. RedBoot also reserves RAM (0x00000000 - 0x0001ffff) for RedBoot
 runtime uses. RAM based RedBoot configurations are designed to run from RAM
-at physical addresses 0x00020000 - 0x0003ffff. RAM physical addresses from
+at virtual addresses 0x00020000 - 0x0003ffff. RAM virtual addresses from
 0x00040000 to the end of RAM arae available for general use, such as a temporary
 scratchpad for downloaded images, before they are written to flash. An exception
-is RAM from 0x01F70000 - 0x01FFFFFF which are reserved for use by the LCD
+is RAM from 0x01F70000 - 0x01FFFFFF which is reserved for use by the LCD
 display.</P
 ></DIV
 ><DIV
@@ -664,7 +751,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1652"
+NAME="AEN1684"
 >Rebuilding RedBoot</A
 ></H2
 ><P
