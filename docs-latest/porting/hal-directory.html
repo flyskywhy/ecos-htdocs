@@ -177,8 +177,14 @@ it makes sense to use additional files.</p>
 
 <h4>Architecture HAL</h4>
 
-<p>Extras files for architecture specific serial drivers. Extra files
-for handling interrupts/exceptions if it makes sense.
+<p>Some architecture HALs may add extra files for architecture
+specific serial drivers, or for handling interrupts/exceptions if it
+makes sense.</p>
+
+<p>Note that many of the definitions in these files are only
+conditionally defined - if the equivalent variant or platform headers
+provide the definitions, those override the generic architecture
+definitions.</p>
 
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
@@ -188,75 +194,87 @@ for handling interrupts/exceptions if it makes sense.
 
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/arch.inc</tt></td>
-  <td></td>
+  <td>Various assembly macros used during system initialization.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/basetype.h</tt></td>
-  <td></td>
+  <td>Endian, label, alignment, and type size definitions. These
+  override common defaults in CYGPKG_INFRA.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/hal_arch.h</tt></td>
-  <td></td>
+  <td>Saved register frame format, various thread, register and stack
+  related macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/hal_cache.h</tt></td>
-  <td></td>
+  <td>Cache definitions and cache control macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/hal_intr.h</tt></td>
-  <td></td>
+  <td>Exception and interrupt definitions. Macros for configuring and
+  controlling interrupts. eCos real-time clock control macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/hal_io.h</tt></td>
-  <td></td>
+  <td>Macros for accessing IO devices.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/&lt;arch&gt;_regs.h</tt></td>
-  <td></td>
+  <td>Architecture register definitions.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/&lt;arch&gt;_stub.h</tt></td>
-  <td></td>
+  <td>Architecture stub definitions. In particular the register frame
+  layout used by GDB. This may differ from the one used by eCos.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/&lt;arch&gt;.inc</tt></td>
-  <td></td>
+  <td>Architecture convenience assembly macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/&lt;arch&gt;.ld</tt></td>
-  <td></td>
+  <td>Linker macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/context.S</tt></td>
-  <td></td>
+  <td>Functions handling context switching and setjmp/longjmp.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/hal_misc.c</tt></td>
-  <td></td>
+  <td>Execption and interrupt handlers in C. Various other utility
+  functions.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/hal_mk_defs.c</tt></td>
-  <td></td>
+  <td>Used to export definitions from C header files to assembler
+  header files.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/hal_intr.c</tt></td>
-  <td></td>
+  <td>Any necessary interrupt handling functions.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/&lt;arch&gt;stub.c</tt></td>
-  <td></td>
+  <td>Architecture stub code. Contains functions for translating eCos
+  exceptions to UNIX signals and functions for single-stepping.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/vectors.S</tt></td>
-  <td></td>
+  <td>Exception, interrupt and early initialization code.</td>
 </tr>
 </table>
 
 
 <h4>Variant HAL</h4>
 
-<p>Extras files for variant specific serial drivers. Extra files
-for handling interrupts/exceptions if it makes sense.
+<p>Some variant HALs may add extra files for variant specific serial
+drivers, or for handling interrupts/exceptions if it makes sense.</p>
+
+<p>Note that these files may be mostly empty if the CPU variant can be
+controlled by the generic architecture macros. The definitions present
+are only conditionally defined - if the equivalent platform headers
+provide the definitions, those override the variant definitions.</p>
 
 <table cellspacing=2 cellpadding=7 border=0 width=100%>
 <tr valign=top bgcolor=#999999>
@@ -265,39 +283,40 @@ for handling interrupts/exceptions if it makes sense.
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/var_arch.h</tt></td>
-  <td></td>
+  <td>Saved register frame format, various thread, register and stack
+  related macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/var_cache.h</tt></td>
-  <td></td>
+  <td>Cache related macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/var_intr.h</tt></td>
-  <td></td>
+  <td>Interrupt related macros.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/var_regs.h</tt></td>
-  <td></td>
+  <td>Extra register definitions for the CPU variant.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>include/variant.inc</tt></td>
-  <td></td>
+  <td>Various assembly macros used during system initialization.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/var_intr.c</tt></td>
-  <td></td>
+  <td>Interrupt functions if necessary.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/var_misc.c</tt></td>
-  <td></td>
+  <td>hal_variant_init function and any necessary extra functions.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/variant.S</tt></td>
-  <td></td>
+  <td>Interrupt handler table definition.</td>
 </tr>
 <tr valign=top bgcolor=#dddddd>
 <td><tt>src/&lt;arch&gt;_&lt;variant&gt;.ld</tt></td>
-  <td></td>
+  <td>Linker macros.</td>
 </tr>
 </table>
 
@@ -310,7 +329,5 @@ for handling interrupts/exceptions if it makes sense.
 
 <p>Extras files for platform specific serial drivers. Extra files
 for handling interrupts/exceptions if it makes sense.
-
-
 
 <!--#include virtual="../../include/footer.html"-->
