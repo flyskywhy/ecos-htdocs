@@ -14,6 +14,8 @@ course.  Check with cvs diff and commit. You don't need to worry about
 cvs adding in binary mode etc. for *.bin, *.elf, *.img and *.srec -
 CVS is already set up to do the right thing for those extensions.
 
+Be sure to "cvs add" any new index.html files that genindex.sh creates.
+
 BTW, in future this will all come from ecos/images and be copied into the FTP
 space instead automagically, but that's a low priority thing to do. Don't
 worry so much about checking into both here and ecos/images - when the
