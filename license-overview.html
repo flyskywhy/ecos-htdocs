@@ -8,44 +8,109 @@
 <h1>eCos License Overview</h1>
 <HR noshade SIZE=3>
 
-<p>eCos is released under the <A HREF="license.html">Red Hat eCos Public License</A>
-(RHEPL). The goal of the license is to serve the eCos user community as a
+<p>As of May 2002, eCos is released under a modified version of the
+well known <a href="http://www.gnu.org/copyleft/gpl.html">GNU General
+Public License (GPL)</a>. An exception clause has been added to the eCos
+license which limits the circumstances in which the license applies to
+other code when used in conjunction with eCos. The exception clause is
+as follows:</p>
+
+<ul><tt>
+ As a special exception, if other files instantiate templates or use macros
+ or inline functions from this file, or you compile this file and link it
+ with other works to produce a work based on this file, this file does not
+ by itself cause the resulting work to be covered by the GNU General Public
+ License. However the source code for this file must still be made
+ available in accordance with section (3) of the GNU General Public
+ License.<br><br>
+
+ This exception does not invalidate any other reasons why a work based on
+ this file might be covered by the GNU General Public License.</tt></ul>
+
+<p>The goal of the license is to serve the eCos user community as a
 whole. It allows all eCos users to develop products without paying
 anybody anything, no matter how many developers are working on the
-product or how many units will be shipped. The eCos source code will
-always be freely available. This applies not only to the core system
+product or how many units will be shipped. The license also guarantees
+that the eCos source code will
+always be freely available. This applies not only to the core eCos code
 itself but also to any changes that anybody makes to the core. In
-particular it should prevent any company or individual contributing
-code to the system and then, maybe after waiting six months or so,
-claim that all eCos users are now guilty of copyright or patent
+particular, it should prevent any company or individual contributing
+code to the system and then later claiming that all eCos users are
+now guilty of copyright or patent
 infringements and have to pay royalties. It should also prevent any
 company from making some small improvements, calling the result a
 completely new system, and releasing this under a new and less
 generous license.</p>
 
-<P>The license does <B>NOT</B> require users to release the source code
-of any applications that are developed with eCos. The only obligation
-it imposes on application developers is to include a
-<A HREF="license.html#exhibit-b">notice</A> with your product indicating that it
-makes use of eCos. It is not even necessary to inform Red Hat that this
-has happened, the inclusion of the notice is sufficient.</p>
+<P>The license does <i>not</i> require users to release the source code
+of any <i>applications</i> that are developed with eCos. However, if anybody
+makes any changes to code covered by the eCos license, or writes new files
+derived in any way from eCos code, then we believe that the entire user community should
+have the opportunity to benefit from this. The license stipulates that
+these changes must be made available in source code form to all recipients
+of binaries based on the modified code, either by including the sources along with the
+binaries you deliver (or with any device containing such binaries) or
+with a written offer to supply the source code to the general public
+for three years. It is perhaps most practical for eCos developers to
+make the source code available online and inform those who are
+receiving binaries containing eCos code, and probably also the eCos
+maintainers, about the location of the code. See the <a
+href="http://www.gnu.org/copyleft/gpl.html">full text of the GPL </a>
+for the most authoritative definition of the obligations.</p>
 
-<p>However, if anybody makes any changes to code covered by the eCos
-public license then we believe that the entire user community should
-have the opportunity to benefit from that change. Therefore any such
-changes must be made publicly available and announced to the user
-community, for example by means of a posting to the <A
-HREF="intouch.html">ecos-discuss</A> mailing list. Obviously not every
-change will be incorporated into the system, but the decisions will be
-made by the eCos maintainers. A <a href="assign.html">copyright
-assignment</a> will be required for any significant changes to the core
-eCos packages.</p>
-
+<p>Although it is not strictly necessary to contribute the modified code back to the
+eCos open source project, we are always pleased to receive code contributions
+and hope that developers will also be keen to give back in return for what
+they received from the eCos project completely free of charge.
+The eCos maintainers are responsible for deciding whether such contributions
+should be applied to the public repository. In addition, a
+<a href="assign.html">copyright assignment</a> is required for any
+significant changes to the core eCos packages.</p>
 
 <p>The result is a royalty-free system with minimal obligations on the
-part of application developers, which should result in a rapid uptake
-of eCos. At the same time eCos is fully open source with all the
+part of application developers. This has resulted in the rapid uptake
+of eCos. At the same time, eCos is fully open source with all the
 benefits that implies in terms of quality and innovation. We believe
 that this is a winning combination.</p>
+
+<h2>Questions and answers</h2>
+
+<p>The following queries provide some clarification as to the implications
+of the eCos license. They do not consititute part of the legal meaning of the license.</p>
+
+<p><b>Q.</b> What is the effect of the eCos license?</p>
+
+<p><b>A.</b> In the simplest terms, when you distribute anything containing eCos code,
+you must make the source code to eCos available under the terms of the GPL.</p>
+
+<p><b>Q.</b> What if I make changes to eCos, or write new code based on eCos code?</p>
+
+<p><b>A.</b> Then you must make those changes available as well.</p>
+
+<p><b>Q.</b> Do I have to distribute the source code to my application? Isn't the GPL
+"viral"?</p>
+
+<p><b>A.</b> You do not have to distribute any code under the terms of the GPL other than
+eCos code or code derived from eCos. For example, if you write a HAL port
+based on copying an existing eCos HAL in any way, you must make the source code available with
+the binary. However you would not need to make available any other code,
+such as the code of a wholly separate application linked with eCos.</p>
+
+<p><b>Q.</b> I would rather stick with the RHEPL code, but I updated my anonymous CVS
+checkout.</p>
+
+<p><b>A.</b> You can check out the final version of anonymous CVS before the licence
+change using the CVS tag <tt><i>last-rhepl</i></tt>. See
+<a href="http://sources.redhat.com/ecos/anoncvs.html">the anonymous CVS access page</a>
+for details.</p>
+
+<h2>Previous license</h2>
+
+Prior to May 2002, eCos was released under the
+<a href="old-license.html">Red Hat eCos Public License (RHEPL)</a>. The RHEPL
+required any modifications to eCos code to be made available under preferential
+terms to Red Hat and was therefore incompatible with code licensed under the GPL.
+The use of eCos source code which was licenced under the RHEPL is not affected by the
+switch to the modified GPL for later revisions.
 
 <!--#include virtual="include/footer.html"-->
