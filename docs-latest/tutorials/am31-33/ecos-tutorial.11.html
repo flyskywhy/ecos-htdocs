@@ -1,0 +1,812 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 11:16:57 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Configuring and Building eCos from Source</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1741554">
+ </A>
+<A NAME="12948">
+ </A>
+<A NAME="marker=2490510">
+ </A>
+Configuring and Building eCos from Source<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2295511">
+ </A>
+This chapter documents the configuration of eCos, using the ARM PID board as an example. The process is the same for any of the other supported targets: you may select a hardware target (if you have a board available), any one of the simulators, or a synthetic target (if your host platform has synthetic target support).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2337101">
+ </A>
+At the end of the chapter is a section describing special issues for this architecture which may affect the way you should configure eCos for your target.</P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2340802">
+ </A>
+<A NAME="33366">
+ </A>
+eCos Start-up Configurations</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2340803">
+ </A>
+There are various ways to download an executable image to a target board, and these involve different ways of preparing the executable image. In the eCos Hardware Abstraction Layer (HAL package) there are configuration options to support the different download methods. The following table summarizes the ways in which an eCos image can be prepared for different types of download. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2340805">
+ </A>
+</P>
+<P CLASS="TableTitle">
+<A NAME="pgfId=2340843">
+ </A>
+Configuration for various download methods</P>
+<TABLE>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=2340812">
+ </A>
+Download method</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=2340814">
+ </A>
+HAL configuration</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340816">
+ </A>
+Burn hardware ROM</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340818">
+ </A>
+&nbsp;ROM start-up</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340820">
+ </A>
+Download to ROM emulator</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340822">
+ </A>
+&nbsp;ROM start-up</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340824">
+ </A>
+Download to board with CygMon or GDB stub ROM</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340826">
+ </A>
+&nbsp;RAM start-up</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340828">
+ </A>
+Download to simulator without CygMon<SPAN CLASS="Bold">
+ </SPAN>
+or GDB stub ROM</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340830">
+ </A>
+&nbsp;ROM start-up</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340832">
+ </A>
+Download to simulator with CygMon</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340834">
+ </A>
+&nbsp;RAM start-up</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340836">
+ </A>
+Download to simulator ignoring devices</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340838">
+ </A>
+&nbsp;SIM configuration</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340840">
+ </A>
+Run synthetic target</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=2340842">
+ </A>
+&nbsp;RAM start-up</P>
+</TD>
+</TR>
+</TABLE>
+<H3 CLASS="Label">
+<A NAME="pgfId=2340844">
+ </A>
+CAUTION</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2340845">
+ </A>
+You cannot run an application configured for RAM start-up on the simulator directly: it will fail during start-up. You can only download it to the simulator if :</P>
+<UL>
+<UL>
+<UL>
+<P><LI>
+<A NAME="pgfId=2340846">
+ </A>
+you are already running CygMon (or a GDB stub) in the simulator, as described in the GNUPro documentation</LI>
+</UL>
+</UL>
+</UL>
+<H3 CLASS="Label">
+<A NAME="pgfId=2340849">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2340850">
+ </A>
+Configuring eCos' HAL package for simulation should rarely be needed for real development; binaries built with such a kernel will not run on target boards at all, and the MN10300 and TX39 simulators can run binaries built for stdeval1 and jmr3904 target boards. The main use for a &quot;simulation&quot; configuration is if you are trying to work around problems with the device drivers or with the simulator. </P>
+<P CLASS="Note">
+<A NAME="pgfId=2340851">
+ </A>
+If your chosen architecture does not have simulator support, then the combinations above that refer to the simulator do not apply. Similarly, if your chosen platform does not have CygMon or GDB stub ROM support, the combinations listed above that use CygMon or GDB stub ROMs do not apply.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340852">
+ </A>
+The debugging environment for most developers will be either a hardware board or the simulator, in which case they will be able to select a single HAL configuration.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2340853">
+ </A>
+More information on the interactions between CygMon, the simulators, and GDB's thread-aware debugging features is available in the GNUPro Reference Manual for your specific architecture. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1960494">
+ </A>
+<A NAME="21402">
+ </A>
+Using the <A NAME="marker=1960493">
+ </A>
+Configuration Tool on Windows</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1960495">
+ </A>
+ Note that the use of the <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ is described in detail in the <EM CLASS="Emphasis">
+eCos User's Guide.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=2030096">
+ </A>
+The <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ (see <A HREF="ecos-tutorial.11.html#13155" CLASS="XRef">
+Figure</A>
+) has five main elements: the <EM CLASS="Emphasis">
+configuration window,</EM>
+ the <EM CLASS="Emphasis">
+properties window,</EM>
+ the <A NAME="SHORT-DESCRIPTION-WINDOW">
+ </A>
+<EM CLASS="Emphasis">
+short description window,</EM>
+ the <EM CLASS="Emphasis">
+memory layout window,</EM>
+ and the <EM CLASS="Emphasis">
+output window.</EM>
+</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2276987">
+ </A>
+<A NAME="13155">
+ </A>
+Configuration Tool</P>
+<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2030103">
+ </A>
+Start by opening the templates window via <SPAN CLASS="BOLD">
+Build<IMG SRC="../pix/arrow.gif">Templates.</SPAN>
+ Select the desired target (see <A HREF="ecos-tutorial.11.html#23715" CLASS="XRef">
+ Template selection</A>
+).</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2297522">
+ </A>
+<A NAME="23715">
+ </A>
+Template selection</P>
+<DIV>
+<IMG SRC="../pix/templates.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2297470">
+ </A>
+Make sure that the configuration is correct for the target in terms of endianness, CPU model, Startup type, etc. (see <A HREF="ecos-tutorial.11.html#36702" CLASS="XRef">
+ Configuring for the target</A>
+ ).</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2276998">
+ </A>
+<CODE CLASS="CodeOutput">
+</CODE>
+<A NAME="36702">
+ </A>
+Configuring for the target</P>
+<DIV>
+<IMG SRC="../pix/ARMstartup.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2297513">
+ </A>
+Next, select the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Library</SPAN>
+ menu item to start building eCos (see  <A HREF="ecos-tutorial.11.html#41165" CLASS="XRef">
+ Selecting the build Library menu item</A>
+).</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2277022">
+ </A>
+<CODE CLASS="CodeOutput">
+</CODE>
+<A NAME="41165">
+ </A>
+Selecting the build Library menu item</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277026">
+ </A>
+</P>
+<DIV>
+<IMG SRC="../pix/build-lib.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2277027">
+ </A>
+The <EM CLASS="Emphasis">
+Save As</EM>
+ dialog box will appear, asking you to specify a directory in which to place your save file. You can use the default, but it is a good idea to make a subdirectory, called <EM CLASS="Emphasis">
+ecos-work</EM>
+ for example. </P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2277028">
+ </A>
+Build dialog</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277032">
+ </A>
+</P>
+<DIV>
+<IMG SRC="../pix/build-dialog.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2277033">
+ </A>
+The first time you build an eCos library for a specific architecture, the <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ may prompt you for the location of the appropriate build tools (including make and gcc) using a <SPAN CLASS="Bold">
+Build Tools</SPAN>
+ dialog box (as shown in <A HREF="ecos-tutorial.11.html#40176" CLASS="XRef">
+ Build tools dialog</A>
+). You can select a location from the drop down list, browse to the directory using the <SPAN CLASS="Bold">
+Browse</SPAN>
+ button, or type in the location of the build tools manually.</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2277038">
+ </A>
+<CODE CLASS="CodeOutput">
+</CODE>
+<A NAME="40176">
+ </A>
+Build tools dialog</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277042">
+ </A>
+</P>
+<DIV>
+<IMG SRC="../pix/build-tools.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2277043">
+ </A>
+The <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ may also prompt you for the location of the user tools (such as cat and ls) using a User Tools dialog box (as shown in <A HREF="ecos-tutorial.11.html#25497" CLASS="XRef">
+ User tools dialog</A>
+). As with the <SPAN CLASS="Bold">
+Build Tools</SPAN>
+ dialog, you can select a location from the drop down list, browse to the directory using the <SPAN CLASS="Bold">
+Browse</SPAN>
+ button, or type in the location of the user tools manually.</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2277048">
+ </A>
+<A NAME="25497">
+ </A>
+User tools dialog</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277052">
+ </A>
+</P>
+<DIV>
+<IMG SRC="../pix/user-tools.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=2277053">
+ </A>
+When the tool locations have been entered, the <SPAN CLASS="Bold">
+Configuration Tool</SPAN>
+ will configure the sources, prepare a build tree, and build the <EM CLASS="Emphasis">
+libtarget.a</EM>
+ library, which contains the eCos kernel and other packages.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277054">
+ </A>
+The output from the configuration process and the building of <EM CLASS="Emphasis">
+libtarget.a</EM>
+ will be shown in the output window. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2277055">
+ </A>
+Once the build process has finished you will have a kernel with other packages in <EM CLASS="Emphasis">
+libtarget.a.</EM>
+ You should now build the eCos tests for your particular configuration. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2277056">
+ </A>
+You can do this by selecting <SPAN CLASS="Bold">
+Build</SPAN>
+ <IMG SRC="../pix/arrow.gif"> <SPAN CLASS="BOLD">
+Tests.</SPAN>
+ Notice that you could have selected <SPAN CLASS="Bold">
+Tests</SPAN>
+ instead of <SPAN CLASS="Bold">
+Library</SPAN>
+ in the earlier step and it would have built <EM CLASS="Emphasis">
+both</EM>
+ the library and the tests, but this would increase the build time substantially, and if you do not need to build the tests it is unnecessary.</P>
+<P CLASS="FigureTitle">
+<A NAME="pgfId=2277057">
+ </A>
+Selecting the build tests menu item</P>
+<P CLASS="Body">
+<A NAME="pgfId=2277061">
+ </A>
+</P>
+<DIV>
+<IMG SRC="../pix/ch_build-tools.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1741625">
+ </A>
+<A HREF="ecos-tutorial.12.html#14697" CLASS="XRef">
+ Test Suites</A>
+ will guide you through running one of the test cases you just built on the selected target, using GDB. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2031450">
+ </A>
+<A NAME="26598">
+ </A>
+Using <A NAME="marker=2031449">
+ </A>
+ecosconfig on UNIX</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2031451">
+ </A>
+On UNIX systems the <EM CLASS="ProductName">
+Configuration Tool</EM>
+ is not yet available, but it is still possible to configure and build a kernel by editing a configuration file manually and using the <EM CLASS="Emphasis">
+ecosconfig</EM>
+ command. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2427283">
+ </A>
+The following instructions assume that the PATH and ECOS_REPOSITORY environment variables have been setup correctly as described in the section      <A HREF="ecos-tutorial.c.html#23594" CLASS="XRef">
+ Software Installation on UNIX</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2031452">
+ </A>
+Before invoking <EM CLASS="Emphasis">
+ecosconfig</EM>
+ you need to choose a directory in which to work. For the purposes of this tutorial, the default path will be <TT CLASS="Code">
+BASE_DIR/ecos-work</TT>
+. Create this directory and change to it by typing: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2031453"> </A>
+$ mkdir BASE_DIR/ecos-work
+$ cd BASE_DIR/ecos-work</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2387643">
+ </A>
+To see what options can be used with <EM CLASS="Emphasis">
+ecosconfig,</EM>
+ type: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089428"> </A>
+$ ecosconfig --help</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2089429">
+ </A>
+The available packages, targets and templates may be listed as follows:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089430"> </A>
+$ ecosconfig list</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2089431">
+ </A>
+Here is sample output from <EM CLASS="Emphasis">
+ecosconfig</EM>
+ showing the usage message.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2089432">
+ </A>
+</P>
+<P CLASS="ExampleTitle">
+<A NAME="pgfId=2089434">
+ </A>
+Getting <A NAME="marker=2089433">
+ </A>
+help from ecosconfig</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089435"> </A>
+$ ecosconfig --help
+Usage: ecosconfig [ qualifier ... ] [ command ]
+  commands are:
+    list                                       : list repository contents
+    new TARGET [ TEMPLATE [ VERSION ] ]        : create a configuration
+    target TARGET                              : change the target hardware
+    template TEMPLATE [ VERSION ]              : change the template
+    add PACKAGE [ PACKAGE ... ]                : add package(s)
+    remove PACKAGE [ PACKAGE ... ]             : remove package(s)
+    version VERSION PACKAGE [ PACKAGE ... ]    : change version of package(s)
+    export FILE                                : export minimal config info
+    import FILE                                : import additional config info
+    check                                      : check the configuration
+    resolve                                    : resolve conflicts
+    tree                                       : create a build tree
+  qualifiers are:
+    --config=FILE                              : the configuration file
+    --prefix=DIRECTORY                         : the install prefix
+    --srcdir=DIRECTORY                         : the source repository
+    --no-resolve		                               : disable conflict resolution
+    --version                                  : show version and copyright
+$
+</PRE>
+<P CLASS="ExampleTitle">
+<A NAME="pgfId=2089437">
+ </A>
+<SPAN CLASS="Bold">
+ecosconfig</SPAN>
+ output -- <A NAME="marker=2089436">
+ </A>
+list of available packages, targets and templates</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2388333"> </A>
+$ ecosconfig list
+Package CYGPKG_CYGMON (CygMon support via eCos):
+ aliases: cygmon
+ versions: v1_3_x
+Package CYGPKG_DEVICES_WALLCLOCK (Wallclock device code):
+ aliases: wallclock devices_wallclock device_wallclock
+ versions: v1_3_x
+Package CYGPKG_DEVICES_WATCHDOG (Watchdog device code):
+ aliases: watchdog devices_watchdog device_watchdog
+ versions: v1_3_x
+Package CYGPKG_ERROR (Common error code support):
+ aliases: error errors
+ versions: v1_3_x
+Package CYGPKG_HAL (eCos common HAL):
+ aliases: hal hal_common
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM (ARM common HAL):
+ aliases: hal_arm arm_hal arm_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM_AEB (ARM evaluation board (AEB-1)):
+ aliases: hal_arm_aeb arm_aeb_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM_CMA230 (Cogent CMA230/222 board):
+ aliases: hal_arm_cma230 arm_cma230_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM_EBSA285 (Intel EBSA285 StrongARM board):
+ aliases: hal_arm_ebsa285 arm_ebsa285_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM_EDB7XXX (Cirrus Logic development board):
+ aliases: hal_arm_edb7xxx arm_edb7xxx_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_ARM_PID (ARM development board (PID)):
+ aliases: hal_arm_pid arm_pid_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_I386 (i386 common HAL):
+ aliases: hal_i386 i386_hal i386_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_I386_LINUX (Linux synthetic target):
+ aliases: hal_i386_linux
+ versions: v1_3_x
+Package CYGPKG_HAL_I386_PC (i386 PC target):
+ aliases: hal_i386_pc
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS (MIPS common HAL):
+ aliases: hal_mips mips_hal mips_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS_SIM (MIPS simulator):
+ aliases: hal_mips_sim mips_sim_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS_TX39 (TX39 chip HAL):
+ aliases: hal_tx39 tx39_hal tx39_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS_TX39_JMR3904 (Toshiba JMR-TX3904 board):
+ aliases: hal_tx39_jmr3904 tx39_jmr3904_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS_VR4300 (VR4300 chip HAL):
+ aliases: hal_vr4300 vr4300_hal vr4300_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MIPS_VR4300_VRC4373 (NEC VRC4373 board):
+ aliases: hal_vrc4373 vrc4373_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300 (MN10300 common HAL):
+ aliases: hal_mn10300 mn10300_hal mn10300_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300_AM31 (MN10300 AM31 variant HAL):
+ aliases: hal_mn10300_am31 mn10300_am31_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300_AM31_SIM (MN10300 simulator):
+ aliases: hal_mn10300_sim mn10300_sim_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300_AM31_STDEVAL1 (Matsushita stdeval1 board):
+ aliases: hal_mn10300_stdeval1 mn10300_stdeval1_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300_AM33 (MN10300 AM33 variant HAL):
+ aliases: hal_mn10300_am33 mn10300_am33_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_MN10300_AM33_STB (Matsushita STB board):
+ aliases: hal_mn10300_am33_stb mn10300_am33_stb_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC (PowerPC common HAL):
+ aliases: hal_powerpc powerpc_hal powerpc_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_COGENT (Cogent CMA286/287 board):
+ aliases: hal_powerpc_cogent powerpc_cogent_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_FADS (Motorola MPC8xxFADS board):
+ aliases: hal_powerpc_fads powerpc_fads_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_MBX (Motorola MBX860/821 board):
+ aliases: hal_powerpc_mbx powerpc_mbx_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_MPC8xx (PowerPC 8xx variant HAL):
+ aliases: hal_mpc8xx mpc8xx_hal mpc8xx_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_PPC60x (PowerPC 60x variant HAL):
+ aliases: hal_ppc60x ppc60x_hal ppc60x_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_POWERPC_SIM (PowerPC simulator):
+ aliases: hal_powerpc_sim powerpc_sim_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_QUICC (Motorola MBX860/821 QUICC support):
+ aliases: hal_quicc quicc_hal quicc
+ versions: v1_3_x
+Package CYGPKG_HAL_SH (SH common HAL):
+ aliases: hal_sh sh_hal sh_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_SH_EDK7708 (Hitachi SH7708 board):
+ aliases: hal_sh_edk sh_edk_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_SPARCLITE (SPARClite common HAL):
+ aliases: hal_sparclite sparclite_hal sparclite_arch_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_SPARCLITE_SIM (SPARClite simulator):
+ aliases: hal_sparclite_sim sparclite_sim_hal
+ versions: v1_3_x
+Package CYGPKG_HAL_SPARCLITE_SLEB (Fujitsu MB86800-MA01 board):
+ aliases: hal_sparclite_sleb sparclite_sleb_hal
+ versions: v1_3_x
+Package CYGPKG_INFRA (Infrastructure):
+ aliases: infra
+ versions: v1_3_x
+Package CYGPKG_IO (I/O sub-system):
+ aliases: io
+ versions: v1_3_x
+Package CYGPKG_IO_PCI (PCI configuration library):
+ aliases: io_pci
+ versions: v1_3_x
+Package CYGPKG_IO_SERIAL (Serial device drivers):
+ aliases: serial io_serial
+ versions: v1_3_x
+Package CYGPKG_KERNEL (eCos kernel):
+ aliases: kernel
+ versions: v1_3_x
+Package CYGPKG_LIBC (C library):
+ aliases: libc clib clibrary
+ versions: v1_3_x
+Package CYGPKG_LIBM (Math library):
+ aliases: libm mathlib mathlibrary
+ versions: v1_3_x
+Package CYGPKG_UITRON (uITRON compatibility):
+ aliases: uitron
+ versions: v1_3_x
+Target aeb (ARM evaluation board (AEB-1)):
+ aliases: aeb1
+Target am31_sim (MN10300 AM31 minimal simulator):
+ aliases:
+Target cma230 (Cogent CMA230/222 board):
+ aliases: cma222
+Target cma28x (Cogent CMA286/287 board):
+ aliases: cma286 cma287
+Target ebsa285 (Intel EBSA285 StrongARM board):
+ aliases: ebsa
+Target edb7xxx (Cirrus Logic development board):
+ aliases: edb7211 eb7xxx eb7211
+Target fads (Motorola MPC8xxFADS board):
+ aliases:
+Target jmr3904 (Toshiba JMR-TX3904 board):
+ aliases: jmr tx39
+Target linux (Linux synthetic target):
+ aliases:
+Target mbx (Motorola MBX860/821 board):
+ aliases: mbx860 mbx821
+Target pc (i386 PC target):
+ aliases:
+Target pid (ARM development board (PID)):
+ aliases: PID
+Target psim (PowerPC simulator):
+ aliases: ppc_sim powerpc_sim
+Target sh7708 (Hitachi SH7708 board):
+ aliases: edk7708
+Target sleb (Fujitsu MB86800-MA01 board):
+ aliases:
+Target sparclite_sim (SPARClite simulator):
+ aliases: sl_sim sparcl_sim
+Target stb (Matsushita STB board):
+ aliases:
+Target stdeval1 (Matsushita stdeval1 board):
+ aliases:
+Target tx39_sim (TX39 minimal simulator):
+ aliases:
+Target vrc4373 (NEC VRC4373 board):
+ aliases:
+Template all:
+ versions: v1_3_x
+Template cygmon:
+ versions: v1_3_x
+Template default:
+ versions: v1_3_x
+Template kernel:
+ versions: v1_3_x
+Template minimal:
+ versions: v1_3_x
+Template stubs:
+ versions: v1_3_x
+Template uitron:
+ versions: v1_3_x</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2389825">
+ </A>
+For detailed information about how to edit the ecos.ecc file, see the <EM CLASS="Emphasis">
+CDL Writer's Guide</EM>
+ and <EM CLASS="Emphasis">
+Editing an eCos Savefile</EM>
+ in the <EM CLASS="Emphasis">
+eCos User's Guide.</EM>
+</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2388470">
+ </A>
+Selecting a <A NAME="marker=2388469">
+ </A>
+Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2089451">
+ </A>
+To configure for a listed target, type: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089452"> </A>
+$ ecosconfig new &lt;target&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2089453">
+ </A>
+For example, to configure for the ARM PID development board, type: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089454"> </A>
+$ ecosconfig new pid</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2089455">
+ </A>
+Then edit the generated file, <TT CLASS="Code">
+ecos.ecc</TT>
+, setting the options as required for the target (endianess, CPU model, Startup type, etc.)</P>
+<P CLASS="Body">
+<A NAME="pgfId=2297743">
+ </A>
+Create a build tree for the configured target by typing:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2089456"> </A>
+$ ecosconfig tree</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2089457">
+ </A>
+You can now run the command <EM CLASS="Emphasis">
+make</EM>
+ or <EM CLASS="Emphasis">
+make tests,</EM>
+ after which you will be at the same point you would be after running the <EM CLASS="ProductName">
+Configuration Tool</EM>
+ on Windows-- you can start developing your own applications, following the steps in <A HREF="ecos-tutorial.13.html#23350" CLASS="XRef">
+ Building and Running Sample Applications</A>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2089461">
+ </A>
+The procedure shown above allows you to do very coarse-grained configuration of the eCos kernel: you can select which packages to include in your kernel, and give target and start-up options. But you cannot select components within a package, or set the very fine-grained options. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2089462">
+ </A>
+To select fine-grained configuration options you will need to edit the configuration file ecos.ecc in the current directory and regenerate the build tree.</P>
+<DIV>
+<H6 CLASS="Label2">
+<A NAME="pgfId=2089463">
+ </A>
+CAUTION</H6>
+<UL>
+<P><LI>
+<A NAME="pgfId=2089464">
+ </A>
+You should follow the manual configuration process described above very carefully, and you should read the comments in each file to see when one option depends on other options or packages being enabled or disabled. If you do not, you might end up with an inconsistently configured kernel which could fail to build or might execute incorrectly.</LI>
+</UL>
+</DIV>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2337056">
+ </A>
+Architectural Notes</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2523401">
+ </A>
+There are no notes for this architecture.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Configuring and Building eCos from Source</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.10.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.12.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

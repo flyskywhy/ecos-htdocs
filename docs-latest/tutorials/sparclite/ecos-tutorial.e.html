@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 15:02:38 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Running Applications on the Target</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Running Applications on the Target</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.d.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=2293701">
+ </A>
+<A NAME="marker=2293699">
+ </A>
+<A NAME="18155">
+ </A>
+Running <A NAME="marker=2490507">
+ </A>
+Applications on the Target<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2270246">
+ </A>
+To verify both that a hardware target is properly set up, and that the GDB commands used to connect to the target (hardware, simulator or synthetic) work properly on your system, you will now be guided  through &quot;downloading&quot; and executing a prebuilt eCos test. The procedure is exactly the same when you want to download and run applications or tests that you have built yourself.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2270247">
+ </A>
+On Windows you must have the bash command line interpreter running with some environment variables which are useful for eCos work. If you have purchased the <SPAN CLASS="BOLD">
+eCos Developer's Kit,</SPAN>
+ you can select this by selecting <SPAN CLASS="BOLD">
+Start<IMG SRC="../pix/arrow.gif">Programs<IMG SRC="../pix/arrow.gif">Red Hat eCos<IMG SRC="../pix/arrow.gif">eCos Development  Environment.</SPAN>
+ If you are using the eCos Net release, you  should set the environment variables as shown in the <EM CLASS="Emphasis">
+GNUPro Toolkit Reference Manual.</EM>
+ On Linux, simply open a new shell window.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2293928">
+ </A>
+You will need to change directory to the prebuilt tests that are provided in the eCos installation. Change directory as follows:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2510396"> </A>
+for the SPARClite-based Fujitsu MB86800-MA01 board:
+  $ cd BASE_DIR/prebuilt/sleb/tests/kernel/v1_3_x/tests
+for the SPARClite minimal simulator target:
+  $ cd BASE_DIR/prebuilt/sparclite_sim/tests/kernel/v1_3_x/tests
+for the i386-based Linux synthetic target:
+  $ cd BASE_DIR/prebuilt/linux/tests/kernel/v1_3_x/tests
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2392310">
+ </A>
+To execute the <TT CLASS="Code">
+thread_gdb</TT>
+ test case on the desired target, run GDB in command line mode using the following command, remembering to substitute the appropriate name for the architecture's gdb:     </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2270670"> </A>
+$ gdb -nw thread_gdb</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2270250">
+ </A>
+GDB will display a copyright banner and then display a prompt (gdb). Connect to the target according to the instructions given earlier (in <A HREF="ecos-tutorial.d.html#34045" CLASS="XRef">
+ Target Setup</A>
+) - via serial or ethernet to hardware  targets, or directly for simulator and synthetic targets. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2270251">
+ </A>
+Depending on the target type, you will be notified about a successful  connection, and possibly see some output informing you of the current program counter of the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2270252">
+ </A>
+Now download the test - effectively loading the test case executable  into the memory of the target - by typing this command:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2270253"> </A>
+(gdb) load</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2270254">
+ </A>
+Again, depending on the target, you may see some output describing how much data was downloaded, and at what speed. Next, start the test case running. For hardware targets this is done with the 'continue' command, while 'run' must be used on simulators and synthetic  targets:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2270255"> </A>
+(gdb) continue</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2270256">
+ </A>
+ or</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2270257"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2270258">
+ </A>
+You should now see a number of text messages appear, such as: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2270259"> </A>
+PASS:&lt;GDB Thread test OK&gt;    
+EXIT:&lt;done&gt;</PRE>
+<H3 CLASS="Label">
+<A NAME="pgfId=2270260">
+ </A>
+NOTE</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2270702">
+ </A>
+eCos has no concept of the application exiting. All eCos test cases complete and then run in a continuous tight loop. To return control to GDB you must stop the application.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2270261">
+ </A>
+The usual method of stopping an application is with <SPAN CLASS="BOLD">
+Ctrl+C,</SPAN>
+ but <SPAN CLASS="Bold">
+Ctrl+C</SPAN>
+ may  not work on your platform for the prebuilts. First, make default tests and check that they work the same way as prebuilts, then modify your config to enable GDB stubs (if applicable) and break support, so that a <SPAN CLASS="Bold">
+Ctrl+C</SPAN>
+ character will interrupt the application.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2270262">
+ </A>
+Another way to stop the application is by means of a breakpoint. Before running the application, breakpoint  <TT CLASS="Code">
+cyg_test_exit()</TT>
+ to stop an eCos test case at its end.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2270263">
+ </A>
+The full functionality of GDB is now available to you, including breakpoints and watchpoints. Please consult the GNUPro<SPAN CLASS="Bold">
+ </SPAN>
+GDB documentation for further information.</P>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Running Applications on the Target</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.d.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.f.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

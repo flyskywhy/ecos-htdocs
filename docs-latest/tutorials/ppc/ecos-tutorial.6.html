@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 11:35:25 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Notation and Conventions</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Notation and Conventions</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.5.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.7.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1671269">
+ </A>
+Notation and Conventions<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=2276075">
+ </A>
+Since there are many supported target architectures, notation conventions will be used to avoid repeating instructions which are very similar. </P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2276079">
+ </A>
+<A NAME="marker=2276076">
+ </A>
+<A NAME="29215">
+ </A>
+GDB and <A NAME="marker=2276078">
+ </A>
+GCC Command Notation</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2340491">
+ </A>
+Cross-development commands like <TT CLASS="Code">
+gcc</TT>
+ and <TT CLASS="Code">
+gdb</TT>
+ will be shown without prefixed information about the platform for which you are cross-compiling. You need to add the necessary prefix before you execute the commands, so instead of typing 'gcc' and 'gdb' as in the examples, use:<BR>
+<TT CLASS="Code">
+powerpc-eabi-gcc </TT>
+and<TT CLASS="Code">
+ powerpc-eabi-gdb </TT>
+for PowerPC<BR>
+<TT CLASS="Code">
+i686-pc-linux-gnu-gcc</TT>
+ and <TT CLASS="Code">
+i686-pc-linux-gnu-gdb </TT>
+for Synthetic Linux</P>
+<P CLASS="Body">
+<A NAME="pgfId=2276084">
+ </A>
+Note that the GCC cross compiler generates executable files with the <TT CLASS="Code">
+.exe</TT>
+ suffix on Windows, but not on UNIX. The suffix <EM CLASS="Command">
+.exe</EM>
+ will be omitted from executable file names, so you will see <EM CLASS="Command">
+hello</EM>
+ instead of <EM CLASS="Command">
+hello.exe.</EM>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1999376">
+ </A>
+<A NAME="marker=2490488">
+ </A>
+Directory and File System Conventions</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2276094">
+ </A>
+The default directory for installing eCos on Windows (usually <TT CLASS="Code">
+C:/Program Files/Red Hat/eCos</TT>
+) will be shown as <EM CLASS="Emphasis">
+BASE_DIR.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1999381">
+ </A>
+Windows and UNIX have similar file system syntax, but the MS-DOS command interpreter on Windows uses the backslash character (\) as a path separator, while UNIX and POSIX shells (including the Cygwin bash shell for windows) use the forward slash (/).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1999382">
+ </A>
+This document will use the POSIX shell convention of forward slashes.</P>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Notation and Conventions</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.5.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.7.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

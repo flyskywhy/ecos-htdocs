@@ -1,0 +1,1744 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (WinNT; U) [Netscape]">
+   <title> Reference</title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1 CLASS="ChapterTitle">
+<a NAME="pgfId-464545"></a>Reference
+<hr WIDTH="100%"></h1>
+
+<div CLASS="BodyAfterHead"><a NAME="pgfId-464546"></a>The Reference section
+describes the ABI and AM33-specific attributes of the main GNUPro tools.</div>
+
+<ul>
+<li CLASS="Bullet">
+<a NAME="pgfId-461757"></a>Compiler</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-461763"></a>ABI Summary</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-461764"></a>Assembler</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-461765"></a>Linker</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-930660"></a>Debugger</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-930664"></a>Simulator</li>
+
+<br>&nbsp;</ul>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-461235"></a><a NAME="_Toc442250435"></a>Compiler
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-461236"></a>This section describes AM3x-specific
+features of the GNUPro Compiler. In order to generate AM33-specific code,
+the '<font face="Courier New,Courier"><font size=-1>-mam33</font></font>'
+option must be included in the command line.
+<br>&nbsp;
+<h3>
+<a NAME="pgfId-930681"></a><a NAME="63551"></a>AM3x-specific command-line
+options
+<hr WIDTH="100%"></h3>
+</div>
+
+<div CLASS="Body"><a NAME="pgfId-928099"></a>For a list of available generic
+compiler options, refer to "GNU CC Command Options" in Using GNU CC in
+<b><i>GNUPro
+Compiler Tools</i></b>. In addition, the following AM3x-specific command-line
+options are supported<tt>:</tt></div>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-930767"></a><font face="Courier New,Courier"><font size=-1>-mmult-bug</font></font></div>
+
+<blockquote>Generate code to work around bugs in the MN10300 multiply instruction.
+This is the default.</blockquote>
+<a NAME="pgfId-930769"></a><font face="Courier New,Courier"><font size=-1>-mno-mult-bug</font></font>
+<blockquote>Do not generate code to work around bugs in the MN10300 multiply
+instruction.</blockquote>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-930771"></a><font face="Courier New,Courier"><font size=-1>-mam33</font></font></div>
+
+<blockquote>Enables AM33 features. Must be used to generate AM33-specific
+code.</blockquote>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-930773"></a><font face="Courier New,Courier"><font size=-1>-mno-am33</font></font></div>
+
+<blockquote>Disables AM33 features. '<font face="Courier New,Courier"><font size=-1>-mno-am33</font></font>'
+is the default.</blockquote>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-927193"></a><a NAME="_Toc442250437"></a>Preprocessor symbols
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931255"></a>By default, the compiler defines
+the preprocessor symbols '<font face="Courier New,Courier"><font size=-1>__MN10300__</font></font><tt>'</tt>
+and <tt>'</tt><font face="Courier New,Courier"><font size=-1>__mn10300__</font></font>'.
+If the '<font face="Courier New,Courier"><font size=-1>-mam33</font></font>'
+compiler option is used, '<font face="Courier New,Courier"><font size=-1>__AM33__</font></font>'
+is defined.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931259"></a>AM3x-specific Attributes
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-930913"></a>There are no AM3x-specific
+attributes. See "Declaring Attributes of Functions" and "Specifying Attributes
+of Variables" in "Extensions to the C Language Family" in Using GNU CC
+in <b>GNUPro Compiler Tools</b> for more information.</div>
+
+<h3 CLASS="Heading1">
+<a NAME="pgfId-930914"></a>New compiler and linker features
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-916529"></a>The GNUPro compiler and linker
+have been improved by Cygnus to provide even more benefits for customers
+developing for embedded targets. These features are guaranteed order of
+initialization at startup, and selective linking.</div>
+
+<h4 CLASS="Heading2">
+<a NAME="pgfId-916531"></a>Initialization prioritization
+<hr WIDTH="100%"></h4>
+
+<div CLASS="Body"><a NAME="pgfId-919421"></a>In C++, you can define static
+and global objects with constructors, or initialize static and global variables
+from a function. This means that the constructors or functions are run
+before the rest of your program starts. However, when you have these objects
+spread over multiple files, the C++ standard does not specify the order
+in which they are initialized, and for all practical purposes the order
+is random. For an embedded system, this can be a problem, as you may want
+to ensure that a static scheduler object is initialized before static threads
+can attach to it, or that devices are initialized before they are used.
+GNUPro solves this problem by allowing you to define a priority when the
+static or global is declared. The following example shows the syntax:</div>
+
+<div CLASS="CodeExample"><a NAME="pgfId-919422"></a><font face="Courier New,Courier"><font size=-1>static
+object_t myobj __attribute__((init_priority (30000) ));</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-919430"></a>The syntax is slightly different
+if the object takes any arguments to its constructor:</div>
+
+<div CLASS="CodeExample"><a NAME="pgfId-919431"></a><font face="Courier New,Courier"><font size=-1>static
+object_t myobj __attribute__((init_priority (30000) )) = \ object_t(arg1,
+arg2);</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-916536"></a>The numeric priority can be
+from 1 to 65535, with 1 being the highest priority, and 65535 being the
+lowest. The default priority for objects without this attribute is 65535.
+Constructors with a higher priority are guaranteed execution before constructors
+with lower priority.</div>
+
+<div CLASS="Body"><a NAME="pgfId-916537"></a>In all cases, you must provide
+the argument '<font face="Courier New,Courier"><font size=-1>-finit-priority</font></font><tt>'</tt>
+to the compiler on its command-line for it to recognize this attribute
+when you are compiling your C++ source files.</div>
+
+<div CLASS="Body"><a NAME="pgfId-916538"></a>If you are using eCos, be
+warned that eCos uses initialization priorities internally. Ensure you
+choose an appropriate priority level so that other eCos subsystems will
+have initialized before you refer to them in your own constructor.</div>
+
+<h4 CLASS="Heading2">
+<a NAME="pgfId-916540"></a>Selective linking
+<hr WIDTH="100%"></h4>
+
+<div CLASS="Body"><a NAME="pgfId-916541"></a>When writing C and C++ code,
+it is sometimes natural to include more than one function in a source file.
+For example in C++, it is common to have all methods for a particular class
+contained in the same C++ source file. However, there is a drawback that,
+conventionally, if you use just one of these functions, then all the functions
+defined in that file also get included in the final executable image. For
+an embedded system, this can substantially and unnecessarily increase the
+size of the final image stored in ROM, or loaded into RAM when debugging.</div>
+
+<div CLASS="Body"><a NAME="pgfId-916542"></a>The GNUPro C and C++ compilers
+can now optionally remove these unnecessary functions from the final image.
+They also ensure that any shared global data is removed that is only referenced
+by functions that are removed. This can be done by including the options
+'<font face="Courier New,Courier"><font size=-1>-ffunction-sections</font></font>'
+and '<font face="Courier New,Courier"><font size=-1>-fdata-sections</font></font>'
+on the command-line, when you invoke the C or C++ compiler. The '<font face="Courier New,Courier"><font size=-1>-ffunction-sections</font></font>'
+option removes unnecessary functions, and the '<font face="Courier New,Courier"><font size=-1>-fdata-sections</font></font>'
+option removes unnecessary data.</div>
+
+<div CLASS="Body"><a NAME="pgfId-916543"></a>In addition, when classes
+define virtual methods in C++, it is possible to remove any unused methods
+from the final image by passing the option '<font face="Courier New,Courier"><font size=-1>-fvtable-gc</font></font>'
+to the C++ compiler on its command-line.</div>
+
+<div CLASS="Body"><a NAME="pgfId-919438"></a>In all cases, you must also
+supply a command-line option when linking. If invoking the linker ld directly,
+use '<font face="Courier New,Courier"><font size=-1>--gc-sections</font></font>'
+on its command-line; alternatively, if you are using the preferred method
+of linking your executable, using the form
+<br>'<font face="Courier New,Courier"><font size=-1>gcc -o <i>&lt;program
+name> &lt;file1>.o &lt;file2></i>.o</font></font>', then also pass the
+option '<font face="Courier New,Courier"><font size=-1>-Wl,--gc-sections</font></font>'
+on the compiler command-line, for example:&nbsp;<a NAME="pgfId-919439"></a><font face="Courier New,Courier"><font size=-1>gcc
+-o prog f1.o f2.o -Wl,--gc-sections</font></font></div>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-461254"></a><a NAME="_Toc442250439"></a><a NAME="_Toc395075402"></a><a NAME="_Toc415038407"></a>ABI
+Summary
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-916461"></a>This section describes the
+AM3x Application Binary Interface.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-916464"></a><a NAME="_Toc442250440"></a>Data type sizes
+and alignments
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-461258"></a>The following table shows
+the size and alignment for all data types:</div>
+
+<div CLASS="Body"><a NAME="pgfId-930998"></a></div>
+
+<br>&nbsp;
+<center><table BORDER >
+<caption>&nbsp;</caption>
+
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-930939"></a><b>Type</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-930941"></a><b>Size (bytes)</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-930943"></a><b>Alignment (bytes)</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930945"></a><font face="Courier New,Courier"><font size=-1>char</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930947"></a>1 byte</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930949"></a>1 byte</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930951"></a><font face="Courier New,Courier"><font size=-1>short</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930953"></a>2 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930955"></a>2 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930957"></a><font face="Courier New,Courier"><font size=-1>int</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930959"></a>4 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930961"></a>4 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930963"></a><font face="Courier New,Courier"><font size=-1>long</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930965"></a>4 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930967"></a>4 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930969"></a><font face="Courier New,Courier"><font size=-1>long
+long</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930971"></a>8 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930973"></a>8 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930975"></a><font face="Courier New,Courier"><font size=-1>float</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930977"></a>4 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930979"></a>4 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930981"></a><font face="Courier New,Courier"><font size=-1>double</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930983"></a>8 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930985"></a>8 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930987"></a><font face="Courier New,Courier"><font size=-1>long
+double</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930989"></a>8 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930991"></a>8 bytes</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930993"></a>pointer</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930995"></a>4 bytes</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-930997"></a>4 bytes</div>
+</td>
+</tr>
+</table></center>
+
+<h4 CLASS="Heading3">
+<a NAME="pgfId-930999"></a>Alignment rules
+<hr WIDTH="100%"></h4>
+
+<div CLASS="Body"><a NAME="pgfId-931000"></a>The stack is aligned to a
+four-byte boundary.</div>
+
+<div CLASS="Body"><a NAME="pgfId-931005"></a>Structures and unions have
+the same alignment as their most strictly aligned component.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931006"></a>Register allocation
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931017"></a>When generating code for the
+AM33, the compiler allocates registers in the following order:</div>
+
+<div CLASS="Body"><a NAME="pgfId-931018"></a><tt>'</tt><font face="Courier New,Courier"><font size=-1>d0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d1</font></font>', '<font face="Courier New,Courier"><font size=-1>a0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a1</font></font>', '<font face="Courier New,Courier"><font size=-1>d2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d3</font></font>', '<font face="Courier New,Courier"><font size=-1>a2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e0</font></font>', '<font face="Courier New,Courier"><font size=-1>e1</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e2</font></font>', '<font face="Courier New,Courier"><font size=-1>e3</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e4</font></font>', '<font face="Courier New,Courier"><font size=-1>e5</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e6</font></font>', '<font face="Courier New,Courier"><font size=-1>e7</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a3</font></font>'</div>
+
+<div CLASS="Body"><a NAME="pgfId-931019"></a>When generating code for the
+MN10300/AM31, the compiler allocates registers in the following order:</div>
+
+<div CLASS="Body"><a NAME="pgfId-931010"></a><tt>'</tt><font face="Courier New,Courier"><font size=-1>d0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d1</font></font>', '<font face="Courier New,Courier"><font size=-1>a0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a1</font></font>', '<font face="Courier New,Courier"><font size=-1>d2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d3</font></font>', '<font face="Courier New,Courier"><font size=-1>a2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a3</font></font>'</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-928375"></a>Register usage
+<hr WIDTH="100%"></h3>
+&nbsp;
+<div CLASS="Body"><a NAME="pgfId-928377"></a>This table describes register
+usage.</div>
+
+<center><table BORDER >
+<caption>
+<h6 CLASS="TableTitle">
+&nbsp;</h6>
+</caption>
+
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-931143"></a><b>Type</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-931145"></a><b>Registers</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-931185"></a><b>Notes</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931147"></a>Volatile</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931149"></a>'<font face="Courier New,Courier"><font size=-1>d0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d1</font></font>', '<font face="Courier New,Courier"><font size=-1>a0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a1</font></font>', '<font face="Courier New,Courier"><font size=-1>e2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e3</font></font>', '<font face="Courier New,Courier"><font size=-1>e4</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e5</font></font>'</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931187"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931151"></a>Saved</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931231"></a>'<font face="Courier New,Courier"><font size=-1>d2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d3</font></font>', '<font face="Courier New,Courier"><font size=-1>a2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a3</font></font>', '<font face="Courier New,Courier"><font size=-1>e0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e1</font></font>', '<font face="Courier New,Courier"><font size=-1>e6</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e7</font></font>'</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931189"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931155"></a>Special purpose</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931157"></a>'<font face="Courier New,Courier"><font size=-1>sp</font></font>',
+'<font face="Courier New,Courier"><font size=-1>ccr</font></font>', '<font face="Courier New,Courier"><font size=-1>mdr</font></font>',
+'<font face="Courier New,Courier"><font size=-1>lar</font></font>', '<font face="Courier New,Courier"><font size=-1>lir</font></font>',</div>
+'<font face="Courier New,Courier"><font size=-1>x0</font></font>' through
+'<font face="Courier New,Courier"><font size=-1>x15</font></font>'</td>
+
+<td>
+<div CLASS="CellBody">1
+<p>2
+<br>&nbsp;</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931159"></a>Frame pointer</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931161"></a>'<font face="Courier New,Courier"><font size=-1>a3</font></font>'
+as needed</div>
+</td>
+
+<td>
+<div CLASS="CellBody">3</div>
+</td>
+</tr>
+</table></center>
+
+<div CLASS="footnotes">
+<div CLASS="footnote">
+<div CLASS="TableFootnote">&nbsp;
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>1. The compiler does not generate code that uses '<font face="Courier New,Courier"><font size=-1>ccr</font></font>',
+'<font face="Courier New,Courier"><font size=-1>lar</font></font>',&nbsp;
+or '<font face="Courier New,Courier"><font size=-1>lir</font></font>'
+<p>2. '<font face="Courier New,Courier"><font size=-1>mdr</font></font>'
+is only used for integer division and modulo operations.
+<p>3. '<font face="Courier New,Courier"><font size=-1>a3</font></font>'
+is the frame pointer in functions that need a frame pointer, otherwise
+it is an allocatable register.
+<br>&nbsp;</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</div>
+</div>
+</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-917175"></a>Switches
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-917176"></a>There are no switches that
+effect the ABI or calling conventions. There are two switches that control
+a particular aspect of code generation. See <a href="#pgfId-930681">AM3x-specific
+command-line options</a></div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-461384"></a><a NAME="_Toc395075405"></a><a NAME="_Toc415038408"></a><a NAME="_Toc442250442"></a>The
+Stack Frame
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-461385"></a>This section describes AM3x
+stack frame:</div>
+
+<ul>
+<li CLASS="Bullet">
+<a NAME="pgfId-461386"></a>The stack grows downwards from high addresses
+to low addresses.</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-461387"></a>A leaf function need not allocate a stack frame
+if it does not need one.</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-461388"></a>A frame pointer need not be allocated.</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-931322"></a>The stack pointer shall always be aligned to
+4-byte boundaries.</li>
+</ul>
+
+<div CLASS="Body"><a NAME="pgfId-931323"></a>Stack frames for functions
+that take a fixed number of arguments look like this:</div>
+
+<ol><img SRC="am33_ch01-2.gif" height=315 width=347></ol>
+
+<div CLASS="Body">&nbsp;
+<br><a NAME="pgfId-931391"></a>Stack frames for functions that take a variable
+number of arguments look like this:</div>
+
+<div CLASS="Body"><a NAME="pgfId-931408"></a><img SRC="am33_ch01-3.gif" height=370 width=360></div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-928878"></a>Argument passing
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931605"></a>'<font face="Courier New,Courier"><font size=-1>d0</font></font>'
+and '<font face="Courier New,Courier"><font size=-1>d1</font></font>' are
+used for passing the first two argument words, any additional argument
+words are passed on the stack.</div>
+
+<div CLASS="Body"><a NAME="pgfId-931606"></a>Any argument, more than 8
+bytes in size, is passed by invisible reference. The callee is responsible
+for copying the argument if the callee modifies the argument.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-928884"></a>Function Return Values
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931621"></a>'<font face="Courier New,Courier"><font size=-1>a0</font></font>'
+is used to return pointer values.
+<p>'<font face="Courier New,Courier"><font size=-1>d0</font></font>' and
+'<font face="Courier New,Courier"><font size=-1>d1</font></font>' are used
+for returning other scalars and structures less than or equal to 8 bytes
+in length.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-931623"></a>If a function returns a structure
+that is greater than 8 bytes in length, then the caller is responsible
+for passing in a pointer to the callee which specifies a location for the
+callee to store the return value. This pointer is passed as the first argument
+word before any of the function's declared parameters.</div>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-918674"></a><a NAME="_Toc415038410"></a><a NAME="_Toc442250446"></a>Assembler
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-918676"></a><a NAME="_Toc415038411"></a>This
+section describes AM3x-specific features of the GNUPro Assembler.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-461421"></a>AM3x-specific command-line options
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-920093"></a>For a list of available generic
+assembler options, refer to "Command-Line Options" in <i>Using AS</i> in
+<b>GNUPro
+Utilities</b> . There are no AM33-specific assembler command-line options.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-932881"></a>Assembler directives
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-932882"></a>There is a new assembler directive,
+'<font face="Courier New,Courier"><font size=-1>.am33</font></font>', which
+forces the assembler into AM33 mode. The compiler will automatically force
+the assembler into AM33 mode when necessary, but the new directive may
+be useful to assembly language programmers.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931637"></a>Syntax
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931638"></a>The AM3x syntax is based on
+the syntax in Matsushita's <b>MN10300 Architecture Manual</b>.</div>
+
+<div CLASS="Body"><a NAME="pgfId-931639"></a>The assembler does not support
+synthesized instructions (pseudo instructions, which correspond to two
+or more actual machine instructions).</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931640"></a>Special characters
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931641"></a>The AM3x assembler supports
+'<font face="Courier New,Courier"><font size=-1>;</font></font>' (semi-colon)
+and '<font face="Courier New,Courier"><font size=-1>#</font></font>' (pound).
+Both characters are line comment characters when used in column zero. The
+semi-colon may also be used to start a comment anywhere within a line.</div>
+
+<div CLASS="BodyHang1">
+<h3>
+<a NAME="pgfId-931643"></a>Register names
+<hr WIDTH="100%"></h3>
+</div>
+
+<div CLASS="Body"><a NAME="pgfId-932877"></a>These are the register names
+supported for the AM3x: '<font face="Courier New,Courier"><font size=-1>d0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d1</font></font>', '<font face="Courier New,Courier"><font size=-1>d2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>d3</font></font>', '<font face="Courier New,Courier"><font size=-1>a0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a1</font></font>', '<font face="Courier New,Courier"><font size=-1>a2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>a3</font></font>', '<font face="Courier New,Courier"><font size=-1>e0</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e1</font></font>', '<font face="Courier New,Courier"><font size=-1>e2</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e3</font></font>', '<font face="Courier New,Courier"><font size=-1>e4</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e5</font></font>', '<font face="Courier New,Courier"><font size=-1>e6</font></font>',
+'<font face="Courier New,Courier"><font size=-1>e7</font></font>', '<font face="Courier New,Courier"><font size=-1>sp</font></font>',
+'<font face="Courier New,Courier"><font size=-1>mdr</font></font>', '<font face="Courier New,Courier"><font size=-1>ccr</font></font>',
+'<font face="Courier New,Courier"><font size=-1>lir</font></font>', '<font face="Courier New,Courier"><font size=-1>lar</font></font>',
+and '<font face="Courier New,Courier"><font size=-1>x0</font></font>' through
+'<font face="Courier New,Courier"><font size=-1>x15</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-932878"></a>Addressing modes
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931753"></a>The following describes AM3x
+assembler addressing modes:</div>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-931746"></a><b><i>Register Direct</i></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931748"></a><font face="Courier New,Courier"><font size=-1>Dm/Dn</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931750"></a><font face="Courier New,Courier"><font size=-1>Am/An</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-931752"></a><font face="Courier New,Courier"><font size=-1>Em/En</font></font></div>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-932894"></a><b><i>Immediate value</i></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932896"></a><font face="Courier New,Courier"><font size=-1>imm8/regs</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932898"></a><font face="Courier New,Courier"><font size=-1>imm16</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932900"></a><font face="Courier New,Courier"><font size=-1>imm32</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932902"></a><font face="Courier New,Courier"><font size=-1>imm40</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932904"></a><font face="Courier New,Courier"><font size=-1>imm48</font></font></div>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-932907"></a><b><i>Register Indirect</i></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932909"></a><font face="Courier New,Courier"><font size=-1>(Am)/(An)</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932911"></a><font face="Courier New,Courier"><font size=-1>(Em)/(En)</font></font></div>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td COLSPAN="2">
+<div CLASS="CellHeading"><a NAME="pgfId-932914"></a><b><i>Register indirect
+with displacement</i></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932918"></a><font face="Courier New,Courier"><font size=-1>(d8,Am)/(d8,An)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932920"></a>'<font face="Courier New,Courier"><font size=-1>d8</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932922"></a><font face="Courier New,Courier"><font size=-1>(d8,Em)/(d8,En)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932924"></a>'<font face="Courier New,Courier"><font size=-1>d8</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932926"></a><font face="Courier New,Courier"><font size=-1>(d16,Am)/(d16,An)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932928"></a>'<font face="Courier New,Courier"><font size=-1>d16</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932930"></a><font face="Courier New,Courier"><font size=-1>(d16,Em)/(d16,En)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932932"></a>'<font face="Courier New,Courier"><font size=-1>d16</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932934"></a><font face="Courier New,Courier"><font size=-1>(d32,Am)/(d32,An)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932936"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932938"></a><font face="Courier New,Courier"><font size=-1>(d32,Em)/(d32,En)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932940"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932942"></a></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932944"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932946"></a><font face="Courier New,Courier"><font size=-1>(d8,pc)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932948"></a>'<font face="Courier New,Courier"><font size=-1>d8</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932950"></a><font face="Courier New,Courier"><font size=-1>(d16,pc)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932952"></a>'<font face="Courier New,Courier"><font size=-1>d16</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932954"></a><font face="Courier New,Courier"><font size=-1>(d32,pc)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932956"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932958"></a></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932960"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932962"></a><font face="Courier New,Courier"><font size=-1>(d8,sp)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932964"></a>'<font face="Courier New,Courier"><font size=-1>d8</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932966"></a><font face="Courier New,Courier"><font size=-1>(d16,sp)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932968"></a>'<font face="Courier New,Courier"><font size=-1>d16</font></font>'
+is sign extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932970"></a><font face="Courier New,Courier"><font size=-1>(d32,sp)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932972"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932974"></a></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-932976"></a></div>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-933004"></a><b><i>Absolute</i></b></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933006"></a></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933008"></a><font face="Courier New,Courier"><font size=-1>(abs16)</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933010"></a>'<font face="Courier New,Courier"><font size=-1>abs16</font></font>'
+is zero extended</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933012"></a><font face="Courier New,Courier"><font size=-1>(abs32)&nbsp;</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933014"></a></div>
+</td>
+</tr>
+</table>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-933017"></a><b><i>Register indirect
+with index</i></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933019"></a><font face="Courier New,Courier"><font size=-1>(Di,Am)/(Di,An)</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-933021"></a><font face="Courier New,Courier"><font size=-1>(Ei,Em)/(Ei,En)</font></font></div>
+</td>
+</tr>
+</table>
+
+
+<p CLASS="Body"><a NAME="pgfId-933023"></a>The subscripts '<font face="Courier New,Courier"><font size=-1>m</font></font>',
+'<font face="Courier New,Courier"><font size=-1>n</font></font>', and '<font face="Courier New,Courier"><font size=-1>i</font></font>'
+indicate source, destination and index respectively. The values of '<font face="Courier New,Courier"><font size=-1>m</font></font>',
+'<font face="Courier New,Courier"><font size=-1>n</font></font>' and '<font face="Courier New,Courier"><font size=-1>i</font></font>'
+are from 0 to 3.
+
+<p CLASS="Body"><a NAME="pgfId-931688"></a>For detailed information, see
+the <b>MN10300 Series Instruction Manual</b>.
+<br>&nbsp;
+<h3 CLASS="Heading2">
+<a NAME="pgfId-933028"></a>Floating point
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-933029"></a>Although the AM3x has no hardware
+floating point, the '<font face="Courier New,Courier"><font size=-1>.float</font></font>'
+and '<font face="Courier New,Courier"><font size=-1>.double</font></font>'
+directives generate IEEE-format floating-point values for compatibility
+with other development tools.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931691"></a>Opcodes
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931692"></a>For detailed information on
+the MN10300 machine instruction set, see <b>MN10300 Series Instruction
+Manual</b> . The GNU Assembler (GAS) implements all the standard MN10300
+opcodes.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-931693"></a>Synthetic Instructions
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-931694"></a>The assembler supports "user
+defined instructions."</div>
+
+<div CLASS="Body"><a NAME="pgfId-931695"></a>The assembler does not support
+synthesized instructions (pseudo instructions, which correspond to two
+or more actual machine instructions).</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-933102"></a>AM3x-specific Assembler Error Messages
+<hr WIDTH="100%"></h3>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-933103"></a><b><font face="Courier New,Courier"><font size=-1>Error:
+Unrecognized opcode</font></font></b></div>
+
+<blockquote>This instruction is misspelled or there is a syntax error somewhere.</blockquote>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-933104"></a><b><font face="Courier New,Courier"><font size=-1>Warning:
+operand out of range</font></font></b></div>
+
+<blockquote>An immediate value was specified that is too large for the
+instruction</blockquote>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-922803"></a><a NAME="_Toc442250453"></a>Linker
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-922804"></a>eCos generates linker scripts
+appropriate for the exact eCos configuration you have chosen. Instructions
+on how to use this linker script are provided in the manual <b>Getting
+Started with eCos</b>.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-922806"></a>AM3x-specific command-line options
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-461499"></a>For a list of available generic
+linker options, refer to "Linker scripts" in <i>Using LD</i> in <b>GNUPro
+Utilities</b>. There are no AM33-specific command-line linker options.</div>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-930095"></a><a NAME="_Ref372526299"></a><a NAME="_Ref372526330"></a><a NAME="_Toc442250456"></a>Debugger
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-930628"></a>GDB's built-in software simulation
+of the AM3x processors allow the debugging of programs compiled for the
+AM3x without requiring any access to actual hardware. To address the simulator
+in GDB, type ‘target sim’. Then load the code into the simulator by typing
+‘load’ and debug it in the normal fashion.
+<p>The default simulation provided is instruction-set level simulation
+only. For execution of eCos programs built for the MN10300 (AM31) processor,
+it is required that you pass additional arguments to the ‘target sim’ command.
+Please consult the eCos Getting Started manual for the precise options
+required.
+<p>It is not possible to simulate eCos programs built for the AM33 processor
+as the devices necessary to run eCos are not simulated.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-922901"></a>AM3x-specific command-line options
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-461516"></a>For the available generic
+debugger options, refer to <i>Debugging with GDB</i> in <b>GNUPro Debugging
+Tools</b>. There are no AM33-specific debugger command-line options.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-922983"></a>Debugging programs with multiple threads
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-922984"></a>Programs with multiple threads
+can be debugged using either the graphic user interface to GDB, GDBTk or
+the GDB command line interface. The following describes how to debug multiple
+threads using the GDB command line.</div>
+
+<div CLASS="Body"><a NAME="pgfId-922985"></a>In some operating systems,
+such as eCos, a single program may have more than one thread of execution.
+The precise semantics of threads differ from one operating system to another,
+but in general the threads of a single program are akin to multiple processes,
+except that they share one address space (that is, they can all examine
+and modify the same variables). On the other hand, each thread has its
+own registers and execution stack, and perhaps private memory.</div>
+
+<div CLASS="Body"><a NAME="pgfId-922986"></a>GDB provides the following
+functions for debugging multi-thread programs</div>
+
+<ul>
+<li CLASS="Bullet">
+<a NAME="pgfId-922987"></a>'<font face="Courier New,Courier"><font size=-1>thread
+threadno</font></font>', a command to switch among threads</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-923090"></a>'<font face="Courier New,Courier"><font size=-1>info
+threads</font></font>', a command to inquire about existing threads</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-923091"></a>'<font face="Courier New,Courier"><font size=-1>thread
+apply [threadno][all] args</font></font>', a command to apply a command
+to a list of threads</li>
+
+<li CLASS="Bullet">
+<a NAME="pgfId-922990"></a>thread-specific breakpoints</li>
+</ul>
+
+<div CLASS="Body"><a NAME="pgfId-922991"></a>The GDB thread-debugging facility
+allows you to observe all threads while your program runs, but whenever
+GDB takes control, one thread in particular is always the focus of debugging.
+This thread is called the current thread. Debugging commands show program
+information from the perspective of the current thread.</div>
+
+<div CLASS="Body"><a NAME="pgfId-922992"></a>For debugging purposes, GDB
+associates its own thread number, always a single integer, with each thread
+in your program.</div>
+
+<div CLASS="BodyHang1"><a NAME="pgfId-922993"></a><tt>info threads</tt></div>
+
+<blockquote>Display a summary of all threads currently in your program.
+GDB displays for each thread (in the following order):</blockquote>
+
+<ol>
+<ol>
+<li CLASS="Numbered2">
+<a NAME="pgfId-922995"></a>The thread number assigned by GDB</li>
+
+<li CLASS="Numbered2Next">
+<a NAME="pgfId-922996"></a>The target system's thread I.D.</li>
+
+<li CLASS="Numbered2Next">
+<a NAME="pgfId-922997"></a>The current stack frame summary for that thread</li>
+</ol>
+</ol>
+
+<div CLASS="BodyListFollow"><a NAME="pgfId-923150"></a>An asterisk '<font face="Courier New,Courier"><font size=-1>*</font></font>'
+to the left of the GDB thread number indicates the current thread. Use
+the following example for clarity.</div>
+
+<br>&nbsp;
+<table>
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923172"></a><font face="Courier New,Courier"><font size=-1><b>(gdb)</b>
+info threads</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923174"></a><b><font face="Courier New,Courier"><font size=-1>*
+2 thread 2 breakme ()</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923176"></a><b><font face="Courier New,Courier"><font size=-1>at
+/eCos/packages/kernel/v1_1/tests/thread_gdb.c:91</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923178"></a><b><font face="Courier New,Courier"><font size=-1>Name:
+controller, State: running, Priority: 0, More: &lt;none></font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923180"></a><b><font face="Courier New,Courier"><font size=-1>1
+thread 1 Cyg_HardwareThread::thread_entry (thread=0x1111aaa2)</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923182"></a><b><font face="Courier New,Courier"><font size=-1>at
+/eCos/packages/kernel/v1_1/src/common/thread.cxx:68</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923184"></a><b><font face="Courier New,Courier"><font size=-1>Name:
+Idle Thread, State: running, Priority: 31, More: &lt;none></font></font></b></div>
+</td>
+</tr>
+</table>
+
+
+<p CLASS="BodyHang1"><a NAME="pgfId-923166"></a><font face="Courier New,Courier"><font size=-1>thread
+<i>&lt;threadno></i></font></font>
+<blockquote>Make thread number '<i><font face="Courier New,Courier"><font size=-1>&lt;threadno></font></font></i>'
+the current thread. The command argument, '<i><font face="Courier New,Courier"><font size=-1>&lt;threadno></font></font></i>',
+is the internal GDB thread number, as shown in the first field of the '<font face="Courier New,Courier"><font size=-1>info
+threads</font></font>' display. GDB responds by displaying the system identifier
+of the thread you selected, and its current stack frame summary, as in
+the following output.</blockquote>
+
+<table>
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923220"></a><font face="Courier New,Courier"><font size=-1><b>(gdb)</b>
+thread 2&nbsp;</font></font></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923222"></a><b><font face="Courier New,Courier"><font size=-1>[Switching
+to thread 2]</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923224"></a><b><font face="Courier New,Courier"><font size=-1>#0
+change_state (id=0, newstate=0 '\000')</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923226"></a><b><font face="Courier New,Courier"><font size=-1>at
+/eCos/kernel/current/tests/bin_sem2.cxx:93</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923228"></a><b><font face="Courier New,Courier"><font size=-1>93
+if (PHILO_LOOPS == state_changes++)&nbsp;</font></font></b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923230"></a><b><font face="Courier New,Courier"><font size=-1>Current
+language: auto; currently c++</font></font></b></div>
+</td>
+</tr>
+</table>
+
+
+<p CLASS="BodyHang1"><a NAME="pgfId-923243"></a><font face="Courier New,Courier"><font size=-1>thread
+apply [<i>&lt;threadno></i>][<i>&lt;all></i>]
+<i>&lt;args></i></font></font>
+<blockquote>The thread apply command allows you to apply a command to one
+or more threads. Specify the numbers of the threads that you want affected
+with the command argument '<i><font face="Courier New,Courier"><font size=-1>&lt;threadno></font></font></i>',
+where '<i><font face="Courier New,Courier"><font size=-1>&lt;threadno></font></font></i>'
+is the internal GDB thread number, as shown in the first field of the '<font face="Courier New,Courier"><font size=-1>info
+threads</font></font>' display.
+<br>To apply a command to all threads, use '<font face="Courier New,Courier"><font size=-1>thread
+apply all args</font></font>'.</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-923016"></a>Whenever GDB stops your program,
+due to a breakpoint or a signal, it automatically selects the thread where
+that breakpoint or signal happened.</div>
+
+<div CLASS="Body"><a NAME="pgfId-923017"></a>When your program has multiple
+threads, you can choose whether to set breakpoints on all threads, or on
+a particular thread.</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-923018"></a><font face="Courier New,Courier"><font size=-1>break
+<i>&lt;linespec></i>thread
+<i>&lt;threadno></i></font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-923248"></a>If '<i><font face="Courier New,Courier"><font size=-1>&lt;linespec></font></font></i>'
+specifies source lines, then there are several ways of writing them.</div>
+
+<div CLASS="Body">Use the qualifier '<font face="Courier New,Courier"><font size=-1>thread
+<i>&lt;threadno></i></font></font>'
+with a breakpoint command to specify that you only want GDB to stop the
+program when a particular thread reaches this breakpoint. '<i><font face="Courier New,Courier"><font size=-1>&lt;threadno></font></font></i>'
+is one of the numeric thread identifiers assigned by GDB, shown in the
+first column of the '<font face="Courier New,Courier"><font size=-1>info
+threads</font></font>' display.</div>
+
+<div CLASS="Body"><a NAME="pgfId-923020"></a>If you do not specify '<font face="Courier New,Courier"><font size=-1>thread
+<i>&lt;threadno></i></font></font>'
+when you set a breakpoint, the breakpoint applies to all threads of your
+program.</div>
+
+<div CLASS="Body"><a NAME="pgfId-923021"></a>You can use the thread qualifier
+on conditional breakpoints as well; in this case, place '<font face="Courier New,Courier"><font size=-1>thread
+<i>&lt;threadno></i></font></font>'
+before the breakpoint condition, as the following example shows.</div>
+
+<br>&nbsp;
+<table>
+<tr>
+<td>
+<div CLASS="CodeScreen2"><a NAME="pgfId-923262"></a><font face="Courier New,Courier"><font size=-1><b>(gdb)</b>
+break frik.c:13 thread 28 if bartab > lim</font></font></div>
+</td>
+</tr>
+</table>
+
+
+<p CLASS="Body"><a NAME="pgfId-923023"></a>Whenever your program stops
+under GDB for any reason, all threads of execution stop; not just the current
+thread. This allows you to examine the overall state of the program, including
+switching between threads, without worrying that things may change.
+
+<p CLASS="Body"><a NAME="pgfId-923024"></a>Conversely, whenever you restart
+the program, all threads start executing. This is true even when single
+stepping with commands like '<font face="Courier New,Courier"><font size=-1>step</font></font>'
+or '<font face="Courier New,Courier"><font size=-1>next</font></font>'.
+In particular, GDB cannot single-step all threads in lockstep. Since thread
+scheduling is up to your debugging target's operating system (not controlled
+by GDB), other threads may execute more than one statement while the current
+thread completes a single step. In general other threads stop in the middle
+of a statement, rather than at a clean statement boundary, when the program
+stops.
+
+<p CLASS="Body"><a NAME="pgfId-923025"></a>You might even find your program
+stopped in another thread after continuing or even single stepping. This
+happens whenever some other thread runs into a breakpoint, a signal, or
+an exception before the first thread completes whatever you requested.
+<br>&nbsp;
+<h4 CLASS="Heading3">
+<a NAME="pgfId-923026"></a>SET SCHEDULER-LOCKING
+<hr WIDTH="100%"></h4>
+
+<div CLASS="Body"><a NAME="pgfId-923027"></a>For targets that support it,
+GDB has a new command that helps to debug multi-threaded programs.
+<br>The '<font face="Courier New,Courier"><font size=-1>set scheduler-locking
+[on off step]</font></font>' command allows the GDB user to exert some
+control over how threads are scheduled while debugging.</div>
+
+<div CLASS="Body"><a NAME="pgfId-923029"></a>Normally GDB does not attempt
+to interfere with thread scheduling.
+<br>This means that in the default mode ('<font face="Courier New,Courier"><font size=-1>scheduler-locking
+off</font></font>'), the current thread may be scheduled out, and a different
+thread may begin running, at any time (as determined by the native scheduler).
+For instance, you may give a GDB command such as '<font face="Courier New,Courier"><font size=-1>step</font></font>'
+or '<font face="Courier New,Courier"><font size=-1>finish</font></font>',
+and when the command completes, you may be looking at a different thread.</div>
+
+<div CLASS="Body"><a NAME="pgfId-923030"></a>If you set the scheduler-locking
+mode to '<font face="Courier New,Courier"><font size=-1>step</font></font>',
+then GDB will try to interfere with the native scheduler just enough to
+prevent another thread from popping up while you debug. Other threads may
+get to run sometimes, but whenever a command such as '<font face="Courier New,Courier"><font size=-1>step</font></font>'
+or '<font face="Courier New,Courier"><font size=-1>finish</font></font>'
+completes, you should be looking at the same thread that was running before
+the command. Of course, if another thread gets to run and hits a breakpoint,
+GDB will still switch you to that thread (so if you don't want that to
+happen, then disable your breakpoints).</div>
+
+<div CLASS="Body"><a NAME="pgfId-923031"></a>For even greater (and more
+intrusive) control over the thread scheduler, GDB provides the mode
+<br>'<font face="Courier New,Courier"><font size=-1>scheduler-locking on</font></font>'.
+In this mode, the native scheduler is completely locked, and no thread
+may run except the current one. Obviously this will radically change the
+behavior of your program, and may lead to deadlock or other unpleasant
+consequences, so use it with caution.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-923032"></a>Syntax:</h4>
+
+<div CLASS="Note">
+<blockquote><a NAME="pgfId-923033"></a><font face="Courier New,Courier"><font size=-1>set
+scheduler-locking [off on step]</font></font></blockquote>
+</div>
+
+<div CLASS="Note">
+<blockquote><a NAME="pgfId-923395"></a>Set mode for locking scheduler during
+target execution.</blockquote>
+</div>
+
+<div CLASS="Note">
+<blockquote><a NAME="pgfId-923396"></a><font face="Courier New,Courier"><font size=-1>off</font></font></blockquote>
+</div>
+
+<div CLASS="BodyListFollow3">
+<blockquote>
+<blockquote><a NAME="pgfId-923397"></a>No locking (threads may preempt
+at any time).</blockquote>
+</blockquote>
+</div>
+
+<div CLASS="Note">
+<blockquote><a NAME="pgfId-923037"></a><font face="Courier New,Courier"><font size=-1>on</font></font></blockquote>
+</div>
+
+<div CLASS="BodyListFollow3">
+<blockquote>
+<blockquote><a NAME="pgfId-923335"></a>Full locking (no thread except the
+current thread may run).</blockquote>
+</blockquote>
+</div>
+
+<div CLASS="Note">
+<blockquote><a NAME="pgfId-923039"></a><font face="Courier New,Courier"><font size=-1>step</font></font></blockquote>
+</div>
+
+<div CLASS="BodyListFollow3">
+<blockquote>
+<blockquote><a NAME="pgfId-923336"></a>The scheduler is locked during every
+single-step operation. In this mode, no other thread may run during a step
+command. However, other threads may run while stepping over a function
+call ('<font face="Courier New,Courier"><font size=-1>next</font></font>').</blockquote>
+</blockquote>
+</div>
+
+<div CLASS="BodyListFollow3"><a NAME="pgfId-922981"></a></div>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-933083"></a>Simulator
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body">The GNUPro simulator does not support the execution of
+eCos executables built for the AM33. For the AM33 the simulator can only
+provide instruction-set simulation, and does not simulate the AM33 devices
+necessary to support eCos.
+<p>The remainder of this chapter is devoted to the simulation of eCos executables
+built for the AM31 (MN10300) part.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-933086"></a>MN10300/AM31 simulation
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-933087"></a>
+<br>The GNUPro simulator allows execution of a program compiled for the
+MN10300/AM31 target CPU on any supported host computer. It includes a simulator
+module for the target CPU instruction set, memory, and may also include
+simulated peripheral devices such as serial I/O and timers. Altogether,
+these features allow developers to test their MN10300 programs, without
+need for an actual board with that CPU.
+<p>The MN10300 simulator is not designed to match timing characteristics
+of its target board. For example, the CPU module uses a single clock cycle
+for all instructions, its memory is infinitely fast, and its simulated
+serial I/O is infinitely fast. Furthermore, a number of obscure or inapplicable
+functions were omitted from the simulated peripherals. The simulator is
+just complex and accurate enough to run eCos programs.
+<br>&nbsp;
+<h4>
+<a NAME="Tom1"></a>Features
+<hr WIDTH="100%"></h4>
+
+<p><br>The GNUPro simulator supports the following registers:
+<p>Volatile registers: <font face="Courier New,Courier"><font size=-1>d0</font></font>,
+<font face="Courier New,Courier"><font size=-1>d1</font></font>, <font face="Courier New,Courier"><font size=-1>a0</font></font>,
+<font face="Courier New,Courier"><font size=-1>a1</font></font><font face="Courier New,Courier"><font size=-1></font></font>
+<p>Saved registers: <font face="Courier New,Courier"><font size=-1>d2</font></font>,
+<font face="Courier New,Courier"><font size=-1>d3</font></font>, <font face="Courier New,Courier"><font size=-1>a2</font></font>,
+<font face="Courier New,Courier"><font size=-1>a3</font></font>
+<p>Special purpose registers: <font face="Courier New,Courier"><font size=-1>sp</font></font>,
+<font face="Courier New,Courier"><font size=-1>pc</font></font>, <font face="Courier New,Courier"><font size=-1>ccr</font></font>,
+<font face="Courier New,Courier"><font size=-1>mdr</font></font>, <font face="Courier New,Courier"><font size=-1>lar</font></font>,
+<font face="Courier New,Courier"><font size=-1>lir</font></font>
+<p>Memory is 4mb starting at location '<font face="Courier New,Courier"><font size=-1>0x48000000</font></font>'.
+The stack starts at the highest memory address and works downward. The
+heap starts at the lowest address after the text, data and bss.
+<br>&nbsp;
+<h4>
+<a NAME="Tom2"></a>MN10300/AM31-specific command-line options
+<hr WIDTH="100%"></h4>
+The following general options, are supported by the simulator:
+<p><font face="Courier New,Courier"><font size=-1>--board=BOARD</font></font>
+<blockquote>Specifies that the simulator be tailored to a model of a specified
+hardware board. For the mn10300, the '<font face="Courier New,Courier"><font size=-1>--board=stdeval1</font></font>'
+option will add support for several peripherals on the evaluation board,
+including the mn103002 on-board interrupt controller, timers, and serial
+I/O modules. The board's actual RAM &amp; ROM memory layouts are matched
+by the simulator.
+<br>&nbsp;</blockquote>
+<font face="Courier New,Courier">--profile [on|off]</font>
+<blockquote>This option creates a file called '<font face="Courier New,Courier"><font size=-1>gmon.out</font></font>'
+that contains profiling information. This file can be used as input to
+'<font face="Courier New,Courier"><font size=-1>gprof</font></font>', the
+GNU profiler.</blockquote>
+
+<p><br><font face="Courier New,Courier"><font size=-1>--sockser-addr=HOSTNAME:PORT</font></font>
+<blockquote>Specifies that the simulation of the primary serial I/O peripherals
+should send data to and from a TCP/IP socket rather than to and from the
+simulator console. The TCP/IP socket's listening address is specified by
+the argument. HOSTNAME should refer to an IP address of the host, and PORT
+should be an unused port number between 1024 and 65535. You may use any
+terminal program that connects to TCP/IP sockets, such as telnet, kermit,
+or socket, to interact directly with the simulated program.
+<br>You can also use gdb’s ‘target remote HOSTNAME:PORT’ command to connect,
+if the simulator is running a program equipped with a gdb stub.
+<br>&nbsp;</blockquote>
+<font face="Courier New,Courier">--trace=[on|off]</font>
+<blockquote>This creates a file called '<font face="Courier New,Courier"><font size=-1>trace.din</font></font>'
+that contains tracing information. Use the '<font face="Courier New,Courier"><font size=-1>--tracefile</font></font>'
+switch (discussed below) to change the name of the output file.
+<p><font face="Courier New,Courier"><font size=-1><b>C:\></b> mn10300-elf-run
+--trace hello</font></font>
+<br><b><font face="Courier New,Courier"><font size=-1>Hello, world!</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>3 + 4 = 7</font></font></b></blockquote>
+
+<p><br>Here are the first 10 lines of the file produced by the above run:
+<blockquote><b><font face="Courier New,Courier"><font size=-1>2 a0040004
+; width 4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040008 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a004000c ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040010 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040014 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040018 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a004001c ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040020 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040024 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>2 a0040028 ; width
+4 ; load instruction</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1></font></font></b>&nbsp;</blockquote>
+<font face="Courier New,Courier"><font size=-1>--tracefile &lt;file></font></font>
+<blockquote>This changes the name of the file to which trace information
+will be written.
+<p><font face="Courier New,Courier"><font size=-1><b>C:\></b> mn10300-elf-run
+--trace --tracefile=trace.out hello</font></font>
+<br><b><font face="Courier New,Courier"><font size=-1>Placing trace information
+into file "trace.out"</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>Hello, world!</font></font></b>
+<br><b><font face="Courier New,Courier"><font size=-1>3 + 4 = 7</font></font></b>
+<br>&nbsp;</blockquote>
+
+<h4>
+&nbsp;<a NAME="Tom3"></a>Using the simulator
+<hr WIDTH="100%"></h4>
+An eCos program is normally built with a particular “download method” in
+mind, that is, the means by which the program is to be ultimately loaded
+into the target hardware. With some special considerations, the simulator
+is able to run programs built for any of these methods. Use the configuration
+options in eCos’s Hardware Abstraction Layer (HAL) package to support the
+different download methods. The following table summarizes the ways in
+which an eCos image can be prepared for different types of download.
+<p>HAL configuration, for various download methods
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="Body"><b>Download method</b></div>
+</td>
+
+<td>
+<div CLASS="Body"><b>HAL configuration</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Burn hardware ROM</div>
+</td>
+
+<td>
+<div CLASS="Body">ROM startup</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Download to ROM emulator</div>
+</td>
+
+<td>
+<div CLASS="Body">ROM startup</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Download to board with CygMon</div>
+</td>
+
+<td>
+<div CLASS="Body">RAM startup</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Download to simulator without CygMon</div>
+</td>
+
+<td>
+<div CLASS="Body">ROM startup</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Download to simulator with CygMon</div>
+</td>
+
+<td>
+<div CLASS="Body">RAM startup</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="Body">Download to simulator ignoring devices</div>
+</td>
+
+<td>
+<div CLASS="Body">SIM configuration</div>
+</td>
+</tr>
+</table>
+
+<p><b>CAUTION</b>:
+<blockquote>An application configured for RAM startup cannot be run directly
+on the simulator: it will fail during startup. You can only download it
+to the simulator if you are already running CygMon in the simulator, as
+described below.
+<br>The simulator-specific configuration does not include device drivers
+or watchdog devices that the simulator would otherwise have to emulate.</blockquote>
+In most circumstances, you should not download to simulator ignoring devices.
+If you use this download method, the binaries built with this configuration
+will not run on the target board; they can only run on the simulator. Likewise,
+binaries built to run on the target board will not run on the simulator.
+<p>In some cases, you may want to use a simulator specific configuration
+to try to work around problems with the device drivers or with the simulator
+itself.
+<p>Simulator clocks and timers sometimes appear to be running very slowly,
+even when there are apparently no active threads. Delays that should only
+be in seconds can run to minutes. These delays occur because the eCos kernel
+idle thread is running intensively, and the simulator emulates it faithfully.
+With the SIM configuration, however, the eCos kernel realizes it is in
+a simulated environment, and can therefore adjust the clock settings to
+be more realistic.
+<br>&nbsp;
+<h4>
+&nbsp;<a NAME="Tom4"></a>Simulator exceptions within GDB
+<hr WIDTH="100%"></h4>
+If you invoke the simulator within GDB, using the '<font face="Courier New,Courier"><font size=-1>target
+sim</font></font>' command, you may encounter some ambiguities when processing
+signals and exceptions. When an exception is raised in the simulator, GDB
+does not known whether the simulated program is intended to handle the
+exception, or if GDB is intended to handle it.
+<p>For example, suppose you are debugging a ROM monitor in the simulator
+invoked from GDB (we'll call this GDB1), and you have downloaded an application
+to it from a second GDB session (which we will call GDB2). The second GDB
+session, GDB2, would simply consider the simulated target as a remote target
+and nothing more. Now suppose that in GDB2 you set a breakpoint in the
+program. The breakpoint will be physically set in GDB1. So when the breakpoint
+is reached, instead of the breakpoint being handled by the ROM monitor
+as if it was a real target, the breakpoint will be interpreted by GDB1
+as if you had asked GDB1 to set a breakpoint in the ROM monitor code. This
+may not be your desired intention. To solve this, you can tell GDB1 not
+to process breakpoints itself, but to let the simulated target process
+them.
+<p>To do this, use the following command:
+<blockquote><font face="Courier New,Courier"><font size=-1>handle SIGxxxx
+pass nostop noprint</font></font></blockquote>
+
+<p><br>where '<font face="Courier New,Courier"><font size=-1>SIGxxxx</font></font>'
+is one of the signals listed by GDB when you use the '<font face="Courier New,Courier"><font size=-1>info
+handle</font></font>' command to the GDB console prompt.
+<br>For example the command '<font face="Courier New,Courier"><font size=-1>handle
+SIGTRAP pass nostop noprint</font></font>' tells GDB to not stop the simulated
+target at a breakpoint, or even to print that it has been stopped. Instead,
+the command tells GDB to pass the information back to the program. You
+can modify the command to use with other signals and exceptions.
+<p><b>Note:</b>
+<blockquote>If you use the aforementioned command, you will no longer be
+able to set breakpoints in the ROM monitor code (as in the example). You
+may be able to work around this problem by using conditional breakpoints.
+Please consult the GDB manual on how to use conditional-breakpoints.</blockquote>
+
+<p><br>The ambiguities discussed in this section are not a problem when
+you are using the standalone simulator. In such a case, the standalone
+simulator is the only target program that can handle the exception.
+<br>&nbsp;
+<h4>
+&nbsp;<a NAME="Tom5"></a>CygMon, the simulator, and thread-aware debugging
+<hr WIDTH="100%"></h4>
+The simulator does not support thread-aware debugging. However, CygMon
+does support it. To obtain this functionality in the simulator, run CygMon
+under the simulator, and interact with it as if it were actually running
+on the real hardware.
+<p>While this approach offers the desired functionality, it is has a few
+disadvantages. The simulator is not only slow to execute code compared
+with real hardware, but simulation of the ROM monitor also slows the downloading
+of code to approximately the speed of a serial port. In addition, since
+the simulator must run continuously to execute CygMon, it can interfere
+with the performance of GDB. If there is insufficient memory for both programs
+to be in memory together, there may also be delays due to memory paging.
+<p>This technique uses TCP/IP for communication between the simulator and
+GDB, so you must ensure that the TCP/IP protocol stack is installed on
+your machine.
+<p>To run CygMon in the simulator, type the following command at the command
+line:
+<blockquote><font face="Courier New,Courier"><font size=-1>mn10300-elf-run
+--board=stdeval1 --sockser-addr=localhost:XXXX cygmon.rom</font></font></blockquote>
+
+<p><br>Where ‘<font face="Courier New,Courier"><font size=-1>XXXX</font></font>’,
+is an unused TCP port number on your computer. A value of 1234 usually
+works, but any number between 1024 and 65535, which does not result in
+an error will do. The executable, '<font face="Courier New,Courier"><font size=-1>cygmon.rom</font></font>'
+can be found in the directory, '<font face="Courier New,Courier"><font size=-1>loaders/mn10300-stdeval1'</font></font>
+within the eCos installation.
+<p>This has started the simulator running CygMon. To make use of it you
+must run a separate GDB session and connect to it.
+<br>If you run GDB in command-line mode, you can attach it to the simulated
+CygMon with the following command:
+<blockquote><font face="Courier New,Courier"><font size=-1>(gdb) target
+remote localhost:XXXX</font></font></blockquote>
+
+<p><br>&nbsp;Where ‘<font face="Courier New,Courier"><font size=-1>XXXX</font></font>’
+is the port number given in the call to the simulator. GDB should connect
+to the simulator and talk to the version of CygMon running in it in exactly
+the same way as if it were talking to CygMon running on the real hardware.
+<p>If you are running GDBtk then, in the “<font face="Arial,Helvetica"><font size=-1>Target
+Settings</font></font>” dialog, select “<font face="Arial,Helvetica"><font size=-1>Remote/TCP</font></font>”
+in the “<font face="Arial,Helvetica"><font size=-1>Target</font></font>”
+edit field. Type '<font face="Courier New,Courier"><font size=-1>localhost</font></font>'
+into the “<font face="Arial,Helvetica"><font size=-1>Host</font></font>”
+edit field, and put the value chosen for the port number in the “<font face="Arial,Helvetica"><font size=-1>Port</font></font>”
+entry.
+<p>You should use executables configured to run on the target board with
+RAM startup, and not executables configured for the simulator.
+<p>If the performance of the two programs on a single machine is too slow,
+it is possible to use two machines: one to run the simulator and one to
+run GDB. These machines must be connected together on a TCP/IP network.
+Run the simulator on one machine, but supply the name of the machine in
+place of '<font face="Courier New,Courier"><font size=-1>localhost</font></font>'
+in the '<font face="Courier New,Courier"><font size=-1>--sockser-addr</font></font>'
+option. When running GDB on the other machine, replace '<font face="Courier New,Courier"><font size=-1>localhost</font></font>'
+with the name of the machine running the simulator.</div>
+
+<div CLASS="Body"><a NAME="pgfId-461520"></a><a NAME="_Toc414871787"></a><a NAME="_Toc418677753"></a><a NAME="_Toc442250458"></a></div>
+
+<div CLASS="footnotes">
+<div CLASS="footnote">
+<div CLASS="TableFootnote">&nbsp;</div>
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (WinNT; U) [Netscape]">
+   <title> </title>
+</head>
+<body bgcolor="#FFFFFF">
+
+<h1 CLASS="Appendix">
+&nbsp;<a NAME="pgfId-468709"></a>CygMon (Cygnus ROM Monitor)
+<hr WIDTH="100%"></h1>
+&nbsp;
+<div CLASS="BodyAfterHead"><a NAME="pgfId-469317"></a>CygMon is a ROM monitor
+designed to be portable across a large number of embedded systems. It is
+also completely compatible with existing GDB protocols, thus allowing the
+use of a standard ROM monitor with existing GNU tools across a wide range
+of embedded platforms.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-474179"></a>CygMon is only supported for
+the AM31 (MN10300) part. For the AM33 you should use the GDB stub ROM provided
+with eCos. Therefore, the remainder of this appendix only applies to the
+AM31 part.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-468108"></a>CygMon has basic program handling
+and debugging commands, programs can be loaded into memory and run, and
+the contents of memory can be viewed. There are several more advanced options
+that can be included at compile time, such as a disassembler (this of course
+increases the code size significantly).
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-468109"></a>Since CygMon contains a GDB
+remote stub, full debugging can be done from a host running GDB to a target
+running CygMon. Switching between CygMon monitor mode and GDB stub mode
+is designed to be transparent to the user, since CygMon can detect when
+GDB is communicating with the target and switch into stub mode. When GDB
+stops communicating with the target normally, it sends a termination packet
+which lets the stub know when to switch to the CygMon monitor mode.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-468110"></a>The command parser was written
+specifically for CygMon, to provide necessary functionality in limited
+space. All commands consist of words followed by arguments separated by
+spaces. Abbreviations of command names may be used. Any unique subset of
+a command name is recognized as being that command, so '<font face="Courier New,Courier"><font size=-1>du</font></font>'
+is recognized to be the '<font face="Courier New,Courier"><font size=-1>dump</font></font>'
+command. The user is prompted to resolve any ambiguities. Generally, a
+command with some or all of its arguments empty will either assume a default-set
+of arguments or return the status of the operation controlled by the command.</div>
+
+
+<p CLASS="Body"><a NAME="pgfId-470935"></a>CygMon includes an API, which
+allows user programs, running under it, to use system calls for various
+functions. The available system calls allow access to the serial ports
+and on-board timer functions, if they are available.
+<div CLASS="Body"></div>&nbsp;
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-470939"></a>Installing and building CygMon
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-471453"></a>This section explains to owners
+of the eCos Development Kit how to install the CygMon source, and build
+the CygMon ROM monitor program under the Windows NT operating system.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-471454"></a>For users of the Sourceware
+release of eCos, instructions can be found at
+<br>&nbsp;</div>
+
+<div CLASS="CodeExample"><a NAME="pgfId-471455"></a><b><font face="Courier New,Courier"><font size=-1>http://sourceware.cygnus.com/ecos/</font></font></b></div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-471456"></a>Installing CygMon Source
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-471457"></a>By selecting the appropriate
+component, the eCos installer will install the CygMon source code, and
+we recommend you do so. When installed the sources would then be found
+in:</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-471458"></a><font face="Courier New,Courier"><font size=-1>C:\Program
+Files\Cygnus Solutions\eCos\ecos-99r1-990828\cygmon-src</font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471459"></a>If you choose to install the
+sources to a different location, the '<font face="Courier New,Courier"><font size=-1>cygmon-src</font></font>'
+directory will be located at
+<br>'<font face="Courier New,Courier"><font size=-1>ecos-99r1-990828\cygmon-src</font></font>'
+relative to the specified location. Please note that due to the configuration
+and build tools being used, the sources must be installed in a directory
+hierarchy that uses only alphanumeric, dash or underscore characters in
+the directory names.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-471460"></a>Building CygMon
+<hr WIDTH="100%"></h3>
+
+<div CLASS="Body"><a NAME="pgfId-471461"></a>From the Start Menu, select:</div>
+
+<div CLASS="Body">
+<blockquote><a NAME="pgfId-471462"></a><i><font face="Arial,Helvetica">Programs->Cygnus
+eCos->eCos Development Environment</font></i></blockquote>
+</div>
+
+<div CLASS="Body"><a NAME="pgfId-471463"></a>This will bring up a window
+running "bash".</div>
+
+<div CLASS="Body"><a NAME="pgfId-471464"></a>Mount the sources such that
+the full path to the CygMon sources uses only alphanumeric, dash or underscore
+characters:</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-471465"></a><font face="Courier New,Courier"><font size=-1>mount
+C:/Program\ Files/Cygnus\ Solutions/eCos /ecos</font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471466"></a>In addition, you must mount
+the bin directory for the unsupported tools as '<font face="Courier New,Courier"><font size=-1>bin</font></font>':</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-471467"></a><font face="Courier New,Courier"><font size=-1>mount
+C:/cygnus/gnupro/i686-cygwin32/i686-cygwin32/\</font></font>
+<br><font face="Courier New,Courier"><font size=-1>unsupported-99r1/H-i686-cygwin32/bin
+/bin</font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471469"></a>You should now be able to
+configure and build CygMon as follows:</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-471470"></a><font face="Courier New,Courier"><font size=-1>mkdir
+/ecos/ecos-99r1-990828/objdir</font></font>
+<br><font face="Courier New,Courier"><font size=-1>cd /ecos/ecos-99r1-990828/objdir</font></font>
+<br><font face="Courier New,Courier"><font size=-1>../cygmon-src/configure
+--host=i686-cygwin32 --target=mn10300-elf</font></font>
+<br><font face="Courier New,Courier"><font size=-1>make -w</font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471474"></a>When complete, you will have
+CygMon images built in:</div>
+
+<blockquote>
+<div CLASS="CodeExample"><a NAME="pgfId-471475"></a><font face="Courier New,Courier"><font size=-1>mn10300-elf/cygmon/eval</font></font></div>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471476"></a>The images are:</div>
+
+<div CLASS="BodyHang1">
+<blockquote><a NAME="pgfId-471477"></a><font face="Courier New,Courier"><font size=-1>cygmon.img</font></font></blockquote>
+</div>
+
+<blockquote>
+<blockquote>Is the ROM-resident version of CygMon in binary format.</blockquote>
+</blockquote>
+
+<blockquote>
+<div CLASS="BodyHang1"><a NAME="pgfId-471479"></a><font face="Courier New,Courier"><font size=-1>cygmon.rom</font></font></div>
+
+<blockquote>Is the ELF executable of the ROM-resident version of CygMon.
+It is used in the standalone simulator for thread-aware debugging.</blockquote>
+</blockquote>
+
+<blockquote>
+<div CLASS="BodyHang1"><a NAME="pgfId-471481"></a><font face="Courier New,Courier"><font size=-1>cygmon.sre</font></font></div>
+
+<blockquote>Is the ROM-resident version of CygMon in S-Record format.</blockquote>
+</blockquote>
+
+<div CLASS="Body"><a NAME="pgfId-471483"></a>If you want to read the source
+code, here are the names of the files in the cygmon and libstub directories,
+specific to this version of CygMon.</div>
+
+<div CLASS="Body"><a NAME="pgfId-471484"></a></div>
+
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-472521"></a><b>File names</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-472523"></a><b>Descriptions</b></div>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<div CLASS="CellHeading"><a NAME="pgfId-472525"></a><b>Generic Parts</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472529"></a><font face="Courier New,Courier"><font size=-1>libstub/generic-stub.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472531"></a>Generic remote debug stub</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472533"></a><font face="Courier New,Courier"><font size=-1>libstub/relocate.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472535"></a>Segment relocation while
+booting ROMS</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472537"></a><font face="Courier New,Courier"><font size=-1>cygmon/bsp/monitor.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472539"></a>Generial CygMon monitor
+support</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472541"></a><font face="Courier New,Courier"><font size=-1>cygmon/bsp/monitor_cmd.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472543"></a>Cygmon command interpreter</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472545"></a><font face="Courier New,Courier"><font size=-1>cygmon/bsp/ledit.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472547"></a>CygMon line editor</div>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<div CLASS="CellHeading"><a NAME="pgfId-472549"></a><b>Processor Specific
+Parts</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472553"></a><font face="Courier New,Courier"><font size=-1>libstub/mn10300/mn10300.mk</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472555"></a>Makefile common to all
+mn10300 variants</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472557"></a><font face="Courier New,Courier"><font size=-1>libstub/mn10300/mn10300-stub.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472559"></a>Specific to mn10300, gdb
+stub support</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472561"></a><font face="Courier New,Courier"><font size=-1>cygmon/mn10300/mn10300.mon.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472563"></a>Specific to mn10300, CygMon
+support</div>
+</td>
+</tr>
+
+<tr>
+<td COLSPAN="2">
+<div CLASS="CellHeading"><a NAME="pgfId-472565"></a><b>Board Specific Parts</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472569"></a><font face="Courier New,Courier"><font size=-1>libstub/mn10300/eval.mk</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472571"></a>Makefile specific to MN10300
+EVB</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472573"></a><font face="Courier New,Courier"><font size=-1>libstub/mn10300/mn10300-lib.c</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472575"></a>Support for MN10300 EVB</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472577"></a><font face="Courier New,Courier"><font size=-1>cygmon/mn10300/mn10300.mon.ld</font></font></div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-472579"></a>CygMon linker script for
+EVB</div>
+</td>
+</tr>
+</table>
+
+<h2 CLASS="Heading1">
+</h2>
+
+<h2 CLASS="Heading1">
+</h2>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-470943"></a><a NAME="_Toc418040886"></a><a NAME="_Toc439136897"></a><a NAME="_Toc442250462"></a>CygMon
+command list
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body">This is a list of all the commands that can be typed
+at the CygMon command prompt. Arguments in [<i> brackets</i> ] are optional,
+arguments without brackets are required. Note that all commands can be
+invoked by typing enough of the command name to uniquely specify the command.
+Some commands have aliases, which are single-letter abbreviations for commands,
+which do not have unique first letters. Aliases for all commands are shown
+in the help screens.
+<br>&nbsp;
+<h3>
+<a NAME="pgfId-468143"></a><a NAME="_Toc418040887"></a><a NAME="_Toc439136898"></a><a NAME="_Toc442250463"></a>baud
+<hr WIDTH="100%"></h3>
+</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468144"></a>Usage</h4>
+
+<div CLASS="Label"><a NAME="pgfId-468145"></a><font face="Courier New,Courier"><font size=-1>baud
+<i>speed</i></font></font></div>
+
+<div CLASS="Note">&nbsp;</div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468146"></a>The baud command
+sets the speed of the active serial port. It takes one argument, which
+specifies the speed to which the port will be set.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468147"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468148"></a><font face="Courier New,Courier"><font size=-1>baud
+9600</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468149"></a>Sets the speed
+of the active port to 9600 baud.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468153"></a><a NAME="_Toc418040888"></a><a NAME="_Toc439136899"></a><a NAME="_Toc442250464"></a>break
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468154"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468155"></a><font face="Courier New,Courier"><font size=-1>break
+[<i>location</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468156"></a>The break command
+displays and sets breakpoints in memory. It takes zero or one argument.
+With zero arguments, it displays a list of all currently set breakpoints.
+With one argument it sets a new breakpoint at the specified location.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468157"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468158"></a><font face="Courier New,Courier"><font size=-1>break
+4ff5</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468159"></a>Sets a breakpoint
+at address '<font face="Courier New,Courier"><font size=-1>4ff5</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468181"></a><a NAME="_Toc418040889"></a><a NAME="_Toc439136902"></a><a NAME="_Toc442250467"></a>disassemble
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468182"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468183"></a><font face="Courier New,Courier"><font size=-1>disassemble
+[<i>location</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468184"></a>The disassemble
+command disassembles the contents of memory. Because of the way breakpoints
+are handled, all instructions are shown and breakpoints are not visible
+in the disassembled code. The disassemble command takes zero or one argument.
+When called with zero arguments, it starts disassembling from the current
+(user program) '<font face="Courier New,Courier"><font size=-1>pc</font></font>'.
+When called with a location, it starts disassembling from the specified
+location. When called after a previous call and with no arguments, it disassembles
+the next area of memory after the one previously disassembled.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468185"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468186"></a><font face="Courier New,Courier"><font size=-1>disassemble
+45667000</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468187"></a>Displays disassembled
+code starting at location '<font face="Courier New,Courier"><font size=-1>45667000</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468202"></a><a NAME="_Toc418040890"></a><a NAME="_Toc439136905"></a><a NAME="_Toc442250469"></a>dump
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468203"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468204"></a><font face="Courier New,Courier"><font size=-1>dump
+<i>location</i></font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468205"></a>The dump command shows a region
+of 16 bytes around the specified location, aligned to 16 bytes. Thus, '<font face="Courier New,Courier"><font size=-1>dump
+65</font></font>' would show all bytes from '<font face="Courier New,Courier"><font size=-1>60</font></font>'
+through '<font face="Courier New,Courier"><font size=-1>6f</font></font>'.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468206"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468207"></a><font face="Courier New,Courier"><font size=-1>dump
+44f5</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468208"></a>Displays 16 bytes starting
+with '<font face="Courier New,Courier"><font size=-1>44f0</font></font>'
+and ending with '<font face="Courier New,Courier"><font size=-1>44ff</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468221"></a><a NAME="_Toc418040891"></a><a NAME="_Toc439136907"></a><a NAME="_Toc442250471"></a>go
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468222"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468223"></a><font face="Courier New,Courier"><font size=-1>go
+[<i>location</i>]</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468224"></a>The go command starts user
+program execution. It can take zero or one argument. If no argument is
+provided, go starts execution at the current '<font face="Courier New,Courier"><font size=-1>pc</font></font>'.
+If an argument is specified, go sets the '<font face="Courier New,Courier"><font size=-1>pc</font></font>'
+to that location, and then starts execution at that location.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468225"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468226"></a><font face="Courier New,Courier"><font size=-1>go
+40020000</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468227"></a>Sets the '<font face="Courier New,Courier"><font size=-1>pc</font></font>'
+to '<font face="Courier New,Courier"><font size=-1>40020000</font></font><tt>'</tt>
+, and starts program execution.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468231"></a><a NAME="_Toc418040892"></a><a NAME="_Toc439136908"></a><a NAME="_Toc442250472"></a>help
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468232"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468233"></a><font face="Courier New,Courier"><font size=-1>help
+[<i>command</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468234"></a>The help command
+without arguments shows a list of all available commands with a short description
+of each one. With a command name as an argument it shows usage for the
+command and a paragraph describing the command. Usage is shown as command
+name followed by names of extensions or arguments.</div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468235"></a>Arguments in [<i>
+brackets</i> ] are optional. Plain text arguments are required. Note that
+all commands can be invoked by typing enough of the command name to uniquely
+specify the command. Some commands have aliases, which are one-letter abbreviations
+for commands, which do not have unique first letters. Aliases for all commands
+are shown in the help screen, which displays commands in the format:</div>
+
+<blockquote>
+<div CLASS="BodyListFollow3"><a NAME="pgfId-468236"></a><font face="Courier New,Courier"><font size=-1>command
+name: (alias, if any) description of command</font></font></div>
+</blockquote>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468237"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468238"></a><font face="Courier New,Courier"><font size=-1>help
+foo</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468239"></a>Shows the help
+screen for the command '<font face="Courier New,Courier"><font size=-1>foo</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468243"></a><a NAME="_Toc418040893"></a><a NAME="_Toc439136912"></a><a NAME="_Toc442250473"></a>load
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468244"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468245"></a><font face="Courier New,Courier"><font size=-1>load</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468246"></a>The load command
+switches the monitor into a state where it takes all input as s-records
+and stores them in memory. The monitor exits this mode when a termination
+record is hit, or certain errors (such as an invalid s-record) cause the
+load to fail.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468250"></a><a NAME="_Toc418040894"></a><a NAME="_Toc439136913"></a><a NAME="_Toc442250474"></a>memory
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468251"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468252"></a><font face="Courier New,Courier"><font size=-1>memory[<i>.size</i>]
+<i>location</i>[<i>value</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468253"></a>The memory command
+is used to view and modify single locations in memory. It can take a size
+extension, which follows the command name or partial command name without
+a space, and is a period, followed by the number of bits to be viewed or
+modified. Options are 8, 16, 32, and 64. Without a size extension, the
+memory command defaults to displaying or changing 8 bits at a time.</div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468254"></a>The memory command
+can take one or two arguments, independent of whether a size extension
+is specified. With one argument, it displays the contents of the specified
+location. With two arguments, it replaces the contents of the specified
+location with the specified value.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468255"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468256"></a><font face="Courier New,Courier"><font size=-1>memory.8
+45f6b2 57</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468257"></a>Places the 8-bit value 57
+at the location '<font face="Courier New,Courier"><font size=-1>45f6b2</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468271"></a><a NAME="_Toc418040895"></a><a NAME="_Toc439136915"></a><a NAME="_Toc442250476"></a>port
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468272"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468273"></a><font face="Courier New,Courier"><font size=-1>port
+[<i>port number</i>]</font></font></div>
+
+<div CLASS="Body"><a NAME="pgfId-468274"></a>The port command allows control
+over the serial port being used by the monitor. It takes zero or one argument.
+Called with zero arguments it displays the port currently in use by the
+monitor. Called with one argument it switches the port in use by the monitor
+to the one specified. It then prints out a message on the new port to confirm
+the switch.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468275"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468276"></a><font face="Courier New,Courier"><font size=-1>port
+1</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468277"></a>Switches the port
+in use by the monitor to port 1.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468281"></a><a NAME="_Toc418040896"></a><a NAME="_Toc439136917"></a><a NAME="_Toc442250477"></a>register
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468282"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468283"></a><font face="Courier New,Courier"><font size=-1>register
+[<i>register name</i>] [<i>value</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468284"></a>The register command
+allows the viewing and manipulation of register contents. It can take zero,
+one, or two arguments. When called with zero arguments, the register command
+displays the values of all registers. When called with only the register
+name argument, it displays the contents of the specified register. When
+called with both a register name and a value, it places that value into
+the specified register.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468285"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468286"></a><font face="Courier New,Courier"><font size=-1>register
+r1 1f</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468287"></a>Places the value
+'<font face="Courier New,Courier"><font size=-1>1f</font></font>' in the
+register '<font face="Courier New,Courier"><font size=-1>r1</font></font>'.
+<br>&nbsp;</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468290"></a><a NAME="_Toc439136918"></a><a NAME="_Toc442250478"></a>reset
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468291"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468292"></a><font face="Courier New,Courier"><font size=-1>reset</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468293"></a>The reset command
+resets the board.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468297"></a><a NAME="_Toc418040898"></a><a NAME="_Toc439136919"></a><a NAME="_Toc442250479"></a>step
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468298"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468299"></a><font face="Courier New,Courier"><font size=-1>step
+[<i>location</i>]</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468300"></a>The step command
+causes one instruction of the user program to execute, then returns control
+to the monitor. It can take zero or one argument. If no argument is provided,
+step executes one instruction at the current pc. If a location is specified,
+step executes one instruction at the specified location.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468301"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468302"></a><font face="Courier New,Courier"><font size=-1>step</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468303"></a>Executes one instruction
+at the current '<font face="Courier New,Courier"><font size=-1>pc</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468317"></a><a NAME="_Toc418040899"></a><a NAME="_Toc439136921"></a><a NAME="_Toc442250481"></a>terminal
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468318"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468319"></a><font face="Courier New,Courier"><font size=-1>terminal
+<i>type</i></font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468320"></a>The terminal command
+sets the type of the current terminal to that specified in the type argument.
+The only available terminal types are vt100 and dumb. This function is
+used by the line-editor to determine how to update the terminal display.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468321"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468322"></a><font face="Courier New,Courier"><font size=-1>terminal
+dumb</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468323"></a>Sets the type of
+the current terminal to a dumb terminal.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468327"></a><a NAME="_Toc418040900"></a><a NAME="_Toc439136923"></a><a NAME="_Toc442250482"></a>transfer
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468328"></a>Usage</h4>
+
+<h6 CLASS="Note">
+<a NAME="pgfId-468329"></a><tt>transfer</tt></h6>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468330"></a>The transfer or
+$ function transfers control to the gdb stub. This function does not actually
+need to be called by the user, as connecting to the board with gdb will
+call it automatically. The transfer command takes no arguments. The $ command
+does not wait for a return, but executes immediately. A telnet setup in
+line mode will require a return when executed by the user, as the host
+computer does not pass any characters to the monitor until a return is
+pressed. Disconnecting from the board in gdb automatically returns control
+to the monitor.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468334"></a><a NAME="_Toc418040901"></a><a NAME="_Toc439136924"></a><a NAME="_Toc442250483"></a>unbreak
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468335"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468336"></a><font face="Courier New,Courier"><font size=-1>unbreak
+<i>location</i></font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468337"></a>The unbreak command
+removes breakpoints from memory. It takes one argument, the location to
+remove the breakpoint from.</div>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468338"></a>Example</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468339"></a><font face="Courier New,Courier"><font size=-1>unbreak
+4ff5</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468340"></a>Removes a previously
+set breakpoint at memory location '<font face="Courier New,Courier"><font size=-1>4ff5</font></font>'.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468344"></a><a NAME="_Toc418040902"></a><a NAME="_Toc439136925"></a><a NAME="_Toc442250484"></a>usage
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468345"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468346"></a><font face="Courier New,Courier"><font size=-1>usage</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468347"></a>Shows the amount
+of memory being used by the monitor, broken down by category. Despite its
+name, it has nothing to do with the usage of any other command.</div>
+
+<h3 CLASS="Heading2">
+<a NAME="pgfId-468351"></a><a NAME="_Toc418040903"></a><a NAME="_Toc439136926"></a><a NAME="_Toc442250485"></a>version
+<hr WIDTH="100%"></h3>
+
+<h4 CLASS="Label">
+<a NAME="pgfId-468352"></a>Usage</h4>
+
+<div CLASS="Note"><a NAME="pgfId-468353"></a><font face="Courier New,Courier"><font size=-1>version</font></font></div>
+
+<div CLASS="BodyListFollow2"><a NAME="pgfId-468354"></a>The version command
+displays the version of the monitor.
+<br>&nbsp;</div>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-468357"></a><a NAME="_Toc439136927"></a><a NAME="_Toc442250486"></a>CygMon
+command editing
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Body"><a NAME="pgfId-468358"></a>CygMon has a line-editing
+interface. If you type the wrong thing, you can correct it. Position the
+cursor back, delete the wrong characters and entry the right ones. The
+user can recover previous commands and edit them or simply re-execute them.</div>
+
+<div CLASS="Body"><a NAME="pgfId-468359"></a>These are common "EMACS" and
+"X" text editing escape sequences. Here are the keys for editing.</div>
+
+<div CLASS="Body"><a NAME="pgfId-468409"></a></div>
+
+<br>&nbsp;
+<center><table BORDER >
+<tr>
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-468362"></a><b>Keystroke</b></div>
+</td>
+
+<td>
+<div CLASS="CellHeading"><a NAME="pgfId-468364"></a><b>Command</b></div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468366"></a>CR '\n'</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468368"></a>Execute the currently
+displayed command</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468370"></a>ctl-a</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468372"></a>Move to Beginning of line</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468374"></a>ctl-e</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468376"></a>End of line</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468378"></a>ctl-f</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468380"></a>Forward char</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468382"></a>ctl-b</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468384"></a>Backward char</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468386"></a>ctl-k</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468388"></a>Delete to end of line</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468390"></a>ctl-y</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468392"></a>Yank Character (undelete)</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468394"></a>ctl-d</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468396"></a>Delete current character</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468398"></a>ctl-p</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468400"></a>Edit previous command</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468402"></a>ctl-u</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468404"></a>Erase Line</div>
+</td>
+</tr>
+
+<tr>
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468406"></a>ctl-n</div>
+</td>
+
+<td>
+<div CLASS="CellBody"><a NAME="pgfId-468408"></a>Edit next command</div>
+</td>
+</tr>
+</table></center>
+
+<h2 CLASS="Heading1">
+</h2>
+
+<h2 CLASS="Heading1">
+</h2>
+
+<h2 CLASS="Heading1">
+<a NAME="pgfId-474155"></a><a NAME="_Toc439136928"></a><a NAME="_Toc442250487"></a>Debugging
+CygMon
+<hr WIDTH="100%"></h2>
+
+<div CLASS="Heading1"></div>&nbsp;
+
+<div CLASS="Body"><a NAME="pgfId-474160"></a>The CygMon directories build
+two binaries. One is a ROM image. The other is a downloadable program,
+which can be run under the supervision of the previous monitor. The downloaded
+CygMon will be using the serial connection. GDB can be used to talk to
+the downloaded CygMon. Once the downloaded CygMon has initialized to the
+point of installing the exception handler, the original ROM monitor will
+no longer support debugging. At that point CygMon can be used to download
+and run additional programs. It is important to watch your memory layouts
+carefully.
+<br>&nbsp;</div>
+
+<div CLASS="Body"><a NAME="pgfId-474161"></a>When developing and debugging
+CygMon, it is convenient to run CygMon itself as a downloadable application.
+There are some modifications that the developer may want to make temporarily,
+to debug CygMon. Reconfigure CygMon so it does not patch the exception
+handler. Have your test program call breakpoint explicitly. This combination
+disables CygMon in some serious ways, but many essential features remain
+functional and debuggable. Breakpoints can be administered, memory accesses
+can be tested, or registers fetched. You can debug the serial driver. But,
+you cannot resume execution, single step or test if a breakpoint has been
+hit. You can force CygMon through its context-save and context-restore.
+This is the plan; get all the basics working and verified, and then restore
+the exception patching capability.</div>
+
+<div CLASS="BodyAfterHead"><a NAME="pgfId-461220"></a></div>
+
+</body>
+</html>

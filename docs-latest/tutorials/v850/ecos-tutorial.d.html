@@ -1,0 +1,355 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 10:35:52 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Target Setup</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1740665">
+ </A>
+<A NAME="marker=1740664">
+ </A>
+<A NAME="34045">
+ </A>
+<A NAME="marker=2490506">
+ </A>
+Target Setup<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269271">
+ </A>
+<A NAME="marker=2490502">
+ </A>
+Connecting To A Target Via Serial</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269272">
+ </A>
+While eCos supports a variety of targets, communication with the targets happens in one of four ways. These are descibed in general below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290096">
+ </A>
+The descriptions are followed by descriptions of each target, providing specific details of how to set up the target (if hardware) and the necessary communication information (such as baud rate for hardware targets, or special connection options for simulator targets).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290095">
+ </A>
+Most targets will have eCos GDB stubs or CygMon installed. These normally wait for GDB to connect at 38400 baud, using 8 data bit, no parity bit and 1 stop-bit (no hardware flow control). Check the section for your target to ensure it uses this speed. If not, adjust the following instructions accordingly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269273">
+ </A>
+The following instructions depend on you to select the appropriate serial port on the host - the serial port which connects to the target's (primary) serial port. On Linux this could be /dev/ttyS0, while the same port on Windows would be named COM1, or <BR>
+/dev/ttya on Solaris. Substitute the proper serial port name in the below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269274">
+ </A>
+Connect to the target by issuing the following commands in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269275"> </A>
+(gdb) set remotebaud 38400    
+(gdb) target remote /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269276">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269277"> </A>
+Target: Remote/Serial     
+Baud Rate: 38400     
+Port: /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2397398">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269279">
+ </A>
+<A NAME="marker=2490504">
+ </A>
+Connecting To A Target Via Ethernet</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269280">
+ </A>
+Some targets allow GDB to connect via Ethernet - if so, it will be mentioned in the section describing the target. Substitute the target's assigned IP address or hostname for &lt;hostname&gt; in the following. The &lt;port&gt; is the TCP port which the eCos GDB stub or <SPAN CLASS="Bold">
+CygWin</SPAN>
+ is listening on. It is also listed in the section describing the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269281">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269282"> </A>
+(gdb) target remote &lt;hostname&gt;:&lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269283">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269284"> </A>
+Target: Remote/TCP     
+Hostname: &lt;hostname&gt;     
+Port: &lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2460009">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2336728">
+ </A>
+<A NAME="marker=2490505">
+ </A>
+Connecting To A Simulator Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2336729">
+ </A>
+GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2336730">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+(gdb) target sim [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336732">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+Target: Simulator     
+Options: [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336734">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269293">
+ </A>
+Connecting To A Synthetic Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269294">
+ </A>
+Synthetic targets are special in that the built tests and applications actually run as native applications on the host. This means that there is no target to connect to - the test or application can be run directly from the GDB console using:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269295"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269296">
+ </A>
+or from Insight by pressing the <SPAN CLASS="Bold">
+Run</SPAN>
+ icon. There is therefore no need to connect to the target or download the application, so you should ignore GDB &quot;target&quot; and &quot;load&quot; commands in any instructions found in other places in the documentation.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2554036">
+ </A>
+      <BR>
+      <A NAME="marker=2554035">
+ </A>
+NEC CEB-V850SA1 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2554037">
+ </A>
+The eCos Developer's Kit package comes with an EPROM which provides GDB<EM CLASS="ProductName">
+ </EM>
+support for the evaluation board. An image of this EPROM is also provided at <TT CLASS="Code">
+loaders/nec-ceb-v850/gdbload.bin </TT>
+under the root of your eCos installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2554038">
+ </A>
+The EPROM is installed to the socket on the board. Attention should be paid to the correct orientation of the EPROM during installation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2554039">
+ </A>
+If you are going to burn a new EPROM using the binary image, be careful to get the byte order correct. It needs to be little-endian. If the EPROM burner software has a hex-editor, check that the first few bytes of the image look like: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2554040"> </A>
+00000000: 8007 6002 0000 0000 0000 0000 0000 0000</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2554041">
+ </A>
+If the byte order is wrong you will see 0780 instead of 8007 etc. Use the EPROM burner software to make a byte-swap before you burn to image to the EPROM. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2554042">
+ </A>
+If the GDB stub EPROM you burn does not work, try reversing the byte-order, even if you think you have it the right way around. At least one DOS-based EPROM burner program is known to have the byte-order upside down.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2554043">
+ </A>
+The GDB stub in the EPROM allows communication with GDB using the serial port. The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a dedicated serial cable as specified in the CEB-V850SA1 manual.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2554044">
+ </A>
+Installing the Stubs into ROM</H3>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2554045">
+ </A>
+Preparing the Binaries</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2554046">
+ </A>
+These two binary preparation steps are not strictly necessary as the eCos distribution ships with precompiled binaries in the directory loaders/powerpc-cogent relative to the installation root.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2554047">
+ </A>
+Building the ROM images with the eCos Configuration Tool</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2554048">
+ </A>
+Start with a new document - selecting the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">New</SPAN>
+ menu item if necessary to do this.</LI>
+<P><LI>
+<A NAME="pgfId=2554049">
+ </A>
+Choose the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ menu item, and then select the NEC CEB-V850SA1 hardware.</LI>
+<P><LI>
+<A NAME="pgfId=2554050">
+ </A>
+While still displaying the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ dialog box, select the &quot;stubs&quot; package template to build a GDB stub. Click <SPAN CLASS="BOLD">
+OK.</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2554051">
+ </A>
+Build eCos using <SPAN CLASS="BOLD">
+Build<IMG SRC="../pix/arrow.gif">Library.</SPAN>
+ </LI>
+<P><LI>
+<A NAME="pgfId=2554052">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the  prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2554053">
+ </A>
+Building the ROM images with ecosconfig</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2554054">
+ </A>
+Make an empty directory to contain the build tree, and cd into it. </LI>
+<P><LI>
+<A NAME="pgfId=2554055">
+ </A>
+To build a GDB stub ROM image, enter the command: <BR>
+  <TT CLASS="Code">
+$ ecosconfig new ceb-v850 stubs </TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2554056">
+ </A>
+Enter the commands: <BR>
+<TT CLASS="Code">
+  $ ecosconfig tree<BR>
+  $ make</TT>
+ </LI>
+<P><LI>
+<A NAME="pgfId=2554057">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2554058">
+ </A>
+ Installing the Stubs into ROM or FLASH</H4>
+<OL>
+<P><LI>
+<A NAME="pgfId=2554059">
+ </A>
+ Program the binary image file gdb_module.bin into ROM or FLASH referring to the instructions of your ROM programmer. </LI>
+<P><LI>
+<A NAME="pgfId=2554060">
+ </A>
+ Plug the ROM/FLASH into the socket as described at the beginning of this section.</LI>
+</OL>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2510483">
+ </A>
+<A NAME="marker=1997404">
+ </A>
+i386/Linux Synthetic Target Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1997406">
+ </A>
+When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2392364">
+ </A>
+NOTE:</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2392365">
+ </A>
+Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1997407">
+ </A>
+These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1997408">
+ </A>
+Tools</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2395006">
+ </A>
+For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
+gcc -v</TT>
+ or <TT CLASS="Code">
+egcs -v</TT>
+, and the linker version using <TT CLASS="Code">
+ld -v</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395013">
+ </A>
+If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools <TT CLASS="Code">
+i686-pc-linux-gnu-gcc</TT>
+, <TT CLASS="Code">
+i686-pc-linux-gnu-ar</TT>
+,  <TT CLASS="Code">
+i686-pc-linux-gnu-ld</TT>
+, and <TT CLASS="Code">
+i686-pc-linux-gnu-objcopy</TT>
+ are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editing the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395068">
+ </A>
+If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2395069"> </A>
+<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">http://sourceware.cygnus.com/ecos/getstart.html</A>
+</PRE>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

@@ -1,0 +1,573 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 11:35:26 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Target Setup</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1740665">
+ </A>
+<A NAME="marker=1740664">
+ </A>
+<A NAME="34045">
+ </A>
+<A NAME="marker=2490506">
+ </A>
+Target Setup<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269271">
+ </A>
+<A NAME="marker=2490502">
+ </A>
+Connecting To A Target Via Serial</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269272">
+ </A>
+While eCos supports a variety of targets, communication with the targets happens in one of four ways. These are descibed in general below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290096">
+ </A>
+The descriptions are followed by descriptions of each target, providing specific details of how to set up the target (if hardware) and the necessary communication information (such as baud rate for hardware targets, or special connection options for simulator targets).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290095">
+ </A>
+Most targets will have eCos GDB stubs or CygMon installed. These normally wait for GDB to connect at 38400 baud, using 8 data bit, no parity bit and 1 stop-bit (no hardware flow control). Check the section for your target to ensure it uses this speed. If not, adjust the following instructions accordingly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269273">
+ </A>
+The following instructions depend on you to select the appropriate serial port on the host - the serial port which connects to the target's (primary) serial port. On Linux this could be /dev/ttyS0, while the same port on Windows would be named COM1, or <BR>
+/dev/ttya on Solaris. Substitute the proper serial port name in the below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269274">
+ </A>
+Connect to the target by issuing the following commands in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269275"> </A>
+(gdb) set remotebaud 38400    
+(gdb) target remote /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269276">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269277"> </A>
+Target: Remote/Serial     
+Baud Rate: 38400     
+Port: /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2397398">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269279">
+ </A>
+<A NAME="marker=2490504">
+ </A>
+Connecting To A Target Via Ethernet</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269280">
+ </A>
+Some targets allow GDB to connect via Ethernet - if so, it will be mentioned in the section describing the target. Substitute the target's assigned IP address or hostname for &lt;hostname&gt; in the following. The &lt;port&gt; is the TCP port which the eCos GDB stub or <SPAN CLASS="Bold">
+CygWin</SPAN>
+ is listening on. It is also listed in the section describing the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269281">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269282"> </A>
+(gdb) target remote &lt;hostname&gt;:&lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269283">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269284"> </A>
+Target: Remote/TCP     
+Hostname: &lt;hostname&gt;     
+Port: &lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2460009">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2336728">
+ </A>
+<A NAME="marker=2490505">
+ </A>
+Connecting To A Simulator Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2336729">
+ </A>
+GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2336730">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+(gdb) target sim [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336732">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+Target: Simulator     
+Options: [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336734">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269293">
+ </A>
+Connecting To A Synthetic Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269294">
+ </A>
+Synthetic targets are special in that the built tests and applications actually run as native applications on the host. This means that there is no target to connect to - the test or application can be run directly from the GDB console using:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269295"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269296">
+ </A>
+or from Insight by pressing the <SPAN CLASS="Bold">
+Run</SPAN>
+ icon. There is therefore no need to connect to the target or download the application, so you should ignore GDB &quot;target&quot; and &quot;load&quot; commands in any instructions found in other places in the documentation.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2558068">
+ </A>
+<A NAME="marker=2558067">
+ </A>
+PowerPC Cogent Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2558069">
+ </A>
+The eCos Developer's Kit package comes with an EPROM which provides GDB<EM CLASS="ProductName">
+ </EM>
+support for the Cogent evaluation board. An image of this EPROM is also provided at <TT CLASS="Code">
+loaders/powerpc-cogent/gdbload.bin </TT>
+under the root of your eCos installation. The same EPROM and image can be used on all three supported daughterboards: CMA287-23 (MPC823), CMA287-50 (MPC850), and CMA286-60 (MPC860).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558070">
+ </A>
+The EPROM is installed to socket U4 on the board. Attention should be paid to the correct orientation of the EPROM during installation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2558071">
+ </A>
+If you are going to burn a new EPROM using the binary image, be careful to get the byte order correct. It needs to be big-endian. If the EPROM burner software has a hex-editor, check that the first few bytes of the image look like: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2558072"> </A>
+00000000: 3c60 fff0 6063 2000 7c68 03a6 4e80 0020 &lt;`..`c .|h..N.. </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2558073">
+ </A>
+If the byte order is wrong you will see 603c instead of 3c60 etc. Use the EPROM burner software to make a byte-swap before you burn to image to the EPROM. </P>
+<P CLASS="Body">
+<A NAME="pgfId=2558074">
+ </A>
+If the GDB stub EPROM you burn does not work, try reversing the byte-order, even if you think you have it the right way around. At least one DOS-based EPROM burner program is known to have the byte-order upside down.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558075">
+ </A>
+The GDB stub in the EPROM allows communication with GDB using the serial port at connector P12 (CMA101) or P3 (CMA102). The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a dedicated serial cable as specified in the Cogent CMA manual.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2558076">
+ </A>
+Installing the Stubs into ROM</H3>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2558077">
+ </A>
+Preparing the Binaries</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2558078">
+ </A>
+These two binary preparation steps are not strictly necessary as the eCos distribution ships with precompiled binaries in the directory loaders/powerpc-cogent relative to the installation root.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2558079">
+ </A>
+Building the ROM images with the eCos Configuration Tool</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558080">
+ </A>
+Start with a new document - selecting the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">New</SPAN>
+ menu item if necessary to do this.</LI>
+<P><LI>
+<A NAME="pgfId=2558081">
+ </A>
+Choose the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ menu item, and then select the PowerPC    CMA28x hardware.</LI>
+<P><LI>
+<A NAME="pgfId=2558082">
+ </A>
+While still displaying the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ dialog box, select the &quot;stubs&quot; package template to build a GDB stub. Click <SPAN CLASS="BOLD">
+OK.</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558083">
+ </A>
+Build eCos using <SPAN CLASS="BOLD">
+Build<IMG SRC="../pix/arrow.gif">Library.</SPAN>
+ </LI>
+<P><LI>
+<A NAME="pgfId=2558084">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the  prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2558085">
+ </A>
+Building the ROM images with ecosconfig</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558086">
+ </A>
+Make an empty directory to contain the build tree, and cd into it. </LI>
+<P><LI>
+<A NAME="pgfId=2558087">
+ </A>
+To build a GDB stub ROM image, enter the command: <BR>
+  <TT CLASS="Code">
+$ ecosconfig new cma28x stubs </TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558088">
+ </A>
+Enter the commands: <BR>
+<TT CLASS="Code">
+  $ ecosconfig tree<BR>
+  $ make</TT>
+ </LI>
+<P><LI>
+<A NAME="pgfId=2558089">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2558090">
+ </A>
+ Installing the Stubs into ROM or FLASH</H4>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558091">
+ </A>
+ Program the binary image file gdb_module.bin into ROM or FLASH referring to the instructions of your ROM programmer. </LI>
+<P><LI>
+<A NAME="pgfId=2558092">
+ </A>
+ Plug the ROM/FLASH into socket U4 as described at the beginning of this <EM CLASS="Emphasis">
+Hardware Setup</EM>
+ section.</LI>
+</OL>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2558094">
+ </A>
+<A NAME="marker=2558093">
+ </A>
+PowerPC MBX860 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2558095">
+ </A>
+The eCos Developer's Kit package comes with an EPROM which provides GDB<EM CLASS="ProductName">
+ </EM>
+support for the Motorola PowerPC MBX860 evaluation board. An image of this EPROM is also provided at <TT CLASS="Code">
+loaders/powerpc-mbx/gdbload.bin </TT>
+under the root of your eCos installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558096">
+ </A>
+The EPROM is installed to socket XU1 on the board. Attention should be paid to the correct orientation of the EPROM during installation. Only replace the board's existing ROM using a proper PLCC extraction tool, as the socket would otherwise risk getting damaged.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558097">
+ </A>
+The GDB stub in the EPROM allows communication with GDB using the serial port at connector SMC1/COM1. The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a suitable serial cable.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558098">
+ </A>
+In order to make the board execute the EPROM that you just installed (rather than the on-board FLASH memory), it may be necessary move some links on the board. Specifically, ensure that link J4 is in position 1-2. If in doubt, refer to the MBX documentation from Motorola, ensuring that Boot Port Size=8 Bits/ROM for BOOT (CS#7), in their terminology.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2558099">
+ </A>
+Installing the Stubs into FLASH</H3>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2558100">
+ </A>
+Preparing the Binaries</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2558101">
+ </A>
+These two binary preparation steps are not strictly necessary as the eCos distribution ships with precompiled binaries in the directory loaders/powerpc-mbx relative to the installation root.</P>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2558102">
+ </A>
+Building the ROM images with the eCos Configuration Tool</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558103">
+ </A>
+Start with a new document - selecting the <SPAN CLASS="Bold">
+File<IMG SRC="../pix/arrow.gif">New</SPAN>
+ menu item if necessary to do this.</LI>
+<P><LI>
+<A NAME="pgfId=2558104">
+ </A>
+Choose the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ menu item, and then select the PowerPC    Motorola MBX860/821 hardware.</LI>
+<P><LI>
+<A NAME="pgfId=2558105">
+ </A>
+While still displaying the <SPAN CLASS="Bold">
+Build<IMG SRC="../pix/arrow.gif">Templates</SPAN>
+ dialog box, select the &quot;stubs&quot; package template to build a GDB stub. Click <SPAN CLASS="BOLD">
+OK.</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558106">
+ </A>
+Build eCos using <SPAN CLASS="BOLD">
+Build<IMG SRC="../pix/arrow.gif">Library.</SPAN>
+ </LI>
+<P><LI>
+<A NAME="pgfId=2558107">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2558108">
+ </A>
+Building the ROM images with ecosconfig</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558109">
+ </A>
+Make an empty directory to contain the build tree, and cd into it. </LI>
+<P><LI>
+<A NAME="pgfId=2558110">
+ </A>
+To build a GDB stub ROM image, enter the command: <BR>
+  <TT CLASS="Code">
+ $ ecosconfig new mbx stubs </TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558111">
+ </A>
+Enter the commands: <BR>
+    <TT CLASS="Code">
+$ ecosconfig tree<BR>
+  $ make </TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558112">
+ </A>
+When the build completes, the image files can be found in the bin/ subdirectory of the install tree. GDB stub ROM images have the prefix &quot;gdb_module&quot;.</LI>
+</OL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2558113">
+ </A>
+ Installing the Stubs into ROM</H4>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558114">
+ </A>
+ Program the binary image file gdb_module.bin into ROM or FLASH referring to the instructions of your ROM programmer. </LI>
+<P><LI>
+<A NAME="pgfId=2558115">
+ </A>
+ Plug the ROM/FLASH into socket XU1 as described near the beginning of this <EM CLASS="Emphasis">
+Hardware Setup</EM>
+ section.</LI>
+</OL>
+<H4 CLASS="Heading3">
+<A NAME="pgfId=2558116">
+ </A>
+Installing the Stubs into FLASH</H4>
+<P CLASS="Body">
+<A NAME="pgfId=2558117">
+ </A>
+This assumes you have EPPC-Bug in the on-board flash. This can be determined by setting up the board according to the below instructions and powering up the board. The EPPC-Bug prompt should appear on the SMC1 connector at 9600 baud, 8N1.</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558118">
+ </A>
+Set jumper 3 to 2-3     [allow XU2 flash to be programmed]  </LI>
+<P><LI>
+<A NAME="pgfId=2558119">
+ </A>
+Set jumper 4 to 2-3     [boot EPPC-Bug]</LI>
+</OL>
+<H5 CLASS="Heading4">
+<A NAME="pgfId=2558120">
+ </A>
+ Program FLASH</H5>
+<OL>
+<P><LI>
+<A NAME="pgfId=2558121">
+ </A>
+ Prepare EPPC-Bug for download:<BR>
+       <TT CLASS="Code">
+EPPC-Bug&gt;lo 0<BR>
+</TT>
+At this point the monitor is ready for input. It will not return the prompt until the file has been downloaded.</LI>
+<P><LI>
+<A NAME="pgfId=2558122">
+ </A>
+Use the terminal emulator's ASCII download feature (or a simple clipboard     copy/paste operation) to download the gdb_module.srec data.<BR>
+<BR>
+Note that on Linux, Minicom's ASCII download feature seems to be broken. A workaround is to load the file into emacs (or another editor) and copy the full contents to the clipboard. Then press the mouse paste-button (usually the middle one) over the Minicom window.</LI>
+<P><LI>
+<A NAME="pgfId=2558123">
+ </A>
+Program the flash with the downloaded data:<BR>
+    <TT CLASS="Code">
+EPPC-Bug&gt;pflash 40000 60000 fc000000</TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2558124">
+ </A>
+Switch off the power, and change jumper 4 to 1-2. Turn on the power again. The board should now boot using the newly programmed stubs.</LI>
+</OL>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2558125">
+ </A>
+PowerPC Architectural Simulator Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2558126">
+ </A>
+The PowerPC simulator is an architectural simulator which implements all the features of the PowerPC needed to run eCos. The current implementation provides accurate simulation of the instruction set and timers, as well as having generic support for diagnostic output  and exceptions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558127">
+ </A>
+The simulator also allows devices to be simulated, but no device simulation support has been defined for the serial device drivers in this release.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2558128">
+ </A>
+To simplify connection to the simulator, you are advised to create a GDB macro by putting the following code in your personal GDB start-up file (gdb.ini on Windows and .gdbinit on UNIX).</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2558129"> </A>
+define psim   
+ target sim -o '/iobus/pal@0xf0001000/reg 0xf0001000 32'   
+ rbreak cyg_test_exit   
+ rbreak cyg_assert_fail  
+end</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2558130">
+ </A>
+You can then connect to the simulator by invoking the command <TT CLASS="Code">
+psim</TT>
+ on the command line:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2558131"> </A>
+ (gdb) psim</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2558132">
+ </A>
+You can achieve the same effect by typing out the macro's content on the command line if necessary.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2558133">
+ </A>
+NOTE: </H3>
+<P CLASS="Note">
+<A NAME="pgfId=2558134">
+ </A>
+The PowerPC simulator cannot execute binaries built for any of the supported hardware targets. You must generate a configuration using the PowerPC simulator platform: <TT CLASS="Code">
+$ ecosconfig new psim</TT>
+ or some such.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2510483">
+ </A>
+      <BR>
+      <A NAME="marker=1997404">
+ </A>
+i386/Linux Synthetic Target Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1997406">
+ </A>
+When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2392364">
+ </A>
+NOTE:</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2392365">
+ </A>
+Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1997407">
+ </A>
+These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1997408">
+ </A>
+Tools</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2395006">
+ </A>
+For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
+gcc -v</TT>
+ or <TT CLASS="Code">
+egcs -v</TT>
+, and the linker version using <TT CLASS="Code">
+ld -v</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395013">
+ </A>
+If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools <TT CLASS="Code">
+i686-pc-linux-gnu-gcc</TT>
+, <TT CLASS="Code">
+i686-pc-linux-gnu-ar</TT>
+,  <TT CLASS="Code">
+i686-pc-linux-gnu-ld</TT>
+, and <TT CLASS="Code">
+i686-pc-linux-gnu-objcopy</TT>
+ are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editing the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395068">
+ </A>
+If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2395069"> </A>
+<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">http://sourceware.cygnus.com/ecos/getstart.html</A>
+</PRE>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

@@ -1,0 +1,452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Fri Apr 28 11:17:02 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Target Setup</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1740665">
+ </A>
+<A NAME="marker=1740664">
+ </A>
+<A NAME="34045">
+ </A>
+<A NAME="marker=2490506">
+ </A>
+Target Setup<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269271">
+ </A>
+<A NAME="marker=2490502">
+ </A>
+Connecting To A Target Via Serial</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269272">
+ </A>
+While eCos supports a variety of targets, communication with the targets happens in one of four ways. These are descibed in general below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290096">
+ </A>
+The descriptions are followed by descriptions of each target, providing specific details of how to set up the target (if hardware) and the necessary communication information (such as baud rate for hardware targets, or special connection options for simulator targets).</P>
+<P CLASS="Body">
+<A NAME="pgfId=2290095">
+ </A>
+Most targets will have eCos GDB stubs or CygMon installed. These normally wait for GDB to connect at 38400 baud, using 8 data bit, no parity bit and 1 stop-bit (no hardware flow control). Check the section for your target to ensure it uses this speed. If not, adjust the following instructions accordingly.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269273">
+ </A>
+The following instructions depend on you to select the appropriate serial port on the host - the serial port which connects to the target's (primary) serial port. On Linux this could be /dev/ttyS0, while the same port on Windows would be named COM1, or <BR>
+/dev/ttya on Solaris. Substitute the proper serial port name in the below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269274">
+ </A>
+Connect to the target by issuing the following commands in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269275"> </A>
+(gdb) set remotebaud 38400    
+(gdb) target remote /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269276">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269277"> </A>
+Target: Remote/Serial     
+Baud Rate: 38400     
+Port: /dev/ttyS0</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2397398">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269279">
+ </A>
+<A NAME="marker=2490504">
+ </A>
+Connecting To A Target Via Ethernet</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269280">
+ </A>
+Some targets allow GDB to connect via Ethernet - if so, it will be mentioned in the section describing the target. Substitute the target's assigned IP address or hostname for &lt;hostname&gt; in the following. The &lt;port&gt; is the TCP port which the eCos GDB stub or <SPAN CLASS="Bold">
+CygWin</SPAN>
+ is listening on. It is also listed in the section describing the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2269281">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269282"> </A>
+(gdb) target remote &lt;hostname&gt;:&lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269283">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269284"> </A>
+Target: Remote/TCP     
+Hostname: &lt;hostname&gt;     
+Port: &lt;port&gt;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2460009">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2336728">
+ </A>
+<A NAME="marker=2490505">
+ </A>
+Connecting To A Simulator Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2336729">
+ </A>
+GDB connects to all simulator targets using the same basic command, although each simulator may require additional options. These are listed in the section describing the target, and should be used when connecting.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2336730">
+ </A>
+Connect to the target by issuing the following command in GDB console mode:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336731"> </A>
+(gdb) target sim [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336732">
+ </A>
+In Insight, connect by opening the <SPAN CLASS="BOLD">
+File<IMG SRC="../pix/arrow.gif">Target Settings.</SPAN>
+.. window and enter:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2336733"> </A>
+Target: Simulator     
+Options: [target specific options]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2336734">
+ </A>
+Set other options according to preference, close the window and select <BR>
+<SPAN CLASS="BOLD">
+Run<IMG SRC="../pix/arrow.gif">Connect to target.</SPAN>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2269293">
+ </A>
+Connecting To A Synthetic Target</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2269294">
+ </A>
+Synthetic targets are special in that the built tests and applications actually run as native applications on the host. This means that there is no target to connect to - the test or application can be run directly from the GDB console using:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2269295"> </A>
+(gdb) run</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2269296">
+ </A>
+or from Insight by pressing the <SPAN CLASS="Bold">
+Run</SPAN>
+ icon. There is therefore no need to connect to the target or download the application, so you should ignore GDB &quot;target&quot; and &quot;load&quot; commands in any instructions found in other places in the documentation.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2556138">
+ </A>
+<A NAME="marker=2556137">
+ </A>
+MN10300 stdeval1 Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556139">
+ </A>
+The eCos Developer's Kit package comes with a pair of EPROMs which provide GDB support for the Matsushita MN10300 (AM31) series evaluation board using CygMon, the Cygnus ROM monitor. Images of these EPROMs are also provided at <TT CLASS="Code">
+BASE_DIR/loaders/mn10300-stdeval1/cygmon.bin</TT>
+. The LSB EPROM (LROM) is installed to socket IC8 on the board and the MSB EPROM (UROM) is installed to socket IC9. Attention should be paid to the correct orientation of these EPROMs during installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556140">
+ </A>
+The CygMon stubs allows communication with GDB by way of the serial port at connector CN2. The communication parameters are fixed at 38400 baud, 8 data bits, no parity bit, and 1 stop bit (8-N-1). No flow control is employed. Connection to the host computer should be made using a standard RS232C serial cable (not a null modem cable). A gender changer may also be required.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2556141">
+ </A>
+MN10300 Architectural Simulator Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556142">
+ </A>
+The MN10300 simulator is an architectural simulator for the Matsushita MN10300 that implements all features of the microprocessor  necessary to run eCos. The current implementation provides accurate simulation of the instruction set, interrupt controller, timers, and  serial I/O.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556143">
+ </A>
+In this release, you can run the same eCos binaries in the simulator that can run on target hardware, if built for ROM start-up, with the  exception of those that use the watchdog timer.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556144">
+ </A>
+However, note that AM33 devices required to run eCos are not simulated; therefore you cannot run eCos binaries built for the AM33 under the simulator. For the AM33, the simulator is effectively an instruction-set only simulator.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556145">
+ </A>
+To simplify connection to the simulator, you are advised to create a GDB macro by putting the following code in your personal GDB start-up file (gdb.ini on Windows and .gdbinit on UNIX).</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2556146"> </A>
+define msim   
+ target sim --board=stdeval1 --memory-region 0x34004000,0x8   
+ rbreak cyg_test_exit   
+ rbreak cyg_assert_fail  
+end</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2556147">
+ </A>
+You can then connect to the simulator by invoking the command <TT CLASS="Code">
+msim</TT>
+ on the command line:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2556148"> </A>
+(gdb) msim</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2556149">
+ </A>
+You can achieve the same effect by typing out the macro's content on  the command line if necessary.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2556151">
+ </A>
+<A NAME="marker=2556150">
+ </A>
+AM33 STB Hardware Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556152">
+ </A>
+The Matsushita AM33 STB System Reference Board may be used in two modes: via a JTAG debugger, or by means of a GDB stub ROM.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2556153">
+ </A>
+Use with GDB Stub ROM</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556154">
+ </A>
+The eCos Developer's Kit package comes with a ROM image which provides GDB<EM CLASS="ProductName">
+ </EM>
+support for the Matsushita(R) AM33 STB System Reference Board. To install the GDB stub ROM requires the use of the JTAG debugger and the Flash ROM programming code available from Matsushita. An image of this ROM is also provided at <TT CLASS="Code">
+loaders/am33-stb/gdbload.bin </TT>
+under the root of your eCos installation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556155">
+ </A>
+Ensure that there is a Flash ROM card in MAIN MEMORY SLOT &lt;0&gt;. Follow the directions for programming a Flash ROM supplied with the programming software.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556156">
+ </A>
+The final programming of the ROM will need to be done with a command similar to the following:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2556157"> </A>
+fdown &quot;gdbload.bin&quot;,0x80000000,16,1</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2556158">
+ </A>
+Once the ROM has been programmed, close down the JTAG debugger, turn the STB off, and disconnect the JTAG cable. Ensure that the hardware switches are in the following configuration:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2556159"> </A>
+U U D D D U D D
+
+D = lower part of rocker switch pushed in
+U = upper part of rocker switch pushed in</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2556160">
+ </A>
+This is also the configuration required by the Flash programming code, so it should not be necessary to change these.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556161">
+ </A>
+Restart the STB and the stub ROM will now be able to communicate with GDB<EM CLASS="ProductName">
+. </EM>
+eCos programs should be built with RAM startup.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556162">
+ </A>
+Programs can then be downloaded via a standard RS232 null modem serial cable connected to the SERIAL1 connector on the STB front panel (the AM33's serial port 0). This line is programmed to run at 38400 baud, 8 data bits, no parity and 1 stop bit (8-N-1) with no flow control. A gender changer may also be required. Diagnostic output will be output to GDB using the same connection.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556163">
+ </A>
+This procedure also applies for programming ROM startup eCos programs into ROM, given a binary format image of the program from<TT CLASS="Code">
+ mn10300-elf-objcopy.</TT>
+</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2556164">
+ </A>
+Use with the JTAG debugger</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556165">
+ </A>
+To use eCos from the JTAG debugger, executables must be built with ROM startup and then downloaded via the JTAG debugger. For this to work there must be an SDRAM memory card in SUB MEMORY SLOT &lt;0&gt; and the hardware switches on the front panel set to the following: </P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2556166"> </A>
+D U D D D U D D
+
+D = lower part of rocker switch pushed in
+U = upper part of rocker switch pushed in</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=2556167">
+ </A>
+Connect the JTAG unit and run the debugger as described in the documentation that comes with it.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556168">
+ </A>
+eCos executables should be renamed to have a &quot;.out&quot; extension and may then be loaded using the debugger's &quot;l&quot; or &quot;lp&quot; commands.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556169">
+ </A>
+Diagnostic output generated by the program will be sent out of the AM33's serial port 0 which is connected to the SERIAL1 connector on the STB front panel. This line is programmed to run at 38400 baud, 8 data bits, no parity, and one stop bit (8-N-1) with no flow control. Connection to the host computer should be using a standard RS232 null modem serial cable. A gender changer may also be required.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=2556170">
+ </A>
+Building the GDB stub ROM image</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2556171">
+ </A>
+eCos comes with a pre-built GDB stub ROM image for the AM33-STB platform. This can be found at <TT CLASS="Code">
+loaders/am33-stb/gdbload.bin</TT>
+ relative to the eCos installation directory.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2556172">
+ </A>
+If necessary, the ROM image can be re-built as follows:</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=2556173">
+ </A>
+On Windows hosts, open a Bash session using <SPAN CLASS="Bold">
+Start<IMG SRC="../pix/arrow.gif">Programs<IMG SRC="../pix/arrow.gif">Cygnus eCos<IMG SRC="../pix/arrow.gif">eCos Development Environment</SPAN>
+</LI>
+<P><LI>
+<A NAME="pgfId=2556174">
+ </A>
+Create a build directory and cd into it</LI>
+<P><LI>
+<A NAME="pgfId=2556175">
+ </A>
+Run (all as one line):<BR>
+<TT CLASS="Code">
+cygtclsh80 BASE_DIR/packages/pkgconf.tcl                          \<BR>
+  --target=mn10300_am33 --platform stb --startup rom              \<BR>
+  --disable-kernel --disable-uitron --disable-libc --disable-libm \<BR>
+  --disable-io --disable-io_serial --disable-wallclock --disable-watchdog</TT>
+</LI>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=2556176">
+ </A>
+where BASE_DIR is the path to the eCos installation directory.</P>
+<OL>
+<P><LI>
+<A NAME="pgfId=2556177">
+ </A>
+Edit the configuration file <TT CLASS="Code">
+pkgconf/hal.h</TT>
+ in the build directory tree by ensuring the following configuration options are set as follows:<BR>
+<TT CLASS="Code">
+<BR>
+#define CYGDBG_HAL_DEBUG_GDB_INCLUDE_STUBS<BR>
+#define CYGDBG_HAL_DEBUG_GDB_BREAK_SUPPORT<BR>
+#undef  CYGDBG_HAL_DEBUG_GDB_CTRLC_SUPPORT<BR>
+#define CYGDBG_HAL_DEBUG_GDB_THREAD_SUPPORT<BR>
+#define CYG_HAL_ROM_MONITOR</TT>
+</LI>
+<P><LI>
+<A NAME="pgfId=2556178">
+ </A>
+Run: <EM CLASS="Command">
+make</EM>
+</LI>
+<P><LI>
+<A NAME="pgfId=2556179">
+ </A>
+Run: <EM CLASS="Command">
+make -C hal/common/current/current/src/stubrom</EM>
+</LI>
+<P><LI>
+<A NAME="pgfId=2556180">
+ </A>
+The file <TT CLASS="Code">
+hal/common/current/src/stubrom</TT>
+ will be an ELF format executable of the ROM image. Use <EM CLASS="Command">
+mn10300-elf-objcopy</EM>
+ to convert this to the appropriate format for loading into the Matsushita flash ROM programmer, mode &quot;binary&quot; in this case: <BR>
+<TT CLASS="Code">
+$ mn10300-elf-objcopy -O binary hal/common/current/src/stubrom/ \<BR>
+  stubrom stubrom.img</TT>
+</LI>
+</OL>
+</DIV>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=2510483">
+ </A>
+      <BR>
+      <A NAME="marker=1997404">
+ </A>
+i386/Linux Synthetic Target Setup</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1997406">
+ </A>
+When building for the synthetic Linux target, the resulting binaries are native Linux applications with the HAL providing suitable bindings between the eCos kernel and the Linux kernel.</P>
+<H3 CLASS="Label">
+<A NAME="pgfId=2392364">
+ </A>
+NOTE:</H3>
+<P CLASS="Note">
+<A NAME="pgfId=2392365">
+ </A>
+Please be aware that the current implementation of the Linux synthetic target does not allow thread-aware debugging.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1997407">
+ </A>
+These Linux applications cannot be run on a Windows system. However, it is possible to write a similar HAL emulation for the Windows kernel if such a testing target is desired.</P>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1997408">
+ </A>
+Tools</H3>
+<P CLASS="Body">
+<A NAME="pgfId=2395006">
+ </A>
+For the synthetic target, eCos relies on features not available in native compilers earlier than gcc-2.95.1. It also requires version 2.9.5 or later of the GNU linker. If you have gcc-2.95.1 or later and ld version 2.9.5 or later, then you do not need to build new tools. eCos does not support earlier versions. You can check the compiler version using <TT CLASS="Code">
+gcc -v</TT>
+ or <TT CLASS="Code">
+egcs -v</TT>
+, and the linker version using <TT CLASS="Code">
+ld -v</TT>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395013">
+ </A>
+If you have native tools that are sufficiently recent for use with eCos, you should be aware that by default eCos assumes that the tools <TT CLASS="Code">
+i686-pc-linux-gnu-gcc</TT>
+, <TT CLASS="Code">
+i686-pc-linux-gnu-ar</TT>
+,  <TT CLASS="Code">
+i686-pc-linux-gnu-ld</TT>
+, and <TT CLASS="Code">
+i686-pc-linux-gnu-objcopy</TT>
+ are on your system and are the correct versions for use with eCos. But instead, you can tell eCos to use your native tools by editing the configuration value &quot;Global command prefix&quot; (CYGBLD_GLOBAL_COMMAND_PREFIX) in your eCos configuration. If left empty (i.e. set to the empty string) eCos will use your native tools when building.</P>
+<P CLASS="Body">
+<A NAME="pgfId=2395068">
+ </A>
+If you have any difficulties, it is almost certainly easiest overall to rebuild the tools as described on:</P>
+<PRE CLASS="CodeExample"><A NAME="pgfId=2395069"> </A>
+<A HREF="http://sourceware.cygnus.com/ecos/getstart.html" CLASS="URL">http://sourceware.cygnus.com/ecos/getstart.html</A>
+</PRE>
+<TABLE>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Target Setup</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.c.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.e.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>

@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD><!--version 1.3.4/Tue May  2 16:52:41 BST 2000-->
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="../cygnus.css">
+<TITLE> Appendix 1: Real-time characterization</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE><P ALIGN="LEFT">&nbsp;</P><BR><BR><HR ALIGN="center"></DIV>
+<H2 CLASS="ChapterTitle">
+<A NAME="pgfId=1100125">
+ </A>
+Appendix 1: Real-time characterization<DIV>
+<IMG SRC="../botclear.gif">
+</DIV>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1092403">
+ </A>
+For a discussion of real-time performance measurement for eCos, see the <EM CLASS="Emphasis">
+eCos</EM>
+ <EM CLASS="Emphasis">
+Users' Guide.</EM>
+</P>
+<DIV>
+<H3 CLASS="Heading1">
+<A NAME="pgfId=1092405">
+ </A>
+<A NAME="marker=1092404">
+ </A>
+Sample numbers:</H3>
+<P CLASS="Body">
+<A NAME="pgfId=1098129">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1098162">
+ </A>
+</P>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1103142"> </A>
+</PRE>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1108473">
+ </A>
+Board: PC</H3>
+<H3 CLASS="Heading2">
+<A NAME="pgfId=1108474">
+ </A>
+CPU: 433MHz Celeron</H3>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108475"> </A>
+Startup, main stack             : stack used   132 size  2912</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108476"> </A>
+Startup              : Idlethread stack used    52 size  2048</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108477"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108478"> </A>
+eCos Kernel Timings</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108479"> </A>
+Notes: all times are in microseconds (.000001) unless otherwise stated</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108480"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108481"> </A>
+Reading the hardware clock takes 8 'ticks' overhead</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108482"> </A>
+... this value will be factored out of all other measurements</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108483"> </A>
+Clock interrupt took    8.43 microseconds (10 raw clock ticks)</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108484"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108485"> </A>
+Testing parameters:</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108486"> </A>
+   Clock samples:            32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108487"> </A>
+   Threads:                  21</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108488"> </A>
+   Thread switches:         128</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108489"> </A>
+   Mutexes:                  32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108490"> </A>
+   Mailboxes:                32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108491"> </A>
+   Semaphores:               32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108492"> </A>
+   Scheduler operations:    128</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108493"> </A>
+   Counters:                 32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108494"> </A>
+   Alarms:                   32</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108495"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108496"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108497"> </A>
+                                 Confidence</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108498"> </A>
+     Ave     Min     Max     Var  Ave  Min  Function</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108499"> </A>
+  ======  ======  ======  ====== ========== ========</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108500"> </A>
+    3.43    1.68    8.38    0.78   66%  19% Create thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108501"> </A>
+    0.88    0.00    1.68    0.84   52%  47% Yield thread [all suspended]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108502"> </A>
+    1.04    0.00    5.03    0.99   47%  47% Suspend [suspended] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108503"> </A>
+    0.72    0.00    1.68    0.82   57%  57% Resume thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108504"> </A>
+    0.80    0.00    1.68    0.84   52%  52% Set priority</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108505"> </A>
+    0.56    0.00    1.68    0.74   66%  66% Get priority</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108506"> </A>
+    1.44    0.00    3.35    0.55   76%  19% Kill [suspended] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108507"> </A>
+    1.04    0.00    1.68    0.79   61%  38% Yield [no other] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108508"> </A>
+    1.04    0.00    1.68    0.79   61%  38% Resume [suspended low prio] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108509"> </A>
+    0.80    0.00    1.68    0.84   52%  52% Resume [runnable low prio] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108510"> </A>
+    1.20    0.00    1.68    0.68   71%  28% Suspend [runnable] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108511"> </A>
+    1.04    0.00    1.68    0.79   61%  38% Yield [only low prio] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108512"> </A>
+    0.72    0.00    1.68    0.82   57%  57% Suspend [runnable<IMG SRC="../pix/arrow.gif">not runnable]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108513"> </A>
+    1.52    0.00    3.35    0.43   80%  14% Kill [runnable] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108514"> </A>
+    1.04    0.00    3.35    0.89   52%  42% Destroy [dead] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108515"> </A>
+    1.60    0.00    1.68    0.15   95%   4% Destroy [runnable] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108516"> </A>
+    3.83    1.68   11.73    1.14   76%   9% Resume [high priority] thread</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108517"> </A>
+    1.22    0.00    1.68    0.67   72%  27% Thread switch</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108518"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108519"> </A>
+    0.52    0.00    1.68    0.72   68%  68% Scheduler lock</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108520"> </A>
+    0.65    0.00    1.68    0.80   60%  60% Scheduler unlock [0 threads]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108521"> </A>
+    0.55    0.00    1.68    0.74   67%  67% Scheduler unlock [1 suspended]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108522"> </A>
+    0.63    0.00    1.68    0.79   62%  62% Scheduler unlock [many suspended]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108523"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Scheduler unlock [many low prio]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108524"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108525"> </A>
+    0.84    0.00    5.03    0.94   96%  56% Init mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108526"> </A>
+    0.89    0.00    3.35    0.89   96%  50% Lock [unlocked] mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108527"> </A>
+    0.84    0.00    3.35    0.89   96%  53% Unlock [locked] mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108528"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Trylock [unlocked] mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108529"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Trylock [locked] mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108530"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Destroy mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108531"> </A>
+    3.40    3.35    5.03    0.10   96%  96% Unlock/Lock mutex</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108532"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108533"> </A>
+    1.20    0.00    1.68    0.68   71%  28% Create mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108534"> </A>
+    0.68    0.00    3.35    0.85   62%  62% Peek [empty] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108535"> </A>
+    1.10    0.00    3.35    0.89   53%  40% Put [first] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108536"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Peek [1 msg] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108537"> </A>
+    0.73    0.00    1.68    0.82   56%  56% Put [second] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108538"> </A>
+    0.52    0.00    1.68    0.72   68%  68% Peek [2 msgs] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108539"> </A>
+    0.89    0.00    3.35    0.89   96%  50% Get [first] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108540"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Get [second] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108541"> </A>
+    0.99    0.00    1.68    0.81   59%  40% Tryput [first] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108542"> </A>
+    0.79    0.00    1.68    0.83   53%  53% Peek item [non-empty] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108543"> </A>
+    1.10    0.00    3.35    0.82   59%  37% Tryget [non-empty] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108544"> </A>
+    0.79    0.00    1.68    0.83   53%  53% Peek item [empty] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108545"> </A>
+    0.79    0.00    1.68    0.83   53%  53% Tryget [empty] mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108546"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Waiting to get mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108547"> </A>
+    0.63    0.00    1.68    0.79   62%  62% Waiting to put mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108548"> </A>
+    1.05    0.00    3.35    0.85   56%  40% Delete mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108549"> </A>
+    1.78    1.68    3.35    0.20   93%  93% Put/Get mbox</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108550"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108551"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Init semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108552"> </A>
+    0.79    0.00    1.68    0.83   53%  53% Post [0] semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108553"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Wait [1] semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108554"> </A>
+    0.73    0.00    1.68    0.82   56%  56% Trywait [0] semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108555"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Trywait [1] semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108556"> </A>
+    0.63    0.00    1.68    0.79   62%  62% Peek semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108557"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Destroy semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108558"> </A>
+    1.78    1.68    3.35    0.20   93%  93% Post/Wait semaphore</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108559"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108560"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Create counter</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108561"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Get counter value</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108562"> </A>
+    0.52    0.00    1.68    0.72   68%  68% Set counter value</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108563"> </A>
+    0.89    0.00    1.68    0.83   53%  46% Tick counter</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108564"> </A>
+    0.58    0.00    1.68    0.76   65%  65% Delete counter</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108565"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108566"> </A>
+    0.68    0.00    1.68    0.81   59%  59% Create alarm</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108567"> </A>
+    0.99    0.00    3.35    0.87   53%  43% Initialize alarm</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108568"> </A>
+    0.63    0.00    1.68    0.79   62%  62% Disable alarm</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108569"> </A>
+    1.05    0.00    5.03    0.92   53%  43% Enable alarm</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108570"> </A>
+    0.73    0.00    1.68    0.82   56%  56% Delete alarm</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108571"> </A>
+    0.99    0.00    1.68    0.81   59%  40% Tick counter [1 alarm]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108572"> </A>
+    2.67    1.68    3.35    0.81   59%  40% Tick counter [many alarms]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108573"> </A>
+    0.84    0.00    1.68    0.84  100%  50% Tick &amp; fire counter [1 alarm]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108574"> </A>
+   10.53   10.06   11.73    0.68   71%  71% Tick &amp; fire counters [&gt;1 together]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108575"> </A>
+    2.67    1.68    3.35    0.81   59%  40% Tick &amp; fire counters [&gt;1 separately]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108576"> </A>
+    1.69    1.68    3.35    0.03   99%  99% Alarm latency [0 threads]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108577"> </A>
+    1.78    1.68    3.35    0.20   93%  93% Alarm latency [2 threads]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108578"> </A>
+    1.96    1.68    5.03    0.49   84%  84% Alarm latency [many threads]</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108579"> </A>
+    3.38    3.35    6.70    0.05   99%  99% Alarm <IMG SRC="../pix/arrow.gif"> thread resume latency</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108580"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108581"> </A>
+  509     456     580  (main stack:  1012)  Thread stack used (1712 total)</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108582"> </A>
+All done, main stack            : stack used  1012 size  2912</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108583"> </A>
+All done             : Idlethread stack used   608 size  2048</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108584"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108585"> </A>
+Timing complete - 27400 ms total</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108586"> </A>
+</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108587"> </A>
+PASS:&lt;Basic timing OK&gt;</PRE>
+<PRE CLASS="CodeExampleWide"><A NAME="pgfId=1108588"> </A>
+EXIT:&lt;done&gt;</PRE>
+</DIV>
+<HR ALIGN="center"><TABLE STYLE="ECOS" WIDTH="98%" BORDER="0" ALIGN="LEFT" CELLPADDING="1"><TR><TH COLSPAN="3" ALIGN="center"><P CLASS="Gotos">Appendix 1: Real-time characterization</P></TH></TR><TR><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.2.html">To Contents</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.15.html">To&nbsp;previous&nbsp;page</A></P></TD><TD  ALIGN="center"><P CLASS="Gotos"><A HREF="ecos-tutorial.17.html">To&nbsp;next&nbsp;page</A></P></TD></TR></TABLE></BODY>
+</HTML>
