@@ -169,6 +169,11 @@ command-line <tt>ecosconfig</tt> tool</A> are available from
 <A HREF="ftp://sources.redhat.com/pub/ecos/anoncvs/"> the eCos FTP site</a>
 or preferably a <a href="mirror.html">mirror site</a>.</p>
 
+<p>Alternatively, the BETA version of the Configuration Tool version 2 is
+available for download from <a href="ct2.html">a separate page</a> which
+describes the current status</a>. Be sure to check you do not require a
+feature which is currently unimplemenated.
+
 <p>It is recommended that you rename the existing files <tt>Configtool.exe</tt>
 and <tt>ecosconfig.exe</tt> to <tt>Configtool.exe.old</tt> and
 <tt>ecosconfig.exe.old</tt> before proceeding. These files are found in
@@ -185,7 +190,10 @@ registry fragment</a>. Once downloaded, simply double click the file to install
 it.</p>
 
 <p>Note that using the updated Configuration Tool with an eCos v1.3.1
-repository will lead to problems if the memory layout is modified.</p>
+repository will lead to problems if the memory layout is modified. These
+can be rectified by creating an empty file in
+<tt>packages/infra/v1_3_1/include/cyg_type.inc</tt> relative to the base of
+your eCos installation.</p>
 
 <h3>Updated configuration tools for Red Hat Linux 6.x and 7.x</h3>
 
@@ -208,6 +216,11 @@ chmod +x ecosconfig
 
 <p>Move the resulting <tt>ecosconfig</tt> executable into the <tt>tools/bin</tt>
 subdirectory of your eCos installation.</p>
+
+<p>Alternatively, the BETA version of the Configuration Tool version 2 
+now supports running under Red Hat Linux hosts. It is
+available for download from <a href="ct2.html">a separate page</a> which
+describes the current status</a>.
 
 <h2>Other notes</h2>
 
