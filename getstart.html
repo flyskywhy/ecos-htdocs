@@ -26,10 +26,10 @@ In order to build the eCos sources, you will require the a cross-compiler and re
 <li><a href="FIXME">eCos sourceware development tools</a> (33MB zip file)
 </ul>
 
-The eCos development tools make use of GNU native tools on both Linux and Windows. Linux users will already have the necessary tools. Windows NT users should use the GNU-Win32 Beta 20 native tools which are available in pre-built form. Click on the following link to download from one the GNU-Win32 mirror sites:
+The eCos development tools make use of GNU native tools on both Linux and Windows. Linux users will already have the necessary tools. Windows NT users should use the Cygwin Beta 20 native tools which are available in pre-built form. Click on the following link to download from one the Cygwin mirror sites:
 
 <ul>
-<li><a href="http://sourceware.cygnus.com/cygwin/download.html">GNU-Win32 Beta 20 development tools</a>
+<li><a href="http://sourceware.cygnus.com/cygwin/download.html">Cygwin Beta 20 development tools</a>
 </ul>
 
 <h3>Installing</h3>
@@ -37,7 +37,7 @@ The eCos development tools make use of GNU native tools on both Linux and Window
 <h4>Installing under Windows</h4>
 
 <ol>
-<li>Install the GNU-Win32 native tools by running the downloaded distribution file and following the on-screen instructions. The remaining instructions assume that the GNU-Win32 tools are installed to the default location. If you wish to install to a different location, you should avoid the use of spaces in the destination path. Once installed, select <i>Cygwin32 Beta 20</i> from the start menu hierarchy to launch the <i>bash</i> command-line environment.<p>
+<li>Install the Cygwin native tools by running the downloaded distribution file and following the on-screen instructions. The remaining instructions assume that the Cygwin tools are installed to the default location. If you wish to install to a different location, you should avoid the use of spaces in the destination path. Once installed, select <i>Cygwin Beta 20</i> from the start menu hierarchy to launch the <i>bash</i> command-line environment.<p>
 
 <li>Build the eCos sourceware development tools (ecosSWtools-981021) by following these steps at the <i>bash</i> prompt:<p>
 
@@ -45,11 +45,11 @@ The eCos development tools make use of GNU native tools on both Linux and Window
   <li>Mount the logical drive(s) you will use to build the eCos sourceware development tools:<p>
   <nobr><tt>mount C: /c</tt></nobr><p>
 
-  <li>Mount the GNU-Win32 tools as /bin such that /bin/sh exists:<p>
-  <nobr><tt>mount C:/cygnus/b20/H-i586-cygwin32/bin /bin</tt></nobr><p>
+  <li>Mount the Cygwin tools as /bin such that /bin/sh exists:<p>
+  <nobr><tt>mount C:/cygnus/cygwin-b20/H-i586-cygwin32/bin /bin</tt></nobr><p>
 
-  <li>Mount the GNU-Win32 libraries as /lib:<p>
-  <nobr><tt>mount C:/cygnus/b20/H-i586-cygwin32/i586-cygwin32/lib /lib</tt></nobr><p>
+  <li>Mount the Cygwin libraries as /lib:<p>
+  <nobr><tt>mount C:/cygnus/cygwin-b20/H-i586-cygwin32/i586-cygwin32/lib /lib</tt></nobr><p>
 
   <li>Set the MAKE_MODE environment variable to "unix":<p>
   <nobr><tt>export MAKE_MODE=unix</tt></nobr><p>
