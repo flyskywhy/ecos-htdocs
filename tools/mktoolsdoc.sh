@@ -979,6 +979,8 @@ TOOLPREFIX=arm-elf
 TARGETNAME="ARM THUMB"
 GCCSNAP=
 USENEWSNAPSHOT=
+EXTRASNAPPATCH='
+At this time no patches appear to be required for ARM Thumb support.'
 
 ###################
 # Windows thumb
@@ -1022,6 +1024,7 @@ outputfunc linux-thumb-elf.html
 EXTRAPATCH=
 unset GCCSNAP
 unset USENEWSNAPSHOT
+unset EXTRASNAPPATCH
 
 ##################
 # vr4300
