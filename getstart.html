@@ -37,7 +37,7 @@ The eCos development tools make use of GNU native tools on both Linux and Window
 <h4>Installing under Windows</h4>
 
 <ol>
-<li>Install the GNU-Win32 native tools by running the downloaded distribution file and then following the on-screen instructions. The remaining instructions assume that the GNU-Win32 tools are installed to the default location. Once installed, select <i>Cygwin32 Beta 20</i> from the start menu hierarchy to launch the <i>bash</i> command-line environment.<p>
+<li>Install the GNU-Win32 native tools by running the downloaded distribution file and following the on-screen instructions. The remaining instructions assume that the GNU-Win32 tools are installed to the default location. If you wish to install to a different location, you should avoid the use of spaces in the destination path. Once installed, select <i>Cygwin32 Beta 20</i> from the start menu hierarchy to launch the <i>bash</i> command-line environment.<p>
 
 <li>Build the eCos sourceware development tools (ecosSWtools-981021) by following these steps at the <i>bash</i> prompt:<p>
 
@@ -54,7 +54,7 @@ The eCos development tools make use of GNU native tools on both Linux and Window
   <li>Set the MAKE_MODE environment variable to "unix":<p>
   <tt>export MAKE_MODE=unix</tt><p>
 
-  <li>Extract the eCos sourceware development tool sources from the downloaded distribution file to <tt>C:\cygnus</tt> using a utility such as <a href="http://www.winzip.com/">WinZip</a>. You should ensure that the utility you use is configured to preserve the directory structure within the zip file during extraction. The directory <tt>C:\cygnus\ecosSWtools-981021\src</tt> should be generated and populated during the extraction process.<p>
+  <li>Extract the eCos sourceware development tool sources from the downloaded distribution file to <tt>C:\cygnus</tt> using a utility such as <a href="http://www.winzip.com/">WinZip</a>. You should ensure that the utility is configured to preserve the directory structure within the zip file during extraction. The directory <tt>C:\cygnus\ecosSWtools-981021\src</tt> should be generated and populated during the extraction process.<p>
 
   <li>Create an object directory for your builds:<p>
   <tt>mkdir /c/build<br>
@@ -62,17 +62,19 @@ The eCos development tools make use of GNU native tools on both Linux and Window
 
    <li>Configure the tools, saving the output to configure.out:<p>
    <tt>/c/cygnus/ecosSWtools-981021/src/configure -v \<br>
-       --prefix=/c/cygnus/ecosSWtools-981021 \<br>
-       --exec-prefix=/c/cygnus/ecosSWtools-981021/H-i586-cygwin32 \<br>
-       --host=i586-cygwin32 --target=&lt;target&gt; > configure.out 2&gt;&amp;1</tt><p>
+       &nbsp;&nbsp;--prefix=/c/cygnus/ecosSWtools-981021 \<br>
+       &nbsp;&nbsp;--exec-prefix=/c/cygnus/ecosSWtools-981021/H-i586-cygwin32 \<br>
+       &nbsp;&nbsp;--host=i586-cygwin32 --target=<i>triplet</i> > configure.out 2&gt;&amp;1</tt><p>
 
-   You should replace <tt>&lt;target&gt;</tt> in the above command with one of the supported target triplets: <tt>mn10300-elf</tt>, <tt>mips-tx39-elf</tt> or <tt>powerpc-eabi</tt><p>
+   You should replace <i><tt>triplet</tt></i> in the above command with one of the supported target triplets: <tt>mn10300-elf</tt>, <tt>mips-tx39-elf</tt> or <tt>powerpc-eabi</tt><p>
 
-   <li>Build and install the tools, saving the output to make.out:<p>
-   <tt>make -w all install > make.out 2&gt;&amp;1</tt><p>
+  <li>Build and install the tools, saving the output to make.out:<p>
+  <tt>make -w all install > make.out 2&gt;&amp;1</tt><p>
   </ul>
 
-<li>Install eCos by running the downloaded distribution file and then following the on-screen instructions.
+When the build is complete, the executable files of the eCos sourceware development tools may be found in the directory <tt>C:\cygnus\ecosSWtools-981021\H-i586-cygwin32\bin</tt>.<p>
+
+<li>Install eCos by running the downloaded distribution file and following the on-screen instructions.
 </ol>
 
 <h4>Installing under Linux</h4>
