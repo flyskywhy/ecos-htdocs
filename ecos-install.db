@@ -39,7 +39,7 @@ namespace eval installdatav1 {
           }
         
         variable ecosmirrors [ list \
-                                   "ftp://mirrors.rcn.net/mirrors/sources.redhat.com/ecos" \
+                                   "ftp://mirrors.rcn.net/pub/sourceware/ecos" \
                                    "http://mirrors.rcn.net/pub/sourceware/ecos" \
                                    "ftp://mirror.ac.uk/sites/sources.redhat.com/pub/ecos" \
                                    "http://www.mirror.ac.uk/sites/sources.redhat.com/pub/ecos" \
