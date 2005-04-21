@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->Memory Allocation</TITLE
+>I2C Support</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -19,11 +19,11 @@ REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="PREVIOUS"
-TITLE="The SNTP test program"
-HREF="net-sntp-testing.html"><LINK
+TITLE="Porting to New Hardware"
+HREF="spi-porting.html"><LINK
 REL="NEXT"
-TITLE="eCos Memory Pools"
-HREF="memalloc.html"></HEAD
+TITLE="Overview"
+HREF="i2c.html"></HEAD
 ><BODY
 CLASS="PART"
 BGCOLOR="#FFFFFF"
@@ -51,7 +51,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="net-sntp-testing.html"
+HREF="spi-porting.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -65,7 +65,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="memalloc.html"
+HREF="i2c.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,13 +77,13 @@ WIDTH="100%"></DIV
 ><DIV
 CLASS="PART"
 ><A
-NAME="SERVICES-MEMALLOC-COMMON"
+NAME="IO-I2C"
 ></A
 ><DIV
 CLASS="TITLEPAGE"
 ><H1
 CLASS="TITLE"
->XXIV. Memory Allocation</H1
+>IX. I2C Support</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -92,10 +92,20 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->57. <A
-HREF="memalloc.html"
->eCos Memory Pools</A
-></DT
+><A
+HREF="i2c.html"
+>Overview</A
+>&nbsp;--&nbsp;eCos Support for I2C, the Inter IC Bus</DT
+><DT
+><A
+HREF="i2c-api.html"
+>I2C Interface</A
+>&nbsp;--&nbsp;allow applications and other packages to access I2C devices</DT
+><DT
+><A
+HREF="i2c-porting.html"
+>Porting to New Hardware</A
+>&nbsp;--&nbsp;Adding I2C support to new hardware</DT
 ></DL
 ></DIV
 ></DIV
@@ -116,7 +126,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="net-sntp-testing.html"
+HREF="spi-porting.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -134,7 +144,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="memalloc.html"
+HREF="i2c.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -144,7 +154,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->The SNTP test program</TD
+>Porting to New Hardware</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -154,7 +164,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->eCos Memory Pools</TD
+>Overview</TD
 ></TR
 ></TABLE
 ></DIV

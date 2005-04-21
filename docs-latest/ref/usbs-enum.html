@@ -85,7 +85,7 @@ NAME="USBS-ENUM"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN12641"
+NAME="AEN13058"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN12641"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN12644"
+NAME="AEN13061"
 ></A
 ><H2
 >Synopsis</H2
@@ -141,7 +141,7 @@ typedef struct usbs_enumeration_data {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN12646"
+NAME="AEN13063"
 ></A
 ><H2
 >USB Enumeration Data</H2
@@ -215,7 +215,7 @@ extension.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12657"
+NAME="AEN13074"
 ></A
 ><H3
 ><CODE
@@ -332,7 +332,7 @@ binary-coded decimal.</P
 ><P
 >The above fields are all numerical in nature. A USB peripheral can
 also provide a number of strings as described <A
-HREF="usbs-enum.html#AEN12732"
+HREF="usbs-enum.html#AEN13149"
 >below</A
 >, for example the name of the
 vendor can be provided. The various <CODE
@@ -348,7 +348,7 @@ one configuration will be active at any one time, and the host will
 switch between them as appropriate. If a peripheral does involve
 multiple configurations then typically it will be the responsibility
 of application code to <A
-HREF="usbs-control.html#AEN13118"
+HREF="usbs-control.html#AEN13535"
 >handle</A
 > the standard
 set-configuration control message.</P
@@ -356,7 +356,7 @@ set-configuration control message.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12682"
+NAME="AEN13099"
 ></A
 ><H3
 ><CODE
@@ -462,7 +462,7 @@ requirements in units of 2mA.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12700"
+NAME="AEN13117"
 ></A
 ><H3
 ><CODE
@@ -525,7 +525,7 @@ another setting that only needs 50K/s. The host can use the standard
 set-interface control message to choose the most appropriate setting.
 The handling of this request is the responsibility of higher-level
 code, so the application may have to <A
-HREF="usbs-control.html#AEN13118"
+HREF="usbs-control.html#AEN13535"
 >install</A
 > its own handler.</P
 ><P
@@ -557,7 +557,7 @@ the interfaces for the second configuration, and so on.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12715"
+NAME="AEN13132"
 ></A
 ><H3
 ><CODE
@@ -666,7 +666,7 @@ configuration; etc.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12732"
+NAME="AEN13149"
 ></A
 ><H3
 >Strings</H3
@@ -710,7 +710,7 @@ control messages when a string descriptor is requested.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN12737"
+NAME="AEN13154"
 ></A
 ><H3
 ><CODE
