@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -86,7 +86,7 @@ CLASS="SECT1"
 ><H1
 CLASS="SECT1"
 ><A
-NAME="AEN2404"
+NAME="AEN2582"
 >Introduction</A
 ></H1
 ><P
@@ -171,7 +171,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2428"
+NAME="AEN2606"
 >Rebuilding RedBoot using <SPAN
 CLASS="APPLICATION"
 >ecosconfig</SPAN
@@ -262,9 +262,11 @@ CLASS="SCREEN"
 CLASS="USERINPUT"
 >ecosconfig import <TT
 CLASS="FILENAME"
->${ECOS_REPOSITORY}/hal/sh/se7751/<VAR
+>${ECOS_REPOSITORY}/hal/sh/se7751/<TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 >/misc/redboot_RAM.ecm</TT
 ></KBD
 >
@@ -277,9 +279,11 @@ CLASS="USERINPUT"
 ></TABLE
 >
 Replace architecture ("sh"), platform ("se7751") and version
-("<VAR
+("<TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 >") with those appropriate for the
 chosen platform and the version number of its HAL package. Also
 replace the configuration name ("redboot_RAM.ecm") with that of the
@@ -324,9 +328,11 @@ WIDTH="70%"
 ><PRE
 CLASS="PROGRAMLISTING"
 >export REDBOOT_CFG=redboot_ROM
-export VERSION=<VAR
+export VERSION=<TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 >
 mkdir /tmp/${REDBOOT_CFG}
 cd /tmp/${REDBOOT_CFG}
@@ -339,13 +345,17 @@ make</PRE
 ></TABLE
 >
 To build for another configuration, simply change the
-<VAR
+<TT
 CLASS="REPLACEABLE"
->REDBOOT_CFG</VAR
+><I
+>REDBOOT_CFG</I
+></TT
 > definition accordingly. Also
-make sure the <VAR
+make sure the <TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 > variable matches the
 version of the platform package.</P
 ></DIV
@@ -354,7 +364,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2459"
+NAME="AEN2637"
 >Rebuilding RedBoot from the <SPAN
 CLASS="APPLICATION"
 >Configuration Tool</SPAN
@@ -385,9 +395,11 @@ SE7751 board and the RAM configuration RedBoot should be built, import
 the file
 <TT
 CLASS="FILENAME"
->hal/sh/se7751/<VAR
+>hal/sh/se7751/<TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 >/misc/redboot_RAM.ecm</TT
 >.</P
 ><P
@@ -421,18 +433,24 @@ the shell variables to find the configuration file - the path to it is
 CLASS="FILENAME"
 >${ECOS_REPOSITORY}/hal/${ARCH_DIR}/${PLATFORM_DIR}/${VERSION}/misc/${REDBOOT_CFG}.ecm</TT
 >,
-where <VAR
+where <TT
 CLASS="REPLACEABLE"
->ECOS_REPOSITORY</VAR
+><I
+>ECOS_REPOSITORY</I
+></TT
 > points to the
-eCos/RedBoot sources, <VAR
+eCos/RedBoot sources, <TT
 CLASS="REPLACEABLE"
->VERSION</VAR
+><I
+>VERSION</I
+></TT
 > is the
 version of the package (usually "current") and
-<VAR
+<TT
 CLASS="REPLACEABLE"
->REDBOOT_CFG</VAR
+><I
+>REDBOOT_CFG</I
+></TT
 > is the desired configuration,
 e.g. redboot_RAM.</P
 ></DIV

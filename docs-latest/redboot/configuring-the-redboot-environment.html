@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -258,12 +258,14 @@ CLASS="PROCEDURE"
 ><OL
 TYPE="1"
 ><LI
+CLASS="STEP"
 ><P
 >Ensure that
 you have the tftp-server RPM package installed. By default, this installs
 the TFTP server in a disabled state. These steps will enable it:</P
 ></LI
 ><LI
+CLASS="STEP"
 ><P
 >Make sure that the following line is uncommented in the control
 file <TT
@@ -286,6 +288,7 @@ CLASS="SCREEN"
 ></P
 ></LI
 ><LI
+CLASS="STEP"
 ><P
 >If it was necessary to change the line in Step 2, then the inetd
 server must be restarted, which can be done via the command:    <TABLE
@@ -318,15 +321,18 @@ CLASS="PROCEDURE"
 ><OL
 TYPE="1"
 ><LI
+CLASS="STEP"
 ><P
 >Ensure that the
 xinetd RPM is installed.</P
 ></LI
 ><LI
+CLASS="STEP"
 ><P
 >Ensure that the tftp-server RPM is installed.</P
 ></LI
 ><LI
+CLASS="STEP"
 ><P
 >Enable TFTP by means of the following: <TABLE
 BORDER="5"
@@ -368,6 +374,7 @@ CLASS="PROGRAMLISTING"
 ></P
 ></LI
 ><LI
+CLASS="STEP"
 ><P
 >If you are using Red Hat 8 or newer, you may need to configure
 the built-in firewall to allow through TFTP. Either edit
@@ -656,13 +663,17 @@ different subnet (even if it's on the same &#8216;wire&#8217;), you need to
 go through an ARP proxy, providing that there is a Linux box connected to
 the network which is able to route to the TFTP server. For example: <TT
 CLASS="FILENAME"
->/proc/sys/net/ipv4/conf/<VAR
+>/proc/sys/net/ipv4/conf/<TT
 CLASS="REPLACEABLE"
->&lt;interface&#62;</VAR
+><I
+>&lt;interface&#62;</I
+></TT
 >/proxy_arp </TT
->where <VAR
+>where <TT
 CLASS="REPLACEABLE"
->&lt;interface&#62;</VAR
+><I
+>&lt;interface&#62;</I
+></TT
 >should be replaced with whichever network interface
 is directly connected to the board.</P
 ></DIV

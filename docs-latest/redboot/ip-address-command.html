@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -22,8 +22,8 @@ REL="UP"
 TITLE="Common Commands"
 HREF="common-commands.html"><LINK
 REL="PREVIOUS"
-TITLE="help"
-HREF="help-command.html"><LINK
+TITLE="gunzip"
+HREF="gunzip-command.html"><LINK
 REL="NEXT"
 TITLE="load"
 HREF="download-command.html"></HEAD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="help-command.html"
+HREF="gunzip-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -85,7 +85,7 @@ NAME="IP-ADDRESS-COMMAND"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN987"
+NAME="AEN1157"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN987"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN990"
+NAME="AEN1160"
 ></A
 ><H2
 >Synopsis</H2
@@ -101,25 +101,33 @@ NAME="AEN990"
 ><B
 CLASS="COMMAND"
 >ip_address</B
->  [-l <VAR
+>  [-b] [-l <TT
 CLASS="REPLACEABLE"
-> local_IP_address</VAR
+><I
+> local_IP_address</I
+></TT
 >
-	 [/<VAR
+	 [/<TT
 CLASS="REPLACEABLE"
->netmask_length</VAR
->] ] [-h <VAR
+><I
+>netmask_length</I
+></TT
+>] ] [-h <TT
 CLASS="REPLACEABLE"
-> server_IP_address</VAR
->] [-d <VAR
+><I
+> server_IP_address</I
+></TT
+>] [-d <TT
 CLASS="REPLACEABLE"
->DNS_server_IP_address</VAR
+><I
+>DNS_server_IP_address</I
+></TT
 >]</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1001"
+NAME="AEN1172"
 ></A
 ><H2
 >Arguments</H2
@@ -128,7 +136,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN1003"
+NAME="AEN1174"
 ></A
 ><TABLE
 BORDER="1"
@@ -158,15 +166,29 @@ TITLE="C4"><THEAD
 ><TBODY
 ><TR
 ><TD
->-l <VAR
+>-b</TD
+><TD
+>Boolean</TD
+><TD
+>Obtain an IP address using BOOTP or DHCP.</TD
+><TD
+>don't use BOOTP/DHCP</TD
+></TR
+><TR
+><TD
+>-l <TT
 CLASS="REPLACEABLE"
->local_IP_address</VAR
-><VAR
+><I
+>local_IP_address</I
+></TT
+><CODE
 CLASS="OPTION"
->[<VAR
+>[<TT
 CLASS="REPLACEABLE"
->/netmask_length</VAR
->]</VAR
+><I
+>/netmask_length</I
+></TT
+>]</CODE
 ></TD
 ><TD
 >Numeric IP or DNS name</TD
@@ -184,9 +206,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
->-h <VAR
+>-h <TT
 CLASS="REPLACEABLE"
->server_IP_address</VAR
+><I
+>server_IP_address</I
+></TT
 ></TD
 ><TD
 >Numeric IP or DNS name</TD
@@ -208,9 +232,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
->-d <VAR
+>-d <TT
 CLASS="REPLACEABLE"
->DNS_server_IP_address</VAR
+><I
+>DNS_server_IP_address</I
+></TT
 ></TD
 ><TD
 >Numeric IP or DNS name</TD
@@ -234,7 +260,7 @@ CLASS="EMPHASIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1040"
+NAME="AEN1216"
 ></A
 ><H2
 >Description</H2
@@ -248,16 +274,22 @@ values, e.g. 192.168.1.67, or as symbolic names such as www.redhat.com
 if DNS support is enabled.
       </P
 ><P
->The <VAR
+>The <CODE
 CLASS="OPTION"
->-l</VAR
+>-b</CODE
+> option is used to cause the target to perform a bootp or dhcp negotiation to get an IP address.
+      </P
+><P
+>The <CODE
+CLASS="OPTION"
+>-l</CODE
 > option is used to set the IP address used by
 the target device. The network mask length can also be specified
       </P
 ><P
->The <VAR
+>The <CODE
 CLASS="OPTION"
->-h</VAR
+>-h</CODE
 > option is used to set the default server
 address, such as is used by the <B
 CLASS="COMMAND"
@@ -265,9 +297,9 @@ CLASS="COMMAND"
 > command.
       </P
 ><P
->The <VAR
+>The <CODE
 CLASS="OPTION"
->-d</VAR
+>-d</CODE
 > option is used to set the default DNS server
 address which is used for resolving symbolic network addresses. Note
 that an address of 0.0.0.0 will disable DNS lookups.
@@ -276,7 +308,7 @@ that an address of 0.0.0.0 will disable DNS lookups.
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1051"
+NAME="AEN1229"
 ></A
 ><H2
 >Examples</H2
@@ -378,7 +410,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="help-command.html"
+HREF="gunzip-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -406,7 +438,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->help</TD
+>gunzip</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"

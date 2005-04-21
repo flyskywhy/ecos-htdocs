@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -90,7 +90,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5620"
+NAME="AEN5799"
 >Overview</A
 ></H2
 ><P
@@ -115,7 +115,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN5632"
+NAME="AEN5811"
 ></A
 ><TABLE
 BORDER="1"
@@ -169,7 +169,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5651"
+NAME="AEN5830"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -269,7 +269,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5671"
+NAME="AEN5850"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -293,9 +293,11 @@ CLASS="COMMAND"
 CLASS="VARIABLELIST"
 ><DL
 ><DT
->-b <VAR
+>-b <TT
 CLASS="REPLACEABLE"
->&lt;addr&#62;</VAR
+><I
+>&lt;addr&#62;</I
+></TT
 ></DT
 ><DD
 ><P
@@ -303,9 +305,11 @@ CLASS="REPLACEABLE"
 page of the kernel image and defaults to 0x8c101000</P
 ></DD
 ><DT
->-i <VAR
+>-i <TT
 CLASS="REPLACEABLE"
->&lt;addr&#62;</VAR
+><I
+>&lt;addr&#62;</I
+></TT
 ></DT
 ><DD
 ><P
@@ -313,27 +317,33 @@ CLASS="REPLACEABLE"
 image</P
 ></DD
 ><DT
->-j <VAR
+>-j <TT
 CLASS="REPLACEABLE"
->&lt;size&#62;</VAR
+><I
+>&lt;size&#62;</I
+></TT
 ></DT
 ><DD
 ><P
 >Size of initrd image</P
 ></DD
 ><DT
->-c <VAR
+>-c <TT
 CLASS="REPLACEABLE"
->"args"</VAR
+><I
+>"args"</I
+></TT
 ></DT
 ><DD
 ><P
 >Kernel arguments string</P
 ></DD
 ><DT
->-m <VAR
+>-m <TT
 CLASS="REPLACEABLE"
->&lt;flags&#62;</VAR
+><I
+>&lt;flags&#62;</I
+></TT
 ></DT
 ><DD
 ><P
@@ -341,27 +351,33 @@ CLASS="REPLACEABLE"
 root partition will be mounted read-only.</P
 ></DD
 ><DT
->-f <VAR
+>-f <TT
 CLASS="REPLACEABLE"
->&lt;flags&#62;</VAR
+><I
+>&lt;flags&#62;</I
+></TT
 ></DT
 ><DD
 ><P
 >RAM disk flags. Should normally be 0x4000</P
 ></DD
 ><DT
->-r <VAR
+>-r <TT
 CLASS="REPLACEABLE"
->&lt;device number&#62;</VAR
+><I
+>&lt;device number&#62;</I
+></TT
 ></DT
 ><DD
 ><P
 >Root device specification. /dev/ram is 0x0101</P
 ></DD
 ><DT
->-l <VAR
+>-l <TT
 CLASS="REPLACEABLE"
->&lt;type&#62;</VAR
+><I
+>&lt;type&#62;</I
+></TT
 ></DT
 ><DD
 ><P
@@ -382,7 +398,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5720"
+NAME="AEN5899"
 >Memory Maps</A
 ></H2
 ><P
@@ -414,7 +430,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5724"
+NAME="AEN5903"
 >Ethernet Driver</A
 ></H2
 ><P
@@ -426,7 +442,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN5727"
+NAME="AEN5906"
 >Rebuilding RedBoot</A
 ></H2
 ><P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -196,12 +196,16 @@ WIDTH="70%"
 CLASS="SCREEN"
 >  RedBoot&#62; <KBD
 CLASS="USERINPUT"
->fconfig <VAR
+>fconfig <TT
 CLASS="REPLACEABLE"
->nickname</VAR
-> <VAR
+><I
+>nickname</I
+></TT
+> <TT
 CLASS="REPLACEABLE"
->value</VAR
+><I
+>value</I
+></TT
 ></KBD
 ></PRE
 ></TD
@@ -263,9 +267,11 @@ capabilities, you might find that you are unable to use line-editing to
 delete the &#8216;old&#8217; value when using the default behaviour of
 <B
 CLASS="COMMAND"
->fconfig <VAR
+>fconfig <TT
 CLASS="REPLACEABLE"
->nickname</VAR
+><I
+>nickname</I
+></TT
 ></B
 > or just
 plain <B

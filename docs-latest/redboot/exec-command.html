@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -85,7 +85,7 @@ NAME="EXEC-COMMAND"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN2295"
+NAME="AEN2473"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN2295"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN2298"
+NAME="AEN2476"
 ></A
 ><H2
 >Synopsis</H2
@@ -101,35 +101,49 @@ NAME="AEN2298"
 ><B
 CLASS="COMMAND"
 >exec</B
->  [-w <VAR
+>  [-w <TT
 CLASS="REPLACEABLE"
-> timeout</VAR
->] [-r <VAR
+><I
+> timeout</I
+></TT
+>] [-r <TT
 CLASS="REPLACEABLE"
-> ramdisk_address</VAR
->] [-s <VAR
+><I
+> ramdisk_address</I
+></TT
+>] [-s <TT
 CLASS="REPLACEABLE"
-> ramdisk_length</VAR
->] [-b <VAR
+><I
+> ramdisk_length</I
+></TT
+>] [-b <TT
 CLASS="REPLACEABLE"
-> load_address</VAR
+><I
+> load_address</I
+></TT
 >
-   	    {-l <VAR
+   	    {-l <TT
 CLASS="REPLACEABLE"
-> load_length</VAR
+><I
+> load_length</I
+></TT
 >}
-        ] [-c <VAR
+        ] [-c <TT
 CLASS="REPLACEABLE"
-> kernel_command_line</VAR
->] [<VAR
+><I
+> kernel_command_line</I
+></TT
+>] [<TT
 CLASS="REPLACEABLE"
-> entry_point</VAR
+><I
+> entry_point</I
+></TT
 >]</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2315"
+NAME="AEN2493"
 ></A
 ><H2
 >Arguments</H2
@@ -138,7 +152,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN2317"
+NAME="AEN2495"
 ></A
 ><TABLE
 BORDER="1"
@@ -168,9 +182,11 @@ TITLE="C4"><THEAD
 ><TBODY
 ><TR
 ><TD
->-w <VAR
+>-w <TT
 CLASS="REPLACEABLE"
->timeout</VAR
+><I
+>timeout</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -181,9 +197,11 @@ CLASS="REPLACEABLE"
 ></TR
 ><TR
 ><TD
->-r <VAR
+>-r <TT
 CLASS="REPLACEABLE"
->ramdisk_address</VAR
+><I
+>ramdisk_address</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -200,9 +218,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
->-s <VAR
+>-s <TT
 CLASS="REPLACEABLE"
->ramdisk_length</VAR
+><I
+>ramdisk_length</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -219,9 +239,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
->-b <VAR
+>-b <TT
 CLASS="REPLACEABLE"
->load_address</VAR
+><I
+>load_address</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -238,9 +260,11 @@ CLASS="COMMAND"
 ></TR
 ><TR
 ><TD
->-l <VAR
+>-l <TT
 CLASS="REPLACEABLE"
->load_length</VAR
+><I
+>load_length</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -257,9 +281,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
->-c <VAR
+>-c <TT
 CLASS="REPLACEABLE"
->kernel_command_line</VAR
+><I
+>kernel_command_line</I
+></TT
 ></TD
 ><TD
 >String</TD
@@ -286,9 +312,11 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
-><VAR
+><TT
 CLASS="REPLACEABLE"
->entry_address</VAR
+><I
+>entry_address</I
+></TT
 ></TD
 ><TD
 >Number</TD
@@ -306,7 +334,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2383"
+NAME="AEN2561"
 ></A
 ><H2
 >Description</H2
@@ -348,7 +376,7 @@ a kernel built with an endianess opposite of RedBoot.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2392"
+NAME="AEN2570"
 ></A
 ><H2
 >Examples</H2

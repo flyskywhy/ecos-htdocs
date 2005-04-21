@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -90,7 +90,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN2987"
+NAME="AEN3165"
 >Overview</A
 ></H2
 ><P
@@ -120,7 +120,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN3000"
+NAME="AEN3178"
 ></A
 ><TABLE
 BORDER="1"
@@ -185,7 +185,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3024"
+NAME="AEN3202"
 >Initial Installation Method</A
 ></H2
 ><P
@@ -198,7 +198,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3027"
+NAME="AEN3205"
 >Installing RedBoot on the EB40</A
 ></H3
 ><P
@@ -206,18 +206,18 @@ NAME="AEN3027"
 in flash.  At this time, Angel will not be replaced.  Rather, RedBoot
 will be placed in the alternate half of flash.  Switch SW1 is used to
 select which monitor to boot. Once RedBoot is installed, selecting SW1
-to <VAR
+to <TT
 CLASS="LITERAL"
->lower mem</VAR
+>lower mem</TT
 > will choose Angel, whereas selecting
-SW1 to <VAR
+SW1 to <TT
 CLASS="LITERAL"
->upper mem</VAR
+>upper mem</TT
 > will choose RedBoot.</P
 ><P
->Set SW1 to <VAR
+>Set SW1 to <TT
 CLASS="LITERAL"
->lower mem</VAR
+>lower mem</TT
 > and connect serial port A to a
 host computer.  Using GDB from the host and Angel on the board,
 download and run the RAM mode image of RedBoot to the board.
@@ -316,13 +316,13 @@ CLASS="USERINPUT"
 ></TABLE
 >
 Use your terminal emulator to send the file redboot_ROM.srec via YModem.
-e.g. <VAR
+e.g. <TT
 CLASS="LITERAL"
->Transfer-&#62;Send File</VAR
+>Transfer-&#62;Send File</TT
 > in Hyperterminal, or
-<VAR
+<TT
 CLASS="LITERAL"
->Ctrl-A S</VAR
+>Ctrl-A S</TT
 > in minicom.
 Finally, program it to flash.
 <TABLE
@@ -341,9 +341,9 @@ CLASS="USERINPUT"
 ></TR
 ></TABLE
 >
-SW1 should now be set to <VAR
+SW1 should now be set to <TT
 CLASS="LITERAL"
->upper mem</VAR
+>upper mem</TT
 > to select booting
 with RedBoot rather than Angel. Finally, press the "reset" pushbutton and
 RedBoot should come up on the board.</P
@@ -353,7 +353,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN3049"
+NAME="AEN3227"
 >Installing RedBoot on the EB40A, EB42 or EB55</A
 ></H3
 ><P
@@ -361,18 +361,18 @@ NAME="AEN3049"
 in flash.  At this time, Angel will not be replaced.  Rather, RedBoot
 will be placed in the alternate half of flash.  Jumper JP1 is used to
 select which monitor to boot.  Once RedBoot is installed, setting JP1
-to <VAR
+to <TT
 CLASS="LITERAL"
->STD</VAR
+>STD</TT
 > will choose Angel, whereas setting JP1 to
-<VAR
+<TT
 CLASS="LITERAL"
->USER</VAR
+>USER</TT
 > will choose RedBoot.</P
 ><P
->Set JP1 to <VAR
+>Set JP1 to <TT
 CLASS="LITERAL"
->STD</VAR
+>STD</TT
 > and connect serial port A to a host
 computer.  Using GDB from the host and Angel on the board, download
 the RAM mode image of RedBoot to the board, and start it using the
@@ -471,13 +471,13 @@ CLASS="USERINPUT"
 ></TABLE
 >
 Use your terminal emulator to send the file redboot_ROM.srec via YModem.
-e.g. <VAR
+e.g. <TT
 CLASS="LITERAL"
->Transfer-&#62;Send File</VAR
+>Transfer-&#62;Send File</TT
 > in Hyperterminal, or
-<VAR
+<TT
 CLASS="LITERAL"
->Ctrl-A S</VAR
+>Ctrl-A S</TT
 > in minicom.
 Finally, program it to flash.
 <TABLE
@@ -496,9 +496,9 @@ CLASS="USERINPUT"
 ></TR
 ></TABLE
 >
-Set JP1 to the <VAR
+Set JP1 to the <TT
 CLASS="LITERAL"
->USER</VAR
+>USER</TT
 > setting, press the "reset"
 pushbutton and RedBoot should come up on the board.</P
 ></DIV
@@ -508,7 +508,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3071"
+NAME="AEN3249"
 >Special RedBoot Commands</A
 ></H2
 ><P
@@ -519,7 +519,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3074"
+NAME="AEN3252"
 >Memory Maps</A
 ></H2
 ><P
@@ -597,7 +597,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3083"
+NAME="AEN3261"
 >Rebuilding RedBoot</A
 ></H2
 ><P
@@ -633,13 +633,13 @@ export PLATFORM_DIR=at91/eb55</PRE
 ></TABLE
 >
 
-Use just one of the <VAR
+Use just one of the <TT
 CLASS="LITERAL"
->TARGET</VAR
+>TARGET</TT
 > and
-<VAR
+<TT
 CLASS="LITERAL"
->PLATFORM_DIR</VAR
+>PLATFORM_DIR</TT
 > variable pairs only.</P
 ><P
 >The names of configuration files are listed above with the
@@ -676,13 +676,13 @@ ALIGN="CENTER"
 ALIGN="LEFT"
 ><P
 >Failure to set SW1 to
-<VAR
+<TT
 CLASS="LITERAL"
->lower mem</VAR
+>lower mem</TT
 > (EB40) or JP1 to
-<VAR
+<TT
 CLASS="LITERAL"
->STD</VAR
+>STD</TT
 > (EB40A, EB42, EB55) will cause the
 installation of RedBoot to overwrite Angel, thus making the board
 <SPAN

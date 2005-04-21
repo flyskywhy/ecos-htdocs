@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,7 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.7"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
@@ -25,8 +25,8 @@ REL="PREVIOUS"
 TITLE="dump"
 HREF="dump-command.html"><LINK
 REL="NEXT"
-TITLE="ip_address"
-HREF="ip-address-command.html"></HEAD
+TITLE="iopeek"
+HREF="iopeek-command.html"></HEAD
 ><BODY
 CLASS="REFENTRY"
 BGCOLOR="#FFFFFF"
@@ -68,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="ip-address-command.html"
+HREF="iopeek-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -101,9 +101,11 @@ NAME="AEN945"
 ><B
 CLASS="COMMAND"
 >help</B
->  [<VAR
+>  [<TT
 CLASS="REPLACEABLE"
-> topic</VAR
+><I
+> topic</I
+></TT
 >]</P
 ></DIV
 ><DIV
@@ -148,9 +150,11 @@ TITLE="C4"><THEAD
 ><TBODY
 ><TR
 ><TD
-><VAR
+><TT
 CLASS="REPLACEABLE"
->topic</VAR
+><I
+>topic</I
+></TT
 ></TD
 ><TD
 >String</TD
@@ -235,8 +239,14 @@ Manage configuration kept in FLASH memory
    fconfig [-i] [-l] [-n] [-f] [-d] | [-d] nickname [value]
 Execute code at a location
    go [-w &lt;timeout&gt;] [entry]
+Uncompress GZIP compressed data
+   gunzip -s &lt;location&gt; -d &lt;location&gt;
 Help about help?
    help [&lt;topic&gt;]
+Read I/O location
+   iopeek [-b &lt;location&gt;] [-1|2|4]
+Write I/O location
+   iopoke [-b &lt;location&gt;] [-1|2|4] -v &lt;value&gt;
 Set/change IP addresses
    ip_address [-l &lt;local_ip_address&gt;[/&lt;mask_length&gt;]] [-h &lt;server_address&gt;]
 Load a file
@@ -245,7 +255,8 @@ Load a file
 Compare two blocks of memory
    mcmp -s &lt;location&gt; -d &lt;location&gt; -l &lt;length&gt; [-1|-2|-4]
 Fill a block of memory with a pattern
-   mfill -b &lt;location&gt; -l &lt;length&gt; -p &lt;pattern&gt; [-1|-2|-4]
+   mfill -b &lt;location&gt; -l &lt;length&gt; -p &lt;pattern&gt;
+  [-1|-2|-4]
 Network connectivity test
    ping [-v] [-n &lt;count&gt;] [-l &lt;length&gt;] [-t &lt;timeout&gt;] [-r &lt;rate&gt;]
         [-i &lt;IP_addr&gt;] -h &lt;IP_addr&gt;
@@ -333,7 +344,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="ip-address-command.html"
+HREF="iopeek-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -357,7 +368,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->ip_address</TD
+>iopeek</TD
 ></TR
 ></TABLE
 ></DIV
