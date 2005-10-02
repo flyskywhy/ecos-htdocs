@@ -85,7 +85,7 @@ NAME="USBS-WRITING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13658"
+NAME="AEN13668"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN13658"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13661"
+NAME="AEN13671"
 ></A
 ><H2
 >Introduction</H2
@@ -125,7 +125,7 @@ written.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13666"
+NAME="AEN13676"
 ></A
 ><H2
 >The Control Endpoint</H2
@@ -187,7 +187,7 @@ CLASS="STRUCTFIELD"
 >buffer</CODE
 > and other fields related to data
 transfers will be managed <A
-HREF="usbs-control.html#AEN13568"
+HREF="usbs-control.html#AEN13578"
 >jointly</A
 > by higher-level code and
 the device driver. The remaining fields are generally filled in by
@@ -211,7 +211,7 @@ after power-up.</P
 >Where possible the device driver should detect state changes, such as
 when the connection between host and peripheral is established, and
 <A
-HREF="usbs-control.html#AEN13505"
+HREF="usbs-control.html#AEN13515"
 >report</A
 > these to higher-level
 code via the <CODE
@@ -255,7 +255,7 @@ no default handler for these.</P
 >Some control messages will involve further data transfer, not just the
 initial packet. The device driver must handle this in accordance with
 the USB specification and the <A
-HREF="usbs-control.html#AEN13568"
+HREF="usbs-control.html#AEN13578"
 >buffer management strategy</A
 >. The
 driver is also responsible for keeping track of whether or not the
@@ -271,7 +271,7 @@ the same code that the interrupt handler would.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13694"
+NAME="AEN13704"
 ></A
 ><H2
 >Data Endpoints</H2
@@ -402,7 +402,7 @@ devtab entries as well as via low-level accesses.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13721"
+NAME="AEN13731"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -486,7 +486,7 @@ provided, to avoid unnecessary memory overheads.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13734"
+NAME="AEN13744"
 ></A
 ><H2
 >Interrupt Handling</H2
@@ -517,7 +517,7 @@ be invoked at DSR or thread level.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN13738"
+NAME="AEN13748"
 ></A
 ><H2
 >Support for USB Testing</H2

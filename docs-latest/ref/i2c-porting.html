@@ -85,7 +85,7 @@ NAME="I2C-PORTING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN8476"
+NAME="AEN8486"
 ></A
 ><H2
 >Name</H2
@@ -249,16 +249,16 @@ WIDTH="70%"
 CLASS="PROGRAMLISTING"
 >#include &lt;cyg/io/i2c.h&gt;
 
-CYG_I2C_DEVICE(cyg_i2c_wallclock_ds1307,            \
-               &amp;hal_alaia_i2c_bus,                  \
-               0x68,                                \
-               0x00,                                \
+CYG_I2C_DEVICE(cyg_i2c_wallclock_ds1307,
+               &amp;hal_alaia_i2c_bus,
+               0x68,
+               0x00,
                CYG_I2C_DEFAULT_DELAY);
 
-CYG_I2C_DEVICE(hal_alaia_i2c_fs6377,                \
-               &amp;hal_alaia_i2c_bus,                  \
-               0x58,                                \
-               0x00,                                \
+CYG_I2C_DEVICE(hal_alaia_i2c_fs6377,
+               &amp;hal_alaia_i2c_bus,
+               0x58,
+               0x00,
                CYG_I2C_DEFAULT_DELAY);
     </PRE
 ></TD
@@ -415,7 +415,7 @@ CLASS="INFORMALFIGURE"
 ><P
 ></P
 ><A
-NAME="AEN8546"
+NAME="AEN8556"
 ></A
 ><DIV
 CLASS="MEDIAOBJECT"
@@ -678,10 +678,10 @@ xyzzy_i2c_tx(const cyg_i2c_device* dev,
 }
 
 static cyg_uint32
-xyzzy_i2c_tx(const cyg_i2c_device* dev,
+xyzzy_i2c_rx(const cyg_i2c_device* dev,
              cyg_bool send_start,
-             const cyg_uint8* tx_data, cyg_uint32 count,
-             cyg_bool send_stop)
+             cyg_uint8* rx_data, cyg_uint32 count,
+             cyg_bool send_nack, cyg_bool send_stop)
 {
     &#8230;
 }

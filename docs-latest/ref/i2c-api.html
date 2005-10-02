@@ -85,7 +85,7 @@ NAME="I2C-API"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN8263"
+NAME="AEN8273"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN8263"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN8266"
+NAME="AEN8276"
 ></A
 ><H2
 >Synopsis</H2
@@ -102,7 +102,7 @@ CLASS="FUNCSYNOPSIS"
 ><P
 ></P
 ><A
-NAME="AEN8267"
+NAME="AEN8277"
 ></A
 ><TABLE
 BORDER="5"
@@ -129,7 +129,7 @@ CLASS="FUNCDEF"
 ><CODE
 CLASS="FUNCDEF"
 >cyg_uint32 cyg_i2c_rx</CODE
->(const cyg_i2c_device* device, const cyg_uint8* tx_data, cyg_uint32 count);</CODE
+>(const cyg_i2c_device* device, cyg_uint8* rx_data, cyg_uint32 count);</CODE
 ></P
 ><P
 ><CODE
@@ -157,7 +157,7 @@ CLASS="FUNCDEF"
 ><CODE
 CLASS="FUNCDEF"
 >cyg_uint32 cyg_i2c_transaction_rx</CODE
->(const cyg_i2c_device* device, cyg_bool send_start, const cyg_uint8* tx_data, cyg_uint32 count, cyg_bool send_nack, cyg_bool send_stop);</CODE
+>(const cyg_i2c_device* device, cyg_bool send_start, cyg_uint8* rx_data, cyg_uint32 count, cyg_bool send_nack, cyg_bool send_stop);</CODE
 ></P
 ><P
 ><CODE

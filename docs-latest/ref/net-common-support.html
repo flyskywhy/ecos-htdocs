@@ -131,21 +131,21 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->int tftp_client_get(char *filename,
-		    char *server,
-		    int port,
+>int tftp_client_get(const char * const filename,
+		    const char * const server,
+		    const int port,
 		    char *buf,
 		    int len,
-		    int mode,
-		    int *err);
+		    const int mode,
+		    int * const err);
 
-int tftp_client_put(char *filename,
-		    char *server,
-		    int port,
-		    char *buf,
+int tftp_client_put(const char * const filename,
+		    const char * const server,
+		    const int port,
+		    const char *buf,
 		    int len,
-		    int mode,
-		    int *err);</PRE
+		    const int mode,
+		    int *const err);</PRE
 ></TD
 ></TR
 ></TABLE
@@ -172,19 +172,19 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->int tftp_client_get(char *filename,
-		    struct sockaddr_in *server,
-		    char *buf,
-		    int len,
-		    int mode,
-		    int *err);
+>int tftp_get(const char * const filename, 
+             const struct sockaddr_in * const server, 
+             char * buf, 
+             int len, 
+             const int mode, 
+             int * const error);
 
-int tftp_client_put(char *filename,
-		    struct sockaddr_in *server,
-		    char *buf,
-		    int len,
-		    int mode,
-		    int *err);</PRE
+int tftp_put(const char * const filename, 
+             const struct sockaddr_in * const server, 
+             const char * buffer, 
+             int len, 
+             const int mode, 
+             int * const err);</PRE
 ></TD
 ></TR
 ></TABLE
