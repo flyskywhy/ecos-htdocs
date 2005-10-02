@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,14 +86,14 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LANGUAGE.VALUES"
-></A
->Values and Expressions</H1
+>Values and Expressions</A
+></H1
 ><P
 >It is fairly reasonable to expect that enabling or disabling a
 configuration option such as
-<TT
+<CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 > in some way affects its
 <SPAN
 CLASS="emphasis"
@@ -109,16 +109,16 @@ CLASS="LITERAL"
 >. It will
 also affect the consequences of that option: how it affects the build
 process and what happens to any constraints that
-<TT
+<CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 > may impose (as opposed
 to constraints on this option imposed by others).</P
 ><P
 >In a language like C the handling of variables is relatively
-straightforward. If a variable <TT
+straightforward. If a variable <CODE
 CLASS="VARNAME"
->x</TT
+>x</CODE
 > gets referenced in
 an expression such as <TT
 CLASS="LITERAL"
@@ -126,9 +126,9 @@ CLASS="LITERAL"
 >,
 and that variable is not defined anywhere, then the code will fail to
 build, typically with an unresolved error at link-time. Also in C
-a variable <TT
+a variable <CODE
 CLASS="VARNAME"
->x</TT
+>x</CODE
 > does not live in any hierarchy, so its
 value for the purposes of expression evaluation is not affected by
 anything else. C variables also have a clear type such as
@@ -150,8 +150,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.VALUES.VALUE"
-></A
->Option Values</H2
+>Option Values</A
+></H2
 ><P
 >There are four factors which go into an option's value:</P
 ><P
@@ -182,8 +182,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LANGUAGE.VALUES.VALUE.LOADED"
-></A
->Is the Option Loaded?</H3
+>Is the Option Loaded?</A
+></H3
 ><P
 >At any one time a configuration will contain only a subset of all
 possible packages. In fact it is impossible to combine certain
@@ -208,9 +208,9 @@ packages themselves. If a <SPAN
 CLASS="APPLICATION"
 >CDL</SPAN
 > expression contains a reference to
-some option <TT
+some option <CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_TIMESLICE</TT
+>CYGSEM_KERNEL_SCHED_TIMESLICE</CODE
 > then the
 component framework will only know about this option if the kernel
 package is actually loaded into the current configuration. If the
@@ -305,15 +305,15 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LANGUAGE.VALUES.VALUE.ACTIVE"
-></A
->Is the Option Active</H3
+>Is the Option Active</A
+></H3
 ><P
 >The next issue to consider is whether or not a particular option is
 active. Configuration options are organized in a hierarchy of
 components and sub-components. For example the C library package
-contains a component <TT
+contains a component <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO</TT
+>CYGPKG_LIBC_STDIO</CODE
 > containing
 all the options related to standard I/O. If a user disables the
 component as a whole then all the options below it become inactive: it
@@ -329,9 +329,9 @@ tool will treat inactive options specially, for example such options
 may be grayed out.</P
 ><P
 >The active or inactive state of an option may affect other packages.
-For example a package may use the <TT
+For example a package may use the <CODE
 CLASS="FUNCTION"
->sprintf</TT
+>sprintf</CODE
 >
 function and require support for floating point conversions, a
 constraint that is not satisfied if the relevant option is inactive.
@@ -344,18 +344,18 @@ TYPE="1"
 ><LI
 ><P
 >An option is inactive if its parent is either inactive or disabled.
-For example if <TT
+For example if <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO</TT
+>CYGPKG_LIBC_STDIO</CODE
 > is disabled then
 all the options and sub-components become inactive; since
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO_FLOATING_POINT</TT
+>CYGPKG_LIBC_STDIO_FLOATING_POINT</CODE
 > is now inactive,
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT</TT
+>CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT</CODE
 > is inactive
 as well.</P
 ></LI
@@ -402,9 +402,9 @@ similar properties will be ignored.</P
 ><P
 >An option that is inactive cannot impose any constraints on the rest
 of the configuration. For example
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT</TT
+>CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT</CODE
 > has a
 dependency <TT
 CLASS="LITERAL"
@@ -412,9 +412,9 @@ CLASS="LITERAL"
 >, but if all of
 the stdio functionality is disabled then this constraint is ignored
 (although of course there may be other packages which have a
-dependency on <TT
+dependency on <CODE
 CLASS="VARNAME"
->CYGPKG_LIBM</TT
+>CYGPKG_LIBM</CODE
 >.</P
 ></LI
 ></OL
@@ -425,23 +425,23 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LANGUAGE.VALUES.VALUE.ENABLED"
-></A
->Is the Option Enabled? What is the Data?</H3
+>Is the Option Enabled? What is the Data?</A
+></H3
 ><P
 >The majority of configuration options are boolean in nature, so the
 user can either enable or disable some functionality. Some options are
-different. For example <TT
+different. For example <CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_STDIO_BUFSIZE</TT
+>CYGNUM_LIBC_STDIO_BUFSIZE</CODE
 > is
-a number, and <TT
+a number, and <CODE
 CLASS="VARNAME"
->CYGDAT_LIBC_STDIO_DEFAULT_CONSOLE</TT
+>CYGDAT_LIBC_STDIO_DEFAULT_CONSOLE</CODE
 > is
 a string corresponding to a device name. A few options like
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDAT_UITRON_TASK_EXTERNS</TT
+>CYGDAT_UITRON_TASK_EXTERNS</CODE
 > can get very
 complicated. <SPAN
 CLASS="APPLICATION"
@@ -463,46 +463,36 @@ CLASS="PROPERTY"
 > property:</P
 ><DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN1419"
-></A
 ><P
 ></P
+><A
+NAME="AEN1413"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Flavor</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Enabled</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Data</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >none</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Always enabled</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >1</TT
@@ -510,19 +500,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >bool</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >User-modifiable</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >1</TT
@@ -530,36 +514,24 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >data</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Always enabled</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >User-modifiable</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >booldata</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >User-modifiable</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >User-modifiable</TD
 ></TR
 ></TBODY
@@ -775,9 +747,9 @@ CLASS="LITERAL"
 >0</TT
 > is a perfectly legal
 number, for example
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_TIME_STD_DEFAULT_OFFSET</TT
+>CYGNUM_LIBC_TIME_STD_DEFAULT_OFFSET</CODE
 >. </P
 ></LI
 ><LI
@@ -808,9 +780,9 @@ CLASS="APPLICATION"
 >The next common suggestion is that the data part of a value should be
 typed in much the same way as C or C++ data types. For example it
 should be possible to describe
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_STDIO_BUFSIZE</TT
+>CYGNUM_LIBC_STDIO_BUFSIZE</CODE
 > as an integer value,
 rather than imposing <SPAN
 CLASS="PROPERTY"
@@ -843,9 +815,9 @@ CLASS="PROPERTY"
 >legal_values</SPAN
 > constraints explicitly should make them think a bit
 more about what values are actually sensible. For example
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_TIME_DST_DEFAULT_OFFSET</TT
+>CYGNUM_LIBC_TIME_DST_DEFAULT_OFFSET</CODE
 > has legal
 values in the range <TT
 CLASS="LITERAL"
@@ -856,9 +828,9 @@ which helps the user to set a sensible value.</P
 ><LI
 ><P
 >Not all options correspond to simple data types such as integers.
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDAT_LIBC_STDIO_DEFAULT_CONSOLE</TT
+>CYGDAT_LIBC_STDIO_DEFAULT_CONSOLE</CODE
 > is a C string,
 and would have to be expressed using something like
 <TT
@@ -875,9 +847,9 @@ CLASS="APPLICATION"
 ><P
 >Some configuration options can get very complicated indeed, for
 example the default value of
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDAT_UITRON_TASK_INITIALIZERS</TT
+>CYGDAT_UITRON_TASK_INITIALIZERS</CODE
 > is:</P
 ><TABLE
 BORDER="5"
@@ -943,8 +915,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="LANGUAGE.VALUES.VALUE.EXAMPLES"
-></A
->Some Examples</H3
+>Some Examples</A
+></H3
 ><P
 >The following excerpt from the C library's <SPAN
 CLASS="APPLICATION"
@@ -989,9 +961,9 @@ it is possible to have a configuration where the C library is not
 loaded. This can be achieved by starting with the minimal template, or
 by starting with another template such as the default one and then
 explicitly unloading the C library package. If this package is not
-loaded then any references to the <TT
+loaded then any references to the <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_RAND</TT
+>CYGPKG_LIBC_RAND</CODE
 >
 component or any of its options will have a value of
 <TT
@@ -1014,22 +986,22 @@ not correspond to any of the devices on the target hardware.</P
 whether or not the component and its options are active. The component
 is layered immediately below the C library package itself, so if the
 package is loaded then it is safe to assume that the package is also
-enabled. Therefore the parent of <TT
+enabled. Therefore the parent of <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_RAND</TT
+>CYGPKG_LIBC_RAND</CODE
 >
 is active and enabled, and in the absence of any <SPAN
 CLASS="PROPERTY"
 >active_if</SPAN
 >
-properties <TT
+properties <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_RAND</TT
+>CYGPKG_LIBC_RAND</CODE
 > will be active as well.</P
 ><P
->The component <TT
+>The component <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_RAND</TT
+>CYGPKG_LIBC_RAND</CODE
 > has the flavor
 <TT
 CLASS="LITERAL"
@@ -1103,9 +1075,9 @@ CLASS="LITERAL"
 > flavor or one of the other flavors
 might be more appropriate.</P
 ><P
->Next consider option <TT
+>Next consider option <CODE
 CLASS="VARNAME"
->CYGSEM_LIBC_PER_THREAD_RAND</TT
+>CYGSEM_LIBC_PER_THREAD_RAND</CODE
 >
 which can be used to get a per-thread random number seed, possibly
 useful if the application needs a consistent sequence of random
@@ -1149,24 +1121,24 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->CYGSEM_LIBC_PER_THREAD_RAND</TT
+>CYGSEM_LIBC_PER_THREAD_RAND</CODE
 > option has a
 <SPAN
 CLASS="PROPERTY"
 >requires</SPAN
 > constraint on
-<TT
+<CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 >. If the C library option
 is enabled then the constraint should be satisfied, or else the
 configuration contains a conflict. If the configuration does not
 include the kernel package then
-<TT
+<CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 > will evaluate to
 <TT
 CLASS="LITERAL"
@@ -1175,13 +1147,13 @@ CLASS="LITERAL"
 the option is inactive or disabled the constraint will not be
 satisfied.</P
 ><P
-><TT
+><CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_RAND_SEED</TT
+>CYGNUM_LIBC_RAND_SEED</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_RAND_TRACE_LEVEL</TT
+>CYGNUM_LIBC_RAND_TRACE_LEVEL</CODE
 > both have the
 <TT
 CLASS="LITERAL"
@@ -1228,9 +1200,9 @@ CLASS="PROPERTY"
 >default_value</SPAN
 > expression. It would be
 possible to use a more complicated expression, for example the default
-for <TT
+for <CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_RAND_TRACE_LEVEL</TT
+>CYGNUM_LIBC_RAND_TRACE_LEVEL</CODE
 > could be
 determined from some global debugging option or from a debugging
 option that applies to the C library as a whole. Both options also
@@ -1250,13 +1222,13 @@ CLASS="NOTE"
 CLASS="LITERAL"
 >0</TT
 > is legal for both
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_RAND_SEED</TT
+>CYGNUM_LIBC_RAND_SEED</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_RAND_TRACE_LEVEL</TT
+>CYGNUM_LIBC_RAND_TRACE_LEVEL</CODE
 >, so in a <SPAN
 CLASS="APPLICATION"
 >CDL</SPAN
@@ -1274,8 +1246,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.EXPRESSION"
-></A
->Ordinary Expressions</H2
+>Ordinary Expressions</A
+></H2
 ><P
 >Expressions in <SPAN
 CLASS="APPLICATION"
@@ -1472,389 +1444,226 @@ sub-expressions are supported, and the operators have the usual
 precedence:</P
 ><DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN1659"
-></A
 ><P
 ></P
+><A
+NAME="AEN1653"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+ALIGN="CENTER"><COL
+WIDTH="1*"
+ALIGN="CENTER"><COL
+WIDTH="1*"
+ALIGN="CENTER"><THEAD
 ><TR
 ><TH
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >Priority</TH
 ><TH
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >Operators</TH
 ><TH
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >Category</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >16</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >references, constants</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >basic elements</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >15</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >f(a, b, c)</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >function calls</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >14</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >~</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >bitwise not</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >14</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >!</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >logical not</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >14</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >-</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >arithmetic negation</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >13</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >* / %</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >multiplicative arithmetic</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >12</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >+ - .</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >additive arithmetic and string concatenation</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >11</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >&lt;&lt; &gt;&gt;</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >bitwise shifts</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >10</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >&lt;= &lt; &gt; &gt;=</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >inequality</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >9</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >== !=</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >comparison</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >8</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >&#38;</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >bitwise and</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >7</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >^</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >bitwise xor</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >6</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >|</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >bitwise or</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >5</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >&#38;&#38;</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >logical and</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >4</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >||</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >logical or</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >3</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >xor, eqv</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >logical equivalance</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >2</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >implies</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >logical implication</TD
 ></TR
 ><TR
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >1</TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >? :</TT
 ></TD
 ><TD
-WIDTH="33%"
-ALIGN="CENTER"
-VALIGN="TOP"
 >conditional</TD
 ></TR
 ></TBODY
@@ -1935,9 +1744,9 @@ such a stack were in use but was too small, a conflict would be raised.</P
 CLASS="APPLICATION"
 >CDL</SPAN
 > identifier in an expression, for example
-<TT
+<CODE
 CLASS="VARNAME"
->CYGGLO_SPEED</TT
+>CYGGLO_SPEED</CODE
 >, will be interpreted as a reference to
 a configuration option by that name. The option does not have to be
 loaded into the current configuration. When the component framework
@@ -1978,9 +1787,9 @@ CLASS="APPLICATION"
 >CDL</SPAN
 > expression parser
 sees the data, so the expression will be interpreted as a reference to
-a configuration option <TT
+a configuration option <CODE
 CLASS="VARNAME"
->RAM</TT
+>RAM</CODE
 >. There is unlikely to be
 such an option, so the actual default value will be
 <TT
@@ -2361,8 +2170,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.FUNCTIONS"
-></A
->Functions</H2
+>Functions</A
+></H2
 ><P
 >CDL expressions can contain calls to a set of built-in functions
 using the usual syntax, for example;</P
@@ -2398,13 +2207,13 @@ the option is active and enabled. It takes a single argument which
 should be the name of a configuration option. If the specified option
 is not loaded in the current configuration then the function returns
 0, otherwise it returns the data part. Typically this function will
-only be used in conjunction with <TT
+only be used in conjunction with <CODE
 CLASS="FUNCTION"
->is_active</TT
+>is_active</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->is_enabled</TT
+>is_enabled</CODE
 > for fine-grained control over the
 various factors that make up an option's value.</P
 ></DD
@@ -2445,9 +2254,9 @@ any related C library or POSIX functionality, or the stack size must
 be at least 16K.</P
 ><P
 >The configuration system's inference engine can attempt to satisfy
-constraints involving <TT
+constraints involving <CODE
 CLASS="FUNCTION"
->is_active</TT
+>is_active</CODE
 > in various
 different ways, for example by enabling or disabling parent
 components, or by examining <SPAN
@@ -2470,13 +2279,13 @@ specified option is not loaded then the function will return false.
 Otherwise it will return the current boolean part of the option's
 value. The option's active or inactive state is ignored. Typically
 this function will be used in conjunction with
-<TT
+<CODE
 CLASS="FUNCTION"
->is_active</TT
+>is_active</CODE
 > and possibly
-<TT
+<CODE
 CLASS="FUNCTION"
->get_data</TT
+>get_data</CODE
 > to provide fine-grained control over the
 various factors that make up an option's value.</P
 ></DD
@@ -2490,9 +2299,9 @@ CLASS="LITERAL"
 >This function can be used to determine whether or not a particular
 configuration option is loaded. It takes a single argument which
 should be the name of an option, and returns a boolean. If the
-argument is a package then the <TT
+argument is a package then the <CODE
 CLASS="FUNCTION"
->is_loaded</TT
+>is_loaded</CODE
 > function
 provides little or no extra information, for example the following two
 constraints are usually equivalent:</P
@@ -2517,17 +2326,17 @@ CLASS="PROPERTY"
 >
 property, then the first constraint would not be satisfied but the
 second constraint would. In other words the
-<TT
+<CODE
 CLASS="FUNCTION"
->is_loaded</TT
+>is_loaded</CODE
 > makes it possible to consider in
 isolation one of the factors that are considered when CDL expressions
 are evaluated.</P
 ><P
 >The configuration system's inference engine will not automatically
-load or unload packages to satisfy <TT
+load or unload packages to satisfy <CODE
 CLASS="FUNCTION"
->is_loaded</TT
+>is_loaded</CODE
 >
 constraints. </P
 ></DD
@@ -2543,9 +2352,9 @@ present in another string. It is used mainly for manipulating compiler
 flags. The function takes two arguments, both of which can be
 arbitrary expressions, and returns a boolean.</P
 ><P
-><TT
+><CODE
 CLASS="FUNCTION"
->is_substr</TT
+>is_substr</CODE
 > has some understanding of word
 boundaries. If the second argument starts with a space character then
 that will match either a real space or the start of the string.
@@ -2590,9 +2399,9 @@ CLASS="PROGRAMLISTING"
 space is not matched by either a real space or the end of the string.
 Similarly it fails to match at the end of the string.</P
 ><P
->If a constraint involving <TT
+>If a constraint involving <CODE
 CLASS="FUNCTION"
->is_substr</TT
+>is_substr</CODE
 > is not
 satisfied and the first argument is a reference to a configuration
 option, the inference engine will attempt to modify that option's
@@ -2615,9 +2424,9 @@ CLASS="PROGRAMLISTING"
 ><P
 >When data is removed the leading and trailing spaces will be left. For
 example, given an initial value of
-&#60;<TT
+&#60;<CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_CFLAGS</TT
+>CYGBLD_GLOBAL_CFLAGS</CODE
 > of
 <TT
 CLASS="LITERAL"
@@ -2632,9 +2441,9 @@ CLASS="LITERAL"
 >.</P
 ><P
 >If exact matches are needed, the function
-<TT
+<CODE
 CLASS="FUNCTION"
->is_xsubstr</TT
+>is_xsubstr</CODE
 > can be used instead.</P
 ></DD
 ><DT
@@ -2646,20 +2455,20 @@ CLASS="LITERAL"
 ><P
 >This function checks whether or not the pattern string is an exact
 substring of the string being searched. It is similar to
-<TT
+<CODE
 CLASS="FUNCTION"
->is_substr</TT
+>is_substr</CODE
 > but uses exact matching only. In other
 words, leading or trailing spaces have to match exactly and will not
 match the beginning or end of the string being searched. The function
 takes two arguments, both of which can be arbitrary expressions, and
 returns a boolean. The difference between
-<TT
+<CODE
 CLASS="FUNCTION"
->is_substr</TT
-> and <TT
+>is_substr</CODE
+> and <CODE
 CLASS="FUNCTION"
->is_xsubstr</TT
+>is_xsubstr</CODE
 > is
 illustrated by the following examples:</P
 ><TABLE
@@ -2685,9 +2494,9 @@ CLASS="PROGRAMLISTING"
 pattern matches the beginning of the string. The second goal will not
 be satisfied initialy because there is no exact match, so the
 inference engine is likely to update the value of
-<TT
+<CODE
 CLASS="VARNAME"
->MAGIC</TT
+>MAGIC</CODE
 > to <TT
 CLASS="LITERAL"
 >abracadabra abra</TT
@@ -2753,8 +2562,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.GOAL-EXPRESSION"
-></A
->Goal Expressions</H2
+>Goal Expressions</A
+></H2
 ><P
 >The arguments to certain properties, notably <SPAN
 CLASS="PROPERTY"
@@ -2907,8 +2716,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.LIST-EXPRESSION"
-></A
->List Expressions</H2
+>List Expressions</A
+></H2
 ><P
 >The arguments to the <SPAN
 CLASS="PROPERTY"
@@ -3019,9 +2828,9 @@ CLASS="LITERAL"
 >. In
 practice such list expressions are rarely useful.</P
 ><P
->The identifier <TT
+>The identifier <CODE
 CLASS="VARNAME"
->to</TT
+>to</CODE
 > is not reserved, so it is
 possible to have a configuration option with that name (although it
 violates every naming convention). Using that option in a list

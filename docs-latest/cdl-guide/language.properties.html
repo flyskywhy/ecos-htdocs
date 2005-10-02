@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LANGUAGE.PROPERTIES"
-></A
->CDL Properties</H1
+>CDL Properties</A
+></H1
 ><P
 >Each package, component, option, and interface has a body of
 properties, which provide the component framework with information
@@ -378,8 +378,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.USER"
-></A
->Information-providing Properties</H2
+>Information-providing Properties</A
+></H2
 ><P
 >Users can only be expected to manipulate configuration options
 sensibly if they are given sufficient information about these options.
@@ -476,8 +476,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.HIERARCHY"
-></A
->The Configuration Hierarchy</H2
+>The Configuration Hierarchy</A
+></H2
 ><P
 >There are two properties related to the hierarchical organization of
 components and options: <A
@@ -505,13 +505,13 @@ CLASS="APPLICATION"
 else in the hierarchy. The most common use is for packages, to avoid
 having all the packages appear at the top-level of the configuration
 hierarchy. For example an architectural HAL package such as
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_HAL_SH</TT
+>CYGPKG_HAL_SH</CODE
 > is placed below the common HAL
-package <TT
+package <CODE
 CLASS="VARNAME"
->CYGPKG_HAL</TT
+>CYGPKG_HAL</CODE
 > using a <SPAN
 CLASS="PROPERTY"
 >parent</SPAN
@@ -613,8 +613,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.VALUE"
-></A
->Value-related Properties</H2
+>Value-related Properties</A
+></H2
 ><P
 >There are seven properties which are related to option values and
 state: <A
@@ -681,27 +681,27 @@ CLASS="APPLICATION"
 >CDL</SPAN
 > scripts still reference
 kernel options, for example
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_LIBM_THREAD_SAFE_COMPAT_MODE</TT
+>CYGSEM_LIBM_THREAD_SAFE_COMPAT_MODE</CODE
 > has a
 <SPAN
 CLASS="PROPERTY"
 >requires</SPAN
 > constraint on
-<TT
+<CODE
 CLASS="VARNAME"
->CYGVAR_KERNEL_THREADS_DATA</TT
+>CYGVAR_KERNEL_THREADS_DATA</CODE
 >. Even if an option is
 loaded it may or may not be active, depending on what is happening
 higher up in the hierarchy: if the C library's
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO</TT
+>CYGPKG_LIBC_STDIO</CODE
 > component is disabled then some
-other options such as <TT
+other options such as <CODE
 CLASS="VARNAME"
->CYGNUM_LIBC_STDIO_BUFSIZE</TT
+>CYGNUM_LIBC_STDIO_BUFSIZE</CODE
 >
 become irrelevant. In addition each option has both a boolean
 enabled/disabled flag and a data part. For many options only the
@@ -924,9 +924,9 @@ CLASS="PROPERTY"
 > property does not relate directly to an option's
 value, but rather to its active state. Usually this is controlled via
 the configuration hierarchy: if the
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO</TT
+>CYGPKG_LIBC_STDIO</CODE
 > component is disabled then all
 options below it are inactive and do not have any consequences.
 In some cases the hierarchy does not provide sufficient control, for
@@ -1041,8 +1041,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.DEFINE"
-></A
->Generating the Configuration Header Files</H2
+>Generating the Configuration Header Files</A
+></H2
 ><P
 >When creating or updating a build tree the component framework will
 also generate configuration header files, one per package. By default
@@ -1134,9 +1134,9 @@ CLASS="LITERAL"
 >.h</TT
 > suffix is appended.
 For example the configuration header file for the kernel package
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_KERNEL</TT
+>CYGPKG_KERNEL</CODE
 > is <TT
 CLASS="FILENAME"
 >pkgconf/kernel.h</TT
@@ -1295,8 +1295,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.BUILD"
-></A
->Controlling what gets Built</H2
+>Controlling what gets Built</A
+></H2
 ><P
 >There are six properties which affect the build process:
 <A
@@ -1543,8 +1543,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="LANGUAGE.PROPERTIES.MISCELLANEOUS"
-></A
->Miscellaneous Properties</H2
+>Miscellaneous Properties</A
+></H2
 ><P
 >The <A
 HREF="ref.hardware.html"

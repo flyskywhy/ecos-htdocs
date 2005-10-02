@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LANGUAGE.COMMANDS"
-></A
->CDL Commands</H1
+>CDL Commands</A
+></H1
 ><P
 >There are four <SPAN
 CLASS="APPLICATION"
@@ -169,13 +169,13 @@ given <SPAN
 CLASS="APPLICATION"
 >eCos</SPAN
 > configuration can be used on only one processor, so the
-architectural HAL packages <TT
+architectural HAL packages <CODE
 CLASS="VARNAME"
->CYGPKG_HAL_ARM</TT
+>CYGPKG_HAL_ARM</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_HAL_I386</TT
+>CYGPKG_HAL_I386</CODE
 > can re-use option names; in fact
 in some cases they are expected to.</P
 ><P
@@ -233,13 +233,13 @@ it is possible to override this using a <SPAN
 CLASS="PROPERTY"
 >parent</SPAN
 > property. For example
-an architectural HAL package such as <TT
+an architectural HAL package such as <CODE
 CLASS="VARNAME"
->CYGPKG_HAL_SH</TT
+>CYGPKG_HAL_SH</CODE
 >
-typically re-parents itself below <TT
+typically re-parents itself below <CODE
 CLASS="VARNAME"
->CYGPKG_HAL</TT
+>CYGPKG_HAL</CODE
 >, and a
 platform HAL package would then re-parent itself below the
 architectural HAL. This makes it a little bit easier for users to
@@ -385,13 +385,13 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO_FLOATING_POINT</TT
+>CYGPKG_LIBC_STDIO_FLOATING_POINT</CODE
 > component and
-the <TT
+the <CODE
 CLASS="VARNAME"
->CYGSEM_LIBC_STDIO_THREAD_SAFE_STREAMS</TT
+>CYGSEM_LIBC_STDIO_THREAD_SAFE_STREAMS</CODE
 > option
 can then be placed at the top-level of <TT
 CLASS="FILENAME"

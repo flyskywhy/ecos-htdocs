@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="BUILD.MAKE"
-></A
->Building eCos</H1
+>Building eCos</A
+></H1
 ><P
 >The primary goal of an eCos build is to produce the library
 <TT
@@ -110,51 +110,39 @@ The basic build process involves a number of different phases with
 corresponding priorities. There are a number of predefined priorities:</P
 ><DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN2463"
-></A
 ><P
 ></P
+><A
+NAME="AEN2457"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL
+WIDTH="1*"
+ALIGN="RIGHT"><COL
+WIDTH="1*"
+ALIGN="LEFT"><THEAD
 ><TR
 ><TH
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >Priority</TH
 ><TH
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Action</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >0</TD
 ><TD
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Export header files</TD
 ></TR
 ><TR
 ><TD
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >100</TD
 ><TD
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Process <SPAN
 CLASS="PROPERTY"
 >compile</SPAN
@@ -162,14 +150,8 @@ CLASS="PROPERTY"
 ></TR
 ><TR
 ><TD
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >&nbsp;</TD
 ><TD
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >and most <SPAN
 CLASS="PROPERTY"
 >make_object</SPAN
@@ -177,26 +159,14 @@ CLASS="PROPERTY"
 ></TR
 ><TR
 ><TD
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >200</TD
 ><TD
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Generate libraries</TD
 ></TR
 ><TR
 ><TD
-WIDTH="50%"
-ALIGN="RIGHT"
-VALIGN="TOP"
 >300</TD
 ><TD
-WIDTH="50%"
-ALIGN="LEFT"
-VALIGN="TOP"
 >Process <SPAN
 CLASS="PROPERTY"
 >make</SPAN
@@ -265,8 +235,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.MAKE.UPDATE"
-></A
->Updating the Build Tree</H2
+>Updating the Build Tree</A
+></H2
 ><P
 >Some build systems may involve a phase before the header files get
 exported, to update the build and install trees automatically when
@@ -302,8 +272,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.MAKE.EXPORT"
-></A
->Exporting Public Header Files</H2
+>Exporting Public Header Files</A
+></H2
 ><P
 >The first compulsory phase involves making sure that there is an up to
 date set of header files in the install tree. Each package can contain
@@ -603,8 +573,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.MAKE.COMPILES"
-></A
->Compiling</H2
+>Compiling</A
+></H2
 ><P
 >Once there are up to date copies of all the exported header files in
 the build tree, the main build can proceed. Most of this involves
@@ -898,8 +868,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.MAKE.LIBRARIES"
-></A
->Generating the Libraries</H2
+>Generating the Libraries</A
+></H2
 ><P
 >Once all the <SPAN
 CLASS="PROPERTY"
@@ -1010,11 +980,11 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.EXTRAS"
-></A
 >The <TT
 CLASS="FILENAME"
 >extras.o</TT
-> file</H2
+> file</A
+></H2
 ><P
 >Package sources files normally get compiled and then added to a
 library, by default <TT
@@ -1114,8 +1084,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.FLAGS"
-></A
->Compilers and Flags</H2
+>Compilers and Flags</A
+></H2
 ><DIV
 CLASS="CAUTION"
 ><P
@@ -1186,9 +1156,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->The <TT
+>The <CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_OPTIONS</TT
+>CYGBLD_GLOBAL_OPTIONS</CODE
 > component serves to
 collect together all global build-related options. It has the flavor
 <TT
@@ -1214,9 +1184,9 @@ CLASS="NOTE"
 CLASS="PROPERTY"
 >parent</SPAN
 > property lists a parent of
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_NONE</TT
+>CYGPKG_NONE</CODE
 >, rather than an empty string. This
 could be unfortunate if there was ever a package with that name. The
 issue will be addressed in a future release of the component
@@ -1224,9 +1194,9 @@ framework.</P
 ></BLOCKQUOTE
 ></DIV
 ><P
->The option <TT
+>The option <CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_COMMAND_PREFIX</TT
+>CYGBLD_GLOBAL_COMMAND_PREFIX</CODE
 > defines
 which tools should be used for the current target. Typically this is
 determined by the processor on the target hardware. In some cases a
@@ -1237,9 +1207,9 @@ CLASS="PROPERTY"
 > expression could select
 a different toolchain depending on some other option that is used to
 control which particular processor.
-<TT
+<CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_COMMAND_PREFIX</TT
+>CYGBLD_GLOBAL_COMMAND_PREFIX</CODE
 > is modifiable rather
 than calculated, so users can override this when necessary.</P
 ><P
@@ -1270,9 +1240,9 @@ CLASS="LITERAL"
 >arm-elf-gcc</TT
 >.</P
 ><P
->The next option, <TT
+>The next option, <CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_CFLAGS</TT
+>CYGBLD_GLOBAL_CFLAGS</CODE
 >, is used to
 provide the initial value of <TT
 CLASS="LITERAL"
@@ -1298,9 +1268,9 @@ CLASS="LITERAL"
 CLASS="LITERAL"
 >-Os</TT
 > if
-desired. The option <TT
+desired. The option <CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_LDFLAGS</TT
+>CYGBLD_GLOBAL_LDFLAGS</CODE
 > serves
 the same purpose for <TT
 CLASS="LITERAL"
@@ -1373,9 +1343,9 @@ TYPE="1"
 ><LI
 ><P
 >Start with the global settings from
-<TT
+<CODE
 CLASS="VARNAME"
->CYGBLD_GLOBAL_CFLAGS</TT
+>CYGBLD_GLOBAL_CFLAGS</CODE
 >, for example
 <TT
 CLASS="LITERAL"
@@ -1449,13 +1419,13 @@ encapsulation. For example the math library imposes some stringent
 requirements on the compiler in order to guarantee exact IEEE
 behavior, and may need special flags on a per-architecture basis. One
 way of handling this is to have
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBM_CFLAGS_ADD</TT
+>CYGPKG_LIBM_CFLAGS_ADD</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBM_CFLAGS_REMOVE</TT
+>CYGPKG_LIBM_CFLAGS_REMOVE</CODE
 > <SPAN
 CLASS="PROPERTY"
 >default_value</SPAN
@@ -1499,8 +1469,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.CUSTOM"
-></A
->Custom Build Steps</H2
+>Custom Build Steps</A
+></H2
 ><DIV
 CLASS="CAUTION"
 ><P
@@ -1720,46 +1690,36 @@ CLASS="LITERAL"
 > tokens mentioned earlier:</P
 ><DIV
 CLASS="INFORMALTABLE"
-><A
-NAME="AEN2784"
-></A
 ><P
 ></P
+><A
+NAME="AEN2778"
+></A
 ><TABLE
 BORDER="1"
+FRAME="border"
+RULES="all"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Token</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Purpose</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Example value</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(AR)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >the GNU archiver</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >mips-tx39-elf-ar</TT
@@ -1767,19 +1727,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(CC)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >the GNU compiler</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >sh-elf-gcc</TT
@@ -1787,19 +1741,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(CFLAGS)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >compiler flags</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >-O2 -Wall</TT
@@ -1807,19 +1755,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(COMMAND_PREFIX)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >the triplet prefix</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >mn10300-elf-</TT
@@ -1827,19 +1769,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(INCLUDE_PATH&#62;</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >header file search path</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >-I. -Isrc/misc</TT
@@ -1847,19 +1783,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(LDFLAGS)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >linker flags</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >-nostdlib -Wl,-static</TT
@@ -1867,19 +1797,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(OBJCOPY)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >the objcopy utility</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >arm-elf-objcopy</TT
@@ -1887,19 +1811,13 @@ CLASS="LITERAL"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(PREFIX)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >location of the install tree</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="FILENAME"
 >/home/fred/ecos-install</TT
@@ -1907,19 +1825,13 @@ CLASS="FILENAME"
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="LITERAL"
 >$(REPOSITORY)</TT
 ></TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >location of the component repository</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 ><TT
 CLASS="FILENAME"
 >/home/fred/ecos/packages</TT
@@ -2135,8 +2047,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.STARTUP"
-></A
->Startup Code</H2
+>Startup Code</A
+></H2
 ><P
 >Linking an application requires the application code, a linker script,
 the eCos library or libraries, the <TT
@@ -2189,8 +2101,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.LINKERSCRIPT"
-></A
->The Linker Script</H2
+>The Linker Script</A
+></H2
 ><DIV
 CLASS="CAUTION"
 ><P

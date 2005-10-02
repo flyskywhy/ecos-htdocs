@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -91,7 +91,7 @@ CLASS="PROPERTY"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN4448"
+NAME="AEN4442"
 ></A
 ><H2
 >Name</H2
@@ -103,7 +103,7 @@ header file.</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN4452"
+NAME="AEN4446"
 ></A
 ><H2
 >Synopsis</H2
@@ -126,7 +126,7 @@ CLASS="SYNOPSIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN4454"
+NAME="AEN4448"
 ></A
 ><H2
 >Description</H2
@@ -166,9 +166,9 @@ CLASS="LITERAL"
 > directly or
 indirectly by any code which may need to be built with assertions
 enabled, the challenge is now to control whether or not
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDBG_USE_ASSERTS</TT
+>CYGDBG_USE_ASSERTS</CODE
 > is defined for any given source
 file. This is the purpose of the <SPAN
 CLASS="PROPERTY"
@@ -229,18 +229,18 @@ nothing else <TT
 CLASS="LITERAL"
 >#define's</TT
 > the symbol
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSRC_KERNEL</TT
+>CYGSRC_KERNEL</CODE
 >. If the per-package assertion option
-is disabled then <TT
+is disabled then <CODE
 CLASS="VARNAME"
->CYGDBG_USE_ASSERTS</TT
+>CYGDBG_USE_ASSERTS</CODE
 > will not get
 defined. If the option is enabled then
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDBG_USE_ASSERTS</TT
+>CYGDBG_USE_ASSERTS</CODE
 > will get defined and assertions
 will be enabled for the kernel sources. It is possible to use the same
 mechanism for other facilities such as tracing, and to apply it at a
@@ -249,9 +249,9 @@ with <SPAN
 CLASS="PROPERTY"
 >if_define</SPAN
 > properties and multiple symbols such as
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSRC_KERNEL_SCHED_BITMAP_CXX</TT
+>CYGSRC_KERNEL_SCHED_BITMAP_CXX</CODE
 >.</P
 ><P
 >The <SPAN
@@ -339,9 +339,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >The assertion header file does not care whether
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDBG_USE_ASSERTS</TT
+>CYGDBG_USE_ASSERTS</CODE
 > is <TT
 CLASS="LITERAL"
 >#define'd</TT
@@ -359,7 +359,7 @@ later on.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN4493"
+NAME="AEN4487"
 ></A
 ><H2
 >Example</H2
@@ -384,7 +384,7 @@ CLASS="PROGRAMLISTING"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN4496"
+NAME="AEN4490"
 ></A
 ><H2
 >See Also</H2

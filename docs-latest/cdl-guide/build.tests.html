@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="BUILD.TESTS"
-></A
->Building Test Cases</H1
+>Building Test Cases</A
+></H1
 ><DIV
 CLASS="CAUTION"
 ><P
@@ -136,9 +136,9 @@ various complications.</P
 ><P
 >Not every test case will be applicable to every configuration. For
 example if the user has disabled the C library's
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_LIBC_STDIO</TT
+>CYGPKG_LIBC_STDIO</CODE
 > component then there is no point
 in building or running any of the test cases for that component. This
 implies that test cases need to be associated with configuration
@@ -272,13 +272,13 @@ CLASS="LITERAL"
 >$(LDFLAGS)</TT
 >, as per custom build steps. Note
 that it is possible for a package to define options of the form
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_&lt;PACKAGE-NAME&gt;_LDFLAGS_ADD</TT
+>CYGPKG_&lt;PACKAGE-NAME&gt;_LDFLAGS_ADD</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_&lt;PACKAGE-NAME&gt;_LDFLAGS_REMOVE</TT
+>CYGPKG_&lt;PACKAGE-NAME&gt;_LDFLAGS_REMOVE</CODE
 >. These
 will affect test cases, but in the absence of custom build steps they
 will have no other effect on the build.</P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="PACKAGE.CONTENTS"
-></A
->Package Contents and Layout</H1
+>Package Contents and Layout</A
+></H1
 ><P
 >A typical package contains the following:</P
 ><P
@@ -161,16 +161,16 @@ applies to per-package test cases.</P
 which splits the package contents on a functional basis:</P
 ><DIV
 CLASS="INFORMALFIGURE"
-><A
-NAME="AEN306"
-></A
 ><P
 ></P
+><A
+NAME="AEN302"
+></A
 ><DIV
 CLASS="MEDIAOBJECT"
 ><P
 ><IMG
-SRC="package.gif"
+SRC="package.png"
 ALIGN="CENTER"></P
 ></DIV
 ><P
@@ -272,8 +272,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.BUILD"
-></A
->Outline of the Build Process</H2
+>Outline of the Build Process</A
+></H2
 ><P
 >The full build process is described in <A
 HREF="build.html"
@@ -445,8 +445,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.SOURCE"
-></A
->Configurable Source Code</H2
+>Configurable Source Code</A
+></H2
 ><P
 >All packages should be totally portable to all target hardware (with
 the obvious exceptions of HAL and device driver packages). They should
@@ -470,8 +470,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.SOURCE.FLAGS"
-></A
->Compiler Flag Dependencies</H3
+>Compiler Flag Dependencies</A
+></H3
 ><P
 >Wherever possible component writers should avoid dependencies on
 particular compiler flags. Any such dependencies are likely to impact
@@ -504,8 +504,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.SOURCE.INTERFACES"
-></A
->Package Interfaces and Implementations</H3
+>Package Interfaces and Implementations</A
+></H3
 ><P
 >The component framework provides encapsulation at the package level. A
 package <TT
@@ -576,8 +576,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.SOURCE.CONFIG"
-></A
->Source Code and Configuration Options</H3
+>Source Code and Configuration Options</A
+></H3
 ><P
 >Configurability usually involves source code that needs to implement
 different behavior depending on the settings of configuration
@@ -635,9 +635,9 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->If the compiler knows that <TT
+>If the compiler knows that <CODE
 CLASS="VARNAME"
->CYGHWR_NUMBER_UARTS</TT
+>CYGHWR_NUMBER_UARTS</CODE
 > is
 the constant number 0 then it is a trivial operation to get rid of the
 unnecessary code. The component framework still has to define this
@@ -717,8 +717,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.HEADERS"
-></A
->Exported Header Files</H2
+>Exported Header Files</A
+></H2
 ><P
 >A package's exported header files should specify the interface
 provided by that package, and avoid any implementation details.
@@ -761,8 +761,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.HEADERS.FUNCTIONS"
-></A
->Configurable Functionality</H3
+>Configurable Functionality</A
+></H3
 ><P
 >Many configuration options affect only the implementation of a
 package, not the interface. However some options will affect the
@@ -772,13 +772,13 @@ whether or not a particular function should be inlined, also need to
 be tested in the header file because of language limitations.</P
 ><P
 >Consider a configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGFUN_KERNEL_MUTEX_TIMEDLOCK</TT
+>CYGFUN_KERNEL_MUTEX_TIMEDLOCK</CODE
 > which controls
-whether or not a function <TT
+whether or not a function <CODE
 CLASS="FUNCTION"
->cyg_mutex_timedlock</TT
+>cyg_mutex_timedlock</CODE
 > is
 provided. The exported kernel header file <TT
 CLASS="FILENAME"
@@ -820,9 +820,9 @@ misconfigured the system and disabled this functionality anyway then
 there will now be a compile-time error when building the application.
 Note that other packages should not be affected, since they should
 impose appropriate constraints on
-<TT
+<CODE
 CLASS="VARNAME"
->CYGFUN_KERNEL_MUTEX_TIMEDLOCK</TT
+>CYGFUN_KERNEL_MUTEX_TIMEDLOCK</CODE
 > if they use that
 functionality (although of course some dependencies like this may get
 missed by component developers).</P
@@ -871,10 +871,10 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.HEADERS.INCLUDES"
-></A
 >Nested <TT
 CLASS="LITERAL"
 >#include's</TT
+></A
 ></H3
 ><P
 >As a general rule, unnecessary <TT
@@ -900,8 +900,8 @@ CLASS="SECT3"
 CLASS="SECT3"
 ><A
 NAME="PACKAGE.HEADERS.CONFIGINCLUDES"
-></A
->Including Configuration Headers</H3
+>Including Configuration Headers</A
+></H3
 ><P
 >Exported header files should avoid <TT
 CLASS="LITERAL"
@@ -952,8 +952,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.DOCUMENTATION"
-></A
->Package Documentation</H2
+>Package Documentation</A
+></H2
 ><P
 >On-line package documentation should be in HTML format. The component
 framework imposes no special limitations: component writers can decide
@@ -967,8 +967,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.TESTS"
-></A
->Test Cases</H2
+>Test Cases</A
+></H2
 ><P
 >Packages should normally come with one or more test cases. This allows
 application developers to verify that a given package works correctly
@@ -984,9 +984,9 @@ C or C++ source file that can be compiled with the package's set of
 compiler flags and linked like any application program. Each test case
 should use the testing API defined by the infrastructure. A
 magically-named calculated configuration option of the form
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_&lt;PACKAGE-NAME&gt;_TESTS</TT
+>CYGPKG_&lt;PACKAGE-NAME&gt;_TESTS</CODE
 > lists the test
 cases.</P
 ></DIV
@@ -996,8 +996,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="PACKAGE.HOST"
-></A
->Host-side Support</H2
+>Host-side Support</A
+></H2
 ><P
 >On occasion it would be useful for an <SPAN
 CLASS="APPLICATION"

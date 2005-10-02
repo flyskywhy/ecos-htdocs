@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -146,8 +146,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="OVERVIEW.TERMINOLOGY"
-></A
->Terminology</H1
+>Terminology</A
+></H1
 ><P
 >The <SPAN
 CLASS="APPLICATION"
@@ -159,8 +159,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.FRAMEWORK"
-></A
->Component Framework</H2
+>Component Framework</A
+></H2
 ><P
 >The phrase <SPAN
 CLASS="phrase"
@@ -187,8 +187,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.OPTION"
-></A
->Configuration Option</H2
+>Configuration Option</A
+></H2
 ><P
 >The option is the basic unit of configurability. Typically each option
 corresponds to a single choice that a user can make. For example there
@@ -196,14 +196,14 @@ is an option to control whether or not assertions are enabled, and the
 kernel provides an option corresponding to the number of scheduling
 priority levels in the system. Options can control very small amounts
 of code such as whether or not the C library's
-<TT
+<CODE
 CLASS="FUNCTION"
->strtok</TT
+>strtok</CODE
 > gets inlined. They can also control quite
 large amounts of code, for example whether or not the
-<TT
+<CODE
 CLASS="FUNCTION"
->printf</TT
+>printf</CODE
 > supports floating point conversions.</P
 ><P
 >Many options are straightforward, and the user only gets to choose
@@ -228,8 +228,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.COMPONENT"
-></A
->Component</H2
+>Component</A
+></H2
 ><P
 >A component is a unit of functionality such as a particular kernel
 scheduler or a device driver for a specific device. A component is
@@ -262,8 +262,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.PACKAGE"
-></A
->Package</H2
+>Package</A
+></H2
 ><P
 >A package is a special type of component. Specifically, a package is
 the unit of distribution of components. It is possible to create a
@@ -297,8 +297,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.CONFIGURATION"
-></A
->Configuration</H2
+>Configuration</A
+></H2
 ><P
 >A configuration is a collection of user choices. The various
 tools that make up the component framework deal with entire
@@ -322,8 +322,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.TARGET"
-></A
->Target</H2
+>Target</A
+></H2
 ><P
 >The target is the specific piece of hardware on which the application
 is expected to run. This may be an off-the-shelf evaluation board, a
@@ -342,8 +342,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.TEMPLATE"
-></A
->Template</H2
+>Template</A
+></H2
 ><P
 >A template is a partial configuration, aimed at providing users with
 an appropriate starting point. <SPAN
@@ -369,8 +369,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.PROPERTIES"
-></A
->Properties</H2
+>Properties</A
+></H2
 ><P
 >The component framework needs a certain amount of information about
 each option. For example it needs to know what the legal values are,
@@ -385,8 +385,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.CONSEQUENCES"
-></A
->Consequences</H2
+>Consequences</A
+></H2
 ><P
 >Choices must have consequences. For an <SPAN
 CLASS="APPLICATION"
@@ -417,14 +417,14 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.CONSTRAINTS"
-></A
->Constraints</H2
+>Constraints</A
+></H2
 ><P
 >Configuration choices are not independent. The C library can provide
 thread-safe implementations of functions like
-<TT
+<CODE
 CLASS="FUNCTION"
->rand</TT
+>rand</CODE
 >, but only if the kernel provides support for
 per-thread data. This is a constraint: the C library option has a
 requirement on the kernel. A typical configuration involves a
@@ -463,8 +463,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.CONFLICTS"
-></A
->Conflicts</H2
+>Conflicts</A
+></H2
 ><P
 >As the user manipulates options it is possible to end up with an
 invalid configuration, where one or more constraints are not
@@ -497,8 +497,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.CDL"
-></A
->CDL</H2
+>CDL</A
+></H2
 ><P
 >The configuration tools require information about the various options
 provided by each package, their consequences and constraints, and
@@ -563,8 +563,8 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="CONCEPTS.TERMINOLOGY.REPO"
-></A
->Component Repository</H2
+>Component Repository</A
+></H2
 ><P
 >All <SPAN
 CLASS="APPLICATION"

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="LANGUAGE.INTERFACE"
-></A
->Interfaces</H1
+>Interfaces</A
+></H1
 ><P
 >For many configurability requirements, options provide sufficient
 expressive power. However there are times when a higher level of
@@ -124,13 +124,13 @@ CLASS="APPLICATION"
 > interfaces provide an abstraction mechanism: constraints can be
 expressed in terms of an abstract concept, for example
 &#8220;scheduler&#8221;, rather than specific implementations such as
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_MLQUEUE</TT
+>CYGSEM_KERNEL_SCHED_MLQUEUE</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_BITMAP</TT
+>CYGSEM_KERNEL_SCHED_BITMAP</CODE
 >. Basically an interface
 is a calculated configuration option:</P
 ><TABLE
@@ -194,9 +194,9 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >If none of the schedulers are enabled, or if the kernel package is not
-loaded, then <TT
+loaded, then <CODE
 CLASS="VARNAME"
->CYGINT_KERNEL_SCHEDULER</TT
+>CYGINT_KERNEL_SCHEDULER</CODE
 > will evaluate
 to <TT
 CLASS="LITERAL"
@@ -273,9 +273,9 @@ appropriate functionality. In <SPAN
 CLASS="APPLICATION"
 >CDL</SPAN
 > terms the device drivers should
-implement an interface <TT
+implement an interface <CODE
 CLASS="VARNAME"
->CYGHWR_NET_DRIVERS</TT
+>CYGHWR_NET_DRIVERS</CODE
 >, and the
 <SPAN
 CLASS="APPLICATION"
@@ -307,21 +307,21 @@ the C or C++ level. For example an ethernet device driver implements
 the <SPAN
 CLASS="APPLICATION"
 >CDL</SPAN
-> interface <TT
+> interface <CODE
 CLASS="VARNAME"
->CYGHWR_NET_DRIVERS</TT
+>CYGHWR_NET_DRIVERS</CODE
 >, and also
 implements a set of C functions that can be used by the TCP/IP stack.
-Similarly <TT
+Similarly <CODE
 CLASS="VARNAME"
->CYGSEM_KERNEL_SCHED_MLQUEUE</TT
+>CYGSEM_KERNEL_SCHED_MLQUEUE</CODE
 > implements
 the <SPAN
 CLASS="APPLICATION"
 >CDL</SPAN
-> interface <TT
+> interface <CODE
 CLASS="VARNAME"
->CYGINT_KERNEL_SCHEDULER</TT
+>CYGINT_KERNEL_SCHEDULER</CODE
 > and
 also provides the appropriate scheduling functions.</P
 ></BLOCKQUOTE

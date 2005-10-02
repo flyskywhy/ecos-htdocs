@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2003 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.76b+
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="The eCos Component Writer's Guide"
 HREF="cdl-guide.html"><LINK
@@ -86,8 +86,8 @@ CLASS="SECT1"
 CLASS="SECT1"
 ><A
 NAME="BUILD.HEADERS"
-></A
->Configuration Header File Generation</H1
+>Configuration Header File Generation</A
+></H1
 ><P
 >Configuration options can affect a build in two main ways. First,
 enabling a configuration option or other <SPAN
@@ -270,17 +270,17 @@ TYPE="1"
 ><LI
 ><P
 >All characters in the package name up to and including the first
-underscore are removed. For example <TT
+underscore are removed. For example <CODE
 CLASS="VARNAME"
->CYGPKG_KERNEL</TT
+>CYGPKG_KERNEL</CODE
 >
 is converted to <TT
 CLASS="LITERAL"
 >KERNEL</TT
 >, and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_HAL_ARM</TT
+>CYGPKG_HAL_ARM</CODE
 > is converted to
 <TT
 CLASS="LITERAL"
@@ -317,13 +317,13 @@ CLASS="LITERAL"
 ><P
 >Because of the naming restrictions on configuration options, this
 should result in a valid filename. There is a small possibility of a
-file name class, for example <TT
+file name class, for example <CODE
 CLASS="VARNAME"
->CYGPKG_PLUGH</TT
+>CYGPKG_PLUGH</CODE
 > and
-<TT
+<CODE
 CLASS="VARNAME"
->CYGPKG_plugh</TT
+>CYGPKG_plugh</CODE
 > would both end up trying to use the
 same header file <TT
 CLASS="FILENAME"
@@ -971,9 +971,9 @@ CLASS="APPLICATION"
 >eCos</SPAN
 > packages do not yet make use of this facility. Instead
 there is a single global configuration option
-<TT
+<CODE
 CLASS="VARNAME"
->CYGDBG_USE_ASSERTS</TT
+>CYGDBG_USE_ASSERTS</CODE
 > which is used to enable or
 disable assertions for all packages. This issue should be addressed in
 a future release of the system.</P
@@ -1151,11 +1151,11 @@ CLASS="SECT2"
 CLASS="SECT2"
 ><A
 NAME="BUILD.HEADERS.SYSTEM.H"
-></A
 >The <TT
 CLASS="FILENAME"
 >system.h</TT
-> Header</H2
+> Header</A
+></H2
 ><P
 >Typically configuration header files are <TT
 CLASS="LITERAL"
