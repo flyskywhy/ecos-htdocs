@@ -93,7 +93,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->NS(3)                   System Library Functions Manual                  NS(3)
+>NS(3)                    BSD Library Functions Manual                    NS(3)
 
 NAME
      ns_addr, ns_ntoa - Xerox NS(tm) address conversion routines
@@ -119,13 +119,13 @@ DESCRIPTION
 
      Trailing zero fields are suppressed, and each number is printed in hex-
      adecimal, in a format suitable for input to ns_addr().  Any fields lack-
-     ing super-decimal digits will have a trailing `H' appended.
+     ing super-decimal digits will have a trailing 'H' appended.
 
      Unfortunately, no universal standard exists for representing XNS
      addresses.  An effort has been made to ensure that ns_addr() be compati-
      ble with most formats in common use.  It will first separate an address
-     into 1 to 3 fields using a single delimiter chosen from period (`.'),
-     colon (`:'), or pound-sign `#'.  Each field is then examined for byte
+     into 1 to 3 fields using a single delimiter chosen from period ('.'),
+     colon (':'), or pound-sign '#'.  Each field is then examined for byte
      separators (colon or period).  If there are byte separators, each sub-
      field separated is taken to be a small hexadecimal number, and the
      entirety is taken as a network-byte-ordered quantity to be zero extended
@@ -133,9 +133,9 @@ DESCRIPTION
      hyphens, in which case the field is assumed to be a number in decimal
      notation with hyphens separating the millenia.  Next, the field is
      assumed to be a number: It is interpreted as hexadecimal if there is a
-     leading `0x' (as in C), a trailing `H' (as in Mesa), or there are any
+     leading '0x' (as in C), a trailing 'H' (as in Mesa), or there are any
      super-decimal digits present.  It is interpreted as octal is there is a
-     leading `0' and there are no super-octal digits.  Otherwise, it is con-
+     leading '0' and there are no super-octal digits.  Otherwise, it is con-
      verted as a decimal number.
 
 RETURN VALUES

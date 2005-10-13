@@ -93,7 +93,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->ETHERS(3)               System Library Functions Manual              ETHERS(3)
+>ETHERS(3)                BSD Library Functions Manual                ETHERS(3)
 
 NAME
      ether_aton, ether_ntoa, ether_addr, ether_ntohost, ether_hostton,
@@ -140,7 +140,7 @@ DESCRIPTION
      address into the structure passed.  Both functions return zero if they
      find the requested host name or address, and -1 if not.
 
-     Each call reads /etc/ethers from the beginning; if a `+' appears alone on
+     Each call reads /etc/ethers from the beginning; if a '+' appears alone on
      a line in the file, then ether_hostton() will consult the ethers.byname
      YP map, and ether_ntohost() will consult the ethers.byaddr YP map.
 

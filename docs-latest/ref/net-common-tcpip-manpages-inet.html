@@ -93,7 +93,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->INET(3)                 System Library Functions Manual                INET(3)
+>INET(3)                  BSD Library Functions Manual                  INET(3)
 
 NAME
      inet_addr, inet_aton, inet_lnaof, inet_makeaddr, inet_netof,
@@ -134,7 +134,7 @@ SYNOPSIS
 
 DESCRIPTION
      The routines inet_aton(), inet_addr() and inet_network() interpret char-
-     acter strings representing numbers expressed in the Internet standard `.'
+     acter strings representing numbers expressed in the Internet standard '.'
      notation.  The inet_pton() function converts a presentation format
      address (that is, printable form as held in a character string) to net-
      work format (usually a struct in_addr or some other internal binary rep-
@@ -155,7 +155,7 @@ DESCRIPTION
      NULL if a system error occurs (in which case, errno will have been set),
      or it returns a pointer to the destination string.  The routine
      inet_ntoa() takes an Internet address and returns an ASCII string repre-
-     senting the address in `.' notation.  The routine inet_makeaddr() takes
+     senting the address in '.' notation.  The routine inet_makeaddr() takes
      an Internet network number and a local network address and constructs an
      Internet address from it.  The routines inet_netof() and inet_lnaof()
      break apart Internet host addresses, returning the network number and
@@ -166,7 +166,7 @@ DESCRIPTION
      as machine format integer values.
 
 INTERNET ADDRESSES (IP VERSION 4)
-     Values specified using the `.' notation take one of the following forms:
+     Values specified using the '.' notation take one of the following forms:
 
            a.b.c.d
            a.b.c
@@ -194,7 +194,7 @@ INTERNET ADDRESSES (IP VERSION 4)
      When only one part is given, the value is stored directly in the network
      address without any byte rearrangement.
 
-     All numbers supplied as ``parts'' in a `.' notation may be decimal,
+     All numbers supplied as ``parts'' in a '.' notation may be decimal,
      octal, or hexadecimal, as specified in the C language (i.e., a leading 0x
      or 0X implies hexadecimal; otherwise, a leading 0 implies octal; other-
      wise, the number is interpreted as decimal).

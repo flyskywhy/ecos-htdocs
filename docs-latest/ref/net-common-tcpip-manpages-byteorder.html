@@ -93,7 +93,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->BYTEORDER(3)            System Library Functions Manual           BYTEORDER(3)
+>BYTEORDER(3)             BSD Library Functions Manual             BYTEORDER(3)
 
 NAME
      htonl, htons, ntohl, ntohs, htobe32, htobe16, betoh32, betoh16, htole32,
@@ -161,11 +161,11 @@ DESCRIPTION
            be   Big-endian (most significant byte first).
            le   Little-endian (least significant byte first).
 
-     One of the specified orderings must be `h'.  {size} will take these
+     One of the specified orderings must be 'h'.  {size} will take these
      forms:
 
-           l  Long (32-bit, used in conjunction with forms involving `n').
-           s  Short (16-bit, used in conjunction with forms involving `n').
+           l  Long (32-bit, used in conjunction with forms involving 'n').
+           s  Short (16-bit, used in conjunction with forms involving 'n').
            16
               16-bit.
            32
@@ -173,8 +173,8 @@ DESCRIPTION
 
      The swap functions are of the form: swap{size}.
 
-     Names involving `n' convert quantities between network byte order and
-     host byte order.  The last letter (`s' or `l') is a mnemonic for the tra-
+     Names involving 'n' convert quantities between network byte order and
+     host byte order.  The last letter ('s' or 'l') is a mnemonic for the tra-
      ditional names for such quantities, short and long, respectively.  Today,
      the C concept of short and long integers need not coincide with this tra-
      ditional misunderstanding.  On machines which have a byte order which is
@@ -187,7 +187,7 @@ DESCRIPTION
      macros.
 
      The routines mentioned above which have either {src-order} or {dst-order}
-     set to `n' are most often used in conjunction with Internet addresses and
+     set to 'n' are most often used in conjunction with Internet addresses and
      ports as returned by gethostbyname(3) and getservent(3).
 
 SEE ALSO

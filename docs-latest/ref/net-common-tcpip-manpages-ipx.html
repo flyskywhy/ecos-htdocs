@@ -93,7 +93,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->IPX(3)                  System Library Functions Manual                 IPX(3)
+>IPX(3)                   BSD Library Functions Manual                   IPX(3)
 
 NAME
      ipx_addr, ipx_ntoa - IPX address conversion routines
@@ -118,21 +118,21 @@ DESCRIPTION
 
      Trailing zero fields are suppressed, and each number is printed in hex-
      adecimal, in a format suitable for input to ipx_addr().  Any fields lack-
-     ing super-decimal digits will have a trailing `H' appended.
+     ing super-decimal digits will have a trailing 'H' appended.
 
      An effort has been made to ensure that ipx_addr() be compatible with most
      formats in common use.  It will first separate an address into 1 to 3
-     fields using a single delimiter chosen from period (`.'), colon (`:'), or
-     pound-sign (`#').  Each field is then examined for byte separators (colon
+     fields using a single delimiter chosen from period ('.'), colon (':'), or
+     pound-sign ('#').  Each field is then examined for byte separators (colon
      or period).  If there are byte separators, each subfield separated is
      taken to be a small hexadecimal number, and the entirety is taken as a
      network-byte-ordered quantity to be zero extended in the high-network-
      order bytes.  Next, the field is inspected for hyphens, in which case the
      field is assumed to be a number in decimal notation with hyphens separat-
      ing the millenia.  Next, the field is assumed to be a number: It is
-     interpreted as hexadecimal if there is a leading `0x' (as in C), a trail-
-     ing `H' (as in Mesa), or there are any super-decimal digits present.  It
-     is interpreted as octal is there is a leading `0' and there are no super-
+     interpreted as hexadecimal if there is a leading '0x' (as in C), a trail-
+     ing 'H' (as in Mesa), or there are any super-decimal digits present.  It
+     is interpreted as octal is there is a leading '0' and there are no super-
      octal digits.  Otherwise, it is converted as a decimal number.
 
 RETURN VALUES
