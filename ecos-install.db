@@ -43,7 +43,10 @@ namespace eval installdatav1 {
                                    "http://mirrors.rcn.net/pub/sourceware/ecos" \
                                    "ftp://mirror.ac.uk/sites/sources.redhat.com/ftp/ecos" \
                                    "http://www.mirror.ac.uk/sites/sources.redhat.com/ftp/ecos" \
-                                   "ftp://ftp.yggdrasil.com/mirrors/site/sourceware.cygnus.com/pub/ecos" \
+                                   "ftp://sources-redhat.mirror.redwire.net/pub/sources.redhat.com/ecos" \
+                                   "http://sources-redhat.mirror.redwire.net/ecos" \
+                                   "ftp://mirrors.kernel.org/sources.redhat.com/ecos" \
+                                   "http://mirrors.kernel.org/sources.redhat.com/ecos" \
                                    "ftp://planetmirror.com/pub/sourceware/ecos" \
                                    "http://planetmirror.com/pub/sourceware/ecos" \
                                    "ftp://gd.tuwien.ac.at/opsys/ecos" \
@@ -61,7 +64,7 @@ namespace eval installdatav1 {
                                    "ftp://ftp.sun.ac.za/mirrorsites/sourceware.cygnus.com/pub/ecos" \
                                    "http://ftp.sun.ac.za/ftp/mirrorsites/sourceware.cygnus.com/pub/ecos" \
                                    "ftp://ftp1.sinica.edu.tw/pub3/GNU/CYGNUS/ecos" \
-                                   "ftp://sources.redhat.com/pub/ecos" \
+                                   "ftp://ecos.sourceware.org/pub/ecos" \
                                   ]
 }
 
