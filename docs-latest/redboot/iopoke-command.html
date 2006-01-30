@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->version</TITLE
+>iopoke</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -22,11 +22,11 @@ REL="UP"
 TITLE="Common Commands"
 HREF="common-commands.html"><LINK
 REL="PREVIOUS"
-TITLE="reset"
-HREF="reset-command.html"><LINK
+TITLE="iopeek"
+HREF="iopeek-command.html"><LINK
 REL="NEXT"
-TITLE="Flash Image System (FIS)"
-HREF="flash-image-system.html"></HEAD
+TITLE="gunzip"
+HREF="gunzip-command.html"></HEAD
 ><BODY
 CLASS="REFENTRY"
 BGCOLOR="#FFFFFF"
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="reset-command.html"
+HREF="iopeek-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -68,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="flash-image-system.html"
+HREF="gunzip-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -79,69 +79,158 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="VERSION-COMMAND"
+NAME="IOPOKE-COMMAND"
 ></A
->version</H1
+>iopoke</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1756"
+NAME="AEN1055"
 ></A
 ><H2
 >Name</H2
->version&nbsp;--&nbsp;Display RedBoot version information</DIV
+>iopoke&nbsp;--&nbsp;Write I/O location</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1759"
+NAME="AEN1058"
 ></A
 ><H2
 >Synopsis</H2
 ><P
 ><B
 CLASS="COMMAND"
->version</B
-> </P
+>iopoke</B
+>  [-b <TT
+CLASS="REPLACEABLE"
+><I
+> location</I
+></TT
+>] [-1 | -2 | -4] [-v <TT
+CLASS="REPLACEABLE"
+><I
+> value</I
+></TT
+>]</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1762"
+NAME="AEN1069"
 ></A
 ><H2
 >Arguments</H2
+><DIV
+CLASS="INFORMALTABLE"
 ><P
+></P
+><A
+NAME="AEN1071"
+></A
+><TABLE
+BORDER="1"
+FRAME="border"
+RULES="all"
+CLASS="CALSTABLE"
+><COL
+WIDTH="1*"
+TITLE="C1"><COL
+WIDTH="1*"
+TITLE="C2"><COL
+WIDTH="1*"
+TITLE="C3"><COL
+WIDTH="1*"
+TITLE="C4"><THEAD
+><TR
+><TH
+>Name</TH
+><TH
+>Type</TH
+><TH
+>Description</TH
+><TH
+>Default</TH
+></TR
+></THEAD
+><TBODY
+><TR
+><TD
+>-b <TT
+CLASS="REPLACEABLE"
+><I
+>location</I
+></TT
+></TD
+><TD
+>I/O address</TD
+><TD
+>I/O Location.</TD
+><TD
 ><SPAN
 CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
->None</I
+>none</I
 ></SPAN
+></TD
+></TR
+><TR
+><TD
+>-1</TD
+><TD
+>&nbsp;</TD
+><TD
+>Access a one byte (8 bit) I/O location. 
+Only the 8 least significant bits of value will be used</TD
+><TD
+>-1</TD
+></TR
+><TR
+><TD
+>-2</TD
+><TD
+>&nbsp;</TD
+><TD
+>Access a two byte (16 bit) I/O location.
+Only the 16 least significant bits of value will be used</TD
+><TD
+>-1</TD
+></TR
+><TR
+><TD
+>-4</TD
+><TD
+>&nbsp;</TD
+><TD
+>Access a one word (32 bit) I/O location.</TD
+><TD
+>-1</TD
+></TR
+></TBODY
+></TABLE
+><P
 ></P
+></DIV
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1766"
+NAME="AEN1106"
 ></A
 ><H2
 >Description</H2
 ><P
->The <B
-CLASS="COMMAND"
->version</B
-> command simply displays version information about RedBoot.
-      </P
+>Writes a value to the I/O address space.</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1770"
+NAME="AEN1109"
 ></A
 ><H2
 >Examples</H2
 ><P
->Display RedBoot's version.
+>Write 0x0123 to 16 bit I/O location 0x200.
 <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -150,19 +239,15 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->RedBoot&#62; <KBD
+> 
+RedBoot&#62; <KBD
 CLASS="USERINPUT"
->version</KBD
->
-RedBoot(tm) debug environment - built 09:12:03, Feb 12 2001
-Platform: XYZ (PowerPC 860)
-Copyright (C) 2000, 2001, Red Hat, Inc.
-RAM: 0x00000000-0x00400000</PRE
+>iopoke -b 0x200 -v 0x123 -2</KBD
+></PRE
 ></TD
 ></TR
 ></TABLE
-> 
-      </P
+> </P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -180,7 +265,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="reset-command.html"
+HREF="iopeek-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -198,7 +283,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="flash-image-system.html"
+HREF="gunzip-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -208,7 +293,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->reset</TD
+>iopeek</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -222,7 +307,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Flash Image System (FIS)</TD
+>gunzip</TD
 ></TR
 ></TABLE
 ></DIV
