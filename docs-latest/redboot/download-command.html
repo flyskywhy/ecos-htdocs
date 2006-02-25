@@ -108,6 +108,11 @@ CLASS="REPLACEABLE"
 ><I
 > server_IP_address</I
 ></TT
+>] [-f <TT
+CLASS="REPLACEABLE"
+><I
+> location</I
+></TT
 >] [-b <TT
 CLASS="REPLACEABLE"
 ><I
@@ -128,7 +133,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1276"
+NAME="AEN1278"
 ></A
 ><H2
 >Arguments</H2
@@ -137,7 +142,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN1278"
+NAME="AEN1280"
 ></A
 ><TABLE
 BORDER="1"
@@ -206,7 +211,7 @@ CLASS="EMPHASIS"
 ><TD
 >Boolean</TD
 ><TD
->Raw (or binary) data</TD
+>Raw (or binary) data. -b or -f must be used</TD
 ><TD
 ><SPAN
 CLASS="emphasis"
@@ -347,6 +352,28 @@ CLASS="EMPHASIS"
 ></TR
 ><TR
 ><TD
+>-f <TT
+CLASS="REPLACEABLE"
+><I
+>location</I
+></TT
+></TD
+><TD
+>Number</TD
+><TD
+>Address in flash to load the data.  Formatted data streams will have
+an implied load address which this option may override.</TD
+><TD
+><SPAN
+CLASS="emphasis"
+><I
+CLASS="EMPHASIS"
+>Depends on data format</I
+></SPAN
+></TD
+></TR
+><TR
+><TD
 >-c <TT
 CLASS="REPLACEABLE"
 ><I
@@ -426,7 +453,7 @@ CLASS="EMPHASIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1379"
+NAME="AEN1388"
 ></A
 ><H2
 >Description</H2
@@ -453,7 +480,7 @@ format or raw data.
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1385"
+NAME="AEN1394"
 ></A
 ><H2
 >Examples</H2
