@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2005 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2006 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -376,8 +376,8 @@ isr_function(cyg_vector_t vector, cyg_addrword_t data)
 
     &#8230;
 
-    return dsr_required ? 
-        (CYG_ISR_CALL_DSR : CYG_ISR_HANDLED) :
+    return dsr_required ?
+        (CYG_ISR_CALL_DSR | CYG_ISR_HANDLED) :
         CYG_ISR_HANDLED;
 }
           </PRE
@@ -453,11 +453,11 @@ CLASS="PARAMETER"
 ><DD
 ><P
 >If an interrupt has occurred and the ISR has returned a value
-<TT
+with <TT
 CLASS="LITERAL"
 >CYG_ISR_CALL_DSR</TT
-> bit being set, the system 
-will call the deferred service routine or DSR associated with this interrupt
+> bit being set, the system
+will call the DSR associated with this interrupt
 handler. If the scheduler is not currently locked then the DSR will
 run immediately. However if the interrupted thread was in the middle
 of a kernel call and had locked the scheduler, then the DSR will be
