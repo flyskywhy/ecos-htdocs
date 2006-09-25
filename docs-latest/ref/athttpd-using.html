@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->CRC Algorithms</TITLE
+>Starting the server</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -18,14 +18,17 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The ATHTTP Server"
+HREF="net-athttpd.html"><LINK
 REL="PREVIOUS"
-TITLE="stdlib malloc Pools"
-HREF="malloc-pools.html"><LINK
+TITLE="The ATHTTP Server"
+HREF="net-athttpd.html"><LINK
 REL="NEXT"
-TITLE="CRC Functions"
-HREF="crc-functions.html"></HEAD
+TITLE="MIME types"
+HREF="athttpd-mime-types.html"></HEAD
 ><BODY
-CLASS="PART"
+CLASS="SECT1"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -51,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="malloc-pools.html"
+HREF="net-athttpd.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,13 +62,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
-></TD
+>Chapter 57. The ATHTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-mime-types.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -75,41 +78,35 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="PART"
-><A
-NAME="SERVICES-CRC"
-></A
-><DIV
-CLASS="TITLEPAGE"
+CLASS="SECT1"
 ><H1
-CLASS="TITLE"
->XXVI. CRC Algorithms</H1
-><DIV
-CLASS="PARTINTRO"
+CLASS="SECT1"
 ><A
-NAME="AEN12459"
-></A
+NAME="ATHTTPD-USING"
+>Starting the server</A
+></H1
 ><P
->The CRC package provides implementation of CRC algorithms. This
-includes the POSIX CRC calculation which produces the same result as
-the cksum command on Linux, another 32 bit CRC by Gary S. Brown and a
-16bit CRC. The CRC used for Ethernet FCS is also implemented.</P
-></DIV
-><DIV
-CLASS="TOC"
-><DL
-><DT
-><B
->Table of Contents</B
-></DT
-><DT
->59. <A
-HREF="crc-functions.html"
->CRC Functions</A
-></DT
-></DL
-></DIV
-></DIV
+>In order to start the web server, the user needs to call the function:</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>cyg_httpd_start();</PRE
+></TD
+></TR
+></TABLE
+><P
+>in the application code. The server initialization code spawns a new 
+thread which calls <B
+CLASS="COMMAND"
+>init_all_network_interfaces()</B
+> to 
+initialize the TCP/IP stack and then starts the deamon. The function is safe
+to call multiple times.</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -127,7 +124,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="malloc-pools.html"
+HREF="net-athttpd.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -145,7 +142,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-mime-types.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -155,17 +152,21 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->stdlib malloc Pools</TD
+>The ATHTTP Server</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="net-athttpd.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CRC Functions</TD
+>MIME types</TD
 ></TR
 ></TABLE
 ></DIV

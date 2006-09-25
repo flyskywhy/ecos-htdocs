@@ -543,7 +543,7 @@ cyg_start( void )
     &#8230;
     cyg_thread_create( &#8230;,
                       &amp;fred::static_thread_aux,
-                      static_cast&lt;cyg_addrword_t&gt;(&amp;instance),
+                      reinterpret_cast&lt;cyg_addrword_t&gt;(&amp;instance),
                       &#8230;);
     &#8230;
 }

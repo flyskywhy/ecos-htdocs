@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->CRC Algorithms</TITLE
+>The ATHTTP Server</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -18,14 +18,17 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="Another Tiny HTTP Server for eCos"
+HREF="athttpd.html"><LINK
 REL="PREVIOUS"
-TITLE="stdlib malloc Pools"
-HREF="malloc-pools.html"><LINK
+TITLE="Another Tiny HTTP Server for eCos"
+HREF="athttpd.html"><LINK
 REL="NEXT"
-TITLE="CRC Functions"
-HREF="crc-functions.html"></HEAD
+TITLE="Starting the server"
+HREF="athttpd-using.html"></HEAD
 ><BODY
-CLASS="PART"
+CLASS="CHAPTER"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -51,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="malloc-pools.html"
+HREF="athttpd.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -65,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-using.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -75,26 +78,12 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="PART"
-><A
-NAME="SERVICES-CRC"
-></A
-><DIV
-CLASS="TITLEPAGE"
+CLASS="CHAPTER"
 ><H1
-CLASS="TITLE"
->XXVI. CRC Algorithms</H1
-><DIV
-CLASS="PARTINTRO"
 ><A
-NAME="AEN12459"
+NAME="NET-ATHTTPD"
 ></A
-><P
->The CRC package provides implementation of CRC algorithms. This
-includes the POSIX CRC calculation which produces the same result as
-the cksum command on Linux, another 32 bit CRC by Gary S. Brown and a
-16bit CRC. The CRC used for Ethernet FCS is also implemented.</P
-></DIV
+>Chapter 57. The ATHTTP Server</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -103,12 +92,102 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->59. <A
-HREF="crc-functions.html"
->CRC Functions</A
+><A
+HREF="net-athttpd.html#ATHTTPD-FEATURES"
+>Features</A
+></DT
+><DT
+><A
+HREF="athttpd-using.html"
+>Starting the server</A
+></DT
+><DT
+><A
+HREF="athttpd-mime-types.html"
+>MIME types</A
+></DT
+><DT
+><A
+HREF="athttpd-callback.html"
+>C language callback functions</A
+></DT
+><DT
+><A
+HREF="athttpd-cgi.html"
+>CGI</A
+></DT
+><DT
+><A
+HREF="athttpd-authentication.html"
+>Authentication</A
+></DT
+><DT
+><A
+HREF="athttpd-dirlist.html"
+>Directory Listing</A
+></DT
+><DT
+><A
+HREF="athttpd-formvars.html"
+>Form Variables</A
+></DT
+><DT
+><A
+HREF="athttpd-ires.html"
+>Internal Resources</A
 ></DT
 ></DL
 ></DIV
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="ATHTTPD-FEATURES"
+>Features</A
+></H1
+><P
+>This ATHTTP implementation provides the following features:</P
+><P
+></P
+><UL
+><LI
+><P
+>GET, POST and HEAD Methods</P
+></LI
+><LI
+><P
+>File system Access</P
+></LI
+><LI
+><P
+>Callbacks to C functions</P
+></LI
+><LI
+><P
+>MIME type support</P
+></LI
+><LI
+><P
+>CGI mechanism through the OBJLOADER package or through a
+                  simple tcl interpreter</P
+></LI
+><LI
+><P
+>Basic Authentication</P
+></LI
+><LI
+><P
+>Directory Listing</P
+></LI
+><LI
+><P
+>Extendable Internal Resources</P
+></LI
+></UL
+><P
+>Ecos tables are used extensively throught the server to provide a high degree
+of customization.</P
 ></DIV
 ></DIV
 ><DIV
@@ -127,7 +206,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="malloc-pools.html"
+HREF="athttpd.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -145,7 +224,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-using.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -155,17 +234,24 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->stdlib malloc Pools</TD
+>Another Tiny HTTP Server for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="athttpd.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CRC Functions</TD
+>Starting the server</TD
 ></TR
 ></TABLE
 ></DIV

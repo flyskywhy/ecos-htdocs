@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->CRC Algorithms</TITLE
+>Directory Listing</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -18,14 +18,17 @@ CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The ATHTTP Server"
+HREF="net-athttpd.html"><LINK
 REL="PREVIOUS"
-TITLE="stdlib malloc Pools"
-HREF="malloc-pools.html"><LINK
+TITLE="Authentication"
+HREF="athttpd-authentication.html"><LINK
 REL="NEXT"
-TITLE="CRC Functions"
-HREF="crc-functions.html"></HEAD
+TITLE="Form Variables"
+HREF="athttpd-formvars.html"></HEAD
 ><BODY
-CLASS="PART"
+CLASS="SECT1"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -51,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="malloc-pools.html"
+HREF="athttpd-authentication.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -59,13 +62,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
-></TD
+>Chapter 57. The ATHTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-formvars.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -75,41 +78,49 @@ ACCESSKEY="N"
 ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><DIV
-CLASS="PART"
-><A
-NAME="SERVICES-CRC"
-></A
-><DIV
-CLASS="TITLEPAGE"
+CLASS="SECT1"
 ><H1
-CLASS="TITLE"
->XXVI. CRC Algorithms</H1
-><DIV
-CLASS="PARTINTRO"
+CLASS="SECT1"
 ><A
-NAME="AEN12459"
-></A
+NAME="ATHTTPD-DIRLIST"
+>Directory Listing</A
+></H1
 ><P
->The CRC package provides implementation of CRC algorithms. This
-includes the POSIX CRC calculation which produces the same result as
-the cksum command on Linux, another 32 bit CRC by Gary S. Brown and a
-16bit CRC. The CRC used for Ethernet FCS is also implemented.</P
-></DIV
-><DIV
-CLASS="TOC"
-><DL
-><DT
-><B
->Table of Contents</B
-></DT
-><DT
->59. <A
-HREF="crc-functions.html"
->CRC Functions</A
-></DT
-></DL
-></DIV
-></DIV
+>If the user issues a "GET" request with a URL terminating in a slash, the
+server will try to locate one of the following index files in the directory,
+choosing one in the following order:</P
+><P
+></P
+><UL
+><LI
+><P
+>index.html</P
+></LI
+><LI
+><P
+>index.htm</P
+></LI
+><LI
+><P
+>default.html</P
+></LI
+><LI
+><P
+>home.html</P
+></LI
+></UL
+><P
+>If any of these files is found, its contents are sent back
+to the client. If no such file is found the server uses the user-provided
+index file name (if any is specified with the CYGDAT_NET_ATHTTPD_ALTERNATE_HOME
+setting. Failing all this a directory listing is sent.</P
+><P
+>Trailing slash redirection for directory names is supported.</P
+><P
+>In order to reduce the footprint of the server, directory listing can
+be disabled by unchecking CYGOPT_NET_ATHTTPD_USE_DIRLIST. The savings are
+substantial since directory listing also makes use of a few internal
+resources (gif files) which are also compiled out.</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -127,7 +138,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="malloc-pools.html"
+HREF="athttpd-authentication.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -145,7 +156,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="crc-functions.html"
+HREF="athttpd-formvars.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -155,17 +166,21 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->stdlib malloc Pools</TD
+>Authentication</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
->&nbsp;</TD
+><A
+HREF="net-athttpd.html"
+ACCESSKEY="U"
+>Up</A
+></TD
 ><TD
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CRC Functions</TD
+>Form Variables</TD
 ></TR
 ></TABLE
 ></DIV

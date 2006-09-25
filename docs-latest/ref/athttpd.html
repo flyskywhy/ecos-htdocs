@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->CRC Algorithms</TITLE
+>Another Tiny HTTP Server for eCos</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -19,11 +19,11 @@ REL="HOME"
 TITLE="eCos Reference Manual"
 HREF="ecos-ref.html"><LINK
 REL="PREVIOUS"
-TITLE="stdlib malloc Pools"
-HREF="malloc-pools.html"><LINK
+TITLE="The SNTP test program"
+HREF="net-sntp-testing.html"><LINK
 REL="NEXT"
-TITLE="CRC Functions"
-HREF="crc-functions.html"></HEAD
+TITLE="The ATHTTP Server"
+HREF="net-athttpd.html"></HEAD
 ><BODY
 CLASS="PART"
 BGCOLOR="#FFFFFF"
@@ -51,7 +51,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="malloc-pools.html"
+HREF="net-sntp-testing.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -65,7 +65,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="crc-functions.html"
+HREF="net-athttpd.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,23 +77,29 @@ WIDTH="100%"></DIV
 ><DIV
 CLASS="PART"
 ><A
-NAME="SERVICES-CRC"
+NAME="ATHTTPD"
 ></A
 ><DIV
 CLASS="TITLEPAGE"
 ><H1
 CLASS="TITLE"
->XXVI. CRC Algorithms</H1
+>XXIV. Another Tiny HTTP Server for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+></H1
 ><DIV
 CLASS="PARTINTRO"
 ><A
-NAME="AEN12459"
+NAME="AEN12018"
 ></A
 ><P
->The CRC package provides implementation of CRC algorithms. This
-includes the POSIX CRC calculation which produces the same result as
-the cksum command on Linux, another 32 bit CRC by Gary S. Brown and a
-16bit CRC. The CRC used for Ethernet FCS is also implemented.</P
+>This package provides an extensible, small footprint, full featured HTTP
+server for <SPAN
+CLASS="PRODUCTNAME"
+>eCos</SPAN
+>. Many of these features can be
+disabled via the configuration tool, thus reducing the footprint of the server.
+The server has been written for the FreeBSD network stack. </P
 ></DIV
 ><DIV
 CLASS="TOC"
@@ -103,9 +109,9 @@ CLASS="TOC"
 >Table of Contents</B
 ></DT
 ><DT
->59. <A
-HREF="crc-functions.html"
->CRC Functions</A
+>57. <A
+HREF="net-athttpd.html"
+>The ATHTTP Server</A
 ></DT
 ></DL
 ></DIV
@@ -127,7 +133,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="malloc-pools.html"
+HREF="net-sntp-testing.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -145,7 +151,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="crc-functions.html"
+HREF="net-athttpd.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -155,7 +161,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->stdlib malloc Pools</TD
+>The SNTP test program</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
@@ -165,7 +171,7 @@ VALIGN="top"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->CRC Functions</TD
+>The ATHTTP Server</TD
 ></TR
 ></TABLE
 ></DIV
