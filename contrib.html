@@ -4,7 +4,7 @@
 <TITLE>Contributions</TITLE>
 </HEAD>
 
-<!--#include virtual="include/header.html"-->
+<body><!--#include virtual="include/header.html"-->
 
 <h1>Contributions and Third Party Projects</h1>
 
@@ -36,8 +36,7 @@ has released an eCos port of their lightweight cross-platform Graphics User
 Interface support system named MiniGUI. It is available
 under both the GPL and a
 <a href="http://www.minigui.com/product/index.shtml">commercial license</a>.
-<a href="http://www.minigui.org/screenshots.shtml">Screenshots</a> are
-available. More information can be found at the
+More information can be found at the
 <a href="http://www.minigui.com/">Feynman Software</a> site, as well as
 the <a href="http://www.minigui.org/">home of the open source MiniGUI project</a>.</p>
 
@@ -65,38 +64,65 @@ export of products containing encryption, again including the US.
 </p>
 <!-- ------------------------------------------------------------------ -->
 
-<h4>SOWOS</h4>
+<h4>LUA language support and pre-built Configtool versions</h4>
 
 <p>
-<a href="http://www.thesoftwareobjects.com/">Software Objects Inc.</a> is
-hosting a <a href="http://www.thesoftwareobjects.com/Projects">wireless open
-source operating system named SOWOS</a>. This will be based on eCos and will
-include Java support.
+<a href="http://www.xylanta.com/">Xylanta Ltd.</a> hosts a 
+<a href="http://www.xylanta.com/WordPress/?page_id=22" target="_blank">
+eCos port</a> for the <a href="http://www.lua.org/" target="_blank">LUA 5.0
+</a> programming language. 
+
+They also host pre-built versions of the eCos Configtool (Cygwin only)
+and an experimental version of the Configtool for Cygwin that supports
+two repositories.
 </p>
 <!-- ------------------------------------------------------------------ -->
 
-<h4>LUA language support and FAT16</h4>
+<h4>EtherCAT master library for eCos</h4>
 
 <p>
-<a href="http://www.elatec.si/">Elatec engineering</a> has developed an
-eCos port for the LUA 5.0 programming language. They are also developing
-a FAT16 filesystem. Both these projects are available from
-<a href="http://www.elatec.si/devel.html">http://www.elatec.si/devel.html</a>.
+The Flanders Mechatronics Technology Centre - 
+<a href="http://www.fmtc.be" target="_blank">FMTC</a> - 
+has decided to release their 
+<a href="http://www.ethercat.org" target="_blank">EtherCAT</a> master
+implementation as open source software. The EtherCAT master library,
+together with its technical documentation can be obtained from
+<a href="http://ethercatmaster.berlios.de" target="_blank">
+http://ethercatmaster.berlios.de</a>.  The software has been written
+for and has been tested with the eCos operating system.
 </p>
 <!-- ------------------------------------------------------------------ -->
 
+<h4>Port to Renesas H8S architecture</h4>
+
+<p>
+Uwe Kindler of <a href="http://www.cetoni.de" target="_blank">cetoni
+GmbH</a> has developed a port of 
+<a href="http://www.cetoni.de/develop/develop_ecosh8s_en.html"
+target="_blank"> eCos to H8S microcontroller</a> architecture. The
+port includes various variant and platform ports (i.e. for EDOSK2674)
+and a number of drivers (i.e. Serial, Network, RTC...). cetoni
+also hosts a prebuild h8300-elf toolchain for eCos (Cygwin only) and a
+detailed
+<a href="http://www.cetoni.de/develop/uploads/eCos_for_H8S.pdf" 
+target="_self"> porting guide</a> for H8S variant and platform
+ports.</p>
+
+<!-- ------------------------------------------------------------------ -->
 <h4>Port to Game Boy Advance</h4>
-
 <p>
-<a href="http://www.charmedlabs.com/">Charmed Labs</a> has developed the
-<a href="http://www.charmedlabs.com/ecosmain.htm">Xport</a> which turns
-the Nintendo Game Boy Advance into an embedded devleopment
-system, complete with <a href="http://www.charmedlabs.com/ecos.htm">
+<a href="http://www.charmedlabs.com/">Charmed Labs</a> has developed
+the
+<a
+href="http://www.charmedlabs.com/index.php?option=com_virtuemart&page=shop.browse&category_id=6&Itemid=43">Xport</a>
+which turns the Nintendo Game Boy Advance into an embedded development
+system, complete
+with <a
+href="http://www.charmedlabs.com/index.php?option=com_docman&task=doc_download&gid=17&Itemid=44">
 eCos and RedBoot port</a>.</p>
 
 <p>Technical details and ordering information are available from
-<a href="http://www.charmedlabs.com/">Charmed Labs</a>. The port should be
-integrated into the anonymous CVS repository source tree shortly.</p>
+<a href="http://www.charmedlabs.com/">Charmed Labs</a>. </p>
 
 <!-- ------------------------------------------------------------------ -->
 
@@ -110,7 +136,7 @@ easyCAN3</a> ARM-based microcontroller and in particular the
 <a href="ftp://ecos.sourceware.org/pub/ecos/contrib/hal/arm/evmcan/evmcan.pdf">
 EVM-CAN low-cost high performance development platform</a>. This is available
 via FTP for
-<a href="ftp://ecos.sourceware.org/pub/ecos/contrib/hal/arm/EVMCAN_packages.zip">
+<a href="ftp://ecos.sourceware.org/pub/ecos/contrib/hal/arm/evmcan/EVMCAN_packages.zip">
 download as a complete source repository snapshot</a>. The sources will
 be integrated into the eCos development repository shortly.
 </p>
@@ -129,10 +155,10 @@ are available to download
 
 <h4>3G LAB projects</h4>
 
-<p><a href="http://www.3glab.com/">3G LAB</a> are engaged in quite a number of
-projects that will enhance eCos. Some of them, like ROM filesystem and
-iPAQ port have already been incorporated into the development repository.
-Other projects of interest include:
+<p>3G LAB were engaged in quite a number of projects that will enhance
+eCos. Some of them, like ROM filesystem and iPAQ port have already
+been incorporated into the development repository.  Other projects of
+interest include:
 <ul>
 <li>ELF shared library loading and run-time linking (including lazy procedure linking at call time). 
 <li>Memory protection for loaded libraries.
@@ -144,8 +170,7 @@ Other projects of interest include:
 <li>Advanced stack checking for user applications that allow faulty applications to be terminated whilst leaving the rest of the system executing. 
 <li>Partial POSIX process emulation, with pthread grouping and signal marshalling. 
 </ul>
-Further projects are available from the
-<a href="http://www.3glab.org/">eCos resources page at www.3glab.org</a>.</p>
+3GLab no longer exists such any more.</p>
 
 <!-- ------------------------------------------------------------------ -->
 
@@ -184,15 +209,6 @@ http://ps2hacking.sourceforge.net/</a>.</p>
 
 <!-- ------------------------------------------------------------------ -->
 
-<h4>Port to Sega Dreamcast</h4>
-
-<p><a href="mailto:t@keshi.org">Yaegashi Takeshi</a> has also ported eCos and
-RedBoot to the Sega Dreamcast, based on the Hitachi SuperH. Information
-including diffs again the eCos <a href="anoncvs.html">anonymous CVS tree</a>,
-are available at <a href="http://www.m17n.org/linux-sh/ecos/">
-http://www.m17n.org/linux-sh/ecos/</a>.</p>
-
-<!-- ------------------------------------------------------------------ -->
 
 <h4>eSoap for eCos</h4>
 
@@ -229,18 +245,8 @@ it is covered by the GNU General Public License.</p>
 
 <!-- ------------------------------------------------------------------ -->
 
-<h4>CarbonKernel RTOS simulator support</h4>
-
-<p><a href="http://www.realiant.com/" target="_top">Realiant Systems</a> has
-made available an eCos personality for the
-<a href="http://www.carbonkernel.org/" target="_top">
-CarbonKernel RTOS simulator</a>. CarbonKernel is an event-driven simulator
-which mimics RTOS behaviour, allowing development and testing of embedded
-software on a workstation. More details can be found at the
-<a href="http://sourceforge.net/projects/carbonkernel/" target="_top">
-CarbonKernel development site</a>.</p>
-
-<!-- ------------------------------------------------------------------ -->
+<!-- This contribution now seems dead. Comment out until i get a reply
+     from Andreas
 
 <h4>Bluetooth and WAP stack</h4>
 
@@ -255,14 +261,15 @@ embedded WAP server running on top of Bluetooth.</p>
 </a>.</p>
 
 <p>Note that this stack is covered by the GNU General Public License.</p>
-
+-->
 <!-- ------------------------------------------------------------------ -->
 
 <h4>TCP/IP stack</h4>
 
 <p>Tristan Gingold has ported RTEMS libnetworking to eCos. This includes a
 FreeBSD-derived TCP/IP stack. The sources are available for download
-from ftp://ecos.sourceware.org/pub/ecos/contrib/io/tcpip/rtems/</p>
+from <a href="ftp://ecos.sourceware.org/pub/ecos/contrib/io/tcpip/rtems/">
+ftp://ecos.sourceware.org/pub/ecos/contrib/io/tcpip/rtems/</a></p>
 
 <p>Note that this contribution is not related to the eCos
 TCP/IP stack and may not be usable in the current release of eCos.</p>
@@ -270,14 +277,6 @@ TCP/IP stack and may not be usable in the current release of eCos.</p>
 <!-- ------------------------------------------------------------------ -->
 
 <h2>Work in progress</h2>
-
-<!-- ------------------------------------------------------------------ -->
-
-<h4>H8S EDOSK-2674 port</h4>
-
-<p>Uwe Kindler is working on a port of eCos and RedBoot to the Renesas
-H8S/2674R based EDOSK2674 board. More details are available <a
-href="http://www.htwm.de/~ukindler/ecos/">here</a>.
 
 <!-- ------------------------------------------------------------------ -->
 
@@ -347,9 +346,10 @@ website</a>.</p>
 
 <p>Jani Monoses at Astechnix SRL has 
 <a href="http://ecos.sourceware.org/ml/ecos-discuss/2002-04/msg00021.html">
-announced</a> an early port of the <a href="http://www.sics.se/~adam/lwip/">lwIP
-lightweight TCP/IP stack</a> to eCos. An <a href="http://humans.iv.ro/jani">EPK
-is available</a>.</p>
+announced</a> an early port of
+the <a href="http://www.sics.se/~adam/lwip/">lwIP lightweight TCP/IP
+stack</a> to eCos. This has now been incorporated into anonymous
+CVS.</p>
 
 <h4>Improved AT91 serial driver</h4>
 
@@ -462,4 +462,4 @@ the omission.</p>
 <p>We acknowledge the support of <a href="http://www.redhat.com/">Red Hat</a> to the open source community
 in providing the computing resources at <a href="http://ecos.sourceware.org/">ecos.sourceware.org</a>.</p>
 
-<!--#include virtual="include/footer.html"-->
+<!--#include virtual="include/footer.html"--></body>
