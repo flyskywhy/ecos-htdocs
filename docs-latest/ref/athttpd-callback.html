@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 57. The ATHTTP Server</TD
+>Chapter 62. The ATHTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -118,13 +118,7 @@ CLASS="COMMAND"
 contains, among others, a buffer (outbuffer) that can be used to send data
 out. The definitions of the structure is in http.h.</P
 ><P
->If the callback function returns the value of 0, the server will try to find 
-the file with the same URL in the file system and send it. Any other value 
-returned causes the sever to stop further processing of this request. It is 
-assumed that in this case the user has send the response back to the client
-inside the body of the callback function.
-
-The following is an example of how to add a callback to a function myForm()
+>The following is an example of how to add a callback to a function myForm()
 whenever the URL /myform.cgi is requested:</P
 ><TABLE
 BORDER="5"
@@ -154,7 +148,6 @@ CLASS="PROGRAMLISTING"
    strcpy(p-&#62;outbuffer, "eCos Web Server");
    cyg_httpd_write_chunked(p-&#62;outbuffer, strlen(p-&#62;outbuffer))
    cyg_httpd_end_chunked();
-   return -1; // Do not further search the file system.
 }  </PRE
 ></TD
 ></TR

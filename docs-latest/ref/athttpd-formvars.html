@@ -62,7 +62,7 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
->Chapter 57. The ATHTTP Server</TD
+>Chapter 62. The ATHTTP Server</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
@@ -87,12 +87,30 @@ NAME="ATHTTPD-FORMVARS"
 ></H1
 ><P
 >The server will automatically try to parse form variables when a form is
-submitted.The variable names to look for during the parsing are held in
+submitted in the following cases:
+
+<P
+></P
+><UL
+><LI
+><P
+>In a GET request, when the URL is followed by a question
+                  mark sign</P
+></LI
+><LI
+><P
+>In a POST request, when the the 'Content-Type' header line
+                  is set to 'application/x-www-form-urlencoded'</P
+></LI
+></UL
+>
+
+The variable names to look for during the parsing are held in
 an eCos table. In order to take advantage of this feature, the user first
-adds the variable names to the table, also providing a buffer where the parsed
-value will eventually be stored. The values will then be available in
-the buffers during the processing of the request, presumably in the body
-of a c language callback or CGI script.</P
+adds the variable names to the table, which also requires providing a buffer 
+where the parsed value will eventually be stored. The values will then be
+available in the buffers during the processing of the request, presumably in
+the body of a c language callback or CGI script.</P
 ><P
 >For example, if the user wants two form variables, "foo" and "bar", to 
 be parsed automatically, those variable names must be added to the table 
@@ -140,18 +158,22 @@ for "foo" and "bar" (if they were found in the form data.) It is the
 responsability of the user to make sure that the buffer is large enough
 to hold all the data parsed (including the string terminator). The parser will
 write only up to the length of the buffer minus one (the last being the
-terminator).</P
+terminator) and discard any additional data.</P
 ><P
 >The values parsed are likely going to be used in c language callback, or
-in CGI files. The user can access the pointers of individual variable
-for further processing, keeping in mind that the parsing always result
-in a string of characters to be produced, and any conversion from strings to
-integer (i.e. atoi()) must be performed in the callback.</P
-><P
->In CGI functions implemented using the objloader the pointers to the
+in CGI files. In a c language callback the user can directly access the pointers
+of individual variables for further processing, keeping in mind that the parsing 
+always result in a string of characters to be produced, and any conversion
+(e.g. from strings to integer) must be performed within the callback. In
+a TCL script the user can just access a variable by its name. For example,
+in the case of the variables 'foo' and 'bar' shown above, it is possible
+to do something like 'write_chunked "You wrote $foo". The data that was sent in
+the body of a POST request is accessible in through a variable called
+'post_data'. In CGI functions
+implemented using the objloader the pointers to the
 variables cannot be accessed directly, since the library will likely not
 know their location in memory. The proper way to access them is by using the
-cyg_httpd_find_form_variable() function from withing the library:</P
+cyg_httpd_find_form_variable() function from within the library:</P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
