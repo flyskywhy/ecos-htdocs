@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2006 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2007 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -436,8 +436,6 @@ CLASS="VARNAME"
 > and the caller must 
 try again.</P
 ><P
->    </P
-><P
 >It is possible to configure the write call to be non-blocking with timeout. 
 None-blocking mode with timeout requires the configuration option 
 <CODE
@@ -472,7 +470,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8821"
+NAME="AEN8820"
 >CAN Events</A
 ></H2
 ><P
@@ -591,7 +589,7 @@ CLASS="PROGRAMLISTING"
   CYGNUM_CAN_EVENT_LEAVING_STANDBY  = 0x0200, // CAN hardware leaves standby
   CYGNUM_CAN_EVENT_ENTERING_STANDBY = 0x0400, // CAN hardware enters standby
   CYGNUM_CAN_EVENT_ARBITRATION_LOST = 0x0800, // arbitration lost
-  CYGNUM_CAN_EVENT_DEVICE_CHANGED   = 0x1000, // device changed event
+  CYGNUM_CAN_EVENT_FILTER_ERR       = 0x1000, // CAN message filter / acceptance filter error
   CYGNUM_CAN_EVENT_PHY_FAULT        = 0x2000, // General failure of physical layer 
   CYGNUM_CAN_EVENT_PHY_H            = 0x4000, // Fault on CAN-H (Low Speed CAN)
   CYGNUM_CAN_EVENT_PHY_L            = 0x8000, // Fault on CAN-L (Low Speed CAN)
@@ -668,7 +666,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8860"
+NAME="AEN8859"
 >cyg_io_get_config</A
 ></H2
 ><TABLE
@@ -734,7 +732,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN8871"
+NAME="AEN8870"
 >cyg_io_set_config</A
 ></H2
 ><TABLE
@@ -787,7 +785,9 @@ CYG_IO_SET_CONFIG_CAN_OUTPUT_FLUSH
 CYG_IO_SET_CONFIG_CAN_INPUT_FLUSH
 CYG_IO_SET_CONFIG_CAN_TIMEOUT
 CYG_IO_SET_CONFIG_CAN_MSGBUF
-CYG_IO_SET_CONFIG_CAN_MODE</PRE
+CYG_IO_SET_CONFIG_CAN_MODE
+CYG_IO_SET_CONFIG_CAN_ABORT
+CYG_IO_SET_CONFIG_CAN_CALLBACK</PRE
 ></TD
 ></TR
 ></TABLE
