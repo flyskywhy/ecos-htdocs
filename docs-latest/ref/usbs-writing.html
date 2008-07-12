@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2007 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="USBS-WRITING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14699"
+NAME="AEN14720"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN14699"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14702"
+NAME="AEN14723"
 ></A
 ><H2
 >Introduction</H2
@@ -125,7 +125,7 @@ written.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14707"
+NAME="AEN14728"
 ></A
 ><H2
 >The Control Endpoint</H2
@@ -187,7 +187,7 @@ CLASS="STRUCTFIELD"
 >buffer</CODE
 > and other fields related to data
 transfers will be managed <A
-HREF="usbs-control.html#AEN14609"
+HREF="usbs-control.html#AEN14630"
 >jointly</A
 > by higher-level code and
 the device driver. The remaining fields are generally filled in by
@@ -211,7 +211,7 @@ after power-up.</P
 >Where possible the device driver should detect state changes, such as
 when the connection between host and peripheral is established, and
 <A
-HREF="usbs-control.html#AEN14546"
+HREF="usbs-control.html#AEN14567"
 >report</A
 > these to higher-level
 code via the <CODE
@@ -255,7 +255,7 @@ no default handler for these.</P
 >Some control messages will involve further data transfer, not just the
 initial packet. The device driver must handle this in accordance with
 the USB specification and the <A
-HREF="usbs-control.html#AEN14609"
+HREF="usbs-control.html#AEN14630"
 >buffer management strategy</A
 >. The
 driver is also responsible for keeping track of whether or not the
@@ -271,7 +271,7 @@ the same code that the interrupt handler would.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14735"
+NAME="AEN14756"
 ></A
 ><H2
 >Data Endpoints</H2
@@ -402,7 +402,7 @@ devtab entries as well as via low-level accesses.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14762"
+NAME="AEN14783"
 ></A
 ><H2
 >Devtab Entries</H2
@@ -486,7 +486,7 @@ provided, to avoid unnecessary memory overheads.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14775"
+NAME="AEN14796"
 ></A
 ><H2
 >Interrupt Handling</H2
@@ -517,7 +517,7 @@ be invoked at DSR or thread level.</P
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14779"
+NAME="AEN14800"
 ></A
 ><H2
 >Support for USB Testing</H2

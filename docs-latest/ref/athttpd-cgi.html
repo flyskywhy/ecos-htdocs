@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2007 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -135,14 +135,14 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->void exec_cgi(CYG_HTTPS_STATE *)</PRE
+>void exec_cgi(CYG_HTTPD_STATE *)</PRE
 ></TD
 ></TR
 ></TABLE
 ><P
 >The pointer <B
 CLASS="COMMAND"
->CYG_HTTPS_STATE*</B
+>CYG_HTTPD_STATE*</B
 > gives access to the socket 
 data: The user will use this pointer to access the 'outbuffer' and use it to
 copy data to send data out.</P
@@ -242,7 +242,10 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
->then tcl will be able to access the variable foo as $foo.</P
+>then tcl will be able to access the variable foo as $foo. The data
+in the body of a POST request is also accessible through the use of the variable
+$post_data. This is useful if the data is not in "multipart/form-data"
+and tcl has to perform any type of processing on the data itself.</P
 ><P
 >In order to send back a response to the client a few functions have been
 added to the interpreter. These functions are:</P
@@ -316,6 +319,74 @@ CLASS="PROGRAMLISTING"
 ></TABLE
 ><P
 >No parameters. Send back an end of frame to the client.</P
+></DIV
+><DIV
+CLASS="SECT3"
+><H3
+CLASS="SECT3"
+><A
+NAME="ATHTTPD-TCL-HELLO-WORLD"
+>tcl hello world example</A
+></H3
+><P
+>The following example demonstrates how to send a log file in the file
+<TT
+CLASS="FILENAME"
+>/ram/log</TT
+> to a web client. It replaces
+newline characters with <TT
+CLASS="LITERAL"
+>&lt;br&gt;</TT
+> so that it is formatted on the
+browser correctly.
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>start_chunked "html";
+
+set fp [aio.open "/ram/log" r];
+$fp seek 0 end;
+set fsize [$fp tell];
+$fp seek 0 start;
+set data "abcxxx";
+set data [$fp read $fsize];
+$fp close;
+set data [string map {\n &lt;br&gt;} $data];
+
+set datax "";
+append datax "&lt;html&gt;&lt;body&gt;" $data "&lt;/body&gt;&lt;/html&gt;";
+
+write_chunked $datax;
+end_chunked;</PRE
+></TD
+></TR
+></TABLE
+></P
+><P
+>The above file should exist on a filesystem
+on the embedded target within its <TT
+CLASS="FILENAME"
+>cgi-bin</TT
+>
+directory, for example as <TT
+CLASS="FILENAME"
+>/cgi-bin/hello.tcl</TT
+>. Thereafter
+it may be accessed at the URL
+<TT
+CLASS="LITERAL"
+>http://<TT
+CLASS="REPLACEABLE"
+><I
+>TARGET_NAME</I
+></TT
+>/cgi-bin/hello.tcl</TT
+>.</P
 ></DIV
 ></DIV
 ></DIV

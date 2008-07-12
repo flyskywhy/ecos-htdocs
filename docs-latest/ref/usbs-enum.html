@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2007 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="USBS-ENUM"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN14099"
+NAME="AEN14120"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN14099"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN14102"
+NAME="AEN14123"
 ></A
 ><H2
 >Synopsis</H2
@@ -141,7 +141,7 @@ typedef struct usbs_enumeration_data {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN14104"
+NAME="AEN14125"
 ></A
 ><H2
 >USB Enumeration Data</H2
@@ -215,7 +215,7 @@ extension.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14115"
+NAME="AEN14136"
 ></A
 ><H3
 ><CODE
@@ -332,7 +332,7 @@ binary-coded decimal.</P
 ><P
 >The above fields are all numerical in nature. A USB peripheral can
 also provide a number of strings as described <A
-HREF="usbs-enum.html#AEN14190"
+HREF="usbs-enum.html#AEN14211"
 >below</A
 >, for example the name of the
 vendor can be provided. The various <CODE
@@ -348,7 +348,7 @@ one configuration will be active at any one time, and the host will
 switch between them as appropriate. If a peripheral does involve
 multiple configurations then typically it will be the responsibility
 of application code to <A
-HREF="usbs-control.html#AEN14576"
+HREF="usbs-control.html#AEN14597"
 >handle</A
 > the standard
 set-configuration control message.</P
@@ -356,7 +356,7 @@ set-configuration control message.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14140"
+NAME="AEN14161"
 ></A
 ><H3
 ><CODE
@@ -462,7 +462,7 @@ requirements in units of 2mA.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14158"
+NAME="AEN14179"
 ></A
 ><H3
 ><CODE
@@ -525,7 +525,7 @@ another setting that only needs 50K/s. The host can use the standard
 set-interface control message to choose the most appropriate setting.
 The handling of this request is the responsibility of higher-level
 code, so the application may have to <A
-HREF="usbs-control.html#AEN14576"
+HREF="usbs-control.html#AEN14597"
 >install</A
 > its own handler.</P
 ><P
@@ -557,7 +557,7 @@ the interfaces for the second configuration, and so on.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14173"
+NAME="AEN14194"
 ></A
 ><H3
 ><CODE
@@ -666,7 +666,7 @@ configuration; etc.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14190"
+NAME="AEN14211"
 ></A
 ><H3
 >Strings</H3
@@ -710,7 +710,7 @@ control messages when a string descriptor is requested.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN14195"
+NAME="AEN14216"
 ></A
 ><H3
 ><CODE

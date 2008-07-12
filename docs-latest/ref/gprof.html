@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2007 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="GPROF"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN13399"
+NAME="AEN13415"
 ></A
 ><H2
 >Name</H2
@@ -501,6 +501,35 @@ clock.
 ></DL
 ></DIV
 ><P
+><CODE
+CLASS="FUNCTION"
+>profile_on</CODE
+> can be invoked multiple times, and
+on subsequent invocations, it will delete profiling data
+and allocate a fresh profiling range.
+    </P
+><P
+>Profiling can be turned off using the function
+<CODE
+CLASS="FUNCTION"
+>profile_off</CODE
+>:
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void profile_off(void);</PRE
+></TD
+></TR
+></TABLE
+>
+This will also reset any existing profile data.
+    </P
+><P
 >If the eCos configuration includes a TCP/IP stack and if a tftp daemon
 will be used to <A
 HREF="gprof.html#GPROF-EXTRACT"
@@ -551,7 +580,7 @@ CLASS="INFORMALFIGURE"
 ><P
 ></P
 ><A
-NAME="AEN13484"
+NAME="AEN13505"
 ></A
 ><DIV
 CLASS="MEDIAOBJECT"
