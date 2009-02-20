@@ -8,27 +8,46 @@
 <h1>Downloading and Installation</h1>
 <HR noshade SIZE=3>
 
-<p> These instructions describe how to download and install eCos
-version 2.0. This version was released on 20th May, 2003 and has
+<p> These instructions describe how to download and install recent
+versions of the eCos real-time operating system.
+<!--
+This version was released on 20th May, 2003 and has
 remained frozen since then. If you wish to use a more recent version
 of eCos please consider using <a href="anoncvs.html">Anonymous CVS</a>
 to get the latest and greatest, however less well tested version of
 eCos. Installing the host support tools as described here is
-recommended when using anonymous CVS.</p>
+recommended when using anonymous CVS.
+-->
+</p>
 
 <h2>Host support</h2>
 
 <p>The eCos net distribution is available in both Linux
 and Windows versions. The Linux version is tested under recent
-versions of the Red Hat, SuSE and Debian distributions for x86 and should work
+versions of the Fedora, openSUSE and Ubuntu distributions for x86 and should work
 under most Linux variants. The Windows version has been tested under
-Microsoft Windows NT4.0 + SP6a, Windows 2000 Professional and Windows XP. Please
-note that eCos is no longer tested under Windows 95/98/ME. Building and using
-the eCos GNU cross toolchains under Windows 95/98/ME has been found to be
-unreliable. We recommend that users avoid building the development tools on
-these systems if possible.</p>
+Windows 2000 Professional, Windows XP and Windows Vista. It should also work
+under Microsoft Windows NT 4.0 with SP6a. Please
+note that eCos is no longer supported under Windows 95/98/ME.</p>
 
 <h2>Downloading and installation instructions</h2>
+
+<h3>Linux</h3>
+
+<p>Developers wishing to use the pre-built eCos host tools on a <i>Linux</i>
+host must first ensure that they have libstdc++ v3 (<tt>/usr/lib/libstdc++.so.5</tt>)
+installed. Users of Linux distributions which provide a more
+recent libstdc++ may need to install a libstdc++ v3 compatibility package.
+Installation of the compatibility package may be achieved as follows:</p>
+
+<ul><table>
+<tr><td>Fedora:</td>               <td><tt>yum install compat-libstdc++-33</tt></td>
+<tr><td>openSUSE:&nbsp;&nbsp;</td> <td><tt>zypper install compat-libstdc++</tt></td>
+<tr><td>Ubuntu:</td>               <td><tt>apt-get install libstdc++5</tt></td>
+</table></ul>
+
+The Linux-hosted eCos Configuration Tool also requires the GTK+ toolkit
+version 2.0 or later.</p>
 
 <h3>Cygwin</h3>
 
@@ -39,28 +58,24 @@ use with eCos</a> are available. The following instructions assume that Cygwin h
 already been installed (where necessary) and that the reader is familiar with invoking a
 <i>bash</i> shell.</p>
 
-<p>Note: If you have problems with the configuration tool, it may be
-necessary to use the eCosCentric unsupported snapshot which can be
-found on their 
-<a href="http://www.ecoscentric.com/devzone/configtool.shtml">DevZone</a> 
-page</p>
-
 <h3>Toolchain</h3>
 
-<p>The eCos 2.0 release features an installation tool which simplifies the downloading
-and installation of the eCos sources, host tools and documentation.
+<p>Recent eCos releases may be installed using an installation tool which simplifies
+the downloading and installation of the eCos sources, host tools and documentation.
 The installation tool can optionally download one or more pre-built GNU cross toolchains
 (contributed by <a href="http://www.ecoscentric.com/">eCosCentric Limited</a>)
 for use in conjunction with eCos. At present, toolchains for the following target
 architectures are available for download in pre-built form:</p>
 
 <center><table BORDER=0 CELLSPACING=2 CELLPADDING=7>
-<tr bgcolor=#999999><td><b>Architecture</b></td><td><b><tt>TARGET</tt></b></td></tr>
-<tr bgcolor=#dddddd><td>ARM (including StrongARM, XScale)</td><td><tt>arm-elf</tt></td></tr>
+<tr bgcolor=#999999><td><b>Architecture</b></td><td><b>Target</b></td></tr>
+<tr bgcolor=#dddddd><td>ARM (ARM7TDMI, ARM9, XScale)</td><td><tt>arm-eabi</tt></td></tr>
+<tr bgcolor=#dddddd><td>ARM (ARM7DI, StrongARM)</td><td><tt>arm-elf</tt></td></tr>
+<tr bgcolor=#dddddd><td>ColdFire</td><td><tt>m68k-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>Intel x86</td><td><tt>i386-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>MIPS32</td><td><tt>mipsisa32-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>PowerPC</td><td><tt>powerpc-eabi</tt></td></tr>
-<tr bgcolor=#dddddd><td>Renesas SuperH</td><td><tt>sh-elf</tt></td></tr>
+<tr bgcolor=#dddddd><td>SuperH</td><td><tt>sh-elf</tt></td></tr>
 </table></center>
 
 <p>Developers targetting one of the other architectures must build a toolchain
@@ -100,19 +115,24 @@ Cygwin installation (typically <tt>c:\cygwin</tt>) by default. For example,
 
 <p>Users may wish to create a shortcut to the eCos Configuration Tool on their desktop. Typically,
 this may be achieved by dragging the <tt>configtool</tt> or <tt>configtool.exe</tt> executable file
-from the file manager provided by your operating system onto the desktop. This file is located
-in the <tt>ecos-2.0/tools/bin</tt> directory under the location at which eCos was installed.</p>
+from the file manager provided by your operating system onto the desktop and dropping it while
+holding down the shift and ctrl keys. This file is located
+in the <tt>ecos-<i>version</i>/tools/bin</tt> directory under the location at which eCos was installed.
+On Windows hosts, it will be necessary to modify the "Start in" property of the shortcut to specify the Cygwin
+<tt>/bin</tt> directory (typically <tt>c:\cygwin\bin</tt>) as the working directory.</p>
 
 <h2>Documentation</h2>
 
 <p>Full documentation is available <a href="docs.html">online</a>.
-It is included within the eCos net distribution in HTML format only. The
+It is included within the eCos net distribution in HTML format only.
+<!-- The
 documentation may also be downloaded separately in multiple archive formats:
 
 <ul>
-<li><a href="ftp://ecos.sourceware.org/pub/ecos/releases/ecos-2.0/eCosDoc20.zip">eCos 2.0 documentation</A> (eCosDoc20.zip - 1.9MB)
-<li><a href="ftp://ecos.sourceware.org/pub/ecos/releases/ecos-2.0/ecos-2.0-doc.tar.bz2">eCos 2.0 documentation</a> (ecos-2.0-doc.tar.bz2 -  908kB)
-</ul></p>
+<li><a href="ftp://ecos.sourceware.org/pub/ecos/releases/ecos-3.0b1/eCosDoc30beta1.zip">eCos 3.0 beta 1 documentation</A> (eCosDoc30b1.zip - ???MB)
+<li><a href="ftp://ecos.sourceware.org/pub/ecos/releases/ecos-3.0b1/ecos-3.0beta1-doc.tar.bz2">eCos 3.0 beta 1 documentation</a> (ecos-3.0b1-doc.tar.bz2 -  ???MB)
+</ul>-->
+</p>
 
 <p>New users are encouraged to follow the programming
 tutorial in the appropriate <i>Getting Started with eCos</i> document
