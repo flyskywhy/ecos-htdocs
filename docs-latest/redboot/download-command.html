@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2006 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -85,7 +85,7 @@ NAME="DOWNLOAD-COMMAND"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1251"
+NAME="AEN1248"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN1251"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1254"
+NAME="AEN1251"
 ></A
 ><H2
 >Synopsis</H2
@@ -102,7 +102,8 @@ NAME="AEN1254"
 CLASS="COMMAND"
 >load</B
 >  [-v ] [-d ] [-r ] [-m
-           [[xmodem | ymodem] | tftp | disk]
+           [[xmodem | ymodem | tftp | disk | file]
+            ]
         ] [-h <TT
 CLASS="REPLACEABLE"
 ><I
@@ -133,7 +134,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1278"
+NAME="AEN1276"
 ></A
 ><H2
 >Arguments</H2
@@ -142,7 +143,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN1280"
+NAME="AEN1278"
 ></A
 ><TABLE
 BORDER="1"
@@ -306,6 +307,20 @@ CLASS="ACRONYM"
 ></TR
 ><TR
 ><TD
+>-m file</TD
+><TD
+>&nbsp;</TD
+><TD
+>Transfer data from a local filesystem such as
+	             JFFS2 or FAT.</TD
+><TD
+><ACRONYM
+CLASS="ACRONYM"
+>TFTP</ACRONYM
+></TD
+></TR
+><TR
+><TD
 >-h <TT
 CLASS="REPLACEABLE"
 ><I
@@ -453,7 +468,7 @@ CLASS="EMPHASIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1388"
+NAME="AEN1392"
 ></A
 ><H2
 >Description</H2
@@ -480,7 +495,7 @@ format or raw data.
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1394"
+NAME="AEN1398"
 ></A
 ><H2
 >Examples</H2
@@ -547,6 +562,27 @@ CLASS="SCREEN"
 >RedBoot&#62; <KBD
 CLASS="USERINPUT"
 >load -mode disk hda1:hello.elf</KBD
+>
+Entry point: 0x00020000, address range: 0x00020000-0x0002fd70</PRE
+></TD
+></TR
+></TABLE
+>
+      </P
+><P
+>Load an ELF file from /jffs2/applications which should be a directory
+in a JFFS2 filesystem:
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>RedBoot&#62; <KBD
+CLASS="USERINPUT"
+>load -mode file /jffs2/applications/hello.elf</KBD
 >
 Entry point: 0x00020000, address range: 0x00020000-0x0002fd70</PRE
 ></TD

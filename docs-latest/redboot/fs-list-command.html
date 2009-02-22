@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->fis write</TITLE
+>fs list</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -19,14 +19,14 @@ REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
 REL="UP"
-TITLE="Flash Image System (FIS)"
-HREF="flash-image-system.html"><LINK
-REL="PREVIOUS"
-TITLE="fis erase"
-HREF="fis-erase-command.html"><LINK
-REL="NEXT"
 TITLE="Filesystem Interface"
-HREF="filesystem-commands.html"></HEAD
+HREF="filesystem-commands.html"><LINK
+REL="PREVIOUS"
+TITLE="fs move"
+HREF="fs-move-command.html"><LINK
+REL="NEXT"
+TITLE="fs write"
+HREF="fs-write-command.html"></HEAD
 ><BODY
 CLASS="REFENTRY"
 BGCOLOR="#FFFFFF"
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="fis-erase-command.html"
+HREF="fs-move-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -68,7 +68,7 @@ WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="filesystem-commands.html"
+HREF="fs-write-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -79,49 +79,39 @@ ALIGN="LEFT"
 WIDTH="100%"></DIV
 ><H1
 ><A
-NAME="FIS-WRITE-COMMAND"
+NAME="FS-LIST-COMMAND"
 ></A
->fis write</H1
+>fs list</H1
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN2267"
+NAME="AEN2665"
 ></A
 ><H2
 >Name</H2
->fis write&nbsp;--&nbsp;Write flash area</DIV
+>fs list&nbsp;--&nbsp;List filesystem directory</DIV
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN2270"
+NAME="AEN2668"
 ></A
 ><H2
 >Synopsis</H2
 ><P
 ><B
 CLASS="COMMAND"
->fis write</B
->  {-b <TT
+>fs list</B
+>  [<TT
 CLASS="REPLACEABLE"
 ><I
->mem_address</I
+>directory</I
 ></TT
->} {-l <TT
-CLASS="REPLACEABLE"
-><I
->length</I
-></TT
->} {-f <TT
-CLASS="REPLACEABLE"
-><I
->flash_address</I
-></TT
->}</P
+>]</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2279"
+NAME="AEN2673"
 ></A
 ><H2
 >Arguments</H2
@@ -130,7 +120,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN2281"
+NAME="AEN2675"
 ></A
 ><TABLE
 BORDER="1"
@@ -163,45 +153,15 @@ TITLE="C4"><THEAD
 ><TT
 CLASS="REPLACEABLE"
 ><I
->mem_address</I
+>directory</I
 ></TT
 ></TD
 ><TD
->Number</TD
+>String</TD
 ><TD
->Address of data to be written to flash.</TD
+>Pathname to directory to list.</TD
 ><TD
->&nbsp;</TD
-></TR
-><TR
-><TD
-><TT
-CLASS="REPLACEABLE"
-><I
->length</I
-></TT
-></TD
-><TD
->Number</TD
-><TD
->Length of data to be writtem.</TD
-><TD
->&nbsp;</TD
-></TR
-><TR
-><TD
-><TT
-CLASS="REPLACEABLE"
-><I
->flash_address</I
-></TT
-></TD
-><TD
->Number</TD
-><TD
->Address of flash to write to.</TD
-><TD
->&nbsp;</TD
+>Current directory</TD
 ></TR
 ></TBODY
 ></TABLE
@@ -212,24 +172,28 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2312"
+NAME="AEN2694"
 ></A
 ><H2
 >Description</H2
 ><P
->This command is used to write data from memory to flash. There
-is no cross-checking to ensure that the area being written to does not
-correspond to an existing image.</P
+>This command prints a list of the contents of the named
+directory. Each line of the listing starts with the file's inode
+number, which is its address in the filesystem. Following is a set of
+UNIX-like access flags, the first character of this will be a
+&#8221;d&#8220; if this entry is a directory. The third item indicates
+the number of links to the file. Following this is the size of the
+file in bytes and the last item is its name.</P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN2315"
+NAME="AEN2697"
 ></A
 ><H2
 >Examples</H2
 ><P
->Write an area of data to the flash
+>List the current directory:
 <TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -240,15 +204,33 @@ WIDTH="70%"
 CLASS="SCREEN"
 >RedBoot&#62; <KBD
 CLASS="USERINPUT"
->fis write -b 0x0606f000 -l 0x1000 -f 0x00020000</KBD
+>fs list</KBD
 >
-* CAUTION * about to program FLASH
-            at 0x00020000..0x0002ffff from 0x0606f000 - continue (y/n)? <KBD
-CLASS="USERINPUT"
->y</KBD
+212416 d---------  3 size    128 .                                              
+212416 d---------  3 size    128 ..                                             
+211392 ----------  1 size   4096 image                                          
+206784 d---------  2 size     96 tests
+RedBoot&#62;</PRE
+></TD
+></TR
+></TABLE
 >
-... Erase from 0x00020000-0x00030000: .
-... Program from 0x0606f000-0x0607f000 at 0x00020000: .</PRE
+    </P
+><P
+>List a subdirectory:
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>RedBoot&#62; fs list tests                                                            
+206784 d---------  2 size     96 .                                              
+212416 d---------  3 size    128 ..                                             
+205760 ----------  1 size  16384 test1                                          
+RedBoot&#62;</PRE
 ></TD
 ></TR
 ></TABLE
@@ -270,7 +252,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="fis-erase-command.html"
+HREF="fs-move-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -288,7 +270,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="filesystem-commands.html"
+HREF="fs-write-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -298,13 +280,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->fis erase</TD
+>fs move</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="flash-image-system.html"
+HREF="filesystem-commands.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -312,7 +294,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->Filesystem Interface</TD
+>fs write</TD
 ></TR
 ></TABLE
 ></DIV

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2006 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -85,7 +85,7 @@ NAME="IP-ADDRESS-COMMAND"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1164"
+NAME="AEN1158"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN1164"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1167"
+NAME="AEN1161"
 ></A
 ><H2
 >Synopsis</H2
@@ -127,7 +127,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1179"
+NAME="AEN1173"
 ></A
 ><H2
 >Arguments</H2
@@ -136,7 +136,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN1181"
+NAME="AEN1175"
 ></A
 ><TABLE
 BORDER="1"
@@ -260,7 +260,7 @@ CLASS="EMPHASIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1223"
+NAME="AEN1217"
 ></A
 ><H2
 >Description</H2
@@ -308,7 +308,7 @@ that an address of 0.0.0.0 will disable DNS lookups.
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1236"
+NAME="AEN1230"
 ></A
 ><H2
 >Examples</H2
@@ -327,7 +327,7 @@ RedBoot&#62; <KBD
 CLASS="USERINPUT"
 >ip_address</KBD
 > 
-IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 0.0.0.0 </PRE
+IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 0.0.0.0, DNS domain name:  </PRE
 ></TD
 ></TR
 ></TABLE
@@ -347,7 +347,27 @@ RedBoot&#62; <KBD
 CLASS="USERINPUT"
 >ip_address -d 192.168.1.101</KBD
 > 
-IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 192.168.1.101 </PRE
+IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 192.168.1.101, DNS domain name:  </PRE
+></TD
+></TR
+></TABLE
+> </P
+><P
+>Change the DNS domain name. 
+<TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+> 
+RedBoot&#62; <KBD
+CLASS="USERINPUT"
+>ip_address -D example.com</KBD
+> 
+IP: 192.168.1.31, Default server: 192.168.1.101, DNS server IP: 192.168.1.101, DNS domain name: example.com </PRE
 ></TD
 ></TR
 ></TABLE
@@ -367,7 +387,7 @@ RedBoot&#62; <KBD
 CLASS="USERINPUT"
 >ip_address -h 192.168.1.104</KBD
 > 
-IP: 192.168.1.31, Default server: 192.168.1.104, DNS server IP: 192.168.1.101</PRE
+IP: 192.168.1.31, Default server: 192.168.1.104, DNS server IP: 192.168.1.101, DNS domain name: </PRE
 ></TD
 ></TR
 ></TABLE
@@ -387,7 +407,7 @@ RedBoot&#62; <KBD
 CLASS="USERINPUT"
 >ip_address -l 192.168.1.32/24</KBD
 > 
-IP: 192.168.1.32, Default server: 192.168.1.104, DNS server IP: 192.168.1.101</PRE
+IP: 192.168.1.32, Default server: 192.168.1.104, DNS server IP: 192.168.1.101, DNS domain name: </PRE
 ></TD
 ></TR
 ></TABLE

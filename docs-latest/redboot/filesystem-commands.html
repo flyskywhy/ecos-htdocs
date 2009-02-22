@@ -10,7 +10,7 @@
 <HTML
 ><HEAD
 ><TITLE
->gunzip</TITLE
+>Filesystem Interface</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
@@ -19,16 +19,16 @@ REL="HOME"
 TITLE="RedBoot User's Guide"
 HREF="redboot-guide.html"><LINK
 REL="UP"
-TITLE="Common Commands"
-HREF="common-commands.html"><LINK
+TITLE="RedBoot Commands and Examples"
+HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
-TITLE="iopoke"
-HREF="iopoke-command.html"><LINK
+TITLE="fis write"
+HREF="fis-write-command.html"><LINK
 REL="NEXT"
-TITLE="ip_address"
-HREF="ip-address-command.html"></HEAD
+TITLE="fs info"
+HREF="fs-info-command.html"></HEAD
 ><BODY
-CLASS="REFENTRY"
+CLASS="SECT1"
 BGCOLOR="#FFFFFF"
 TEXT="#000000"
 LINK="#0000FF"
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="iopoke-command.html"
+HREF="fis-write-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -62,13 +62,13 @@ ACCESSKEY="P"
 WIDTH="80%"
 ALIGN="center"
 VALIGN="bottom"
-></TD
+>Chapter 2. RedBoot Commands and Examples</TD
 ><TD
 WIDTH="10%"
 ALIGN="right"
 VALIGN="bottom"
 ><A
-HREF="ip-address-command.html"
+HREF="fs-info-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -77,167 +77,94 @@ ACCESSKEY="N"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"></DIV
+><DIV
+CLASS="SECT1"
 ><H1
+CLASS="SECT1"
 ><A
-NAME="GUNZIP-COMMAND"
-></A
->gunzip</H1
+NAME="FILESYSTEM-COMMANDS"
+>Filesystem Interface</A
+></H1
 ><DIV
-CLASS="REFNAMEDIV"
-><A
-NAME="AEN1109"
-></A
-><H2
->Name</H2
->gunzip&nbsp;--&nbsp;Uncompress GZIP compressed data</DIV
-><DIV
-CLASS="REFSYNOPSISDIV"
-><A
-NAME="AEN1112"
-></A
-><H2
->Synopsis</H2
-><P
+CLASS="TOC"
+><DL
+><DT
 ><B
-CLASS="COMMAND"
->gunzip</B
->  {-s <TT
-CLASS="REPLACEABLE"
-><I
->source</I
-></TT
->} {-d <TT
-CLASS="REPLACEABLE"
-><I
->destination</I
-></TT
->}</P
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="fs-info-command.html"
+>fs info</A
+>&nbsp;--&nbsp;Print filesystem information</DT
+><DT
+><A
+HREF="fs-mount-command.html"
+>fs mount</A
+>&nbsp;--&nbsp;Mount a filesystem</DT
+><DT
+><A
+HREF="fs-umount-command.html"
+>fs umount</A
+>&nbsp;--&nbsp;Unmount filesystem</DT
+><DT
+><A
+HREF="fs-cd-command.html"
+>fs cd</A
+>&nbsp;--&nbsp;Change filesystem directory</DT
+><DT
+><A
+HREF="fs-mkdir-command.html"
+>fs mkdir</A
+>&nbsp;--&nbsp;Create filesystem directory</DT
+><DT
+><A
+HREF="fs-deldir-command.html"
+>fs deldir</A
+>&nbsp;--&nbsp;Delete filesystem directory</DT
+><DT
+><A
+HREF="fs-del-command.html"
+>fs del</A
+>&nbsp;--&nbsp;Delete file</DT
+><DT
+><A
+HREF="fs-move-command.html"
+>fs move</A
+>&nbsp;--&nbsp;Move file</DT
+><DT
+><A
+HREF="fs-list-command.html"
+>fs list</A
+>&nbsp;--&nbsp;List filesystem directory</DT
+><DT
+><A
+HREF="fs-write-command.html"
+>fs write</A
+>&nbsp;--&nbsp;Write to filesystem</DT
+></DL
 ></DIV
-><DIV
-CLASS="REFSECT1"
-><A
-NAME="AEN1119"
-></A
-><H2
->Arguments</H2
-><DIV
-CLASS="INFORMALTABLE"
 ><P
-></P
-><A
-NAME="AEN1121"
-></A
-><TABLE
-BORDER="1"
-FRAME="border"
-RULES="all"
-CLASS="CALSTABLE"
-><COL
-WIDTH="1*"
-TITLE="C1"><COL
-WIDTH="1*"
-TITLE="C2"><COL
-WIDTH="1*"
-TITLE="C3"><COL
-WIDTH="1*"
-TITLE="C4"><THEAD
-><TR
-><TH
->Name</TH
-><TH
->Type</TH
-><TH
->Description</TH
-><TH
->Default</TH
-></TR
-></THEAD
-><TBODY
-><TR
-><TD
->-s <TT
-CLASS="REPLACEABLE"
-><I
->location1</I
-></TT
-></TD
-><TD
->Memory address</TD
-><TD
->Location of GZIP compressed data to uncompress.</TD
-><TD
->Value set by last <B
+>&#13;
+If the platform has access to secondary storage, then RedBoot may be
+able to access a filesystem stored on this device. RedBoot can access
+FAT filesystems stored on IDE disks or CompactFlash devices and can
+use JFFS2 filesystems stored in FLASH memory. The
+<B
 CLASS="COMMAND"
->load</B
-> or <B
-CLASS="COMMAND"
->fis load</B
-> command.</TD
-></TR
-><TR
-><TD
->-d <TT
-CLASS="REPLACEABLE"
-><I
->location2</I
-></TT
-></TD
-><TD
->Memory address</TD
-><TD
->Destination to write uncompressed data to.</TD
-><TD
-><SPAN
+>fs</B
+> command is used to manipulate files on
+filesystems. Applications may be loaded into memory using the
+<SPAN
 CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
->none</I
+>file</I
 ></SPAN
-></TD
-></TR
-></TBODY
-></TABLE
-><P
-></P
-></DIV
-></DIV
-><DIV
-CLASS="REFSECT1"
-><A
-NAME="AEN1149"
-></A
-><H2
->Description</H2
-><P
->Uncompress GZIP compressed data.</P
-></DIV
-><DIV
-CLASS="REFSECT1"
-><A
-NAME="AEN1152"
-></A
-><H2
->Examples</H2
-><P
->Uncompress data at location 0x100000 to 0x200000.
-<TABLE
-BORDER="5"
-BGCOLOR="#E0E0F0"
-WIDTH="70%"
-><TR
-><TD
-><PRE
-CLASS="SCREEN"
-> 
-RedBoot&#62; <KBD
-CLASS="USERINPUT"
->gunzip -s 0x100000 -d 0x200000</KBD
->
-Decompressed 38804 bytes</PRE
-></TD
-></TR
-></TABLE
-> </P
+> mode of the <B
+CLASS="COMMAND"
+>load</B
+> command.</P
 ></DIV
 ><DIV
 CLASS="NAVFOOTER"
@@ -255,7 +182,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="iopoke-command.html"
+HREF="fis-write-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -273,7 +200,7 @@ WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
 ><A
-HREF="ip-address-command.html"
+HREF="fs-info-command.html"
 ACCESSKEY="N"
 >Next</A
 ></TD
@@ -283,13 +210,13 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->iopoke</TD
+>fis write</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
 VALIGN="top"
 ><A
-HREF="common-commands.html"
+HREF="redboot-commands-and-examples.html"
 ACCESSKEY="U"
 >Up</A
 ></TD
@@ -297,7 +224,7 @@ ACCESSKEY="U"
 WIDTH="33%"
 ALIGN="right"
 VALIGN="top"
->ip_address</TD
+>fs info</TD
 ></TR
 ></TABLE
 ></DIV

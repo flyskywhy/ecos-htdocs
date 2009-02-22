@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2006 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,7 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN""http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -22,8 +22,8 @@ REL="UP"
 TITLE="RedBoot Commands and Examples"
 HREF="redboot-commands-and-examples.html"><LINK
 REL="PREVIOUS"
-TITLE="fis write"
-HREF="fis-write-command.html"><LINK
+TITLE="fs write"
+HREF="fs-write-command.html"><LINK
 REL="NEXT"
 TITLE="Executing Programs from RedBoot"
 HREF="executing-programs.html"></HEAD
@@ -54,7 +54,7 @@ WIDTH="10%"
 ALIGN="left"
 VALIGN="bottom"
 ><A
-HREF="fis-write-command.html"
+HREF="fs-write-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -392,6 +392,7 @@ Use BOOTP for network configuration: false
 Local IP address: 192.168.1.29
 Default server IP address: 192.168.1.101
 DNS server IP address: 192.168.1.1
+DNS domain name: example.com
 GDB connection port: 9000
 Network debug at boot time: false</PRE
 ></TD
@@ -437,7 +438,7 @@ CLASS="USERINPUT"
 ... Program from 0x8c021f60-0x8c022360 at 0xa0fc0000: .
 RedBoot&#62;
 RedBoot(tm) debug environment - built 08:22:24, Aug 23 2000
-Copyright (C) 2000, Red Hat, Inc.
+Copyright (C) 2000, Free Software Foundation, Inc.
 
 
 RAM: 0x8c000000-0x8c800000
@@ -566,7 +567,7 @@ RedBoot(tm) bootstrap and debug environment [ROM]
 Red Hat certified release, version R1.xx - built 17:37:36, Aug 14 2001
 
 Platform: IQ80310 (XScale)
-Copyright (C) 2000, 2001, Red Hat, Inc.
+Copyright (C) 2000, 2001, Free Software Foundation, Inc.
 
 RAM: 0xa0000000-0xa2000000, 0xa001b088-0xa1fdf000 available
 FLASH: 0x00000000 - 0x00800000, 64 blocks of 0x00020000 bytes each.
@@ -586,7 +587,7 @@ RedBoot(tm) bootstrap and debug environment [RAM]
 Red Hat certified release, version R1.xx - built 13:03:47, Aug 14 2001
 
 Platform: IQ80310 (XScale)
-Copyright (C) 2000, 2001, Red Hat, Inc.
+Copyright (C) 2000, 2001, Free Software Foundation, Inc.
 
 RAM: 0xa0000000-0xa2000000, 0xa0057fe8-0xa1fdf000 available
 FLASH: 0x00000000 - 0x00800000, 64 blocks of 0x00020000 bytes each.
@@ -621,7 +622,7 @@ WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
 ><A
-HREF="fis-write-command.html"
+HREF="fs-write-command.html"
 ACCESSKEY="P"
 >Prev</A
 ></TD
@@ -649,7 +650,7 @@ ACCESSKEY="N"
 WIDTH="33%"
 ALIGN="left"
 VALIGN="top"
->fis write</TD
+>fs write</TD
 ><TD
 WIDTH="34%"
 ALIGN="center"
