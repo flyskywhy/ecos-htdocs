@@ -24,7 +24,8 @@ and consistent as possible.</p>
 
 <ol>
 <li>Send e-mail to <a href="mailto:ecos-discuss@ecos.sourceware.org">ecos-discuss@ecos.sourceware.org</a>
-stating your intention to test the eCos 3.0 beta 1 release. Please also state the host platform
+stating your intention to test the eCos 3.0 beta 1 release. To avoid duplicated effort, please also
+state the host platform
 (eg Fedora 9, Windows XP) and the target hardware platform (eg Atmel AT91EB55) you will be using.</li>
 <br>
 <li>Download and install the eCos 3.0 beta 1 release by following the
@@ -32,7 +33,8 @@ stating your intention to test the eCos 3.0 beta 1 release. Please also state th
 is available for your target hardware architecture, please download and use the pre-built
 toolchain for all testing. If you will be testing on a Windows host and already have Cygwin
 installed, we recommend that you update your Cygwin installation to use the latest stable version
-of each package.</li>
+of each package. Note that the Cygwin package <tt>libmpfr1</tt> is essential for correct operation
+of the new eCos toolchains.</li>
 <br>
 <li>Build the eCos library and tests for your target using the <i>all</i> packages template
 and with no other modifications to the eCos configuration.
@@ -88,6 +90,8 @@ both serial and ethernet ports as applicable.</li>
 <br>
 <li>Verify that you are able to download and execute eCos tests using GDB. Again,
 please verify correct operation using both serial and ethernet ports as applicable.</li>
+<br>
+<li>Verify that you are able to write a new image to each of the Flash memory regions provided on your target platform.</li>
 <br>
 <li>Report problems using Bugzilla, as described in the eCos testing procedure (above).</li>
 </ol>

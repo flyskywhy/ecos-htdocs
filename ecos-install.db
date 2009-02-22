@@ -10,10 +10,12 @@ namespace eval installdatav1 {
         array set ecosreleases \
             { \
                   "Linux" { \
+                                { "3.0 beta 1" "releases/ecos-3.0b1/ecos-3.0beta1.i386linux.tar.bz2" "ecos-3.0b1/packages" { "ecos-3.0b1/tools/bin"} } \
                                 { "2.0" "releases/ecos-2.0/ecos-2.0.i386linux.tar.bz2" "ecos-2.0/packages" { "ecos-2.0/tools/bin"} } \
                                 { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.i386linux.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
                         } \
                   "windows" { \
+                                { "3.0 beta 1" "releases/ecos-3.0b1/ecos-3.0beta1.cygwin.tar.bz2" "ecos-3.0b1/packages" { "ecos-3.0b1/tools/bin"} } \
                                 { "2.0" "releases/ecos-2.0/ecos-2.0.cygwin.tar.bz2" "ecos-2.0/packages" { "ecos-2.0/tools/bin"} } \
                                 { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.cygwin.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
                           } \
@@ -23,47 +25,45 @@ namespace eval installdatav1 {
         array set toolchains \
             { \
                   "Linux" { \
-                                { "arm-elf"       "gnutools/i386linux/ecoscentric-gnutools-arm-elf-1.4-2.i386linux.tar.bz2"        "gnutools/arm-elf/bin" } \
-                                { "i386-elf"      "gnutools/i386linux/ecoscentric-gnutools-i386-elf-1.4-2.i386linux.tar.bz2"       "gnutools/i386-elf/bin" } \
-                                { "mipsisa32-elf" "gnutools/i386linux/ecoscentric-gnutools-mipsisa32-elf-1.4-2.i386linux.tar.bz2"  "gnutools/mipsisa32-elf/bin" } \
-                                { "powerpc-eabi"  "gnutools/i386linux/ecoscentric-gnutools-powerpc-eabi-1.4-2.i386linux.tar.bz2"   "gnutools/powerpc-eabi/bin" } \
-                                { "sh-elf"        "gnutools/i386linux/ecoscentric-gnutools-sh-elf-1.4-2.i386linux.tar.bz2"         "gnutools/sh-elf/bin" } \
+                                { "arm-eabi"      "gnutools/i386linux/ecoscentric-gnutools-arm-eabi-20081213-sw.i386linux.tar.bz2"      "gnutools/arm-eabi/bin" } \
+                                { "arm-elf (old)" "gnutools/i386linux/ecoscentric-gnutools-arm-elf-1.4-2.i386linux.tar.bz2"             "gnutools/arm-elf/bin" } \
+                                { "i386-elf"      "gnutools/i386linux/ecoscentric-gnutools-i386-elf-20081107-sw.i386linux.tar.bz2"      "gnutools/i386-elf/bin" } \
+                                { "m68k-elf"      "gnutools/i386linux/ecoscentric-gnutools-m68k-elf-20081107-sw.i386linux.tar.bz2"      "gnutools/m68k-elf/bin" } \
+                                { "mipsisa32-elf" "gnutools/i386linux/ecoscentric-gnutools-mipsisa32-elf-20081107-sw.i386linux.tar.bz2" "gnutools/mipsisa32-elf/bin" } \
+                                { "powerpc-eabi"  "gnutools/i386linux/ecoscentric-gnutools-powerpc-eabi-20081108-sw.i386linux.tar.bz2"  "gnutools/powerpc-eabi/bin" } \
+                                { "sh-elf"        "gnutools/i386linux/ecoscentric-gnutools-sh-elf-20090121-sw.i386linux.tar.bz2"        "gnutools/sh-elf/bin" } \
                         } \
                   "windows" { \
-                                { "arm-elf"       "gnutools/cygwin/ecoscentric-gnutools-arm-elf-1.4-2.cygwin.tar.bz2"        "gnutools/arm-elf/bin" } \
-                                { "i386-elf"      "gnutools/cygwin/ecoscentric-gnutools-i386-elf-1.4-2.cygwin.tar.bz2"       "gnutools/i386-elf/bin" } \
-                                { "mipsisa32-elf" "gnutools/cygwin/ecoscentric-gnutools-mipsisa32-elf-1.4-2.cygwin.tar.bz2"  "gnutools/mipsisa32-elf/bin" } \
-                                { "powerpc-eabi"  "gnutools/cygwin/ecoscentric-gnutools-powerpc-eabi-1.4-2.cygwin.tar.bz2"   "gnutools/powerpc-eabi/bin" } \
-                                { "sh-elf"        "gnutools/cygwin/ecoscentric-gnutools-sh-elf-1.4-2.cygwin.tar.bz2"         "gnutools/sh-elf/bin" } \
+                                { "arm-eabi"      "gnutools/cygwin/ecoscentric-gnutools-arm-eabi-20081213-sw.cygwin.tar.bz2"      "gnutools/arm-eabi/bin" } \
+                                { "arm-elf (old)" "gnutools/cygwin/ecoscentric-gnutools-arm-elf-1.4-2.cygwin.tar.bz2"             "gnutools/arm-elf/bin" } \
+                                { "i386-elf"      "gnutools/cygwin/ecoscentric-gnutools-i386-elf-20081107-sw.cygwin.tar.bz2"      "gnutools/i386-elf/bin" } \
+                                { "m68k-elf"      "gnutools/cygwin/ecoscentric-gnutools-m68k-elf-20081107-sw.cygwin.tar.bz2"      "gnutools/m68k-elf/bin" } \
+                                { "mipsisa32-elf" "gnutools/cygwin/ecoscentric-gnutools-mipsisa32-elf-20081107-sw.cygwin.tar.bz2" "gnutools/mipsisa32-elf/bin" } \
+                                { "powerpc-eabi"  "gnutools/cygwin/ecoscentric-gnutools-powerpc-eabi-20081107-sw.cygwin.tar.bz2"  "gnutools/powerpc-eabi/bin" } \
+                                { "sh-elf"        "gnutools/cygwin/ecoscentric-gnutools-sh-elf-20090212-sw.cygwin.tar.bz2"        "gnutools/sh-elf/bin" } \
                           } \
           }
         
         variable ecosmirrors [ list \
-                                   "ftp://mirrors.rcn.net/pub/sourceware/ecos" \
-                                   "http://mirrors.rcn.net/pub/sourceware/ecos" \
-                                   "ftp://mirror.ac.uk/sites/sources.redhat.com/ftp/ecos" \
-                                   "http://www.mirror.ac.uk/sites/sources.redhat.com/ftp/ecos" \
-                                   "ftp://sources-redhat.mirror.redwire.net/pub/sources.redhat.com/ecos" \
-                                   "http://sources-redhat.mirror.redwire.net/ecos" \
                                    "ftp://mirrors.kernel.org/sources.redhat.com/ecos" \
                                    "http://mirrors.kernel.org/sources.redhat.com/ecos" \
-                                   "ftp://planetmirror.com/pub/sourceware/ecos" \
-                                   "http://planetmirror.com/pub/sourceware/ecos" \
+                                   "ftp://ftp.mirrorservice.org/sites/sources.redhat.com/pub/ecos" \
+                                   "http://www.mirrorservice.org/sites/sources.redhat.com/pub/ecos" \
                                    "ftp://gd.tuwien.ac.at/opsys/ecos" \
                                    "http://gd.tuwien.ac.at/opsys/ecos" \
-                                   "ftp://sunsite.ms.mff.cuni.cz/MIRRORS/sources.redhat.com/pub/ecos" \
                                    "ftp://ftp.funet.fi/pub/mirrors/sources.redhat.com/pub/ecos" \
                                    "ftp://ftp.gwdg.de/pub/misc/sources.redhat.com/ecos" \
                                    "http://ftp.gwdg.de/pub/misc/sources.redhat.com/ecos" \
                                    "ftp://ftp-stud.fht-esslingen.de/pub/Mirrors/sources.redhat.com/ecos" \
                                    "http://ftp-stud.fht-esslingen.de/pub/Mirrors/sources.redhat.com/ecos" \
-                                   "http://www.carfield.com.hk/mirror/sources.redhat.com/ecos" \
-                                   "ftp://ftp.unina.it/pub/Unix/cygnus/ecos" \
-                                   "http://ftp.unina.it/pub/Unix/cygnus/ecos" \
+                                   "ftp://bo.mirror.garr.it/mirrors/sourceware.org/ecos" \
+                                   "http://bo.mirror.garr.it/mirrors/sourceware.org/ecos" \
                                    "ftp://ftp.chg.ru/pub/sourceware/ecos" \
-                                   "ftp://ftp.sun.ac.za/mirrorsites/sourceware.cygnus.com/pub/ecos" \
-                                   "http://ftp.sun.ac.za/ftp/mirrorsites/sourceware.cygnus.com/pub/ecos" \
-                                   "ftp://ftp1.sinica.edu.tw/pub3/GNU/CYGNUS/ecos" \
+                                   "ftp://ftp.sun.ac.za/pub/mirrorsites/sourceware.org/pub/ecos" \
+                                   "http://ftp.sun.ac.za/ftp/pub/mirrorsites/sourceware.org/pub/ecos" \
+                                   "ftp://ftp.twaren.net/Unix/Sourceware/ecos" \
+                                   "http://ftp.twaren.net/Unix/Sourceware/ecos" \
+                                   "http://sources-redhat.mirrors.airband.net/ecos" \
                                    "ftp://ecos.sourceware.org/pub/ecos" \
                                   ]
 }
