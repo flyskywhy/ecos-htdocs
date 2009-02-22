@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="FRAMEBUF-PORTING"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN11188"
+NAME="AEN11205"
 ></A
 ><H2
 >Name</H2
@@ -507,6 +507,16 @@ CLASS="PROGRAMLISTING"
 ></TR
 ></TABLE
 ><P
+>These default definitions assume the most common layout of colours
+within a pixel value, so for
+example <CODE
+CLASS="FUNCTION"
+>CYG_FB_MAKE_COLOUR_16BPP_TRUE_565</CODE
+> assumes
+bits 0 to 4 hold the blue intensity, bits 5 to 10 the green, and bits
+11 to 15 the red.
+        </P
+><P
 >If the hardware does not implement a linear framebuffer then obviously
 writing the device driver will be significantly more work. The macros
 will have to perform the operations themselves instead of relying on
@@ -822,7 +832,8 @@ CLASS="LITERAL"
 and <TT
 CLASS="LITERAL"
 >32bpp_true_0888</TT
->. There are also default
+>, assuming the most common
+layout for these colour modes. There are also default
 implementations of the drawing primitives for linear framebuffers,
 with variants for the common display depths and layouts. Obviously
 non-linear framebuffers will need rather more work.

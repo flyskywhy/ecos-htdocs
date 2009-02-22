@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2008 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="FRAMEBUF-COLOUR"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN10397"
+NAME="AEN10412"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN10397"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN10400"
+NAME="AEN10415"
 ></A
 ><H2
 >Synopsis</H2
@@ -102,7 +102,7 @@ CLASS="FUNCSYNOPSIS"
 ><P
 ></P
 ><A
-NAME="AEN10401"
+NAME="AEN10416"
 ></A
 ><TABLE
 BORDER="5"
@@ -486,9 +486,8 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->an 8bpp true colour display. Bits 0 and 1 of each pixel value control
-four levels of blue intensity, bits 2 to 4 control eight levels of
-green, and bits 5 to 7 control eight levels of red.
+>an 8bpp true colour display, with three bits (eight levels) of red and
+green intensity and two bits (four levels) of blue intensity.
         </P
 ></DD
 ><DT
@@ -498,9 +497,8 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->a 16bpp true colour display. Bits 0 to 4 of each pixel value control
-the blue intensity, bits 5 to 10 the green intensity, and bits 11 to
-15 the red intensity.
+>a 16bpp true colour display with 5 bits each for red and blue and 6
+bits for green.
         </P
 ></DD
 ><DT
@@ -510,9 +508,8 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->a 16bpp true colour display, with the top bit unused. Bits 0 to 4 of
-each pixel value control the blue intensity, bits 5 to 9 the green
-intensity, and bits 10 to 14 the red intensity.
+>a 16bpp true colour display with five bits each for red, green and
+blue, and one unused bit.
         </P
 ></DD
 ><DT
@@ -522,13 +519,26 @@ CLASS="LITERAL"
 ></DT
 ><DD
 ><P
->a 32bpp true colour display, with the top byte unused. Bits 0 to 7 of
-each pixel value control the blue intensity, bits 8 to 15 the green
-intensity, and bits 16 to 23 the red intensity.
+>a 32bpp true colour display with eight bits each for red, green and
+blue and eight bits unused.
         </P
 ></DD
 ></DL
 ></DIV
+><P
+>For the true colour formats the format does not define exactly which
+bits in the pixel are used for which colour. Instead the
+<CODE
+CLASS="FUNCTION"
+>cyg_fb_make_colour</CODE
+>
+and <CODE
+CLASS="FUNCTION"
+>cyg_fb_break_colour</CODE
+> functions or the
+equivalent macros should be used to construct or decompose pixel
+values.
+    </P
 ></DIV
 ><DIV
 CLASS="REFSECT1"
@@ -709,16 +719,12 @@ offers the same colour intensities but requires four times the memory
 and four times the bandwidth.
     </P
 ><P
->There are two ways of determining a <SPAN
+>Exactly how the colour bits are organized in
+a <SPAN
 CLASS="TYPE"
 >cyg_fb_colour</SPAN
-> pixel
-value for a given colour. The first is to decode the colour format,
-for example <TT
-CLASS="LITERAL"
->CYG_FB_FORMAT_16BPP_TRUE_565</TT
->, and
-perform the appropriate arithmetic. The second is to use the supplied
+> pixel value is not
+defined by the colour format. Instead code should use the
 <CODE
 CLASS="FUNCTION"
 >cyg_fb_make_colour</CODE
