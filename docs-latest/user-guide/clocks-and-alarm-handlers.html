@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,8 +15,7 @@ Handlers</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -38,6 +38,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,6 +56,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="sample-twothreads.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -68,6 +70,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="the-ecos-configuration-tool.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -80,9 +83,9 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CLOCKS-AND-ALARM-HANDLERS"
+></A
 >Chapter 14. More Features &#8212; Clocks and Alarm
-Handlers</A
-></H1
+Handlers</H1
 ><P
 >If a program wanted to execute a task at a given time, or
 periodically, it could do it in an inefficient way by sitting in a
@@ -94,19 +97,31 @@ which allow the program to be informed at the desired time.</P
 CLASS="PRODUCTNAME"
 >eCos</SPAN
 > provides a rich timekeeping formalism, involving
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >counters</I
->, <I
+></SPAN
+>, <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >clocks</I
+></SPAN
 >,
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >alarms</I
->, and <I
+></SPAN
+>, and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >timers</I
+></SPAN
 >.  The
 precise definition, relationship, and motivation of these features is
 beyond the scope of this tutorial, but these examples illustrate how
@@ -131,16 +146,16 @@ CLASS="FILENAME"
 > (in
 the examples directory) is a short program that creates a thread that
 creates an alarm. The alarm is handled by the function
-<TT
+<CODE
 CLASS="FUNCTION"
->test_alarm_func()</TT
+>test_alarm_func()</CODE
 >, which sets a global
 variable. When the main thread of execution sees that the variable has
 changed, it prints a message.</P
 ><DIV
 CLASS="EXAMPLE"
 ><A
-NAME="AEN922"
+NAME="AEN919"
 ></A
 ><P
 ><B
@@ -237,9 +252,12 @@ void test_alarm_func(cyg_handle_t alarmH, cyg_addrword_t data)
 CLASS="COMMAND"
 >continue</B
 > at
-the (<I
+the (<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >gdb</I
+></SPAN
 >) prompt) the output should look like
 this:</P
 ><TABLE
@@ -301,31 +319,31 @@ running in simulation.</P
 ><UL
 ><LI
 ><P
->It used the <TT
+>It used the <CODE
 CLASS="FUNCTION"
->cyg_real_time_clock()</TT
+>cyg_real_time_clock()</CODE
 > function;
 this always returns a handle to the default system real-time  clock. </P
 ></LI
 ><LI
 ><P
->Clocks are based on  counters, so the function <TT
+>Clocks are based on  counters, so the function <CODE
 CLASS="FUNCTION"
->cyg_alarm_create()</TT
+>cyg_alarm_create()</CODE
 >
 uses a counter handle. The program used the function
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_clock_to_counter()</TT
+>cyg_clock_to_counter()</CODE
 > to strip the clock handle
 to the underlying counter handle. </P
 ></LI
 ><LI
 ><P
 >Once the alarm is created it is 
-initialized with <TT
+initialized with <CODE
 CLASS="FUNCTION"
->cyg_alarm_initialize()</TT
+>cyg_alarm_initialize()</CODE
 >, which
 sets the time at which the alarm should go off, as well as the period
 for repeating alarms. It is set to go off at the current time and
@@ -334,9 +352,9 @@ then to repeat every 200 ticks. </P
 ><LI
 ><P
 >The alarm handler function
-<TT
+<CODE
 CLASS="FUNCTION"
->test_alarm_func()</TT
+>test_alarm_func()</CODE
 > conforms to the guidelines for
 writing alarm handlers and other  delayed service routines: it does not invoke any
 functions which might lock the scheduler.  This is discussed in detail
@@ -357,9 +375,12 @@ CLASS="PRODUCTNAME"
 ></LI
 ><LI
 ><P
->There is a <I
+>There is a <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >critical region</I
+></SPAN
 > in this program:
 the variable <TT
 CLASS="LITERAL"
@@ -371,13 +392,13 @@ access to <TT
 CLASS="LITERAL"
 >how_many_alarms</TT
 > in the principal thread
-is protected by calls to <TT
+is protected by calls to <CODE
 CLASS="FUNCTION"
->cyg_scheduler_lock()</TT
+>cyg_scheduler_lock()</CODE
 > and
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_scheduler_unlock()</TT
+>cyg_scheduler_unlock()</CODE
 >. When the scheduler is
 locked, the alarm handler will not be invoked, so the problem is
 averted. </P
@@ -390,6 +411,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -401,6 +423,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="sample-twothreads.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -409,6 +432,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -417,6 +441,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="the-ecos-configuration-tool.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -432,6 +457,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="user-guide-programming.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

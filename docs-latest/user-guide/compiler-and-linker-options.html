@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="repository-app-build-tree.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="compiling-cpp-app.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,8 +82,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="COMPILER-AND-LINKER-OPTIONS"
->Chapter 26. Compiler and Linker Options</A
-></H1
+></A
+>Chapter 26. Compiler and Linker Options</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -143,9 +146,12 @@ NAME="COMPILING-C-APP"
 ></H1
 ><P
 >The following command lines demonstrate the
-	  <I
+	  <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >minimum</I
+></SPAN
 > set of options required to
 	  compile and link an <SPAN
 CLASS="PRODUCTNAME"
@@ -205,18 +211,24 @@ CLASS="REPLACEABLE"
 ><I
 >TARGET-</I
 ></TT
->gcc -c  -I<I
+>gcc -c  -I<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >INSTALL_DIR</I
+></SPAN
 >/include file.c
 $ <TT
 CLASS="REPLACEABLE"
 ><I
 >TARGET-</I
 ></TT
->gcc -o program file.o -L<I
+>gcc -o program file.o -L<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >INSTALL_DIR</I
+></SPAN
 >/lib -Ttarget.ld -nostdlib</PRE
 ></TD
 ></TR
@@ -230,9 +242,9 @@ CLASS="NOTE"
 >Note: </B
 >Certain targets may require extra options, for example
 	    the SPARClite architectures require the option
-	    <TT
+	    <CODE
 CLASS="OPTION"
->-mcpu=sparclite</TT
+>-mcpu=sparclite</CODE
 >. Examine the
 	    <TT
 CLASS="FILENAME"
@@ -297,6 +309,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -308,6 +321,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="repository-app-build-tree.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -316,6 +330,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -324,6 +339,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="compiling-cpp-app.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -339,6 +355,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-programming-concepts-and-techniques.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-v850-cebsb1.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-synth-i386linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -90,7 +93,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4454"
+NAME="AEN4451"
 >RedBoot Support</A
 ></H2
 ><P
@@ -110,7 +113,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4457"
+NAME="AEN4454"
 >Floppy Disk Support</A
 ></H2
 ><P
@@ -130,11 +133,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->i386-elf-objcopy -O binary app.elf app.bin</B
-></TT
+>i386-elf-objcopy -O binary app.elf app.bin</KBD
 ></PRE
 ></TD
 ></TR
@@ -162,11 +163,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->dd conv=sync if=app.bin of=/dev/fd0</B
-></TT
+>dd conv=sync if=app.bin of=/dev/fd0</KBD
 ></PRE
 ></TD
 ></TR
@@ -206,11 +205,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->mount -f -b //./a: /dev/fd0</B
-></TT
+>mount -f -b //./a: /dev/fd0</KBD
 ></PRE
 ></TD
 ></TR
@@ -225,11 +222,9 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->dd conv=sync if=app.bin of=/dev/fd0</B
-></TT
+>dd conv=sync if=app.bin of=/dev/fd0</KBD
 ></PRE
 ></TD
 ></TR
@@ -266,7 +261,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4485"
+NAME="AEN4482"
 >GRUB Bootloader Support</A
 ></H2
 ><P
@@ -294,23 +289,17 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="SCREEN"
->$ <TT
+>$ <KBD
 CLASS="USERINPUT"
-><B
->mformat a:</B
-></TT
+>mformat a:</KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->mount /mnt/floppy</B
-></TT
+>mount /mnt/floppy</KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->grub-install --root-directory=/mnt/floppy '(fd0)'</B
-></TT
+>grub-install --root-directory=/mnt/floppy '(fd0)'</KBD
 >
 Probing devices to guess BIOS drives. This may take a long time.
 Installation finished. No error reported.
@@ -319,17 +308,13 @@ Check if this is correct or not. If any of the lines is incorrect,
 fix it and re-run the script `grub-install'.
 
 (fd0)	/dev/fd0
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->cp $ECOS_REPOSITORY/packages/hal/i386/pc/current/misc/menu.lst /mnt/floppy/boot/grub</B
-></TT
+>cp $ECOS_REPOSITORY/packages/hal/i386/pc/current/misc/menu.lst /mnt/floppy/boot/grub</KBD
 >
-$ <TT
+$ <KBD
 CLASS="USERINPUT"
-><B
->umount /mnt/floppy</B
-></TT
+>umount /mnt/floppy</KBD
 ></PRE
 ></TD
 ></TR
@@ -371,7 +356,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4503"
+NAME="AEN4500"
 >Debugging FLOPPY and GRUB Applications</A
 ></H2
 ><P
@@ -412,6 +397,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -423,6 +409,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-v850-cebsb1.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -431,6 +418,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -439,6 +427,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-synth-i386linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -454,6 +443,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

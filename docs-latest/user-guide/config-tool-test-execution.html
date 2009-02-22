@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="config-tool-selecting-user-tools.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="config-tool-creating-a-shell.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,17 +82,23 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CONFIG-TOOL-TEST-EXECUTION"
->Chapter 22. Execution</A
-></H1
+></A
+>Chapter 22. Execution</H1
 ><P
 >Test executables that have been linked using the Build/Tests
-operation against the current configuration can be executed by selecting <I
+operation against the current configuration can be executed by selecting <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Tools</I
->-&gt;<I
+></SPAN
+>-&gt;<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Run
 Tests</I
+></SPAN
 >.</P
 ><P
 >When tests are run, the <SPAN
@@ -98,59 +107,98 @@ CLASS="APPLICATION"
 > looks
 for a platform name corresponding to the currently loaded hardware template.
 If no such platform is found, a dialog will be displayed for you
-to define one; this dialog is similar to that displayed by the <I
+to define one; this dialog is similar to that displayed by the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Add</I
+></SPAN
 > function
-in the <I
+in the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Tools-&gt;Platforms</I
+></SPAN
 > dialog, but
 in this case the platform name cannot be changed.</P
 ><P
 >When a test run is invoked, a property sheet is displayed,
-comprising three tabs: <I
+comprising three tabs: <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Executables</I
->, <I
+></SPAN
+>, <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Output</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Summary</I
+></SPAN
 >.</P
 ><P
 >Note that the property sheet is resizable.</P
 ><P
->Three buttons appear on the property sheet itself: <I
+>Three buttons appear on the property sheet itself: <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Run/Stop</I
->, <I
+></SPAN
+>, <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Close</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Properties</I
+></SPAN
 >.</P
 ><P
->The <I
+>The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Run</I
+></SPAN
 > button is used to initiate a
-test run. Those tests selected on the <I
+test run. Those tests selected on the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Executables</I
+></SPAN
 > tab
-are run, and the output recorded on the <I
+are run, and the output recorded on the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Output</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Summary</I
+></SPAN
 > tabs.
-During the course of a run, the <I
+During the course of a run, the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Run</I
+></SPAN
 > button
 changes to &#8220;Stop&#8221;. The button may be used to interrupt
 a test run at any point.</P
@@ -163,15 +211,18 @@ NAME="CONFIG-TOOL-TEST-PROPERTIES"
 >Properties</A
 ></H1
 ><P
->The <I
+>The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Properties</I
+></SPAN
 > button is used to change
 the connectivity properties for the test run.</P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN1576"
+NAME="AEN1573"
 ></A
 ><P
 ><B
@@ -186,7 +237,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1579"
+NAME="AEN1576"
 >Download Timeout</A
 ></H2
 ><P
@@ -226,7 +277,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1590"
+NAME="AEN1587"
 >Run time Timeout</A
 ></H2
 ><P
@@ -266,19 +317,25 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1601"
+NAME="AEN1598"
 >Connection</A
 ></H2
 ><P
->The <I
+>The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Connection</I
+></SPAN
 > controls may be used
 	    to specify how the target board is to be accessed.</P
 ><P
->If the target board is connected using a serial cable, the <I
+>If the target board is connected using a serial cable, the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Serial</I
+></SPAN
 > radio
 button should be checked. In this case you can select a port (COM1,
 COM2, &#8230;) and an appropriate baud rate using drop-list boxes.</P
@@ -293,23 +350,32 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1608"
+NAME="AEN1605"
 >Executables Tab</A
 ></H2
 ><P
 >This is used to adjust the set of tests available for execution.
 A check box against each executable name indicates whether that
-executable will be included when the <I
+executable will be included when the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Run</I
+></SPAN
 > button
-is pressed. The <I
+is pressed. The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Check All</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Uncheck
 All</I
+></SPAN
 > buttons may be used to check or uncheck all items.</P
 ><P
 >When the property sheet is first displayed, it will be pre-populated
@@ -318,7 +384,7 @@ operation against the current configuration. </P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN1615"
+NAME="AEN1612"
 ></A
 ><P
 ><B
@@ -330,45 +396,69 @@ SRC="pix/run-tests.png"></P
 ></DIV
 ><P
 >You can right-click in the window to display a context menu
-containing <I
+containing <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Add</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Remove</I
+></SPAN
 > items.
-Clicking <I
+Clicking <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Remove</I
+></SPAN
 >  will remove those executables
-selected. Clicking <I
+selected. Clicking <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Add</I
+></SPAN
 > will display a dialog
-box that allows you to add to the set of items. Equivalently the <I
+box that allows you to add to the set of items. Equivalently the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Add</I
+></SPAN
 > button
-may be used to add executables, and the <I
+may be used to add executables, and the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >DEL</I
+></SPAN
 > key
 may be used to remove them.</P
 ><P
->You can use the <I
+>You can use the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Add from Folder</I
+></SPAN
 > button
 to add a number of executables in a specified folder (optionally
-including subfolders, if you click on <I
+including subfolders, if you click on <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Yes</I
+></SPAN
 > when
 asked).</P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN1628"
+NAME="AEN1625"
 ></A
 ><P
 ><B
@@ -384,7 +474,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1631"
+NAME="AEN1628"
 >Output Tab</A
 ></H2
 ><P
@@ -397,7 +487,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1634"
+NAME="AEN1631"
 >Summary Tab</A
 ></H2
 ><P
@@ -409,40 +499,55 @@ is displayed:</P
 ><UL
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Time</I
+></SPAN
 > - the date and time of execution</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Host</I
+></SPAN
 > - the host name of the machine
 from which the test was downloaded</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Platform</I
+></SPAN
 > - the platform on which
 the test was executed</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Executable</I
+></SPAN
 > - the executable (file
 name) of the test executed</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Status</I
+></SPAN
 > - the result of executing
 the test. This will be one of the following:</P
 ></LI
@@ -484,33 +589,45 @@ the test. This will be one of the following:</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Size</I
+></SPAN
 > - the size &#0091;stripped/unstripped&#0093; of
 the test executed</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Download</I
+></SPAN
 > - the download time &#0091;mm:ss/mm:ss&#0093; used.
 The first of the two times displayed represents the actual time
 used: the second the limit time.</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Elapsed</I
+></SPAN
 > - the elapsed time &#0091;mm:ss&#0093; used.</P
 ></LI
 ><LI
 ><P
->			<I
+>			<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Execution</I
+></SPAN
 > - the execution time
  &#0091;mm:ss/mm:ss&#0093; used. The first of the
 two times displayed represents the actual time used: the second
@@ -528,6 +645,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -539,6 +657,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="config-tool-selecting-user-tools.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -547,6 +666,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -555,6 +675,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="config-tool-creating-a-shell.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -570,6 +691,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="the-ecos-configuration-tool.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

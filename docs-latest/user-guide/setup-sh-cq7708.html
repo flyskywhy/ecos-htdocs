@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-sh-edk7708.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-sh-hs7729pci.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -87,7 +90,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4162"
+NAME="AEN4159"
 >Preparing the board</A
 ></H2
 ><P
@@ -133,7 +136,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4168"
+NAME="AEN4165"
 >eCos GDB Stubs</A
 ></H2
 ><P
@@ -145,7 +148,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4171"
+NAME="AEN4168"
 >Preparing the GDB stubs</A
 ></H3
 ><P
@@ -158,7 +161,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4174"
+NAME="AEN4171"
 >Building the GDB stub image with the eCos Configuration Tool</A
 ></H3
 ><P
@@ -168,41 +171,56 @@ TYPE="1"
 ><LI
 ><P
 >Start with a new document - selecting the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >File-&#62;New</I
+></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
+></SPAN
 >
  menu item, and then select the SH3 cq7708 hardware.</P
 ></LI
 ><LI
 ><P
 >While still displaying the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build-&#62;Templates</I
+></SPAN
 >
  dialog box, select the stubs package template to build a GDB stub.
 Click 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >OK</I
+></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 > Build eCos stubs using 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build-&#62;Library</I
+></SPAN
 >.</P
 ></LI
 ><LI
@@ -226,7 +244,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN4194"
+NAME="AEN4191"
 >Building the GDB stub image with ecosconfig</A
 ></H3
 ><P
@@ -297,7 +315,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4209"
+NAME="AEN4206"
 >Programming the stubs in EPROM/FLASH</A
 ></H2
 ><P
@@ -327,9 +345,12 @@ CLASS="PROGRAMLISTING"
 use method 1, since it is simpler. Method 2 is unsupported and requires
 a bit of fiddling.</P
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Method 1: </I
+></SPAN
 > </P
 ><P
 >Program the binary stub image into two EPROMs, E and O. EPROM
@@ -344,9 +365,12 @@ to ON and SW2-1 to OFF.</P
 ><P
 ></P
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Method2: </I
+></SPAN
 > </P
 ><P
 >Assuming that the stub binary is smaller than 32 KB, you can
@@ -400,6 +424,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -411,6 +436,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-sh-edk7708.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -419,6 +445,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -427,6 +454,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-sh-hs7729pci.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -442,6 +470,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

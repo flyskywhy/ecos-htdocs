@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="creating-build-tree.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="building-the-system.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -84,25 +87,28 @@ NAME="CONFLICTS-AND-CONSTRAINTS"
 ></H1
 ><P
 >Configuration options are not completely independent. For example
-the C library's <TT
+the C library's <CODE
 CLASS="FUNCTION"
->strtod()</TT
-> and <TT
+>strtod()</CODE
+> and <CODE
 CLASS="FUNCTION"
->atof()</TT
+>atof()</CODE
 >
 functions rely on the math library package to provide certain functionality. If the math library package is removed then the C
-library can no longer provide these functions. Each package describes constraints like these in CDL <I
+library can no longer provide these functions. Each package describes constraints like these in CDL <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >"requires"</I
+></SPAN
 > properties. If a constraint is not satisfied, then the configuration contains a conflict. For any given conflict there can
 be several resolution options. For example, it would be possible to add the math library package back to the
-configuration, or to disable the <TT
+configuration, or to disable the <CODE
 CLASS="FUNCTION"
->strtod()</TT
-> and <TT
+>strtod()</CODE
+> and <CODE
 CLASS="FUNCTION"
->atof()</TT
+>atof()</CODE
 > functions.</P
 ><P
 >The <SPAN
@@ -117,19 +123,19 @@ any attempt at building <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
 > is likely to fail. In exceptional cases it is possible to override this by using e.g. the
-<TT
+<CODE
 CLASS="OPTION"
->--ignore-errors</TT
+>--ignore-errors</CODE
 > qualifier with ecosconfig. </P
 ><P
 >Many constraints are fairly simple in nature, and the configuration tools contain an inference engine which can
 resolve the associated conflicts automatically. For example, if the math library package is removed then the
-inference engine can resolve the resulting conflict by disabling the configuration option for <TT
+inference engine can resolve the resulting conflict by disabling the configuration option for <CODE
 CLASS="FUNCTION"
->strtod()</TT
-> and <TT
+>strtod()</CODE
+> and <CODE
 CLASS="FUNCTION"
->atof()</TT
+>atof()</CODE
 >. All
 such changes will be reported. Sometimes the inference engine cannot resolve a conflict, for example it is not
 allowed to override a change that has been made explicitly by the user. Sometimes it will find a solution which does
@@ -172,9 +178,9 @@ U CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, new inferred value 0 </PRE
 ecosconfig reports that this change caused three conflicts, all in the C library. The inference engine was able to
 resolve all the conflicts and update the relevant configuration options accordingly. </P
 ><P
->To suppress the inference engine <TT
+>To suppress the inference engine <CODE
 CLASS="OPTION"
->--no-resolve</TT
+>--no-resolve</CODE
 > can be used: 
 <TABLE
 BORDER="5"
@@ -199,9 +205,9 @@ Three unresolved conflicts are reported.</P
 CLASS="COMMAND"
 >check</B
 > command can be used to get the current state of the
-configuration, and the <TT
+configuration, and the <CODE
 CLASS="OPTION"
->--verbose</TT
+>--verbose</CODE
 > qualifier will provide additional information: </P
 ><TABLE
 BORDER="5"
@@ -249,9 +255,9 @@ U CYGSEM_LIBC_STDIO_PRINTF_FLOATING_POINT, new inferred value 0 </PRE
 ></TABLE
 ></P
 ><P
->The current configuration is again conflict-free and it is possible to generate a build tree. The <TT
+>The current configuration is again conflict-free and it is possible to generate a build tree. The <CODE
 CLASS="OPTION"
->--quiet</TT
+>--quiet</CODE
 > qualifier can
 be used to suppress the change messages, if desired.</P
 ><P
@@ -336,6 +342,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -347,6 +354,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="creating-build-tree.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -355,6 +363,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -363,6 +372,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="building-the-system.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -378,6 +388,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="manual-configuration.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

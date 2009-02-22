@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="cdl-configuration-items.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="cdl-templates.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -89,18 +92,27 @@ NAME="CDL-CONFLICTS"
 	  the one is required the other cannot be removed.  Coherence
 	  is policed by means of consistency rules (in particular, the
 	  goal expressions that appear as CDL items
-	  <I
+	  <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >requires</I
+></SPAN
 > and
-	  <I
+	  <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >active_if</I
+></SPAN
 > attributes [see
 	  above]).  A violation of consistency rules creates a
-	  <I
+	  <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >conflict</I
+></SPAN
 >, which must be resolved in
 	  order to ensure a consistent configuration. Conflict
 	  resolution can be performed manually or with the assistance
@@ -114,51 +126,72 @@ CLASS="PRODUCTNAME"
 ><UL
 ><LI
 ><P
->An <I
+>An <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >unresolved</I
+></SPAN
 > conflict means that
 there is a reference to an entity that is not yet in the current
 configuration </P
 ></LI
 ><LI
 ><P
->An <I
+>An <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >illegal value</I
+></SPAN
 > conflict is caused
 when a configuration item is set to a value that is not permitted
-(that is, a <I
+(that is, a <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >legal_values</I
+></SPAN
 > goal expression
 is failing) </P
 ></LI
 ><LI
 ><P
->An <I
+>An <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >evaluation exception</I
+></SPAN
 > conflict
 is caused when the evaluation of an expression would fail (for example,
 because of a division by zero) </P
 ></LI
 ><LI
 ><P
->An <I
+>An <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >unsatisfied goal</I
+></SPAN
 > conflict is caused
-by a failing <I
+by a failing <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >requires</I
+></SPAN
 > goal expression </P
 ></LI
 ><LI
 ><P
->A <I
+>A <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >bad data</I
+></SPAN
 > conflict arises only rarely,
 and corresponds to badly constructed CDL.  Such a conflict can only
 be resolved by reference to the CDL writer.</P
@@ -170,6 +203,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -181,6 +215,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="cdl-configuration-items.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -189,6 +224,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -197,6 +233,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="cdl-templates.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -212,6 +249,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="cdl-concepts.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

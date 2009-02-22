@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="programming-with-ecos.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="using-configtool-windows-linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,11 +82,11 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CONFIGURING-AND-BUILDING-ECOS-FROM-SOURCE"
+></A
 >Chapter 11. Configuring and Building <SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
-> from Source</A
-></H1
+> from Source</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -164,87 +167,55 @@ NAME="USER-GUIDE-DOWNLOAD-METHODS"
 ><TABLE
 BORDER="1"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download method</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >HAL configuration</TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Burn hardware ROM</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;ROM or ROMRAM start-up</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download to ROM emulator</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;ROM or ROMRAM start-up</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download to board with ROM Monitor</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;RAM start-up</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download to simulator without ROM Monitor</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;ROM start-up</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download to simulator with ROM Monitor</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;RAM start-up</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Download to simulator ignoring devices</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;SIM configuration</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Run synthetic target</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >&nbsp;RAM start-up</TD
 ></TR
 ></TBODY
@@ -275,9 +246,12 @@ only download it to the simulator if
 you are already running RedBoot in the simulator,
 as described in the toolchain documentation
 or you load through the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >SID </I
+></SPAN
 >
 GDB debugging component.  This is not the same as the simulated
 stub, since it does not require a target program to be running to
@@ -308,14 +282,14 @@ The main use for a ``simulation'' configuration
 is if you are trying to work around problems with the device drivers
 or with the simulator.  Also note that when using a TX39 system configured
 for simulator start-up you should then invoke the simulator with 
-the <TT
+the <CODE
 CLASS="OPTION"
->--board=jmr3904pal</TT
+>--board=jmr3904pal</CODE
 >
 option instead of 
-<TT
+<CODE
 CLASS="OPTION"
->--board=jmr3904</TT
+>--board=jmr3904</CODE
 ></P
 ></BLOCKQUOTE
 ></DIV
@@ -344,6 +318,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -355,6 +330,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="programming-with-ecos.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -363,6 +339,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -371,6 +348,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="using-configtool-windows-linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -389,6 +367,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="user-guide-programming.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

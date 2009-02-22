@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -14,8 +15,7 @@ Board Hardware Setup</TITLE
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -39,6 +39,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -56,6 +57,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="setup-arm-cma230.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -69,6 +71,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="setup-arm-ep7212.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -139,15 +142,18 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3838"
+NAME="AEN3835"
 >Building programs for programming into FLASH</A
 ></H2
 ><P
 >If your application is to be run directly from FLASH, you
 must configure eCos appropriately for "ROM" startup. This can be
-done in the <I
+done in the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >eCos Configuration Tool</I
+></SPAN
 > by setting
 the "Startup type" HAL option to "ROM". If using the ecosconfig utility,
 set the user_value of the CYG_HAL_STARTUP
@@ -179,7 +185,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3845"
+NAME="AEN3842"
 >Building the GDB Stub FLASH ROM images</A
 ></H2
 ><P
@@ -197,7 +203,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3849"
+NAME="AEN3846"
 >Building the ROM images with the eCos Configuration Tool</A
 ></H2
 ><P
@@ -207,24 +213,36 @@ TYPE="1"
 ><LI
 ><P
 >Start with a new document - selecting the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >File</I
->-&#62;<I
+></SPAN
+>-&#62;<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >New</I
+></SPAN
 >
  menu item if necessary to do this.</P
 ></LI
 ><LI
 ><P
 >Choose the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build</I
->-&#62;<I
+></SPAN
+>-&#62;<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Templates</I
+></SPAN
 >
  menu item, and then select the "Cirrus Logic development board"
 hardware.</P
@@ -232,34 +250,49 @@ hardware.</P
 ><LI
 ><P
 >While still displaying the 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build</I
+></SPAN
 >
 -&#62;
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Templates</I
+></SPAN
 >
  dialog box, select either the "stubs" package template to build
 a GDB stub image, or the "cygmon" template to build the CygMon ROM
 Monitor. Click 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >OK</I
+></SPAN
 >.</P
 ></LI
 ><LI
 ><P
 >Build eCos using 
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build</I
+></SPAN
 >
 -&#62;
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Library</I
+></SPAN
 ></P
 ></LI
 ><LI
@@ -276,7 +309,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3871"
+NAME="AEN3868"
 >Building the ROM images with ecosconfig</A
 ></H2
 ><P
@@ -349,7 +382,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3886"
+NAME="AEN3883"
 >Loading the ROM Image into On-board Flash</A
 ></H2
 ><P
@@ -460,7 +493,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3914"
+NAME="AEN3911"
 >Building the Flash Downloader on Linux</A
 ></H2
 ><P
@@ -510,7 +543,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN3922"
+NAME="AEN3919"
 >Developing eCos Programs with the ARM Multi-ICE</A
 ></H2
 ><P
@@ -518,10 +551,13 @@ NAME="AEN3922"
 	    Multi-processor EmbeddedICE(tm), also known as the
 	    Multi-ICE. Full instructions on how to install and use the
 	    Multi-ICE in conjunction with GDB are provided in the
-	    <I
+	    <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >"GNUPro Toolkit Reference for eCos
 	      ARM/Thumb"</I
+></SPAN
 > manual. However, the following
 	    platform-specific details should be noted.</P
 ><P
@@ -598,6 +634,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -609,6 +646,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="setup-arm-cma230.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -617,6 +655,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -625,6 +664,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="setup-arm-ep7212.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -640,6 +680,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="appendix-target-setup.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

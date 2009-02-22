@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="configuring-and-building-ecos-from-source.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -70,6 +72,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="using-ecosconfig-on-linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -111,25 +114,40 @@ CLASS="APPLICATION"
 HREF="using-configtool-windows-linux.html#PROGRAMMING-FIGURE-CONFIGURATION-TOOL"
 >Figure 11-1</A
 >)
-has five main elements: the <I
+has five main elements: the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >configuration window</I
+></SPAN
 >,
-the <I
+the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >conflicts window</I
+></SPAN
 >,
-the <I
+the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >properties window</I
->, the <I
+></SPAN
+>, the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >short
 description window</I
+></SPAN
 >,
-and the <I
+and the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >output window</I
+></SPAN
 >.</P
 ><DIV
 CLASS="FIGURE"
@@ -187,9 +205,12 @@ for the target</B
 SRC="pix/ARMStartup01.png"></P
 ></DIV
 ><P
->Next, select the <I
+>Next, select the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build-&#62;Library</I
+></SPAN
 > menu
 item to start building <SPAN
 CLASS="PRODUCTNAME"
@@ -221,9 +242,12 @@ NAME="FIGURE-SELECTING-THE-BUILD-LIBRARY-MENU-ITEM"
 SRC="pix/build-lib01.png"></P
 ></DIV
 ><P
->The <I
+>The <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Save As</I
+></SPAN
 > dialog box will appear, asking
 you to specify a directory in which to place your save file. You
 can use the default, but it is a good idea to make a subdirectory,
@@ -234,7 +258,7 @@ CLASS="FILENAME"
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN619"
+NAME="AEN616"
 ></A
 ><P
 ><B
@@ -267,17 +291,23 @@ CLASS="REPLACEABLE"
 ></TT
 >gcc</B
 >) using a
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build Tools</I
+></SPAN
 > dialog box (as shown in <A
 HREF="using-configtool-windows-linux.html#FIGURE-BUILD-TOOLS-DIALOG"
 >Figure 11-6</A
 >). You can select a location from
 the drop down list, browse to the directory using the
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Browse</I
+></SPAN
 > button, or type in the location of the
 build tools manually.</P
 ><DIV
@@ -305,22 +335,31 @@ CLASS="COMMAND"
 <B
 CLASS="COMMAND"
 >ls</B
->) using a <I
+>) using a <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >User Tools</I
+></SPAN
 > dialog
 box (as shown in <A
 HREF="using-configtool-windows-linux.html#FIGURE-USER-TOOLS-DIALOG"
 >Figure 11-7</A
 >). As with
-the <I
+the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build Tools</I
+></SPAN
 > dialog, you can select a location
 from the drop down list, browse to the directory using the
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Browse</I
+></SPAN
 > button, or type in the location of the
 user tools manually. Note that on Linux, this will often be
 unnecessary as the tools will already be on your PATH.</P
@@ -369,31 +408,46 @@ CLASS="PRODUCTNAME"
 >eCos</SPAN
 > tests for your particular configuration. </P
 ><P
->You can do this by selecting <I
+>You can do this by selecting <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build</I
-> -&#62; <I
+></SPAN
+> -&#62; <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Tests</I
+></SPAN
 >.
-Notice that you could have selected <I
+Notice that you could have selected <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Tests</I
+></SPAN
 > instead
-of <I
+of <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Library</I
+></SPAN
 > in the earlier step and it would
-have built <I
+have built <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >both</I
+></SPAN
 > the library and the tests,
 but this would increase the build time substantially, and if you
 do not need to build the tests it is unnecessary.</P
 ><DIV
 CLASS="FIGURE"
 ><A
-NAME="AEN660"
+NAME="AEN657"
 ></A
 ><P
 ><B
@@ -416,6 +470,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -427,6 +482,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="configuring-and-building-ecos-from-source.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -435,6 +491,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -443,6 +500,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="using-ecosconfig-on-linux.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -461,6 +519,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="configuring-and-building-ecos-from-source.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

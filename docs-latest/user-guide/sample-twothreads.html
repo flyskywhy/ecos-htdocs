@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -38,6 +38,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -55,6 +56,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="building-and-running-sample-appliations.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -68,6 +70,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="clocks-and-alarm-handlers.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -100,7 +103,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN883"
+NAME="AEN880"
 ><SPAN
 CLASS="PRODUCTNAME"
 >eCos</SPAN
@@ -183,9 +186,12 @@ void simple_program(cyg_addrword_t data)
 CLASS="COMMAND"
 >continue</B
 > at
-the (<I
+the (<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >gdb</I
+></SPAN
 >) prompt) the output should look like
 this:</P
 ><TABLE
@@ -240,33 +246,39 @@ HREF="sample-twothreads.html#FIGURE-TWOTHREADS-WITH-SIMPLE-PRINTS"
 > shows how this
 multitasking program executes.  Note that apart from the thread
 creation system calls, this program also creates and uses a
-<I
+<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mutex</I
+></SPAN
 > for synchronization
-between the <TT
+between the <CODE
 CLASS="FUNCTION"
->printf()</TT
+>printf()</CODE
 > calls in the two
 threads. This is because the C library standard I/O (by default) is
 configured not to be thread-safe, which means that if more than one
 thread is using standard I/O they might corrupt each other. This is
-fixed by a mutual exclusion (or <I
+fixed by a mutual exclusion (or <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >mutex</I
+></SPAN
 >) lockout
-mechanism: the threads do not call <TT
+mechanism: the threads do not call <CODE
 CLASS="FUNCTION"
->printf()</TT
+>printf()</CODE
 > until
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_lock()</TT
+>cyg_mutex_lock()</CODE
 > has returned, which only happens
 when the other thread calls
-<TT
+<CODE
 CLASS="FUNCTION"
->cyg_mutex_unlock()</TT
+>cyg_mutex_unlock()</CODE
 >.</P
 ><P
 >You could avoid using the mutex by configuring the C library to
@@ -296,6 +308,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -307,6 +320,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="building-and-running-sample-appliations.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -315,6 +329,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -323,6 +338,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="clocks-and-alarm-handlers.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -338,6 +354,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="building-and-running-sample-appliations.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="config-tool-settings.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="config-tool-updating-configuration.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -79,8 +82,8 @@ CLASS="CHAPTER"
 ><H1
 ><A
 NAME="CONFIG-TOOL-SCREEN-LAYOUT"
->Chapter 18. Screen Layout</A
-></H1
+></A
+>Chapter 18. Screen Layout</H1
 ><P
 >The following windows are available within the
       <SPAN
@@ -120,7 +123,7 @@ CLASS="APPLICATION"
 >The layout of the windows may be adjusted to suit your
 	preferences: see <A
 HREF="config-tool-settings.html"
->the section called <I
+>the Section called <I
 >Settings</I
 > in Chapter 17</A
 >.</P
@@ -154,13 +157,19 @@ CLASS="PRODUCTNAME"
 >To activate a cell, simply click on it: it will assume a sunken
 appearance and data can then be edited in the cell. To terminate
 in-cell editing, click elsewhere in the configuration window or
-press <I
+press <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >ENTER</I
+></SPAN
 >. To discard the partial results
-of in-cell editing and revert to the previous value, press <I
+of in-cell editing and revert to the previous value, press <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >ESCAPE</I
+></SPAN
 >.</P
 ><P
 ><P
@@ -173,7 +182,7 @@ SRC="pix/configwin.png"></P
 ><DIV
 CLASS="TABLE"
 ><A
-NAME="AEN1285"
+NAME="AEN1282"
 ></A
 ><P
 ><B
@@ -182,15 +191,11 @@ NAME="AEN1285"
 ><TABLE
 BORDER="1"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Cell Type</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 ><P
 >Data Accepted</P
 ></TH
@@ -199,32 +204,20 @@ VALIGN="TOP"
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Integer</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Decimal or hexadecimal values</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Floating Point</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Floating point values</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >String</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Any</TD
 ></TR
 ></TBODY
@@ -240,7 +233,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1304"
+NAME="AEN1301"
 >Disabled items</A
 ></H2
 ><P
@@ -253,7 +246,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1307"
+NAME="AEN1304"
 >Right-Clicking</A
 ></H3
 ><P
@@ -265,9 +258,12 @@ NAME="AEN1307"
 ><UL
 ><LI
 ><P
-> <I
+> <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Properties</I
+></SPAN
 > &#8211;
 		  information relating to the currently selected item
 		  is displayed. The information is equivalent to that
@@ -276,18 +272,24 @@ CLASS="EMPHASIS"
 ></LI
 ><LI
 ><P
-> <I
+> <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Restore Defaults</I
+></SPAN
 > -
 		  the default value of the currently selected item is
 		  restored.</P
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Visit Documentation</I
+></SPAN
 >
 		  - causes the HTML page most closely relating to the
 		  currently selected item to be displayed. This has
@@ -296,21 +298,27 @@ CLASS="EMPHASIS"
 ></LI
 ><LI
 ><P
-> <I
+> <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >View Header File</I
+></SPAN
 >
 		  &#8211; this causes the file containing the items to
 		  be displayed. This is equivalent to double-clicking
 		  on the File property in the Properties Window. The
 		  viewer used for this purpose may be changed using
-		  the <I
+		  the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >View-&gt;Settings</I
+></SPAN
 > menu item
 		  (see <A
 HREF="config-tool-settings.html"
->the section called <I
+>the Section called <I
 >Settings</I
 > in Chapter 17</A
 >).
@@ -321,14 +329,20 @@ HREF="config-tool-settings.html"
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Unload Package</I
+></SPAN
 > -
 		  this is equivalent to using the
-		  <I
+		  <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Build-&gt;Packages</I
+></SPAN
 > menu item to
 		  select and unload the package in
 		  question.</P
@@ -341,7 +355,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1329"
+NAME="AEN1326"
 >Conflicts Window</A
 ></H2
 ><P
@@ -350,7 +364,7 @@ NAME="AEN1329"
 	    the requirements between configuration items expressed in
 	    the CDL. See <A
 HREF="cdl-conflicts.html"
->the section called <I
+>the Section called <I
 >Conflicts</I
 > in Chapter 24</A
 > .<P
@@ -364,9 +378,12 @@ SRC="pix/conflictwin.png"></P
 ><UL
 ><LI
 ><P
->		<I
+>		<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Item</I
+></SPAN
 ></P
 ><P
 >This is the macro name of the first item involved
@@ -375,9 +392,12 @@ CLASS="EMPHASIS"
 ><LI
 ><P
 >			
-		<I
+		<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Conflict</I
+></SPAN
 ></P
 ><P
 >This is a description of the conflict type. The currently
@@ -388,9 +408,12 @@ CLASS="EMPHASIS"
 ><LI
 ><P
 >			
-		<I
+		<SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Property</I
+></SPAN
 ></P
 ><P
 >This contains a description of the configuration
@@ -404,23 +427,32 @@ CLASS="EMPHASIS"
 ><P
 >To locate the item involved in the
 conflict, double-click in the first or third column, or
-right-click over the item and choose <I
+right-click over the item and choose <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Locate</I
+></SPAN
 >
 from the popup menu.</P
 ><P
->You can use the <I
+>You can use the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Tools-&gt;Resolve Conflicts</I
+></SPAN
 > menu
-item, or right-click over the item and select <I
+item, or right-click over the item and select <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Resolve</I
+></SPAN
 > from the popup menu,
 to resolve conflicts &#8212; <A
 HREF="config-tool-using-templates.html#RESOLVING-CONFLICTS"
->the section called <I
+>the Section called <I
 >Resolving conflicts</I
 > in Chapter 19</A
 >.</P
@@ -429,7 +461,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1355"
+NAME="AEN1352"
 >Output Window</A
 ></H3
 ><P
@@ -460,7 +492,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1364"
+NAME="AEN1361"
 >Properties Window</A
 ></H3
 ><P
@@ -481,9 +513,12 @@ SRC="pix/propwin.png"></P
 ><UL
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >URL</I
+></SPAN
 > &#8211;
 		  double-clicking on a URL property causes the
 		  referenced HTML page to be displayed. This has the
@@ -493,16 +528,22 @@ CLASS="EMPHASIS"
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >File</I
+></SPAN
 > &#8211;
 		  double-clicking on a File property in a saved
 		  configuration causes the File to be displayed. The
 		  viewer used for this purpose may be changed using
-		  the <I
+		  the <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >View-&gt;Settings</I
+></SPAN
 > menu
 		  item. Note that this operation is only possible when
 		  the current configuration is saved, in order to
@@ -516,7 +557,7 @@ CLASS="SECT3"
 ><H3
 CLASS="SECT3"
 ><A
-NAME="AEN1378"
+NAME="AEN1375"
 >Short Description Window</A
 ></H3
 ><P
@@ -534,6 +575,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -545,6 +587,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="config-tool-settings.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -553,6 +596,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -561,6 +605,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="config-tool-updating-configuration.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -576,6 +621,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="the-ecos-configuration-tool.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD

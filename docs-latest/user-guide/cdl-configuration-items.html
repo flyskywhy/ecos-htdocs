@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2004 Red Hat, Inc.                                -->
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -6,6 +6,7 @@
 <!-- Distribution of the work or derivative of the work in any       -->
 <!-- standard (paper) book form is prohibited unless prior           -->
 <!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <HTML
 ><HEAD
 ><TITLE
@@ -13,8 +14,7 @@
 ><meta name="MSSmartTagsPreventParsing" content="TRUE">
 <META
 NAME="GENERATOR"
-CONTENT="Modular DocBook HTML Stylesheet Version 1.64
-"><LINK
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
 REL="HOME"
 TITLE="eCos User Guide"
 HREF="ecos-user-guide.html"><LINK
@@ -37,6 +37,7 @@ ALINK="#0000FF"
 ><DIV
 CLASS="NAVHEADER"
 ><TABLE
+SUMMARY="Header navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -54,6 +55,7 @@ ALIGN="left"
 VALIGN="bottom"
 ><A
 HREF="cdl-packages.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -67,6 +69,7 @@ ALIGN="right"
 VALIGN="bottom"
 ><A
 HREF="cdl-conflicts.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -83,9 +86,12 @@ NAME="CDL-CONFIGURATION-ITEMS"
 >Configuration Items</A
 ></H1
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Configuration items</I
+></SPAN
 > are the
 	  individual entities that form a configuration.  Each item
 	  corresponds to the setting of a C pre-processor macro (for
@@ -107,18 +113,24 @@ CLASS="PRODUCTNAME"
 ><UL
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >None</I
+></SPAN
 >: such entities serve only as
 place holders in the hierarchy, allowing other entities to be grouped
 more easily.</P
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Boolean</I
+></SPAN
 > entities are the most common
 flavor; they correspond to units of functionality that can be either
 enabled or disabled.  If the entity is enabled then there will be
@@ -126,9 +138,12 @@ a #define; code will check the setting using, for example, #ifdef</P
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Data</I
+></SPAN
 > entities encapsulate some arbitrary
 data. Other properties such as a set or range of legal values can
 be used to constrain the actual values, for example to an integer
@@ -136,16 +151,25 @@ or floating point value within a certain range.</P
 ></LI
 ><LI
 ><P
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Booldata</I
+></SPAN
 > entities combine the attributes
-of <I
+of <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Boolean</I
-> and <I
+></SPAN
+> and <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Data</I
+></SPAN
 >: they
 can be enabled or disabled and, if enabled, will hold a data value.</P
 ></LI
@@ -161,7 +185,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1910"
+NAME="AEN1907"
 >Expressions</A
 ></H2
 ><P
@@ -179,19 +203,13 @@ NAME="CDL-EXPRESSIONS"
 ><TABLE
 BORDER="1"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Expression Type</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Result</TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
 >Common Use (see <A
 HREF="cdl-configuration-items.html#TABLE-CONFIGURATION-PROPERTIES"
 >Table 24-2</A
@@ -201,45 +219,27 @@ HREF="cdl-configuration-items.html#TABLE-CONFIGURATION-PROPERTIES"
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Ordinary</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >A single value</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >legal_values property</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >List</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >A range of
 		values (for example &#8220;1 to 10&#8221;)</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >legal_values property </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Goal</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >True or False</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >requires and active_if properties</TD
 ></TR
 ></TBODY
@@ -251,7 +251,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1935"
+NAME="AEN1932"
 >Properties</A
 ></H2
 ><P
@@ -269,162 +269,122 @@ NAME="TABLE-CONFIGURATION-PROPERTIES"
 ><TABLE
 BORDER="1"
 CLASS="CALSTABLE"
-><THEAD
+><COL><COL><THEAD
 ><TR
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Property</I
+></SPAN
 ></TH
 ><TH
-ALIGN="LEFT"
-VALIGN="TOP"
+><SPAN
+CLASS="emphasis"
 ><I
 CLASS="EMPHASIS"
 >Use </I
+></SPAN
 ></TH
 ></TR
 ></THEAD
 ><TBODY
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Flavor</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >The &#8220;type&#8221; of the item, as
 		  described above </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Enabled</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Whether
 		  the item is enabled </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Current_value</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >The current value of the item </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Default_value</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >An ordinary expression defining the default value of the
 		    item</TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Legal_values</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >A
 		  list expression defining the values the item may hold (for example,
 		  1 to10) </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Active_if</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >A
 		  goal expression denoting the requirement for this item to be active
-(see below: <I
+(see below: <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Inactive Items</I
+></SPAN
 >) </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Requires</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >A goal
 expression denoting requirements this item places on others (see
-below: <I
+below: <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >Conflicts</I
+></SPAN
 >) </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Calculated</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Whether
 the item as non-modifiable </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Macro</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >The corresponding
 C pre-processor macro </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >File</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >The C header
 file in which the macro is defined </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >URL</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >The URL of
 a documentation page describing the item </TD
 ></TR
 ><TR
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Hardware</TD
 ><TD
-ALIGN="LEFT"
-VALIGN="TOP"
 >Indicates
 that a particular package is related to specific hardware</TD
 ></TR
@@ -443,14 +403,17 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN1988"
+NAME="AEN1985"
 >Inactive Items</A
 ></H2
 ><P
 >Descendants of an item that is disabled are inactive: their
-values may not be changed.  Items may also become <I
+values may not be changed.  Items may also become <SPAN
+CLASS="emphasis"
+><I
 CLASS="EMPHASIS"
 >inactive</I
+></SPAN
 > if
 an active_if expression is used to make the item dependent
 on an expression involving other items. </P
@@ -461,6 +424,7 @@ CLASS="NAVFOOTER"
 ><HR
 ALIGN="LEFT"
 WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
 WIDTH="100%"
 BORDER="0"
 CELLPADDING="0"
@@ -472,6 +436,7 @@ ALIGN="left"
 VALIGN="top"
 ><A
 HREF="cdl-packages.html"
+ACCESSKEY="P"
 >Prev</A
 ></TD
 ><TD
@@ -480,6 +445,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="ecos-user-guide.html"
+ACCESSKEY="H"
 >Home</A
 ></TD
 ><TD
@@ -488,6 +454,7 @@ ALIGN="right"
 VALIGN="top"
 ><A
 HREF="cdl-conflicts.html"
+ACCESSKEY="N"
 >Next</A
 ></TD
 ></TR
@@ -503,6 +470,7 @@ ALIGN="center"
 VALIGN="top"
 ><A
 HREF="cdl-concepts.html"
+ACCESSKEY="U"
 >Up</A
 ></TD
 ><TD
