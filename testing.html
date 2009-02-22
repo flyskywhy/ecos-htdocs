@@ -43,7 +43,10 @@ do this. However, if you <i>really</i> don't like using graphical tools, we woul
 testing feedback using the command-line tool (ecosconfig). The <i>all</i> template is
 selected in the Configuration Tool by invoking the <i>Templates</i> dialog box from the <i>Build</i> menu.
 Users of ecosconfig should specify "all" as the third argument when creating a new
-configuration: <tt>ecosconfig&nbsp;new&nbsp;&lt;target&gt;&nbsp;all</tt></li>
+configuration: <tt>ecosconfig&nbsp;new&nbsp;&lt;target&gt;&nbsp;all</tt><br><br>
+<b>Note:</b> If your target has limited memory, it may be necessary to use the <i>default</i>
+packages template, or even the <i>kernel</i> packages template to ensure that the eCos tests
+will link correctly.</li>
 <br>
 <li>Run a subset of the eCos tests by invoking the <i>Run Tests</i> dialog box from the <i>Tools</i> menu
 and selecting the following tests:<br><br>
