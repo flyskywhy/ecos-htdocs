@@ -30,7 +30,7 @@ namespace eval installdatav1 {
                                 { "i386-elf"      "gnutools/i386linux/ecoscentric-gnutools-i386-elf-20081107-sw.i386linux.tar.bz2"      "gnutools/i386-elf/bin" } \
                                 { "m68k-elf"      "gnutools/i386linux/ecoscentric-gnutools-m68k-elf-20081107-sw.i386linux.tar.bz2"      "gnutools/m68k-elf/bin" } \
                                 { "mipsisa32-elf" "gnutools/i386linux/ecoscentric-gnutools-mipsisa32-elf-20081107-sw.i386linux.tar.bz2" "gnutools/mipsisa32-elf/bin" } \
-                                { "powerpc-eabi"  "gnutools/i386linux/ecoscentric-gnutools-powerpc-eabi-20081108-sw.i386linux.tar.bz2"  "gnutools/powerpc-eabi/bin" } \
+                                { "powerpc-eabi"  "gnutools/i386linux/ecoscentric-gnutools-powerpc-eabi-20081107-sw.i386linux.tar.bz2"  "gnutools/powerpc-eabi/bin" } \
                                 { "sh-elf"        "gnutools/i386linux/ecoscentric-gnutools-sh-elf-20090121-sw.i386linux.tar.bz2"        "gnutools/sh-elf/bin" } \
                         } \
                   "windows" { \
