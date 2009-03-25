@@ -63,6 +63,8 @@ namespace eval installdatav1 {
                                    "http://ftp.sun.ac.za/ftp/pub/mirrorsites/sourceware.org/pub/ecos" \
                                    "ftp://ftp.twaren.net/Unix/Sourceware/ecos" \
                                    "http://ftp.twaren.net/Unix/Sourceware/ecos" \
+                                   "ftp://mirror.facebook.com/sourceware/ecos" \
+                                   "http://mirror.facebook.com/sourceware/ecos" \
                                    "http://sources-redhat.mirrors.airband.net/ecos" \
                                    "ftp://ecos.sourceware.org/pub/ecos" \
                                   ]
