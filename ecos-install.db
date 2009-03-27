@@ -47,6 +47,8 @@ namespace eval installdatav1 {
         variable ecosmirrors [ list \
                                    "ftp://mirrors.kernel.org/sources.redhat.com/ecos" \
                                    "http://mirrors.kernel.org/sources.redhat.com/ecos" \
+                                   "ftp://mirror.aarnet.edu.au/pub/sourceware/ecos" \
+                                   "http://mirror.aarnet.edu.au/pub/sourceware/ecos" \
                                    "ftp://ftp.mirrorservice.org/sites/sources.redhat.com/pub/ecos" \
                                    "http://www.mirrorservice.org/sites/sources.redhat.com/pub/ecos" \
                                    "ftp://gd.tuwien.ac.at/opsys/ecos" \
@@ -58,6 +60,7 @@ namespace eval installdatav1 {
                                    "http://ftp-stud.fht-esslingen.de/pub/Mirrors/sources.redhat.com/ecos" \
                                    "ftp://bo.mirror.garr.it/mirrors/sourceware.org/ecos" \
                                    "http://bo.mirror.garr.it/mirrors/sourceware.org/ecos" \
+                                   "ftp://ftp.u-aizu.ac.jp/pub/gnu/cygnus/ecos" \
                                    "ftp://ftp.chg.ru/pub/sourceware/ecos" \
                                    "ftp://ftp.sun.ac.za/pub/mirrorsites/sourceware.org/pub/ecos" \
                                    "http://ftp.sun.ac.za/ftp/pub/mirrorsites/sourceware.org/pub/ecos" \
