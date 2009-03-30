@@ -10,11 +10,13 @@ namespace eval installdatav1 {
         array set ecosreleases \
             { \
                   "Linux" { \
+                                { "3.0" "releases/ecos-3.0/ecos-3.0.i386linux.tar.bz2" "ecos-3.0/packages" { "ecos-3.0/tools/bin"} } \
                                 { "3.0 beta 1" "releases/ecos-3.0b1/ecos-3.0beta1.i386linux.tar.bz2" "ecos-3.0b1/packages" { "ecos-3.0b1/tools/bin"} } \
                                 { "2.0" "releases/ecos-2.0/ecos-2.0.i386linux.tar.bz2" "ecos-2.0/packages" { "ecos-2.0/tools/bin"} } \
                                 { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.i386linux.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
                         } \
                   "windows" { \
+                                { "3.0" "releases/ecos-3.0/ecos-3.0.cygwin.tar.bz2" "ecos-3.0/packages" { "ecos-3.0/tools/bin"} } \
                                 { "3.0 beta 1" "releases/ecos-3.0b1/ecos-3.0beta1.cygwin.tar.bz2" "ecos-3.0b1/packages" { "ecos-3.0b1/tools/bin"} } \
                                 { "2.0" "releases/ecos-2.0/ecos-2.0.cygwin.tar.bz2" "ecos-2.0/packages" { "ecos-2.0/tools/bin"} } \
                                 { "2.0 beta 1" "releases/ecos-2.0b1/ecos-2.0b1.cygwin.tar.bz2" "ecos-2.0b1/packages" { "ecos-2.0b1/tools/bin"} } \
