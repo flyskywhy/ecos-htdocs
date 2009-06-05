@@ -1,12 +1,12 @@
 <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
 <HTML>
 <HEAD>
-<TITLE>Contributions</TITLE>
+<TITLE>Contributions and Development Projects</TITLE>
 </HEAD>
 
 <body><!--#include virtual="include/header.html"-->
 
-<h1>Contributions and Third Party Projects</h1>
+<h1>Contributions and Development Projects</h1>
 
 <HR noshade SIZE=3>
 
@@ -15,17 +15,83 @@
 <p>Contributions to eCos are always welcome. These may be in the form of
 a new package, enhancements to an existing package or bug fixes. A contribution
 may be from a individual or part of a collaborative project. Information
-on how to contribute is contained within the eCos <a href="/fom/ecos">FAQ</a>.</p>
+on how to contribute is contained within the eCos <a href="/fom-serv/ecos/cache/45.html">FAQ</a>.</p>
 
-<h2>Third party projects</h2>
+<h2>Development projects</h2>
 
-<p>The following external projects are known to the eCos maintainers. If you are
-working on an eCos-based project that others could benefit from or contribute
-to, please let the <a href="mailto:ecos-maintainers@ecos.sourceware.org">eCos maintainers</a>
-know and it will be added to this page. Sources are provided <i>as is</i> and are
-not supported at this time.</p>
+<p>The eCos maintainers welcome proposals for new eCos packages and enhancements to
+existing packages. If you have an idea for a new development, please talk
+to us as early as possible. The best place to initiate a discussion of your proposal
+is on the <a href="mailto:ecos-devel@ecos.sourceware.org">ecos-devel</a> mailing list.
+If your proposal appears sound, we will add your project to the <a href="#registered">table</a> below.
+By registering projects in this way, the possibility of duplicated effort is reduced,
+the potential for community involvement is enhanced and the eCos maintainers are able
+to offer guidance to help ensure that the final project deliverables will be acceptable.</p>
 
+<p>As a matter of policy, contributions arising from registered projects will be
+considered for acceptance into the eCos repository with priority over broadly
+equivalent contributions developed in private. This policy is intended to encourage
+collaboration on new features and reduce the possibility of a community development
+being rejected in favour of a private development of similar scope and quality.</p>
 
+<h2>Licensing of contributions</h2>
+
+<p>Contributions to the eCos project should be licensed under the
+<a href="license-overview.html">eCos License</a>.
+It may also be possible to accept contributions containing third party
+code from certain trusted sources and covered by more liberal licenses,
+such as the BSD license. Please seek advice from the eCos maintainers in
+such cases.</p>
+
+<p>Please note that we are unable to accept contributions which contain code
+licensed under the unmodified GNU General Public License (GPL) for incorporation
+into the eCos repository.</p>
+
+<h2>Copyright assignments</h2>
+
+<p>Any significant contribution (typically greater than 10 lines of code) must be
+accompanied by an assignment of copyright to the <a href="http://www.fsf.org">Free
+Software Foundation</a>. Details of this procedure are available on the
+<a href="assign.html">eCos Copyright Assignment</a> page.</p>
+
+<p>The rationale behind this policy is to avoid any possible confusion over
+the legal ownership of eCos, and to ensure that the contributor's employer or academic
+institution assents to the work being contributed. It also allows the copyright to
+be vested centrally so that the eCos license may be enforced. Successful enforcement
+of a software license is dependent on the cooperation of all copyright holders.</p>
+
+<p> The eCos maintainers will advise contributors when a copyright assignment is
+necessary. If your employer does not consent to the disclaimer, or you do not hold
+copyright for all the contributed code, then a copyright assignment will not be
+possible and the contribution will not be accepted into the eCos repository. However,
+it may still be possible to list the contribution on this page.</p>
+
+<a name="registered"></a>
+<h2>Registered projects</h2>
+
+<table border=0 cellpadding=7 cellspacing=2>
+<tr><td bgcolor="#999999"><b>Project</b></td><td bgcolor="#999999"><b>Registered</b></td><td bgcolor="#999999"><b>Contacts</b></td><td bgcolor="#999999"><b>Description</b></td></tr>
+
+<tr>
+<td bgcolor="#dddddd"><a href="/ml/ecos-devel/2009-05/msg00001.html">lwIP 3.0</a></td>
+<td bgcolor="#dddddd">2009-06-05</td>
+<td bgcolor="#dddddd">Simon Kallweit</td>
+<td bgcolor="#dddddd">An import of the <a href="http://savannah.nongnu.org/projects/lwip">lwIP</a> 3.0 lightweight TCP/IP stack</td>
+</tr>
+
+<tr>
+<td bgcolor="#dddddd"><a href="/ml/ecos-devel/2009-05/msg00025.html">STM32 USB</a></td>
+<td bgcolor="#dddddd">2009-06-05</td>
+<td bgcolor="#dddddd">Chris Holgate</td>
+<td bgcolor="#dddddd">A USB device driver for the <a href="http://www.st.com/mcu/inchtml-pages-stm32.html">STM32<a> processor family</td>
+</tr>
+
+</table>
+
+<h2>Other projects</h2>
+
+<p>This section lists eCos-related developments which have either not been
+contributed or not been accepted into the CVS repository for some reason.</p>
 
 <!-- ------------------------------------------------------------------ -->
 
@@ -170,7 +236,7 @@ interest include:
 <li>Advanced stack checking for user applications that allow faulty applications to be terminated whilst leaving the rest of the system executing. 
 <li>Partial POSIX process emulation, with pthread grouping and signal marshalling. 
 </ul>
-3GLab no longer exists such any more.</p>
+</p>
 
 <!-- ------------------------------------------------------------------ -->
 
@@ -276,9 +342,7 @@ TCP/IP stack and may not be usable in the current release of eCos.</p>
 
 <!-- ------------------------------------------------------------------ -->
 
-<h2>Work in progress</h2>
-
-<!-- ------------------------------------------------------------------ -->
+<!--
 
 <h4>Atmel AT91 EB01 port</h4>
 
@@ -288,15 +352,11 @@ AT91M40400-based EB01 board. More information is available from
 ecos-discuss list</a>. This is unrelated to the port in the latest versions
 of the eCos sources.</p>
 
-<!-- ------------------------------------------------------------------ -->
-
 <h4>Floating point hardware support</h4>
 
 <p>Sergei Organov is working on support for floating point hardware within
 eCos. He is targeting the PowerPC processors initially. Sources are not yet
 available.</p>
-
-<!-- ------------------------------------------------------------------ -->
 
 <h4>Samsung SNDS platform HAL</h4>
 
@@ -304,7 +364,15 @@ available.</p>
 microcontroller (ARM7TDMI core) and SNDS development hardware. Sources are
 not yet available (estimated availability - January 2000).</p>
 
+-->
+
 <h2>Thanks to our contributors</h2>
+
+<h4>PDCurses</h4>
+
+<p>Sergei Gavrikov has contributed a port of PDCurses 3.4 to eCos. The contribution
+includes a PDCurses driver for eCos serial I/O, enabling eCos applications to
+present a text user interface on a remote terminal.</p>
 
 <h4>PXA250</h4>
 
@@ -325,11 +393,11 @@ the <a href="http://www.wuerz-elektronik.com/MPC555.htm">ec555</a> from
 <a href="http://www.wuerz-elektronik.com/">Wuerz Elektronik</a>. Both
 ports include FLASH, serial and wallclock drivers.</p>
 
-<p>The ports will appear in eCos v2, but until then a complete tarball may
+<p><!--The ports will appear in eCos v2, but until then a complete tarball may
 be downloaded 
 <a href="ftp://ecos.sourceware.org/pub/ecos/contrib/hal/ppc/mpc555/kul.tar.gz">
 from here</a>. Note that this is a standalone set of sources, and may not be
-easy to merge with an existing repository. There are also some
+easy to merge with an existing repository.--> There are also some
 <a href="ftp://ecos.sourceware.org/pub/ecos/contrib/hal/ppc/mpc555/ec555extras.epk">
 extra packages for the ec555 port in EPK format</a> containing device
 drivers for the A/D and D/A convertors as well as the Time Processor Unit.</p>
@@ -344,12 +412,9 @@ website</a>.</p>
 
 <h4>lwIP lightweight TCP/IP stack</h4>
 
-<p>Jani Monoses at Astechnix SRL has 
-<a href="http://ecos.sourceware.org/ml/ecos-discuss/2002-04/msg00021.html">
-announced</a> an early port of
+<p>Jani Monoses at Astechnix SRL has contributed a  port of
 the <a href="http://www.sics.se/~adam/lwip/">lwIP lightweight TCP/IP
-stack</a> to eCos. This has now been incorporated into anonymous
-CVS.</p>
+stack</a> to eCos.</p>
 
 <h4>Improved AT91 serial driver</h4>
 
@@ -381,7 +446,7 @@ support.</p>
 <p>Philippe Robin at <a href="http://www.arm.com/" target="_top">ARM</a>
  has contributed a
 port to the <a href="http://www.arm.com/sitearchitek/devtools.ns4/iwpList113/F025F4F0A97DB15D802569190038F93F?OpenDocument&style=Dev_Tools" target="_top">
-ARM Integrator</a> platform. This port is available from anonymous CVS.</p>
+ARM Integrator</a> platform.</p>
 
 <h4>PC mouse driver</h4>
 
