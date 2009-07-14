@@ -35,14 +35,14 @@ in the setup wizard are recommended:</p>
 <tr valign=top><td>Download site:</td><td>&lt;select a local site&gt;</td></tr>
 <tr valign=top><td>Select packages:</td><td>In addition to the packages which are installed by
     default from the <i>Base</i> category, it is <i>essential</i> to install the following packages:<br><br>
-    <tt>gcc, libmpfr1, libpng12, make, patch, sharutils, tcltk, wget</tt><br><br>
+    <tt>gcc, libexpat1, libmpfr1, libpng12, make, patch, sharutils, tcltk, wget</tt><br><br>
     Click once on the <i>View</i> button to select the <i>Full</i> view and then click once
     on the rotating arrows symbol against each of the above packages to select them for installation.
     This will also result in the automatic selection of a number of other packages on which the selected packages depend.</td></tr>
 <tr valign=top><td>Create icons:</td><td>&lt;select both items&gt;</td></tr>
 </table>
 
-<p><b>NOTE:</b> Recent eCos toolchains based on GCC 4.x may fail silently if the Cygwin package <tt>libmpfr1</tt> is not installed.</p>
+<p><b>NOTE:</b> Recent eCos toolchains based on GCC 4.x may fail silently if the Cygwin packages <tt>libexpat1</tt> and <tt>libmpfr1</tt> are not installed.</p>
 
 <p>Once the Cygwin setup program has completed, it is possible to install eCos by invoking
 the Cygwin bash shell using the desktop icon or the corresponding menu item and then following the
