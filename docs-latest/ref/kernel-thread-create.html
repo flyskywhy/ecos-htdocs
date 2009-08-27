@@ -85,7 +85,7 @@ NAME="KERNEL-THREAD-CREATE"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN267"
+NAME="AEN269"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN267"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN270"
+NAME="AEN272"
 ></A
 ><H2
 >Synopsis</H2
@@ -102,7 +102,7 @@ CLASS="FUNCSYNOPSIS"
 ><P
 ></P
 ><A
-NAME="AEN271"
+NAME="AEN273"
 ></A
 ><TABLE
 BORDER="5"
@@ -531,7 +531,7 @@ CLASS="PROGRAMLISTING"
 void
 fred::static_thread_aux(cyg_addrword_t objptr)
 {
-    fred* object = static_cast&lt;fred*&gt;(objptr);
+    fred* object = reinterpret_cast&lt;fred*&gt;(objptr);
     object-&gt;thread_function();
 }
 

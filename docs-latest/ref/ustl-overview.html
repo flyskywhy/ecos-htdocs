@@ -1,0 +1,297 @@
+<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/).                           -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>uSTL library overview</TITLE
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="The uSTL Library"
+HREF="ustl.html"><LINK
+REL="PREVIOUS"
+TITLE="The uSTL Library"
+HREF="ustl.html"><LINK
+REL="NEXT"
+TITLE="Using uSTL in eCos applications"
+HREF="using-ustl-library.html"></HEAD
+><BODY
+CLASS="CHAPTER"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="ustl.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="using-ustl-library.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><DIV
+CLASS="CHAPTER"
+><H1
+><A
+NAME="USTL-OVERVIEW"
+></A
+>Chapter 9. uSTL library overview</H1
+><DIV
+CLASS="TOC"
+><DL
+><DT
+><B
+>Table of Contents</B
+></DT
+><DT
+><A
+HREF="ustl-overview.html#USTL-ECOS-CHANGES"
+>eCos specific changes/enhancements</A
+></DT
+><DT
+><A
+HREF="using-ustl-library.html"
+>Using uSTL in eCos applications</A
+></DT
+></DL
+></DIV
+><P
+>The eCos uSTL library is a port of Mike Sharov's uSTL - a size-optimized
+STL implementation. It has the particular feature of generating small 
+object code sizes - an important requirement for embedded eCos-based 
+applications. The latest version can be found at 
+<A
+HREF="http://sourceforge.net/projects/ustl"
+TARGET="_top"
+>http://sourceforge.net/projects/ustl</A
+>.</P
+><P
+>The library provides a subset of the full C++ 
+<A
+HREF="http://en.wikipedia.org/wiki/Standard_Template_Library"
+TARGET="_top"
+>Standard Template Library</A
+>.
+uSTL is a partial implementation of the STL specification intended to 
+reduce code size of the derivative programs. This allows eCos applications
+to use well known standard C++ STL library containers, streams, 
+iterators, algorithms and functors.</P
+><P
+>For changes, see the <TT
+CLASS="FILENAME"
+>HISTORY</TT
+> file. A detailed introduction 
+to the uSTL library is available on Mike Sharov's 
+<A
+HREF="http://ustl.sourceforge.net/"
+TARGET="_top"
+>uSTL web page</A
+>. 
+Additional information on all the classes is available in the header 
+files and in the <A
+HREF="http://ustl.sourceforge.net/html/index.html"
+TARGET="_top"
+>Doxygen reference</A
+>.</P
+><DIV
+CLASS="SECT1"
+><H1
+CLASS="SECT1"
+><A
+NAME="USTL-ECOS-CHANGES"
+>eCos specific changes/enhancements</A
+></H1
+><P
+>All features of the uSTL library are available except for memory mapped
+files and memory mapped streams.</P
+><P
+>By default, an eCos image is build without exceptions and without RTTI support 
+(compiler switches -fno-exceptions -fno-rtti). Normally the uSTL 
+library relies on C++ exceptions to propagate errors and exceptions.
+To build uSTL for eCos, all occurrences of <CODE
+CLASS="FUNCTION"
+>try</CODE
+>, 
+<CODE
+CLASS="FUNCTION"
+>catch</CODE
+> and <CODE
+CLASS="FUNCTION"
+>throw</CODE
+> 
+are replaced by macros <CODE
+CLASS="VARNAME"
+>USTL_TRY</CODE
+>, 
+<CODE
+CLASS="VARNAME"
+>USTL_CATCH_ALL</CODE
+>, and 
+<CODE
+CLASS="VARNAME"
+>USTL_THROW</CODE
+>. Thus the eCos uSTL port compiles without 
+exceptions and without RTTI support but also works if RTTI and exceptions 
+are enabled.</P
+><P
+>To handle and propagate uSTL exceptions when RTTI und C++ exceptions are 
+not available, the eCos uSTL port was extended by some simple exception 
+handling functions. An application can use the function 
+<CODE
+CLASS="FUNCTION"
+>ustl::set_app_exception_handler()</CODE
+> to register an
+exception handler that is called by the <CODE
+CLASS="VARNAME"
+>USTL_THROW</CODE
+> 
+macro as soon as an exception is thrown by any uSTL function.</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void ustl::set_app_exception_handler(app_exception_handler_t func);</PRE
+></TD
+></TR
+></TABLE
+><P
+>If an exception handler is registered by an application then it replaces the 
+default eCos uSTL exception handler. The default exception handler simply 
+prints the error message of an exception to the diagnostic channel by calling 
+<CODE
+CLASS="FUNCTION"
+>void ustl::diag_print_exception()</CODE
+>. This function
+can also be called from an application exception handler as illustrated 
+in the test cases.</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>void ustl::set_app_exception_handler(app_exception_handler_t func);</PRE
+></TD
+></TR
+></TABLE
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="ustl.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="using-ustl-library.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>The uSTL Library</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ustl.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Using uSTL in eCos applications</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

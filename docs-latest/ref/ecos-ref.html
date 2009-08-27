@@ -40,11 +40,11 @@ NAME="AEN2"
 ></H1
 ><P
 CLASS="COPYRIGHT"
->Copyright &copy; 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software Foundation, Inc.</P
+>Copyright &copy; 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009 Free Software Foundation, Inc.</P
 ><DIV
 CLASS="LEGALNOTICE"
 ><A
-NAME="AEN17"
+NAME="AEN18"
 ></A
 ><P
 ><B
@@ -71,7 +71,7 @@ permission is obtained from the copyright holder.</P
 ><DIV
 CLASS="LEGALNOTICE"
 ><A
-NAME="AEN23"
+NAME="AEN24"
 ></A
 ><P
 ><B
@@ -89,6 +89,8 @@ NAME="AEN23"
 >Cogent&#8482; is a trademark of Cogent Computer Systems, Inc.</P
 ><P
 >Compaq&reg; is a registered trademark of the Compaq Computer Corporation.</P
+><P
+>eCos&reg; is a registered trademark of eCosCentric Limited.</P
 ><P
 >Fujitsu&reg; is a registered trademark of Fujitsu Limited.</P
 ><P
@@ -114,7 +116,7 @@ NAME="AEN23"
 ><P
 >PMC-Sierra&reg; RM7000&#8482; and Ocelot&#8482; are trademarks of PMC-Sierra Incorporated. </P
 ><P
->Red Hat, eCos&#8482;, RedBoot&#8482;, GNUPro&reg;, and Insight&#8482; are trademarks of Red Hat, Inc. </P
+>Red Hat, RedBoot&#8482;, GNUPro&reg;, and Insight&#8482; are trademarks of Red Hat, Inc. </P
 ><P
 >Samsung&reg; and CalmRISC&#8482; are trademarks or registered trademarks of Samsung, Inc. </P
 ><P
@@ -138,7 +140,7 @@ property of their respective owners. </P
 ><DIV
 CLASS="LEGALNOTICE"
 ><A
-NAME="AEN53"
+NAME="AEN55"
 ></A
 ><P
 ><B
@@ -507,23 +509,51 @@ HREF="c-library-startup.html"
 ></DD
 ><DT
 >IV. <A
+HREF="ustl.html"
+>The uSTL Library</A
+></DT
+><DD
+><DL
+><DT
+>9. <A
+HREF="ustl-overview.html"
+>uSTL library overview</A
+></DT
+><DD
+><DL
+><DT
+><A
+HREF="ustl-overview.html#USTL-ECOS-CHANGES"
+>eCos specific changes/enhancements</A
+></DT
+><DT
+><A
+HREF="using-ustl-library.html"
+>Using uSTL in eCos applications</A
+></DT
+></DL
+></DD
+></DL
+></DD
+><DT
+>V. <A
 HREF="io.html"
 >I/O Package (Device Drivers)</A
 ></DT
 ><DD
 ><DL
 ><DT
->9. <A
+>10. <A
 HREF="io-package-intro.html"
 >Introduction</A
 ></DT
 ><DT
->10. <A
+>11. <A
 HREF="io-user-api.html"
 >User API</A
 ></DT
 ><DT
->11. <A
+>12. <A
 HREF="io-serial-driver-details.html"
 >Serial driver details</A
 ></DT
@@ -542,7 +572,7 @@ HREF="io-tty-driver.html"
 ></DL
 ></DD
 ><DT
->12. <A
+>13. <A
 HREF="io-how-to-write-a-driver.html"
 >How to Write a Driver</A
 ></DT
@@ -561,7 +591,7 @@ HREF="io-serial-testing-with-serfilter.html"
 ></DL
 ></DD
 ><DT
->13. <A
+>14. <A
 HREF="devapi-device-driver-interface-to-the-kernel.html"
 >Device Driver Interface to the Kernel</A
 ></DT
@@ -602,78 +632,78 @@ HREF="devapi-api.html"
 ></DL
 ></DD
 ><DT
->V. <A
+>VI. <A
 HREF="fileio.html"
 >File System Support Infrastructure</A
 ></DT
 ><DD
 ><DL
 ><DT
->14. <A
+>15. <A
 HREF="fileio-intro.html"
 >Introduction</A
 ></DT
 ><DT
->15. <A
+>16. <A
 HREF="fileio-fstab.html"
 >File System Table</A
 ></DT
 ><DT
->16. <A
+>17. <A
 HREF="fileio-mount-table.html"
 >Mount Table</A
 ></DT
 ><DT
->17. <A
+>18. <A
 HREF="fileio-file-table.html"
 >File Table</A
 ></DT
 ><DT
->18. <A
+>19. <A
 HREF="fileio-directories.html"
 >Directories</A
 ></DT
 ><DT
->19. <A
+>20. <A
 HREF="fileio-synchronization.html"
 >Synchronization</A
 ></DT
 ><DT
->20. <A
+>21. <A
 HREF="fileio-mounting.html"
 >Initialization and Mounting</A
 ></DT
 ><DT
->21. <A
+>22. <A
 HREF="fileio-sockets.html"
 >Sockets</A
 ></DT
 ><DT
->22. <A
+>23. <A
 HREF="fileio-select.html"
 >Select</A
 ></DT
 ><DT
->23. <A
+>24. <A
 HREF="fileio-devices.html"
 >Devices</A
 ></DT
 ><DT
->24. <A
+>25. <A
 HREF="fileio-writing.html"
 >Writing a New Filesystem</A
 ></DT
 ></DL
 ></DD
 ><DT
->VI. <A
+>VII. <A
 HREF="io-pci.html"
 >PCI Library</A
 ></DT
 ><DD
 ><DL
 ><DT
->25. <A
+>26. <A
 HREF="ecos-pci-library.html"
 >The eCos PCI Library</A
 ></DT
@@ -694,14 +724,14 @@ HREF="pci-library-reference.html"
 ></DL
 ></DD
 ><DT
->VII. <A
+>VIII. <A
 HREF="io-flash.html"
 >FLASH Library</A
 ></DT
 ><DD
 ><DL
 ><DT
->26. <A
+>27. <A
 HREF="ecos-flash-library.html"
 >The eCos FLASH Library</A
 ></DT
@@ -709,7 +739,7 @@ HREF="ecos-flash-library.html"
 ><DL
 ><DT
 ><A
-HREF="ecos-flash-library.html#AEN7823"
+HREF="ecos-flash-library.html#AEN7869"
 >Notes on using the FLASH library</A
 ></DT
 ><DT
@@ -720,7 +750,7 @@ HREF="io-flash-danger.html"
 ></DL
 ></DD
 ><DT
->27. <A
+>28. <A
 HREF="ecos-flash-v2.html"
 >The Version 2 eCos FLASH API</A
 ></DT
@@ -739,7 +769,7 @@ HREF="ecos-flash-v2-dev.html"
 ></DL
 ></DD
 ><DT
->28. <A
+>29. <A
 HREF="ecos-flash-v1.html"
 >The legacy Version 1 eCos FLASH API</A
 ></DT
@@ -758,7 +788,7 @@ HREF="ecos-flash-v1-dev.html"
 ></DL
 ></DD
 ><DT
->29. <A
+>30. <A
 HREF="ecos-flash-iodevice.html"
 >FLASH I/O devices</A
 ></DT
@@ -779,7 +809,7 @@ HREF="ecos-flash-iodevice-usage.html"
 ></DL
 ></DD
 ><DT
->VIII. <A
+>IX. <A
 HREF="io-spi.html"
 >SPI Support</A
 ></DT
@@ -803,7 +833,7 @@ HREF="spi-porting.html"
 ></DL
 ></DD
 ><DT
->IX. <A
+>X. <A
 HREF="io-i2c.html"
 >I2C Support</A
 ></DT
@@ -827,14 +857,14 @@ HREF="i2c-porting.html"
 ></DL
 ></DD
 ><DT
->X. <A
+>XI. <A
 HREF="io-can.html"
 >CAN Support</A
 ></DT
 ><DD
 ><DL
 ><DT
->30. <A
+>31. <A
 HREF="io-can-overview.html"
 >Overview</A
 ></DT
@@ -853,12 +883,12 @@ HREF="io-can-ecos-support.html"
 ></DL
 ></DD
 ><DT
->31. <A
+>32. <A
 HREF="io-can-api.html"
 >User API</A
 ></DT
 ><DT
->32. <A
+>33. <A
 HREF="io-can-driver-details.html"
 >CAN driver details</A
 ></DT
@@ -882,12 +912,12 @@ HREF="io-can-runtime-cfg.html"
 ></DL
 ></DD
 ><DT
->33. <A
+>34. <A
 HREF="io-can-configuration.html"
 >Configuration</A
 ></DT
 ><DT
->34. <A
+>35. <A
 HREF="io-can-device-drivers.html"
 >Writing a CAN hardware device driver</A
 ></DT
@@ -903,7 +933,7 @@ HREF="io-can-device-drivers.html#IO-CAN-HOW-TO-WRITE-INTERFACE-DRIVER"
 ></DL
 ></DD
 ><DT
->XI. <A
+>XII. <A
 HREF="io-adc.html"
 >ADC Support</A
 ></DT
@@ -922,7 +952,7 @@ HREF="adcdev.html"
 ></DL
 ></DD
 ><DT
->XII. <A
+>XIII. <A
 HREF="io-framebuf.html"
 >Framebuffer Support</A
 ></DT
@@ -966,14 +996,14 @@ HREF="framebuf-porting.html"
 ></DL
 ></DD
 ><DT
->XIII. <A
+>XIV. <A
 HREF="posix-compatibility.html"
 >eCos POSIX compatibility layer</A
 ></DT
 ><DD
 ><DL
 ><DT
->35. <A
+>36. <A
 HREF="posix-standard-support.html"
 >POSIX Standard Support</A
 ></DT
@@ -1074,14 +1104,14 @@ HREF="posix-compatibility.html#POSIX-REFERENCES-AND-BIBLIOGRAPHY"
 ></DL
 ></DD
 ><DT
->XIV. <A
+>XV. <A
 HREF="compat-uitron.html"
 >&micro;ITRON</A
 ></DT
 ><DD
 ><DL
 ><DT
->36. <A
+>37. <A
 HREF="compat-uitron-microitron-api.html"
 >&micro;ITRON API</A
 ></DT
@@ -1158,29 +1188,29 @@ HREF="compat-uitron-configuration-faq.html"
 ></DL
 ></DD
 ><DT
->XV. <A
+>XVI. <A
 HREF="net-common-tcpip.html"
 >TCP/IP Stack Support for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->37. <A
+>38. <A
 HREF="net-common-ethernet-driver-design.html"
 >Ethernet Driver Design</A
 ></DT
 ><DT
->38. <A
+>39. <A
 HREF="net-common-sample-code.html"
 >Sample Code</A
 ></DT
 ><DT
->39. <A
+>40. <A
 HREF="net-common-configuring-ip-addresses.html"
 >Configuring IP Addresses</A
 ></DT
 ><DT
->40. <A
+>41. <A
 HREF="net-common-tests-and-demonstrations.html"
 >Tests and Demonstrations</A
 ></DT
@@ -1219,7 +1249,7 @@ HREF="net-common-maintenance-tools.html"
 ></DL
 ></DD
 ><DT
->41. <A
+>42. <A
 HREF="net-common-support.html"
 >Support Features</A
 ></DT
@@ -1238,7 +1268,7 @@ HREF="net-common-dhcp.html"
 ></DL
 ></DD
 ><DT
->42. <A
+>43. <A
 HREF="tcpip-library-reference.html"
 >TCP/IP Library Reference</A
 ></DT
@@ -1424,19 +1454,19 @@ HREF="net-common-tcpip-manpages-socket.html"
 ></DL
 ></DD
 ><DT
->XVI. <A
+>XVII. <A
 HREF="tcpip-freebsd.html"
 >FreeBSD TCP/IP Stack port for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->43. <A
+>44. <A
 HREF="tcpip-freebsd-networking-stack-features.html"
 >Networking Stack Features</A
 ></DT
 ><DT
->44. <A
+>45. <A
 HREF="tcpip-freebsd-stack-port.html"
 >Freebsd TCP/IP stack port</A
 ></DT
@@ -1455,7 +1485,7 @@ HREF="tcpip-freebsd-building-the-network-stack.html"
 ></DL
 ></DD
 ><DT
->45. <A
+>46. <A
 HREF="tcpip-freebsd-tcpip-apis.html"
 >APIs</A
 ></DT
@@ -1476,14 +1506,14 @@ HREF="tcpip-freebsd-enhanced-select.html"
 ></DL
 ></DD
 ><DT
->XVII. <A
+>XVIII. <A
 HREF="tcpip-openbsd.html"
 >OpenBSD TCP/IP Stack port for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->46. <A
+>47. <A
 HREF="tcpip-openbsd-networking-stack-features.html"
 >Networking Stack Features</A
 ></DT
@@ -1497,7 +1527,7 @@ HREF="tcpip-openbsd-networking-stack-features.html#TCPIP-OPENBSD-TCPIP-FEATURES"
 ></DL
 ></DD
 ><DT
->47. <A
+>48. <A
 HREF="tcpip-openbsd-stack-port.html"
 >OpenBSD TCP/IP stack port</A
 ></DT
@@ -1521,7 +1551,7 @@ HREF="tcpip-openbsd-building-the-bridge-code.html"
 ></DL
 ></DD
 ><DT
->48. <A
+>49. <A
 HREF="tcpip-openbsd-tcpip-apis.html"
 >APIs</A
 ></DT
@@ -1557,14 +1587,14 @@ HREF="openbsd-manpages-stp.html"
 ></DL
 ></DD
 ><DT
->XVIII. <A
+>XIX. <A
 HREF="net-ns-dns.html"
 >DNS for eCos and RedBoot</A
 ></DT
 ><DD
 ><DL
 ><DT
->49. <A
+>50. <A
 HREF="net-ns-dns-api.html"
 >DNS</A
 ></DT
@@ -1585,19 +1615,19 @@ HREF="net-ns-dns-testing.html"
 ></DL
 ></DD
 ><DT
->XIX. <A
+>XX. <A
 HREF="net-ipsec-common.html"
 >IPSEC for eCos</A
 ></DT
 ><DD
 ><DL
 ><DT
->50. <A
+>51. <A
 HREF="net-ipsec-common-installation.html"
 >Installation and Configuration</A
 ></DT
 ><DT
->51. <A
+>52. <A
 HREF="libipsec-library-reference.html"
 >libipsec Reference</A
 ></DT
@@ -1618,7 +1648,7 @@ HREF="net-ipsec-libipsec-man-ipsec-strerror.html"
 ></DL
 ></DD
 ><DT
->XX. <A
+>XXI. <A
 HREF="ppp.html"
 ><SPAN
 CLASS="PRODUCTNAME"
@@ -1628,17 +1658,17 @@ CLASS="PRODUCTNAME"
 ><DD
 ><DL
 ><DT
->52. <A
+>53. <A
 HREF="ppp-features.html"
 >Features</A
 ></DT
 ><DT
->53. <A
+>54. <A
 HREF="ppp-using.html"
 >Using PPP</A
 ></DT
 ><DT
->54. <A
+>55. <A
 HREF="ppp-interface.html"
 >PPP Interface</A
 ></DT
@@ -1677,7 +1707,7 @@ HREF="ppp-chat-fn.html"
 ></DL
 ></DD
 ><DT
->55. <A
+>56. <A
 HREF="ppp-config.html"
 >Installing and Configuring PPP</A
 ></DT
@@ -1696,7 +1726,7 @@ HREF="ppp-config-config.html"
 ></DL
 ></DD
 ><DT
->56. <A
+>57. <A
 HREF="ppp-chat.html"
 >CHAT Scripts</A
 ></DT
@@ -1730,12 +1760,12 @@ HREF="ppp-chat-escape.html"
 ></DL
 ></DD
 ><DT
->57. <A
+>58. <A
 HREF="ppp-drivers.html"
 >PPP Enabled Device Drivers</A
 ></DT
 ><DT
->58. <A
+>59. <A
 HREF="ppp-tests.html"
 >Testing</A
 ></DT
@@ -1743,7 +1773,7 @@ HREF="ppp-tests.html"
 ><DL
 ><DT
 ><A
-HREF="ppp-tests.html#AEN13800"
+HREF="ppp-tests.html#AEN13846"
 >Test Programs</A
 ></DT
 ><DT
@@ -1756,14 +1786,14 @@ HREF="ppp-test-script.html"
 ></DL
 ></DD
 ><DT
->XXI. <A
+>XXII. <A
 HREF="io-eth-drv-generic.html"
 >Ethernet Device Drivers</A
 ></DT
 ><DD
 ><DL
 ><DT
->59. <A
+>60. <A
 HREF="io-eth-drv-generic1.html"
 >Generic Ethernet Device Driver</A
 ></DT
@@ -1794,14 +1824,14 @@ HREF="io-eth-call-graph.html"
 ></DL
 ></DD
 ><DT
->XXII. <A
+>XXIII. <A
 HREF="io-eth-phy-generic.html"
 >Ethernet PHY Device Support</A
 ></DT
 ><DD
 ><DL
 ><DT
->60. <A
+>61. <A
 HREF="io-eth-phy-generic1.html"
 >Ethernet PHY Device Support</A
 ></DT
@@ -1817,14 +1847,14 @@ HREF="io-eth-phy-generic1.html#IO-ETH-PHY-API"
 ></DL
 ></DD
 ><DT
->XXIII. <A
+>XXIV. <A
 HREF="net-snmp.html"
 >SNMP</A
 ></DT
 ><DD
 ><DL
 ><DT
->61. <A
+>62. <A
 HREF="net-snmp-ecos-port.html"
 >SNMP for <SPAN
 CLASS="emphasis"
@@ -1902,14 +1932,14 @@ HREF="net-snmp-agent-manpages-snmpd.conf.html"
 ></DL
 ></DD
 ><DT
->XXIV. <A
+>XXV. <A
 HREF="net-httpd.html"
 >Embedded HTTP Server</A
 ></DT
 ><DD
 ><DL
 ><DT
->62. <A
+>63. <A
 HREF="net-httpd-chapter.html"
 >Embedded HTTP Server</A
 ></DT
@@ -1945,14 +1975,14 @@ HREF="net-httpd-monitor.html"
 ></DL
 ></DD
 ><DT
->XXV. <A
+>XXVI. <A
 HREF="net-ftpclient.html"
 >FTP Client for eCos TCP/IP Stack</A
 ></DT
 ><DD
 ><DL
 ><DT
->63. <A
+>64. <A
 HREF="net-ftpclient-features.html"
 >FTP Client Features</A
 ></DT
@@ -1968,14 +1998,14 @@ HREF="net-ftpclient-features.html#NET-FTPCLIENT-FEATURES-API"
 ></DL
 ></DD
 ><DT
->XXVI. <A
+>XXVII. <A
 HREF="net-sntp-client.html"
 >Simple Network Time Protocol Client</A
 ></DT
 ><DD
 ><DL
 ><DT
->64. <A
+>65. <A
 HREF="net-sntp.html"
 >The SNTP Client</A
 ></DT
@@ -2011,7 +2041,7 @@ HREF="net-sntp-testing.html"
 ></DL
 ></DD
 ><DT
->XXVII. <A
+>XXVIII. <A
 HREF="athttpd.html"
 >Another Tiny HTTP Server for <SPAN
 CLASS="PRODUCTNAME"
@@ -2021,7 +2051,7 @@ CLASS="PRODUCTNAME"
 ><DD
 ><DL
 ><DT
->65. <A
+>66. <A
 HREF="net-athttpd.html"
 >The ATHTTP Server</A
 ></DT
@@ -2077,14 +2107,14 @@ HREF="athttpd-ires.html"
 ></DL
 ></DD
 ><DT
->XXVIII. <A
+>XXIX. <A
 HREF="services-memalloc-common.html"
 >Memory Allocation</A
 ></DT
 ><DD
 ><DL
 ><DT
->66. <A
+>67. <A
 HREF="memalloc.html"
 >eCos Memory Pools</A
 ></DT
@@ -2100,14 +2130,14 @@ HREF="memalloc.html#ECOS-MEMORY-POOLS"
 ></DL
 ></DD
 ><DT
->XXIX. <A
+>XXX. <A
 HREF="services-crc.html"
 >CRC Algorithms</A
 ></DT
 ><DD
 ><DL
 ><DT
->67. <A
+>68. <A
 HREF="crc-functions.html"
 >CRC Functions</A
 ></DT
@@ -2123,14 +2153,14 @@ HREF="crc-functions.html#SERVICES-CRC-API"
 ></DL
 ></DD
 ><DT
->XXX. <A
+>XXXI. <A
 HREF="services-cpuload.html"
 >CPU load measurements</A
 ></DT
 ><DD
 ><DL
 ><DT
->68. <A
+>69. <A
 HREF="cpuload-functions.html"
 >CPU Load Measurements</A
 ></DT
@@ -2146,7 +2176,7 @@ HREF="cpuload-functions.html#SERVICES-CPULOAD-API"
 ></DL
 ></DD
 ><DT
->XXXI. <A
+>XXXII. <A
 HREF="services-profile-gprof.html"
 >gprof Profiling Support</A
 ></DT
@@ -2160,7 +2190,7 @@ HREF="gprof.html"
 ></DL
 ></DD
 ><DT
->XXXII. <A
+>XXXIII. <A
 HREF="services-power.html"
 >eCos Power Management Support</A
 ></DT
@@ -2200,7 +2230,7 @@ other packages</DT
 ></DL
 ></DD
 ><DT
->XXXIII. <A
+>XXXIV. <A
 HREF="io-usb-slave.html"
 >eCos USB Slave Support</A
 ></DT
@@ -2264,7 +2294,7 @@ HREF="usbs-testing.html"
 ></DL
 ></DD
 ><DT
->XXXIV. <A
+>XXXV. <A
 HREF="io-usb-slave-eth.html"
 >eCos Support for Developing USB-ethernet Peripherals</A
 ></DT
@@ -2309,7 +2339,7 @@ USB-ethernet package </DT
 ></DL
 ></DD
 ><DT
->XXXV. <A
+>XXXVI. <A
 HREF="io-usb-slave-serial.html"
 >eCos Support for USB Serial like Peripherals</A
 ></DT
@@ -2341,7 +2371,7 @@ HREF="usbs-serial-using.html"
 ></DL
 ></DD
 ><DT
->XXXVI. <A
+>XXXVII. <A
 HREF="hal-synth-arch.html"
 >eCos Synthetic Target</A
 ></DT
@@ -2395,7 +2425,7 @@ HREF="synth-porting.html"
 ></DL
 ></DD
 ><DT
->XXXVII. <A
+>XXXVIII. <A
 HREF="hal-m68k-arch.html"
 >M68000 Architectural Support</A
 ></DT
@@ -2419,7 +2449,7 @@ HREF="m68k-port.html"
 ></DL
 ></DD
 ><DT
->XXXVIII. <A
+>XXXIX. <A
 HREF="hal-m68k-mcfxxxx.html"
 >Freescale MCFxxxx Variant Support</A
 ></DT
@@ -2433,7 +2463,7 @@ HREF="m68k-mcfxxxx.html"
 ></DL
 ></DD
 ><DT
->XXXIX. <A
+>XL. <A
 HREF="hal-m68k-mcf5272.html"
 >Freescale MCF5272 Processor Support</A
 ></DT
@@ -2447,7 +2477,7 @@ HREF="m68k-mcf5272.html"
 ></DL
 ></DD
 ><DT
->XL. <A
+>XLI. <A
 HREF="hal-m68k-m5272c3-part.html"
 >Freescale M5272C3 Board Support</A
 ></DT
@@ -2476,7 +2506,7 @@ HREF="m68k-m5272c3-port.html"
 ></DL
 ></DD
 ><DT
->XLI. <A
+>XLII. <A
 HREF="hal-sh4-microdev-part.html"
 >SuperH SH4-202 MicroDev Board Support</A
 ></DT
@@ -2505,7 +2535,7 @@ HREF="sh4-microdev-port.html"
 ></DL
 ></DD
 ><DT
->XLII. <A
+>XLIII. <A
 HREF="devs-usb-sa11x0-ref.html"
 >SA11X0 USB Device Driver</A
 ></DT
@@ -2519,7 +2549,7 @@ HREF="devs-usb-sa11x0.html"
 ></DL
 ></DD
 ><DT
->XLIII. <A
+>XLIV. <A
 HREF="devs-usb-nec-upd985xx-ref.html"
 >NEC uPD985xx USB Device Driver</A
 ></DT
@@ -2533,7 +2563,7 @@ HREF="devs-usb-nec-upd985xx.html"
 ></DL
 ></DD
 ><DT
->XLIV. <A
+>XLV. <A
 HREF="devs-eth-synth-ecosynth-ref.html"
 >Synthetic Target Ethernet Driver</A
 ></DT
@@ -2547,7 +2577,7 @@ HREF="devs-eth-synth-ecosynth.html"
 ></DL
 ></DD
 ><DT
->XLV. <A
+>XLVI. <A
 HREF="devs-eth-m68k-mcfxxxx-part.html"
 >Freescale ColdFire Ethernet Driver</A
 ></DT
@@ -2561,7 +2591,7 @@ HREF="devs-eth-m68k-mcfxxxx.html"
 ></DL
 ></DD
 ><DT
->XLVI. <A
+>XLVII. <A
 HREF="devs-ser-m68k-mcfxxxx-part.html"
 >Freescale MCFxxxx Serial Driver</A
 ></DT
@@ -2575,7 +2605,7 @@ HREF="devs-ser-m68k-mcfxxxx.html"
 ></DL
 ></DD
 ><DT
->XLVII. <A
+>XLVIII. <A
 HREF="devs-watchdog-synth-ref.html"
 >Synthetic Target Watchdog Device</A
 ></DT
@@ -2589,7 +2619,7 @@ HREF="devs-watchdog-synth.html"
 ></DL
 ></DD
 ><DT
->XLVIII. <A
+>XLIX. <A
 HREF="devs-wallclock-dallas-ds1307-part.html"
 >Dallas DS1307 Wallclock Device Driver</A
 ></DT
@@ -2603,7 +2633,7 @@ HREF="devs-wallclock-dallas-ds1307.html"
 ></DL
 ></DD
 ><DT
->XLIX. <A
+>L. <A
 HREF="devs-disk-mmc-part.html"
 >MMC MultiMedia Card Disk Driver</A
 ></DT
@@ -2617,7 +2647,7 @@ HREF="devs-disk-mmc.html"
 ></DL
 ></DD
 ><DT
->L. <A
+>LI. <A
 HREF="devs-framebuf-synth-ref.html"
 >Synthetic Target Framebuffer Device</A
 ></DT
@@ -2631,7 +2661,7 @@ HREF="devs-framebuf-synth.html"
 ></DL
 ></DD
 ><DT
->LI. <A
+>LII. <A
 HREF="devs-flash-am29xxxxx.html"
 >AMD AM29xxxxx Flash Device Driver</A
 ></DT
@@ -2650,7 +2680,7 @@ HREF="am29xxxxx-instance.html"
 ></DL
 ></DD
 ><DT
->LII. <A
+>LIII. <A
 HREF="devs-flash-strata.html"
 >Intel Strata Flash Device Driver</A
 ></DT
@@ -2674,7 +2704,7 @@ HREF="strata-api-other.html"
 ></DL
 ></DD
 ><DT
->LIII. <A
+>LIV. <A
 HREF="devs-i2c-m68k-mcf52xx-part.html"
 >Motorola MCF52xx ColdFire I<SUP
 >2</SUP
@@ -2705,7 +2735,7 @@ CLASS="LOT"
 ></DT
 ><DT
 >8-1. <A
-HREF="math-library-compatibility-modes.html#AEN5029"
+HREF="math-library-compatibility-modes.html#AEN5031"
 >Behavior of math exception handling</A
 ></DT
 ></DL

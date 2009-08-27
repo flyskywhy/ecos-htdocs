@@ -83,7 +83,7 @@ CLASS="CHAPTER"
 ><A
 NAME="ECOS-FLASH-V2"
 ></A
->Chapter 27. The Version 2 eCos FLASH API</H1
+>Chapter 28. The Version 2 eCos FLASH API</H1
 ><DIV
 CLASS="TOC"
 ><DL
@@ -127,7 +127,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7838"
+NAME="AEN7884"
 >Initializing the FLASH library</A
 ></H2
 ><P
@@ -168,7 +168,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7846"
+NAME="AEN7892"
 >Retrieving information about FLASH devices</A
 ></H2
 ><P
@@ -187,6 +187,7 @@ __externC int cyg_flash_verify_addr(const flashaddr_t address);
 __extern size_t cyg_flash_block_size(const cyg_flashaddr_t flash_base);
 
 typedef struct cyg_flash_block_info
+{
     size_t                    block_size;
     cyg_uint32                blocks;
 } cyg_flash_block_info_t;
@@ -194,7 +195,7 @@ typedef struct cyg_flash_block_info
 typedef struct {
     cyg_flashaddr_t              start;          // First address
     cyg_flashaddr_t              end;            // Last address
-    cyg_uint32                   num_block_infos // Number of entries
+    cyg_uint32                   num_block_infos;// Number of entries
     const cyg_flash_block_info_t *blocks_info;   // Info about one block size
 } cyg_flash_info_t;</PRE
 ></TD
@@ -246,7 +247,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7860"
+NAME="AEN7906"
 >Reading from FLASH</A
 ></H2
 ><P
@@ -298,7 +299,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7871"
+NAME="AEN7917"
 >Erasing areas of FLASH</A
 ></H2
 ><P
@@ -345,7 +346,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7881"
+NAME="AEN7927"
 >Programming the FLASH</A
 ></H2
 ><P
@@ -387,7 +388,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7890"
+NAME="AEN7936"
 >Locking and unlocking blocks</A
 ></H2
 ><P
@@ -417,7 +418,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7895"
+NAME="AEN7941"
 >Locking FLASH mutexes</A
 ></H2
 ><P
@@ -529,7 +530,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN7916"
+NAME="AEN7962"
 >Return values and errors</A
 ></H2
 ><P
