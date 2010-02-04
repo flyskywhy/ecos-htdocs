@@ -41,9 +41,10 @@ recent libstdc++ may need to install a libstdc++ v3 compatibility package.
 Installation of the compatibility package may be achieved as follows:</p>
 
 <ul><table>
-<tr><td>Fedora:</td>               <td><tt>yum install compat-libstdc++-33</tt></td>
-<tr><td>openSUSE:&nbsp;&nbsp;</td> <td><tt>zypper install libstdc++33</tt></td>
-<tr><td>Ubuntu:</td>               <td><tt>apt-get install libstdc++5</tt></td>
+<tr><td>Fedora:</td>                        <td><tt>yum install compat-libstdc++-33</tt></td>
+<tr><td>openSUSE:</td>                      <td><tt>zypper install libstdc++33</tt></td>
+<tr><td>Ubuntu 9.10:</td>                   <td><tt>dpkg -i <a href="http://mirrors.kernel.org/ubuntu/pool/universe/g/gcc-3.3/libstdc++5_3.3.6-17ubuntu1_i386.deb">libstdc++5_3.3.6-17ubuntu1_i386.deb</a></tt></td>
+<tr><td>Ubuntu (previous):&nbsp;&nbsp;</td> <td><tt>apt-get install libstdc++5</tt></td>
 </table></ul>
 
 The Linux-hosted eCos Configuration Tool also requires the GTK+ toolkit
