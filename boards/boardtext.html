@@ -79,6 +79,18 @@ have been tested.</p>
 <!--#if expr="$spisupport = 1" -->
 <li>SPI
 <!--#endif -->
+<!--#if expr="$i2csupport = 1" -->
+<li>I2C
+<!--#endif -->
+<!--#if expr="$adcsupport = 1" -->
+<li>ADC
+<!--#endif -->
+<!--#if expr="$cansupport = 1" -->
+<li>CAN
+<!--#endif -->
+<!--#if expr="$framebufsupport = 1" -->
+<li>Framebuffer
+<!--#endif -->
 </ul>
 </p>
 <!--#else -->

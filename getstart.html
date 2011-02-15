@@ -34,7 +34,7 @@ note that eCos is no longer supported under Windows 95/98/ME.</p>
 
 <h3>Linux</h3>
 
-<p>Developers wishing to use the pre-built eCos host tools on a <i>Linux</i>
+<p>Developers wishing to use the pre-built eCos 3.0 host tools on a <i>Linux</i>
 host must first ensure that they have libstdc++ v3 (<tt>/usr/lib/libstdc++.so.5</tt>)
 installed. Users of Linux distributions which provide a more
 recent libstdc++ may need to install a libstdc++ v3 compatibility package.
@@ -47,7 +47,9 @@ Installation of the compatibility package may be achieved as follows:</p>
 <tr><td>Ubuntu 9.04 (and earlier):&nbsp;&nbsp;</td> <td><tt>apt-get install libstdc++5</tt></td>
 </table></ul>
 
-The Linux-hosted eCos Configuration Tool also requires the GTK+ toolkit
+<p><b>Note:</b> Snapshot builds of the eCos host tools which use the more recent <tt>libstdc++.so.6</tt> shared library are <a href="/ml/ecos-discuss/2011-02/msg00031.html">now available</a>.</p>
+
+<p>The Linux-hosted eCos Configuration Tool also requires the GTK+ toolkit
 version 2.0 or later.</p>
 
 <h3>Cygwin</h3>
@@ -70,7 +72,7 @@ architectures are available for download in pre-built form:</p>
 
 <center><table BORDER=0 CELLSPACING=2 CELLPADDING=7>
 <tr bgcolor=#999999><td><b>Architecture</b></td><td><b>Target</b></td></tr>
-<tr bgcolor=#dddddd><td>ARM (ARM7TDMI, ARM9, XScale)</td><td><tt>arm-eabi</tt></td></tr>
+<tr bgcolor=#dddddd><td>ARM (ARM7TDMI, ARM9, Cortex-M, XScale)</td><td><tt>arm-eabi</tt></td></tr>
 <tr bgcolor=#dddddd><td>ARM (ARM7DI, StrongARM)</td><td><tt>arm-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>ColdFire</td><td><tt>m68k-elf</tt></td></tr>
 <tr bgcolor=#dddddd><td>Intel x86</td><td><tt>i386-elf</tt></td></tr>
