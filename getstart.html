@@ -34,20 +34,30 @@ note that eCos is no longer supported under Windows 95/98/ME.</p>
 
 <h3>Linux</h3>
 
-<p>Developers wishing to use the pre-built eCos 3.0 host tools on a <i>Linux</i>
-host must first ensure that they have libstdc++ v3 (<tt>/usr/lib/libstdc++.so.5</tt>)
+<p>Developers wishing to use the pre-built eCos 3.0 host tools on a <i>32-bit Linux</i>
+host (i686) must first ensure that they have libstdc++ v3 (<tt>/usr/lib/libstdc++.so.5</tt>)
 installed. Users of Linux distributions which provide a more
 recent libstdc++ may need to install a libstdc++ v3 compatibility package.
 Installation of the compatibility package may be achieved as follows:</p>
 
 <ul><table>
-<tr><td>Fedora:</td>                        <td><tt>yum install compat-libstdc++-33</tt></td>
-<tr><td>openSUSE:</td>                      <td><tt>zypper install libstdc++33</tt></td>
-<tr><td>Ubuntu 9.10 (and later):</td>       <td><tt>dpkg -i <a href="http://mirrors.kernel.org/ubuntu/pool/universe/g/gcc-3.3/libstdc++5_3.3.6-17ubuntu1_i386.deb">libstdc++5_3.3.6-17ubuntu1_i386.deb</a></tt></td>
-<tr><td>Ubuntu 9.04 (and earlier):&nbsp;&nbsp;</td> <td><tt>apt-get install libstdc++5</tt></td>
+<tr><td>Fedora i686:</td>                        <td><tt>yum install compat-libstdc++-33</tt></td>
+<tr><td>openSUSE i686:</td>                      <td><tt>zypper install libstdc++33</tt></td>
+<tr><td>Ubuntu 9.10 i686 (and later):</td>       <td><tt>dpkg -i <a href="http://mirrors.kernel.org/ubuntu/pool/universe/g/gcc-3.3/libstdc++5_3.3.6-17ubuntu1_i386.deb">libstdc++5_3.3.6-17ubuntu1_i386.deb</a></tt></td>
+<tr><td>Ubuntu 9.04 i686 (and earlier):&nbsp;&nbsp;</td> <td><tt>apt-get install libstdc++5</tt></td>
 </table></ul>
 
 <p><b>Note:</b> Snapshot builds of the eCos host tools which use the more recent <tt>libstdc++.so.6</tt> shared library are <a href="/ml/ecos-discuss/2011-02/msg00031.html">now available</a>.</p>
+
+<p>Developers working with a <i>64-bit Linux</i> host (x86_64) should use the above
+snapshot build and will also need to install 32-bit libraries as follows:</p>
+
+<ul><table>
+<tr><td>Fedora x86_64:</td>                      <td><tt>yum install libstdc++.i686</tt></td>
+<tr><td>openSUSE 12.x x86_64:</td>               <td><tt>zypper install libstdc++46-32bit</tt></td>
+<tr><td>openSUSE 11.x x86_64:&nbsp;&nbsp;</td>   <td><tt>zypper install libstdc++45-32bit</tt></td>
+<tr><td>Ubuntu x86_64:</td>                      <td><tt>apt-get install ia32-libs</tt></td>
+</table></ul>
 
 <p>The Linux-hosted eCos Configuration Tool also requires the GTK+ toolkit
 version 2.0 or later.</p>
