@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="USBS-SERIAL-CONFIG"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN17624"
+NAME="AEN17635"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN17624"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN17627"
+NAME="AEN17638"
 ></A
 ><H2
 >Configuration</H2
@@ -124,7 +124,12 @@ CLASS="LITERAL"
 >CYGDAT_IO_USB_SLAVE_SERIAL_EP0</TT
 > must be
         configured with the control end point of the USB
-        device. <TT
+        device. When using static endpoint configuration,
+        <TT
+CLASS="LITERAL"
+>CYGPKG_IO_USB_SLAVE_SERIAL_STATIC_EP</TT
+> must be
+        enabled, <TT
 CLASS="LITERAL"
 >CYGDAT_IO_USB_SLAVE_SERIAL_TX_EP</TT
 >

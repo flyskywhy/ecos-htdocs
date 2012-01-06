@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="USBS-CONTROL"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN16471"
+NAME="AEN16474"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN16471"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN16474"
+NAME="AEN16477"
 ></A
 ><H2
 >Synopsis</H2
@@ -117,7 +117,7 @@ typedef struct usbs_control_endpoint {
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN16476"
+NAME="AEN16479"
 ></A
 ><H2
 ><TT
@@ -184,7 +184,7 @@ should be consulted for more details of DSR handling.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16486"
+NAME="AEN16489"
 ></A
 ><H3
 >Initialization</H3
@@ -249,7 +249,7 @@ data.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16497"
+NAME="AEN16500"
 ></A
 ><H3
 >State</H3
@@ -473,7 +473,7 @@ at the cost of increased code and cpu overheads.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16527"
+NAME="AEN16530"
 ></A
 ><H3
 >Standard Control Messages</H3
@@ -510,7 +510,7 @@ consist of an initial eight-byte header, containing fields such as a
 request type. This may be followed by a further data transfer, either
 from host to peripheral or from peripheral to host. The way this is
 handled is described in the <A
-HREF="usbs-control.html#AEN16560"
+HREF="usbs-control.html#AEN16563"
 >Buffer Management</A
 > section below.</P
 ><P
@@ -522,7 +522,7 @@ CLASS="STRUCTFIELD"
 field. Then it determines the request type: standard, class, vendor,
 or reserved. The way in which the last three of these are processed is
 described in the section <A
-HREF="usbs-control.html#AEN16552"
+HREF="usbs-control.html#AEN16555"
 >Other
 Control Messages</A
 >. Some
@@ -645,7 +645,7 @@ since the information is also relevant to USB hosts.</P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16552"
+NAME="AEN16555"
 ></A
 ><H3
 >Other Control Messages</H3
@@ -700,7 +700,7 @@ install an appropriate handler and process the requests appropriately. </P
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16560"
+NAME="AEN16563"
 ></A
 ><H3
 >Buffer Management</H3
@@ -868,7 +868,7 @@ CLASS="FUNCTION"
 ><DIV
 CLASS="REFSECT2"
 ><A
-NAME="AEN16597"
+NAME="AEN16600"
 ></A
 ><H3
 >Polling Support</H3
@@ -901,6 +901,53 @@ invoke this regularly. This polling function will take care of all
 endpoints associated with the device, not just the control endpoint.
 If the USB hardware involves a single interrupt vector then this will
 be identified in the data structure as well.</P
+></DIV
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN16605"
+></A
+><H3
+>Dynamic Data Endpoint Support</H3
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="PROGRAMLISTING"
+>typedef struct usbs_control_endpoint {
+    struct usbs_rx_endpoint* (*get_rxep_fn)(struct usbs_control_endpoint*, cyg_uint8);
+    struct usbs_tx_endpoint* (*get_txep_fn)(struct usbs_control_endpoint*, cyg_uint8);
+    &#8230;
+} usbs_control_endpoint;</PRE
+></TD
+></TR
+></TABLE
+><P
+>USB slave hardware may support multiple USB configurations via
+configurable data endpoints. If the device driver can support such
+operation, it will provide a pair of functions via the
+<CODE
+CLASS="STRUCTFIELD"
+>get_rxep_fn</CODE
+> and
+<CODE
+CLASS="STRUCTFIELD"
+>get_txep_fn</CODE
+> fields which enable retrieval
+of the receive and transmit data endpoint structures using the logical
+endpoint IDs specified in a USB class descriptor. Access to these
+functions from higher-level code is provided by the
+<CODE
+CLASS="FUNCTION"
+>usbs_get_rx_endpoint</CODE
+> and
+<CODE
+CLASS="FUNCTION"
+>usbs_get_tx_endpoint</CODE
+> functions.</P
 ></DIV
 ></DIV
 ><DIV

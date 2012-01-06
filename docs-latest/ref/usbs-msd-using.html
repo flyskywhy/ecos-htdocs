@@ -1,0 +1,212 @@
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/).                           -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Example</TITLE
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Support for USB Mass Storage Peripherals"
+HREF="io-usb-slave-msd.html"><LINK
+REL="PREVIOUS"
+TITLE="Host Configuration"
+HREF="usbs-msd-host-config.html"><LINK
+REL="NEXT"
+TITLE="eCos Synthetic Target"
+HREF="hal-synth-arch.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="usbs-msd-host-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="hal-synth-arch.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="USBS-MSD-USING"
+></A
+>Example</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN17865"
+></A
+><H2
+>Name</H2
+>Example&nbsp;--&nbsp;Example for USB Mass Storage like Peripherals
+      </DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN17868"
+></A
+><H2
+>RAM disk</H2
+><P
+>        The "ram disk" is a test application supplied to verify / debug the USB-Mass Storage
+        package. The minimal functionality of this test case is to create a tiny "ram disk"
+        device large of around 32 sectors of 512 bytes each. The disk devtab entry
+        is <TT
+CLASS="LITERAL"
+>"/dev/ramdisk0"</TT
+>. A FAT12 filesystem is created on top of it 
+        as the first partition of the disk. The partition is therefore accessible from 
+        <TT
+CLASS="LITERAL"
+>"/dev/ramdisk0/1"</TT
+>. The default behavior of the application is to 
+        start the USB MSD thread. Once plugged into the host machine, an empty drive 
+        called eCos-3.0 shall appear in the host explorer.
+        To test further, the FAT filesystem package can be included while compiling the test
+        application. If included, before the MSD driver is started, the application will 
+        create 2 files (fee and foo) and 1 directory (bar) in the filesystem. Both files and
+        directory shall appear in the host explorer.
+      </P
+><DIV
+CLASS="REFSECT2"
+><A
+NAME="AEN17873"
+></A
+><H3
+>Configuration</H3
+><P
+>        The test application was primarly tested with the AT91 architecture. The control 
+        endpoint is set to <TT
+CLASS="LITERAL"
+>"usbs_at91_ep0"</TT
+> and the buffer size
+        to 8 bytes.
+        The TX endpoint is set to <TT
+CLASS="LITERAL"
+>"usbs_at91_ep1"</TT
+> and the buffer size
+        to 64 bytes (with Tx (USB IN) endpoint number set to 1).
+        The RX endpoint is set to <TT
+CLASS="LITERAL"
+>"usbs_at91_ep2"</TT
+> and the buffer size
+        to 64 bytes (with Rx (USB OUT) endpoint number set to 2).                 
+      </P
+></DIV
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="usbs-msd-host-config.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="hal-synth-arch.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>Host Configuration</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="io-usb-slave-msd.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>eCos Synthetic Target</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

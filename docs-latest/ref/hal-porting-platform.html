@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -98,7 +98,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN4247"
+NAME="AEN4249"
 >HAL Platform Porting Process</A
 ></H2
 ><DIV
@@ -106,7 +106,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4249"
+NAME="AEN4251"
 >Brief overview</A
 ></H3
 ><P
@@ -167,7 +167,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4263"
+NAME="AEN4265"
 >Step-by-step</A
 ></H3
 ><P
@@ -187,7 +187,7 @@ CLASS="SECTION"
 ><H4
 CLASS="SECTION"
 ><A
-NAME="AEN4267"
+NAME="AEN4269"
 >Minimal requirements</A
 ></H4
 ><P
@@ -201,7 +201,7 @@ TYPE="1"
 ><P
 >Copy an existing platform HAL from the same or another
     architecture. Rename the files as necessary to follow the
-    standard: CDL and MLT related files should contain the
+    standard: CDL and memory layout related files should contain the
     &lt;arch&gt;_&lt;variant&gt;_&lt;platform&gt; triplet.</P
 ></LI
 ><LI
@@ -236,15 +236,12 @@ HREF="hal-porting-platform.html#HAL-PORTING-ECOS-DATABASE"
 ></LI
 ><LI
 ><P
->Adjust the MLT files in
+>Adjust the memory layout files in
     <TT
 CLASS="FILENAME"
 >include/pkgconf</TT
 > to match the memory layout on
-    the platform. For initial testing it should be enough to just hand
-    edit .h and .ldi files, but eventually you should generate all
-    files using the memory layout editor in the configuration
-    tool. See <A
+    the platform.  See <A
 HREF="hal-porting-platform.html#HAL-PORTING-PLATFORM-MEMORY-LAYOUT"
 >the Section called <I
 >Platform Memory Layout</I
@@ -410,7 +407,7 @@ CLASS="SECTION"
 ><H4
 CLASS="SECTION"
 ><A
-NAME="AEN4316"
+NAME="AEN4318"
 >Adding features</A
 ></H4
 ><P
@@ -544,7 +541,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4349"
+NAME="AEN4351"
 >Hints</A
 ></H3
 ><P
@@ -754,7 +751,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4391"
+NAME="AEN4393"
 >CDL File Layout</A
 ></H3
 ><P
@@ -831,7 +828,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4403"
+NAME="AEN4405"
 >Startup Type</A
 ></H3
 ><P
@@ -888,7 +885,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4411"
+NAME="AEN4413"
 >Build options</A
 ></H3
 ><P
@@ -987,7 +984,7 @@ CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4417"
+NAME="AEN4419"
 >Common Target Options</A
 ></H3
 ><P
@@ -1257,53 +1254,26 @@ NAME="HAL-PORTING-PLATFORM-MEMORY-LAYOUT"
 >Platform Memory Layout</A
 ></H2
 ><P
->The platform memory layout is defined using the Memory
-Configuration Window  in the Configuration Tool.</P
-><DIV
-CLASS="NOTE"
-><BLOCKQUOTE
-CLASS="NOTE"
-><P
-><B
->Note: </B
->If you do not have access to a Windows machine, you can
-hand edit the <TT
-CLASS="FILENAME"
->.h</TT
-> and <TT
-CLASS="FILENAME"
->.ldi</TT
-> files to match the
-properties of your platform. If you want to contribute your port back
-to the eCos community, ask someone on the list to make proper memory
-map files for you.</P
-></BLOCKQUOTE
-></DIV
+>Historically, the platform memory layout was defined using a Memory
+Configuration window in the eCos Configuration Tool (version 1.x).
+However, the memory layout feature was not ported to the wxWidgets version
+of the tool (version 2.0 and later). Memory layouts are currently manipulated
+using a text editor.</P
 ><DIV
 CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4447"
+NAME="AEN4445"
 >Layout Files</A
 ></H3
 ><P
->The memory configuration details are saved in three files:</P
+>The memory configuration details are specified in two files:</P
 ><P
 ></P
 ><DIV
 CLASS="VARIABLELIST"
 ><DL
-><DT
-><TT
-CLASS="FILENAME"
->.mlt</TT
-></DT
-><DD
-><P
->This is the Configuration Tool save-file. It is only used
-	by the Configuration Tool.</P
-></DD
 ><DT
 ><TT
 CLASS="FILENAME"
@@ -1329,15 +1299,17 @@ CLASS="FILENAME"
 ></DL
 ></DIV
 ><P
->These three files are generated for each startup-type, since the
-memory details usually differ.</P
+>These files are generated for each startup-type, since the
+memory details usually differ. The layout and structure of new files
+should match those of existing memory layout files to allow for the
+introduction of a new memory layout editor in the future.</P
 ></DIV
 ><DIV
 CLASS="SECTION"
 ><H3
 CLASS="SECTION"
 ><A
-NAME="AEN4467"
+NAME="AEN4460"
 >Reserved Regions</A
 ></H3
 ><P
@@ -1346,8 +1318,7 @@ purposes, making room for exception vectors and various tables. RAM
 startup configurations also need to reserve some space at the bottom
 of the memory map for the ROM monitor.</P
 ><P
->These reserved areas are named with the prefix "reserved_" which is
-handled specially by the Configuration Tool: instead of referring to a
+>These reserved areas are named with the prefix "reserved_"  instead of referring to a
 linker macro, the start of the area is labeled and a gap left in the
 memory map.</P
 ></DIV
@@ -1357,7 +1328,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN4471"
+NAME="AEN4464"
 >Platform Serial Device Support</A
 ></H2
 ><P

@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -85,7 +85,7 @@ NAME="DOWNLOAD-COMMAND"
 ><DIV
 CLASS="REFNAMEDIV"
 ><A
-NAME="AEN1248"
+NAME="AEN1252"
 ></A
 ><H2
 >Name</H2
@@ -93,7 +93,7 @@ NAME="AEN1248"
 ><DIV
 CLASS="REFSYNOPSISDIV"
 ><A
-NAME="AEN1251"
+NAME="AEN1255"
 ></A
 ><H2
 >Synopsis</H2
@@ -134,7 +134,7 @@ CLASS="REPLACEABLE"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1276"
+NAME="AEN1280"
 ></A
 ><H2
 >Arguments</H2
@@ -143,7 +143,7 @@ CLASS="INFORMALTABLE"
 ><P
 ></P
 ><A
-NAME="AEN1278"
+NAME="AEN1282"
 ></A
 ><TABLE
 BORDER="1"
@@ -468,7 +468,7 @@ CLASS="EMPHASIS"
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1392"
+NAME="AEN1396"
 ></A
 ><H2
 >Description</H2
@@ -491,11 +491,27 @@ ELF executable program format,
 Motorola S-record (SREC)
 format or raw data.
       </P
+><DIV
+CLASS="NOTE"
+><BLOCKQUOTE
+CLASS="NOTE"
+><P
+><B
+>Note: </B
+>When downloading an ELF image, RedBoot will forcibly terminate the transfer
+once all the relevant (loadable) ELF sections have been received. This
+behaviour reduces download time when using the X/Y modem protocol
+over a slow serial connection. However, the terminal emulator may report
+that the transfer is incomplete and has been cancelled. Such messages
+are normal and may be ignored.
+        </P
+></BLOCKQUOTE
+></DIV
 ></DIV
 ><DIV
 CLASS="REFSECT1"
 ><A
-NAME="AEN1398"
+NAME="AEN1405"
 ></A
 ><H2
 >Examples</H2

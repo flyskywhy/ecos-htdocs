@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -267,7 +267,7 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->DEVIO_TABLE(l, write, read, get_config, set_config)</PRE
+>DEVIO_TABLE(l, write, read, select, get_config, set_config)</PRE
 ></TD
 ></TR
 ></TABLE
@@ -307,6 +307,16 @@ CLASS="FUNCTION"
     <CODE
 CLASS="FUNCTION"
 >cyg_io_read()</CODE
+>. </P
+></DD
+><DT
+>select</DT
+><DD
+><P
+>The function called as a result of
+    <CODE
+CLASS="FUNCTION"
+>cyg_io_select()</CODE
 >. </P
 ></DD
 ><DT
@@ -408,7 +418,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN5757"
+NAME="AEN5755"
 >DevTab Entry</A
 ></H2
 ><P
@@ -513,7 +523,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN5794"
+NAME="AEN5792"
 >Serial Channel Structure</A
 ></H2
 ><P
@@ -694,7 +704,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN5869"
+NAME="AEN5867"
 >Serial Functions Structure</A
 ></H2
 ><TABLE
@@ -833,7 +843,7 @@ CLASS="SECTION"
 ><H2
 CLASS="SECTION"
 ><A
-NAME="AEN5918"
+NAME="AEN5916"
 >Callbacks</A
 ></H2
 ><P
@@ -909,11 +919,11 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->bool (*data_xmt_req)(serial_channel *chan,
+>xmt_req_reply_t (*data_xmt_req)(serial_channel *chan,
                      int space,
                      int* chars_avail,
                      unsigned char** chars)
-void (*data_xmt_done)(serial_channel *chan)</PRE
+void (*data_xmt_done)(serial_channel *chan, int chars_sent)</PRE
 ></TD
 ></TR
 ></TABLE
@@ -966,11 +976,11 @@ WIDTH="70%"
 ><TD
 ><PRE
 CLASS="PROGRAMLISTING"
->bool (*data_rcv_req)(serial_channel *chan,
+>rcv_req_reply_t (*data_rcv_req)(serial_channel *chan,
                      int avail,
                      int* space_avail,
                      unsigned char** space)
-void (*data_rcv_done)(serial_channel *chan)</PRE
+void (*data_rcv_done)(serial_channel *chan, int chars_rcvd)</PRE
 ></TD
 ></TR
 ></TABLE

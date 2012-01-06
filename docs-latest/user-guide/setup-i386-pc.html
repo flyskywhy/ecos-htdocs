@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -93,7 +93,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4451"
+NAME="AEN4462"
 >RedBoot Support</A
 ></H2
 ><P
@@ -113,7 +113,7 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4454"
+NAME="AEN4465"
 >Floppy Disk Support</A
 ></H2
 ><P
@@ -261,8 +261,8 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4482"
->GRUB Bootloader Support</A
+NAME="AEN4493"
+>GRUB Bootloader Support (version 0.97)</A
 ></H2
 ><P
 >If an application is built with the GRUB startup type, it is
@@ -356,7 +356,128 @@ CLASS="SECT2"
 ><H2
 CLASS="SECT2"
 ><A
-NAME="AEN4500"
+NAME="AEN4511"
+>GRUB 2 Bootloader Support (version 1.98)</A
+></H2
+><P
+>If an application is built with the GRUB startup type, it is
+configured to be loaded by the GRUB bootloader.</P
+><P
+>GRUB 2 is an open source boot loader that supports many different
+operating systems.  GRUB 2 is the sucessor to the legacy GRUB boot 
+loader.  It has been rewritten and requires a new configuration 
+file that is different from the legacy GRUB loader.
+It is available from
+<A
+HREF="http://www.gnu.org/software/grub"
+TARGET="_top"
+>http://www.gnu.org/software/grub</A
+>.
+The latest version of GRUB should be downloaded from there and installed.
+Cygwin users will need to install the GRand Unified Bootloader package on their
+system.</P
+><P
+>To install GRUB 2 on a disk drive from Cygwin you will first need to
+format your disk.  Begin by launching a windows Command Prompt with 
+ADMINISTRATOR priviledges. This example assumes that your destination
+drive is E and the filesystem type is FAT32.</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$ <KBD
+CLASS="USERINPUT"
+>format e: /fs:fat32 /q</KBD
+>
+
+The type of the file system is FAT32.
+WARNING, ALL DATA ON NON-REMOVABLE DISK
+DRIVE E: WILL BE LOST!
+Proceed with Format (Y/N)? y
+QuickFormatting 512M
+Initializing the File Allocation Table (FAT)...
+Volume label (11 characters, ENTER for none)?
+Format complete.</PRE
+></TD
+></TR
+></TABLE
+><P
+>When your drive is finished formatting, Cygwin will automatically
+mount the drive under /cygdrive/e.  Next, launch a bash shell.  
+Cygwin users should run their shell as ADMINISTRATOR otherwise 
+the grub-install program will fail.  To install GRUB we need to
+know the device name for your disk.  A second disk drive is usually
+called /dev/sdb.  The C: drive is usually called /dev/sda.  Determine
+your device name by reading the /proc/partitions file.
+This example uses /dev/sdb as input to the GRUB install program.</P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>$ <KBD
+CLASS="USERINPUT"
+>cat /proc/partitions</KBD
+>
+major minor  #blocks  name
+    8     0 156290904 sda
+    8     1    102400 sda1
+    8     2 156185600 sda2
+    8    16 156290904 sdb
+    8    17    524288 sdb1
+
+$ <KBD
+CLASS="USERINPUT"
+>grub-install --root-directory=/cygdrive/e /dev/sdb</KBD
+>
+Installation finished. No error reported.
+
+$ <KBD
+CLASS="USERINPUT"
+>cp $ECOS_REPOSITORY/packages/hal/i386/pc/current/misc/grub.cfg /cygdrive/e/boot/grub</KBD
+>
+
+$ <KBD
+CLASS="USERINPUT"
+>cp redboot.elf /cygdrive/e/boot</KBD
+></PRE
+></TD
+></TR
+></TABLE
+><P
+>After installing GRUB 2, we need to a copy a configuration 
+file for grub to use.  The file <TT
+CLASS="FILENAME"
+>grub.cfg</TT
+> is an example 
+configuration file that loads redboot.elf.  You should, of course, customize 
+this file to load your own application. Alternatively you can use the command-line 
+interface of GRUB to input commands yourself. Applications can be installed or 
+updated simply by copying them to the location expected by the 
+<TT
+CLASS="FILENAME"
+>grub.cfg</TT
+> file. In this example the /boot directory is used.</P
+><P
+>When installing GRUB on a hard disk, refer to the GRUB documentation. Be
+warned, however, that if you get this wrong it may compromise any
+existing bootloader that exists on the hard disk and may make any
+other operating systems unbootable. Practice on a spare disk or
+sacrificial hard disks first. </P
+></DIV
+><DIV
+CLASS="SECT2"
+><H2
+CLASS="SECT2"
+><A
+NAME="AEN4529"
 >Debugging FLOPPY and GRUB Applications</A
 ></H2
 ><P

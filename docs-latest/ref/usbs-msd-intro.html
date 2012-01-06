@@ -1,0 +1,212 @@
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
+<!-- This material may be distributed only subject to the terms      -->
+<!-- and conditions set forth in the Open Publication License, v1.0  -->
+<!-- or later (the latest version is presently available at          -->
+<!-- http://www.opencontent.org/openpub/).                           -->
+<!-- Distribution of the work or derivative of the work in any       -->
+<!-- standard (paper) book form is prohibited unless prior           -->
+<!-- permission is obtained from the copyright holder.               -->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<HTML
+><HEAD
+><TITLE
+>Introduction</TITLE
+><meta name="MSSmartTagsPreventParsing" content="TRUE">
+<META
+NAME="GENERATOR"
+CONTENT="Modular DocBook HTML Stylesheet Version 1.79"><LINK
+REL="HOME"
+TITLE="eCos Reference Manual"
+HREF="ecos-ref.html"><LINK
+REL="UP"
+TITLE="eCos Support for USB Mass Storage Peripherals"
+HREF="io-usb-slave-msd.html"><LINK
+REL="PREVIOUS"
+TITLE="eCos Support for USB Mass Storage Peripherals"
+HREF="io-usb-slave-msd.html"><LINK
+REL="NEXT"
+TITLE="Configuration"
+HREF="usbs-msd-config.html"></HEAD
+><BODY
+CLASS="REFENTRY"
+BGCOLOR="#FFFFFF"
+TEXT="#000000"
+LINK="#0000FF"
+VLINK="#840084"
+ALINK="#0000FF"
+><DIV
+CLASS="NAVHEADER"
+><TABLE
+SUMMARY="Header navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TH
+COLSPAN="3"
+ALIGN="center"
+>eCos Reference Manual</TH
+></TR
+><TR
+><TD
+WIDTH="10%"
+ALIGN="left"
+VALIGN="bottom"
+><A
+HREF="io-usb-slave-msd.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="80%"
+ALIGN="center"
+VALIGN="bottom"
+></TD
+><TD
+WIDTH="10%"
+ALIGN="right"
+VALIGN="bottom"
+><A
+HREF="usbs-msd-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+></TABLE
+><HR
+ALIGN="LEFT"
+WIDTH="100%"></DIV
+><H1
+><A
+NAME="USBS-MSD-INTRO"
+></A
+>Introduction</H1
+><DIV
+CLASS="REFNAMEDIV"
+><A
+NAME="AEN17802"
+></A
+><H2
+>Name</H2
+>Introduction&nbsp;--&nbsp;        eCos support for USB Mass Storage Peripherals
+      </DIV
+><DIV
+CLASS="REFSECT1"
+><A
+NAME="AEN17805"
+></A
+><H2
+>Introduction</H2
+><P
+>        Currently, the eCos USB-Mass Storage Device (MSD) slave package  
+        provides support only for the SCSI transparent command set. The 
+        package flexibility allows future extension for other sub-class, 
+        .i.e. RBC, UFI etc..
+        The package requires the actual storage media to use the eCos disk
+        interface. Disk sector size is assumed 512 bytes.
+      </P
+><P
+>        The USB-MSD package is not tied to any specific
+        hardware. It requires the presence of USB hardware on the
+        target and a suitable device driver to make endpoints
+        available for this code to use. The configuration system
+        cannot load the eCos package automatically for specific
+        targets, in the way that a USB device driver or an ethernet
+        driver can be loaded automatically. Instead, the package has
+        to be added explicitly. When using the command line tools this
+        will involve an operation like the following:
+      </P
+><TABLE
+BORDER="5"
+BGCOLOR="#E0E0F0"
+WIDTH="70%"
+><TR
+><TD
+><PRE
+CLASS="SCREEN"
+>        $ ecosconfig add usbs_msd
+      </PRE
+></TD
+></TR
+></TABLE
+><P
+>        Typically, this will automatically cause the USB device driver
+        to become active. The USB-Mass Storage Device driver runs as a 
+        thread, therefore requires the kernel package to be active. To
+        start the MSD interface, user must call the <TT
+CLASS="LITERAL"
+>usbs_msd_start()</TT
+> 
+        function. No other user intervention is required. 
+        The MSD driver will interact directly with the storage media. 
+        Care should be taken not to mount/use the filesystem present on 
+        the media while used as a mass storage. This could potentially 
+        damage the filesystem.
+      </P
+></DIV
+><DIV
+CLASS="NAVFOOTER"
+><HR
+ALIGN="LEFT"
+WIDTH="100%"><TABLE
+SUMMARY="Footer navigation table"
+WIDTH="100%"
+BORDER="0"
+CELLPADDING="0"
+CELLSPACING="0"
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+><A
+HREF="io-usb-slave-msd.html"
+ACCESSKEY="P"
+>Prev</A
+></TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="ecos-ref.html"
+ACCESSKEY="H"
+>Home</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+><A
+HREF="usbs-msd-config.html"
+ACCESSKEY="N"
+>Next</A
+></TD
+></TR
+><TR
+><TD
+WIDTH="33%"
+ALIGN="left"
+VALIGN="top"
+>eCos Support for USB Mass Storage Peripherals</TD
+><TD
+WIDTH="34%"
+ALIGN="center"
+VALIGN="top"
+><A
+HREF="io-usb-slave-msd.html"
+ACCESSKEY="U"
+>Up</A
+></TD
+><TD
+WIDTH="33%"
+ALIGN="right"
+VALIGN="top"
+>Configuration</TD
+></TR
+></TABLE
+></DIV
+></BODY
+></HTML
+>

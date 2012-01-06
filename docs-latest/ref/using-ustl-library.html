@@ -1,4 +1,4 @@
-<!-- Copyright (C) 2009 Free Software Foundation, Inc.                                -->
+<!-- Copyright (C) 2012 Free Software Foundation, Inc.                                -->
 <!-- This material may be distributed only subject to the terms      -->
 <!-- and conditions set forth in the Open Publication License, v1.0  -->
 <!-- or later (the latest version is presently available at          -->
@@ -106,7 +106,12 @@ CLASS="FILENAME"
 <CODE
 CLASS="VARNAME"
 >ustl</CODE
-> namespace.</P
+> namespace. To prevent compiler warnings
+when compiling your eCos application with uSTL support, you need to
+add the compiler flag <CODE
+CLASS="OPTION"
+>-Wno-undef</CODE
+>. </P
 ><TABLE
 BORDER="5"
 BGCOLOR="#E0E0F0"
@@ -121,7 +126,6 @@ using namespace ustl;
 int main (int argc, char* argv[])
 {
     cout &lt;&lt; "Hello world!\n";
-    cout.flush();
     return EXIT_SUCCESS;
 }</PRE
 ></TD
@@ -138,15 +142,11 @@ CLASS="NOTE"
 CLASS="VARNAME"
 >cout</CODE
 > for printing to the console, 
-then data will be flushed only if you finish the output with 
+then data will get sent only if you finish the output with 
 <CODE
 CLASS="VARNAME"
 >endl</CODE
-> or '\n' and then call 
-<CODE
-CLASS="FUNCTION"
->cout.flush()</CODE
-> as in the example above.</P
+> or '\n'.</P
 ></BLOCKQUOTE
 ></DIV
 ><P
