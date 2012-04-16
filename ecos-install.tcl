@@ -81,6 +81,9 @@ namespace eval ecos_install {
         if { $os == "unix" } {
                 set os $tcl_platform(os)
         }
+        if {[string match "CYGWIN*" $os]} {
+            set os "windows"
+        }
 
         variable original_pwd [pwd]
         # Where this script lives. On a CD-ROM this will be at a known place relative to
